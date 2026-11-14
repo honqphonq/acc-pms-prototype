@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 
 export default defineConfig({
+  // BASE_PATH dùng khi deploy dưới thư mục con (VD: GitHub Pages /acc-pms-prototype/)
+  base: process.env.BASE_PATH || "/",
   plugins: [react()],
   resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
   build: {

@@ -42,7 +42,7 @@ export default function LoginPage() {
         <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary/25 blur-3xl" />
         <div className="absolute -bottom-32 -left-16 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="relative flex items-center gap-3">
-          <img src="/assets/acc-logo.svg" className="h-11 w-11 rounded-xl" alt="ACC" />
+          <img src={`${import.meta.env.BASE_URL}assets/acc-logo.svg`} className="h-11 w-11 rounded-xl" alt="ACC" />
           <div>
             <div className="text-lg font-bold">Tổng công ty ACC</div>
             <div className="text-xs text-sidebar-muted">Xây dựng Công trình Hàng không</div>
@@ -75,7 +75,7 @@ export default function LoginPage() {
       <div className="flex flex-1 items-center justify-center p-4 md:p-10">
         <div className="w-full max-w-xl">
           <div className="mb-6 lg:hidden">
-            <img src="/assets/acc-logo.svg" className="mb-3 h-10 w-10 rounded-xl" alt="ACC" />
+            <img src={`${import.meta.env.BASE_URL}assets/acc-logo.svg`} className="mb-3 h-10 w-10 rounded-xl" alt="ACC" />
             <div className="text-xl font-bold">ACC – Quản lý dự án thi công</div>
           </div>
           <h2 className="text-2xl font-bold text-slate-900">Đăng nhập demo</h2>
