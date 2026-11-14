@@ -1,0 +1,120 @@
+[
+  {
+    "id": "s01",
+    "code": "NCC001",
+    "name": "Công ty CP Bê tông Hà Thành",
+    "taxCode": "0101234567",
+    "address": "Km 12 Đại lộ Thăng Long, Hà Nội",
+    "contact": "Nguyễn Văn Thành",
+    "phone": "0243800000",
+    "materialGroups": [
+      "Bê tông"
+    ],
+    "rating": 4.6,
+    "debt": 0
+  },
+  {
+    "id": "s02",
+    "code": "NCC002",
+    "name": "Công ty CP Thép Việt Hưng",
+    "taxCode": "0102345678",
+    "address": "KCN Phố Nối A, Hưng Yên",
+    "contact": "Trần Thị Hương",
+    "phone": "0243812345",
+    "materialGroups": [
+      "Thép"
+    ],
+    "rating": 4.4,
+    "debt": 14700000
+  },
+  {
+    "id": "s03",
+    "code": "NCC003",
+    "name": "Công ty TNHH VLXD Minh Phát",
+    "taxCode": "0103456789",
+    "address": "Số 25 Phạm Văn Đồng, Hà Nội",
+    "contact": "Lê Minh Phát",
+    "phone": "0243824690",
+    "materialGroups": [
+      "Xi măng",
+      "Gạch, vữa",
+      "Cát, đá"
+    ],
+    "rating": 4.1,
+    "debt": 258000000
+  },
+  {
+    "id": "s04",
+    "code": "NCC004",
+    "name": "Công ty CP Khai thác đá Kiện Khê",
+    "taxCode": "0700123456",
+    "address": "Thanh Liêm, Hà Nam",
+    "contact": "Đỗ Văn Kiên",
+    "phone": "0243837035",
+    "materialGroups": [
+      "Cát, đá"
+    ],
+    "rating": 4.3,
+    "debt": 0
+  },
+  {
+    "id": "s05",
+    "code": "NCC005",
+    "name": "Công ty TNHH Cốp pha Thăng Long",
+    "taxCode": "0104567890",
+    "address": "KCN Quang Minh, Hà Nội",
+    "contact": "Phạm Thăng",
+    "phone": "0243849380",
+    "materialGroups": [
+      "Ván khuôn, cốp pha",
+      "Phụ kiện"
+    ],
+    "rating": 3.9,
+    "debt": 0
+  },
+  {
+    "id": "s06",
+    "code": "NCC006",
+    "name": "Công ty CP Nhựa đường Hải Nam",
+    "taxCode": "0200987654",
+    "address": "Cảng Đình Vũ, Hải Phòng",
+    "contact": "Vũ Hải Nam",
+    "phone": "0243861725",
+    "materialGroups": [
+      "Nhựa đường",
+      "Sơn",
+      "Vật liệu chèn khe"
+    ],
+    "rating": 4.2,
+    "debt": 0
+  },
+  {
+    "id": "s07",
+    "code": "NCC007",
+    "name": "Công ty CP Cơ điện Thành Long",
+    "taxCode": "0105678901",
+    "address": "Số 8 Lê Văn Lương, Hà Nội",
+    "contact": "Hoàng Thành Long",
+    "phone": "0243874070",
+    "materialGroups": [
+      "Điện",
+      "Ống, phụ kiện"
+    ],
+    "rating": 4,
+    "debt": 0
+  },
+  {
+    "id": "s08",
+    "code": "NCC008",
+    "name": "Công ty TNHH Cọc bê tông Sông Đà",
+    "taxCode": "0106789012",
+    "address": "Ba Vì, Hà Nội",
+    "contact": "Nguyễn Sông",
+    "phone": "0243886415",
+    "materialGroups": [
+      "Cọc"
+    ],
+    "rating": 4.5,
+    "debt": 0
+  }
+]

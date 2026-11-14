@@ -1,0 +1,378 @@
+[
+  {
+    "id": "i-p01-1",
+    "code": "1.1.1",
+    "name": "Công tác chuẩn bị và san lấp mặt bằng",
+    "managerId": "u05",
+    "projectId": "p01",
+    "order": 1
+  },
+  {
+    "id": "i-p01-2",
+    "code": "1.1.2",
+    "name": "Phần móng",
+    "managerId": "u07",
+    "projectId": "p01",
+    "order": 2
+  },
+  {
+    "id": "i-p01-3",
+    "code": "1.1.3",
+    "name": "Phần thân – Nhà hành chính A",
+    "managerId": "u05",
+    "projectId": "p01",
+    "order": 3
+  },
+  {
+    "id": "i-p01-4",
+    "code": "1.1.4",
+    "name": "Hoàn thiện và hạ tầng kỹ thuật",
+    "managerId": "u04",
+    "projectId": "p01",
+    "order": 4
+  },
+  {
+    "id": "i-p02-1",
+    "projectId": "p02",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị mặt bằng",
+    "order": 1,
+    "managerId": "u43"
+  },
+  {
+    "id": "i-p02-2",
+    "projectId": "p02",
+    "code": "1.2",
+    "name": "Nền sân đỗ, đường lăn",
+    "order": 2,
+    "managerId": "u33"
+  },
+  {
+    "id": "i-p02-3",
+    "projectId": "p02",
+    "code": "1.3",
+    "name": "Móng mặt đường",
+    "order": 3,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p02-4",
+    "projectId": "p02",
+    "code": "1.4",
+    "name": "Mặt đường bê tông xi măng",
+    "order": 4,
+    "managerId": "u33"
+  },
+  {
+    "id": "i-p02-5",
+    "projectId": "p02",
+    "code": "1.5",
+    "name": "Hệ thống kỹ thuật & an toàn bay",
+    "order": 5,
+    "managerId": "u44"
+  },
+  {
+    "id": "i-p03-1",
+    "projectId": "p03",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị mặt bằng",
+    "order": 1,
+    "managerId": "u33"
+  },
+  {
+    "id": "i-p03-2",
+    "projectId": "p03",
+    "code": "1.2",
+    "name": "Nền sân đỗ, đường lăn",
+    "order": 2,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p03-3",
+    "projectId": "p03",
+    "code": "1.3",
+    "name": "Móng mặt đường",
+    "order": 3,
+    "managerId": "u45"
+  },
+  {
+    "id": "i-p03-4",
+    "projectId": "p03",
+    "code": "1.4",
+    "name": "Mặt đường bê tông xi măng",
+    "order": 4,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p03-5",
+    "projectId": "p03",
+    "code": "1.5",
+    "name": "Hệ thống kỹ thuật & an toàn bay",
+    "order": 5,
+    "managerId": "u45"
+  },
+  {
+    "id": "i-p04-1",
+    "projectId": "p04",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị mặt bằng",
+    "order": 1,
+    "managerId": "u36"
+  },
+  {
+    "id": "i-p04-2",
+    "projectId": "p04",
+    "code": "1.2",
+    "name": "Nền sân đỗ, đường lăn",
+    "order": 2,
+    "managerId": "u38"
+  },
+  {
+    "id": "i-p04-3",
+    "projectId": "p04",
+    "code": "1.3",
+    "name": "Móng mặt đường",
+    "order": 3,
+    "managerId": "u30"
+  },
+  {
+    "id": "i-p04-4",
+    "projectId": "p04",
+    "code": "1.4",
+    "name": "Mặt đường bê tông xi măng",
+    "order": 4,
+    "managerId": "u31"
+  },
+  {
+    "id": "i-p04-5",
+    "projectId": "p04",
+    "code": "1.5",
+    "name": "Hệ thống kỹ thuật & an toàn bay",
+    "order": 5,
+    "managerId": "u31"
+  },
+  {
+    "id": "i-p05-1",
+    "projectId": "p05",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị mặt bằng",
+    "order": 1,
+    "managerId": "u34"
+  },
+  {
+    "id": "i-p05-2",
+    "projectId": "p05",
+    "code": "1.2",
+    "name": "Nền sân đỗ, đường lăn",
+    "order": 2,
+    "managerId": "u45"
+  },
+  {
+    "id": "i-p05-3",
+    "projectId": "p05",
+    "code": "1.3",
+    "name": "Móng mặt đường",
+    "order": 3,
+    "managerId": "u39"
+  },
+  {
+    "id": "i-p05-4",
+    "projectId": "p05",
+    "code": "1.4",
+    "name": "Mặt đường bê tông xi măng",
+    "order": 4,
+    "managerId": "u37"
+  },
+  {
+    "id": "i-p05-5",
+    "projectId": "p05",
+    "code": "1.5",
+    "name": "Hệ thống kỹ thuật & an toàn bay",
+    "order": 5,
+    "managerId": "u42"
+  },
+  {
+    "id": "i-p06-1",
+    "projectId": "p06",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị và san lấp mặt bằng",
+    "order": 1,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p06-2",
+    "projectId": "p06",
+    "code": "1.2",
+    "name": "Phần móng",
+    "order": 2,
+    "managerId": "u36"
+  },
+  {
+    "id": "i-p06-3",
+    "projectId": "p06",
+    "code": "1.3",
+    "name": "Phần thân",
+    "order": 3,
+    "managerId": "u43"
+  },
+  {
+    "id": "i-p06-4",
+    "projectId": "p06",
+    "code": "1.4",
+    "name": "Hoàn thiện",
+    "order": 4,
+    "managerId": "u32"
+  },
+  {
+    "id": "i-p06-5",
+    "projectId": "p06",
+    "code": "1.5",
+    "name": "Hạ tầng ngoài nhà",
+    "order": 5,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p07-1",
+    "projectId": "p07",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị và san lấp mặt bằng",
+    "order": 1,
+    "managerId": "u43"
+  },
+  {
+    "id": "i-p07-2",
+    "projectId": "p07",
+    "code": "1.2",
+    "name": "Phần móng",
+    "order": 2,
+    "managerId": "u39"
+  },
+  {
+    "id": "i-p07-3",
+    "projectId": "p07",
+    "code": "1.3",
+    "name": "Phần thân",
+    "order": 3,
+    "managerId": "u45"
+  },
+  {
+    "id": "i-p07-4",
+    "projectId": "p07",
+    "code": "1.4",
+    "name": "Hoàn thiện",
+    "order": 4,
+    "managerId": "u31"
+  },
+  {
+    "id": "i-p07-5",
+    "projectId": "p07",
+    "code": "1.5",
+    "name": "Hạ tầng ngoài nhà",
+    "order": 5,
+    "managerId": "u44"
+  },
+  {
+    "id": "i-p08-1",
+    "projectId": "p08",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị và san lấp mặt bằng",
+    "order": 1,
+    "managerId": "u30"
+  },
+  {
+    "id": "i-p08-2",
+    "projectId": "p08",
+    "code": "1.2",
+    "name": "Phần móng",
+    "order": 2,
+    "managerId": "u39"
+  },
+  {
+    "id": "i-p08-3",
+    "projectId": "p08",
+    "code": "1.3",
+    "name": "Phần thân",
+    "order": 3,
+    "managerId": "u44"
+  },
+  {
+    "id": "i-p08-4",
+    "projectId": "p08",
+    "code": "1.4",
+    "name": "Hoàn thiện",
+    "order": 4,
+    "managerId": "u39"
+  },
+  {
+    "id": "i-p08-5",
+    "projectId": "p08",
+    "code": "1.5",
+    "name": "Hạ tầng ngoài nhà",
+    "order": 5,
+    "managerId": "u37"
+  },
+  {
+    "id": "i-p09-1",
+    "projectId": "p09",
+    "code": "1.1",
+    "name": "Công tác chuẩn bị và san lấp mặt bằng",
+    "order": 1,
+    "managerId": "u32"
+  },
+  {
+    "id": "i-p09-2",
+    "projectId": "p09",
+    "code": "1.2",
+    "name": "Phần móng",
+    "order": 2,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p09-3",
+    "projectId": "p09",
+    "code": "1.3",
+    "name": "Phần thân",
+    "order": 3,
+    "managerId": "u43"
+  },
+  {
+    "id": "i-p09-4",
+    "projectId": "p09",
+    "code": "1.4",
+    "name": "Hoàn thiện",
+    "order": 4,
+    "managerId": "u33"
+  },
+  {
+    "id": "i-p09-5",
+    "projectId": "p09",
+    "code": "1.5",
+    "name": "Hạ tầng ngoài nhà",
+    "order": 5,
+    "managerId": "u38"
+  },
+  {
+    "id": "i-p11-1",
+    "projectId": "p11",
+    "code": "1.1",
+    "name": "Nền và móng",
+    "order": 1,
+    "managerId": "u40"
+  },
+  {
+    "id": "i-p11-2",
+    "projectId": "p11",
+    "code": "1.2",
+    "name": "Mặt đường và sân đỗ",
+    "order": 2,
+    "managerId": "u45"
+  },
+  {
+    "id": "i-p11-3",
+    "projectId": "p11",
+    "code": "1.3",
+    "name": "Hoàn thiện, cây xanh",
+    "order": 3,
+    "managerId": "u38"
+  }
+]

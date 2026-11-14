@@ -1,0 +1,227 @@
+[
+  {
+    "id": "m01",
+    "code": "VL001",
+    "name": "Xi măng PCB40",
+    "group": "Xi măng",
+    "unit": "tấn",
+    "unitPrice": 1650000,
+    "spec": "TCVN 6260:2009, bao 50kg"
+  },
+  {
+    "id": "m02",
+    "code": "VL002",
+    "name": "Thép CB400-V Ø16",
+    "group": "Thép",
+    "unit": "tấn",
+    "unitPrice": 15800000,
+    "spec": "TCVN 1651-2:2018, cây 11,7m"
+  },
+  {
+    "id": "m03",
+    "code": "VL003",
+    "name": "Thép CB300-V Ø12",
+    "group": "Thép",
+    "unit": "tấn",
+    "unitPrice": 15500000,
+    "spec": "TCVN 1651-2:2018, cây 11,7m"
+  },
+  {
+    "id": "m04",
+    "code": "VL004",
+    "name": "Thép CB400-V Ø25",
+    "group": "Thép",
+    "unit": "tấn",
+    "unitPrice": 16100000,
+    "spec": "TCVN 1651-2:2018, cây 11,7m"
+  },
+  {
+    "id": "m05",
+    "code": "VL005",
+    "name": "Cát vàng bê tông",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 420000,
+    "spec": "Mô đun độ lớn ≥ 2,0"
+  },
+  {
+    "id": "m06",
+    "code": "VL006",
+    "name": "Cát san lấp",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 185000,
+    "spec": "Cát đen san nền"
+  },
+  {
+    "id": "m07",
+    "code": "VL007",
+    "name": "Đá dăm 1x2",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 380000,
+    "spec": "Đá bazan nghiền, TCVN 7570:2006"
+  },
+  {
+    "id": "m08",
+    "code": "VL008",
+    "name": "Đá dăm 0,5x1",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 360000,
+    "spec": "Đá bazan nghiền"
+  },
+  {
+    "id": "m09",
+    "code": "VL009",
+    "name": "Đá dăm 2x4",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 340000,
+    "spec": "Đá bazan nghiền"
+  },
+  {
+    "id": "m10",
+    "code": "VL010",
+    "name": "Bê tông thương phẩm M300",
+    "group": "Bê tông",
+    "unit": "m³",
+    "unitPrice": 1480000,
+    "spec": "Độ sụt 12±2cm, đá 1x2"
+  },
+  {
+    "id": "m11",
+    "code": "VL011",
+    "name": "Bê tông thương phẩm M350",
+    "group": "Bê tông",
+    "unit": "m³",
+    "unitPrice": 1560000,
+    "spec": "Bê tông mặt đường sân bay, độ sụt 4±2cm"
+  },
+  {
+    "id": "m12",
+    "code": "VL012",
+    "name": "Bê tông thương phẩm M250",
+    "group": "Bê tông",
+    "unit": "m³",
+    "unitPrice": 1380000,
+    "spec": "Độ sụt 12±2cm"
+  },
+  {
+    "id": "m13",
+    "code": "VL013",
+    "name": "Gạch không nung 6 lỗ",
+    "group": "Gạch, vữa",
+    "unit": "viên",
+    "unitPrice": 2150,
+    "spec": "220x105x150mm, M7,5"
+  },
+  {
+    "id": "m14",
+    "code": "VL014",
+    "name": "Ván khuôn phủ phim 18mm",
+    "group": "Ván khuôn, cốp pha",
+    "unit": "m²",
+    "unitPrice": 285000,
+    "spec": "1220x2440mm, luân chuyển 6 lần"
+  },
+  {
+    "id": "m15",
+    "code": "VL015",
+    "name": "Dây thép buộc 1mm",
+    "group": "Thép",
+    "unit": "kg",
+    "unitPrice": 24500,
+    "spec": "Thép mạ kẽm"
+  },
+  {
+    "id": "m16",
+    "code": "VL016",
+    "name": "Ống PVC Ø200",
+    "group": "Ống, phụ kiện",
+    "unit": "m",
+    "unitPrice": 312000,
+    "spec": "PN6, thoát nước ngầm"
+  },
+  {
+    "id": "m17",
+    "code": "VL017",
+    "name": "Cọc BTCT 300x300",
+    "group": "Cọc",
+    "unit": "m",
+    "unitPrice": 520000,
+    "spec": "Bê tông M300, đoạn 8m"
+  },
+  {
+    "id": "m18",
+    "code": "VL018",
+    "name": "Cấp phối đá dăm loại I",
+    "group": "Cát, đá",
+    "unit": "m³",
+    "unitPrice": 395000,
+    "spec": "Dmax 25, TCVN 8859:2011"
+  },
+  {
+    "id": "m19",
+    "code": "VL019",
+    "name": "Nhựa đường 60/70",
+    "group": "Nhựa đường",
+    "unit": "tấn",
+    "unitPrice": 14200000,
+    "spec": "TCVN 7493:2005"
+  },
+  {
+    "id": "m20",
+    "code": "VL020",
+    "name": "Sơn kẻ vạch nhiệt dẻo",
+    "group": "Sơn",
+    "unit": "kg",
+    "unitPrice": 38000,
+    "spec": "Màu trắng/vàng, phản quang"
+  },
+  {
+    "id": "m21",
+    "code": "VL021",
+    "name": "Cáp điện CXV 4x95mm²",
+    "group": "Điện",
+    "unit": "m",
+    "unitPrice": 1150000,
+    "spec": "0,6/1kV"
+  },
+  {
+    "id": "m22",
+    "code": "VL022",
+    "name": "Lưới thép hàn D6 a200",
+    "group": "Thép",
+    "unit": "m²",
+    "unitPrice": 68000,
+    "spec": "Tấm 2,4x6m"
+  },
+  {
+    "id": "m23",
+    "code": "VL023",
+    "name": "Matit chèn khe",
+    "group": "Vật liệu chèn khe",
+    "unit": "kg",
+    "unitPrice": 52000,
+    "spec": "Gốc polyurethane"
+  },
+  {
+    "id": "m24",
+    "code": "VL024",
+    "name": "Bulông neo M24",
+    "group": "Phụ kiện",
+    "unit": "bộ",
+    "unitPrice": 145000,
+    "spec": "Cấp bền 8.8"
+  },
+  {
+    "id": "m25",
+    "code": "VL025",
+    "name": "Màng nilon chống mất nước",
+    "group": "Phụ kiện",
+    "unit": "m²",
+    "unitPrice": 2000,
+    "spec": "Dày 0,15mm"
+  }
+]

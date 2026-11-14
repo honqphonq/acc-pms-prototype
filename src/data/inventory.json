@@ -1,0 +1,858 @@
+[
+  {
+    "id": "inv-p01-VL001",
+    "projectId": "p01",
+    "materialId": "m01",
+    "normQty": 1800,
+    "minStock": 72,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL002",
+    "projectId": "p01",
+    "materialId": "m02",
+    "normQty": 620,
+    "minStock": 24.8,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL003",
+    "projectId": "p01",
+    "materialId": "m03",
+    "normQty": 480,
+    "minStock": 19.2,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL005",
+    "projectId": "p01",
+    "materialId": "m05",
+    "normQty": 3200,
+    "minStock": 128,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL007",
+    "projectId": "p01",
+    "materialId": "m07",
+    "normQty": 4800,
+    "minStock": 192,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL010",
+    "projectId": "p01",
+    "materialId": "m10",
+    "normQty": 21000,
+    "minStock": 840,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL012",
+    "projectId": "p01",
+    "materialId": "m12",
+    "normQty": 1500,
+    "minStock": 60,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL013",
+    "projectId": "p01",
+    "materialId": "m13",
+    "normQty": 1200000,
+    "minStock": 48000,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL014",
+    "projectId": "p01",
+    "materialId": "m14",
+    "normQty": 9000,
+    "minStock": 360,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL015",
+    "projectId": "p01",
+    "materialId": "m15",
+    "normQty": 18000,
+    "minStock": 720,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL016",
+    "projectId": "p01",
+    "materialId": "m16",
+    "normQty": 2400,
+    "minStock": 96,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p01-VL017",
+    "projectId": "p01",
+    "materialId": "m17",
+    "normQty": 96500,
+    "minStock": 3860,
+    "location": "Kho công trường Trường Lê Hồng Phong"
+  },
+  {
+    "id": "inv-p02-VL001",
+    "projectId": "p02",
+    "materialId": "m01",
+    "normQty": 2400,
+    "minStock": 96,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL004",
+    "projectId": "p02",
+    "materialId": "m04",
+    "normQty": 380,
+    "minStock": 15.2,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL005",
+    "projectId": "p02",
+    "materialId": "m05",
+    "normQty": 2600,
+    "minStock": 104,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL007",
+    "projectId": "p02",
+    "materialId": "m07",
+    "normQty": 4200,
+    "minStock": 168,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL011",
+    "projectId": "p02",
+    "materialId": "m11",
+    "normQty": 52000,
+    "minStock": 2080,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL018",
+    "projectId": "p02",
+    "materialId": "m18",
+    "normQty": 64000,
+    "minStock": 2560,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL019",
+    "projectId": "p02",
+    "materialId": "m19",
+    "normQty": 120,
+    "minStock": 4.8,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL020",
+    "projectId": "p02",
+    "materialId": "m20",
+    "normQty": 18000,
+    "minStock": 720,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL021",
+    "projectId": "p02",
+    "materialId": "m21",
+    "normQty": 6200,
+    "minStock": 248,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL023",
+    "projectId": "p02",
+    "materialId": "m23",
+    "normQty": 14000,
+    "minStock": 560,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p02-VL025",
+    "projectId": "p02",
+    "materialId": "m25",
+    "normQty": 160000,
+    "minStock": 6400,
+    "location": "Kho công trường Sân đỗ máy bay Đà Nẵng"
+  },
+  {
+    "id": "inv-p03-VL001",
+    "projectId": "p03",
+    "materialId": "m01",
+    "normQty": 3947.4,
+    "minStock": 157.9,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL004",
+    "projectId": "p03",
+    "materialId": "m04",
+    "normQty": 625,
+    "minStock": 25,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL005",
+    "projectId": "p03",
+    "materialId": "m05",
+    "normQty": 4276.3,
+    "minStock": 171.1,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL007",
+    "projectId": "p03",
+    "materialId": "m07",
+    "normQty": 6907.9,
+    "minStock": 276.3,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL011",
+    "projectId": "p03",
+    "materialId": "m11",
+    "normQty": 85526.3,
+    "minStock": 3421.1,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL018",
+    "projectId": "p03",
+    "materialId": "m18",
+    "normQty": 105263.2,
+    "minStock": 4210.5,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL019",
+    "projectId": "p03",
+    "materialId": "m19",
+    "normQty": 197.4,
+    "minStock": 7.9,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL020",
+    "projectId": "p03",
+    "materialId": "m20",
+    "normQty": 29605.3,
+    "minStock": 1184.2,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL021",
+    "projectId": "p03",
+    "materialId": "m21",
+    "normQty": 10197.4,
+    "minStock": 407.9,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL023",
+    "projectId": "p03",
+    "materialId": "m23",
+    "normQty": 23026.3,
+    "minStock": 921.1,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p03-VL025",
+    "projectId": "p03",
+    "materialId": "m25",
+    "normQty": 263157.9,
+    "minStock": 10526.3,
+    "location": "Kho công trường Cảng HKQT Cát Bi"
+  },
+  {
+    "id": "inv-p04-VL001",
+    "projectId": "p04",
+    "materialId": "m01",
+    "normQty": 1705.3,
+    "minStock": 68.2,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL004",
+    "projectId": "p04",
+    "materialId": "m04",
+    "normQty": 270,
+    "minStock": 10.8,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL005",
+    "projectId": "p04",
+    "materialId": "m05",
+    "normQty": 1847.4,
+    "minStock": 73.9,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL007",
+    "projectId": "p04",
+    "materialId": "m07",
+    "normQty": 2984.2,
+    "minStock": 119.4,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL011",
+    "projectId": "p04",
+    "materialId": "m11",
+    "normQty": 36947.4,
+    "minStock": 1477.9,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL018",
+    "projectId": "p04",
+    "materialId": "m18",
+    "normQty": 45473.7,
+    "minStock": 1818.9,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL019",
+    "projectId": "p04",
+    "materialId": "m19",
+    "normQty": 85.3,
+    "minStock": 3.4,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL020",
+    "projectId": "p04",
+    "materialId": "m20",
+    "normQty": 12789.5,
+    "minStock": 511.6,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL021",
+    "projectId": "p04",
+    "materialId": "m21",
+    "normQty": 4405.3,
+    "minStock": 176.2,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL023",
+    "projectId": "p04",
+    "materialId": "m23",
+    "normQty": 9947.4,
+    "minStock": 397.9,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p04-VL025",
+    "projectId": "p04",
+    "materialId": "m25",
+    "normQty": 113684.2,
+    "minStock": 4547.4,
+    "location": "Kho công trường Cảng HK Quảng Ninh"
+  },
+  {
+    "id": "inv-p05-VL001",
+    "projectId": "p05",
+    "materialId": "m01",
+    "normQty": 2021.1,
+    "minStock": 80.8,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL004",
+    "projectId": "p05",
+    "materialId": "m04",
+    "normQty": 320,
+    "minStock": 12.8,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL005",
+    "projectId": "p05",
+    "materialId": "m05",
+    "normQty": 2189.5,
+    "minStock": 87.6,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL007",
+    "projectId": "p05",
+    "materialId": "m07",
+    "normQty": 3536.8,
+    "minStock": 141.5,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL011",
+    "projectId": "p05",
+    "materialId": "m11",
+    "normQty": 43789.5,
+    "minStock": 1751.6,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL018",
+    "projectId": "p05",
+    "materialId": "m18",
+    "normQty": 53894.7,
+    "minStock": 2155.8,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL019",
+    "projectId": "p05",
+    "materialId": "m19",
+    "normQty": 101.1,
+    "minStock": 4,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL020",
+    "projectId": "p05",
+    "materialId": "m20",
+    "normQty": 15157.9,
+    "minStock": 606.3,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL021",
+    "projectId": "p05",
+    "materialId": "m21",
+    "normQty": 5221.1,
+    "minStock": 208.8,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL023",
+    "projectId": "p05",
+    "materialId": "m23",
+    "normQty": 11789.5,
+    "minStock": 471.6,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p05-VL025",
+    "projectId": "p05",
+    "materialId": "m25",
+    "normQty": 134736.8,
+    "minStock": 5389.5,
+    "location": "Kho công trường Sân bay Cần Thơ"
+  },
+  {
+    "id": "inv-p06-VL001",
+    "projectId": "p06",
+    "materialId": "m01",
+    "normQty": 945,
+    "minStock": 37.8,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL002",
+    "projectId": "p06",
+    "materialId": "m02",
+    "normQty": 273,
+    "minStock": 10.9,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL003",
+    "projectId": "p06",
+    "materialId": "m03",
+    "normQty": 220.5,
+    "minStock": 8.8,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL005",
+    "projectId": "p06",
+    "materialId": "m05",
+    "normQty": 1680,
+    "minStock": 67.2,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL007",
+    "projectId": "p06",
+    "materialId": "m07",
+    "normQty": 2520,
+    "minStock": 100.8,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL010",
+    "projectId": "p06",
+    "materialId": "m10",
+    "normQty": 9450,
+    "minStock": 378,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL013",
+    "projectId": "p06",
+    "materialId": "m13",
+    "normQty": 630000,
+    "minStock": 25200,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL014",
+    "projectId": "p06",
+    "materialId": "m14",
+    "normQty": 4410,
+    "minStock": 176.4,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL015",
+    "projectId": "p06",
+    "materialId": "m15",
+    "normQty": 8400,
+    "minStock": 336,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p06-VL017",
+    "projectId": "p06",
+    "materialId": "m17",
+    "normQty": 25200,
+    "minStock": 1008,
+    "location": "Kho công trường Kho kỹ thuật QK2"
+  },
+  {
+    "id": "inv-p07-VL001",
+    "projectId": "p07",
+    "materialId": "m01",
+    "normQty": 641.3,
+    "minStock": 25.7,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL002",
+    "projectId": "p07",
+    "materialId": "m02",
+    "normQty": 185.3,
+    "minStock": 7.4,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL003",
+    "projectId": "p07",
+    "materialId": "m03",
+    "normQty": 149.6,
+    "minStock": 6,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL005",
+    "projectId": "p07",
+    "materialId": "m05",
+    "normQty": 1140,
+    "minStock": 45.6,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL007",
+    "projectId": "p07",
+    "materialId": "m07",
+    "normQty": 1710,
+    "minStock": 68.4,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL010",
+    "projectId": "p07",
+    "materialId": "m10",
+    "normQty": 6412.5,
+    "minStock": 256.5,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL013",
+    "projectId": "p07",
+    "materialId": "m13",
+    "normQty": 427500,
+    "minStock": 17100,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL014",
+    "projectId": "p07",
+    "materialId": "m14",
+    "normQty": 2992.5,
+    "minStock": 119.7,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL015",
+    "projectId": "p07",
+    "materialId": "m15",
+    "normQty": 5700,
+    "minStock": 228,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p07-VL017",
+    "projectId": "p07",
+    "materialId": "m17",
+    "normQty": 17100,
+    "minStock": 684,
+    "location": "Kho công trường TT huấn luyện K18"
+  },
+  {
+    "id": "inv-p08-VL001",
+    "projectId": "p08",
+    "materialId": "m01",
+    "normQty": 427.5,
+    "minStock": 17.1,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL002",
+    "projectId": "p08",
+    "materialId": "m02",
+    "normQty": 123.5,
+    "minStock": 4.9,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL003",
+    "projectId": "p08",
+    "materialId": "m03",
+    "normQty": 99.8,
+    "minStock": 4,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL005",
+    "projectId": "p08",
+    "materialId": "m05",
+    "normQty": 760,
+    "minStock": 30.4,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL007",
+    "projectId": "p08",
+    "materialId": "m07",
+    "normQty": 1140,
+    "minStock": 45.6,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL010",
+    "projectId": "p08",
+    "materialId": "m10",
+    "normQty": 4275,
+    "minStock": 171,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL013",
+    "projectId": "p08",
+    "materialId": "m13",
+    "normQty": 285000,
+    "minStock": 11400,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL014",
+    "projectId": "p08",
+    "materialId": "m14",
+    "normQty": 1995,
+    "minStock": 79.8,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL015",
+    "projectId": "p08",
+    "materialId": "m15",
+    "normQty": 3800,
+    "minStock": 152,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p08-VL017",
+    "projectId": "p08",
+    "materialId": "m17",
+    "normQty": 11400,
+    "minStock": 456,
+    "location": "Kho công trường Trụ sở CA Sóc Trăng"
+  },
+  {
+    "id": "inv-p09-VL001",
+    "projectId": "p09",
+    "materialId": "m01",
+    "normQty": 720,
+    "minStock": 28.8,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL002",
+    "projectId": "p09",
+    "materialId": "m02",
+    "normQty": 208,
+    "minStock": 8.3,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL003",
+    "projectId": "p09",
+    "materialId": "m03",
+    "normQty": 168,
+    "minStock": 6.7,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL005",
+    "projectId": "p09",
+    "materialId": "m05",
+    "normQty": 1280,
+    "minStock": 51.2,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL007",
+    "projectId": "p09",
+    "materialId": "m07",
+    "normQty": 1920,
+    "minStock": 76.8,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL010",
+    "projectId": "p09",
+    "materialId": "m10",
+    "normQty": 7200,
+    "minStock": 288,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL013",
+    "projectId": "p09",
+    "materialId": "m13",
+    "normQty": 480000,
+    "minStock": 19200,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL014",
+    "projectId": "p09",
+    "materialId": "m14",
+    "normQty": 3360,
+    "minStock": 134.4,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL015",
+    "projectId": "p09",
+    "materialId": "m15",
+    "normQty": 6400,
+    "minStock": 256,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p09-VL017",
+    "projectId": "p09",
+    "materialId": "m17",
+    "normQty": 19200,
+    "minStock": 768,
+    "location": "Kho công trường BCH QS Vĩnh Phúc"
+  },
+  {
+    "id": "inv-p11-VL001",
+    "projectId": "p11",
+    "materialId": "m01",
+    "normQty": 457.9,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL004",
+    "projectId": "p11",
+    "materialId": "m04",
+    "normQty": 72.5,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL005",
+    "projectId": "p11",
+    "materialId": "m05",
+    "normQty": 496.1,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL007",
+    "projectId": "p11",
+    "materialId": "m07",
+    "normQty": 801.3,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL011",
+    "projectId": "p11",
+    "materialId": "m11",
+    "normQty": 9921.1,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL018",
+    "projectId": "p11",
+    "materialId": "m18",
+    "normQty": 12210.5,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL019",
+    "projectId": "p11",
+    "materialId": "m19",
+    "normQty": 22.9,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL020",
+    "projectId": "p11",
+    "materialId": "m20",
+    "normQty": 3434.2,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL021",
+    "projectId": "p11",
+    "materialId": "m21",
+    "normQty": 1182.9,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL023",
+    "projectId": "p11",
+    "materialId": "m23",
+    "normQty": 2671.1,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  },
+  {
+    "id": "inv-p11-VL025",
+    "projectId": "p11",
+    "materialId": "m25",
+    "normQty": 30526.3,
+    "minStock": 0,
+    "location": "Kho công trường Sân đỗ ô tô Điện Biên"
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "d-hdtv",
+    "code": "HĐTV",
+    "name": "Chủ tịch Tổng công ty",
+    "type": "ban_lanh_dao",
+    "parentId": null,
+    "head": "Nguyễn Đức Toàn"
+  },
+  {
+    "id": "d-btgd",
+    "code": "BTGĐ",
+    "name": "Ban Tổng Giám đốc",
+    "type": "ban_lanh_dao",
+    "parentId": "d-hdtv",
+    "head": "Nguyễn Văn Hùng"
+  },
+  {
+    "id": "d-cq",
+    "code": "CQTCT",
+    "name": "Cơ quan Tổng công ty",
+    "type": "co_quan",
+    "parentId": "d-btgd"
+  },
+  {
+    "id": "d-vp",
+    "code": "VP",
+    "name": "Văn phòng",
+    "type": "bo_phan",
+    "parentId": "d-cq"
+  },
+  {
+    "id": "d-tbcn",
+    "code": "TBCN",
+    "name": "Phòng Thiết bị - Công nghệ",
+    "type": "bo_phan",
+    "parentId": "d-cq",
+    "head": "Phạm Văn Vinh"
+  },
+  {
+    "id": "d-tckt",
+    "code": "TCKT",
+    "name": "Phòng Tài chính - Kế toán",
+    "type": "bo_phan",
+    "parentId": "d-cq",
+    "head": "Hoàng Thị Bích"
+  },
+  {
+    "id": "d-khkt",
+    "code": "KHKT",
+    "name": "Phòng Kế hoạch - Kỹ thuật",
+    "type": "bo_phan",
+    "parentId": "d-cq",
+    "head": "Lê Thanh Thiện"
+  },
+  {
+    "id": "d-ktkt",
+    "code": "KTKT",
+    "name": "Phòng Kinh tế - Kỹ thuật",
+    "type": "bo_phan",
+    "parentId": "d-cq",
+    "head": "Đỗ Minh Châu"
+  },
+  {
+    "id": "d-cty",
+    "code": "CTC",
+    "name": "Các công ty con",
+    "type": "co_quan",
+    "parentId": "d-btgd"
+  },
+  {
+    "id": "d-acc24",
+    "code": "ACC 24",
+    "name": "Công ty CP ACC 24",
+    "type": "cong_ty_con",
+    "parentId": "d-cty"
+  },
+  {
+    "id": "d-acc244",
+    "code": "ACC 244",
+    "name": "Công ty CP ACC 244",
+    "type": "cong_ty_con",
+    "parentId": "d-cty"
+  },
+  {
+    "id": "d-acc245",
+    "code": "ACC 245",
+    "name": "Công ty CP ACC 245",
+    "type": "cong_ty_con",
+    "parentId": "d-cty"
+  },
+  {
+    "id": "d-acc25",
+    "code": "ACC 25",
+    "name": "Công ty CP ACC 25",
+    "type": "cong_ty_con",
+    "parentId": "d-cty"
+  },
+  {
+    "id": "d-accdtxl",
+    "code": "ACC ĐTXL",
+    "name": "Công ty TNHH MTV Đầu tư và Xây lắp ACC",
+    "type": "cong_ty_con",
+    "parentId": "d-cty"
+  }
+]

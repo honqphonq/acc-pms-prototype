@@ -1,0 +1,90 @@
+[
+  {
+    "id": "nt-001",
+    "type": "approval",
+    "severity": "warning",
+    "title": "Đề xuất vật tư chờ phê duyệt",
+    "message": "ĐXVT-2026-101 – Thép Ø16 cột tầng trệt (12,5 tấn) đang chờ bạn phê duyệt.",
+    "projectId": "p01",
+    "link": "/materials/requests/mr-001",
+    "createdAt": "2026-11-12T09:15:00",
+    "read": false
+  },
+  {
+    "id": "nt-002",
+    "type": "task",
+    "severity": "danger",
+    "title": "Công việc quá hạn",
+    "message": "1.1.2.2.4 Đổ bê tông đài móng, giằng móng đã quá hạn kế hoạch (08/10/2026).",
+    "projectId": "p01",
+    "link": "/construction/plan/p01",
+    "createdAt": "2026-11-12T07:30:00",
+    "read": false
+  },
+  {
+    "id": "nt-003",
+    "type": "equipment",
+    "severity": "warning",
+    "title": "Đề nghị điều động thiết bị",
+    "message": "CHT Vũ Đình Khôi đề nghị điều động máy xúc đào đến công trình Sân đỗ máy bay Đà Nẵng.",
+    "projectId": "p02",
+    "link": "/equipment/dispatch",
+    "createdAt": "2026-11-12T14:05:00",
+    "read": false
+  },
+  {
+    "id": "nt-004",
+    "type": "material",
+    "severity": "danger",
+    "title": "Cảnh báo tồn kho thấp",
+    "message": "Bê tông thương phẩm M350 tại kho Sân đỗ máy bay Đà Nẵng dưới mức tồn kho tối thiểu.",
+    "projectId": "p02",
+    "link": "/materials/inventory",
+    "createdAt": "2026-11-11T16:40:00",
+    "read": false
+  },
+  {
+    "id": "nt-005",
+    "type": "acceptance",
+    "severity": "info",
+    "title": "Hồ sơ nghiệm thu chờ CĐT ký",
+    "message": "BBNT đợt 3 – đào đất, bê tông lót và cốt thép đài móng đã được TVGS xác nhận.",
+    "projectId": "p01",
+    "link": "/acceptance",
+    "createdAt": "2026-11-10T10:20:00",
+    "read": true
+  },
+  {
+    "id": "nt-006",
+    "type": "payment",
+    "severity": "success",
+    "title": "Đã nhận thanh toán",
+    "message": "Chủ đầu tư đã thanh toán hồ sơ đợt 2 – thi công ép cọc.",
+    "projectId": "p01",
+    "link": "/payments",
+    "createdAt": "2026-11-05T15:00:00",
+    "read": true
+  },
+  {
+    "id": "nt-007",
+    "type": "task",
+    "severity": "warning",
+    "title": "Nhật ký thi công chờ xác nhận",
+    "message": "Tổ bê tông số 2 đã gửi nhật ký ngày 13/11/2026, chờ CHT xác nhận.",
+    "projectId": "p01",
+    "link": "/construction/logs",
+    "createdAt": "2026-11-13T17:30:00",
+    "read": false
+  },
+  {
+    "id": "nt-008",
+    "type": "system",
+    "severity": "info",
+    "title": "Cập nhật dữ liệu",
+    "message": "Dữ liệu tiến độ các công trường đã được đồng bộ lúc 08:30.",
+    "projectId": null,
+    "link": "/",
+    "createdAt": "2026-11-14T08:30:00",
+    "read": true
+  }
+]

@@ -1,0 +1,1748 @@
+[
+  {
+    "id": "eq-001",
+    "code": "M24.0092",
+    "name": "Máy rải bê tông 130-140CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "QA 7487",
+    "brand": "Gomaco GP-2600",
+    "year": 2019,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op01",
+    "totalHours": 7128,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7082,
+    "maintenances": [
+      {
+        "id": "mt-1-1",
+        "date": "2026-09-14",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 18000000,
+        "hoursAt": 6832
+      },
+      {
+        "id": "mt-1-2",
+        "date": "2026-10-30",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 34000000,
+        "hoursAt": 7082
+      }
+    ]
+  },
+  {
+    "id": "eq-002",
+    "code": "M25.0232",
+    "name": "Máy rải bê tông 250CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "QA 2273",
+    "brand": "Vögele Super 1800",
+    "year": 2023,
+    "manageUnitId": "d-acc25",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 4251,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 4111,
+    "maintenances": [
+      {
+        "id": "mt-2-1",
+        "date": "2026-08-16",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 9000000,
+        "hoursAt": 3861
+      },
+      {
+        "id": "mt-2-2",
+        "date": "2026-10-13",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 64000000,
+        "hoursAt": 4111
+      }
+    ]
+  },
+  {
+    "id": "eq-003",
+    "code": "M24.0163",
+    "name": "Máy rải bê tông 130CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "KT 4065",
+    "brand": "Vögele Super 1800",
+    "year": 2023,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op02",
+    "totalHours": 9708,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 9528,
+    "maintenances": [
+      {
+        "id": "mt-3-1",
+        "date": "2026-08-18",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 9000000,
+        "hoursAt": 9278
+      },
+      {
+        "id": "mt-3-2",
+        "date": "2026-09-21",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 72000000,
+        "hoursAt": 9528
+      }
+    ]
+  },
+  {
+    "id": "eq-004",
+    "code": "M24.0066",
+    "name": "Máy rải bê tông 130CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "QA 9332",
+    "brand": "Vögele Super 1800",
+    "year": 2017,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p03",
+    "operatorId": "op03",
+    "totalHours": 2540,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2448,
+    "maintenances": [
+      {
+        "id": "mt-4-1",
+        "date": "2026-06-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 15000000,
+        "hoursAt": 2198
+      },
+      {
+        "id": "mt-4-2",
+        "date": "2026-10-22",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 73000000,
+        "hoursAt": 2448
+      }
+    ]
+  },
+  {
+    "id": "eq-005",
+    "code": "M24.0189",
+    "name": "Máy rải bê tông 250CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "KT 3107",
+    "brand": "Vögele Super 1800",
+    "year": 2015,
+    "manageUnitId": "d-acc24",
+    "status": "ngung",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 8351,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 8224,
+    "maintenances": [
+      {
+        "id": "mt-5-1",
+        "date": "2026-08-02",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 8000000,
+        "hoursAt": 7974
+      },
+      {
+        "id": "mt-5-2",
+        "date": "2026-10-05",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 48000000,
+        "hoursAt": 8224
+      }
+    ]
+  },
+  {
+    "id": "eq-006",
+    "code": "M245.0012",
+    "name": "Máy rải bê tông 130CV",
+    "group": "Máy rải bê tông",
+    "ownership": "so_huu",
+    "plate": "KT 4133",
+    "brand": "Gomaco GP-2600",
+    "year": 2023,
+    "manageUnitId": "d-acc24",
+    "status": "ngung",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 2175,
+    "fuelNorm": 22,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2137,
+    "maintenances": [
+      {
+        "id": "mt-6-1",
+        "date": "2026-08-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 23000000,
+        "hoursAt": 1887
+      },
+      {
+        "id": "mt-6-2",
+        "date": "2026-10-30",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 46000000,
+        "hoursAt": 2137
+      }
+    ]
+  },
+  {
+    "id": "eq-007",
+    "code": "M244.0183",
+    "name": "Máy xúc đào 1,25m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "KT 4648",
+    "brand": "Hitachi ZX210",
+    "year": 2015,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op05",
+    "totalHours": 7414,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7281,
+    "maintenances": [
+      {
+        "id": "mt-7-1",
+        "date": "2026-08-09",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 20000000,
+        "hoursAt": 7031
+      },
+      {
+        "id": "mt-7-2",
+        "date": "2026-10-25",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 42000000,
+        "hoursAt": 7281
+      }
+    ]
+  },
+  {
+    "id": "eq-008",
+    "code": "M244.0190",
+    "name": "Máy xúc đào 0,8m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "KT 7849",
+    "brand": "Komatsu PC200-8",
+    "year": 2019,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op06",
+    "totalHours": 7117,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 6903,
+    "maintenances": [
+      {
+        "id": "mt-8-1",
+        "date": "2026-06-29",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 18000000,
+        "hoursAt": 6653
+      },
+      {
+        "id": "mt-8-2",
+        "date": "2026-09-24",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 79000000,
+        "hoursAt": 6903
+      }
+    ]
+  },
+  {
+    "id": "eq-009",
+    "code": "M25.0168",
+    "name": "Máy xúc đào 0,8m³",
+    "group": "Máy xúc",
+    "ownership": "thue_ngoai",
+    "plate": "QA 3652",
+    "brand": "Doosan DX225",
+    "year": 2016,
+    "manageUnitId": "d-acc25",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 7297,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7184,
+    "rentalSupplier": "Công ty TNHH Thiết bị Nam Việt",
+    "rentalRate": 4600000,
+    "maintenances": [
+      {
+        "id": "mt-9-1",
+        "date": "2026-09-03",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 24000000,
+        "hoursAt": 6934
+      },
+      {
+        "id": "mt-9-2",
+        "date": "2026-10-16",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 31000000,
+        "hoursAt": 7184
+      }
+    ]
+  },
+  {
+    "id": "eq-010",
+    "code": "M25.0104",
+    "name": "Máy xúc lật 2,3m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "KT 5989",
+    "brand": "Doosan DX225",
+    "year": 2024,
+    "manageUnitId": "d-acc25",
+    "status": "hoat_dong",
+    "currentProjectId": "p02",
+    "operatorId": "op07",
+    "totalHours": 9447,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 9231,
+    "maintenances": [
+      {
+        "id": "mt-10-1",
+        "date": "2026-07-14",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 22000000,
+        "hoursAt": 8981
+      },
+      {
+        "id": "mt-10-2",
+        "date": "2026-10-24",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 72000000,
+        "hoursAt": 9231
+      }
+    ]
+  },
+  {
+    "id": "eq-011",
+    "code": "M244.0221",
+    "name": "Máy xúc đào 1,25m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "KT 4177",
+    "brand": "Doosan DX225",
+    "year": 2018,
+    "manageUnitId": "d-acc244",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 6824,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 6650,
+    "maintenances": [
+      {
+        "id": "mt-11-1",
+        "date": "2026-08-29",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 23000000,
+        "hoursAt": 6400
+      },
+      {
+        "id": "mt-11-2",
+        "date": "2026-09-28",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 28000000,
+        "hoursAt": 6650
+      }
+    ]
+  },
+  {
+    "id": "eq-012",
+    "code": "M245.0028",
+    "name": "Máy xúc đào 1,25m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "QA 7321",
+    "brand": "Hitachi ZX210",
+    "year": 2015,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op09",
+    "totalHours": 4382,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 4275,
+    "maintenances": [
+      {
+        "id": "mt-12-1",
+        "date": "2026-06-20",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 12000000,
+        "hoursAt": 4025
+      },
+      {
+        "id": "mt-12-2",
+        "date": "2026-09-29",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 27000000,
+        "hoursAt": 4275
+      }
+    ]
+  },
+  {
+    "id": "eq-013",
+    "code": "M245.0099",
+    "name": "Máy xúc đào 1,25m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "KT 5761",
+    "brand": "Doosan DX225",
+    "year": 2020,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p07",
+    "operatorId": "op10",
+    "totalHours": 7692,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7662,
+    "maintenances": [
+      {
+        "id": "mt-13-1",
+        "date": "2026-08-23",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 16000000,
+        "hoursAt": 7412
+      },
+      {
+        "id": "mt-13-2",
+        "date": "2026-11-09",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 34000000,
+        "hoursAt": 7662
+      }
+    ]
+  },
+  {
+    "id": "eq-014",
+    "code": "M245.0089",
+    "name": "Máy xúc đào 1,25m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "XD 4350",
+    "brand": "Kobelco SK200",
+    "year": 2022,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p02",
+    "operatorId": "op11",
+    "totalHours": 3436,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 3167,
+    "maintenances": [
+      {
+        "id": "mt-14-1",
+        "date": "2026-07-23",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 10000000,
+        "hoursAt": 2917
+      },
+      {
+        "id": "mt-14-2",
+        "date": "2026-10-11",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 42000000,
+        "hoursAt": 3167
+      }
+    ]
+  },
+  {
+    "id": "eq-015",
+    "code": "M24.0107",
+    "name": "Máy xúc lật 2,3m³",
+    "group": "Máy xúc",
+    "ownership": "thue_ngoai",
+    "plate": "XD 4172",
+    "brand": "Kobelco SK200",
+    "year": 2021,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p09",
+    "operatorId": "op12",
+    "totalHours": 1492,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1203,
+    "rentalSupplier": "Công ty CP Máy xây dựng Miền Trung",
+    "rentalRate": 3700000,
+    "maintenances": [
+      {
+        "id": "mt-15-1",
+        "date": "2026-08-17",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 14000000,
+        "hoursAt": 953
+      },
+      {
+        "id": "mt-15-2",
+        "date": "2026-10-04",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 34000000,
+        "hoursAt": 1203
+      }
+    ]
+  },
+  {
+    "id": "eq-016",
+    "code": "M24.0026",
+    "name": "Máy xúc đào 0,8m³",
+    "group": "Máy xúc",
+    "ownership": "so_huu",
+    "plate": "XD 1043",
+    "brand": "Komatsu PC200-8",
+    "year": 2018,
+    "manageUnitId": "d-acc24",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 3956,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 3677,
+    "maintenances": [
+      {
+        "id": "mt-16-1",
+        "date": "2026-06-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 16000000,
+        "hoursAt": 3427
+      },
+      {
+        "id": "mt-16-2",
+        "date": "2026-10-31",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 43000000,
+        "hoursAt": 3677
+      }
+    ]
+  },
+  {
+    "id": "eq-017",
+    "code": "M24.0171",
+    "name": "Máy ủi 140CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "QA 7080",
+    "brand": "Caterpillar D6R",
+    "year": 2016,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p03",
+    "operatorId": "op16",
+    "totalHours": 2247,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2132,
+    "maintenances": [
+      {
+        "id": "mt-17-1",
+        "date": "2026-07-02",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 22000000,
+        "hoursAt": 1882
+      },
+      {
+        "id": "mt-17-2",
+        "date": "2026-09-25",
+        "type": "sua_chua",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 73000000,
+        "hoursAt": 2132
+      }
+    ]
+  },
+  {
+    "id": "eq-018",
+    "code": "M25.0094",
+    "name": "Máy ủi 110CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "XD 5630",
+    "brand": "Caterpillar D6R",
+    "year": 2016,
+    "manageUnitId": "d-acc25",
+    "status": "bao_tri",
+    "currentProjectId": "p09",
+    "operatorId": "op13",
+    "totalHours": 7963,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7823,
+    "maintenances": [
+      {
+        "id": "mt-18-1",
+        "date": "2026-06-10",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 8000000,
+        "hoursAt": 7573
+      },
+      {
+        "id": "mt-18-2",
+        "date": "2026-10-20",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 62000000,
+        "hoursAt": 7823
+      }
+    ]
+  },
+  {
+    "id": "eq-019",
+    "code": "M244.0012",
+    "name": "Máy ủi 180CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "QA 9745",
+    "brand": "Caterpillar D6R",
+    "year": 2022,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p02",
+    "operatorId": "op14",
+    "totalHours": 9021,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 8989,
+    "maintenances": [
+      {
+        "id": "mt-19-1",
+        "date": "2026-08-02",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 24000000,
+        "hoursAt": 8739
+      },
+      {
+        "id": "mt-19-2",
+        "date": "2026-10-18",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 17000000,
+        "hoursAt": 8989
+      }
+    ]
+  },
+  {
+    "id": "eq-020",
+    "code": "M245.0125",
+    "name": "Máy ủi 140CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "QA 2653",
+    "brand": "Shantui SD16",
+    "year": 2022,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p05",
+    "operatorId": "op15",
+    "totalHours": 7959,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7696,
+    "maintenances": [
+      {
+        "id": "mt-20-1",
+        "date": "2026-07-04",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 11000000,
+        "hoursAt": 7446
+      },
+      {
+        "id": "mt-20-2",
+        "date": "2026-10-26",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 67000000,
+        "hoursAt": 7696
+      }
+    ]
+  },
+  {
+    "id": "eq-021",
+    "code": "M244.0040",
+    "name": "Máy ủi 110CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "KT 3206",
+    "brand": "Komatsu D65",
+    "year": 2017,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p02",
+    "operatorId": "op16",
+    "totalHours": 5065,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 4916,
+    "maintenances": [
+      {
+        "id": "mt-21-1",
+        "date": "2026-06-17",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 19000000,
+        "hoursAt": 4666
+      },
+      {
+        "id": "mt-21-2",
+        "date": "2026-09-29",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 79000000,
+        "hoursAt": 4916
+      }
+    ]
+  },
+  {
+    "id": "eq-022",
+    "code": "M24.0016",
+    "name": "Máy ủi 110CV",
+    "group": "Máy ủi",
+    "ownership": "so_huu",
+    "plate": "XD 4190",
+    "brand": "Shantui SD16",
+    "year": 2018,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p03",
+    "operatorId": "op17",
+    "totalHours": 2622,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2502,
+    "maintenances": [
+      {
+        "id": "mt-22-1",
+        "date": "2026-06-11",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 19000000,
+        "hoursAt": 2252
+      },
+      {
+        "id": "mt-22-2",
+        "date": "2026-09-20",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 57000000,
+        "hoursAt": 2502
+      }
+    ]
+  },
+  {
+    "id": "eq-023",
+    "code": "M245.0102",
+    "name": "Máy lu bánh lốp 16T",
+    "group": "Máy lu rung",
+    "ownership": "thue_ngoai",
+    "plate": "KT 1483",
+    "brand": "Sakai SV512",
+    "year": 2014,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p01",
+    "operatorId": "op18",
+    "totalHours": 8022,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7751,
+    "rentalSupplier": "Công ty TNHH Thiết bị Nam Việt",
+    "rentalRate": 4700000,
+    "maintenances": [
+      {
+        "id": "mt-23-1",
+        "date": "2026-07-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 17000000,
+        "hoursAt": 7501
+      },
+      {
+        "id": "mt-23-2",
+        "date": "2026-10-30",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 43000000,
+        "hoursAt": 7751
+      }
+    ]
+  },
+  {
+    "id": "eq-024",
+    "code": "M25.0237",
+    "name": "Máy lu rung 12T",
+    "group": "Máy lu rung",
+    "ownership": "so_huu",
+    "plate": "KT 1366",
+    "brand": "XCMG XS263",
+    "year": 2023,
+    "manageUnitId": "d-acc25",
+    "status": "hoat_dong",
+    "currentProjectId": "p02",
+    "operatorId": "op19",
+    "totalHours": 5909,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 5761,
+    "maintenances": [
+      {
+        "id": "mt-24-1",
+        "date": "2026-08-07",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 16000000,
+        "hoursAt": 5511
+      },
+      {
+        "id": "mt-24-2",
+        "date": "2026-11-09",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 33000000,
+        "hoursAt": 5761
+      }
+    ]
+  },
+  {
+    "id": "eq-025",
+    "code": "M24.0093",
+    "name": "Máy lu rung 25T",
+    "group": "Máy lu rung",
+    "ownership": "so_huu",
+    "plate": "XD 8590",
+    "brand": "Sakai SV512",
+    "year": 2015,
+    "manageUnitId": "d-acc24",
+    "status": "bao_tri",
+    "currentProjectId": "p01",
+    "operatorId": "op20",
+    "totalHours": 7547,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 7274,
+    "maintenances": [
+      {
+        "id": "mt-25-1",
+        "date": "2026-06-19",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 14000000,
+        "hoursAt": 7024
+      },
+      {
+        "id": "mt-25-2",
+        "date": "2026-09-20",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 68000000,
+        "hoursAt": 7274
+      }
+    ]
+  },
+  {
+    "id": "eq-026",
+    "code": "M245.0135",
+    "name": "Máy lu rung 12T",
+    "group": "Máy lu rung",
+    "ownership": "so_huu",
+    "plate": "XD 3660",
+    "brand": "XCMG XS263",
+    "year": 2019,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p02",
+    "operatorId": "op21",
+    "totalHours": 9657,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 9393,
+    "maintenances": [
+      {
+        "id": "mt-26-1",
+        "date": "2026-08-20",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 24000000,
+        "hoursAt": 9143
+      },
+      {
+        "id": "mt-26-2",
+        "date": "2026-09-28",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 65000000,
+        "hoursAt": 9393
+      }
+    ]
+  },
+  {
+    "id": "eq-027",
+    "code": "M244.0102",
+    "name": "Máy lu rung 25T",
+    "group": "Máy lu rung",
+    "ownership": "so_huu",
+    "plate": "QA 8112",
+    "brand": "Dynapac CA602",
+    "year": 2023,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op22",
+    "totalHours": 2269,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2075,
+    "maintenances": [
+      {
+        "id": "mt-27-1",
+        "date": "2026-06-17",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 18000000,
+        "hoursAt": 1825
+      },
+      {
+        "id": "mt-27-2",
+        "date": "2026-11-03",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 37000000,
+        "hoursAt": 2075
+      }
+    ]
+  },
+  {
+    "id": "eq-028",
+    "code": "M24.0141",
+    "name": "Máy lu rung 25T",
+    "group": "Máy lu rung",
+    "ownership": "thue_ngoai",
+    "plate": "XD 4887",
+    "brand": "XCMG XS263",
+    "year": 2020,
+    "manageUnitId": "d-acc24",
+    "status": "bao_tri",
+    "currentProjectId": "p03",
+    "operatorId": "op23",
+    "totalHours": 1689,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1421,
+    "rentalSupplier": "Công ty CP Máy xây dựng Miền Trung",
+    "rentalRate": 7000000,
+    "maintenances": [
+      {
+        "id": "mt-28-1",
+        "date": "2026-08-25",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 14000000,
+        "hoursAt": 1171
+      },
+      {
+        "id": "mt-28-2",
+        "date": "2026-10-07",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 31000000,
+        "hoursAt": 1421
+      }
+    ]
+  },
+  {
+    "id": "eq-029",
+    "code": "M25.0010",
+    "name": "Máy tưới nước 5m³",
+    "group": "Máy tưới nước",
+    "ownership": "so_huu",
+    "plate": "65C-553.57",
+    "brand": "Hyundai HD210",
+    "year": 2024,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p02",
+    "operatorId": "op24",
+    "totalHours": 6936,
+    "fuelNorm": 9,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 6867,
+    "maintenances": [
+      {
+        "id": "mt-29-1",
+        "date": "2026-07-14",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 23000000,
+        "hoursAt": 6617
+      },
+      {
+        "id": "mt-29-2",
+        "date": "2026-09-28",
+        "type": "sua_chua",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 47000000,
+        "hoursAt": 6867
+      }
+    ]
+  },
+  {
+    "id": "eq-030",
+    "code": "M245.0147",
+    "name": "Máy tưới nước 8m³",
+    "group": "Máy tưới nước",
+    "ownership": "so_huu",
+    "plate": "29KT-562.94",
+    "brand": "Hyundai HD210",
+    "year": 2021,
+    "manageUnitId": "d-acc244",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 5712,
+    "fuelNorm": 9,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 5616,
+    "maintenances": [
+      {
+        "id": "mt-30-1",
+        "date": "2026-09-08",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 23000000,
+        "hoursAt": 5366
+      },
+      {
+        "id": "mt-30-2",
+        "date": "2026-10-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 40000000,
+        "hoursAt": 5616
+      }
+    ]
+  },
+  {
+    "id": "eq-031",
+    "code": "M244.0120",
+    "name": "Máy tưới nước 5m³",
+    "group": "Máy tưới nước",
+    "ownership": "so_huu",
+    "plate": "30H-610.27",
+    "brand": "Hyundai HD210",
+    "year": 2020,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op02",
+    "totalHours": 2052,
+    "fuelNorm": 9,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1918,
+    "maintenances": [
+      {
+        "id": "mt-31-1",
+        "date": "2026-06-11",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 20000000,
+        "hoursAt": 1668
+      },
+      {
+        "id": "mt-31-2",
+        "date": "2026-10-12",
+        "type": "sua_chua",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 58000000,
+        "hoursAt": 1918
+      }
+    ]
+  },
+  {
+    "id": "eq-032",
+    "code": "M24.0062",
+    "name": "Máy tưới nước 5m³",
+    "group": "Máy tưới nước",
+    "ownership": "so_huu",
+    "plate": "30H-277.79",
+    "brand": "Hino FG8J",
+    "year": 2018,
+    "manageUnitId": "d-acc24",
+    "status": "bao_tri",
+    "currentProjectId": "p05",
+    "operatorId": "op03",
+    "totalHours": 5360,
+    "fuelNorm": 9,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 5100,
+    "maintenances": [
+      {
+        "id": "mt-32-1",
+        "date": "2026-06-26",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 13000000,
+        "hoursAt": 4850
+      },
+      {
+        "id": "mt-32-2",
+        "date": "2026-10-13",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 50000000,
+        "hoursAt": 5100
+      }
+    ]
+  },
+  {
+    "id": "eq-033",
+    "code": "M245.0198",
+    "name": "Máy tưới nước 5m³",
+    "group": "Máy tưới nước",
+    "ownership": "so_huu",
+    "plate": "30H-886.14",
+    "brand": "Hyundai HD210",
+    "year": 2021,
+    "manageUnitId": "d-acc245",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 2410,
+    "fuelNorm": 9,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2336,
+    "maintenances": [
+      {
+        "id": "mt-33-1",
+        "date": "2026-09-05",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 22000000,
+        "hoursAt": 2086
+      },
+      {
+        "id": "mt-33-2",
+        "date": "2026-10-22",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 13000000,
+        "hoursAt": 2336
+      }
+    ]
+  },
+  {
+    "id": "eq-034",
+    "code": "M245.0205",
+    "name": "Máy cắt khe 13HP",
+    "group": "Máy cắt khe",
+    "ownership": "so_huu",
+    "plate": "KT 7611",
+    "brand": "Husqvarna FS524",
+    "year": 2022,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op04",
+    "totalHours": 3015,
+    "fuelNorm": 2.5,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2916,
+    "maintenances": [
+      {
+        "id": "mt-34-1",
+        "date": "2026-07-17",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 15000000,
+        "hoursAt": 2666
+      },
+      {
+        "id": "mt-34-2",
+        "date": "2026-10-04",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 24000000,
+        "hoursAt": 2916
+      }
+    ]
+  },
+  {
+    "id": "eq-035",
+    "code": "M25.0166",
+    "name": "Máy cắt khe 13HP",
+    "group": "Máy cắt khe",
+    "ownership": "so_huu",
+    "plate": "QA 1003",
+    "brand": "Norton CS1",
+    "year": 2018,
+    "manageUnitId": "d-acc25",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op05",
+    "totalHours": 1870,
+    "fuelNorm": 2.5,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1678,
+    "maintenances": [
+      {
+        "id": "mt-35-1",
+        "date": "2026-08-28",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 9000000,
+        "hoursAt": 1428
+      },
+      {
+        "id": "mt-35-2",
+        "date": "2026-11-02",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 58000000,
+        "hoursAt": 1678
+      }
+    ]
+  },
+  {
+    "id": "eq-036",
+    "code": "M244.0235",
+    "name": "Máy cắt khe 18HP",
+    "group": "Máy cắt khe",
+    "ownership": "thue_ngoai",
+    "plate": "QA 1674",
+    "brand": "Husqvarna FS524",
+    "year": 2020,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op06",
+    "totalHours": 4922,
+    "fuelNorm": 2.5,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 4721,
+    "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
+    "rentalRate": 7000000,
+    "maintenances": [
+      {
+        "id": "mt-36-1",
+        "date": "2026-08-24",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 12000000,
+        "hoursAt": 4471
+      },
+      {
+        "id": "mt-36-2",
+        "date": "2026-09-25",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 74000000,
+        "hoursAt": 4721
+      }
+    ]
+  },
+  {
+    "id": "eq-037",
+    "code": "M245.0050",
+    "name": "Máy cắt khe 13HP",
+    "group": "Máy cắt khe",
+    "ownership": "thue_ngoai",
+    "plate": "QA 7710",
+    "brand": "Norton CS1",
+    "year": 2019,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p05",
+    "operatorId": "op07",
+    "totalHours": 8577,
+    "fuelNorm": 2.5,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 8544,
+    "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
+    "rentalRate": 4700000,
+    "maintenances": [
+      {
+        "id": "mt-37-1",
+        "date": "2026-08-21",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 19000000,
+        "hoursAt": 8294
+      },
+      {
+        "id": "mt-37-2",
+        "date": "2026-09-30",
+        "type": "sua_chua",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 44000000,
+        "hoursAt": 8544
+      }
+    ]
+  },
+  {
+    "id": "eq-038",
+    "code": "M245.0017",
+    "name": "Ô tô tự đổ 15T",
+    "group": "Ô tô tự đổ",
+    "ownership": "thue_ngoai",
+    "plate": "29KT-290.42",
+    "brand": "Hyundai HD270",
+    "year": 2014,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p02",
+    "operatorId": "op08",
+    "totalHours": 8755,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 8227,
+    "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
+    "rentalRate": 5200000,
+    "maintenances": [
+      {
+        "id": "mt-38-1",
+        "date": "2026-08-14",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 8000000,
+        "hoursAt": 7727
+      },
+      {
+        "id": "mt-38-2",
+        "date": "2026-10-28",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 28000000,
+        "hoursAt": 8227
+      }
+    ]
+  },
+  {
+    "id": "eq-039",
+    "code": "M24.0086",
+    "name": "Ô tô tự đổ 25T",
+    "group": "Ô tô tự đổ",
+    "ownership": "so_huu",
+    "plate": "29KT-791.11",
+    "brand": "Hyundai HD270",
+    "year": 2017,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p07",
+    "operatorId": "op09",
+    "totalHours": 5988,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 5919,
+    "maintenances": [
+      {
+        "id": "mt-39-1",
+        "date": "2026-07-17",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 8000000,
+        "hoursAt": 5419
+      },
+      {
+        "id": "mt-39-2",
+        "date": "2026-10-18",
+        "type": "sua_chua",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 28000000,
+        "hoursAt": 5919
+      }
+    ]
+  },
+  {
+    "id": "eq-040",
+    "code": "M25.0145",
+    "name": "Ô tô tự đổ 15T",
+    "group": "Ô tô tự đổ",
+    "ownership": "so_huu",
+    "plate": "65C-712.50",
+    "brand": "Howo ZZ3257",
+    "year": 2017,
+    "manageUnitId": "d-acc25",
+    "status": "hoat_dong",
+    "currentProjectId": "p07",
+    "operatorId": "op10",
+    "totalHours": 7017,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 6790,
+    "maintenances": [
+      {
+        "id": "mt-40-1",
+        "date": "2026-06-16",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 11000000,
+        "hoursAt": 6290
+      },
+      {
+        "id": "mt-40-2",
+        "date": "2026-10-20",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 49000000,
+        "hoursAt": 6790
+      }
+    ]
+  },
+  {
+    "id": "eq-041",
+    "code": "M245.0169",
+    "name": "Ô tô tự đổ 15T",
+    "group": "Ô tô tự đổ",
+    "ownership": "thue_ngoai",
+    "plate": "29KT-281.53",
+    "brand": "Hyundai HD270",
+    "year": 2022,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p07",
+    "operatorId": "op11",
+    "totalHours": 7897,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 7811,
+    "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
+    "rentalRate": 4800000,
+    "maintenances": [
+      {
+        "id": "mt-41-1",
+        "date": "2026-08-02",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 25000000,
+        "hoursAt": 7311
+      },
+      {
+        "id": "mt-41-2",
+        "date": "2026-10-09",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 71000000,
+        "hoursAt": 7811
+      }
+    ]
+  },
+  {
+    "id": "eq-042",
+    "code": "M25.0042",
+    "name": "Ô tô tự đổ 15T",
+    "group": "Ô tô tự đổ",
+    "ownership": "so_huu",
+    "plate": "65C-556.78",
+    "brand": "Howo ZZ3257",
+    "year": 2017,
+    "manageUnitId": "d-acc25",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 5230,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 5073,
+    "maintenances": [
+      {
+        "id": "mt-42-1",
+        "date": "2026-08-29",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 15000000,
+        "hoursAt": 4573
+      },
+      {
+        "id": "mt-42-2",
+        "date": "2026-10-27",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
+        "cost": 54000000,
+        "hoursAt": 5073
+      }
+    ]
+  },
+  {
+    "id": "eq-043",
+    "code": "M24.0240",
+    "name": "Ô tô tự đổ 25T",
+    "group": "Ô tô tự đổ",
+    "ownership": "so_huu",
+    "plate": "30H-925.88",
+    "brand": "Howo ZZ3257",
+    "year": 2022,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p06",
+    "operatorId": "op12",
+    "totalHours": 8815,
+    "fuelNorm": 14,
+    "maintenanceInterval": 500,
+    "lastMaintenanceHours": 8491,
+    "maintenances": [
+      {
+        "id": "mt-43-1",
+        "date": "2026-09-12",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 14000000,
+        "hoursAt": 7991
+      },
+      {
+        "id": "mt-43-2",
+        "date": "2026-09-23",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 57000000,
+        "hoursAt": 8491
+      }
+    ]
+  },
+  {
+    "id": "eq-044",
+    "code": "M244.0138",
+    "name": "Cần trục tháp QTZ125",
+    "group": "Cần trục tháp",
+    "ownership": "so_huu",
+    "plate": "QA 2893",
+    "brand": "Potain MC125",
+    "year": 2014,
+    "manageUnitId": "d-acc244",
+    "status": "bao_tri",
+    "currentProjectId": "p07",
+    "operatorId": "op13",
+    "totalHours": 4647,
+    "fuelNorm": 0,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 4392,
+    "maintenances": [
+      {
+        "id": "mt-44-1",
+        "date": "2026-09-01",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 18000000,
+        "hoursAt": 4142
+      },
+      {
+        "id": "mt-44-2",
+        "date": "2026-11-01",
+        "type": "bao_duong",
+        "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
+        "cost": 47000000,
+        "hoursAt": 4392
+      }
+    ]
+  },
+  {
+    "id": "eq-045",
+    "code": "M245.0233",
+    "name": "Cần trục tháp QTZ80",
+    "group": "Cần trục tháp",
+    "ownership": "so_huu",
+    "plate": "QA 6750",
+    "brand": "Potain MC125",
+    "year": 2020,
+    "manageUnitId": "d-acc245",
+    "status": "hoat_dong",
+    "currentProjectId": "p06",
+    "operatorId": "op14",
+    "totalHours": 5303,
+    "fuelNorm": 0,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 5233,
+    "maintenances": [
+      {
+        "id": "mt-45-1",
+        "date": "2026-07-28",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 19000000,
+        "hoursAt": 4983
+      },
+      {
+        "id": "mt-45-2",
+        "date": "2026-09-23",
+        "type": "bao_duong",
+        "content": "Thay xích, kiểm tra hệ thống di chuyển",
+        "cost": 29000000,
+        "hoursAt": 5233
+      }
+    ]
+  },
+  {
+    "id": "eq-046",
+    "code": "M24.0177",
+    "name": "Cần trục tháp QTZ80",
+    "group": "Cần trục tháp",
+    "ownership": "so_huu",
+    "plate": "QA 2214",
+    "brand": "Zoomlion TC6013",
+    "year": 2017,
+    "manageUnitId": "d-acc24",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op15",
+    "totalHours": 1630,
+    "fuelNorm": 0,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1388,
+    "maintenances": [
+      {
+        "id": "mt-46-1",
+        "date": "2026-06-22",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 14000000,
+        "hoursAt": 1138
+      },
+      {
+        "id": "mt-46-2",
+        "date": "2026-10-13",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 72000000,
+        "hoursAt": 1388
+      }
+    ]
+  },
+  {
+    "id": "eq-047",
+    "code": "M244.0081",
+    "name": "Trạm trộn bê tông 120m³/h",
+    "group": "Trạm trộn BTXM",
+    "ownership": "so_huu",
+    "plate": "KT 5886",
+    "brand": "Sicoma",
+    "year": 2022,
+    "manageUnitId": "d-acc244",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 9193,
+    "fuelNorm": 0,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 9097,
+    "maintenances": [
+      {
+        "id": "mt-47-1",
+        "date": "2026-09-07",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 24000000,
+        "hoursAt": 8847
+      },
+      {
+        "id": "mt-47-2",
+        "date": "2026-09-26",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 15000000,
+        "hoursAt": 9097
+      }
+    ]
+  },
+  {
+    "id": "eq-048",
+    "code": "M24.0132",
+    "name": "Trạm trộn bê tông 120m³/h",
+    "group": "Trạm trộn BTXM",
+    "ownership": "thue_ngoai",
+    "plate": "QA 1002",
+    "brand": "Liebherr Betomix",
+    "year": 2014,
+    "manageUnitId": "d-acc24",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 5778,
+    "fuelNorm": 0,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 5731,
+    "rentalSupplier": "Công ty TNHH Thiết bị Nam Việt",
+    "rentalRate": 4300000,
+    "maintenances": [
+      {
+        "id": "mt-48-1",
+        "date": "2026-07-25",
+        "type": "bao_duong",
+        "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
+        "cost": 16000000,
+        "hoursAt": 5481
+      },
+      {
+        "id": "mt-48-2",
+        "date": "2026-10-08",
+        "type": "sua_chua",
+        "content": "Bảo dưỡng định kỳ cấp 1",
+        "cost": 58000000,
+        "hoursAt": 5731
+      }
+    ]
+  }
+]

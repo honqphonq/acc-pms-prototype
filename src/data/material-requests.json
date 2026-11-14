@@ -1,0 +1,924 @@
+[
+  {
+    "id": "mr-001",
+    "code": "ĐXVT-2026-101",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-3",
+    "taskId": "t-p01-012",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": true,
+    "note": "Phục vụ thi công cột trục A–D tầng 1",
+    "title": "Thép Ø16 cột tầng trệt",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-11-12",
+    "neededDate": "2026-11-18",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m02",
+        "qty": 12.5,
+        "unitPrice": 15800000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-12T08:45:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-12T08:11:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-002",
+    "code": "ĐXVT-2026-102",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-3",
+    "taskId": "t-p01-012",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Bê tông thương phẩm M300 cột tầng trệt",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-11-11",
+    "neededDate": "2026-11-17",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m10",
+        "qty": 38,
+        "unitPrice": 1480000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-11T08:34:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-11T08:24:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-003",
+    "code": "ĐXVT-2026-103",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-2",
+    "taskId": "t-p01-010",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": true,
+    "note": "",
+    "title": "Cát vàng, đá 1x2 lấp hố móng",
+    "projectId": "p01",
+    "requesterId": "u11",
+    "createdAt": "2026-11-02",
+    "neededDate": "2026-11-08",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m05",
+        "qty": 45,
+        "unitPrice": 420000
+      },
+      {
+        "materialId": "m07",
+        "qty": 60,
+        "unitPrice": 380000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-02T08:18:00",
+        "byId": "u11",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-02T08:31:00",
+        "byId": "u11",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-004",
+    "code": "ĐXVT-2026-104",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-4",
+    "taskId": null,
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Ống PVC thoát nước ngầm",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-10-28",
+    "neededDate": "2026-11-05",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m16",
+        "qty": 120,
+        "unitPrice": 312000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-28T08:27:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-28T08:12:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-005",
+    "code": "ĐXVT-2026-105",
+    "type": "dieu_chuyen",
+    "itemId": "i-p01-3",
+    "taskId": "t-p01-013",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Điều chuyển cốp pha sang tầng 2",
+    "projectId": "p01",
+    "requesterId": "u13",
+    "createdAt": "2026-11-08",
+    "neededDate": "2026-12-10",
+    "status": "tra_lai",
+    "lines": [
+      {
+        "materialId": "m14",
+        "qty": 300,
+        "unitPrice": 285000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-08T08:49:00",
+        "byId": "u13",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-08T08:40:00",
+        "byId": "u13",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-11-09T08:47:00",
+        "byId": "u04",
+        "action": "Trả lại",
+        "note": "Bổ sung kế hoạch luân chuyển ván khuôn và biên bản kiểm tra chất lượng cốp pha"
+      }
+    ]
+  },
+  {
+    "id": "mr-006",
+    "code": "ĐXVT-2026-106",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-4",
+    "taskId": "t-p01-015",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Gạch không nung xây tường bao",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-11-13",
+    "neededDate": "2027-02-20",
+    "status": "nhap",
+    "lines": [
+      {
+        "materialId": "m13",
+        "qty": 45000,
+        "unitPrice": 2150
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-13T08:29:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất (lưu nháp)"
+      }
+    ]
+  },
+  {
+    "id": "mr-007",
+    "code": "ĐXVT-2026-107",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-3",
+    "taskId": "t-p01-012",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Ván khuôn phủ phim sàn tầng trệt",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-11-04",
+    "neededDate": "2026-11-15",
+    "status": "da_duyet",
+    "lines": [
+      {
+        "materialId": "m14",
+        "qty": 850,
+        "unitPrice": 285000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-04T08:48:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-04T08:11:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-11-05T08:52:00",
+        "byId": "u04",
+        "action": "Phê duyệt",
+        "note": "Đồng ý, ưu tiên NCC có sẵn hàng"
+      }
+    ]
+  },
+  {
+    "id": "mr-008",
+    "code": "ĐXVT-2026-108",
+    "type": "tam_ung",
+    "itemId": "i-p01-2",
+    "taskId": "t-p01-008",
+    "approverId": "u04",
+    "supplierId": "s02",
+    "orderNo": "ĐH-VH-2026-0412",
+    "orderDate": "2026-10-24",
+    "expectedDelivery": "2026-11-16",
+    "starred": true,
+    "note": "",
+    "title": "Tạm ứng mua thép móng đợt 2",
+    "projectId": "p01",
+    "requesterId": "u11",
+    "createdAt": "2026-10-20",
+    "neededDate": "2026-11-16",
+    "status": "dat_hang",
+    "lines": [
+      {
+        "materialId": "m02",
+        "qty": 20,
+        "unitPrice": 15800000
+      },
+      {
+        "materialId": "m03",
+        "qty": 8,
+        "unitPrice": 15500000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-20T08:36:00",
+        "byId": "u11",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-20T08:19:00",
+        "byId": "u11",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-21T08:15:00",
+        "byId": "u04",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-10-23T08:20:00",
+        "byId": "u11",
+        "action": "Tổng hợp nhu cầu, kiểm tra tồn kho",
+        "note": "Tồn kho không đủ đáp ứng"
+      },
+      {
+        "at": "2026-10-24T08:23:00",
+        "byId": "u11",
+        "action": "Chọn nhà cung cấp & đặt hàng",
+        "note": "Công ty CP Thép Việt Hưng – ĐH-VH-2026-0412"
+      }
+    ]
+  },
+  {
+    "id": "mr-009",
+    "code": "ĐXVT-2026-109",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-3",
+    "taskId": "t-p01-012",
+    "approverId": "u04",
+    "supplierId": "s02",
+    "orderNo": "ĐH-VH-2026-0398",
+    "orderDate": "2026-10-27",
+    "expectedDelivery": "2026-11-02",
+    "starred": false,
+    "note": "",
+    "title": "Dây thép buộc, con kê bê tông",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-10-25",
+    "neededDate": "2026-11-03",
+    "status": "da_nhap_kho",
+    "lines": [
+      {
+        "materialId": "m15",
+        "qty": 600,
+        "unitPrice": 24500
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-25T08:20:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-25T08:19:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-26T08:51:00",
+        "byId": "u04",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-10-27T08:36:00",
+        "byId": "u11",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      },
+      {
+        "at": "2026-11-02T08:48:00",
+        "byId": "u10",
+        "action": "Nhập kho",
+        "note": "PNK theo đề xuất"
+      }
+    ]
+  },
+  {
+    "id": "mr-010",
+    "code": "ĐXVT-2026-110",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-2",
+    "taskId": "t-p01-010",
+    "approverId": "u04",
+    "supplierId": "s03",
+    "orderNo": "ĐH-MP-2026-1120",
+    "orderDate": "2026-10-14",
+    "expectedDelivery": "2026-10-19",
+    "starred": false,
+    "note": "",
+    "title": "Xi măng PCB40 xây hộc móng",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-10-12",
+    "neededDate": "2026-10-20",
+    "status": "hoan_thanh",
+    "lines": [
+      {
+        "materialId": "m01",
+        "qty": 35,
+        "unitPrice": 1650000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-12T08:45:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-12T08:48:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-13T08:35:00",
+        "byId": "u04",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-10-14T08:16:00",
+        "byId": "u11",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      },
+      {
+        "at": "2026-10-19T08:20:00",
+        "byId": "u10",
+        "action": "Nhập kho"
+      },
+      {
+        "at": "2026-10-22T08:33:00",
+        "byId": "u10",
+        "action": "Xuất sử dụng",
+        "note": "Xuất cho tổ nề số 1"
+      }
+    ]
+  },
+  {
+    "id": "mr-011",
+    "code": "ĐXVT-2026-111",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-2",
+    "taskId": "t-p01-008",
+    "approverId": "u04",
+    "supplierId": "s02",
+    "orderNo": "ĐH-VH-2026-0301",
+    "orderDate": "2026-09-03",
+    "expectedDelivery": "2026-09-08",
+    "starred": false,
+    "note": "",
+    "title": "Thép Ø12 đài móng, giằng móng",
+    "projectId": "p01",
+    "requesterId": "u11",
+    "createdAt": "2026-09-02",
+    "neededDate": "2026-09-08",
+    "status": "hoan_thanh",
+    "lines": [
+      {
+        "materialId": "m03",
+        "qty": 18,
+        "unitPrice": 15500000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-09-02T08:59:00",
+        "byId": "u11",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-09-02T08:31:00",
+        "byId": "u11",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-09-02T08:27:00",
+        "byId": "u04",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-09-03T08:12:00",
+        "byId": "u11",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      },
+      {
+        "at": "2026-09-08T08:40:00",
+        "byId": "u10",
+        "action": "Nhập kho"
+      },
+      {
+        "at": "2026-09-12T08:17:00",
+        "byId": "u10",
+        "action": "Xuất sử dụng"
+      }
+    ]
+  },
+  {
+    "id": "mr-012",
+    "code": "ĐXVT-2026-112",
+    "type": "mua_vat_tu",
+    "itemId": "i-p01-2",
+    "taskId": "t-p01-009",
+    "approverId": "u04",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Bê tông M250 bổ sung giằng móng",
+    "projectId": "p01",
+    "requesterId": "u10",
+    "createdAt": "2026-10-30",
+    "neededDate": "2026-11-04",
+    "status": "tu_choi",
+    "lines": [
+      {
+        "materialId": "m12",
+        "qty": 120,
+        "unitPrice": 1380000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-30T08:50:00",
+        "byId": "u10",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-30T08:11:00",
+        "byId": "u10",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-31T08:21:00",
+        "byId": "u04",
+        "action": "Từ chối",
+        "note": "Khối lượng đề xuất vượt định mức còn lại của công việc, đề nghị rà soát lại"
+      }
+    ]
+  },
+  {
+    "id": "mr-013",
+    "code": "ĐXVT-2026-113",
+    "type": "mua_vat_tu",
+    "itemId": "i-p02-4",
+    "taskId": "t-p02-008",
+    "approverId": "u20",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": true,
+    "note": "",
+    "title": "Bê tông M350 mặt đường sân đỗ đợt 5",
+    "projectId": "p02",
+    "requesterId": "u20",
+    "createdAt": "2026-11-10",
+    "neededDate": "2026-11-20",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m11",
+        "qty": 1800,
+        "unitPrice": 1560000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-10T08:54:00",
+        "byId": "u20",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-10T08:52:00",
+        "byId": "u20",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-014",
+    "code": "ĐXVT-2026-114",
+    "type": "mua_vat_tu",
+    "itemId": "i-p02-4",
+    "taskId": "t-p02-009",
+    "approverId": "u20",
+    "supplierId": "s06",
+    "orderNo": "ĐH-HN-2026-0087",
+    "orderDate": "2026-10-29",
+    "expectedDelivery": "2026-11-12",
+    "starred": false,
+    "note": "",
+    "title": "Matit chèn khe co giãn",
+    "projectId": "p02",
+    "requesterId": "u20",
+    "createdAt": "2026-10-26",
+    "neededDate": "2026-11-12",
+    "status": "dat_hang",
+    "lines": [
+      {
+        "materialId": "m23",
+        "qty": 2500,
+        "unitPrice": 52000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-26T08:15:00",
+        "byId": "u20",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-26T08:22:00",
+        "byId": "u20",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-27T08:56:00",
+        "byId": "u20",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-10-29T08:52:00",
+        "byId": "u20",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      }
+    ]
+  },
+  {
+    "id": "mr-015",
+    "code": "ĐXVT-2026-115",
+    "type": "mua_vat_tu",
+    "itemId": "i-p03-3",
+    "taskId": "t-p03-006",
+    "approverId": "u21",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Cấp phối đá dăm loại I móng đường lăn",
+    "projectId": "p03",
+    "requesterId": "u21",
+    "createdAt": "2026-11-06",
+    "neededDate": "2026-11-25",
+    "status": "da_duyet",
+    "lines": [
+      {
+        "materialId": "m18",
+        "qty": 4200,
+        "unitPrice": 395000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-06T08:20:00",
+        "byId": "u21",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-06T08:48:00",
+        "byId": "u21",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-11-07T08:34:00",
+        "byId": "u21",
+        "action": "Phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-016",
+    "code": "ĐXVT-2026-116",
+    "type": "mua_vat_tu",
+    "itemId": "i-p04-5",
+    "taskId": "t-p04-010",
+    "approverId": "u22",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Thép Ø25 cống hộp BTCT",
+    "projectId": "p04",
+    "requesterId": "u22",
+    "createdAt": "2026-11-09",
+    "neededDate": "2026-11-19",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m04",
+        "qty": 46,
+        "unitPrice": 16100000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-09T08:25:00",
+        "byId": "u22",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-09T08:40:00",
+        "byId": "u22",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-017",
+    "code": "ĐXVT-2026-117",
+    "type": "mua_vat_tu",
+    "itemId": "i-p06-3",
+    "taskId": null,
+    "approverId": "u24",
+    "supplierId": "s03",
+    "orderNo": "ĐH-MP-2026-0955",
+    "orderDate": "2026-09-17",
+    "expectedDelivery": "2026-09-24",
+    "starred": false,
+    "note": "",
+    "title": "Xi măng PCB40 xây tường kho",
+    "projectId": "p06",
+    "requesterId": "u24",
+    "createdAt": "2026-09-15",
+    "neededDate": "2026-09-25",
+    "status": "hoan_thanh",
+    "lines": [
+      {
+        "materialId": "m01",
+        "qty": 120,
+        "unitPrice": 1650000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-09-15T08:11:00",
+        "byId": "u24",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-09-15T08:29:00",
+        "byId": "u24",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-09-16T08:29:00",
+        "byId": "u24",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-09-17T08:34:00",
+        "byId": "u24",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      },
+      {
+        "at": "2026-09-24T08:49:00",
+        "byId": "u24",
+        "action": "Nhập kho"
+      },
+      {
+        "at": "2026-09-26T08:13:00",
+        "byId": "u24",
+        "action": "Xuất sử dụng"
+      }
+    ]
+  },
+  {
+    "id": "mr-018",
+    "code": "ĐXVT-2026-118",
+    "type": "mua_vat_tu",
+    "itemId": "i-p07-3",
+    "taskId": null,
+    "approverId": "u25",
+    "supplierId": "s03",
+    "orderNo": "ĐH-MP-2026-1188",
+    "orderDate": "2026-10-20",
+    "expectedDelivery": "2026-10-31",
+    "starred": false,
+    "note": "",
+    "title": "Gạch không nung nhà ở học viên",
+    "projectId": "p07",
+    "requesterId": "u25",
+    "createdAt": "2026-10-18",
+    "neededDate": "2026-11-01",
+    "status": "da_nhap_kho",
+    "lines": [
+      {
+        "materialId": "m13",
+        "qty": 120000,
+        "unitPrice": 2150
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-10-18T08:28:00",
+        "byId": "u25",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-10-18T08:26:00",
+        "byId": "u25",
+        "action": "Gửi phê duyệt"
+      },
+      {
+        "at": "2026-10-19T08:25:00",
+        "byId": "u25",
+        "action": "Phê duyệt"
+      },
+      {
+        "at": "2026-10-20T08:41:00",
+        "byId": "u25",
+        "action": "Chọn nhà cung cấp & đặt hàng"
+      },
+      {
+        "at": "2026-10-31T08:15:00",
+        "byId": "u25",
+        "action": "Nhập kho"
+      }
+    ]
+  },
+  {
+    "id": "mr-019",
+    "code": "ĐXVT-2026-119",
+    "type": "mua_vat_tu",
+    "itemId": "i-p09-3",
+    "taskId": "t-p09-006",
+    "approverId": "u27",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Bê tông M300 sàn tầng 3 nhà làm việc",
+    "projectId": "p09",
+    "requesterId": "u27",
+    "createdAt": "2026-11-11",
+    "neededDate": "2026-11-21",
+    "status": "cho_duyet",
+    "lines": [
+      {
+        "materialId": "m10",
+        "qty": 210,
+        "unitPrice": 1480000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-11T08:30:00",
+        "byId": "u27",
+        "action": "Tạo đề xuất"
+      },
+      {
+        "at": "2026-11-11T08:36:00",
+        "byId": "u27",
+        "action": "Gửi phê duyệt"
+      }
+    ]
+  },
+  {
+    "id": "mr-020",
+    "code": "ĐXVT-2026-120",
+    "type": "mua_vat_tu",
+    "itemId": "i-p05-5",
+    "taskId": null,
+    "approverId": "u23",
+    "supplierId": null,
+    "orderNo": null,
+    "orderDate": null,
+    "expectedDelivery": null,
+    "starred": false,
+    "note": "",
+    "title": "Sơn kẻ vạch nhiệt dẻo đường lăn",
+    "projectId": "p05",
+    "requesterId": "u23",
+    "createdAt": "2026-11-13",
+    "neededDate": "2027-01-15",
+    "status": "nhap",
+    "lines": [
+      {
+        "materialId": "m20",
+        "qty": 3500,
+        "unitPrice": 38000
+      }
+    ],
+    "history": [
+      {
+        "at": "2026-11-13T08:48:00",
+        "byId": "u23",
+        "action": "Tạo đề xuất (lưu nháp)"
+      }
+    ]
+  }
+]
