@@ -1,7 +1,7 @@
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AlertTriangle, ArrowRight, Banknote, ChevronLeft, ChevronRight, ClipboardCheck, Construction, Package, Receipt, Truck, Wallet } from "lucide-react";
-import { Cell, Legend, Line, LineChart, CartesianGrid, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { AlertTriangle, ArrowRight, Banknote, ChevronLeft, ChevronRight, ClipboardCheck, Construction, Receipt, Truck, Wallet } from "lucide-react";
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { useDb } from "@/hooks/useDb";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,10 +16,10 @@ import { PageSkeleton } from "@/components/common/LoadingState";
 import { FilterSelect } from "@/components/common/DataTable";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
-import { AVAILABLE_HOURS_3W, getAlerts, getEquipmentUsage, getProjectStatsMap, getStockRows, monthlyProgress, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
+import { AVAILABLE_HOURS_3W, getAlerts, getEquipmentUsage, getProjectStatsMap, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
-import { DEMO_TODAY, addDays, monthLabel } from "@/utils/date";
+import { DEMO_TODAY, addDays } from "@/utils/date";
 import type { ProjectCategory } from "@/types";
 import { cn } from "@/utils/cn";
 
@@ -43,22 +43,12 @@ export default function DashboardPage() {
   const running = stats.filter((s) => s.project.status === "dang_thi_cong");
   const sum = (f: (s: ProjectStats) => number) => stats.reduce((x, s) => x + f(s), 0);
   const contract = sum((s) => s.project.contractValue);
-  const execValue = sum((s) => s.execValue);
-  const planValue = sum((s) => s.planValue);
-  const plannedV = sum((s) => s.planned * s.planValue);
   const accepted = sum((s) => s.acceptedValue);
   const paid = sum((s) => s.paidValue);
   const cost = sum((s) => s.cost);
   const budget = sum((s) => s.project.budget);
-  const overallActual = planValue ? execValue / planValue : 0;
-  const overallPlanned = planValue ? plannedV / planValue : 0;
   const countHealth = (h: keyof typeof HEALTH) => running.filter((s) => s.health === h).length;
 
-  const series = useMemo(() => monthlyProgress(db, projectId || undefined).filter((r) => r.month >= "2025-07" && r.month <= "2027-12"), [db, projectId]);
-
-  const stock = getStockRows(db).filter((r) => ids.has(r.inv.projectId));
-  const shortage = stock.filter((r) => r.status === "thieu_hang");
-  const overNorm = stock.filter((r) => r.status === "vuot_dinh_muc" || r.status === "sap_vuot");
   const alerts = getAlerts(db).filter((a) => !a.projectId || ids.has(a.projectId));
   const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
 
@@ -113,33 +103,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-12">
-        <ChartCard
-          className="xl:col-span-5"
-          title="Tiến độ tổng thể (lũy kế giá trị)"
-          description="Nét liền: thực tế (từ nhật ký thi công) · nét đứt: kế hoạch"
-          right={
-            <div className="text-right">
-              <div className="tabular text-2xl font-bold text-slate-900">{fmtPct(overallActual)}</div>
-              <div className="text-[11px] text-slate-500">Kế hoạch đến nay {fmtPct(overallPlanned)}</div>
-            </div>
-          }
-        >
-          <div className="h-60">
-            <ResponsiveContainer>
-              <LineChart data={series} margin={{ top: 8, right: 8, left: -12, bottom: 0 }}>
-                <CartesianGrid stroke="#eef2f6" vertical={false} />
-                <XAxis dataKey="month" tickFormatter={monthLabel} interval={3} tickLine={false} axisLine={{ stroke: "#e2e8f0" }} />
-                <YAxis tickFormatter={(v) => `${Math.round(v * 100)}%`} domain={[0, 1]} tickLine={false} axisLine={false} />
-                <Tooltip labelFormatter={(l) => `Tháng ${monthLabel(String(l))}`} formatter={(v: number, n) => [v == null ? "—" : fmtPct(v), n]} />
-                <Legend iconType="plainline" />
-                <Line name="Kế hoạch" type="monotone" dataKey="planPct" stroke={CHART_COLORS.plan} strokeDasharray="5 4" strokeWidth={2} dot={false} />
-                <Line name="Thực tế" type="monotone" dataKey="actualPct" stroke={CHART_COLORS.actual} strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </ChartCard>
-
-        <ChartCard className="xl:col-span-3" title="Tình trạng chung các dự án" description="Các dự án đang thi công">
+        <ChartCard className="xl:col-span-4" title="Tình trạng chung các dự án" description="Các dự án đang thi công">
           <div className="relative h-40">
             <ResponsiveContainer>
               <PieChart>
@@ -165,13 +129,14 @@ export default function DashboardPage() {
           <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Xác định theo thời hạn công việc: có việc quá hạn &gt; {LATE_DAYS_DELAYED} ngày = chậm; quá hạn ≤ {LATE_DAYS_DELAYED} ngày hoặc đang làm chậm so với kế hoạch = nguy cơ chậm.</p>
         </ChartCard>
 
-        <Card className="xl:col-span-4">
+        <Card className="xl:col-span-8">
           <CardHeader>
             <CardTitle>Dự án cần xử lý</CardTitle>
+            <Badge tone="neutral">{attention.length} dự án</Badge>
           </CardHeader>
-          <CardContent className="space-y-2">
-            {attention.length === 0 && <div className="py-6 text-center text-xs text-slate-500">Tất cả dự án đang đúng tiến độ</div>}
-            {attention.slice(0, 6).map((s) => (
+          <CardContent className="scrollbar-visible grid max-h-[340px] content-start gap-2 overflow-y-auto md:grid-cols-2">
+            {attention.length === 0 && <div className="py-6 text-center text-xs text-slate-500 md:col-span-2">Tất cả dự án đang đúng tiến độ</div>}
+            {attention.map((s) => (
               <Link key={s.project.id} to={`/projects/${s.project.id}`} className="flex items-center justify-between gap-2 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
                 <span className="truncate text-[13px] font-medium text-slate-800">{s.project.shortName}</span>
                 <Tip content={s.healthReason}><span><StatusBadge map={HEALTH} value={s.health} dot={false} /></span></Tip>
@@ -253,41 +218,13 @@ export default function DashboardPage() {
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Card className="xl:col-span-4">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Package className="h-4 w-4 text-slate-400" /> Tình trạng vật tư</CardTitle>
-            <Link to="/materials/inventory" className="text-xs text-primary hover:underline">Chi tiết</Link>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{stock.length}</div><div className="text-[10.5px] text-slate-500">Mã tồn kho</div></div>
-              <div className="rounded-lg bg-danger-soft p-2"><div className="text-lg font-bold text-danger-fg">{shortage.length}</div><div className="text-[10.5px] text-danger-fg">Thiếu hụt</div></div>
-              <div className="rounded-lg bg-warning-soft p-2"><div className="text-lg font-bold text-warning-fg">{overNorm.length}</div><div className="text-[10.5px] text-warning-fg">Vượt/sắp vượt ĐM</div></div>
-            </div>
-            <div className="mt-3 space-y-2">
-              {[...shortage, ...overNorm].slice(0, 5).map((r) => (
-                <div key={r.inv.id} className="flex items-center justify-between gap-2 text-[12.5px]">
-                  <div className="min-w-0">
-                    <div className="truncate font-medium text-slate-700">{r.material.name}</div>
-                    <div className="truncate text-[11px] text-slate-400">{pName(r.inv.projectId)}</div>
-                  </div>
-                  <Badge tone={r.status === "thieu_hang" ? "danger" : "warning"}>{r.status === "thieu_hang" ? "Thiếu" : `${Math.round(r.usage * 100)}% ĐM`}</Badge>
-                </div>
-              ))}
-            </div>
-            <div className="mt-3 border-t pt-2 text-[11.5px] text-slate-500">
-              {db.materialRequests.filter((r) => r.status === "cho_duyet" && ids.has(r.projectId)).length} đề xuất chờ duyệt · {db.materialRequests.filter((r) => r.status === "dat_hang" && ids.has(r.projectId)).length} đang đặt hàng
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="xl:col-span-8">
+        <Card className="xl:col-span-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4 text-primary" /> Cảnh báo & vấn đề cần xử lý</CardTitle>
             <Link to="/alerts" className="flex items-center gap-1 text-xs font-medium text-primary hover:underline">Xem tất cả ({alerts.length}) <ArrowRight className="h-3.5 w-3.5" /></Link>
           </CardHeader>
-          <CardContent className="space-y-2">
-            {alerts.slice(0, 6).map((a) => (
+          <CardContent className="grid gap-2 md:grid-cols-2">
+            {alerts.slice(0, 8).map((a) => (
               <Link key={a.id} to={a.link} className="group flex min-w-0 items-start gap-3 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
                 <span className={cn("mt-1.5 h-2 w-2 shrink-0 rounded-full", a.severity === "danger" ? "bg-rose-500" : a.severity === "warning" ? "bg-amber-500" : "bg-blue-500")} />
                 <div className="min-w-0 flex-1">
@@ -310,7 +247,7 @@ export default function DashboardPage() {
 /** Một nhóm công trình: cuộn ngang, tối đa 2 dòng thẻ */
 function CategoryRow({ category, list }: { category: ProjectCategory; list: ProjectStats[] }) {
   const ref = useRef<HTMLDivElement>(null);
-  const rows = list.length > 4 ? 2 : 1;
+  const rows = list.length > 3 ? 2 : 1;
   const columns = Math.ceil(list.length / rows);
   const scrollBy = (dir: number) => ref.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
   return (
@@ -319,14 +256,14 @@ function CategoryRow({ category, list }: { category: ProjectCategory; list: Proj
         <span className="h-3 w-1 rounded" style={{ background: CATEGORY_COLORS[category] }} />
         <h2 className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">{CATEGORY_LABELS[category]}</h2>
         <Badge tone="neutral">{list.length} dự án</Badge>
-        {columns > 3 && (
+        {columns > 2 && (
           <div className="ml-auto flex gap-1">
             <button onClick={() => scrollBy(-1)} className="rounded-md border bg-white p-1 text-slate-500 hover:bg-slate-50" aria-label="Cuộn trái"><ChevronLeft className="h-4 w-4" /></button>
             <button onClick={() => scrollBy(1)} className="rounded-md border bg-white p-1 text-slate-500 hover:bg-slate-50" aria-label="Cuộn phải"><ChevronRight className="h-4 w-4" /></button>
           </div>
         )}
       </div>
-      <div ref={ref} className="scrollbar-thin overflow-x-auto pb-2">
+      <div ref={ref} className="scrollbar-visible overflow-x-auto pb-3">
         <div className="grid auto-cols-[300px] grid-flow-col gap-3 sm:auto-cols-[320px]" style={{ gridTemplateRows: `repeat(${rows}, auto)` }}>
           {list.map((s) => <ProjectCard key={s.project.id} stats={s} />)}
         </div>

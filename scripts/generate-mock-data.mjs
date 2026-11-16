@@ -93,6 +93,13 @@ const users = [
   { id: "u28", code: "NV028", name: "Hồ Sỹ Dũng", role: "chi_huy_truong", title: "Chỉ huy trưởng công trường", departmentId: "d-accdtxl" },
   { id: "u29", code: "NV029", name: "Cao Văn Bình", role: "chi_huy_truong", title: "Chỉ huy trưởng công trường", departmentId: "d-acc25" },
 ];
+// Chỉ huy trưởng các công trường mở rộng (dự án 12–26)
+[
+  ["Lê Văn Thành", "d-acc24"], ["Nguyễn Hữu Phước", "d-acc25"], ["Trần Đình Trọng", "d-acc244"], ["Phạm Quốc Bảo", "d-acc245"], ["Đỗ Văn Hưng", "d-acc24"],
+  ["Hoàng Minh Đức", "d-acc244"], ["Vũ Văn Tiến", "d-acc245"], ["Bùi Quang Huy", "d-acc25"], ["Nguyễn Trọng Nghĩa", "d-acc244"], ["Đặng Văn Lâm", "d-acc245"],
+  ["Lưu Quang Minh", "d-accdtxl"], ["Trịnh Xuân Hòa", "d-acc24"], ["Phan Thanh Tùng", "d-acc25"], ["Ngô Đức Thịnh", "d-accdtxl"], ["Hà Mạnh Cường", "d-acc244"],
+].forEach(([name, departmentId], i) => users.push({ id: `u${60 + i}`, code: `NV0${60 + i}`, name, role: "chi_huy_truong", title: "Chỉ huy trưởng công trường", departmentId }));
+
 // Kỹ sư / tổ trưởng chung
 const engineerNames = [
   "Trịnh Văn Nam", "Lê Hoàng Phúc", "Nguyễn Thị Lan", "Phạm Đức Mạnh", "Vũ Minh Tuấn", "Đào Quang Thịnh",
@@ -206,6 +213,31 @@ const projectDefs = [
     startDate: "2025-01-15", endDate: "2026-08-30", budget: 132e9, status: "hoan_thanh", costRatio: 0.9, ratio: 1, template: "airport_small", value: 145e9, settlement: "dang_lap",
   },
 ];
+
+// ---- 15 dự án đang thi công bổ sung (tổng 24 dự án đang triển khai) ----
+const P = (n, id, code, shortName, name, category, location, unitId, investor, template, value, startDate, endDate, ratio) => ({
+  id, code, shortName, name, category, location, unitId, commanderId: `u${60 + n}`, investor,
+  contractor: `Tổng công ty ACC – ${{ "d-acc24": "Công ty CP ACC 24", "d-acc244": "Công ty CP ACC 244", "d-acc245": "Công ty CP ACC 245", "d-acc25": "Công ty CP ACC 25", "d-accdtxl": "Công ty TNHH MTV Đầu tư và Xây lắp ACC" }[unitId]}`,
+  packageName: template === "building" ? "Gói thầu XL: Thi công xây dựng công trình" : "Gói thầu XL: Thi công hạ tầng hàng không", contractNo: `${String(10 + n).padStart(2, "0")}${startDate.slice(5, 7)}/${startDate.slice(0, 4)}/HĐXD`,
+  contractDate: addDays(startDate, -20), startDate, endDate, budget: Math.round(value * 0.9), status: "dang_thi_cong", costRatio: 0.88 + (n % 5) * 0.02, ratio, template, value,
+});
+projectDefs.push(
+  P(0, "p12", "ACC24-KEP", "Sân bay Kép", "Cải tạo đường lăn, sân đỗ Sân bay quân sự Kép", "quoc_phong", "Bắc Giang", "d-acc24", "Bộ Tư lệnh Quân chủng Phòng không – Không quân", "airport", 680e9, "2025-12-01", "2027-08-31", 0.99),
+  P(1, "p13", "ACC25-HL921", "Doanh trại E921", "Doanh trại Trung đoàn Không quân 921", "quoc_phong", "Hà Nội", "d-acc25", "Bộ Tham mưu Quân chủng Phòng không – Không quân", "building", 265e9, "2026-01-15", "2027-07-31", 1.0),
+  P(2, "p14", "ACC244-LD918", "Kho kỹ thuật Lữ đoàn 918", "Khu kho kỹ thuật Lữ đoàn Không quân 918", "quoc_phong", "Hà Nội", "d-acc244", "Lữ đoàn Không quân Vận tải 918", "building", 198e9, "2026-03-01", "2027-06-30", 0.98),
+  P(3, "p15", "ACC245-CR", "Sân đỗ trực thăng Cam Ranh", "Sân đỗ trực thăng Vùng 4 Hải quân – Cam Ranh", "quoc_phong", "Khánh Hòa", "d-acc245", "Bộ Tư lệnh Vùng 4 Hải quân", "airport", 355e9, "2025-10-15", "2027-03-31", 0.97),
+  P(4, "p16", "ACC24-SQKQ", "KTX Trường SQ Không quân", "Ký túc xá học viên Trường Sĩ quan Không quân", "quoc_phong", "Khánh Hòa", "d-acc24", "Trường Sĩ quan Không quân", "building", 230e9, "2026-02-01", "2027-09-30", 1.01),
+  P(5, "p17", "ACC244-HUI", "Sân đỗ Cảng HKQT Phú Bài", "Mở rộng sân đỗ máy bay – Cảng HKQT Phú Bài", "giao_thong", "Thừa Thiên Huế", "d-acc244", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport", 820e9, "2025-08-01", "2027-04-30", 1.0),
+  P(6, "p18", "ACC245-UIH", "Đường CHC số 2 Phù Cát", "Đường cất hạ cánh số 2 – Cảng HK Phù Cát", "giao_thong", "Bình Định", "d-acc245", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport", 910e9, "2025-11-01", "2028-02-29", 0.98),
+  P(7, "p19", "ACC25-DLI", "Sân đỗ Liên Khương", "Mở rộng sân đỗ tàu bay – Cảng HK Liên Khương", "giao_thong", "Lâm Đồng", "d-acc25", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport", 460e9, "2026-01-05", "2027-10-31", 1.0),
+  P(8, "p20", "ACC244-SGN", "Đường lăn Tân Sơn Nhất", "Đường lăn nối và đường lăn song song – Cảng HKQT Tân Sơn Nhất", "giao_thong", "TP Hồ Chí Minh", "d-acc244", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport", 1150e9, "2025-09-15", "2027-12-31", 0.99),
+  P(9, "p21", "ACC245-PXU", "Đường CHC Pleiku", "Cải tạo đường cất hạ cánh – Cảng HK Pleiku", "giao_thong", "Gia Lai", "d-acc245", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport", 395e9, "2026-02-15", "2027-11-30", 0.97),
+  P(10, "p22", "ACCDTXL-VCS", "Đèn tín hiệu Côn Đảo", "Hệ thống đèn tín hiệu và sân đỗ – Cảng HK Côn Đảo", "giao_thong", "Bà Rịa – Vũng Tàu", "d-accdtxl", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "airport_small", 168e9, "2026-03-01", "2027-05-31", 1.0),
+  P(11, "p23", "ACC24-CAAV", "Trụ sở Cục Hàng không", "Trụ sở làm việc Cục Hàng không Việt Nam – khối văn phòng", "dan_dung", "Hà Nội", "d-acc24", "Cục Hàng không Việt Nam", "building", 540e9, "2025-10-01", "2027-09-30", 0.99),
+  P(12, "p24", "ACC25-HNM", "BV đa khoa Hà Nam", "Bệnh viện đa khoa tỉnh Hà Nam – khối kỹ thuật nghiệp vụ", "dan_dung", "Hà Nam", "d-acc25", "Sở Y tế tỉnh Hà Nam", "building", 385e9, "2025-12-15", "2027-12-31", 1.0),
+  P(13, "p25", "ACCDTXL-VII", "Nhà điều hành Cảng HK Vinh", "Nhà điều hành và khu kỹ thuật – Cảng HK Vinh", "dan_dung", "Nghệ An", "d-accdtxl", "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)", "building", 275e9, "2026-01-10", "2027-08-31", 0.98),
+  P(14, "p26", "ACC244-ATC", "Trung tâm Kiểm soát đường dài", "Trung tâm Kiểm soát đường dài Hà Nội – nhà kỹ thuật", "dan_dung", "Hà Nội", "d-acc244", "Tổng công ty Quản lý bay Việt Nam", "building", 310e9, "2026-04-01", "2028-03-31", 1.01),
+);
 
 const descriptions = {
   dan_dung: "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",

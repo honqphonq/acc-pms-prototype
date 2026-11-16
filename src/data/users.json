@@ -282,6 +282,156 @@
     "email": "binh.nv029@acc.vn"
   },
   {
+    "id": "u60",
+    "code": "NV060",
+    "name": "Lê Văn Thành",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc24",
+    "phone": "0901396099",
+    "email": "thanh.nv060@acc.vn"
+  },
+  {
+    "id": "u61",
+    "code": "NV061",
+    "name": "Nguyễn Hữu Phước",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc25",
+    "phone": "0908509136",
+    "email": "phuoc.nv061@acc.vn"
+  },
+  {
+    "id": "u62",
+    "code": "NV062",
+    "name": "Trần Đình Trọng",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc244",
+    "phone": "0915622173",
+    "email": "trong.nv062@acc.vn"
+  },
+  {
+    "id": "u63",
+    "code": "NV063",
+    "name": "Phạm Quốc Bảo",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc245",
+    "phone": "0922735210",
+    "email": "bao.nv063@acc.vn"
+  },
+  {
+    "id": "u64",
+    "code": "NV064",
+    "name": "Đỗ Văn Hưng",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc24",
+    "phone": "0929848247",
+    "email": "hung.nv064@acc.vn"
+  },
+  {
+    "id": "u65",
+    "code": "NV065",
+    "name": "Hoàng Minh Đức",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc244",
+    "phone": "0936961284",
+    "email": "duc.nv065@acc.vn"
+  },
+  {
+    "id": "u66",
+    "code": "NV066",
+    "name": "Vũ Văn Tiến",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc245",
+    "phone": "0943074321",
+    "email": "tien.nv066@acc.vn"
+  },
+  {
+    "id": "u67",
+    "code": "NV067",
+    "name": "Bùi Quang Huy",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc25",
+    "phone": "0950187358",
+    "email": "huy.nv067@acc.vn"
+  },
+  {
+    "id": "u68",
+    "code": "NV068",
+    "name": "Nguyễn Trọng Nghĩa",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc244",
+    "phone": "0957300395",
+    "email": "nghia.nv068@acc.vn"
+  },
+  {
+    "id": "u69",
+    "code": "NV069",
+    "name": "Đặng Văn Lâm",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc245",
+    "phone": "0964413432",
+    "email": "lam.nv069@acc.vn"
+  },
+  {
+    "id": "u70",
+    "code": "NV070",
+    "name": "Lưu Quang Minh",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-accdtxl",
+    "phone": "0971526469",
+    "email": "minh.nv070@acc.vn"
+  },
+  {
+    "id": "u71",
+    "code": "NV071",
+    "name": "Trịnh Xuân Hòa",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc24",
+    "phone": "0978639506",
+    "email": "hoa.nv071@acc.vn"
+  },
+  {
+    "id": "u72",
+    "code": "NV072",
+    "name": "Phan Thanh Tùng",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc25",
+    "phone": "0985752543",
+    "email": "tung.nv072@acc.vn"
+  },
+  {
+    "id": "u73",
+    "code": "NV073",
+    "name": "Ngô Đức Thịnh",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-accdtxl",
+    "phone": "0992865580",
+    "email": "thinh.nv073@acc.vn"
+  },
+  {
+    "id": "u74",
+    "code": "NV074",
+    "name": "Hà Mạnh Cường",
+    "role": "chi_huy_truong",
+    "title": "Chỉ huy trưởng công trường",
+    "departmentId": "d-acc244",
+    "phone": "0999978617",
+    "email": "cuong.nv074@acc.vn"
+  },
+  {
     "id": "u30",
     "code": "NV030",
     "name": "Trịnh Văn Nam",
@@ -289,7 +439,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc244",
     "team": "Tổ thi công số 1",
-    "phone": "0901396099",
+    "phone": "0906091654",
     "email": "nam.nv030@acc.vn"
   },
   {
@@ -300,7 +450,7 @@
     "title": "Kỹ sư kết cấu",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 2",
-    "phone": "0908509136",
+    "phone": "0913204691",
     "email": "phuc.nv031@acc.vn"
   },
   {
@@ -311,7 +461,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 3",
-    "phone": "0915622173",
+    "phone": "0920317728",
     "email": "lan.nv032@acc.vn"
   },
   {
@@ -322,7 +472,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc244",
     "team": "Tổ thi công số 4",
-    "phone": "0922735210",
+    "phone": "0927430765",
     "email": "manh.nv033@acc.vn"
   },
   {
@@ -333,7 +483,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 5",
-    "phone": "0929848247",
+    "phone": "0934543802",
     "email": "tuan.nv034@acc.vn"
   },
   {
@@ -344,7 +494,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 6",
-    "phone": "0936961284",
+    "phone": "0941656839",
     "email": "thinh.nv035@acc.vn"
   },
   {
@@ -355,7 +505,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc244",
     "team": "Tổ thi công số 7",
-    "phone": "0943074321",
+    "phone": "0948769876",
     "email": "quyet.nv036@acc.vn"
   },
   {
@@ -366,7 +516,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc25",
     "team": "Tổ thi công số 8",
-    "phone": "0950187358",
+    "phone": "0955882913",
     "email": "hong.nv037@acc.vn"
   },
   {
@@ -377,7 +527,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc25",
     "team": "Tổ thi công số 9",
-    "phone": "0957300395",
+    "phone": "0962995950",
     "email": "toan.nv038@acc.vn"
   },
   {
@@ -388,7 +538,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 10",
-    "phone": "0964413432",
+    "phone": "0969108987",
     "email": "thu.nv039@acc.vn"
   },
   {
@@ -399,7 +549,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc245",
     "team": "Tổ thi công số 11",
-    "phone": "0971526469",
+    "phone": "0976221024",
     "email": "dinh.nv040@acc.vn"
   },
   {
@@ -410,7 +560,7 @@
     "title": "Mũi trưởng thi công",
     "departmentId": "d-acc245",
     "team": "Tổ thi công số 12",
-    "phone": "0978639506",
+    "phone": "0983334061",
     "email": "hai.nv041@acc.vn"
   },
   {
@@ -421,7 +571,7 @@
     "title": "Tổ trưởng thi công",
     "departmentId": "d-acc244",
     "team": "Tổ thi công số 13",
-    "phone": "0985752543",
+    "phone": "0990447098",
     "email": "thang.nv042@acc.vn"
   },
   {
@@ -432,7 +582,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc24",
     "team": "Tổ thi công số 14",
-    "phone": "0992865580",
+    "phone": "0997560135",
     "email": "kien.nv043@acc.vn"
   },
   {
@@ -443,7 +593,7 @@
     "title": "Kỹ sư kết cấu",
     "departmentId": "d-acc244",
     "team": "Tổ thi công số 15",
-    "phone": "0999978617",
+    "phone": "0904673172",
     "email": "khanh.nv044@acc.vn"
   },
   {
@@ -454,7 +604,7 @@
     "title": "Kỹ sư giám sát hiện trường",
     "departmentId": "d-acc25",
     "team": "Tổ thi công số 16",
-    "phone": "0906091654",
+    "phone": "0911786209",
     "email": "phat.nv045@acc.vn"
   },
   {
@@ -465,7 +615,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0913204691",
+    "phone": "0918899246",
     "email": "bay.cn001@acc.vn"
   },
   {
@@ -476,7 +626,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0920317728",
+    "phone": "0925012283",
     "email": "cuong.cn002@acc.vn"
   },
   {
@@ -487,7 +637,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0927430765",
+    "phone": "0932125320",
     "email": "dung.cn003@acc.vn"
   },
   {
@@ -498,7 +648,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0934543802",
+    "phone": "0939238357",
     "email": "dong.cn004@acc.vn"
   },
   {
@@ -509,7 +659,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0941656839",
+    "phone": "0946351394",
     "email": "giang.cn005@acc.vn"
   },
   {
@@ -520,7 +670,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0948769876",
+    "phone": "0953464431",
     "email": "hoa.cn006@acc.vn"
   },
   {
@@ -531,7 +681,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0955882913",
+    "phone": "0960577468",
     "email": "khai.cn007@acc.vn"
   },
   {
@@ -542,7 +692,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0962995950",
+    "phone": "0967690505",
     "email": "lam.cn008@acc.vn"
   },
   {
@@ -553,7 +703,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0969108987",
+    "phone": "0974803542",
     "email": "manh.cn009@acc.vn"
   },
   {
@@ -564,7 +714,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0976221024",
+    "phone": "0981916579",
     "email": "nghia.cn010@acc.vn"
   },
   {
@@ -575,7 +725,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0983334061",
+    "phone": "0988029616",
     "email": "oanh.cn011@acc.vn"
   },
   {
@@ -586,7 +736,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0990447098",
+    "phone": "0995142653",
     "email": "phong.cn012@acc.vn"
   },
   {
@@ -597,7 +747,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0997560135",
+    "phone": "0902255690",
     "email": "quang.cn013@acc.vn"
   },
   {
@@ -608,7 +758,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0904673172",
+    "phone": "0909368727",
     "email": "sang.cn014@acc.vn"
   },
   {
@@ -619,7 +769,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0911786209",
+    "phone": "0916481764",
     "email": "tam.cn015@acc.vn"
   },
   {
@@ -630,7 +780,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0918899246",
+    "phone": "0923594801",
     "email": "uy.cn016@acc.vn"
   },
   {
@@ -641,7 +791,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0925012283",
+    "phone": "0930707838",
     "email": "viet.cn017@acc.vn"
   },
   {
@@ -652,7 +802,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0932125320",
+    "phone": "0937820875",
     "email": "xuan.cn018@acc.vn"
   },
   {
@@ -663,7 +813,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0939238357",
+    "phone": "0944933912",
     "email": "yen.cn019@acc.vn"
   },
   {
@@ -674,7 +824,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0946351394",
+    "phone": "0951046949",
     "email": "an.cn020@acc.vn"
   },
   {
@@ -685,7 +835,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0953464431",
+    "phone": "0958159986",
     "email": "binh.cn021@acc.vn"
   },
   {
@@ -696,7 +846,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0960577468",
+    "phone": "0965272023",
     "email": "chien.cn022@acc.vn"
   },
   {
@@ -707,7 +857,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0967690505",
+    "phone": "0972385060",
     "email": "dat.cn023@acc.vn"
   },
   {
@@ -718,7 +868,7 @@
     "title": "Công nhân vận hành xe máy (CMKT)",
     "departmentId": "d-tbcn",
     "isOperator": true,
-    "phone": "0974803542",
+    "phone": "0979498097",
     "email": "hieu.cn024@acc.vn"
   }
 ]
