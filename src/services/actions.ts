@@ -122,7 +122,7 @@ export function createTask(db: Database, input: TaskInput): Database {
   };
   db = insert(db, "constructionPlans", task);
   const assignee = db.users.find((u) => u.id === input.assigneeId);
-  return pushNotification(db, { type: "task", severity: "info", title: "Giao việc mới", message: `${task.code} ${task.name} được giao cho ${assignee?.name ?? ""}.`, projectId: input.projectId, link: `/construction/plan/${input.projectId}?task=${task.id}` });
+  return pushNotification(db, { type: "task", severity: "info", title: "Giao việc mới", message: `${task.code} ${task.name} được giao cho ${assignee?.name ?? ""}.`, projectId: input.projectId, link: `/construction/plan/${input.projectId}/task/${task.id}` });
 }
 export const updateTask = (db: Database, id: ID, changes: Partial<PlanTask>) => patch(db, "constructionPlans", id, changes);
 export function deleteTask(db: Database, id: ID): Database {

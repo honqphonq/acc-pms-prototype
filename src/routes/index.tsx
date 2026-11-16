@@ -11,6 +11,7 @@ const ProjectDetail = lazy(() => import("@/pages/projects/ProjectDetailPage"));
 const Packages = lazy(() => import("@/pages/projects/PackagesPage"));
 const Contracts = lazy(() => import("@/pages/projects/ContractsPage"));
 const Plan = lazy(() => import("@/pages/construction/PlanPage"));
+const TaskDetail = lazy(() => import("@/pages/construction/TaskDetailPage"));
 const Logs = lazy(() => import("@/pages/construction/LogsPage"));
 const ValueReport = lazy(() => import("@/pages/construction/ValueReportPage"));
 const Inventory = lazy(() => import("@/pages/materials/InventoryPage"));
@@ -51,6 +52,7 @@ export function AppRoutes() {
         <Route path="construction" element={<Navigate to="/construction/plan" replace />} />
         <Route path="construction/plan" element={<PlanIndexRedirect />} />
         <Route path="construction/plan/:projectId" element={<S><Plan /></S>} />
+        <Route path="construction/plan/:projectId/task/:taskId" element={<S><TaskDetail /></S>} />
         <Route path="construction/logs" element={<S><Logs /></S>} />
         <Route path="construction/value-report" element={<S><ValueReport /></S>} />
         <Route path="materials" element={<Navigate to="/materials/inventory" replace />} />

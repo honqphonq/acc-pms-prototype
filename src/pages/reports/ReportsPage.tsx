@@ -126,7 +126,7 @@ export default function ReportsPage() {
               <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead>Công việc</TableHead><TableHead>Phụ trách</TableHead><TableHead>Hạn KH</TableHead><TableHead className="text-right">KH</TableHead><TableHead className="text-right">TT</TableHead></TableRow></TableHeader>
               <TableBody>
                 {leafTasks(db).filter((t) => (!projectId || t.projectId === projectId) && taskActualPct(t) < 1 && (t.plannedEnd < DEMO_TODAY || taskPlannedPct(t) - taskActualPct(t) > 0.15)).map((t) => (
-                  <TableRow key={t.id} className="cursor-pointer" onClick={() => navigate(`/construction/plan/${t.projectId}?task=${t.id}`)}>
+                  <TableRow key={t.id} className="cursor-pointer" onClick={() => navigate(`/construction/plan/${t.projectId}/task/${t.id}`)}>
                     <TableCell className="text-xs">{pName(t.projectId)}</TableCell><TableCell className="font-medium">{t.code} {t.name}</TableCell><TableCell className="text-xs">{db.users.find((u) => u.id === t.assigneeId)?.name}</TableCell>
                     <TableCell className={`text-xs ${t.plannedEnd < DEMO_TODAY ? "font-semibold text-rose-600" : ""}`}>{fmtDate(t.plannedEnd)}</TableCell>
                     <TableCell className="tabular text-right">{fmtPct(taskPlannedPct(t), 0)}</TableCell><TableCell className="tabular text-right font-semibold text-rose-600">{fmtPct(taskActualPct(t))}</TableCell>

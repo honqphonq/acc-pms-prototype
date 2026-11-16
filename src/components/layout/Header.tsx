@@ -25,6 +25,7 @@ function useBreadcrumb() {
     let acc = "";
     segs.forEach((s) => {
       acc += "/" + s;
+      if (s === "task") return; // đoạn trung gian của URL chi tiết công việc
       let label = PATH_LABELS[s];
       if (!label) {
         label =
@@ -32,6 +33,7 @@ function useBreadcrumb() {
           db.materialRequests.find((r) => r.id === s)?.code ??
           db.equipment.find((e) => e.id === s)?.code ??
           db.acceptanceRecords.find((a) => a.id === s)?.code ??
+          (() => { const t = db.constructionPlans.find((x) => x.id === s); return t ? `${t.code} ${t.name}` : undefined; })() ??
           s;
       }
       crumbs.push({ label, to: acc });
@@ -55,7 +57,7 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
     if (s.length < 2) return [];
     const out: { icon: typeof Building2; label: string; sub: string; to: string }[] = [];
     db.projects.filter((p) => `${p.name} ${p.code} ${p.location}`.toLowerCase().includes(s)).slice(0, 4).forEach((p) => out.push({ icon: Building2, label: p.name, sub: `Dự án · ${p.code}`, to: `/projects/${p.id}` }));
-    db.constructionPlans.filter((t) => `${t.code} ${t.name}`.toLowerCase().includes(s)).slice(0, 4).forEach((t) => out.push({ icon: CalendarRange, label: `${t.code} ${t.name}`, sub: `Công việc · ${db.projects.find((p) => p.id === t.projectId)?.shortName}`, to: `/construction/plan/${t.projectId}?task=${t.id}` }));
+    db.constructionPlans.filter((t) => `${t.code} ${t.name}`.toLowerCase().includes(s)).slice(0, 4).forEach((t) => out.push({ icon: CalendarRange, label: `${t.code} ${t.name}`, sub: `Công việc · ${db.projects.find((p) => p.id === t.projectId)?.shortName}`, to: `/construction/plan/${t.projectId}/task/${t.id}` }));
     db.materialRequests.filter((r) => `${r.code} ${r.title}`.toLowerCase().includes(s)).slice(0, 3).forEach((r) => out.push({ icon: ClipboardList, label: r.title, sub: `Đề xuất vật tư · ${r.code}`, to: `/materials/requests/${r.id}` }));
     db.materials.filter((m) => `${m.code} ${m.name}`.toLowerCase().includes(s)).slice(0, 3).forEach((m) => out.push({ icon: Package, label: m.name, sub: `Vật tư · ${m.code}`, to: `/materials/inventory?material=${m.id}` }));
     db.equipment.filter((e) => `${e.code} ${e.name} ${e.plate}`.toLowerCase().includes(s)).slice(0, 4).forEach((e) => out.push({ icon: Truck, label: `${e.code} – ${e.name}`, sub: `Thiết bị · ${e.group}`, to: `/equipment/${e.id}` }));

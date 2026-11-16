@@ -95,6 +95,7 @@ export interface PlanTask {
   plannedEnd: string;
   actualStart: string | null;
   actualEnd: string | null;
+  expectedEnd?: string | null; // dự kiến kết thúc (tổ trưởng cập nhật)
   status: TaskStatus;
   order: number;
   note?: string;

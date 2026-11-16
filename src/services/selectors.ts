@@ -475,7 +475,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
         title: `Quá hạn ${late} ngày: ${t.code} ${t.name}`,
         detail: `${pName(t.projectId)} · hoàn thành ${(a * 100).toFixed(1)}% · hạn ${t.plannedEnd.split("-").reverse().join("/")}`,
         projectId: t.projectId,
-        link: `/construction/plan/${t.projectId}?task=${t.id}`,
+        link: `/construction/plan/${t.projectId}/task/${t.id}`,
       });
     }
   });

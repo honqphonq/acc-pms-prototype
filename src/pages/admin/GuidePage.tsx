@@ -29,8 +29,8 @@ const SCENARIOS: Scenario[] = [
     no: 2, title: "Quản lý kế hoạch thi công", role: "to_truong", userId: "u08", goal: "Cập nhật khối lượng thực hiện, ghi nhật ký và quan sát tiến độ tự động cập nhật.",
     steps: [
       { text: "Mở Kế hoạch thi công dự án Trường Lê Hồng Phong (bảng kế hoạch dạng cây hoặc Gantt)", to: "/construction/plan/p01" },
-      { text: "Mở hạng mục “Phần móng” → nhóm “Đài móng, giằng móng và tường móng” → công việc 1.1.2.2.4", to: "/construction/plan/p01?task=t-p01-009" },
-      { text: "Bấm “Cập nhật khối lượng”: nhập 24 m³ thực hiện hôm nay, ghi nội dung, nhân công, đính kèm ảnh hiện trường" },
+      { text: "Mở hạng mục “Phần móng” → nhóm “Đài móng, giằng móng và tường móng” → công việc 1.1.2.2.4", to: "/construction/plan/p01/task/t-p01-009" },
+      { text: "Màn hình chi tiết công việc: nhập 24 m³ thực hiện hôm nay, ghi nội dung, nhân công, đính kèm ảnh hiện trường" },
       { text: "Lưu cập nhật → tiến độ công việc 80% → 85,7%; tiến độ hạng mục, dự án và Dashboard được tính lại" },
       { text: "Đổi vai trò Chỉ huy trưởng để xác nhận nhật ký thi công", to: "/construction/logs?project=p01" },
       { text: "Xem Báo cáo giá trị thực hiện – giá trị tăng tương ứng", to: "/construction/value-report?project=p01" },

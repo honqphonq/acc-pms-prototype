@@ -12,9 +12,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { EmptyState } from "@/components/common/EmptyState";
 import { TableSkeleton } from "@/components/common/LoadingState";
 import { Tip } from "@/components/ui/tooltip";
-import { TaskProgressDialog } from "./TaskProgressDialog";
 import { TaskFormDialog, ItemFormDialog } from "./TaskFormDialog";
-import { TaskDrawer } from "./TaskDrawer";
 import { GanttChart, GanttLegend, type GanttRow, type GanttStatus } from "./GanttChart";
 import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services/selectors";
 import { importPlanTasks } from "@/services/actions";
@@ -55,7 +53,7 @@ interface Line {
 
 export default function PlanPage() {
   const { projectId = "" } = useParams();
-  const [params, setParams] = useSearchParams();
+  const [params] = useSearchParams();
   const { db, run } = useDb();
   const { can } = useAuth();
   const navigate = useNavigate();
@@ -65,7 +63,6 @@ export default function PlanPage() {
   const [onlyLate, setOnlyLate] = useState(false);
   const [q, setQ] = useState("");
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
-  const [progressId, setProgressId] = useState<string | null>(null);
   const [formOpen, setFormOpen] = useState(false);
   const [editTaskId, setEditTaskId] = useState<string | undefined>();
   const [formDefaults, setFormDefaults] = useState<{ itemId?: string; parentId?: string | null }>({});
@@ -80,6 +77,9 @@ export default function PlanPage() {
     setTimeout(() => setLoading(false), 450);
   };
   useEffect(reload, [projectId]);
+  useEffect(() => {
+    if (drawerId) navigate(`/construction/plan/${projectId}/task/${drawerId}`, { replace: true });
+  }, [drawerId, projectId, navigate]);
   useEffect(() => {
     if (focusItem && !loading) setTimeout(() => document.getElementById(`row-${focusItem}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
   }, [focusItem, loading]);
@@ -146,10 +146,8 @@ export default function PlanPage() {
   if (!filtering) lines.forEach((l) => collapsed[l.key] && hideDesc(l));
   const shown = lines.filter((l) => visibleSet.has(l.key) && !hidden.has(l.key));
 
-  const openDrawer = (id: string) => setParams((p) => { p.set("task", id); return p; });
-  const closeDrawer = () => setParams((p) => { p.delete("task"); return p; });
+  const openDetail = (id: string) => navigate(`/construction/plan/${project.id}/task/${id}`);
   const newTask = (itemId?: string, parentId: string | null = null) => { setEditTaskId(undefined); setFormDefaults({ itemId, parentId }); setFormOpen(true); };
-  const editTask = (id: string) => { setEditTaskId(id); setFormOpen(true); closeDrawer(); };
   const plus = (l: Line) => {
     if (!can("plan.edit")) return toast.info("Cần vai trò Chỉ huy trưởng / Phòng KH-KT để thêm công việc");
     if (l.kind === "root" || l.kind === "total") return setItemOpen(true);
@@ -260,7 +258,7 @@ export default function PlanPage() {
         ) : showGantt ? (
           <>
             <div className="border-b px-4 py-2"><GanttLegend showBaseline={baseline} /></div>
-            <GanttChart rows={ganttRows} showBaseline={baseline} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDrawer(id)} />
+            <GanttChart rows={ganttRows} showBaseline={baseline} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
           </>
         ) : (
           <div className="overflow-x-auto">
@@ -303,7 +301,7 @@ export default function PlanPage() {
                           ) : l.kind === "root" || l.kind === "total" ? <span className="text-[10px] text-slate-700">▼</span> : <span className="inline-block w-3" />}
                           {l.late && l.actual < 1 && l.kind !== "root" && l.kind !== "total" && <Tip content="Chậm / quá hạn kế hoạch"><span className="font-bold text-rose-600">!</span></Tip>}
                           {clickable ? (
-                            <button onClick={() => openDrawer(l.taskId!)} className={cn("min-w-0 truncate text-left hover:text-primary hover:underline", bold ? "font-semibold text-slate-900" : "text-slate-700")}>{l.name}</button>
+                            <button onClick={() => openDetail(l.taskId!)} className={cn("min-w-0 truncate text-left hover:text-primary hover:underline", bold ? "font-semibold text-slate-900" : "text-slate-700")}>{l.name}</button>
                           ) : (
                             <span className={cn("min-w-0 truncate", bold && "font-semibold text-slate-900")}>{l.name}</span>
                           )}
@@ -328,12 +326,10 @@ export default function PlanPage() {
           </div>
         )}
       </Card>
-      <p className="mt-2 text-[11.5px] text-slate-400">Bấm vào tên công việc để xem chi tiết, nhật ký và cập nhật khối lượng · <span className="font-bold text-rose-600">!</span> công việc chậm / quá hạn · “+” thêm công việc tại vị trí dòng</p>
+      <p className="mt-2 text-[11.5px] text-slate-400">Bấm vào tên công việc để mở màn hình chi tiết và cập nhật kết quả · <span className="font-bold text-rose-600">!</span> công việc chậm / quá hạn · “+” thêm công việc tại vị trí dòng</p>
 
-      <TaskProgressDialog taskId={progressId} open={!!progressId} onOpenChange={(o) => !o && setProgressId(null)} />
       <TaskFormDialog open={formOpen} onOpenChange={setFormOpen} projectId={project.id} task={db.constructionPlans.find((t) => t.id === editTaskId)} defaults={formDefaults} />
       <ItemFormDialog open={itemOpen} onOpenChange={setItemOpen} projectId={project.id} />
-      <TaskDrawer taskId={drawerId} onClose={closeDrawer} onUpdate={(id) => { closeDrawer(); setProgressId(id); }} onEdit={editTask} />
 
       <Dialog open={!!importRows} onOpenChange={(o) => !o && setImportRows(null)}>
         <DialogContent className="max-w-3xl">
