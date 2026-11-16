@@ -53,7 +53,7 @@ export default function LoginPage() {
           <p className="mt-3 max-w-md text-sm text-slate-300">Số hóa, liên thông và tập trung dữ liệu tiến độ thi công, vật tư vật liệu, máy móc thiết bị và thanh quyết toán công trình.</p>
           <div className="mt-8 grid max-w-md grid-cols-2 gap-3 text-[13px]">
             {[
-              [Building2, "Quản lý dự án"],
+              [Building2, "Quản lý công trình"],
               [CalendarRange, "Kế hoạch & tiến độ"],
               [Package, "Vật tư vật liệu"],
               [Truck, "Xe máy thiết bị"],

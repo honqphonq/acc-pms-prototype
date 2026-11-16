@@ -42,7 +42,7 @@ Ma trận quyền chi tiết: `src/utils/permissions.ts` **[ĐX]**.
 ```
                    ┌──────────── Dashboard / Báo cáo / Cảnh báo ◄──────────────┐
                    │ (chỉ đọc – tính lại từ dữ liệu gốc)                        │
-Quản lý dự án ──► Hạng mục ──► Kế hoạch (đầu việc) ──► Nhật ký thi công (KL) ───┤
+Quản lý công trình ──► Hạng mục ──► Kế hoạch (đầu việc) ──► Nhật ký thi công (KL) ───┤
      │                              │  ▲                     │                   │
      │                              │  └── xuất vật tư theo đầu việc            │
      │                              ▼                         ▼                   │
@@ -62,7 +62,8 @@ Các khóa liên kết: `projectId`, `itemId`, `taskId`, `materialId`, `supplier
 |---|---|---|
 | Đăng nhập | Chọn vai trò demo | `/login` |
 | Dashboard, báo cáo | Dashboard tổng quan [TL p.14] | `/` |
-| Quản lý công trình | Danh sách dự án (bảng/thẻ), tạo/sửa/xóa, phê duyệt nhận thi công | `/projects` |
+| Quản lý công trình | Quản lý gói thầu · Quản lý hợp đồng nhận thầu | `/projects/packages`, `/projects/contracts` |
+| | Quản lý nhận thi công: danh sách công trình (bảng/thẻ), tạo/sửa/xóa, phê duyệt nhận thi công | `/projects` |
 | | Dashboard dự án + 8 tab [TL p.15] | `/projects/:id` |
 | | Kế hoạch thi công: bảng cây, Gantt, giao việc, drawer chi tiết [TL p.16] | `/construction/plan/:projectId` |
 | | Cập nhật tiến độ / khối lượng (modal) [TL p.17] | trong kế hoạch, dự án, nhật ký |

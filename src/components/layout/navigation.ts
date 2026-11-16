@@ -1,5 +1,5 @@
 import {
-  BarChart3, Building2, CalendarRange, ClipboardCheck, HardHat, LayoutDashboard, Package, Settings, Siren, Truck, BookOpenCheck, type LucideIcon,
+  BarChart3, Building2, ClipboardCheck, HardHat, LayoutDashboard, Package, Settings, Siren, Truck, BookOpenCheck, type LucideIcon,
 } from "lucide-react";
 
 export interface NavItem {
@@ -11,18 +11,18 @@ export interface NavItem {
 }
 
 export const NAV: NavItem[] = [
-  { label: "Dashboard tổng quan", to: "/", icon: LayoutDashboard },
-  { label: "Quản lý dự án", to: "/projects", icon: Building2 },
+  { label: "Dashboard", to: "/", icon: LayoutDashboard },
   {
-    label: "Kế hoạch thi công", to: "/construction", icon: CalendarRange,
+    label: "Quản lý công trình", to: "/projects", icon: Building2,
     children: [
-      { label: "Kế hoạch & tiến độ", to: "/construction/plan" },
-      { label: "Nhật ký thi công", to: "/construction/logs" },
-      { label: "Giá trị thực hiện", to: "/construction/value-report" },
+      { label: "Quản lý gói thầu", to: "/projects/packages" },
+      { label: "Quản lý hợp đồng nhận thầu", to: "/projects/contracts" },
+      { label: "Quản lý nhận thi công", to: "/projects" },
+      { label: "Kế hoạch thi công", to: "/construction/plan" },
     ],
   },
   {
-    label: "Vật tư vật liệu", to: "/materials", icon: Package, badgeKey: "approvals",
+    label: "Quản lý vật tư vật liệu", to: "/materials", icon: Package, badgeKey: "approvals",
     children: [
       { label: "Nhu cầu & tồn kho", to: "/materials/inventory" },
       { label: "Đề xuất vật tư", to: "/materials/requests" },
@@ -32,7 +32,7 @@ export const NAV: NavItem[] = [
     ],
   },
   {
-    label: "Xe máy thiết bị", to: "/equipment", icon: Truck,
+    label: "Quản lý xe máy thiết bị", to: "/equipment", icon: Truck,
     children: [
       { label: "Danh sách xe máy", to: "/equipment/list" },
       { label: "Điều động thiết bị", to: "/equipment/dispatch" },
@@ -41,7 +41,7 @@ export const NAV: NavItem[] = [
     ],
   },
   {
-    label: "Nghiệm thu, thanh toán", to: "/finance", icon: ClipboardCheck,
+    label: "Quản lý nghiệm thu, thanh quyết toán", to: "/finance", icon: ClipboardCheck,
     children: [
       { label: "Hồ sơ nghiệm thu", to: "/acceptance" },
       { label: "Đối chiếu khối lượng", to: "/acceptance/reconcile" },
@@ -59,7 +59,9 @@ export const NAV: NavItem[] = [
 
 /** Nhãn breadcrumb theo đường dẫn */
 export const PATH_LABELS: Record<string, string> = {
-  projects: "Quản lý dự án",
+  projects: "Quản lý công trình",
+  packages: "Quản lý gói thầu",
+  contracts: "Quản lý hợp đồng nhận thầu",
   construction: "Kế hoạch thi công",
   plan: "Kế hoạch & tiến độ",
   logs: "Nhật ký thi công",

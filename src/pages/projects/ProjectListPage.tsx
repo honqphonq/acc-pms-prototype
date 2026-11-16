@@ -123,7 +123,7 @@ export default function ProjectListPage() {
   return (
     <div>
       <PageHeader
-        title="Danh sách dự án"
+        title="Quản lý nhận thi công"
         description={`${db.projects.length} dự án · ${db.projects.filter((p) => p.status === "dang_thi_cong").length} đang thi công · tổng giá trị hợp đồng ${fmtNumber(db.projects.reduce((s, p) => s + p.contractValue, 0) / 1e9, 0)} tỷ đồng`}
         actions={
           <>

@@ -8,6 +8,8 @@ import { PlanIndexRedirect } from "@/pages/construction/PlanPage";
 const Dashboard = lazy(() => import("@/pages/dashboard/DashboardPage"));
 const ProjectList = lazy(() => import("@/pages/projects/ProjectListPage"));
 const ProjectDetail = lazy(() => import("@/pages/projects/ProjectDetailPage"));
+const Packages = lazy(() => import("@/pages/projects/PackagesPage"));
+const Contracts = lazy(() => import("@/pages/projects/ContractsPage"));
 const Plan = lazy(() => import("@/pages/construction/PlanPage"));
 const Logs = lazy(() => import("@/pages/construction/LogsPage"));
 const ValueReport = lazy(() => import("@/pages/construction/ValueReportPage"));
@@ -43,6 +45,8 @@ export function AppRoutes() {
       <Route element={<AppLayout />}>
         <Route index element={<S><Dashboard /></S>} />
         <Route path="projects" element={<S><ProjectList /></S>} />
+        <Route path="projects/packages" element={<S><Packages /></S>} />
+        <Route path="projects/contracts" element={<S><Contracts /></S>} />
         <Route path="projects/:id" element={<S><ProjectDetail /></S>} />
         <Route path="construction" element={<Navigate to="/construction/plan" replace />} />
         <Route path="construction/plan" element={<PlanIndexRedirect />} />

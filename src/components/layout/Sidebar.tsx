@@ -43,7 +43,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onCloseMobile }: { co
             const content = (
               <>
                 <Icon className="h-[18px] w-[18px] shrink-0" />
-                <span className={cn("flex-1 truncate text-left", collapsed && "lg:hidden")}>{item.label}</span>
+                <span className={cn("line-clamp-2 flex-1 text-left leading-snug", collapsed && "lg:hidden")}>{item.label}</span>
                 {badge > 0 && <span className={cn("rounded-full bg-primary px-1.5 text-[10px] font-semibold leading-4 text-white", collapsed && "lg:absolute lg:right-2 lg:top-1")}>{badge}</span>}
                 {item.children && <ChevronDown className={cn("h-4 w-4 shrink-0 transition-transform", open[item.to] && "rotate-180", collapsed && "lg:hidden")} />}
               </>
@@ -74,7 +74,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onCloseMobile }: { co
                       <NavLink
                         key={c.to}
                         to={c.to}
-                        end={c.to === "/acceptance" || c.to === "/payments"}
+                        end={c.to === "/acceptance" || c.to === "/payments" || c.to === "/projects"}
                         onClick={onCloseMobile}
                         className={({ isActive: a }) => cn("block rounded-md px-2.5 py-1.5 text-[12.5px] transition-colors", a ? "bg-white/10 font-semibold text-white" : "text-slate-400 hover:text-white")}
                       >

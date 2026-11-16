@@ -184,6 +184,7 @@ export default function PlanPage() {
         actions={
           <>
             <FilterSelect value={project.id} onChange={(v) => v && navigate(`/construction/plan/${v}`)} allLabel="— Chọn dự án —" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <Button variant="outline" onClick={() => navigate(`/construction/logs?project=${project.id}`)}>Nhật ký thi công</Button>
             <Button variant="outline" onClick={() => navigate(`/construction/value-report?project=${project.id}`)}>Báo cáo giá trị thực hiện</Button>
           </>
         }
@@ -191,7 +192,7 @@ export default function PlanPage() {
 
       <Card className="mb-4 grid gap-4 p-4 md:grid-cols-[1fr_auto]">
         <div className="min-w-0">
-          <div className="text-[12px] text-slate-500"><Link to="/projects" className="text-success-fg hover:underline">Danh sách dự án</Link> » <Link to={`/projects/${project.id}`} className="font-medium text-slate-800 hover:text-primary">{project.name}</Link></div>
+          <div className="text-[12px] text-slate-500"><Link to="/projects" className="text-success-fg hover:underline">Danh sách công trình</Link> » <Link to={`/projects/${project.id}`} className="font-medium text-slate-800 hover:text-primary">{project.name}</Link></div>
           <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px]">
             <div className="w-56"><div className="mb-1 flex justify-between text-xs"><span className="text-slate-500">Thực tế / kế hoạch</span><span><b>{fmtPct(stats.actual)}</b> / {fmtPct(stats.planned)}</span></div><Progress value={stats.actual} marker={stats.planned} tone={stats.health === "cham_tien_do" ? "danger" : stats.health === "nguy_co_cham" ? "warning" : "success"} /></div>
             <StatusBadge map={HEALTH} value={stats.health} />

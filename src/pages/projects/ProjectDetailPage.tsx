@@ -44,7 +44,7 @@ export default function ProjectDetailPage() {
   const project = db.projects.find((p) => p.id === id);
 
   const series = useMemo(() => (project ? monthlyProgress(db, project.id) : []), [db, project]);
-  if (!project) return <Card><EmptyState title="Không tìm thấy dự án" description="Dự án có thể đã bị xóa." action={<Button onClick={() => navigate("/projects")}>Về danh sách dự án</Button>} /></Card>;
+  if (!project) return <Card><EmptyState title="Không tìm thấy dự án" description="Dự án có thể đã bị xóa." action={<Button onClick={() => navigate("/projects")}>Về danh sách công trình</Button>} /></Card>;
   if (loading) return <PageSkeleton />;
 
   const s = projectStats(db, project.id);
