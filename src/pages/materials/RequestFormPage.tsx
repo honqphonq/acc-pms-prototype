@@ -20,20 +20,42 @@ import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtNumber, fmtVnd } from "@/utils/format";
 import type { MaterialRequest, MaterialRequestLine } from "@/types";
 
+/** Trang tạo / sửa đề xuất (truy cập trực tiếp qua URL) */
 export default function RequestFormPage() {
   const { id } = useParams();
   const [params] = useSearchParams();
+  const navigate = useNavigate();
+  return (
+    <RequestForm
+      existingId={id}
+      initProject={params.get("project") ?? undefined}
+      initTeam={params.get("team") ?? undefined}
+      initMaterial={params.get("material") ?? undefined}
+      onClose={() => navigate(-1)}
+      onSaved={(rid) => navigate(`/materials/requests/${rid}`)}
+    />
+  );
+}
+
+/** Tổ đội của một dự án (lấy từ kế hoạch thi công) */
+export function projectTeams(db: ReturnType<typeof useDb>["db"], projectId: string) {
+  return [...new Set(db.constructionPlans.filter((t) => t.projectId === projectId && t.team).map((t) => t.team))].sort((a, b) => a.localeCompare(b, "vi"));
+}
+
+/** Form thêm / sửa đề xuất vật tư – dùng trong trang và trong cửa sổ "Thêm đề xuất" */
+export function RequestForm({ existingId, initProject: initProjectProp, initTeam, initMaterial, onClose, onSaved, inDialog }: { existingId?: string; initProject?: string; initTeam?: string; initMaterial?: string; onClose: () => void; onSaved: (id: string, team?: string) => void; inDialog?: boolean }) {
   const { db, run } = useDb();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const existing = db.materialRequests.find((r) => r.id === id);
-  const initProject = existing?.projectId ?? params.get("project") ?? "p01";
-  const initMat = params.get("material");
+  const existing = db.materialRequests.find((r) => r.id === existingId);
+  const id = existingId;
+  const initProject = existing?.projectId ?? initProjectProp ?? "p01";
+  const initMat = initMaterial;
   const [f, setF] = useState<RequestInput>(() =>
     existing
-      ? { title: existing.title, type: existing.type, projectId: existing.projectId, itemId: existing.itemId, taskId: existing.taskId, neededDate: existing.neededDate, note: existing.note, approverId: existing.approverId, lines: existing.lines }
+      ? { title: existing.title, type: existing.type, projectId: existing.projectId, itemId: existing.itemId, taskId: existing.taskId, team: existing.team, neededDate: existing.neededDate, note: existing.note, approverId: existing.approverId, lines: existing.lines }
       : {
-          title: initMat ? `${db.materials.find((m) => m.id === initMat)?.name} bổ sung` : "", type: "mua_vat_tu", projectId: initProject, itemId: null, taskId: null,
+          title: initMat ? `${db.materials.find((m) => m.id === initMat)?.name} bổ sung` : "", type: "mua_vat_tu", projectId: initProject, itemId: null, taskId: null, team: initTeam,
           neededDate: addDays(DEMO_TODAY, 7), note: "", approverId: db.projects.find((p) => p.id === initProject)?.commanderId ?? "u04",
           lines: initMat ? [{ materialId: initMat, qty: 0, unitPrice: db.materials.find((m) => m.id === initMat)?.unitPrice ?? 0 }] : [],
         },
@@ -42,7 +64,8 @@ export default function RequestFormPage() {
   const [matSearch, setMatSearch] = useState("");
   const set = <K extends keyof RequestInput>(k: K, v: RequestInput[K]) => setF((x) => ({ ...x, [k]: v }));
   const items = db.constructionItems.filter((i) => i.projectId === f.projectId);
-  const tasks = db.constructionPlans.filter((t) => t.projectId === f.projectId && !t.isGroup && (!f.itemId || t.itemId === f.itemId));
+  const tasks = db.constructionPlans.filter((t) => t.projectId === f.projectId && !t.isGroup && (!f.itemId || t.itemId === f.itemId) && (!f.team || t.team === f.team));
+  const teams = projectTeams(db, f.projectId);
   const stock = useMemo(() => getStockRows(db).filter((r) => r.inv.projectId === f.projectId), [db, f.projectId]);
   const approvers = db.users.filter((u) => u.role === "chi_huy_truong" || u.role === "lanh_dao");
   const found = matSearch.trim().length > 0 ? db.materials.filter((m) => `${m.code} ${m.name}`.toLowerCase().includes(matSearch.toLowerCase()) && !f.lines.some((l) => l.materialId === m.id)).slice(0, 6) : [];
@@ -72,20 +95,34 @@ export default function RequestFormPage() {
     const next = run(saveRequest, f, user!.id, send, existing?.id);
     const rid = existing?.id ?? next.materialRequests[0].id;
     toast.success(send ? "Đã gửi đề xuất – chờ CHT phê duyệt" : "Đã lưu nháp đề xuất");
-    navigate(`/materials/requests/${rid}`);
+    onSaved(rid, f.team);
   };
 
   return (
     <div>
-      <PageHeader
-        title={existing ? `Chỉnh sửa đề xuất ${existing.code}` : "Thêm đề xuất vật tư"}
-        description="Lập đề xuất theo hạng mục / công việc; hệ thống đối chiếu định mức, tồn kho và cảnh báo vượt định mức."
-        actions={<>
-          <Button variant="success" onClick={() => submit(true)}><Send /> Gửi</Button>
-          <Button variant="outline" onClick={() => submit(false)}><Save /> Lưu nháp</Button>
-          <Button variant="ghost" onClick={() => navigate(-1)}><X /> Đóng</Button>
-        </>}
-      />
+      {inDialog ? (
+        <div className="sticky top-0 z-10 -mx-6 -mt-4 mb-4 flex flex-wrap items-center justify-between gap-2 border-b bg-white px-6 py-3">
+          <div>
+            <div className="text-base font-semibold text-slate-900">{existing ? `Chỉnh sửa đề xuất ${existing.code}` : "Thêm đề xuất"}</div>
+            <div className="text-xs text-slate-500">{db.projects.find((p) => p.id === f.projectId)?.shortName}{f.team ? ` · ${f.team}` : ""}</div>
+          </div>
+          <div className="flex gap-2">
+            <Button size="sm" variant="success" onClick={() => submit(true)}><Send /> Gửi</Button>
+            <Button size="sm" variant="outline" onClick={() => submit(false)}><Save /> Lưu nháp</Button>
+            <Button size="sm" variant="ghost" onClick={onClose}><X /> Đóng</Button>
+          </div>
+        </div>
+      ) : (
+        <PageHeader
+          title={existing ? `Chỉnh sửa đề xuất ${existing.code}` : "Thêm đề xuất vật tư"}
+          description="Lập đề xuất theo tổ, hạng mục / công việc; hệ thống đối chiếu định mức, tồn kho và cảnh báo vượt định mức."
+          actions={<>
+            <Button variant="success" onClick={() => submit(true)}><Send /> Gửi</Button>
+            <Button variant="outline" onClick={() => submit(false)}><Save /> Lưu nháp</Button>
+            <Button variant="ghost" onClick={onClose}><X /> Đóng</Button>
+          </>}
+        />
+      )}
       <div className="grid gap-4 xl:grid-cols-[1fr_300px]">
         <div className="min-w-0 space-y-4">
           <FormSection title="Thông tin đề xuất">
@@ -93,6 +130,7 @@ export default function RequestFormPage() {
               <FormField label="Tiêu đề" required error={err.title} className="md:col-span-2"><Input value={f.title} onChange={(e) => set("title", e.target.value)} placeholder="VD: Thép Ø16 cột tầng trệt" /></FormField>
               <FormField label="Nhóm đề xuất"><Select value={f.type} onChange={(e) => set("type", e.target.value as MaterialRequest["type"])} options={Object.entries(MR_TYPE).map(([v, l]) => ({ value: v, label: l }))} /></FormField>
               <FormField label="Hợp đồng nhận thầu / dự án"><Select value={f.projectId} onChange={(e) => { const pid = e.target.value; setF((x) => ({ ...x, projectId: pid, itemId: null, taskId: null, approverId: db.projects.find((p) => p.id === pid)?.commanderId ?? x.approverId })); }} options={db.projects.filter((p) => p.status !== "hoan_thanh").map((p) => ({ value: p.id, label: `${p.contractNo} – ${p.shortName}` }))} /></FormField>
+              <FormField label="Tổ đề xuất"><Select value={f.team ?? ""} onChange={(e) => setF((x) => ({ ...x, team: e.target.value || undefined, taskId: null }))} placeholder="— Chọn tổ —" options={teams.map((t) => ({ value: t, label: t }))} /></FormField>
               <FormField label="Hạng mục"><Select value={f.itemId ?? ""} onChange={(e) => { set("itemId", e.target.value || null); set("taskId", null); }} placeholder="— Tất cả hạng mục —" options={items.map((i) => ({ value: i.id, label: `${i.code} ${i.name}` }))} /></FormField>
               <FormField label="Công việc"><Select value={f.taskId ?? ""} onChange={(e) => set("taskId", e.target.value || null)} placeholder="— Chọn công việc —" options={tasks.map((t) => ({ value: t.id, label: `${t.code} ${t.name}` }))} /></FormField>
               <FormField label="Ngày cần vật tư" required error={err.neededDate}><Input type="date" value={f.neededDate} min={DEMO_TODAY} onChange={(e) => set("neededDate", e.target.value)} /></FormField>

@@ -36,7 +36,8 @@
         "byId": "u10",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-002",
@@ -75,7 +76,8 @@
         "byId": "u10",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-003",
@@ -119,14 +121,15 @@
         "byId": "u11",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ nề số 1"
   },
   {
     "id": "mr-004",
     "code": "ĐXVT-2026-104",
     "type": "mua_vat_tu",
     "itemId": "i-p01-4",
-    "taskId": null,
+    "taskId": "t-p01-016",
     "approverId": "u04",
     "supplierId": null,
     "orderNo": null,
@@ -158,7 +161,8 @@
         "byId": "u10",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ điện nước"
   },
   {
     "id": "mr-005",
@@ -203,7 +207,8 @@
         "action": "Trả lại",
         "note": "Bổ sung kế hoạch luân chuyển ván khuôn và biên bản kiểm tra chất lượng cốp pha"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-006",
@@ -237,7 +242,8 @@
         "byId": "u10",
         "action": "Tạo đề xuất (lưu nháp)"
       }
-    ]
+    ],
+    "team": "Tổ nề số 1"
   },
   {
     "id": "mr-007",
@@ -282,7 +288,8 @@
         "action": "Phê duyệt",
         "note": "Đồng ý, ưu tiên NCC có sẵn hàng"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-008",
@@ -343,7 +350,8 @@
         "action": "Chọn nhà cung cấp & đặt hàng",
         "note": "Công ty CP Thép Việt Hưng – ĐH-VH-2026-0412"
       }
-    ]
+    ],
+    "team": "Tổ cốt thép"
   },
   {
     "id": "mr-009",
@@ -398,7 +406,8 @@
         "action": "Nhập kho",
         "note": "PNK theo đề xuất"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-010",
@@ -458,7 +467,8 @@
         "action": "Xuất sử dụng",
         "note": "Xuất cho tổ nề số 1"
       }
-    ]
+    ],
+    "team": "Tổ nề số 1"
   },
   {
     "id": "mr-011",
@@ -517,7 +527,8 @@
         "byId": "u10",
         "action": "Xuất sử dụng"
       }
-    ]
+    ],
+    "team": "Tổ cốt thép"
   },
   {
     "id": "mr-012",
@@ -562,7 +573,8 @@
         "action": "Từ chối",
         "note": "Khối lượng đề xuất vượt định mức còn lại của công việc, đề nghị rà soát lại"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-013",
@@ -601,7 +613,8 @@
         "byId": "u20",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 2"
   },
   {
     "id": "mr-014",
@@ -650,7 +663,8 @@
         "byId": "u20",
         "action": "Chọn nhà cung cấp & đặt hàng"
       }
-    ]
+    ],
+    "team": "Tổ hoàn thiện số 2"
   },
   {
     "id": "mr-015",
@@ -694,7 +708,8 @@
         "byId": "u21",
         "action": "Phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ móng đường số 2"
   },
   {
     "id": "mr-016",
@@ -733,7 +748,8 @@
         "byId": "u22",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ cống số 1"
   },
   {
     "id": "mr-017",
@@ -792,7 +808,8 @@
         "byId": "u24",
         "action": "Xuất sử dụng"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 1"
   },
   {
     "id": "mr-018",
@@ -846,7 +863,8 @@
         "byId": "u25",
         "action": "Nhập kho"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 1"
   },
   {
     "id": "mr-019",
@@ -885,7 +903,8 @@
         "byId": "u27",
         "action": "Gửi phê duyệt"
       }
-    ]
+    ],
+    "team": "Tổ bê tông số 3"
   },
   {
     "id": "mr-020",
@@ -919,6 +938,7 @@
         "byId": "u23",
         "action": "Tạo đề xuất (lưu nháp)"
       }
-    ]
+    ],
+    "team": "Tổ cống số 3"
   }
 ]

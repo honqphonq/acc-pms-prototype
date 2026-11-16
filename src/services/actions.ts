@@ -196,7 +196,7 @@ export const createSupplier = (db: Database, s: Omit<Supplier, "id" | "debt">) =
 export const updateSupplier = (db: Database, id: ID, c: Partial<Supplier>) => patch(db, "suppliers", id, c);
 export const deleteSupplier = (db: Database, id: ID) => remove(db, "suppliers", (s) => s.id === id);
 
-export type RequestInput = Pick<MaterialRequest, "title" | "type" | "projectId" | "itemId" | "taskId" | "neededDate" | "note" | "approverId"> & { lines: MaterialRequestLine[] };
+export type RequestInput = Pick<MaterialRequest, "title" | "type" | "projectId" | "itemId" | "taskId" | "neededDate" | "note" | "approverId" | "team"> & { lines: MaterialRequestLine[] };
 export function saveRequest(db: Database, input: RequestInput, byId: ID, submit: boolean, existingId?: ID): Database {
   if (existingId) {
     const r = db.materialRequests.find((x) => x.id === existingId)!;

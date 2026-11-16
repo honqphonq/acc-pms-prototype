@@ -178,6 +178,7 @@ export interface MaterialRequest {
   projectId: ID;
   itemId: ID | null;
   taskId: ID | null;
+  team?: string; // tổ đội đề xuất
   requesterId: ID;
   approverId: ID;
   createdAt: string;
