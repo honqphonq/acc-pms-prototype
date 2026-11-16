@@ -19,7 +19,7 @@ import { useConfirm } from "@/components/common/ConfirmProvider";
 import { DispatchDialog, EquipmentFormDialog } from "./EquipmentDialogs";
 import { MaintenanceDialog, ShiftDialog } from "./ShiftMaintDialogs";
 import { releaseEquipment } from "@/services/actions";
-import { getEquipmentUsage, maintenanceDue } from "@/services/selectors";
+import { equipmentWork, getEquipmentUsage, maintenanceDue, utilizationOf } from "@/services/selectors";
 import { ASSIGNMENT_STATUS, EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
 import { DEMO_TODAY, addDays } from "@/utils/date";
@@ -35,6 +35,7 @@ export default function EquipmentDetailPage() {
   if (!e) return <Card><EmptyState title="Không tìm thấy thiết bị" action={<Button onClick={() => navigate("/equipment/list")}>Về danh sách</Button>} /></Card>;
   const project = db.projects.find((p) => p.id === e.currentProjectId);
   const u = getEquipmentUsage(db).get(e.id);
+  const work = equipmentWork(db, e.id, e.currentProjectId);
   const shifts = db.equipmentShifts.filter((s) => s.equipmentId === e.id).sort((a, b) => b.date.localeCompare(a.date));
   const assigns = db.equipmentAssignments.filter((a) => a.equipmentId === e.id).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const sinceMaint = e.totalHours - e.lastMaintenanceHours;
@@ -61,7 +62,7 @@ export default function EquipmentDetailPage() {
 
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         <KpiCard label="Công trình đang sử dụng" value={<span className="text-base">{project?.shortName ?? "Chưa phân bổ"}</span>} tone="info" sub={e.operatorId ? `Vận hành: ${db.users.find((x) => x.id === e.operatorId)?.name}` : "Chưa phân công người vận hành"} icon={<Truck />} onClick={project ? () => navigate(`/projects/${project.id}`) : undefined} />
-        <KpiCard label="Giờ máy 3 tuần gần nhất" value={fmtNumber(u?.hours ?? 0)} unit="giờ" tone="success" icon={<Clock />} progress={(u?.hours ?? 0) / 144} sub={`Hiệu suất ${fmtPct((u?.hours ?? 0) / 144, 0)} · ${u?.shifts ?? 0} ca · tổng ${fmtNumber(e.totalHours, 0)} giờ`} />
+        <KpiCard label="Giờ máy tại công trình hiện tại" value={fmtNumber(work.hours, 0)} unit="giờ" tone="success" icon={<Clock />} progress={utilizationOf(work)} sub={project ? `Từ khi về công trình · hiệu suất ${fmtPct(utilizationOf(work), 0)} · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ` : `Chưa phân bổ · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ`} />
         <KpiCard label="Nhiên liệu tiêu hao (3 tuần)" value={fmtNumber(u?.fuel ?? 0, 0)} unit="lít" tone={u && u.fuel > u.fuelNormTotal * 1.08 ? "danger" : "warning"} icon={<Fuel />} progress={u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0} sub={`Định mức ${e.fuelNorm} lít/giờ · ${fmtPct(u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0, 0)} định mức`} />
         <KpiCard label="Bảo dưỡng định kỳ" value={fmtNumber(sinceMaint, 0)} unit={`/ ${e.maintenanceInterval} giờ`} tone={maintenanceDue(e) ? "danger" : "navy"} icon={<Wrench />} progress={sinceMaint / e.maintenanceInterval} sub={maintenanceDue(e) ? "Đã đến hạn bảo dưỡng" : `Còn ${e.maintenanceInterval - sinceMaint} giờ đến kỳ bảo dưỡng`} />
       </div>

@@ -13,6 +13,7 @@ import stockTransactions from "@/data/stock-transactions.json";
 import equipment from "@/data/equipment.json";
 import equipmentAssignments from "@/data/equipment-assignments.json";
 import equipmentShifts from "@/data/equipment-shifts.json";
+import equipmentUsage from "@/data/equipment-usage.json";
 import acceptanceRecords from "@/data/acceptance-records.json";
 import paymentRecords from "@/data/payment-records.json";
 import notifications from "@/data/notifications.json";
@@ -36,6 +37,7 @@ export function getSeedData(): Database {
     equipment,
     equipmentAssignments,
     equipmentShifts,
+    equipmentUsage,
     acceptanceRecords,
     paymentRecords,
     notifications,

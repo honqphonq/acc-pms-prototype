@@ -71,6 +71,8 @@ export function deleteProject(db: Database, id: ID): Database {
   db = remove(db, "acceptanceRecords", (x) => x.projectId === id);
   db = remove(db, "paymentRecords", (x) => x.projectId === id);
   db = remove(db, "issues", (x) => x.projectId === id);
+  db = remove(db, "equipmentUsage", (x) => x.projectId === id);
+  db = remove(db, "equipmentShifts", (x) => x.projectId === id);
   db = setCol(db, "equipment", db.equipment.map((e) => (e.currentProjectId === id ? { ...e, currentProjectId: null, status: "nhan_roi", operatorId: null } : e)));
   return db;
 }
@@ -310,6 +312,7 @@ export const updateEquipment = (db: Database, id: ID, c: Partial<Equipment>) => 
 export function deleteEquipment(db: Database, id: ID): Database {
   db = remove(db, "equipment", (e) => e.id === id);
   db = remove(db, "equipmentAssignments", (a) => a.equipmentId === id);
+  db = remove(db, "equipmentUsage", (u) => u.equipmentId === id);
   return remove(db, "equipmentShifts", (s) => s.equipmentId === id);
 }
 /** Bước 1 – Dự án gửi yêu cầu sử dụng thiết bị */

@@ -1,0 +1,2018 @@
+[
+  {
+    "id": "eu-0001",
+    "equipmentId": "eq-001",
+    "projectId": "p01",
+    "month": "2026-06",
+    "workingDays": 19,
+    "hours": 113,
+    "fuelLiters": 2611
+  },
+  {
+    "id": "eu-0002",
+    "equipmentId": "eq-001",
+    "projectId": "p01",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 168,
+    "fuelLiters": 3820
+  },
+  {
+    "id": "eu-0003",
+    "equipmentId": "eq-001",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 162,
+    "fuelLiters": 3564
+  },
+  {
+    "id": "eu-0004",
+    "equipmentId": "eq-001",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 167,
+    "fuelLiters": 3658
+  },
+  {
+    "id": "eu-0005",
+    "equipmentId": "eq-001",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 122,
+    "fuelLiters": 2838
+  },
+  {
+    "id": "eu-0006",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-04",
+    "workingDays": 19,
+    "hours": 137,
+    "fuelLiters": 3019
+  },
+  {
+    "id": "eu-0007",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 163,
+    "fuelLiters": 3486
+  },
+  {
+    "id": "eu-0008",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 194,
+    "fuelLiters": 4063
+  },
+  {
+    "id": "eu-0009",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 175,
+    "fuelLiters": 4000
+  },
+  {
+    "id": "eu-0010",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 174,
+    "fuelLiters": 4056
+  },
+  {
+    "id": "eu-0011",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 181,
+    "fuelLiters": 4181
+  },
+  {
+    "id": "eu-0012",
+    "equipmentId": "eq-002",
+    "projectId": "p04",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 147,
+    "fuelLiters": 3139
+  },
+  {
+    "id": "eu-0013",
+    "equipmentId": "eq-005",
+    "projectId": "p03",
+    "month": "2026-06",
+    "workingDays": 11,
+    "hours": 60,
+    "fuelLiters": 1395
+  },
+  {
+    "id": "eu-0014",
+    "equipmentId": "eq-005",
+    "projectId": "p03",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 154,
+    "fuelLiters": 3572
+  },
+  {
+    "id": "eu-0015",
+    "equipmentId": "eq-005",
+    "projectId": "p03",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 146,
+    "fuelLiters": 3404
+  },
+  {
+    "id": "eu-0016",
+    "equipmentId": "eq-005",
+    "projectId": "p03",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 141,
+    "fuelLiters": 3215
+  },
+  {
+    "id": "eu-0017",
+    "equipmentId": "eq-005",
+    "projectId": "p03",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 114,
+    "fuelLiters": 2447
+  },
+  {
+    "id": "eu-0018",
+    "equipmentId": "eq-007",
+    "projectId": "p01",
+    "month": "2026-06",
+    "workingDays": 11,
+    "hours": 75,
+    "fuelLiters": 1155
+  },
+  {
+    "id": "eu-0019",
+    "equipmentId": "eq-007",
+    "projectId": "p01",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 194,
+    "fuelLiters": 3015
+  },
+  {
+    "id": "eu-0020",
+    "equipmentId": "eq-007",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 191,
+    "fuelLiters": 2984
+  },
+  {
+    "id": "eu-0021",
+    "equipmentId": "eq-007",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 177,
+    "fuelLiters": 2861
+  },
+  {
+    "id": "eu-0022",
+    "equipmentId": "eq-007",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 151,
+    "fuelLiters": 2308
+  },
+  {
+    "id": "eu-0023",
+    "equipmentId": "eq-008",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 22,
+    "hours": 155,
+    "fuelLiters": 2489
+  },
+  {
+    "id": "eu-0024",
+    "equipmentId": "eq-008",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 191,
+    "fuelLiters": 3026
+  },
+  {
+    "id": "eu-0025",
+    "equipmentId": "eq-008",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 148,
+    "fuelLiters": 2303
+  },
+  {
+    "id": "eu-0026",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-02",
+    "workingDays": 12,
+    "hours": 81,
+    "fuelLiters": 1323
+  },
+  {
+    "id": "eu-0027",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 170,
+    "fuelLiters": 2689
+  },
+  {
+    "id": "eu-0028",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 158,
+    "fuelLiters": 2557
+  },
+  {
+    "id": "eu-0029",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 163,
+    "fuelLiters": 2558
+  },
+  {
+    "id": "eu-0030",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 161,
+    "fuelLiters": 2649
+  },
+  {
+    "id": "eu-0031",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 156,
+    "fuelLiters": 2457
+  },
+  {
+    "id": "eu-0032",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 154,
+    "fuelLiters": 2415
+  },
+  {
+    "id": "eu-0033",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 157,
+    "fuelLiters": 2402
+  },
+  {
+    "id": "eu-0034",
+    "equipmentId": "eq-009",
+    "projectId": "p19",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 116,
+    "fuelLiters": 1902
+  },
+  {
+    "id": "eu-0035",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-02",
+    "workingDays": 19,
+    "hours": 104,
+    "fuelLiters": 1606
+  },
+  {
+    "id": "eu-0036",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 126,
+    "fuelLiters": 2103
+  },
+  {
+    "id": "eu-0037",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 126,
+    "fuelLiters": 1976
+  },
+  {
+    "id": "eu-0038",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 134,
+    "fuelLiters": 2136
+  },
+  {
+    "id": "eu-0039",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 129,
+    "fuelLiters": 1997
+  },
+  {
+    "id": "eu-0040",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 151,
+    "fuelLiters": 2368
+  },
+  {
+    "id": "eu-0041",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 152,
+    "fuelLiters": 2589
+  },
+  {
+    "id": "eu-0042",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 141,
+    "fuelLiters": 2294
+  },
+  {
+    "id": "eu-0043",
+    "equipmentId": "eq-010",
+    "projectId": "p07",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 98,
+    "fuelLiters": 1636
+  },
+  {
+    "id": "eu-0044",
+    "equipmentId": "eq-012",
+    "projectId": "p06",
+    "month": "2026-06",
+    "workingDays": 17,
+    "hours": 109,
+    "fuelLiters": 1780
+  },
+  {
+    "id": "eu-0045",
+    "equipmentId": "eq-012",
+    "projectId": "p06",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 172,
+    "fuelLiters": 2803
+  },
+  {
+    "id": "eu-0046",
+    "equipmentId": "eq-012",
+    "projectId": "p06",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 179,
+    "fuelLiters": 2983
+  },
+  {
+    "id": "eu-0047",
+    "equipmentId": "eq-012",
+    "projectId": "p06",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 151,
+    "fuelLiters": 2441
+  },
+  {
+    "id": "eu-0048",
+    "equipmentId": "eq-012",
+    "projectId": "p06",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 132,
+    "fuelLiters": 2048
+  },
+  {
+    "id": "eu-0049",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-04",
+    "workingDays": 20,
+    "hours": 128,
+    "fuelLiters": 2000
+  },
+  {
+    "id": "eu-0050",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 162,
+    "fuelLiters": 2726
+  },
+  {
+    "id": "eu-0051",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 154,
+    "fuelLiters": 2580
+  },
+  {
+    "id": "eu-0052",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 170,
+    "fuelLiters": 2767
+  },
+  {
+    "id": "eu-0053",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 160,
+    "fuelLiters": 2731
+  },
+  {
+    "id": "eu-0054",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 143,
+    "fuelLiters": 2177
+  },
+  {
+    "id": "eu-0055",
+    "equipmentId": "eq-013",
+    "projectId": "p03",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 126,
+    "fuelLiters": 2057
+  },
+  {
+    "id": "eu-0056",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-02",
+    "workingDays": 7,
+    "hours": 42,
+    "fuelLiters": 715
+  },
+  {
+    "id": "eu-0057",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 178,
+    "fuelLiters": 2731
+  },
+  {
+    "id": "eu-0058",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 150,
+    "fuelLiters": 2419
+  },
+  {
+    "id": "eu-0059",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 169,
+    "fuelLiters": 2688
+  },
+  {
+    "id": "eu-0060",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 177,
+    "fuelLiters": 2982
+  },
+  {
+    "id": "eu-0061",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 169,
+    "fuelLiters": 2604
+  },
+  {
+    "id": "eu-0062",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 168,
+    "fuelLiters": 2642
+  },
+  {
+    "id": "eu-0063",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 179,
+    "fuelLiters": 3013
+  },
+  {
+    "id": "eu-0064",
+    "equipmentId": "eq-014",
+    "projectId": "p02",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 134,
+    "fuelLiters": 2137
+  },
+  {
+    "id": "eu-0065",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-04",
+    "workingDays": 17,
+    "hours": 115,
+    "fuelLiters": 2032
+  },
+  {
+    "id": "eu-0066",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 178,
+    "fuelLiters": 3162
+  },
+  {
+    "id": "eu-0067",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 175,
+    "fuelLiters": 3324
+  },
+  {
+    "id": "eu-0068",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 169,
+    "fuelLiters": 2971
+  },
+  {
+    "id": "eu-0069",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 183,
+    "fuelLiters": 3442
+  },
+  {
+    "id": "eu-0070",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 188,
+    "fuelLiters": 3605
+  },
+  {
+    "id": "eu-0071",
+    "equipmentId": "eq-018",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 141,
+    "fuelLiters": 2641
+  },
+  {
+    "id": "eu-0072",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-03",
+    "workingDays": 20,
+    "hours": 122,
+    "fuelLiters": 2225
+  },
+  {
+    "id": "eu-0073",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 139,
+    "fuelLiters": 2587
+  },
+  {
+    "id": "eu-0074",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 158,
+    "fuelLiters": 2803
+  },
+  {
+    "id": "eu-0075",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 159,
+    "fuelLiters": 2944
+  },
+  {
+    "id": "eu-0076",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 155,
+    "fuelLiters": 2705
+  },
+  {
+    "id": "eu-0077",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 152,
+    "fuelLiters": 2655
+  },
+  {
+    "id": "eu-0078",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 148,
+    "fuelLiters": 2677
+  },
+  {
+    "id": "eu-0079",
+    "equipmentId": "eq-020",
+    "projectId": "p19",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 116,
+    "fuelLiters": 2032
+  },
+  {
+    "id": "eu-0080",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-05",
+    "workingDays": 24,
+    "hours": 131,
+    "fuelLiters": 2260
+  },
+  {
+    "id": "eu-0081",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 136,
+    "fuelLiters": 2414
+  },
+  {
+    "id": "eu-0082",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 138,
+    "fuelLiters": 2652
+  },
+  {
+    "id": "eu-0083",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 132,
+    "fuelLiters": 2509
+  },
+  {
+    "id": "eu-0084",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 139,
+    "fuelLiters": 2611
+  },
+  {
+    "id": "eu-0085",
+    "equipmentId": "eq-021",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 98,
+    "fuelLiters": 1827
+  },
+  {
+    "id": "eu-0086",
+    "equipmentId": "eq-023",
+    "projectId": "p02",
+    "month": "2026-06",
+    "workingDays": 2,
+    "hours": 13,
+    "fuelLiters": 166
+  },
+  {
+    "id": "eu-0087",
+    "equipmentId": "eq-023",
+    "projectId": "p02",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 179,
+    "fuelLiters": 2042
+  },
+  {
+    "id": "eu-0088",
+    "equipmentId": "eq-023",
+    "projectId": "p02",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 176,
+    "fuelLiters": 2053
+  },
+  {
+    "id": "eu-0089",
+    "equipmentId": "eq-023",
+    "projectId": "p02",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 181,
+    "fuelLiters": 2070
+  },
+  {
+    "id": "eu-0090",
+    "equipmentId": "eq-023",
+    "projectId": "p02",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 132,
+    "fuelLiters": 1628
+  },
+  {
+    "id": "eu-0091",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 131,
+    "fuelLiters": 1601
+  },
+  {
+    "id": "eu-0092",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 128,
+    "fuelLiters": 1599
+  },
+  {
+    "id": "eu-0093",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 124,
+    "fuelLiters": 1469
+  },
+  {
+    "id": "eu-0094",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 128,
+    "fuelLiters": 1470
+  },
+  {
+    "id": "eu-0095",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 134,
+    "fuelLiters": 1574
+  },
+  {
+    "id": "eu-0096",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 130,
+    "fuelLiters": 1554
+  },
+  {
+    "id": "eu-0097",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 132,
+    "fuelLiters": 1671
+  },
+  {
+    "id": "eu-0098",
+    "equipmentId": "eq-024",
+    "projectId": "p18",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 100,
+    "fuelLiters": 1158
+  },
+  {
+    "id": "eu-0099",
+    "equipmentId": "eq-025",
+    "projectId": "p01",
+    "month": "2026-06",
+    "workingDays": 20,
+    "hours": 136,
+    "fuelLiters": 1636
+  },
+  {
+    "id": "eu-0100",
+    "equipmentId": "eq-025",
+    "projectId": "p01",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 158,
+    "fuelLiters": 1870
+  },
+  {
+    "id": "eu-0101",
+    "equipmentId": "eq-025",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 172,
+    "fuelLiters": 1990
+  },
+  {
+    "id": "eu-0102",
+    "equipmentId": "eq-025",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 158,
+    "fuelLiters": 2017
+  },
+  {
+    "id": "eu-0103",
+    "equipmentId": "eq-025",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 131,
+    "fuelLiters": 1512
+  },
+  {
+    "id": "eu-0104",
+    "equipmentId": "eq-026",
+    "projectId": "p04",
+    "month": "2026-09",
+    "workingDays": 23,
+    "hours": 135,
+    "fuelLiters": 1591
+  },
+  {
+    "id": "eu-0105",
+    "equipmentId": "eq-026",
+    "projectId": "p04",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 132,
+    "fuelLiters": 1594
+  },
+  {
+    "id": "eu-0106",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-01",
+    "workingDays": 24,
+    "hours": 181,
+    "fuelLiters": 2065
+  },
+  {
+    "id": "eu-0107",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-02",
+    "workingDays": 24,
+    "hours": 174,
+    "fuelLiters": 2075
+  },
+  {
+    "id": "eu-0108",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 183,
+    "fuelLiters": 2161
+  },
+  {
+    "id": "eu-0109",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 190,
+    "fuelLiters": 2381
+  },
+  {
+    "id": "eu-0110",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 168,
+    "fuelLiters": 2067
+  },
+  {
+    "id": "eu-0111",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 185,
+    "fuelLiters": 2331
+  },
+  {
+    "id": "eu-0112",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 192,
+    "fuelLiters": 2419
+  },
+  {
+    "id": "eu-0113",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 167,
+    "fuelLiters": 2130
+  },
+  {
+    "id": "eu-0114",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 176,
+    "fuelLiters": 2096
+  },
+  {
+    "id": "eu-0115",
+    "equipmentId": "eq-027",
+    "projectId": "p20",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 138,
+    "fuelLiters": 1690
+  },
+  {
+    "id": "eu-0116",
+    "equipmentId": "eq-028",
+    "projectId": "p12",
+    "month": "2026-08",
+    "workingDays": 15,
+    "hours": 86,
+    "fuelLiters": 1080
+  },
+  {
+    "id": "eu-0117",
+    "equipmentId": "eq-028",
+    "projectId": "p12",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 143,
+    "fuelLiters": 1817
+  },
+  {
+    "id": "eu-0118",
+    "equipmentId": "eq-028",
+    "projectId": "p12",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 112,
+    "fuelLiters": 1392
+  },
+  {
+    "id": "eu-0119",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-02",
+    "workingDays": 11,
+    "hours": 79,
+    "fuelLiters": 735
+  },
+  {
+    "id": "eu-0120",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 169,
+    "fuelLiters": 1461
+  },
+  {
+    "id": "eu-0121",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 193,
+    "fuelLiters": 1746
+  },
+  {
+    "id": "eu-0122",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 191,
+    "fuelLiters": 1801
+  },
+  {
+    "id": "eu-0123",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 173,
+    "fuelLiters": 1585
+  },
+  {
+    "id": "eu-0124",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 179,
+    "fuelLiters": 1620
+  },
+  {
+    "id": "eu-0125",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 169,
+    "fuelLiters": 1466
+  },
+  {
+    "id": "eu-0126",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 201,
+    "fuelLiters": 1794
+  },
+  {
+    "id": "eu-0127",
+    "equipmentId": "eq-029",
+    "projectId": "p02",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 130,
+    "fuelLiters": 1167
+  },
+  {
+    "id": "eu-0128",
+    "equipmentId": "eq-031",
+    "projectId": "p01",
+    "month": "2026-06",
+    "workingDays": 11,
+    "hours": 51,
+    "fuelLiters": 450
+  },
+  {
+    "id": "eu-0129",
+    "equipmentId": "eq-031",
+    "projectId": "p01",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 135,
+    "fuelLiters": 1256
+  },
+  {
+    "id": "eu-0130",
+    "equipmentId": "eq-031",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 131,
+    "fuelLiters": 1193
+  },
+  {
+    "id": "eu-0131",
+    "equipmentId": "eq-031",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 123,
+    "fuelLiters": 1111
+  },
+  {
+    "id": "eu-0132",
+    "equipmentId": "eq-031",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 110,
+    "fuelLiters": 986
+  },
+  {
+    "id": "eu-0133",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-01",
+    "workingDays": 1,
+    "hours": 8,
+    "fuelLiters": 70
+  },
+  {
+    "id": "eu-0134",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-02",
+    "workingDays": 24,
+    "hours": 157,
+    "fuelLiters": 1428
+  },
+  {
+    "id": "eu-0135",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 199,
+    "fuelLiters": 1782
+  },
+  {
+    "id": "eu-0136",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 173,
+    "fuelLiters": 1517
+  },
+  {
+    "id": "eu-0137",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 203,
+    "fuelLiters": 1879
+  },
+  {
+    "id": "eu-0138",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 187,
+    "fuelLiters": 1617
+  },
+  {
+    "id": "eu-0139",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 204,
+    "fuelLiters": 1746
+  },
+  {
+    "id": "eu-0140",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 204,
+    "fuelLiters": 1818
+  },
+  {
+    "id": "eu-0141",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 180,
+    "fuelLiters": 1678
+  },
+  {
+    "id": "eu-0142",
+    "equipmentId": "eq-032",
+    "projectId": "p02",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 141,
+    "fuelLiters": 1308
+  },
+  {
+    "id": "eu-0143",
+    "equipmentId": "eq-033",
+    "projectId": "p01",
+    "month": "2026-06",
+    "workingDays": 10,
+    "hours": 48,
+    "fuelLiters": 458
+  },
+  {
+    "id": "eu-0144",
+    "equipmentId": "eq-033",
+    "projectId": "p01",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 129,
+    "fuelLiters": 1175
+  },
+  {
+    "id": "eu-0145",
+    "equipmentId": "eq-033",
+    "projectId": "p01",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 128,
+    "fuelLiters": 1146
+  },
+  {
+    "id": "eu-0146",
+    "equipmentId": "eq-033",
+    "projectId": "p01",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 135,
+    "fuelLiters": 1181
+  },
+  {
+    "id": "eu-0147",
+    "equipmentId": "eq-033",
+    "projectId": "p01",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 100,
+    "fuelLiters": 912
+  },
+  {
+    "id": "eu-0148",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-05",
+    "workingDays": 8,
+    "hours": 47,
+    "fuelLiters": 118
+  },
+  {
+    "id": "eu-0149",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 153,
+    "fuelLiters": 369
+  },
+  {
+    "id": "eu-0150",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 138,
+    "fuelLiters": 335
+  },
+  {
+    "id": "eu-0151",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 142,
+    "fuelLiters": 359
+  },
+  {
+    "id": "eu-0152",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 161,
+    "fuelLiters": 431
+  },
+  {
+    "id": "eu-0153",
+    "equipmentId": "eq-034",
+    "projectId": "p04",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 121,
+    "fuelLiters": 288
+  },
+  {
+    "id": "eu-0154",
+    "equipmentId": "eq-035",
+    "projectId": "p15",
+    "month": "2026-08",
+    "workingDays": 1,
+    "hours": 6,
+    "fuelLiters": 16
+  },
+  {
+    "id": "eu-0155",
+    "equipmentId": "eq-035",
+    "projectId": "p15",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 152,
+    "fuelLiters": 392
+  },
+  {
+    "id": "eu-0156",
+    "equipmentId": "eq-035",
+    "projectId": "p15",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 112,
+    "fuelLiters": 281
+  },
+  {
+    "id": "eu-0157",
+    "equipmentId": "eq-036",
+    "projectId": "p15",
+    "month": "2026-06",
+    "workingDays": 20,
+    "hours": 144,
+    "fuelLiters": 384
+  },
+  {
+    "id": "eu-0158",
+    "equipmentId": "eq-036",
+    "projectId": "p15",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 182,
+    "fuelLiters": 464
+  },
+  {
+    "id": "eu-0159",
+    "equipmentId": "eq-036",
+    "projectId": "p15",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 183,
+    "fuelLiters": 474
+  },
+  {
+    "id": "eu-0160",
+    "equipmentId": "eq-036",
+    "projectId": "p15",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 161,
+    "fuelLiters": 421
+  },
+  {
+    "id": "eu-0161",
+    "equipmentId": "eq-036",
+    "projectId": "p15",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 147,
+    "fuelLiters": 382
+  },
+  {
+    "id": "eu-0162",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-03",
+    "workingDays": 9,
+    "hours": 63,
+    "fuelLiters": 163
+  },
+  {
+    "id": "eu-0163",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 172,
+    "fuelLiters": 433
+  },
+  {
+    "id": "eu-0164",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 183,
+    "fuelLiters": 436
+  },
+  {
+    "id": "eu-0165",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 201,
+    "fuelLiters": 494
+  },
+  {
+    "id": "eu-0166",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 180,
+    "fuelLiters": 456
+  },
+  {
+    "id": "eu-0167",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 188,
+    "fuelLiters": 495
+  },
+  {
+    "id": "eu-0168",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 198,
+    "fuelLiters": 523
+  },
+  {
+    "id": "eu-0169",
+    "equipmentId": "eq-037",
+    "projectId": "p05",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 147,
+    "fuelLiters": 351
+  },
+  {
+    "id": "eu-0170",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-03",
+    "workingDays": 6,
+    "hours": 38,
+    "fuelLiters": 528
+  },
+  {
+    "id": "eu-0171",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 164,
+    "fuelLiters": 2280
+  },
+  {
+    "id": "eu-0172",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 169,
+    "fuelLiters": 2405
+  },
+  {
+    "id": "eu-0173",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 168,
+    "fuelLiters": 2393
+  },
+  {
+    "id": "eu-0174",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 158,
+    "fuelLiters": 2303
+  },
+  {
+    "id": "eu-0175",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 166,
+    "fuelLiters": 2340
+  },
+  {
+    "id": "eu-0176",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 180,
+    "fuelLiters": 2563
+  },
+  {
+    "id": "eu-0177",
+    "equipmentId": "eq-038",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 136,
+    "fuelLiters": 2028
+  },
+  {
+    "id": "eu-0178",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-02",
+    "workingDays": 12,
+    "hours": 62,
+    "fuelLiters": 900
+  },
+  {
+    "id": "eu-0179",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 156,
+    "fuelLiters": 2133
+  },
+  {
+    "id": "eu-0180",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 155,
+    "fuelLiters": 2131
+  },
+  {
+    "id": "eu-0181",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 138,
+    "fuelLiters": 1974
+  },
+  {
+    "id": "eu-0182",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 143,
+    "fuelLiters": 2110
+  },
+  {
+    "id": "eu-0183",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 150,
+    "fuelLiters": 2070
+  },
+  {
+    "id": "eu-0184",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 151,
+    "fuelLiters": 2202
+  },
+  {
+    "id": "eu-0185",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 148,
+    "fuelLiters": 2033
+  },
+  {
+    "id": "eu-0186",
+    "equipmentId": "eq-040",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 108,
+    "fuelLiters": 1574
+  },
+  {
+    "id": "eu-0187",
+    "equipmentId": "eq-041",
+    "projectId": "p24",
+    "month": "2026-09",
+    "workingDays": 17,
+    "hours": 112,
+    "fuelLiters": 1586
+  },
+  {
+    "id": "eu-0188",
+    "equipmentId": "eq-041",
+    "projectId": "p24",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 152,
+    "fuelLiters": 2242
+  },
+  {
+    "id": "eu-0189",
+    "equipmentId": "eq-042",
+    "projectId": "p09",
+    "month": "2026-06",
+    "workingDays": 23,
+    "hours": 135,
+    "fuelLiters": 1855
+  },
+  {
+    "id": "eu-0190",
+    "equipmentId": "eq-042",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 150,
+    "fuelLiters": 2229
+  },
+  {
+    "id": "eu-0191",
+    "equipmentId": "eq-042",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 163,
+    "fuelLiters": 2395
+  },
+  {
+    "id": "eu-0192",
+    "equipmentId": "eq-042",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 158,
+    "fuelLiters": 2137
+  },
+  {
+    "id": "eu-0193",
+    "equipmentId": "eq-042",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 112,
+    "fuelLiters": 1601
+  },
+  {
+    "id": "eu-0194",
+    "equipmentId": "eq-043",
+    "projectId": "p08",
+    "month": "2026-06",
+    "workingDays": 21,
+    "hours": 102,
+    "fuelLiters": 1394
+  },
+  {
+    "id": "eu-0195",
+    "equipmentId": "eq-043",
+    "projectId": "p08",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 153,
+    "fuelLiters": 2103
+  },
+  {
+    "id": "eu-0196",
+    "equipmentId": "eq-043",
+    "projectId": "p08",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 123,
+    "fuelLiters": 1746
+  },
+  {
+    "id": "eu-0197",
+    "equipmentId": "eq-043",
+    "projectId": "p08",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 122,
+    "fuelLiters": 1656
+  },
+  {
+    "id": "eu-0198",
+    "equipmentId": "eq-043",
+    "projectId": "p08",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 99,
+    "fuelLiters": 1394
+  },
+  {
+    "id": "eu-0199",
+    "equipmentId": "eq-044",
+    "projectId": "p26",
+    "month": "2026-09",
+    "workingDays": 21,
+    "hours": 144,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0200",
+    "equipmentId": "eq-044",
+    "projectId": "p26",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 124,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0201",
+    "equipmentId": "eq-045",
+    "projectId": "p09",
+    "month": "2026-07",
+    "workingDays": 1,
+    "hours": 6,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0202",
+    "equipmentId": "eq-045",
+    "projectId": "p09",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 193,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0203",
+    "equipmentId": "eq-045",
+    "projectId": "p09",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 188,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0204",
+    "equipmentId": "eq-045",
+    "projectId": "p09",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 139,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0205",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-05",
+    "workingDays": 12,
+    "hours": 76,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0206",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 176,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0207",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 190,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0208",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 180,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0209",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 165,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0210",
+    "equipmentId": "eq-046",
+    "projectId": "p24",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 119,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0211",
+    "equipmentId": "eq-047",
+    "projectId": "p23",
+    "month": "2026-07",
+    "workingDays": 18,
+    "hours": 86,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0212",
+    "equipmentId": "eq-047",
+    "projectId": "p23",
+    "month": "2026-08",
+    "workingDays": 26,
+    "hours": 121,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0213",
+    "equipmentId": "eq-047",
+    "projectId": "p23",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 127,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0214",
+    "equipmentId": "eq-047",
+    "projectId": "p23",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 110,
+    "fuelLiters": 0
+  },
+  {
+    "id": "eu-0215",
+    "equipmentId": "eq-017",
+    "projectId": "p03",
+    "month": "2026-08",
+    "workingDays": 6,
+    "hours": 34,
+    "fuelLiters": 585
+  },
+  {
+    "id": "eu-0216",
+    "equipmentId": "eq-017",
+    "projectId": "p03",
+    "month": "2026-09",
+    "workingDays": 26,
+    "hours": 159,
+    "fuelLiters": 2882
+  },
+  {
+    "id": "eu-0217",
+    "equipmentId": "eq-017",
+    "projectId": "p03",
+    "month": "2026-10",
+    "workingDays": 20,
+    "hours": 122,
+    "fuelLiters": 2090
+  },
+  {
+    "id": "eu-0218",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-02",
+    "workingDays": 24,
+    "hours": 163,
+    "fuelLiters": 3535
+  },
+  {
+    "id": "eu-0219",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-03",
+    "workingDays": 26,
+    "hours": 169,
+    "fuelLiters": 3898
+  },
+  {
+    "id": "eu-0220",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-04",
+    "workingDays": 26,
+    "hours": 192,
+    "fuelLiters": 4182
+  },
+  {
+    "id": "eu-0221",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-05",
+    "workingDays": 26,
+    "hours": 157,
+    "fuelLiters": 3539
+  },
+  {
+    "id": "eu-0222",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-06",
+    "workingDays": 26,
+    "hours": 158,
+    "fuelLiters": 3399
+  },
+  {
+    "id": "eu-0223",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-07",
+    "workingDays": 27,
+    "hours": 166,
+    "fuelLiters": 3508
+  },
+  {
+    "id": "eu-0224",
+    "equipmentId": "eq-006",
+    "projectId": "p11",
+    "month": "2026-08",
+    "workingDays": 25,
+    "hours": 160,
+    "fuelLiters": 3675
+  }
+]

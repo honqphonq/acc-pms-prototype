@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BarChart3, CalendarRange, CheckCircle2, ClipboardList, FileBarChart, Pencil, TrendingUp, Users, Wallet, XCircle } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis, ReferenceLine, LabelList } from "recharts";
+import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis, ReferenceLine } from "recharts";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tip } from "@/components/ui/tooltip";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { KpiCard } from "@/components/common/KpiCard";
 import { ChartCard } from "@/components/common/ChartCard";
@@ -23,7 +24,7 @@ import { useConfirm } from "@/components/common/ConfirmProvider";
 import { ProjectFormDialog } from "./ProjectFormDialog";
 import { TaskProgressDialog } from "../construction/TaskProgressDialog";
 import {
-  AVAILABLE_HOURS_3W, acceptanceValue, equipmentByGroup, getEquipmentUsage, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
+  acceptanceValue, equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
   STOCK_STATUS, taskActualPct, taskPlannedPct, TASK_HEALTH_LABEL, taskHealth,
 } from "@/services/selectors";
 import { decideProject } from "@/services/actions";
@@ -62,17 +63,11 @@ export default function ProjectDetailPage() {
     { name: "Quá hạn", value: s.tasksOverdue, color: CHART_COLORS.danger },
     { name: "Chưa đến hạn", value: s.tasksNotStarted, color: "#CBD5E1" },
   ].filter((x) => x.value > 0);
-  const money = [
-    { name: "Giá trị hợp đồng", value: project.contractValue / 1e9 },
-    { name: "Sản lượng thực hiện", value: s.execValue / 1e9 },
-    { name: "Giá trị nghiệm thu", value: s.acceptedValue / 1e9 },
-    { name: "Đã thanh toán", value: s.paidValue / 1e9 },
-    { name: "Chi phí thực hiện", value: s.cost / 1e9 },
-  ];
   const eqList = db.equipment.filter((e) => e.currentProjectId === project.id);
-  const usage = getEquipmentUsage(db);
-  const eqHours = eqList.reduce((x, e) => x + (usage.get(e.id)?.hours ?? 0), 0);
-  const eqUtil = eqList.length ? eqHours / (eqList.length * AVAILABLE_HOURS_3W) : 0;
+  // giờ máy lũy kế từ khi máy về công trình đến nay
+  const eqWork = eqList.map((e) => equipmentWork(db, e.id, project.id));
+  const eqHours = eqWork.reduce((x, w) => x + w.hours, 0);
+  const eqUtil = utilizationOf({ hours: eqHours, availableDays: eqWork.reduce((x, w) => x + w.availableDays, 0) });
   const stock = getStockRows(db).filter((r) => r.inv.projectId === project.id);
   const requests = db.materialRequests.filter((r) => r.projectId === project.id);
   const acs = db.acceptanceRecords.filter((a) => a.projectId === project.id);
@@ -80,6 +75,20 @@ export default function ProjectDetailPage() {
   const logs = db.constructionLogs.filter((l) => l.projectId === project.id).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
   const issues = db.issues.filter((i) => i.projectId === project.id);
   const sNow = series.filter((r) => r.month >= project.startDate.slice(0, 7));
+  // Tổ thực hiện: gom theo tổ đội của các công việc; nhân công lấy từ nhật ký gần nhất của tổ
+  const teams = [...new Set(tasks.map((t) => t.team).filter((tm) => tm && !/ban chỉ huy/i.test(tm)))].map((name) => {
+    const tts = tasks.filter((t) => t.team === name);
+    const leaderId = Object.entries(tts.reduce<Record<string, number>>((m, t) => ({ ...m, [t.assigneeId]: (m[t.assigneeId] ?? 0) + 1 }), {})).sort((a, b) => b[1] - a[1])[0]?.[0];
+    const lastLog = db.constructionLogs.filter((l) => tts.some((t) => t.id === l.taskId)).sort((a, b) => b.date.localeCompare(a.date))[0];
+    return {
+      name,
+      leader: db.users.find((u) => u.id === leaderId)?.name ?? "—",
+      tasks: tts.length,
+      active: tts.filter((t) => taskActualPct(t) > 0 && taskActualPct(t) < 1).length,
+      workers: lastLog ? lastLog.labor.reduce((x, l) => x + l.people, 0) : 0,
+      taskNames: tts.map((t) => `${t.code} ${t.name}`),
+    };
+  });
 
   const decide = async (approve: boolean) => {
     if (await confirm({ title: approve ? "Phê duyệt & ban hành quyết định phân giao nhiệm vụ?" : "Từ chối đơn xin nhận thi công?", destructive: !approve })) {
@@ -120,12 +129,31 @@ export default function ProjectDetailPage() {
             {can("project.edit") && <Button variant="outline" size="icon" onClick={() => setEditOpen(true)} title="Chỉnh sửa"><Pencil /></Button>}
           </div>
         </div>
+        {teams.length > 0 && (
+          <div className="mt-4 border-t pt-4">
+            <div className="mb-2 text-[13px] text-slate-500">Tổ thực hiện ({teams.length} tổ)</div>
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+              {teams.map((tm) => (
+                <Tip key={tm.name} content={<div><div className="font-semibold">{tm.name}</div><div>Công việc: {tm.taskNames.join("; ")}</div></div>}>
+                  <div className="flex items-start gap-2.5 rounded-lg border border-slate-200 bg-slate-50/70 px-3 py-2">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white text-slate-500 ring-1 ring-slate-200"><Users className="h-3.5 w-3.5" /></span>
+                    <div className="min-w-0 leading-tight">
+                      <div className="truncate text-[13px] font-semibold text-slate-800">{tm.name}</div>
+                      <div className="mt-0.5 truncate text-[11.5px] text-slate-500">Tổ trưởng: {tm.leader}</div>
+                      <div className="text-[11.5px] text-slate-500">{tm.workers ? `${tm.workers} nhân công · ` : ""}{tm.tasks} công việc{tm.active ? ` · ${tm.active} đang làm` : ""}</div>
+                    </div>
+                  </div>
+                </Tip>
+              ))}
+            </div>
+          </div>
+        )}
       </Card>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Số công việc" value={s.tasksTotal} unit="công việc" icon={<ClipboardList />} tone="info" progress={s.tasksTotal ? s.tasksDone / s.tasksTotal : 0} sub={<>{s.tasksDone} hoàn thành ({fmtPct(s.tasksTotal ? s.tasksDone / s.tasksTotal : 0)}) · {s.tasksOverdue > 0 ? <Badge tone="danger">{s.tasksOverdue} quá hạn</Badge> : "0 quá hạn"}</>} />
-        <KpiCard label="Tiến độ thực tế / kế hoạch" value={fmtPct(s.actual)} icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} marker={s.planned} sub={`Kế hoạch ${fmtPct(s.planned)} · lệch ${fmtNumber(s.delta * 100)} điểm`} />
-        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Sản lượng ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
+        <KpiCard label="Tiến độ thực tế / kế hoạch" value={fmtPct(s.actual)} icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} marker={s.planned} sub={`Kế hoạch ${fmtPct(s.planned)} · ${s.healthReason}`} />
+        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Giá trị khối lượng thực hiện ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(s.acceptedValue / 1e9)} unit="tỷ đồng" icon={<CheckCircle2 />} tone="warning" progress={s.acceptedValue / (project.contractValue || 1)} sub={`${fmtPct(s.acceptedValue / (project.contractValue || 1))} giá trị HĐ · chờ duyệt ${fmtNumber(s.pendingAcceptanceValue / 1e9)} tỷ`} />
         <KpiCard label="Chi phí thực hiện" value={fmtNumber(s.cost / 1e9)} unit="tỷ đồng" icon={<BarChart3 />} tone="navy" progress={s.cost / (project.budget || 1)} sub={`${fmtPct(s.cost / (project.budget || 1))} ngân sách dự kiến ${fmtNumber(project.budget / 1e9, 0)} tỷ`} />
       </div>
@@ -149,7 +177,7 @@ export default function ProjectDetailPage() {
 
           <TabsContent value="overview" className="space-y-4">
             <div className="grid gap-4 xl:grid-cols-12">
-              <ChartCard className="xl:col-span-3" title="Tình trạng công việc">
+              <ChartCard className="xl:col-span-4" title="Tình trạng công việc">
                 <div className="relative h-44">
                   <ResponsiveContainer>
                     <PieChart>
@@ -165,7 +193,7 @@ export default function ProjectDetailPage() {
                   ))}
                 </div>
               </ChartCard>
-              <ChartCard className="xl:col-span-5" title="Tiến độ thi công lũy kế theo tháng" description="Giá trị lũy kế (tỷ đồng) · nét đứt: kế hoạch · nét liền: thực hiện">
+              <ChartCard className="xl:col-span-8" title="Tiến độ thi công lũy kế theo tháng" description="Giá trị lũy kế (tỷ đồng) · nét đứt: kế hoạch · nét liền: thực hiện">
                 <div className="h-64">
                   <ResponsiveContainer>
                     <LineChart data={sNow} margin={{ top: 8, right: 12, left: -10, bottom: 0 }}>
@@ -181,25 +209,10 @@ export default function ProjectDetailPage() {
                   </ResponsiveContainer>
                 </div>
               </ChartCard>
-              <ChartCard className="xl:col-span-4" title="Hợp đồng – sản lượng – nghiệm thu – chi phí" description="Tỷ đồng">
-                <div className="h-64">
-                  <ResponsiveContainer>
-                    <BarChart data={money} margin={{ top: 18, right: 4, left: -16, bottom: 0 }}>
-                      <CartesianGrid stroke="#eef2f6" vertical={false} />
-                      <XAxis dataKey="name" interval={0} tickLine={false} tick={{ fontSize: 10 }} tickFormatter={(v: string) => v.replace("Giá trị ", "").replace(" thực hiện", "")} />
-                      <YAxis tickLine={false} axisLine={false} />
-                      <Tooltip formatter={(v: number) => [`${fmtNumber(v)} tỷ đồng`, "Giá trị"]} cursor={{ fill: "#f1f5f9" }} />
-                      <Bar dataKey="value" fill={SERIES[0]} radius={[4, 4, 0, 0]} maxBarSize={44}>
-                        <LabelList dataKey="value" position="top" formatter={(v: number) => fmtNumber(v, 0)} style={{ fontSize: 11, fill: "#334155", fontWeight: 600 }} />
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-              </ChartCard>
             </div>
 
             <div className="grid gap-4 xl:grid-cols-12">
-              <Card className="xl:col-span-7">
+              <Card className="xl:col-span-8">
                 <CardHeader>
                   <CardTitle>Công việc chậm tiến độ / quá hạn</CardTitle>
                   <Badge tone={lateTasks.length ? "danger" : "success"}>{lateTasks.length} công việc</Badge>
@@ -207,14 +220,15 @@ export default function ProjectDetailPage() {
                 <CardContent className="px-0 pb-2">
                   {lateTasks.length === 0 ? <EmptyState title="Không có công việc chậm tiến độ" className="py-8" /> : (
                     <Table>
-                      <TableHeader><TableRow><TableHead>Công việc</TableHead><TableHead>Phụ trách</TableHead><TableHead>Hạn KH</TableHead><TableHead>KH / TT</TableHead><TableHead /></TableRow></TableHeader>
+                      <TableHeader><TableRow><TableHead>Công việc</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Tổ</TableHead><TableHead>Hạn KH</TableHead><TableHead>KH / TT</TableHead><TableHead /></TableRow></TableHeader>
                       <TableBody>
                         {lateTasks.slice(0, 8).map(({ t, a, p }) => {
                           const h = taskHealth({ actual: a, planned: p, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart });
                           return (
                             <TableRow key={t.id}>
-                              <TableCell><div className="font-medium text-slate-800">{t.code} {t.name}</div><Badge tone={TASK_HEALTH_LABEL[h].tone} className="mt-0.5">{TASK_HEALTH_LABEL[h].label}</Badge></TableCell>
-                              <TableCell><UserCell userId={t.assigneeId} /></TableCell>
+                              <TableCell className="min-w-[200px]"><div className="font-medium text-slate-800">{t.code} {t.name}</div><Badge tone={TASK_HEALTH_LABEL[h].tone} className="mt-0.5">{TASK_HEALTH_LABEL[h].label}</Badge></TableCell>
+                              <TableCell className="whitespace-nowrap"><UserCell userId={t.assigneeId} /></TableCell>
+                              <TableCell className="whitespace-nowrap text-xs text-slate-600">{t.team || "—"}</TableCell>
                               <TableCell className="whitespace-nowrap text-xs">{fmtDate(t.plannedEnd)}</TableCell>
                               <TableCell className="w-32"><div className="mb-1 text-[11.5px]"><span className="text-slate-400">{fmtPct(p, 0)}</span> / <b className="text-rose-600">{fmtPct(a, 1)}</b></div><Progress value={a} marker={p} tone="danger" className="h-1.5" /></TableCell>
                               <TableCell>{can("progress.update") && <Button size="xs" variant="soft" onClick={() => setTaskId(t.id)}>Cập nhật</Button>}</TableCell>
@@ -226,13 +240,13 @@ export default function ProjectDetailPage() {
                   )}
                 </CardContent>
               </Card>
-              <Card className="xl:col-span-5">
+              <Card className="xl:col-span-4">
                 <CardHeader><CardTitle>Máy móc thiết bị tại công trường</CardTitle><Link to="/equipment/list" className="text-xs text-primary hover:underline">Danh sách</Link></CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-3 gap-2">
                     <div className="rounded-lg bg-slate-50 p-3"><div className="text-[11px] text-slate-500">Tổng số máy</div><div className="text-xl font-bold">{eqList.length}</div></div>
                     <div className="rounded-lg bg-slate-50 p-3"><div className="text-[11px] text-slate-500">Hiệu suất BQ</div><div className="text-xl font-bold">{fmtPct(eqUtil, 0)}</div></div>
-                    <div className="rounded-lg bg-slate-50 p-3"><div className="text-[11px] text-slate-500">Giờ máy 3 tuần</div><div className="text-xl font-bold">{fmtNumber(eqHours, 0)}</div></div>
+                    <div className="rounded-lg bg-slate-50 p-3"><div className="text-[11px] text-slate-500">Giờ máy</div><div className="text-xl font-bold">{fmtNumber(eqHours, 0)}</div></div>
                   </div>
                   <div className="mt-3 space-y-2.5">
                     {equipmentByGroup(db, project.id).map((g) => (
@@ -332,14 +346,14 @@ export default function ProjectDetailPage() {
             <Card>
               {eqList.length === 0 ? <EmptyState title="Chưa có thiết bị" /> : (
                 <Table>
-                  <TableHeader><TableRow><TableHead>Mã máy</TableHead><TableHead>Tên máy</TableHead><TableHead>Nhóm</TableHead><TableHead>Sở hữu</TableHead><TableHead>Người vận hành</TableHead><TableHead className="text-right">Giờ máy 3 tuần</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
+                  <TableHeader><TableRow><TableHead>Mã máy</TableHead><TableHead>Tên máy</TableHead><TableHead>Nhóm</TableHead><TableHead>Sở hữu</TableHead><TableHead>Người vận hành</TableHead><TableHead className="text-right">Giờ máy tại công trình</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
                   <TableBody>
                     {eqList.map((e) => (
                       <TableRow key={e.id} className="cursor-pointer" onClick={() => navigate(`/equipment/${e.id}`)}>
                         <TableCell className="font-medium">{e.code}</TableCell><TableCell>{e.name}</TableCell><TableCell>{e.group}</TableCell>
                         <TableCell><Badge tone={e.ownership === "so_huu" ? "info" : "purple"}>{e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"}</Badge></TableCell>
                         <TableCell><UserCell userId={e.operatorId} /></TableCell>
-                        <TableCell className="tabular text-right">{fmtNumber(usage.get(e.id)?.hours ?? 0)}</TableCell>
+                        <TableCell className="tabular text-right">{fmtNumber(equipmentWork(db, e.id, project.id).hours, 0)}</TableCell>
                         <TableCell><StatusBadge map={EQUIPMENT_STATUS} value={e.status} /></TableCell>
                       </TableRow>
                     ))}

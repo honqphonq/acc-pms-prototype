@@ -350,18 +350,56 @@ export const getEquipmentUsage = memo((db: Database) => {
 /** Hiệu suất sử dụng = giờ máy thực tế / (18 ngày làm việc × 8 giờ) trong 3 tuần gần nhất */
 export const AVAILABLE_HOURS_3W = 18 * 8;
 
+/**
+ * Giờ máy LŨY KẾ của từng thiết bị tại từng công trình, kể từ khi máy được điều động về công trình:
+ * = giờ máy tổng hợp theo tháng (equipmentUsage) + ca máy chi tiết (equipmentShifts).
+ * Số ngày làm việc khả dụng dùng để tính hiệu suất = ngày làm việc (trừ Chủ nhật) kể từ khi máy về công trình.
+ */
+export interface EquipmentWork { hours: number; availableDays: number; fuel: number }
+const ewKey = (eqId: ID, projectId: ID) => `${eqId}|${projectId}`;
+export const SHIFT_WINDOW_START = addDays(DEMO_TODAY, -21);
+function workingDaysBetween(a: string, b: string) {
+  let n = 0;
+  for (let x = a; x <= b; x = addDays(x, 1)) if (new Date(x + "T00:00:00Z").getUTCDay() !== 0) n++;
+  return n;
+}
+export const getEquipmentWork = memo((db: Database) => {
+  const map = new Map<string, EquipmentWork>();
+  const get = (k: string) => map.get(k) ?? (map.set(k, { hours: 0, availableDays: 0, fuel: 0 }), map.get(k)!);
+  db.equipmentUsage.forEach((u) => { const w = get(ewKey(u.equipmentId, u.projectId)); w.hours += u.hours; w.availableDays += u.workingDays; w.fuel += u.fuelLiters; });
+  db.equipmentShifts.forEach((s) => { const w = get(ewKey(s.equipmentId, s.projectId)); w.hours += s.hours; w.fuel += s.fuelLiters; });
+  db.equipmentAssignments.filter((a) => a.status === "dang_dieu_dong").forEach((a) => {
+    const from = a.startDate > SHIFT_WINDOW_START ? a.startDate : SHIFT_WINDOW_START;
+    const to = addDays(DEMO_TODAY, -1);
+    if (from <= to) get(ewKey(a.equipmentId, a.toProjectId)).availableDays += workingDaysBetween(from, to);
+  });
+  return map;
+});
+/** Giờ máy lũy kế của thiết bị: tại một công trình, hoặc cộng dồn mọi công trình */
+export function equipmentWork(db: Database, eqId: ID, projectId?: ID | null): EquipmentWork {
+  const map = getEquipmentWork(db);
+  if (projectId) return map.get(ewKey(eqId, projectId)) ?? { hours: 0, availableDays: 0, fuel: 0 };
+  const res = { hours: 0, availableDays: 0, fuel: 0 };
+  map.forEach((w, k) => { if (k.startsWith(eqId + "|")) { res.hours += w.hours; res.availableDays += w.availableDays; res.fuel += w.fuel; } });
+  return res;
+}
+export const utilizationOf = (w: { hours: number; availableDays: number }) => (w.availableDays ? w.hours / (w.availableDays * 8) : 0);
+
+/** Tổng hợp theo nhóm máy – giờ máy lũy kế từ khi máy về công trình */
 export function equipmentByGroup(db: Database, projectId?: ID) {
-  const usage = getEquipmentUsage(db);
   const list = db.equipment.filter((e) => !projectId || e.currentProjectId === projectId);
-  const groups = new Map<string, { group: string; count: number; hours: number; active: number }>();
+  const groups = new Map<string, { group: string; count: number; hours: number; availableDays: number; active: number; projects: Set<ID> }>();
   list.forEach((e) => {
-    const g = groups.get(e.group) ?? { group: e.group, count: 0, hours: 0, active: 0 };
+    const g = groups.get(e.group) ?? { group: e.group, count: 0, hours: 0, availableDays: 0, active: 0, projects: new Set<ID>() };
+    const w = equipmentWork(db, e.id, projectId);
     g.count++;
-    g.hours += usage.get(e.id)?.hours ?? 0;
+    g.hours += w.hours;
+    g.availableDays += w.availableDays;
     if (e.status === "hoat_dong") g.active++;
+    if (e.currentProjectId) g.projects.add(e.currentProjectId);
     groups.set(e.group, g);
   });
-  return [...groups.values()].map((g) => ({ ...g, utilization: g.count ? g.hours / (g.count * AVAILABLE_HOURS_3W) : 0 }));
+  return [...groups.values()].map((g) => ({ ...g, projects: [...g.projects], utilization: utilizationOf(g) }));
 }
 
 // ---------- nghiệm thu: đối chiếu ----------

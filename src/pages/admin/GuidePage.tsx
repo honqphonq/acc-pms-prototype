@@ -74,7 +74,7 @@ const ASSUMPTIONS = [
   "Tiến độ = bình quân gia quyền theo giá trị (khối lượng × đơn giá); tiến độ kế hoạch nội suy tuyến tính theo thời gian của từng công việc.",
   "Trạng thái tiến độ dự án theo thời hạn công việc: có việc quá hạn > 14 ngày = chậm tiến độ; quá hạn ≤ 14 ngày hoặc đang làm chậm hơn kế hoạch thời gian (> 15%) = có nguy cơ chậm; còn lại = đúng tiến độ.",
   "Cảnh báo vật tư: tồn < tồn tối thiểu = thiếu hụt; tiêu hao ≥ 90% định mức = sắp vượt; > 100% = vượt định mức.",
-  "Hiệu suất thiết bị = giờ máy thực tế / (18 ngày × 8 giờ) trong 3 tuần gần nhất; nhiên liệu vượt 8% định mức thì cảnh báo.",
+  "Giờ máy tính lũy kế từ khi máy được điều động về công trình; hiệu suất = giờ máy thực tế ÷ (số ngày làm việc tại công trình × 8 giờ/ca). Cảnh báo nhiên liệu xét trên ca máy 3 tuần gần nhất (vượt 8% định mức).",
   "Chi phí thực hiện ước tính = giá trị thực hiện × hệ số chi phí của dự án (chưa có phân hệ kế toán chi phí).",
   "Quy trình nghiệm thu: Đang lập → TVGS xác nhận → CĐT ký; thanh toán giữ lại 5% bảo hành – đề xuất mô phỏng, cần xác nhận với ACC.",
   "Hình ảnh hiện trường, tài liệu đính kèm là minh họa; prototype không lưu file thật.",

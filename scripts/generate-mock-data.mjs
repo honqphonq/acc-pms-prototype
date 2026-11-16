@@ -693,12 +693,17 @@ equipmentShifts.filter((_, i) => i % 37 === 5).forEach((s) => {
 // ---------- equipment assignments ----------
 const equipmentAssignments = [];
 let asSeq = 0;
-equipment.filter((e) => e.currentProjectId).forEach((e, i) => {
-  if (i % 2 === 1) return;
-  const start = addDays(TODAY, -rint(25, 120));
+// mọi thiết bị đang ở công trình đều có quyết định điều động (ngày máy về công trình)
+equipment.filter((e) => e.currentProjectId && e !== equipment[16]).forEach((e) => {
+  const proj = projectDefs.find((p) => p.id === e.currentProjectId);
+  let start = addDays(TODAY, -rint(60, 320));
+  if (start < proj.startDate) start = addDays(proj.startDate, rint(0, 20));
+  if (start > addDays(TODAY, -25)) start = addDays(TODAY, -25);
+  let end = addDays(start, rint(240, 420));
+  if (end < addDays(TODAY, 30)) end = addDays(TODAY, rint(30, 120));
   equipmentAssignments.push({
     id: `as-${pad(++asSeq)}`, code: `QĐ-ĐĐ-2026-${pad(asSeq + 40)}`, equipmentId: e.id, fromProjectId: null, toProjectId: e.currentProjectId,
-    operatorId: e.operatorId, startDate: start, endDate: addDays(start, rint(90, 200)), status: "dang_dieu_dong",
+    operatorId: e.operatorId, startDate: start, endDate: end, status: "dang_dieu_dong",
     requesterId: projects.find((p) => p.id === e.currentProjectId).commanderId, reason: "Phục vụ thi công theo kế hoạch tháng", createdAt: addDays(start, -3),
   });
 });
@@ -708,6 +713,29 @@ equipmentAssignments.push(
   { id: `as-${pad(++asSeq)}`, code: `QĐ-ĐĐ-2026-${pad(asSeq + 40)}`, equipmentId: equipment[16].id, fromProjectId: "p11", toProjectId: "p03", operatorId: equipment[16].operatorId, startDate: "2026-08-25", endDate: "2027-03-31", status: "dang_dieu_dong", requesterId: "u21", reason: "Điều chuyển sau khi hoàn thành công trình Điện Biên", createdAt: "2026-08-20" },
   { id: `as-${pad(++asSeq)}`, code: `QĐ-ĐĐ-2026-${pad(asSeq + 40)}`, equipmentId: equipment[5].id, fromProjectId: "p11", toProjectId: "p11", operatorId: null, startDate: "2026-02-01", endDate: "2026-08-30", status: "hoan_thanh", requesterId: "u29", reason: "Rải bê tông sân đỗ ô tô", createdAt: "2026-01-25" },
 );
+
+// ---------- giờ máy tổng hợp theo tháng (từ khi máy về công trình đến trước 3 tuần ca máy chi tiết) ----------
+const equipmentUsage = [];
+const WIN_START = addDays(TODAY, -21);
+const workingDaysBetween = (a, b) => { let n = 0; for (let x = a; x <= b; x = addDays(x, 1)) if (d(x).getUTCDay() !== 0) n++; return n; };
+equipmentAssignments.filter((a) => a.status === "dang_dieu_dong" || a.status === "hoan_thanh").forEach((a) => {
+  const e = equipment.find((x) => x.id === a.equipmentId);
+  const to = minDate(a.status === "hoan_thanh" ? a.endDate : addDays(WIN_START, -1), addDays(WIN_START, -1));
+  if (a.startDate > to) return;
+  const eff = 0.62 + rand() * 0.3; // mức khai thác máy
+  let cur = a.startDate;
+  while (cur <= to) {
+    const [y, m] = cur.split("-").map(Number);
+    const monthEnd = fmt(new Date(Date.UTC(y, m, 0)));
+    const segEnd = minDate(monthEnd, to);
+    const wd = workingDaysBetween(cur, segEnd);
+    if (wd > 0) {
+      const hours = Math.round(wd * 8 * Math.min(0.98, eff * (0.9 + rand() * 0.2)));
+      equipmentUsage.push({ id: `eu-${pad(equipmentUsage.length + 1, 4)}`, equipmentId: e.id, projectId: a.toProjectId, month: cur.slice(0, 7), workingDays: wd, hours, fuelLiters: Math.round(hours * e.fuelNorm * (0.95 + rand() * 0.12)) });
+    }
+    cur = addDays(monthEnd, 1);
+  }
+});
 
 // ---------- acceptance records ----------
 const acceptanceRecords = [];
@@ -844,6 +872,7 @@ const files = {
   "equipment.json": equipment,
   "equipment-assignments.json": equipmentAssignments,
   "equipment-shifts.json": equipmentShifts,
+  "equipment-usage.json": equipmentUsage,
   "acceptance-records.json": acceptanceRecords,
   "payment-records.json": paymentRecords,
   "notifications.json": notifications,

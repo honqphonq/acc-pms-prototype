@@ -17,7 +17,7 @@ import { KpiCard } from "@/components/common/KpiCard";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { FilterSelect } from "@/components/common/DataTable";
 import {
-  AVAILABLE_HOURS_3W, acceptanceValue, equipmentByGroup, getEquipmentUsage, getPortfolio, getStockRows, itemStats, leafTasks, monthlyProgress, taskActualPct, taskPlannedPct,
+  acceptanceValue, equipmentByGroup, equipmentWork, utilizationOf, getPortfolio, getStockRows, itemStats, leafTasks, monthlyProgress, taskActualPct, taskPlannedPct,
 } from "@/services/selectors";
 import { CHART_COLORS, HEALTH, SERIES } from "@/utils/constants";
 import { DATA_UPDATED_AT, DEMO_TODAY, monthLabel } from "@/utils/date";
@@ -34,7 +34,6 @@ export default function ReportsPage() {
   const exp = (name: string, header: string[], rows: (string | number | null | undefined)[][]) => { exportCsv(`${name}_${DEMO_TODAY}`, header, rows); toast.success("Đã xuất báo cáo"); };
   const monthly = useMemo(() => monthlyProgress(db, projectId || undefined).filter((m) => m.month <= DEMO_TODAY.slice(0, 7)).slice(-12), [db, projectId]);
   const stock = getStockRows(db).filter((r) => !projectId || r.inv.projectId === projectId);
-  const usage = getEquipmentUsage(db);
   const pName = (id: string | null) => db.projects.find((p) => p.id === id)?.shortName ?? "";
   const projFilter = <FilterSelect value={projectId} onChange={setProjectId} allLabel="Toàn Tổng công ty" options={db.projects.filter((p) => p.status !== "chuan_bi").map((p) => ({ value: p.id, label: p.shortName }))} />;
 
@@ -55,14 +54,14 @@ export default function ReportsPage() {
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
             <KpiCard label="Dự án đang thi công" value={pf.runningProjects} tone="info" sub={`${pf.onTrack} đúng · ${pf.atRisk} nguy cơ · ${pf.delayed} chậm`} />
             <KpiCard label="Tiến độ tổng thể" value={fmtPct(pf.overallActual)} tone="primary" progress={pf.overallActual} marker={pf.overallPlanned} sub={`Kế hoạch ${fmtPct(pf.overallPlanned)}`} />
-            <KpiCard label="Sản lượng thực hiện" value={fmtNumber(pf.execValue / 1e9, 0)} unit="tỷ" tone="success" />
+            <KpiCard label="Giá trị khối lượng thực hiện" value={fmtNumber(pf.execValue / 1e9, 0)} unit="tỷ" tone="success" />
             <KpiCard label="Đã nghiệm thu" value={fmtNumber(pf.accepted / 1e9, 0)} unit="tỷ" tone="warning" />
             <KpiCard label="Đã thu" value={fmtNumber(pf.paid / 1e9, 0)} unit="tỷ" tone="navy" />
           </div>
           <Card>
-            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH %", "TT %", "Lệch (điểm)", "Tình trạng", "Sản lượng", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), (s.delta * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
+            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH %", "TT %", "Lệch (điểm)", "Tình trạng", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), (s.delta * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
             <Table>
-              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ TT / KH</TableHead><TableHead className="text-right">Lệch</TableHead><TableHead>Tình trạng</TableHead><TableHead className="text-right">Sản lượng</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ TT / KH</TableHead><TableHead className="text-right">Lệch</TableHead><TableHead>Tình trạng</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
               <TableBody>
                 {pf.stats.map((s) => (
                   <TableRow key={s.project.id} className="cursor-pointer" onClick={() => navigate(`/projects/${s.project.id}`)}>
@@ -188,9 +187,9 @@ export default function ReportsPage() {
         </TabsContent>
 
         <TabsContent value="thiet-bi" className="space-y-4">
-          <Card className="flex flex-wrap items-center gap-2 px-4 py-3">{projFilter}<Button size="sm" variant="outline" className="ml-auto" onClick={() => exp("Bao-cao-xe-may", ["Mã máy", "Tên", "Công trình", "Giờ máy 3 tuần", "Nhiên liệu (lít)", "Định mức (lít)", "Hiệu suất %"], db.equipment.filter((e) => !projectId || e.currentProjectId === projectId).map((e) => { const u = usage.get(e.id); return [e.code, e.name, pName(e.currentProjectId), u?.hours ?? 0, u?.fuel ?? 0, u?.fuelNormTotal ?? 0, (((u?.hours ?? 0) / AVAILABLE_HOURS_3W) * 100).toFixed(0)]; }))}><Download /> Xuất Excel</Button></Card>
+          <Card className="flex flex-wrap items-center gap-2 px-4 py-3">{projFilter}<Button size="sm" variant="outline" className="ml-auto" onClick={() => exp("Bao-cao-xe-may", ["Mã máy", "Tên", "Công trình", "Giờ máy tại công trình", "Nhiên liệu (lít)", "Hiệu suất %"], db.equipment.filter((e) => !projectId || e.currentProjectId === projectId).map((e) => { const w = equipmentWork(db, e.id, e.currentProjectId); return [e.code, e.name, pName(e.currentProjectId), w.hours, w.fuel, (utilizationOf(w) * 100).toFixed(0)]; }))}><Download /> Xuất Excel</Button></Card>
           <Card>
-            <div className="border-b px-4 py-3 text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp hoạt động XMTB theo nhóm máy (3 tuần gần nhất)</div>
+            <div className="border-b px-4 py-3 text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp hoạt động XMTB theo nhóm máy (lũy kế từ khi máy về công trình)</div>
             <Table>
               <TableHeader><TableRow><TableHead>Nhóm máy</TableHead><TableHead className="text-right">Tổng số</TableHead><TableHead className="text-right">Đang hoạt động</TableHead><TableHead className="text-right">Giờ máy</TableHead><TableHead>Hiệu suất sử dụng</TableHead></TableRow></TableHeader>
               <TableBody>
@@ -216,7 +215,7 @@ export default function ReportsPage() {
           <Card className="flex flex-wrap items-center gap-2 px-4 py-3">{projFilter}</Card>
           <Card>
             <Table>
-              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Sản lượng</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Chờ NT</TableHead><TableHead className="text-right">Số hồ sơ NT</TableHead><TableHead className="text-right">Đề nghị TT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Phải thu</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Chờ NT</TableHead><TableHead className="text-right">Số hồ sơ NT</TableHead><TableHead className="text-right">Đề nghị TT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Phải thu</TableHead></TableRow></TableHeader>
               <TableBody>
                 {pf.stats.filter((s) => s.project.status !== "chuan_bi" && (!projectId || s.project.id === projectId)).map((s) => {
                   const acs = db.acceptanceRecords.filter((a) => a.projectId === s.project.id);

@@ -16,10 +16,9 @@ import { PageSkeleton } from "@/components/common/LoadingState";
 import { FilterSelect } from "@/components/common/DataTable";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
-import { AVAILABLE_HOURS_3W, getAlerts, getEquipmentUsage, getProjectStatsMap, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
+import { equipmentWork, getAlerts, getProjectStatsMap, utilizationOf, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
-import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
-import { DEMO_TODAY, addDays } from "@/utils/date";
+import { fmtNumber, fmtPct } from "@/utils/format";
 import type { ProjectCategory } from "@/types";
 import { cn } from "@/utils/cn";
 
@@ -53,17 +52,19 @@ export default function DashboardPage() {
   const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
 
   // ---- Máy móc thiết bị ----
-  const usage = getEquipmentUsage(db);
+  // Giờ máy lũy kế từ khi máy về công trình đến nay
   const eqList = filtering ? db.equipment.filter((e) => e.currentProjectId && ids.has(e.currentProjectId)) : db.equipment;
-  const eqHours = eqList.reduce((x, e) => x + (usage.get(e.id)?.hours ?? 0), 0);
-  const eqCapacity = eqList.length * AVAILABLE_HOURS_3W;
-  const eqUtil = eqCapacity ? eqHours / eqCapacity : 0;
+  const eqWork = eqList.map((e) => equipmentWork(db, e.id, filtering ? e.currentProjectId : undefined));
+  const eqHours = eqWork.reduce((x, w) => x + w.hours, 0);
+  const eqDays = eqWork.reduce((x, w) => x + w.availableDays, 0);
+  const eqUtil = utilizationOf({ hours: eqHours, availableDays: eqDays });
   const eqGroups = [...new Set(eqList.map((e) => e.group))]
     .map((group) => {
-      const list = eqList.filter((e) => e.group === group);
-      const hours = list.reduce((x, e) => x + (usage.get(e.id)?.hours ?? 0), 0);
-      const projects = [...new Set(list.map((e) => e.currentProjectId).filter(Boolean))] as string[];
-      return { group, count: list.length, hours, projects, utilization: hours / (list.length * AVAILABLE_HOURS_3W) };
+      const idx = eqList.map((e, i) => (e.group === group ? i : -1)).filter((i) => i >= 0);
+      const hours = idx.reduce((x, i) => x + eqWork[i].hours, 0);
+      const days = idx.reduce((x, i) => x + eqWork[i].availableDays, 0);
+      const projects = [...new Set(idx.map((i) => eqList[i].currentProjectId).filter(Boolean))] as string[];
+      return { group, count: idx.length, hours, projects, utilization: utilizationOf({ hours, availableDays: days }) };
     })
     .sort((a, b) => b.count - a.count);
 
@@ -172,10 +173,10 @@ export default function DashboardPage() {
               <div className="mt-1.5 text-[11.5px] text-slate-500">Mục tiêu từ 75% trở lên</div>
             </div>
             <div className="rounded-lg bg-slate-50 p-4">
-              <div className="text-xs text-slate-500">Giờ máy thực tế (3 tuần gần nhất)</div>
+              <div className="text-xs text-slate-500">Giờ máy (từ khi máy về công trình đến nay)</div>
               <div className="mt-1 flex items-baseline gap-1.5"><span className="tabular text-2xl font-bold">{fmtNumber(eqHours, 0)}</span><span className="text-xs text-slate-500">giờ</span></div>
               <Progress value={eqUtil} tone="info" className="mt-2 h-2" />
-              <div className="mt-1.5 text-[11.5px] text-slate-500">{fmtPct(eqUtil, 0)} giờ máy định mức ({fmtNumber(eqCapacity, 0)} giờ = 18 ngày × 8 giờ × {eqList.length} máy)</div>
+              <div className="mt-1.5 text-[11.5px] text-slate-500">{fmtPct(eqUtil, 0)} giờ máy định mức ({fmtNumber(eqDays * 8, 0)} giờ = {fmtNumber(eqDays, 0)} máy-ngày làm việc × 8 giờ)</div>
             </div>
           </CardContent>
         </Card>
@@ -184,7 +185,7 @@ export default function DashboardPage() {
           <CardHeader className="items-start">
             <div>
               <CardTitle>Chi tiết theo loại máy</CardTitle>
-              <p className="mt-0.5 text-[11.5px] text-slate-500">Số liệu 3 tuần gần nhất ({fmtDate(addDays(DEMO_TODAY, -21))} – {fmtDate(addDays(DEMO_TODAY, -1))}) · Hiệu suất = giờ máy thực tế ÷ giờ máy định mức (18 ngày làm việc × 8 giờ/ca × số máy)</p>
+              <p className="mt-0.5 text-[11.5px] text-slate-500">Giờ máy lũy kế từ khi máy được điều động về công trình đến nay · Hiệu suất = giờ máy thực tế ÷ (số ngày làm việc tại công trình × 8 giờ/ca)</p>
             </div>
           </CardHeader>
           <Table>

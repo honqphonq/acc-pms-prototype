@@ -113,7 +113,7 @@ Các khóa liên kết: `projectId`, `itemId`, `taskId`, `materialId`, `supplier
 
 | File | Bản ghi | Ghi chú |
 |---|---|---|
-| projects.json | 11 | 3 loại công trình; 1 chờ duyệt, 1 hoàn thành |
+| projects.json | 26 | 24 đang thi công; 1 chờ duyệt, 1 hoàn thành |
 | users.json | 67 | 8 tài khoản demo, CHT, kỹ sư, 24 công nhân vận hành |
 | departments.json | 14 | Theo sơ đồ tổ chức trang 4 |
 | construction-items.json | 47 | Hạng mục |
@@ -122,7 +122,7 @@ Các khóa liên kết: `projectId`, `itemId`, `taskId`, `materialId`, `supplier
 | materials.json / suppliers.json | 25 / 8 | |
 | material-requests.json | 20 | Đủ mọi trạng thái quy trình |
 | inventory.json / stock-transactions.json | 107 / ~580 | Tồn kho tính từ phiếu nhập – xuất |
-| equipment.json / equipment-assignments.json / equipment-shifts.json | 48 / 23 / ~480 | |
+| equipment.json / equipment-assignments.json / equipment-shifts.json / equipment-usage.json | 48 / 40 / ~500 / ~220 | Giờ máy theo tháng + ca máy chi tiết |
 | acceptance-records.json / payment-records.json | 40 / 33 | |
 | notifications.json / issues.json | 8 / 12 | |
 
@@ -134,7 +134,7 @@ Dữ liệu được sinh bởi `scripts/generate-mock-data.mjs` (seed cố đ�
 2. Tiến độ = bình quân gia quyền theo giá trị (KL × đơn giá); tiến độ kế hoạch nội suy tuyến tính theo thời gian từng công việc. (Tài liệu p.16 hiển thị % nhưng không nêu công thức.)
 3. Trạng thái tiến độ dự án xác định theo thời hạn công việc: có công việc quá hạn > 14 ngày = chậm tiến độ; quá hạn ≤ 14 ngày hoặc công việc đang làm chậm hơn tiến độ thời gian kế hoạch > 15% = có nguy cơ chậm; còn lại = đúng tiến độ.
 4. Vật tư: nhu cầu còn lại = định mức − đã xuất − tồn − đang đề xuất; cảnh báo ≥ 90% định mức (tham chiếu dòng cảnh báo đỏ trang 19); tồn < tồn tối thiểu = thiếu hụt.
-5. Thiết bị: hiệu suất = giờ máy / (18 ngày × 8 giờ) trong 3 tuần; nhiên liệu > 108% định mức → cảnh báo; bảo dưỡng theo chu kỳ giờ máy.
+5. Thiết bị: giờ máy lũy kế từ khi máy về công trình (tổng hợp theo tháng `equipment-usage.json` + ca máy chi tiết 3 tuần gần nhất); hiệu suất = giờ máy ÷ (ngày làm việc tại công trình × 8 giờ); nhiên liệu > 108% định mức (3 tuần gần nhất) → cảnh báo; bảo dưỡng theo chu kỳ giờ máy.
 6. Chi phí thực hiện = giá trị thực hiện × hệ số chi phí dự án (chưa có phân hệ chi phí).
 7. Các bước nghiệm thu (TVGS, CĐT) và tỷ lệ giữ lại 5% là mô phỏng hợp lý, tài liệu chưa mô tả chi tiết.
 8. Ảnh hiện trường, file hồ sơ là minh họa; xác thực là chọn vai trò demo.

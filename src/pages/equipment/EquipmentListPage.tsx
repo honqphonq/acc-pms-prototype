@@ -17,7 +17,7 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { DispatchDialog, EquipmentFormDialog, EQUIPMENT_GROUPS } from "./EquipmentDialogs";
 import { deleteEquipment } from "@/services/actions";
-import { getEquipmentUsage, maintenanceDue } from "@/services/selectors";
+import { equipmentWork, maintenanceDue, utilizationOf } from "@/services/selectors";
 import { CATEGORY_LABELS, EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
@@ -39,7 +39,6 @@ export default function EquipmentListPage() {
   const [own, setOwn] = useState("");
   const [form, setForm] = useState<{ open: boolean; eq?: Equipment }>({ open: false });
   const [dispatch, setDispatch] = useState<string | null>(null);
-  const usage = getEquipmentUsage(db);
   const all = db.equipment;
   const rows = all.filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own));
   const count = (s: string) => all.filter((e) => e.status === s).length;
@@ -62,7 +61,7 @@ export default function EquipmentListPage() {
         );
       },
     },
-    { key: "hours", header: "Giờ máy 3 tuần", align: "right", sortValue: (e) => usage.get(e.id)?.hours ?? 0, cell: (e) => { const u = usage.get(e.id); return u ? <Tip content={`Nhiên liệu ${fmtNumber(u.fuel)} lít · ${fmtPct(u.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0, 0)} định mức`}><span>{fmtNumber(u.hours)}</span></Tip> : <span className="text-slate-300">—</span>; } },
+    { key: "hours", header: "Giờ máy tại CT", align: "right", sortValue: (e) => equipmentWork(db, e.id, e.currentProjectId).hours, cell: (e) => { if (!e.currentProjectId) return <span className="text-slate-300">—</span>; const w = equipmentWork(db, e.id, e.currentProjectId); return <Tip content={`Từ khi về công trình: ${fmtNumber(w.hours, 0)} giờ · hiệu suất ${fmtPct(utilizationOf(w), 0)} · nhiên liệu ${fmtNumber(w.fuel, 0)} lít`}><span>{fmtNumber(w.hours, 0)}</span></Tip>; } },
     { key: "st", header: "Trạng thái", sortValue: (e) => e.status, cell: (e) => <div className="flex flex-col items-start gap-1"><StatusBadge map={EQUIPMENT_STATUS} value={e.status} />{e.status === "hoat_dong" && maintenanceDue(e) && <Badge tone="warning" className="text-[10px]">Đến hạn bảo dưỡng</Badge>}</div> },
     {
       key: "act", header: "Thao tác", cell: (e) => (

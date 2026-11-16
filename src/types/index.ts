@@ -278,6 +278,17 @@ export interface EquipmentShift {
   note: string;
 }
 
+/** Giờ máy tổng hợp theo tháng tại một công trình (trước giai đoạn có ca máy chi tiết) */
+export interface EquipmentUsageMonthly {
+  id: ID;
+  equipmentId: ID;
+  projectId: ID;
+  month: string; // YYYY-MM
+  workingDays: number;
+  hours: number;
+  fuelLiters: number;
+}
+
 export type AcceptanceStatus = "nhap" | "cho_tvgs" | "cho_cdt" | "da_nghiem_thu" | "tra_lai";
 
 export interface AcceptanceLine {
@@ -368,6 +379,7 @@ export interface Database {
   equipment: Equipment[];
   equipmentAssignments: EquipmentAssignment[];
   equipmentShifts: EquipmentShift[];
+  equipmentUsage: EquipmentUsageMonthly[];
   acceptanceRecords: AcceptanceRecord[];
   paymentRecords: PaymentRecord[];
   notifications: Notification[];
