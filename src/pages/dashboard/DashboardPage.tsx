@@ -18,8 +18,8 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
 import { AVAILABLE_HOURS_3W, getAlerts, getEquipmentUsage, getProjectStatsMap, getStockRows, monthlyProgress, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
-import { fmtNumber, fmtPct } from "@/utils/format";
-import { monthLabel } from "@/utils/date";
+import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
+import { DEMO_TODAY, addDays, monthLabel } from "@/utils/date";
 import type { ProjectCategory } from "@/types";
 import { cn } from "@/utils/cn";
 
@@ -207,33 +207,38 @@ export default function DashboardPage() {
               <div className="mt-1.5 text-[11.5px] text-slate-500">Mục tiêu từ 75% trở lên</div>
             </div>
             <div className="rounded-lg bg-slate-50 p-4">
-              <div className="text-xs text-slate-500">Giờ máy (3 tuần gần nhất)</div>
+              <div className="text-xs text-slate-500">Giờ máy thực tế (3 tuần gần nhất)</div>
               <div className="mt-1 flex items-baseline gap-1.5"><span className="tabular text-2xl font-bold">{fmtNumber(eqHours, 0)}</span><span className="text-xs text-slate-500">giờ</span></div>
               <Progress value={eqUtil} tone="info" className="mt-2 h-2" />
-              <div className="mt-1.5 text-[11.5px] text-slate-500">{fmtPct(eqUtil, 0)} định mức ({fmtNumber(eqCapacity, 0)} giờ)</div>
+              <div className="mt-1.5 text-[11.5px] text-slate-500">{fmtPct(eqUtil, 0)} giờ máy định mức ({fmtNumber(eqCapacity, 0)} giờ = 18 ngày × 8 giờ × {eqList.length} máy)</div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="xl:col-span-8">
-          <CardHeader><CardTitle>Chi tiết theo loại máy</CardTitle><span className="text-[11px] text-slate-400">Hiệu suất = giờ máy / (18 ngày × 8 giờ × số máy)</span></CardHeader>
+          <CardHeader className="items-start">
+            <div>
+              <CardTitle>Chi tiết theo loại máy</CardTitle>
+              <p className="mt-0.5 text-[11.5px] text-slate-500">Số liệu 3 tuần gần nhất ({fmtDate(addDays(DEMO_TODAY, -21))} – {fmtDate(addDays(DEMO_TODAY, -1))}) · Hiệu suất = giờ máy thực tế ÷ giờ máy định mức (18 ngày làm việc × 8 giờ/ca × số máy)</p>
+            </div>
+          </CardHeader>
           <Table>
             <TableHeader>
-              <TableRow><TableHead>Tên máy</TableHead><TableHead className="text-right">Tổng số máy</TableHead><TableHead>Dự án</TableHead><TableHead>Hiệu suất sử dụng máy</TableHead><TableHead className="text-right">Tổng số giờ máy</TableHead></TableRow>
+              <TableRow><TableHead>Tên máy</TableHead><TableHead className="text-right">Số máy</TableHead><TableHead>Dự án</TableHead><TableHead>Hiệu suất sử dụng</TableHead><TableHead className="text-right">Giờ máy</TableHead></TableRow>
             </TableHeader>
             <TableBody>
               {eqGroups.map((g) => (
                 <TableRow key={g.group} className="cursor-pointer" onClick={() => navigate(`/equipment/list?group=${encodeURIComponent(g.group)}`)}>
                   <TableCell className="whitespace-nowrap font-semibold text-slate-800">{g.group}</TableCell>
                   <TableCell className="tabular text-right">{g.count}</TableCell>
-                  <TableCell className="max-w-[240px]">
+                  <TableCell className="max-w-[180px]">
                     {g.projects.length === 0 ? <span className="text-xs text-slate-400">Chưa phân bổ</span> : (
                       <Tip content={g.projects.map(pName).join(", ")}>
                         <span className="block truncate text-xs text-slate-600">{g.projects.slice(0, 2).map(pName).join(", ")}{g.projects.length > 2 && <span className="text-slate-400"> +{g.projects.length - 2}</span>}</span>
                       </Tip>
                     )}
                   </TableCell>
-                  <TableCell className="w-56">
+                  <TableCell className="w-44">
                     <div className="flex items-center gap-2">
                       <span className="tabular w-10 text-xs font-semibold">{fmtPct(g.utilization, 0)}</span>
                       <Progress value={g.utilization} tone={g.utilization >= 0.75 ? "success" : g.utilization >= 0.5 ? "info" : "warning"} className="h-1.5" />
