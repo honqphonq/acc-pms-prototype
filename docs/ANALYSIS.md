@@ -132,7 +132,7 @@ Dữ liệu được sinh bởi `scripts/generate-mock-data.mjs` (seed cố đ�
 
 1. Ngày dữ liệu cố định **14/11/2026**.
 2. Tiến độ = bình quân gia quyền theo giá trị (KL × đơn giá); tiến độ kế hoạch nội suy tuyến tính theo thời gian từng công việc. (Tài liệu p.16 hiển thị % nhưng không nêu công thức.)
-3. Ngưỡng tình trạng: lệch ≥ −3 điểm % đúng tiến độ; −3…−10 có nguy cơ chậm; < −10 chậm tiến độ. Công việc "chậm" khi kế hoạch − thực tế > 15 điểm %.
+3. Trạng thái tiến độ dự án xác định theo thời hạn công việc: có công việc quá hạn > 14 ngày = chậm tiến độ; quá hạn ≤ 14 ngày hoặc công việc đang làm chậm hơn tiến độ thời gian kế hoạch > 15% = có nguy cơ chậm; còn lại = đúng tiến độ.
 4. Vật tư: nhu cầu còn lại = định mức − đã xuất − tồn − đang đề xuất; cảnh báo ≥ 90% định mức (tham chiếu dòng cảnh báo đỏ trang 19); tồn < tồn tối thiểu = thiếu hụt.
 5. Thiết bị: hiệu suất = giờ máy / (18 ngày × 8 giờ) trong 3 tuần; nhiên liệu > 108% định mức → cảnh báo; bảo dưỡng theo chu kỳ giờ máy.
 6. Chi phí thực hiện = giá trị thực hiện × hệ số chi phí dự án (chưa có phân hệ chi phí).

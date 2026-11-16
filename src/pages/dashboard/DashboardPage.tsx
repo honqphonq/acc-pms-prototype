@@ -1,12 +1,14 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AlertTriangle, ArrowRight, Banknote, Building2, ChevronRight, ClipboardCheck, Construction, HardHat, Package, TrendingUp, Truck } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { AlertTriangle, ArrowRight, Banknote, ChevronLeft, ChevronRight, ClipboardCheck, Construction, Package, Receipt, Truck, Wallet } from "lucide-react";
+import { Cell, Legend, Line, LineChart, CartesianGrid, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useDb } from "@/hooks/useDb";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Tip } from "@/components/ui/tooltip";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PageHeader } from "@/components/common/PageHeader";
 import { KpiCard } from "@/components/common/KpiCard";
 import { ChartCard } from "@/components/common/ChartCard";
@@ -14,12 +16,14 @@ import { PageSkeleton } from "@/components/common/LoadingState";
 import { FilterSelect } from "@/components/common/DataTable";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
-import { equipmentByGroup, getAlerts, getProjectStatsMap, getStockRows, monthlyProgress, ALERT_KIND_LABEL } from "@/services/selectors";
-import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, PROJECT_STATUS, SERIES } from "@/utils/constants";
-import { fmtBillion, fmtNumber, fmtPct } from "@/utils/format";
+import { AVAILABLE_HOURS_3W, getAlerts, getEquipmentUsage, getProjectStatsMap, getStockRows, monthlyProgress, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
+import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
+import { fmtNumber, fmtPct } from "@/utils/format";
 import { monthLabel } from "@/utils/date";
 import type { ProjectCategory } from "@/types";
 import { cn } from "@/utils/cn";
+
+const HEALTH_RANK = { cham_tien_do: 0, nguy_co_cham: 1, dung_tien_do: 2, chua_bat_dau: 3, hoan_thanh: 4 } as const;
 
 export default function DashboardPage() {
   const { db } = useDb();
@@ -29,6 +33,7 @@ export default function DashboardPage() {
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("");
   const [projectId, setProjectId] = useState("");
+  const filtering = !!(unit || category || status || projectId);
 
   const all = [...getProjectStatsMap(db).values()];
   const stats = all.filter(
@@ -36,7 +41,7 @@ export default function DashboardPage() {
   );
   const ids = new Set(stats.map((s) => s.project.id));
   const running = stats.filter((s) => s.project.status === "dang_thi_cong");
-  const sum = (f: (s: (typeof stats)[number]) => number, arr = stats) => arr.reduce((x, s) => x + f(s), 0);
+  const sum = (f: (s: ProjectStats) => number) => stats.reduce((x, s) => x + f(s), 0);
   const contract = sum((s) => s.project.contractValue);
   const execValue = sum((s) => s.execValue);
   const planValue = sum((s) => s.planValue);
@@ -47,32 +52,39 @@ export default function DashboardPage() {
   const budget = sum((s) => s.project.budget);
   const overallActual = planValue ? execValue / planValue : 0;
   const overallPlanned = planValue ? plannedV / planValue : 0;
-  const health = { dung: running.filter((s) => s.health === "dung_tien_do").length, risk: running.filter((s) => s.health === "nguy_co_cham").length, late: running.filter((s) => s.health === "cham_tien_do").length };
+  const countHealth = (h: keyof typeof HEALTH) => running.filter((s) => s.health === h).length;
 
-  const series = useMemo(() => {
-    const rows = monthlyProgress(db, projectId || undefined);
-    return rows.filter((r) => r.month >= "2025-07" && r.month <= "2027-12");
-  }, [db, projectId]);
+  const series = useMemo(() => monthlyProgress(db, projectId || undefined).filter((r) => r.month >= "2025-07" && r.month <= "2027-12"), [db, projectId]);
 
   const stock = getStockRows(db).filter((r) => ids.has(r.inv.projectId));
   const shortage = stock.filter((r) => r.status === "thieu_hang");
   const overNorm = stock.filter((r) => r.status === "vuot_dinh_muc" || r.status === "sap_vuot");
-  const eqAll = db.equipment;
-  const eqStatus = (Object.keys(EQUIPMENT_STATUS) as (keyof typeof EQUIPMENT_STATUS)[]).map((k) => ({ key: k, ...EQUIPMENT_STATUS[k], value: eqAll.filter((e) => e.status === k).length }));
-  const eqGroups = equipmentByGroup(db).sort((a, b) => b.count - a.count).slice(0, 6);
   const alerts = getAlerts(db).filter((a) => !a.projectId || ids.has(a.projectId));
-  const attention = running.filter((s) => s.health !== "dung_tien_do").sort((a, b) => a.delta - b.delta);
-  const pendingApprovals = db.materialRequests.filter((r) => r.status === "cho_duyet" && ids.has(r.projectId)).length + db.equipmentAssignments.filter((a) => a.status === "cho_duyet").length + db.projects.filter((p) => p.approvalStatus === "cho_duyet").length;
+  const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
 
-  const progressBars = running.map((s) => ({ name: s.project.shortName, id: s.project.id, "Kế hoạch": +(s.planned * 100).toFixed(1), "Thực tế": +(s.actual * 100).toFixed(1) })).sort((a, b) => b["Kế hoạch"] - a["Kế hoạch"]);
+  // ---- Máy móc thiết bị ----
+  const usage = getEquipmentUsage(db);
+  const eqList = filtering ? db.equipment.filter((e) => e.currentProjectId && ids.has(e.currentProjectId)) : db.equipment;
+  const eqHours = eqList.reduce((x, e) => x + (usage.get(e.id)?.hours ?? 0), 0);
+  const eqCapacity = eqList.length * AVAILABLE_HOURS_3W;
+  const eqUtil = eqCapacity ? eqHours / eqCapacity : 0;
+  const eqGroups = [...new Set(eqList.map((e) => e.group))]
+    .map((group) => {
+      const list = eqList.filter((e) => e.group === group);
+      const hours = list.reduce((x, e) => x + (usage.get(e.id)?.hours ?? 0), 0);
+      const projects = [...new Set(list.map((e) => e.currentProjectId).filter(Boolean))] as string[];
+      return { group, count: list.length, hours, projects, utilization: hours / (list.length * AVAILABLE_HOURS_3W) };
+    })
+    .sort((a, b) => b.count - a.count);
 
   if (loading) return <PageSkeleton />;
 
   const pie = [
-    { name: HEALTH.dung_tien_do.label, value: health.dung, color: CHART_COLORS.success },
-    { name: HEALTH.nguy_co_cham.label, value: health.risk, color: CHART_COLORS.warning },
-    { name: HEALTH.cham_tien_do.label, value: health.late, color: CHART_COLORS.danger },
+    { name: HEALTH.dung_tien_do.label, value: countHealth("dung_tien_do"), color: CHART_COLORS.success },
+    { name: HEALTH.nguy_co_cham.label, value: countHealth("nguy_co_cham"), color: CHART_COLORS.warning },
+    { name: HEALTH.cham_tien_do.label, value: countHealth("cham_tien_do"), color: CHART_COLORS.danger },
   ];
+  const pName = (id: string) => db.projects.find((p) => p.id === id)?.shortName ?? "";
 
   return (
     <div>
@@ -84,20 +96,20 @@ export default function DashboardPage() {
         <FilterSelect label="Loại công trình" value={category} onChange={setCategory} allLabel="Tất cả loại" options={Object.entries(CATEGORY_LABELS).map(([v, l]) => ({ value: v, label: l }))} />
         <FilterSelect label="Trạng thái" value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(PROJECT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
         <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
-        {(unit || category || status || projectId) && (
+        {filtering && (
           <button className="text-xs font-medium text-primary hover:underline" onClick={() => { setUnit(""); setCategory(""); setStatus(""); setProjectId(""); }}>
             Xóa bộ lọc
           </button>
         )}
       </Card>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
-        <KpiCard label="Tổng số dự án" value={stats.length} unit="dự án" icon={<Building2 />} tone="navy" sub={`${stats.filter((s) => s.project.status === "chuan_bi").length} chuẩn bị · ${stats.filter((s) => s.project.status === "hoan_thanh").length} hoàn thành`} onClick={() => navigate("/projects")} />
-        <KpiCard label="Công trình đang triển khai" value={running.length} unit="công trình" icon={<Construction />} tone="info" progress={stats.length ? running.length / stats.length : 0} sub={`${health.late} chậm · ${health.risk} có nguy cơ chậm`} />
-        <KpiCard label="Tổng giá trị hợp đồng" value={fmtNumber(contract / 1e9, 0)} unit="tỷ đồng" icon={<Banknote />} tone="primary" progress={budget ? cost / budget : 0} sub={`Ngân sách chi phí ${fmtBillion(budget, 0)} · đã chi ${fmtPct(budget ? cost / budget : 0)}`} />
-        <KpiCard label="Giá trị (khối lượng) thực hiện" value={fmtNumber(execValue / 1e9, 0)} unit="tỷ đồng" icon={<TrendingUp />} tone="success" progress={contract ? execValue / contract : 0} sub={`${fmtPct(contract ? execValue / contract : 0)} giá trị hợp đồng`} />
-        <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(accepted / 1e9, 0)} unit="tỷ đồng" icon={<ClipboardCheck />} tone="warning" progress={execValue ? accepted / execValue : 0} sub={`${fmtPct(execValue ? accepted / execValue : 0)} giá trị thực hiện`} onClick={() => navigate("/acceptance/reconcile")} />
-        <KpiCard label="Đã thu từ Chủ đầu tư" value={fmtNumber(paid / 1e9, 0)} unit="tỷ đồng" icon={<Banknote />} tone="navy" progress={accepted ? paid / accepted : 0} sub={`${fmtPct(accepted ? paid / accepted : 0)} giá trị nghiệm thu`} onClick={() => navigate("/payments")} />
+      {/* 1. Chỉ số tổng hợp */}
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
+        <KpiCard label="Số dự án đang triển khai" value={running.length} unit="dự án" icon={<Construction />} tone="info" onClick={() => navigate("/projects")} sub={`${countHealth("cham_tien_do")} chậm · ${countHealth("nguy_co_cham")} nguy cơ chậm · ${countHealth("dung_tien_do")} đúng tiến độ`} />
+        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(contract / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" sub={`Tổng giá trị hợp đồng của ${stats.length} dự án`} />
+        <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(accepted / 1e9, 0)} unit="tỷ đồng" icon={<ClipboardCheck />} tone="warning" progress={contract ? accepted / contract : 0} sub={`${fmtPct(contract ? accepted / contract : 0)} giá trị hợp đồng`} onClick={() => navigate("/acceptance/reconcile")} />
+        <KpiCard label="Chi phí thực hiện" value={fmtNumber(cost / 1e9, 0)} unit="tỷ đồng" icon={<Receipt />} tone="navy" progress={budget ? cost / budget : 0} sub={`${fmtPct(budget ? cost / budget : 0)} ngân sách dự kiến (${fmtNumber(budget / 1e9, 0)} tỷ)`} />
+        <KpiCard label="Đã thu từ Chủ đầu tư" value={fmtNumber(paid / 1e9, 0)} unit="tỷ đồng" icon={<Banknote />} tone="success" progress={accepted ? paid / accepted : 0} sub={`${fmtPct(accepted ? paid / accepted : 0)} giá trị nghiệm thu`} onClick={() => navigate("/payments")} />
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-12">
@@ -108,7 +120,7 @@ export default function DashboardPage() {
           right={
             <div className="text-right">
               <div className="tabular text-2xl font-bold text-slate-900">{fmtPct(overallActual)}</div>
-              <div className="text-[11px] text-slate-500">Kế hoạch {fmtPct(overallPlanned)} · <span className={overallActual >= overallPlanned - 0.03 ? "text-success-fg" : "text-danger-fg"}>{fmtNumber((overallActual - overallPlanned) * 100)} điểm</span></div>
+              <div className="text-[11px] text-slate-500">Kế hoạch đến nay {fmtPct(overallPlanned)}</div>
             </div>
           }
         >
@@ -121,7 +133,7 @@ export default function DashboardPage() {
                 <Tooltip labelFormatter={(l) => `Tháng ${monthLabel(String(l))}`} formatter={(v: number, n) => [v == null ? "—" : fmtPct(v), n]} />
                 <Legend iconType="plainline" />
                 <Line name="Kế hoạch" type="monotone" dataKey="planPct" stroke={CHART_COLORS.plan} strokeDasharray="5 4" strokeWidth={2} dot={false} />
-                <Line name="Thực tế" type="monotone" dataKey="actualPct" stroke={CHART_COLORS.actual} strokeWidth={2} dot={false} connectNulls={false} activeDot={{ r: 4 }} />
+                <Line name="Thực tế" type="monotone" dataKey="actualPct" stroke={CHART_COLORS.actual} strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -150,63 +162,93 @@ export default function DashboardPage() {
               </div>
             ))}
           </div>
+          <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Xác định theo thời hạn công việc: có việc quá hạn &gt; {LATE_DAYS_DELAYED} ngày = chậm; quá hạn ≤ {LATE_DAYS_DELAYED} ngày hoặc đang làm chậm so với kế hoạch = nguy cơ chậm.</p>
         </ChartCard>
 
         <Card className="xl:col-span-4">
           <CardHeader>
             <CardTitle>Dự án cần xử lý</CardTitle>
-            {pendingApprovals > 0 && <Badge tone="primary">{pendingApprovals} chờ duyệt</Badge>}
           </CardHeader>
           <CardContent className="space-y-2">
             {attention.length === 0 && <div className="py-6 text-center text-xs text-slate-500">Tất cả dự án đang đúng tiến độ</div>}
-            {attention.slice(0, 5).map((s) => (
-              <Link key={s.project.id} to={`/projects/${s.project.id}`} className="flex items-center justify-between gap-2 rounded-lg border border-slate-100 px-3 py-2 hover:border-slate-200 hover:bg-slate-50">
-                <div className="min-w-0">
-                  <div className="truncate text-[13px] font-medium text-slate-800">{s.project.shortName}</div>
-                  <div className="text-[11px] text-slate-500">{fmtNumber(s.delta * 100)} điểm so với kế hoạch · {s.tasksOverdue} việc quá hạn</div>
-                </div>
-                <StatusBadge map={HEALTH} value={s.health} dot={false} />
+            {attention.slice(0, 6).map((s) => (
+              <Link key={s.project.id} to={`/projects/${s.project.id}`} className="flex items-center justify-between gap-2 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
+                <span className="truncate text-[13px] font-medium text-slate-800">{s.project.shortName}</span>
+                <Tip content={s.healthReason}><span><StatusBadge map={HEALTH} value={s.health} dot={false} /></span></Tip>
               </Link>
             ))}
           </CardContent>
         </Card>
       </div>
 
+      {/* 3. Thẻ công trình theo loại – cuộn ngang, tối đa 2 dòng */}
       {(["quoc_phong", "giao_thong", "dan_dung"] as ProjectCategory[]).map((cat) => {
         const list = stats.filter((s) => s.project.category === cat);
-        if (!list.length) return null;
-        return (
-          <div key={cat} className="mt-5">
-            <div className="mb-2 flex items-center gap-2">
-              <span className="h-3 w-1 rounded" style={{ background: { quoc_phong: SERIES[2], giao_thong: SERIES[0], dan_dung: SERIES[3] }[cat] }} />
-              <h2 className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">{CATEGORY_LABELS[cat]}</h2>
-              <Badge tone="neutral">{list.length} dự án</Badge>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {list.map((s) => <ProjectCard key={s.project.id} stats={s} />)}
-            </div>
-          </div>
-        );
+        return list.length ? <CategoryRow key={cat} category={cat} list={list} /> : null;
       })}
 
+      {/* 6. Máy móc thiết bị */}
       <div className="mt-5 grid gap-4 xl:grid-cols-12">
-        <ChartCard className="xl:col-span-6" title="So sánh tiến độ kế hoạch – thực tế" description="% hoàn thành theo giá trị, các dự án đang thi công · bấm cột để mở dự án">
-          <div className="h-80">
-            <ResponsiveContainer>
-              <BarChart layout="vertical" data={progressBars} margin={{ top: 0, right: 16, left: 8, bottom: 0 }} barGap={2} barCategoryGap={8} onClick={(e) => { const id = (e?.activePayload?.[0]?.payload as { id?: string })?.id; if (id) navigate(`/projects/${id}`); }}>
-                <CartesianGrid stroke="#eef2f6" horizontal={false} />
-                <XAxis type="number" unit="%" domain={[0, 100]} tickLine={false} axisLine={{ stroke: "#e2e8f0" }} />
-                <YAxis type="category" dataKey="name" width={150} tickLine={false} axisLine={false} interval={0} />
-                <Tooltip formatter={(v: number, n) => [`${v}%`, n]} cursor={{ fill: "#f1f5f9" }} />
-                <Legend />
-                <Bar dataKey="Kế hoạch" fill={CHART_COLORS.plan} radius={[0, 4, 4, 0]} maxBarSize={10} className="cursor-pointer" />
-                <Bar dataKey="Thực tế" fill={SERIES[0]} radius={[0, 4, 4, 0]} maxBarSize={10} className="cursor-pointer" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </ChartCard>
+        <Card className="xl:col-span-4">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2"><Truck className="h-4 w-4 text-slate-400" /> Máy móc thiết bị</CardTitle>
+            <Link to="/equipment/list" className="text-xs text-primary hover:underline">Chi tiết</Link>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="rounded-lg bg-slate-50 p-4">
+              <div className="text-xs text-slate-500">Tổng số máy</div>
+              <div className="mt-1 flex items-baseline gap-1.5"><span className="tabular text-2xl font-bold">{eqList.length}</span><span className="text-xs text-slate-500">máy</span></div>
+              <div className="mt-1 text-[11.5px] text-slate-500">{eqList.filter((e) => e.status === "hoat_dong").length} đang hoạt động · {eqList.filter((e) => e.status === "nhan_roi").length} nhàn rỗi · {eqList.filter((e) => e.status === "bao_tri").length} bảo trì</div>
+            </div>
+            <div className="rounded-lg bg-slate-50 p-4">
+              <div className="text-xs text-slate-500">Hiệu suất sử dụng bình quân</div>
+              <div className="tabular mt-1 text-2xl font-bold">{fmtPct(eqUtil, 0)}</div>
+              <Progress value={eqUtil} tone={eqUtil >= 0.75 ? "success" : "info"} className="mt-2 h-2" />
+              <div className="mt-1.5 text-[11.5px] text-slate-500">Mục tiêu từ 75% trở lên</div>
+            </div>
+            <div className="rounded-lg bg-slate-50 p-4">
+              <div className="text-xs text-slate-500">Giờ máy (3 tuần gần nhất)</div>
+              <div className="mt-1 flex items-baseline gap-1.5"><span className="tabular text-2xl font-bold">{fmtNumber(eqHours, 0)}</span><span className="text-xs text-slate-500">giờ</span></div>
+              <Progress value={eqUtil} tone="info" className="mt-2 h-2" />
+              <div className="mt-1.5 text-[11.5px] text-slate-500">{fmtPct(eqUtil, 0)} định mức ({fmtNumber(eqCapacity, 0)} giờ)</div>
+            </div>
+          </CardContent>
+        </Card>
 
-        <Card className="xl:col-span-3">
+        <Card className="xl:col-span-8">
+          <CardHeader><CardTitle>Chi tiết theo loại máy</CardTitle><span className="text-[11px] text-slate-400">Hiệu suất = giờ máy / (18 ngày × 8 giờ × số máy)</span></CardHeader>
+          <Table>
+            <TableHeader>
+              <TableRow><TableHead>Tên máy</TableHead><TableHead className="text-right">Tổng số máy</TableHead><TableHead>Dự án</TableHead><TableHead>Hiệu suất sử dụng máy</TableHead><TableHead className="text-right">Tổng số giờ máy</TableHead></TableRow>
+            </TableHeader>
+            <TableBody>
+              {eqGroups.map((g) => (
+                <TableRow key={g.group} className="cursor-pointer" onClick={() => navigate(`/equipment/list?group=${encodeURIComponent(g.group)}`)}>
+                  <TableCell className="whitespace-nowrap font-semibold text-slate-800">{g.group}</TableCell>
+                  <TableCell className="tabular text-right">{g.count}</TableCell>
+                  <TableCell className="max-w-[240px]">
+                    {g.projects.length === 0 ? <span className="text-xs text-slate-400">Chưa phân bổ</span> : (
+                      <Tip content={g.projects.map(pName).join(", ")}>
+                        <span className="block truncate text-xs text-slate-600">{g.projects.slice(0, 2).map(pName).join(", ")}{g.projects.length > 2 && <span className="text-slate-400"> +{g.projects.length - 2}</span>}</span>
+                      </Tip>
+                    )}
+                  </TableCell>
+                  <TableCell className="w-56">
+                    <div className="flex items-center gap-2">
+                      <span className="tabular w-10 text-xs font-semibold">{fmtPct(g.utilization, 0)}</span>
+                      <Progress value={g.utilization} tone={g.utilization >= 0.75 ? "success" : g.utilization >= 0.5 ? "info" : "warning"} className="h-1.5" />
+                    </div>
+                  </TableCell>
+                  <TableCell className="tabular text-right">{fmtNumber(g.hours, 0)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Card>
+      </div>
+
+      <div className="mt-4 grid gap-4 xl:grid-cols-12">
+        <Card className="xl:col-span-4">
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><Package className="h-4 w-4 text-slate-400" /> Tình trạng vật tư</CardTitle>
             <Link to="/materials/inventory" className="text-xs text-primary hover:underline">Chi tiết</Link>
@@ -222,74 +264,67 @@ export default function DashboardPage() {
                 <div key={r.inv.id} className="flex items-center justify-between gap-2 text-[12.5px]">
                   <div className="min-w-0">
                     <div className="truncate font-medium text-slate-700">{r.material.name}</div>
-                    <div className="truncate text-[11px] text-slate-400">{db.projects.find((p) => p.id === r.inv.projectId)?.shortName}</div>
+                    <div className="truncate text-[11px] text-slate-400">{pName(r.inv.projectId)}</div>
                   </div>
                   <Badge tone={r.status === "thieu_hang" ? "danger" : "warning"}>{r.status === "thieu_hang" ? "Thiếu" : `${Math.round(r.usage * 100)}% ĐM`}</Badge>
                 </div>
               ))}
             </div>
             <div className="mt-3 border-t pt-2 text-[11.5px] text-slate-500">
-              {db.materialRequests.filter((r) => r.status === "cho_duyet").length} đề xuất chờ duyệt · {db.materialRequests.filter((r) => r.status === "dat_hang").length} đang đặt hàng
+              {db.materialRequests.filter((r) => r.status === "cho_duyet" && ids.has(r.projectId)).length} đề xuất chờ duyệt · {db.materialRequests.filter((r) => r.status === "dat_hang" && ids.has(r.projectId)).length} đang đặt hàng
             </div>
           </CardContent>
         </Card>
 
-        <Card className="xl:col-span-3">
+        <Card className="xl:col-span-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Truck className="h-4 w-4 text-slate-400" /> Máy móc thiết bị</CardTitle>
-            <Link to="/equipment/list" className="text-xs text-primary hover:underline">Chi tiết</Link>
+            <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4 text-primary" /> Cảnh báo & vấn đề cần xử lý</CardTitle>
+            <Link to="/alerts" className="flex items-center gap-1 text-xs font-medium text-primary hover:underline">Xem tất cả ({alerts.length}) <ArrowRight className="h-3.5 w-3.5" /></Link>
           </CardHeader>
-          <CardContent>
-            <div className="flex h-2.5 overflow-hidden rounded-full">
-              {eqStatus.map((s) => (
-                <div key={s.key} style={{ width: `${(s.value / eqAll.length) * 100}%`, background: { success: CHART_COLORS.success, neutral: "#94A3B8", warning: CHART_COLORS.warning, danger: CHART_COLORS.danger }[s.tone as string] }} className="border-r-2 border-white last:border-0" />
-              ))}
-            </div>
-            <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1">
-              {eqStatus.map((s) => (
-                <div key={s.key} className="flex items-center justify-between text-[12px] text-slate-600">
-                  <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ background: { success: CHART_COLORS.success, neutral: "#94A3B8", warning: CHART_COLORS.warning, danger: CHART_COLORS.danger }[s.tone as string] }} />{s.label}</span>
-                  <span className="tabular font-semibold">{s.value}</span>
+          <CardContent className="space-y-2">
+            {alerts.slice(0, 6).map((a) => (
+              <Link key={a.id} to={a.link} className="group flex min-w-0 items-start gap-3 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
+                <span className={cn("mt-1.5 h-2 w-2 shrink-0 rounded-full", a.severity === "danger" ? "bg-rose-500" : a.severity === "warning" ? "bg-amber-500" : "bg-blue-500")} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <Badge tone="outline" className="text-[10px]">{ALERT_KIND_LABEL[a.kind]}</Badge>
+                    <span className="truncate text-[13px] font-medium text-slate-800">{a.title}</span>
+                  </div>
+                  <div className="mt-0.5 truncate text-[11.5px] text-slate-500">{a.detail}</div>
                 </div>
-              ))}
-            </div>
-            <div className="mt-3 space-y-2 border-t pt-3">
-              <div className="text-[11px] font-medium text-slate-500">Hiệu suất sử dụng (3 tuần gần nhất)</div>
-              {eqGroups.map((g) => (
-                <div key={g.group} className="grid grid-cols-[1fr_90px_36px] items-center gap-2 text-[12px]">
-                  <span className="truncate text-slate-600">{g.group}</span>
-                  <Progress value={g.utilization} tone={g.utilization >= 0.75 ? "success" : g.utilization >= 0.5 ? "info" : "warning"} className="h-1.5" />
-                  <span className="tabular text-right text-slate-700">{Math.round(g.utilization * 100)}%</span>
-                </div>
-              ))}
-            </div>
+                <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-slate-300 group-hover:text-slate-500" />
+              </Link>
+            ))}
           </CardContent>
         </Card>
       </div>
+    </div>
+  );
+}
 
-      <Card className="mt-4">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2"><AlertTriangle className="h-4 w-4 text-primary" /> Cảnh báo & vấn đề cần xử lý</CardTitle>
-          <Link to="/alerts" className="flex items-center gap-1 text-xs font-medium text-primary hover:underline">Xem tất cả ({alerts.length}) <ArrowRight className="h-3.5 w-3.5" /></Link>
-        </CardHeader>
-        <CardContent className="grid gap-2 md:grid-cols-2">
-          {alerts.slice(0, 8).map((a) => (
-            <Link key={a.id} to={a.link} className="group flex min-w-0 items-start gap-3 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
-              <span className={cn("mt-1 h-2 w-2 shrink-0 rounded-full", a.severity === "danger" ? "bg-rose-500" : a.severity === "warning" ? "bg-amber-500" : "bg-blue-500")} />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <Badge tone="outline" className="text-[10px]">{ALERT_KIND_LABEL[a.kind]}</Badge>
-                  <span className="truncate text-[13px] font-medium text-slate-800">{a.title}</span>
-                </div>
-                <div className="mt-0.5 truncate text-[11.5px] text-slate-500">{a.detail}</div>
-              </div>
-              <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-slate-300 group-hover:text-slate-500" />
-            </Link>
-          ))}
-        </CardContent>
-      </Card>
-      <div className="mt-3 flex items-center gap-1.5 text-[11px] text-slate-400">
-        <HardHat className="h-3.5 w-3.5" /> Ngưỡng đánh giá: lệch ≥ −3 điểm % = đúng tiến độ; −3 đến −10 = có nguy cơ chậm; &lt; −10 = chậm tiến độ (giả định của prototype).
+/** Một nhóm công trình: cuộn ngang, tối đa 2 dòng thẻ */
+function CategoryRow({ category, list }: { category: ProjectCategory; list: ProjectStats[] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const rows = list.length > 4 ? 2 : 1;
+  const columns = Math.ceil(list.length / rows);
+  const scrollBy = (dir: number) => ref.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+  return (
+    <div className="mt-5">
+      <div className="mb-2 flex items-center gap-2">
+        <span className="h-3 w-1 rounded" style={{ background: CATEGORY_COLORS[category] }} />
+        <h2 className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">{CATEGORY_LABELS[category]}</h2>
+        <Badge tone="neutral">{list.length} dự án</Badge>
+        {columns > 3 && (
+          <div className="ml-auto flex gap-1">
+            <button onClick={() => scrollBy(-1)} className="rounded-md border bg-white p-1 text-slate-500 hover:bg-slate-50" aria-label="Cuộn trái"><ChevronLeft className="h-4 w-4" /></button>
+            <button onClick={() => scrollBy(1)} className="rounded-md border bg-white p-1 text-slate-500 hover:bg-slate-50" aria-label="Cuộn phải"><ChevronRight className="h-4 w-4" /></button>
+          </div>
+        )}
+      </div>
+      <div ref={ref} className="scrollbar-thin overflow-x-auto pb-2">
+        <div className="grid auto-cols-[300px] grid-flow-col gap-3 sm:auto-cols-[320px]" style={{ gridTemplateRows: `repeat(${rows}, auto)` }}>
+          {list.map((s) => <ProjectCard key={s.project.id} stats={s} />)}
+        </div>
       </div>
     </div>
   );

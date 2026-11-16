@@ -18,8 +18,8 @@ const SCENARIOS: Scenario[] = [
   {
     no: 1, title: "Ban lãnh đạo giám sát dự án", role: "lanh_dao", userId: "u01", goal: "Nắm tình hình toàn bộ dự án, phát hiện dự án/hạng mục chậm tiến độ và các cảnh báo.",
     steps: [
-      { text: "Mở Dashboard tổng quan – xem KPI, tiến độ tổng thể (S-curve), tỷ lệ đúng / nguy cơ / chậm tiến độ", to: "/" },
-      { text: "Trong khối “Dự án cần xử lý”, chọn “Sân đỗ máy bay Đà Nẵng” (chậm ~20 điểm %)", to: "/projects/p02" },
+      { text: "Mở Dashboard tổng quan – xem chỉ số tổng hợp, tiến độ tổng thể, tỷ lệ đúng / nguy cơ / chậm tiến độ, tình trạng máy móc thiết bị", to: "/" },
+      { text: "Trong khối “Dự án cần xử lý”, chọn “Sân đỗ máy bay Đà Nẵng” (Chậm tiến độ – có công việc quá hạn 32 ngày)", to: "/projects/p02" },
       { text: "Xem tiến độ tổng thể, biểu đồ lũy kế, danh sách công việc chậm / quá hạn của dự án", to: "/projects/p02" },
       { text: "Mở dự án Trường Lê Hồng Phong → tab Hạng mục: phát hiện “Phần móng” có công việc quá hạn", to: "/projects/p01" },
       { text: "Xem trang Cảnh báo & vấn đề phát sinh: tiến độ, thiếu vật tư, thiết bị không sẵn sàng", to: "/alerts" },
@@ -72,7 +72,7 @@ const SCENARIOS: Scenario[] = [
 const ASSUMPTIONS = [
   "Ngày dữ liệu demo cố định 14/11/2026 để kịch bản trình diễn luôn nhất quán.",
   "Tiến độ = bình quân gia quyền theo giá trị (khối lượng × đơn giá); tiến độ kế hoạch nội suy tuyến tính theo thời gian của từng công việc.",
-  "Ngưỡng đánh giá: lệch ≥ −3 điểm % = đúng tiến độ; −3 đến −10 = có nguy cơ chậm; < −10 = chậm tiến độ.",
+  "Trạng thái tiến độ dự án theo thời hạn công việc: có việc quá hạn > 14 ngày = chậm tiến độ; quá hạn ≤ 14 ngày hoặc đang làm chậm hơn kế hoạch thời gian (> 15%) = có nguy cơ chậm; còn lại = đúng tiến độ.",
   "Cảnh báo vật tư: tồn < tồn tối thiểu = thiếu hụt; tiêu hao ≥ 90% định mức = sắp vượt; > 100% = vượt định mức.",
   "Hiệu suất thiết bị = giờ máy thực tế / (18 ngày × 8 giờ) trong 3 tuần gần nhất; nhiên liệu vượt 8% định mức thì cảnh báo.",
   "Chi phí thực hiện ước tính = giá trị thực hiện × hệ số chi phí của dự án (chưa có phân hệ kế toán chi phí).",

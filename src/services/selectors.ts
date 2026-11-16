@@ -13,7 +13,7 @@ import type {
   Project,
 } from "@/types";
 import { DEMO_TODAY, addDays, diffDays, endOfMonth, monthsBetween } from "@/utils/date";
-import { SCHEDULE_THRESHOLDS, type ScheduleHealth } from "@/utils/constants";
+import { type ScheduleHealth } from "@/utils/constants";
 
 // ---------- memo helper (cache theo identity của DB) ----------
 function memo<R>(fn: (db: Database) => R) {
@@ -144,14 +144,27 @@ export interface ProjectStats {
   cost: number;
   daysLeft: number;
   elapsedPct: number;
+  tasksBehind: number; // công việc đang làm nhưng chậm so với thời gian kế hoạch
+  maxDaysLate: number; // số ngày trễ hạn lớn nhất của công việc quá hạn
+  healthReason: string; // diễn giải trạng thái tiến độ
 }
 
-export function healthOf(delta: number, actual: number, planned: number, status: Project["status"]): ScheduleHealth {
-  if (status === "hoan_thanh" || actual >= 1) return "hoan_thanh";
-  if (status === "chuan_bi" && planned === 0) return "chua_bat_dau";
-  if (delta * 100 >= SCHEDULE_THRESHOLDS.atRisk) return "dung_tien_do";
-  if (delta * 100 >= SCHEDULE_THRESHOLDS.delayed) return "nguy_co_cham";
-  return "cham_tien_do";
+/** Số ngày trễ hạn tối đa của công việc quá hạn để coi là "Chậm tiến độ" (giả định) */
+export const LATE_DAYS_DELAYED = 14;
+
+/**
+ * Trạng thái tiến độ dự án – xác định theo thời hạn của các công việc:
+ * - Chậm tiến độ: có công việc quá hạn kết thúc kế hoạch > 14 ngày mà chưa hoàn thành
+ * - Có nguy cơ chậm: có công việc quá hạn (≤ 14 ngày) hoặc công việc đang làm chậm hơn tiến độ thời gian kế hoạch
+ * - Đúng tiến độ: các công việc đều đang trong thời hạn
+ */
+export function healthOf(o: { status: Project["status"]; actual: number; started: boolean; maxDaysLate: number; tasksOverdue: number; tasksBehind: number }): { health: ScheduleHealth; reason: string } {
+  if (o.status === "hoan_thanh" || o.actual >= 1) return { health: "hoan_thanh", reason: "Đã hoàn thành toàn bộ công việc" };
+  if (o.status === "chuan_bi" && !o.started) return { health: "chua_bat_dau", reason: "Chưa đến thời gian thi công" };
+  if (o.maxDaysLate > LATE_DAYS_DELAYED) return { health: "cham_tien_do", reason: `${o.tasksOverdue} công việc quá hạn, trễ nhất ${o.maxDaysLate} ngày` };
+  if (o.tasksOverdue > 0) return { health: "nguy_co_cham", reason: `${o.tasksOverdue} công việc quá hạn ${o.maxDaysLate} ngày` };
+  if (o.tasksBehind > 0) return { health: "nguy_co_cham", reason: `${o.tasksBehind} công việc đang chậm so với thời gian kế hoạch` };
+  return { health: "dung_tien_do", reason: "Các công việc đều trong thời hạn kế hoạch" };
 }
 
 export function acceptanceValue(db: Database, ac: AcceptanceRecord) {
@@ -175,6 +188,10 @@ export const getProjectStatsMap = memo((db: Database) => {
     const acs = db.acceptanceRecords.filter((a) => a.projectId === p.id);
     const pays = db.paymentRecords.filter((x) => x.projectId === p.id && x.direction === "thu_cdt");
     const total = diffDays(p.startDate, p.endDate) || 1;
+    const overdue = ts.filter((t) => taskActualPct(t) < 1 && t.plannedEnd < DEMO_TODAY);
+    const maxDaysLate = overdue.reduce((m, t) => Math.max(m, diffDays(t.plannedEnd, DEMO_TODAY)), 0);
+    const tasksBehind = ts.filter((t) => t.plannedEnd >= DEMO_TODAY && taskPlannedPct(t) - taskActualPct(t) > 0.15).length;
+    const h = healthOf({ status: p.status, actual, started: ts.some((t) => t.actualQty > 0), maxDaysLate, tasksOverdue: overdue.length, tasksBehind });
     map.set(p.id, {
       project: p,
       planValue,
@@ -182,12 +199,15 @@ export const getProjectStatsMap = memo((db: Database) => {
       planned,
       actual,
       delta,
-      health: healthOf(delta, actual, planned, p.status),
+      health: h.health,
+      healthReason: h.reason,
+      maxDaysLate,
+      tasksBehind,
       tasksTotal: ts.length,
       tasksDone: ts.filter((t) => taskActualPct(t) >= 1).length,
       tasksDoneLate: ts.filter((t) => taskActualPct(t) >= 1 && t.actualEnd && t.actualEnd > t.plannedEnd).length,
       tasksInProgress: ts.filter((t) => taskActualPct(t) > 0 && taskActualPct(t) < 1).length,
-      tasksOverdue: ts.filter((t) => taskActualPct(t) < 1 && t.plannedEnd < DEMO_TODAY).length,
+      tasksOverdue: overdue.length,
       tasksNotStarted: ts.filter((t) => taskActualPct(t) === 0 && t.plannedEnd >= DEMO_TODAY).length,
       acceptedValue: acs.filter((a) => a.status === "da_nghiem_thu").reduce((s, a) => s + (acValues.get(a.id) ?? 0), 0),
       pendingAcceptanceValue: acs.filter((a) => ["cho_tvgs", "cho_cdt"].includes(a.status)).reduce((s, a) => s + (acValues.get(a.id) ?? 0), 0),
@@ -401,7 +421,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
         kind: "tien_do",
         severity: s.health === "cham_tien_do" ? "danger" : "warning",
         title: `${s.project.shortName}: ${s.health === "cham_tien_do" ? "chậm tiến độ" : "có nguy cơ chậm tiến độ"}`,
-        detail: `Thực tế ${(s.actual * 100).toFixed(1)}% / kế hoạch ${(s.planned * 100).toFixed(1)}% (${(s.delta * 100).toFixed(1)} điểm). Dự báo cần đẩy nhanh để kịp hoàn thành ${s.project.endDate.split("-").reverse().join("/")}.`,
+        detail: `${s.healthReason} · hoàn thành ${(s.actual * 100).toFixed(1)}% khối lượng · hạn hoàn thành dự án ${s.project.endDate.split("-").reverse().join("/")}`,
         projectId: s.project.id,
         link: `/projects/${s.project.id}`,
       });
