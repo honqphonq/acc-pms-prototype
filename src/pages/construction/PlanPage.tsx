@@ -15,7 +15,7 @@ import { Tip } from "@/components/ui/tooltip";
 import { TaskProgressDialog } from "./TaskProgressDialog";
 import { TaskFormDialog, ItemFormDialog } from "./TaskFormDialog";
 import { TaskDrawer } from "./TaskDrawer";
-import { GanttChart, GanttLegend, type GanttRow } from "./GanttChart";
+import { GanttChart, GanttLegend, type GanttRow, type GanttStatus } from "./GanttChart";
 import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services/selectors";
 import { importPlanTasks } from "@/services/actions";
 import { downloadTemplate, exportPlan, parsePlanFile, type ImportRow } from "@/services/planExcel";
@@ -176,10 +176,17 @@ export default function PlanPage() {
   };
 
   // ---------- Gantt ----------
+  /** Màu thanh Gantt: hoàn thành đúng hạn / hoàn thành muộn / chậm / đang làm / chưa bắt đầu */
+  const ganttStatus = (l: Line): GanttStatus => {
+    if (l.actual >= 1) return l.actualEnd && l.actualEnd > l.end ? "hoan_thanh_muon" : "dung_tien_do";
+    if (l.late) return "cham_tien_do";
+    if (l.actualStart || l.actual > 0) return "dang_thuc_hien";
+    return "chua_bat_dau";
+  };
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({
     id: l.taskId ?? l.key, label: l.name, code: l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
-    start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd, actual: l.actual, planned: l.planned,
-    health: l.actual >= 1 ? "hoan_thanh" : l.late ? "qua_han" : "dung",
+    start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd,
+    status: ganttStatus(l),
   }));
 
   /** % làm tròn xuống khi chưa xong để không hiển thị 100% cho việc chưa hoàn thành */
@@ -214,8 +221,8 @@ export default function PlanPage() {
           <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm kiếm công việc..." className="h-8 pl-8" />
         </div>
-        <Button size="sm" variant={showGantt ? "soft" : "outline"} onClick={() => setShowGantt(!showGantt)}>{showGantt ? "Ẩn sơ đồ" : "Hiện sơ đồ"}</Button>
-        <Button size="sm" variant={baseline ? "soft" : "outline"} onClick={() => setBaseline(!baseline)}>{baseline ? "Ẩn baseline" : "Hiện baseline"}</Button>
+        <Button size="sm" variant="outline" className={cn(showGantt && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setShowGantt(!showGantt)}>{showGantt ? "Ẩn sơ đồ" : "Hiện sơ đồ"}</Button>
+        <Button size="sm" variant="outline" className={cn(baseline && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setBaseline(!baseline)}>{baseline ? "Ẩn baseline" : "Hiện baseline"}</Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild><Button size="sm" variant="outline">Thao tác</Button></DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-60">
@@ -250,7 +257,7 @@ export default function PlanPage() {
           <EmptyState title="Chưa có kế hoạch thi công" description={project.approvalStatus === "cho_duyet" ? "Dự án đang chờ Tổng công ty phê duyệt nhận thi công." : "Thêm hạng mục, sau đó thêm công việc – hoặc nhập kế hoạch từ file Excel theo template."} action={can("plan.edit") && project.approvalStatus !== "cho_duyet" ? <Button onClick={() => setItemOpen(true)}><FolderPlus /> Thêm hạng mục</Button> : undefined} />
         ) : showGantt ? (
           <>
-            <div className="border-b px-4 py-2"><GanttLegend /></div>
+            <div className="border-b px-4 py-2"><GanttLegend showBaseline={baseline} /></div>
             <GanttChart rows={ganttRows} showBaseline={baseline} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDrawer(id)} />
           </>
         ) : (
