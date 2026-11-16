@@ -25,6 +25,7 @@ import type {
 } from "@/types";
 import { DEMO_TODAY, nowStamp } from "@/utils/date";
 import { genId, nextCode } from "@/utils/id";
+import type { ImportRow } from "./planExcel";
 
 type Key = keyof Database;
 function setCol<K extends Key>(db: Database, key: K, value: Database[K]): Database {
@@ -128,6 +129,29 @@ export function deleteTask(db: Database, id: ID): Database {
   const ids = new Set([id, ...db.constructionPlans.filter((t) => t.parentId === id).map((t) => t.id)]);
   db = remove(db, "constructionPlans", (t) => ids.has(t.id));
   return remove(db, "constructionLogs", (l) => ids.has(l.taskId));
+}
+
+/** Nhập kế hoạch từ Excel: tạo hạng mục còn thiếu (theo mã) và thêm các công việc */
+export function importPlanTasks(db: Database, projectId: ID, rows: ImportRow[]): Database {
+  const project = db.projects.find((p) => p.id === projectId)!;
+  let order = Math.max(0, ...db.constructionPlans.filter((t) => t.projectId === projectId).map((t) => t.order));
+  rows.forEach((r) => {
+    let item = db.constructionItems.find((i) => i.projectId === projectId && ((r.itemCode && i.code === r.itemCode) || (!r.itemCode && r.itemName && i.name === r.itemName)));
+    if (!item) {
+      const items = db.constructionItems.filter((i) => i.projectId === projectId);
+      const prefix = items[0]?.code.split(".").slice(0, -1).join(".") || "1.1";
+      item = { id: genId("i"), projectId, code: r.itemCode || `${prefix}.${items.length + 1}`, name: r.itemName || "Hạng mục nhập từ Excel", order: items.length + 1, managerId: project.commanderId };
+      db = insert(db, "constructionItems", item);
+    }
+    const siblings = db.constructionPlans.filter((t) => t.itemId === item!.id && t.parentId === null).length;
+    const assignee = db.users.find((u) => u.name.toLowerCase() === r.assigneeName.toLowerCase());
+    db = insert(db, "constructionPlans", {
+      id: genId("t"), projectId, itemId: item.id, parentId: null, isGroup: false, code: `${item.code}.${siblings + 1}`, name: r.name,
+      assigneeId: assignee?.id ?? project.commanderId, team: r.team, unit: r.unit, contractQty: r.qty, unitPrice: r.unitPrice, actualQty: 0,
+      plannedStart: r.start, plannedEnd: r.end, actualStart: null, actualEnd: null, status: "chua_thuc_hien", order: ++order, note: "Nhập từ Excel",
+    });
+  });
+  return pushNotification(db, { type: "task", severity: "info", title: "Đã nhập kế hoạch từ Excel", message: `${rows.length} công việc được thêm vào ${project.shortName}.`, projectId, link: `/construction/plan/${projectId}` });
 }
 
 export type LogInput = Omit<ConstructionLog, "id" | "projectId" | "confirmedById">;

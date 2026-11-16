@@ -1,4 +1,4 @@
-import { CheckCircle2, Pencil, TrendingUp } from "lucide-react";
+import { CheckCircle2, Pencil, Trash2, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 import { Sheet, SheetBody, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,8 @@ import { SitePhoto } from "@/components/common/SitePhoto";
 import { EmptyState } from "@/components/common/EmptyState";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
-import { confirmLog } from "@/services/actions";
+import { confirmLog, deleteTask } from "@/services/actions";
+import { useConfirm } from "@/components/common/ConfirmProvider";
 import { taskActualPct, taskDuration, taskHealth, taskPlannedPct, TASK_HEALTH_LABEL } from "@/services/selectors";
 import { TASK_STATUS } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
@@ -19,6 +20,7 @@ import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
 export function TaskDrawer({ taskId, onClose, onUpdate, onEdit }: { taskId: string | null; onClose: () => void; onUpdate: (id: string) => void; onEdit: (id: string) => void }) {
   const { db, run } = useDb();
   const { can, user } = useAuth();
+  const confirm = useConfirm();
   const t = db.constructionPlans.find((x) => x.id === taskId);
   const item = db.constructionItems.find((i) => i.id === t?.itemId);
   const logs = db.constructionLogs.filter((l) => l.taskId === taskId).sort((a, b) => b.date.localeCompare(a.date));
@@ -93,6 +95,7 @@ export function TaskDrawer({ taskId, onClose, onUpdate, onEdit }: { taskId: stri
               </Tabs>
             </SheetBody>
             <SheetFooter>
+              {can("plan.edit") && <Button variant="ghost" className="mr-auto text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa công việc ${t.code}?`, description: "Công việc (và công việc con) cùng nhật ký liên quan sẽ bị xóa; tiến độ dự án được tính lại.", destructive: true, confirmText: "Xóa" })) { run(deleteTask, t.id); onClose(); toast.success("Đã xóa công việc"); } }}><Trash2 /> Xóa</Button>}
               {can("plan.edit") && <Button variant="outline" onClick={() => onEdit(t.id)}><Pencil /> Sửa / giao lại</Button>}
               {can("progress.update") && !t.isGroup && <Button variant="success" onClick={() => onUpdate(t.id)}><TrendingUp /> Cập nhật khối lượng</Button>}
             </SheetFooter>
