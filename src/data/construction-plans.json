@@ -4,7 +4,7 @@
     "parentId": null,
     "isGroup": false,
     "actualStart": "2026-06-01",
-    "actualEnd": "2026-06-16",
+    "actualEnd": "2026-06-14",
     "note": "",
     "id": "t-p01-001",
     "itemId": "i-p01-1",
@@ -25,8 +25,8 @@
     "projectId": "p01",
     "parentId": null,
     "isGroup": false,
-    "actualStart": "2026-06-17",
-    "actualEnd": "2026-06-27",
+    "actualStart": "2026-06-16",
+    "actualEnd": "2026-06-24",
     "note": "",
     "id": "t-p01-002",
     "itemId": "i-p01-1",
@@ -47,8 +47,8 @@
     "projectId": "p01",
     "parentId": null,
     "isGroup": false,
-    "actualStart": "2026-06-28",
-    "actualEnd": "2026-07-18",
+    "actualStart": "2026-06-26",
+    "actualEnd": "2026-07-14",
     "note": "",
     "id": "t-p01-003",
     "itemId": "i-p01-1",
@@ -69,8 +69,8 @@
     "projectId": "p01",
     "parentId": null,
     "isGroup": false,
-    "actualStart": "2026-07-20",
-    "actualEnd": "2026-08-21",
+    "actualStart": "2026-07-17",
+    "actualEnd": "2026-08-13",
     "note": "",
     "id": "t-p01-004",
     "itemId": "i-p01-2",
@@ -91,7 +91,7 @@
     "projectId": "p01",
     "parentId": null,
     "isGroup": true,
-    "actualStart": "2026-08-24",
+    "actualStart": "2026-08-17",
     "actualEnd": null,
     "note": "",
     "id": "t-p01-005",
@@ -105,7 +105,7 @@
     "unitPrice": 0,
     "actualQty": 0,
     "plannedStart": "2026-08-17",
-    "plannedEnd": "2026-10-28",
+    "plannedEnd": "2026-11-25",
     "order": 5,
     "status": "dang_thuc_hien"
   },
@@ -113,8 +113,8 @@
     "projectId": "p01",
     "parentId": "t-p01-005",
     "isGroup": false,
-    "actualStart": "2026-08-24",
-    "actualEnd": "2026-09-05",
+    "actualStart": "2026-08-17",
+    "actualEnd": "2026-08-27",
     "note": "",
     "id": "t-p01-006",
     "itemId": "i-p01-2",
@@ -135,8 +135,8 @@
     "projectId": "p01",
     "parentId": "t-p01-005",
     "isGroup": false,
-    "actualStart": "2026-09-06",
-    "actualEnd": "2026-09-10",
+    "actualStart": "2026-08-29",
+    "actualEnd": "2026-09-02",
     "note": "",
     "id": "t-p01-007",
     "itemId": "i-p01-2",
@@ -157,8 +157,8 @@
     "projectId": "p01",
     "parentId": "t-p01-005",
     "isGroup": false,
-    "actualStart": "2026-09-11",
-    "actualEnd": "2026-10-07",
+    "actualStart": "2026-09-05",
+    "actualEnd": "2026-09-26",
     "note": "",
     "id": "t-p01-008",
     "itemId": "i-p01-2",
@@ -179,7 +179,7 @@
     "projectId": "p01",
     "parentId": "t-p01-005",
     "isGroup": false,
-    "actualStart": "2026-10-08",
+    "actualStart": "2026-10-03",
     "actualEnd": null,
     "note": "Đã đổ xong bê tông giằng móng trục A–C, đang tưới nước bảo dưỡng.",
     "id": "t-p01-009",
@@ -192,8 +192,8 @@
     "contractQty": 420,
     "unitPrice": 2350000,
     "actualQty": 336,
-    "plannedStart": "2026-09-24",
-    "plannedEnd": "2026-10-08",
+    "plannedStart": "2026-10-01",
+    "plannedEnd": "2026-11-08",
     "order": 9,
     "status": "dang_thuc_hien"
   },
@@ -214,8 +214,8 @@
     "contractQty": 2600,
     "unitPrice": 480000,
     "actualQty": 1560,
-    "plannedStart": "2026-10-09",
-    "plannedEnd": "2026-10-28",
+    "plannedStart": "2026-10-20",
+    "plannedEnd": "2026-11-25",
     "order": 10,
     "status": "dang_thuc_hien"
   },
@@ -236,8 +236,8 @@
     "contractQty": 1,
     "unitPrice": 0,
     "actualQty": 0,
-    "plannedStart": "2026-10-29",
-    "plannedEnd": "2026-11-02",
+    "plannedStart": "2026-11-26",
+    "plannedEnd": "2026-11-30",
     "order": 11,
     "status": "chua_thuc_hien"
   },
@@ -412,7 +412,7 @@
     "plannedStart": "2025-09-15",
     "plannedEnd": "2025-10-12",
     "actualStart": "2025-09-21",
-    "actualEnd": "2025-10-29",
+    "actualEnd": "2025-10-21",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -434,7 +434,7 @@
     "plannedStart": "2025-09-20",
     "plannedEnd": "2025-10-22",
     "actualStart": "2025-09-24",
-    "actualEnd": "2025-11-03",
+    "actualEnd": "2025-10-26",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -456,7 +456,7 @@
     "plannedStart": "2025-10-12",
     "plannedEnd": "2025-12-20",
     "actualStart": "2025-10-14",
-    "actualEnd": "2026-01-08",
+    "actualEnd": "2026-01-01",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -478,7 +478,7 @@
     "plannedStart": "2025-11-18",
     "plannedEnd": "2026-02-21",
     "actualStart": "2025-11-21",
-    "actualEnd": "2026-03-05",
+    "actualEnd": "2026-02-25",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -500,7 +500,7 @@
     "plannedStart": "2026-01-20",
     "plannedEnd": "2026-03-25",
     "actualStart": "2026-01-23",
-    "actualEnd": "2026-04-11",
+    "actualEnd": "2026-04-04",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -522,7 +522,7 @@
     "plannedStart": "2026-02-21",
     "plannedEnd": "2026-06-08",
     "actualStart": "2026-02-21",
-    "actualEnd": "2026-06-20",
+    "actualEnd": "2026-06-13",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -544,7 +544,7 @@
     "plannedStart": "2026-04-26",
     "plannedEnd": "2026-07-31",
     "actualStart": "2026-04-30",
-    "actualEnd": "2026-08-09",
+    "actualEnd": "2026-08-01",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -676,7 +676,7 @@
     "plannedStart": "2025-07-01",
     "plannedEnd": "2025-08-11",
     "actualStart": "2025-07-06",
-    "actualEnd": "2025-08-10",
+    "actualEnd": "2025-08-07",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -698,7 +698,7 @@
     "plannedStart": "2025-07-09",
     "plannedEnd": "2025-08-27",
     "actualStart": "2025-07-15",
-    "actualEnd": "2025-08-28",
+    "actualEnd": "2025-08-25",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -720,7 +720,7 @@
     "plannedStart": "2025-08-11",
     "plannedEnd": "2025-11-26",
     "actualStart": "2025-08-11",
-    "actualEnd": "2025-11-30",
+    "actualEnd": "2025-11-27",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -742,7 +742,7 @@
     "plannedStart": "2025-10-08",
     "plannedEnd": "2026-03-04",
     "actualStart": "2025-10-08",
-    "actualEnd": "2026-03-01",
+    "actualEnd": "2026-02-26",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -764,7 +764,7 @@
     "plannedStart": "2026-01-14",
     "plannedEnd": "2026-04-23",
     "actualStart": "2026-01-17",
-    "actualEnd": "2026-04-26",
+    "actualEnd": "2026-04-23",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -786,7 +786,7 @@
     "plannedStart": "2026-03-04",
     "plannedEnd": "2026-08-16",
     "actualStart": "2026-03-04",
-    "actualEnd": "2026-08-17",
+    "actualEnd": "2026-08-14",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -808,7 +808,7 @@
     "plannedStart": "2026-06-11",
     "plannedEnd": "2026-11-06",
     "actualStart": "2026-06-13",
-    "actualEnd": "2026-11-07",
+    "actualEnd": "2026-11-04",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -940,7 +940,7 @@
     "plannedStart": "2025-11-01",
     "plannedEnd": "2025-11-30",
     "actualStart": "2025-11-05",
-    "actualEnd": "2025-12-03",
+    "actualEnd": "2025-11-26",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -962,7 +962,7 @@
     "plannedStart": "2025-11-07",
     "plannedEnd": "2025-12-11",
     "actualStart": "2025-11-10",
-    "actualEnd": "2025-12-19",
+    "actualEnd": "2025-12-12",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -984,7 +984,7 @@
     "plannedStart": "2025-11-30",
     "plannedEnd": "2026-02-13",
     "actualStart": "2025-12-06",
-    "actualEnd": "2026-02-17",
+    "actualEnd": "2026-02-10",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -1006,7 +1006,7 @@
     "plannedStart": "2026-01-09",
     "plannedEnd": "2026-04-23",
     "actualStart": "2026-01-14",
-    "actualEnd": "2026-05-03",
+    "actualEnd": "2026-04-26",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -1028,7 +1028,7 @@
     "plannedStart": "2026-03-19",
     "plannedEnd": "2026-05-27",
     "actualStart": "2026-03-23",
-    "actualEnd": "2026-06-15",
+    "actualEnd": "2026-06-07",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -1050,7 +1050,7 @@
     "plannedStart": "2026-04-23",
     "plannedEnd": "2026-08-16",
     "actualStart": "2026-04-28",
-    "actualEnd": "2026-09-04",
+    "actualEnd": "2026-08-27",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -1072,7 +1072,7 @@
     "plannedStart": "2026-07-01",
     "plannedEnd": "2026-10-13",
     "actualStart": "2026-07-07",
-    "actualEnd": "2026-11-01",
+    "actualEnd": "2026-10-24",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -1204,7 +1204,7 @@
     "plannedStart": "2026-03-01",
     "plannedEnd": "2026-04-08",
     "actualStart": "2026-03-03",
-    "actualEnd": "2026-04-05",
+    "actualEnd": "2026-04-02",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -1226,7 +1226,7 @@
     "plannedStart": "2026-03-09",
     "plannedEnd": "2026-04-23",
     "actualStart": "2026-03-13",
-    "actualEnd": "2026-04-24",
+    "actualEnd": "2026-04-21",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -1248,7 +1248,7 @@
     "plannedStart": "2026-04-08",
     "plannedEnd": "2026-07-16",
     "actualStart": "2026-04-13",
-    "actualEnd": "2026-07-13",
+    "actualEnd": "2026-07-10",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -1270,7 +1270,7 @@
     "plannedStart": "2026-05-31",
     "plannedEnd": "2026-10-15",
     "actualStart": "2026-06-01",
-    "actualEnd": "2026-10-13",
+    "actualEnd": "2026-10-10",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -1468,7 +1468,7 @@
     "plannedStart": "2025-08-01",
     "plannedEnd": "2025-09-06",
     "actualStart": "2025-08-07",
-    "actualEnd": "2025-09-10",
+    "actualEnd": "2025-09-07",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -1490,7 +1490,7 @@
     "plannedStart": "2025-08-13",
     "plannedEnd": "2025-09-12",
     "actualStart": "2025-08-19",
-    "actualEnd": "2025-09-11",
+    "actualEnd": "2025-09-08",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -1512,7 +1512,7 @@
     "plannedStart": "2025-09-06",
     "plannedEnd": "2025-11-18",
     "actualStart": "2025-09-07",
-    "actualEnd": "2025-11-16",
+    "actualEnd": "2025-11-13",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -1534,7 +1534,7 @@
     "plannedStart": "2025-10-31",
     "plannedEnd": "2025-12-13",
     "actualStart": "2025-11-02",
-    "actualEnd": "2025-12-13",
+    "actualEnd": "2025-12-10",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -1556,7 +1556,7 @@
     "plannedStart": "2025-11-30",
     "plannedEnd": "2026-02-11",
     "actualStart": "2025-12-03",
-    "actualEnd": "2026-02-08",
+    "actualEnd": "2026-02-05",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -1578,7 +1578,7 @@
     "plannedStart": "2026-01-30",
     "plannedEnd": "2026-08-12",
     "actualStart": "2026-01-30",
-    "actualEnd": "2026-08-15",
+    "actualEnd": "2026-08-12",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -1600,7 +1600,7 @@
     "plannedStart": "2026-05-01",
     "plannedEnd": "2026-09-30",
     "actualStart": "2026-05-05",
-    "actualEnd": "2026-09-27",
+    "actualEnd": "2026-09-24",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -1732,7 +1732,7 @@
     "plannedStart": "2025-12-01",
     "plannedEnd": "2026-01-05",
     "actualStart": "2025-12-07",
-    "actualEnd": "2026-01-08",
+    "actualEnd": "2026-01-01",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -1754,7 +1754,7 @@
     "plannedStart": "2025-12-13",
     "plannedEnd": "2026-01-10",
     "actualStart": "2025-12-17",
-    "actualEnd": "2026-01-16",
+    "actualEnd": "2026-01-09",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -1776,7 +1776,7 @@
     "plannedStart": "2026-01-05",
     "plannedEnd": "2026-03-15",
     "actualStart": "2026-01-05",
-    "actualEnd": "2026-03-24",
+    "actualEnd": "2026-03-17",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -1798,7 +1798,7 @@
     "plannedStart": "2026-02-25",
     "plannedEnd": "2026-04-07",
     "actualStart": "2026-03-02",
-    "actualEnd": "2026-04-13",
+    "actualEnd": "2026-04-06",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -1820,7 +1820,7 @@
     "plannedStart": "2026-03-26",
     "plannedEnd": "2026-06-03",
     "actualStart": "2026-03-30",
-    "actualEnd": "2026-06-20",
+    "actualEnd": "2026-06-12",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -1996,7 +1996,7 @@
     "plannedStart": "2025-03-01",
     "plannedEnd": "2025-04-10",
     "actualStart": "2025-03-04",
-    "actualEnd": "2025-04-12",
+    "actualEnd": "2025-04-09",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -2018,7 +2018,7 @@
     "plannedStart": "2025-03-14",
     "plannedEnd": "2025-04-17",
     "actualStart": "2025-03-18",
-    "actualEnd": "2025-04-21",
+    "actualEnd": "2025-04-18",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -2040,7 +2040,7 @@
     "plannedStart": "2025-04-10",
     "plannedEnd": "2025-06-30",
     "actualStart": "2025-04-10",
-    "actualEnd": "2025-07-03",
+    "actualEnd": "2025-06-30",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -2062,7 +2062,7 @@
     "plannedStart": "2025-06-10",
     "plannedEnd": "2025-07-26",
     "actualStart": "2025-06-13",
-    "actualEnd": "2025-07-29",
+    "actualEnd": "2025-07-26",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -2084,7 +2084,7 @@
     "plannedStart": "2025-07-13",
     "plannedEnd": "2025-10-01",
     "actualStart": "2025-07-17",
-    "actualEnd": "2025-10-05",
+    "actualEnd": "2025-10-02",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -2106,7 +2106,7 @@
     "plannedStart": "2025-09-18",
     "plannedEnd": "2026-04-20",
     "actualStart": "2025-09-21",
-    "actualEnd": "2026-04-17",
+    "actualEnd": "2026-04-14",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -2128,7 +2128,7 @@
     "plannedStart": "2025-12-28",
     "plannedEnd": "2026-06-13",
     "actualStart": "2025-12-31",
-    "actualEnd": "2026-06-11",
+    "actualEnd": "2026-06-08",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -2150,7 +2150,7 @@
     "plannedStart": "2026-04-07",
     "plannedEnd": "2026-10-12",
     "actualStart": "2026-04-09",
-    "actualEnd": "2026-10-15",
+    "actualEnd": "2026-10-12",
     "status": "hoan_thanh",
     "order": 8,
     "note": ""
@@ -2172,7 +2172,7 @@
     "plannedStart": "2026-05-11",
     "plannedEnd": "2026-10-25",
     "actualStart": "2026-05-12",
-    "actualEnd": "2026-10-29",
+    "actualEnd": "2026-10-26",
     "status": "hoan_thanh",
     "order": 9,
     "note": ""
@@ -2194,7 +2194,7 @@
     "plannedStart": "2026-03-05",
     "plannedEnd": "2026-11-07",
     "actualStart": "2026-03-08",
-    "actualEnd": "2026-11-05",
+    "actualEnd": "2026-11-02",
     "status": "hoan_thanh",
     "order": 10,
     "note": ""
@@ -2260,7 +2260,7 @@
     "plannedStart": "2025-10-01",
     "plannedEnd": "2025-11-05",
     "actualStart": "2025-10-06",
-    "actualEnd": "2025-11-09",
+    "actualEnd": "2025-11-02",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -2282,7 +2282,7 @@
     "plannedStart": "2025-10-13",
     "plannedEnd": "2025-11-10",
     "actualStart": "2025-10-18",
-    "actualEnd": "2025-11-23",
+    "actualEnd": "2025-11-16",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -2304,7 +2304,7 @@
     "plannedStart": "2025-11-05",
     "plannedEnd": "2026-01-13",
     "actualStart": "2025-11-06",
-    "actualEnd": "2026-01-25",
+    "actualEnd": "2026-01-18",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -2326,7 +2326,7 @@
     "plannedStart": "2025-12-26",
     "plannedEnd": "2026-02-05",
     "actualStart": "2025-12-30",
-    "actualEnd": "2026-02-16",
+    "actualEnd": "2026-02-09",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -2348,7 +2348,7 @@
     "plannedStart": "2026-01-24",
     "plannedEnd": "2026-04-03",
     "actualStart": "2026-01-24",
-    "actualEnd": "2026-04-07",
+    "actualEnd": "2026-03-31",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -2370,7 +2370,7 @@
     "plannedStart": "2026-03-23",
     "plannedEnd": "2026-09-23",
     "actualStart": "2026-03-23",
-    "actualEnd": "2026-09-27",
+    "actualEnd": "2026-09-20",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -2524,7 +2524,7 @@
     "plannedStart": "2025-01-15",
     "plannedEnd": "2025-06-12",
     "actualStart": "2025-01-17",
-    "actualEnd": "2025-06-13",
+    "actualEnd": "2025-06-10",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -2546,7 +2546,7 @@
     "plannedStart": "2025-05-13",
     "plannedEnd": "2025-10-08",
     "actualStart": "2025-05-18",
-    "actualEnd": "2025-10-10",
+    "actualEnd": "2025-10-07",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -2568,7 +2568,7 @@
     "plannedStart": "2025-09-09",
     "plannedEnd": "2026-04-04",
     "actualStart": "2025-09-11",
-    "actualEnd": "2026-04-01",
+    "actualEnd": "2026-03-29",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -2590,7 +2590,7 @@
     "plannedStart": "2025-12-07",
     "plannedEnd": "2026-05-04",
     "actualStart": "2025-12-13",
-    "actualEnd": "2026-05-05",
+    "actualEnd": "2026-05-02",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -2612,7 +2612,7 @@
     "plannedStart": "2026-03-05",
     "plannedEnd": "2026-07-14",
     "actualStart": "2026-03-09",
-    "actualEnd": "2026-07-13",
+    "actualEnd": "2026-07-10",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -2634,7 +2634,7 @@
     "plannedStart": "2026-06-02",
     "plannedEnd": "2026-08-30",
     "actualStart": "2026-06-04",
-    "actualEnd": "2026-08-27",
+    "actualEnd": "2026-08-24",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -2656,7 +2656,7 @@
     "plannedStart": "2025-12-01",
     "plannedEnd": "2026-01-02",
     "actualStart": "2025-12-01",
-    "actualEnd": "2026-01-01",
+    "actualEnd": "2025-12-29",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -2678,7 +2678,7 @@
     "plannedStart": "2025-12-07",
     "plannedEnd": "2026-01-15",
     "actualStart": "2025-12-13",
-    "actualEnd": "2026-01-13",
+    "actualEnd": "2026-01-10",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -2700,7 +2700,7 @@
     "plannedStart": "2026-01-02",
     "plannedEnd": "2026-03-26",
     "actualStart": "2026-01-06",
-    "actualEnd": "2026-03-25",
+    "actualEnd": "2026-03-22",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -2722,7 +2722,7 @@
     "plannedStart": "2026-02-16",
     "plannedEnd": "2026-06-10",
     "actualStart": "2026-02-20",
-    "actualEnd": "2026-06-10",
+    "actualEnd": "2026-06-07",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -2744,7 +2744,7 @@
     "plannedStart": "2026-05-03",
     "plannedEnd": "2026-07-19",
     "actualStart": "2026-05-08",
-    "actualEnd": "2026-07-18",
+    "actualEnd": "2026-07-15",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -2766,7 +2766,7 @@
     "plannedStart": "2026-06-10",
     "plannedEnd": "2026-10-16",
     "actualStart": "2026-06-12",
-    "actualEnd": "2026-10-17",
+    "actualEnd": "2026-10-14",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -2920,7 +2920,7 @@
     "plannedStart": "2026-01-15",
     "plannedEnd": "2026-02-18",
     "actualStart": "2026-01-20",
-    "actualEnd": "2026-02-19",
+    "actualEnd": "2026-02-16",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -2942,7 +2942,7 @@
     "plannedStart": "2026-01-26",
     "plannedEnd": "2026-02-23",
     "actualStart": "2026-02-01",
-    "actualEnd": "2026-02-21",
+    "actualEnd": "2026-02-18",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -2964,7 +2964,7 @@
     "plannedStart": "2026-02-18",
     "plannedEnd": "2026-04-26",
     "actualStart": "2026-02-21",
-    "actualEnd": "2026-04-29",
+    "actualEnd": "2026-04-26",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -2986,7 +2986,7 @@
     "plannedStart": "2026-04-09",
     "plannedEnd": "2026-05-19",
     "actualStart": "2026-04-15",
-    "actualEnd": "2026-05-17",
+    "actualEnd": "2026-05-14",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -3008,7 +3008,7 @@
     "plannedStart": "2026-05-07",
     "plannedEnd": "2026-07-14",
     "actualStart": "2026-05-10",
-    "actualEnd": "2026-07-18",
+    "actualEnd": "2026-07-15",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -3184,7 +3184,7 @@
     "plannedStart": "2026-03-01",
     "plannedEnd": "2026-03-30",
     "actualStart": "2026-03-01",
-    "actualEnd": "2026-03-30",
+    "actualEnd": "2026-03-27",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -3206,7 +3206,7 @@
     "plannedStart": "2026-03-11",
     "plannedEnd": "2026-04-04",
     "actualStart": "2026-03-16",
-    "actualEnd": "2026-04-01",
+    "actualEnd": "2026-03-29",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -3228,7 +3228,7 @@
     "plannedStart": "2026-03-30",
     "plannedEnd": "2026-05-27",
     "actualStart": "2026-04-02",
-    "actualEnd": "2026-05-24",
+    "actualEnd": "2026-05-21",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -3250,7 +3250,7 @@
     "plannedStart": "2026-05-13",
     "plannedEnd": "2026-06-16",
     "actualStart": "2026-05-16",
-    "actualEnd": "2026-06-17",
+    "actualEnd": "2026-06-14",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -3272,7 +3272,7 @@
     "plannedStart": "2026-06-06",
     "plannedEnd": "2026-08-04",
     "actualStart": "2026-06-11",
-    "actualEnd": "2026-08-04",
+    "actualEnd": "2026-08-01",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -3448,7 +3448,7 @@
     "plannedStart": "2025-10-15",
     "plannedEnd": "2025-11-11",
     "actualStart": "2025-10-15",
-    "actualEnd": "2025-11-15",
+    "actualEnd": "2025-11-12",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -3470,7 +3470,7 @@
     "plannedStart": "2025-10-20",
     "plannedEnd": "2025-11-21",
     "actualStart": "2025-10-26",
-    "actualEnd": "2025-11-18",
+    "actualEnd": "2025-11-15",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -3492,7 +3492,7 @@
     "plannedStart": "2025-11-11",
     "plannedEnd": "2026-01-19",
     "actualStart": "2025-11-13",
-    "actualEnd": "2026-01-23",
+    "actualEnd": "2026-01-20",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -3514,7 +3514,7 @@
     "plannedStart": "2025-12-18",
     "plannedEnd": "2026-03-24",
     "actualStart": "2025-12-23",
-    "actualEnd": "2026-03-21",
+    "actualEnd": "2026-03-18",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -3536,7 +3536,7 @@
     "plannedStart": "2026-02-20",
     "plannedEnd": "2026-04-25",
     "actualStart": "2026-02-26",
-    "actualEnd": "2026-04-26",
+    "actualEnd": "2026-04-23",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -3558,7 +3558,7 @@
     "plannedStart": "2026-03-24",
     "plannedEnd": "2026-07-08",
     "actualStart": "2026-03-30",
-    "actualEnd": "2026-07-07",
+    "actualEnd": "2026-07-04",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -3580,7 +3580,7 @@
     "plannedStart": "2026-05-26",
     "plannedEnd": "2026-08-30",
     "actualStart": "2026-05-28",
-    "actualEnd": "2026-09-01",
+    "actualEnd": "2026-08-29",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -3646,7 +3646,7 @@
     "plannedStart": "2026-04-03",
     "plannedEnd": "2026-11-13",
     "actualStart": "2026-04-09",
-    "actualEnd": "2026-11-13",
+    "actualEnd": "2026-11-11",
     "status": "hoan_thanh",
     "order": 10,
     "note": ""
@@ -3712,7 +3712,7 @@
     "plannedStart": "2026-02-01",
     "plannedEnd": "2026-03-09",
     "actualStart": "2026-02-05",
-    "actualEnd": "2026-03-11",
+    "actualEnd": "2026-03-08",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -3734,7 +3734,7 @@
     "plannedStart": "2026-02-13",
     "plannedEnd": "2026-03-15",
     "actualStart": "2026-02-16",
-    "actualEnd": "2026-03-14",
+    "actualEnd": "2026-03-11",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -3756,7 +3756,7 @@
     "plannedStart": "2026-03-09",
     "plannedEnd": "2026-05-21",
     "actualStart": "2026-03-09",
-    "actualEnd": "2026-05-20",
+    "actualEnd": "2026-05-17",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -3778,7 +3778,7 @@
     "plannedStart": "2026-05-03",
     "plannedEnd": "2026-06-14",
     "actualStart": "2026-05-04",
-    "actualEnd": "2026-06-13",
+    "actualEnd": "2026-06-10",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -3800,7 +3800,7 @@
     "plannedStart": "2026-06-02",
     "plannedEnd": "2026-08-14",
     "actualStart": "2026-06-06",
-    "actualEnd": "2026-08-12",
+    "actualEnd": "2026-08-09",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -3976,7 +3976,7 @@
     "plannedStart": "2025-08-01",
     "plannedEnd": "2025-09-02",
     "actualStart": "2025-08-01",
-    "actualEnd": "2025-09-01",
+    "actualEnd": "2025-08-29",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -3998,7 +3998,7 @@
     "plannedStart": "2025-08-07",
     "plannedEnd": "2025-09-15",
     "actualStart": "2025-08-08",
-    "actualEnd": "2025-09-13",
+    "actualEnd": "2025-09-10",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -4020,7 +4020,7 @@
     "plannedStart": "2025-09-02",
     "plannedEnd": "2025-11-24",
     "actualStart": "2025-09-02",
-    "actualEnd": "2025-11-22",
+    "actualEnd": "2025-11-19",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -4042,7 +4042,7 @@
     "plannedStart": "2025-10-16",
     "plannedEnd": "2026-02-08",
     "actualStart": "2025-10-17",
-    "actualEnd": "2026-02-11",
+    "actualEnd": "2026-02-08",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -4064,7 +4064,7 @@
     "plannedStart": "2026-01-01",
     "plannedEnd": "2026-03-18",
     "actualStart": "2026-01-03",
-    "actualEnd": "2026-03-16",
+    "actualEnd": "2026-03-13",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -4086,7 +4086,7 @@
     "plannedStart": "2026-02-08",
     "plannedEnd": "2026-06-16",
     "actualStart": "2026-02-13",
-    "actualEnd": "2026-06-15",
+    "actualEnd": "2026-06-12",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -4108,7 +4108,7 @@
     "plannedStart": "2026-04-26",
     "plannedEnd": "2026-08-18",
     "actualStart": "2026-04-26",
-    "actualEnd": "2026-08-20",
+    "actualEnd": "2026-08-17",
     "status": "hoan_thanh",
     "order": 7,
     "note": ""
@@ -4240,7 +4240,7 @@
     "plannedStart": "2025-11-01",
     "plannedEnd": "2025-12-14",
     "actualStart": "2025-11-06",
-    "actualEnd": "2025-12-17",
+    "actualEnd": "2025-12-14",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -4262,7 +4262,7 @@
     "plannedStart": "2025-11-10",
     "plannedEnd": "2025-12-31",
     "actualStart": "2025-11-15",
-    "actualEnd": "2026-01-02",
+    "actualEnd": "2025-12-30",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -4284,7 +4284,7 @@
     "plannedStart": "2025-12-14",
     "plannedEnd": "2026-04-03",
     "actualStart": "2025-12-14",
-    "actualEnd": "2026-03-31",
+    "actualEnd": "2026-03-28",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -4306,7 +4306,7 @@
     "plannedStart": "2026-02-11",
     "plannedEnd": "2026-07-14",
     "actualStart": "2026-02-12",
-    "actualEnd": "2026-07-17",
+    "actualEnd": "2026-07-14",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -4328,7 +4328,7 @@
     "plannedStart": "2026-05-24",
     "plannedEnd": "2026-09-03",
     "actualStart": "2026-05-26",
-    "actualEnd": "2026-09-03",
+    "actualEnd": "2026-08-31",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -4504,7 +4504,7 @@
     "plannedStart": "2026-01-05",
     "plannedEnd": "2026-02-07",
     "actualStart": "2026-01-06",
-    "actualEnd": "2026-02-05",
+    "actualEnd": "2026-02-02",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -4526,7 +4526,7 @@
     "plannedStart": "2026-01-12",
     "plannedEnd": "2026-02-20",
     "actualStart": "2026-01-12",
-    "actualEnd": "2026-02-21",
+    "actualEnd": "2026-02-18",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -4548,7 +4548,7 @@
     "plannedStart": "2026-02-07",
     "plannedEnd": "2026-05-05",
     "actualStart": "2026-02-13",
-    "actualEnd": "2026-05-07",
+    "actualEnd": "2026-05-04",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -4570,7 +4570,7 @@
     "plannedStart": "2026-03-26",
     "plannedEnd": "2026-07-23",
     "actualStart": "2026-03-28",
-    "actualEnd": "2026-07-24",
+    "actualEnd": "2026-07-21",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -4592,7 +4592,7 @@
     "plannedStart": "2026-06-13",
     "plannedEnd": "2026-09-01",
     "actualStart": "2026-06-13",
-    "actualEnd": "2026-08-31",
+    "actualEnd": "2026-08-28",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -4768,7 +4768,7 @@
     "plannedStart": "2025-09-15",
     "plannedEnd": "2025-10-27",
     "actualStart": "2025-09-21",
-    "actualEnd": "2025-10-28",
+    "actualEnd": "2025-10-25",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -4790,7 +4790,7 @@
     "plannedStart": "2025-09-23",
     "plannedEnd": "2025-11-13",
     "actualStart": "2025-09-24",
-    "actualEnd": "2025-11-17",
+    "actualEnd": "2025-11-14",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -4812,7 +4812,7 @@
     "plannedStart": "2025-10-27",
     "plannedEnd": "2026-02-13",
     "actualStart": "2025-11-01",
-    "actualEnd": "2026-02-11",
+    "actualEnd": "2026-02-08",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -4834,7 +4834,7 @@
     "plannedStart": "2025-12-24",
     "plannedEnd": "2026-05-24",
     "actualStart": "2025-12-26",
-    "actualEnd": "2026-05-23",
+    "actualEnd": "2026-05-20",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -4856,7 +4856,7 @@
     "plannedStart": "2026-04-04",
     "plannedEnd": "2026-07-13",
     "actualStart": "2026-04-07",
-    "actualEnd": "2026-07-14",
+    "actualEnd": "2026-07-11",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -4878,7 +4878,7 @@
     "plannedStart": "2026-05-24",
     "plannedEnd": "2026-11-08",
     "actualStart": "2026-05-25",
-    "actualEnd": "2026-11-10",
+    "actualEnd": "2026-11-07",
     "status": "hoan_thanh",
     "order": 6,
     "note": ""
@@ -5032,7 +5032,7 @@
     "plannedStart": "2026-02-15",
     "plannedEnd": "2026-03-20",
     "actualStart": "2026-02-21",
-    "actualEnd": "2026-03-23",
+    "actualEnd": "2026-03-20",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -5054,7 +5054,7 @@
     "plannedStart": "2026-02-22",
     "plannedEnd": "2026-04-02",
     "actualStart": "2026-02-27",
-    "actualEnd": "2026-03-31",
+    "actualEnd": "2026-03-28",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -5076,7 +5076,7 @@
     "plannedStart": "2026-03-20",
     "plannedEnd": "2026-06-13",
     "actualStart": "2026-03-23",
-    "actualEnd": "2026-06-17",
+    "actualEnd": "2026-06-14",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -5098,7 +5098,7 @@
     "plannedStart": "2026-05-04",
     "plannedEnd": "2026-08-30",
     "actualStart": "2026-05-04",
-    "actualEnd": "2026-08-31",
+    "actualEnd": "2026-08-28",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -5120,7 +5120,7 @@
     "plannedStart": "2026-07-22",
     "plannedEnd": "2026-10-08",
     "actualStart": "2026-07-26",
-    "actualEnd": "2026-10-08",
+    "actualEnd": "2026-10-05",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -5296,7 +5296,7 @@
     "plannedStart": "2026-03-01",
     "plannedEnd": "2026-06-23",
     "actualStart": "2026-03-07",
-    "actualEnd": "2026-06-24",
+    "actualEnd": "2026-06-21",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -5318,7 +5318,7 @@
     "plannedStart": "2026-05-31",
     "plannedEnd": "2026-09-22",
     "actualStart": "2026-06-06",
-    "actualEnd": "2026-09-26",
+    "actualEnd": "2026-09-23",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -5428,7 +5428,7 @@
     "plannedStart": "2025-10-01",
     "plannedEnd": "2025-11-14",
     "actualStart": "2025-10-03",
-    "actualEnd": "2025-11-16",
+    "actualEnd": "2025-11-13",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -5450,7 +5450,7 @@
     "plannedStart": "2025-10-16",
     "plannedEnd": "2025-11-21",
     "actualStart": "2025-10-20",
-    "actualEnd": "2025-11-23",
+    "actualEnd": "2025-11-20",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -5472,7 +5472,7 @@
     "plannedStart": "2025-11-14",
     "plannedEnd": "2026-02-09",
     "actualStart": "2025-11-16",
-    "actualEnd": "2026-02-09",
+    "actualEnd": "2026-02-06",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -5494,7 +5494,7 @@
     "plannedStart": "2026-01-18",
     "plannedEnd": "2026-03-10",
     "actualStart": "2026-01-23",
-    "actualEnd": "2026-03-09",
+    "actualEnd": "2026-03-06",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -5516,7 +5516,7 @@
     "plannedStart": "2026-02-24",
     "plannedEnd": "2026-05-22",
     "actualStart": "2026-03-02",
-    "actualEnd": "2026-05-24",
+    "actualEnd": "2026-05-21",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -5692,7 +5692,7 @@
     "plannedStart": "2025-12-15",
     "plannedEnd": "2026-01-29",
     "actualStart": "2025-12-17",
-    "actualEnd": "2026-01-31",
+    "actualEnd": "2026-01-28",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -5714,7 +5714,7 @@
     "plannedStart": "2025-12-30",
     "plannedEnd": "2026-02-05",
     "actualStart": "2025-12-31",
-    "actualEnd": "2026-02-03",
+    "actualEnd": "2026-01-31",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -5736,7 +5736,7 @@
     "plannedStart": "2026-01-29",
     "plannedEnd": "2026-04-28",
     "actualStart": "2026-01-29",
-    "actualEnd": "2026-05-01",
+    "actualEnd": "2026-04-28",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -5758,7 +5758,7 @@
     "plannedStart": "2026-04-06",
     "plannedEnd": "2026-05-28",
     "actualStart": "2026-04-07",
-    "actualEnd": "2026-05-27",
+    "actualEnd": "2026-05-24",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -5780,7 +5780,7 @@
     "plannedStart": "2026-05-13",
     "plannedEnd": "2026-08-11",
     "actualStart": "2026-05-18",
-    "actualEnd": "2026-08-11",
+    "actualEnd": "2026-08-08",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -5956,7 +5956,7 @@
     "plannedStart": "2026-01-10",
     "plannedEnd": "2026-02-15",
     "actualStart": "2026-01-12",
-    "actualEnd": "2026-02-19",
+    "actualEnd": "2026-02-16",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -5978,7 +5978,7 @@
     "plannedStart": "2026-01-22",
     "plannedEnd": "2026-02-21",
     "actualStart": "2026-01-25",
-    "actualEnd": "2026-02-20",
+    "actualEnd": "2026-02-17",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -6000,7 +6000,7 @@
     "plannedStart": "2026-02-15",
     "plannedEnd": "2026-04-28",
     "actualStart": "2026-02-20",
-    "actualEnd": "2026-05-01",
+    "actualEnd": "2026-04-28",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -6022,7 +6022,7 @@
     "plannedStart": "2026-04-10",
     "plannedEnd": "2026-05-22",
     "actualStart": "2026-04-10",
-    "actualEnd": "2026-05-24",
+    "actualEnd": "2026-05-21",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""
@@ -6044,7 +6044,7 @@
     "plannedStart": "2026-05-10",
     "plannedEnd": "2026-07-20",
     "actualStart": "2026-05-16",
-    "actualEnd": "2026-07-20",
+    "actualEnd": "2026-07-17",
     "status": "hoan_thanh",
     "order": 5,
     "note": ""
@@ -6220,7 +6220,7 @@
     "plannedStart": "2026-04-01",
     "plannedEnd": "2026-05-15",
     "actualStart": "2026-04-05",
-    "actualEnd": "2026-05-16",
+    "actualEnd": "2026-05-13",
     "status": "hoan_thanh",
     "order": 1,
     "note": ""
@@ -6242,7 +6242,7 @@
     "plannedStart": "2026-04-16",
     "plannedEnd": "2026-05-22",
     "actualStart": "2026-04-16",
-    "actualEnd": "2026-05-21",
+    "actualEnd": "2026-05-18",
     "status": "hoan_thanh",
     "order": 2,
     "note": ""
@@ -6264,7 +6264,7 @@
     "plannedStart": "2026-05-15",
     "plannedEnd": "2026-08-10",
     "actualStart": "2026-05-17",
-    "actualEnd": "2026-08-12",
+    "actualEnd": "2026-08-09",
     "status": "hoan_thanh",
     "order": 3,
     "note": ""
@@ -6286,7 +6286,7 @@
     "plannedStart": "2026-07-20",
     "plannedEnd": "2026-09-09",
     "actualStart": "2026-07-26",
-    "actualEnd": "2026-09-11",
+    "actualEnd": "2026-09-08",
     "status": "hoan_thanh",
     "order": 4,
     "note": ""

@@ -3,6 +3,9 @@ import { cn } from "@/utils/cn";
 import { DEMO_TODAY, diffDays, monthsBetween } from "@/utils/date";
 import { fmtDate } from "@/utils/format";
 import { Tip } from "@/components/ui/tooltip";
+import { Avatar } from "@/components/common/UserAvatar";
+
+const dm = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}`;
 
 /** Trạng thái thanh Gantt */
 export type GanttStatus = "dung_tien_do" | "dang_thuc_hien" | "cham_tien_do" | "hoan_thanh_muon" | "chua_bat_dau";
@@ -26,6 +29,7 @@ export interface GanttRow {
   actualStart?: string | null;
   actualEnd?: string | null;
   status: GanttStatus;
+  assignee?: string; // người thực hiện / phụ trách
 }
 
 /** Khoảng thời gian thanh chính: theo thực tế nếu đã bắt đầu, theo kế hoạch nếu chưa */
@@ -36,7 +40,7 @@ function barRange(r: GanttRow): [string, string] {
   return [r.actualStart, r.end < DEMO_TODAY ? DEMO_TODAY : r.end];
 }
 
-const DAY = 5; // px / ngày
+const DAY = 4.5; // px / ngày
 
 export function GanttChart({ rows, onRowClick, showBaseline = true }: { rows: GanttRow[]; onRowClick?: (id: string) => void; showBaseline?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,7 +59,7 @@ export function GanttChart({ rows, onRowClick, showBaseline = true }: { rows: Ga
   const todayX = x(DEMO_TODAY);
 
   useEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollLeft = Math.max(0, todayX - scrollRef.current.clientWidth * 0.45);
+    if (scrollRef.current) scrollRef.current.scrollLeft = Math.max(0, todayX - scrollRef.current.clientWidth * 0.8);
   }, [todayX]);
 
   return (
@@ -120,10 +124,17 @@ export function GanttChart({ rows, onRowClick, showBaseline = true }: { rows: Ga
                   }
                 >
                   <div
-                    className={cn("absolute cursor-pointer rounded-md shadow-sm", r.kind === "task" ? "h-5" : "h-4", showBaseline ? "top-2" : "top-1/2 -translate-y-1/2")}
+                    className={cn("absolute flex cursor-pointer items-center justify-center overflow-hidden rounded-md shadow-sm", r.kind === "task" ? "h-6" : "h-5", showBaseline ? "top-1.5" : "top-1/2 -translate-y-1/2")}
                     style={{ left, width: w, background: st.color }}
-                  />
+                  >
+                    {w >= 76 && <span className={cn("whitespace-nowrap px-1 text-[11px] font-semibold", r.status === "chua_bat_dau" ? "text-slate-600" : "text-white")}>{dm(bs)} – {dm(be)}</span>}
+                  </div>
                 </Tip>
+                <div className={cn("pointer-events-none absolute flex items-center gap-1.5 whitespace-nowrap text-[11.5px] text-slate-600", showBaseline ? "top-1.5 h-6" : "top-1/2 h-6 -translate-y-1/2")} style={{ left: left + w + 4 }}>
+                  <span className="h-0 w-0 border-y-[5px] border-l-[7px] border-y-transparent border-l-slate-500" />
+                  {w < 76 && <span className="font-medium text-slate-500">{dm(bs)} – {dm(be)}</span>}
+                  {r.assignee && <><Avatar name={r.assignee} size="xs" /><span>{r.assignee}</span></>}
+                </div>
               </div>
             );
           })}

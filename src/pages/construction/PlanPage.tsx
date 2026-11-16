@@ -20,7 +20,7 @@ import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services
 import { importPlanTasks } from "@/services/actions";
 import { downloadTemplate, exportPlan, parsePlanFile, type ImportRow } from "@/services/planExcel";
 import { fmtDateShort } from "@/utils/format";
-import { diffDays } from "@/utils/date";
+import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { cn } from "@/utils/cn";
 
 export function PlanIndexRedirect() {
@@ -179,7 +179,8 @@ export default function PlanPage() {
   /** Màu thanh Gantt: hoàn thành đúng hạn / hoàn thành muộn / chậm / đang làm / chưa bắt đầu */
   const ganttStatus = (l: Line): GanttStatus => {
     if (l.actual >= 1) return l.actualEnd && l.actualEnd > l.end ? "hoan_thanh_muon" : "dung_tien_do";
-    if (l.late) return "cham_tien_do";
+    // công việc: chậm khi quá hạn / chậm so với kế hoạch; hạng mục & tổng: chỉ chậm khi chính nó đã quá hạn
+    if (l.kind === "task" ? l.late : l.end < DEMO_TODAY) return "cham_tien_do";
     if (l.actualStart || l.actual > 0) return "dang_thuc_hien";
     return "chua_bat_dau";
   };
@@ -187,6 +188,7 @@ export default function PlanPage() {
     id: l.taskId ?? l.key, label: l.name, code: l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
     start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd,
     status: ganttStatus(l),
+    assignee: l.assignee || undefined,
   }));
 
   /** % làm tròn xuống khi chưa xong để không hiển thị 100% cho việc chưa hoàn thành */
