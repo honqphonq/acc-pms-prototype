@@ -327,7 +327,9 @@ export function stockOf(db: Database, projectId: ID, materialId: ID) {
   return getStockRows(db).find((r) => r.inv.projectId === projectId && r.inv.materialId === materialId);
 }
 
-export const requestValue = (r: { lines: { qty: number; unitPrice: number }[] }) => r.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
+/** Thành tiền dòng vật tư = KL × đơn giá × (1 − chiết khấu%) × (1 + VAT%) */
+export const lineAmount = (l: { qty: number; unitPrice: number; discount?: number; vat?: number }) => l.qty * l.unitPrice * (1 - (l.discount ?? 0) / 100) * (1 + (l.vat ?? 0) / 100);
+export const requestValue = (r: { lines: { qty: number; unitPrice: number; discount?: number; vat?: number }[] }) => r.lines.reduce((s, l) => s + lineAmount(l), 0);
 export const isRequestOverdue = (r: { status: string; neededDate: string }) =>
   ["cho_duyet", "da_duyet", "dat_hang"].includes(r.status) && r.neededDate < DEMO_TODAY;
 

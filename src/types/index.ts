@@ -161,6 +161,8 @@ export interface MaterialRequestLine {
   materialId: ID;
   qty: number;
   unitPrice: number;
+  discount?: number; // chiết khấu %
+  vat?: number; // thuế VAT %
 }
 
 export interface WorkflowEvent {

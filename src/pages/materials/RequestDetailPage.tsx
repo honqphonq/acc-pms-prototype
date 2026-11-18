@@ -19,7 +19,7 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { FormField } from "@/components/common/FormField";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { decideRequest, deleteRequest, fulfillFromStock, issueRequest, placeOrder, receiveRequest, submitRequest } from "@/services/actions";
-import { isRequestOverdue, requestValue, stockOf } from "@/services/selectors";
+import { isRequestOverdue, lineAmount, requestValue, stockOf } from "@/services/selectors";
 import { MR_STATUS, MR_TYPE } from "@/utils/constants";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtDate, fmtNumber, fmtVnd } from "@/utils/format";
@@ -122,7 +122,7 @@ export default function RequestDetailPage() {
                     <TableCell>{m.unit}</TableCell>
                     <TableCell className="tabular text-right font-semibold">{fmtNumber(l.qty)}</TableCell>
                     <TableCell className="tabular text-right">{fmtVnd(l.unitPrice)}</TableCell>
-                    <TableCell className="tabular text-right">{fmtVnd(l.qty * l.unitPrice)}</TableCell>
+                    <TableCell className="tabular text-right">{fmtVnd(lineAmount(l))}</TableCell>
                     <TableCell className={`tabular text-right ${(s?.onHand ?? 0) < l.qty ? "text-rose-600" : "text-success-fg"}`}>{fmtNumber(s?.onHand ?? 0)}</TableCell>
                     <TableCell className="tabular text-right text-xs">{s ? `${fmtNumber(s.issued)} / ${fmtNumber(s.inv.normQty)} (${Math.round(s.usage * 100)}%)` : "—"}</TableCell>
                   </TableRow>

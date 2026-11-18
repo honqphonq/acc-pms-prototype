@@ -26,6 +26,7 @@ import type {
 import { DEMO_TODAY, nowStamp } from "@/utils/date";
 import { genId, nextCode } from "@/utils/id";
 import type { ImportRow } from "./planExcel";
+import { requestValue } from "./selectors";
 
 type Key = keyof Database;
 function setCol<K extends Key>(db: Database, key: K, value: Database[K]): Database {
@@ -277,7 +278,7 @@ export function receiveRequest(db: Database, id: ID, byId: ID): Database {
     db = receiveStock(db, { projectId: r.projectId, materialId: l.materialId, qty: l.qty, date: DEMO_TODAY, supplierId: r.supplierId, requestId: r.id, byId, note: `Nhập kho theo đề xuất ${r.code}` });
   });
   db = patch(db, "materialRequests", id, { status: "da_nhap_kho", history: [...r.history, ev(byId, "Nhập kho")] });
-  const amount = r.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
+  const amount = requestValue(r);
   if (r.supplierId) {
     db = insert(db, "paymentRecords", {
       id: genId("pay"),

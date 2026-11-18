@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { AlertCircle, Plus, Save, Send, Trash2, X } from "lucide-react";
+import { AlertCircle, Plus, Save, Search, Send, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -14,7 +14,7 @@ import { PageHeader } from "@/components/common/PageHeader";
 import { Avatar } from "@/components/common/UserAvatar";
 import { EmptyState } from "@/components/common/EmptyState";
 import { saveRequest, type RequestInput } from "@/services/actions";
-import { getStockRows } from "@/services/selectors";
+import { getStockRows, lineAmount, requestValue } from "@/services/selectors";
 import { MR_TYPE } from "@/utils/constants";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtNumber, fmtVnd } from "@/utils/format";
@@ -57,13 +57,20 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
   );
   const [err, setErr] = useState<Record<string, string>>({});
   const [matSearch, setMatSearch] = useState("");
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const blurTimer = useRef<ReturnType<typeof setTimeout>>();
   const set = <K extends keyof RequestInput>(k: K, v: RequestInput[K]) => setF((x) => ({ ...x, [k]: v }));
   const items = db.constructionItems.filter((i) => i.projectId === f.projectId);
   const tasks = db.constructionPlans.filter((t) => t.projectId === f.projectId && !t.isGroup && (!f.itemId || t.itemId === f.itemId));
   const stock = useMemo(() => getStockRows(db).filter((r) => r.inv.projectId === f.projectId), [db, f.projectId]);
   const approvers = db.users.filter((u) => u.role === "chi_huy_truong" || u.role === "lanh_dao");
-  const found = matSearch.trim().length > 0 ? db.materials.filter((m) => `${m.code} ${m.name}`.toLowerCase().includes(matSearch.toLowerCase()) && !f.lines.some((l) => l.materialId === m.id)).slice(0, 6) : [];
-  const total = f.lines.reduce((s, l) => s + l.qty * l.unitPrice, 0);
+  // gợi ý vật tư: vật tư có trong kho công trình lên trước, kèm định mức & tồn kho
+  const suggestions = db.materials
+    .filter((m) => !f.lines.some((l) => l.materialId === m.id) && `${m.code} ${m.name} ${m.group}`.toLowerCase().includes(matSearch.trim().toLowerCase()))
+    .map((m) => ({ m, s: stock.find((x) => x.inv.materialId === m.id) }))
+    .sort((a, b) => Number(!!b.s) - Number(!!a.s) || a.m.code.localeCompare(b.m.code));
+  const total = requestValue(f);
 
   if (id && !existing) return <Card><EmptyState title="Không tìm thấy đề xuất" /></Card>;
   if (existing && !["nhap", "tra_lai"].includes(existing.status)) return <Card><EmptyState title="Đề xuất đã gửi phê duyệt – không thể chỉnh sửa" action={<Button onClick={() => navigate(`/materials/requests/${existing.id}`)}>Xem đề xuất</Button>} /></Card>;
@@ -95,7 +102,7 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
   return (
     <div>
       {inDialog ? (
-        <div className="sticky top-0 z-10 -mx-6 -mt-4 mb-4 flex flex-wrap items-center justify-between gap-2 border-b bg-white px-6 py-3">
+        <div className="sticky -top-4 z-10 -mx-6 -mt-4 mb-4 flex flex-wrap items-center justify-between gap-2 border-b bg-white px-6 py-3">
           <div>
             <div className="text-base font-semibold text-slate-900">{existing ? `Chỉnh sửa đề xuất ${existing.code}` : "Thêm đề xuất"}</div>
             <div className="text-xs text-slate-500">{db.projects.find((p) => p.id === f.projectId)?.shortName}</div>
@@ -118,8 +125,8 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
         />
       )}
       <div className="grid gap-4 xl:grid-cols-[1fr_300px]">
-        <div className="min-w-0 space-y-4">
-          <FormSection title="Thông tin đề xuất">
+        <div className="min-w-0">
+          <FormSection title="Thông tin đề xuất" className="h-full">
             <div className="grid gap-3 md:grid-cols-2">
               <FormField label="Tiêu đề" required error={err.title} className="md:col-span-2"><Input value={f.title} onChange={(e) => set("title", e.target.value)} placeholder="VD: Thép Ø16 cột tầng trệt" /></FormField>
               <FormField label="Nhóm đề xuất"><Select value={f.type} onChange={(e) => set("type", e.target.value as MaterialRequest["type"])} options={Object.entries(MR_TYPE).map(([v, l]) => ({ value: v, label: l }))} /></FormField>
@@ -131,50 +138,6 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
               <FormField label="Ghi chú / lý do" className="md:col-span-2"><Textarea value={f.note} onChange={(e) => set("note", e.target.value)} className="min-h-[56px]" /></FormField>
             </div>
           </FormSection>
-          <FormSection title="Danh sách vật liệu *" right={err.lines && <span className="text-xs text-rose-600">{err.lines}</span>}>
-            <div className="relative mb-3 max-w-md">
-              <Input value={matSearch} onChange={(e) => setMatSearch(e.target.value)} placeholder="Tìm kiếm vật liệu theo mã, tên ... để thêm" />
-              {found.length > 0 && (
-                <div className="absolute z-10 mt-1 w-full rounded-lg border bg-white p-1 shadow-lg">
-                  {found.map((m) => (
-                    <button key={m.id} className="flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-[13px] hover:bg-slate-50" onClick={() => { set("lines", [...f.lines, { materialId: m.id, qty: 0, unitPrice: m.unitPrice }]); setMatSearch(""); }}>
-                      <span>{m.code} – {m.name}</span><span className="text-xs text-slate-400">{m.unit} · {fmtVnd(m.unitPrice)} đ</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[900px] text-[13px]">
-                <thead className="bg-slate-50 text-[11px] uppercase text-slate-500">
-                  <tr><th className="px-2 py-2 text-left">STT</th><th className="px-2 text-left">Tên vật liệu</th><th className="px-2">ĐV</th><th className="px-2 text-right">Đề xuất mới</th><th className="px-2 text-right">Đơn giá</th><th className="px-2 text-right">Thành tiền</th><th className="px-2 text-right">Định mức</th><th className="px-2 text-right">Tổng xuất</th><th className="px-2 text-right">Tồn kho</th><th className="px-2 text-right">Còn lại ĐM</th><th /></tr>
-                </thead>
-                <tbody>
-                  {f.lines.length === 0 && <tr><td colSpan={11} className="py-8 text-center text-xs text-slate-400">Chưa có vật liệu – tìm kiếm ở ô phía trên để thêm</td></tr>}
-                  {f.lines.map((l, i) => {
-                    const m = db.materials.find((x) => x.id === l.materialId)!;
-                    const info = lineInfo(l);
-                    return (
-                      <tr key={l.materialId} className="border-b align-top">
-                        <td className="px-2 py-2">{i + 1}</td>
-                        <td className="px-2 py-2"><div className="font-medium">{m.name}</div>{info.warn && <div className="mt-1 flex items-center gap-1 text-[11px] text-rose-600"><AlertCircle className="h-3 w-3" />{info.warn}</div>}</td>
-                        <td className="px-2 py-2 text-center">{m.unit}</td>
-                        <td className="px-2 py-1.5"><Input type="number" min={0} value={l.qty || ""} onChange={(e) => setLine(i, { qty: Number(e.target.value) })} className={`h-8 w-24 text-right ${info.warn ? "border-rose-300" : ""}`} /></td>
-                        <td className="px-2 py-1.5"><Input type="number" value={l.unitPrice} onChange={(e) => setLine(i, { unitPrice: Number(e.target.value) })} className="h-8 w-28 text-right" /></td>
-                        <td className="tabular px-2 py-2 text-right font-medium">{fmtVnd(l.qty * l.unitPrice)}</td>
-                        <td className="tabular px-2 py-2 text-right">{fmtNumber(info.norm)}</td>
-                        <td className="tabular px-2 py-2 text-right">{fmtNumber(info.issued)}</td>
-                        <td className="tabular px-2 py-2 text-right">{fmtNumber(info.onHand)}</td>
-                        <td className="tabular px-2 py-2 text-right">{fmtNumber(Math.max(0, info.remaining))}</td>
-                        <td className="px-1 py-2"><button className="text-slate-400 hover:text-rose-600" onClick={() => set("lines", f.lines.filter((_, j) => j !== i))}><Trash2 className="h-4 w-4" /></button></td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            <button className="mt-2 flex items-center gap-1 text-xs font-medium text-primary hover:underline" onClick={() => setMatSearch(" ")}><Plus className="h-3.5 w-3.5" /> Thêm vật liệu</button>
-          </FormSection>
         </div>
         <FormSection title="Quy trình xét duyệt" className="h-fit">
           <div className="text-[11px] font-semibold uppercase text-slate-400">Quy trình</div>
@@ -185,6 +148,84 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
           <div className="mt-4 text-[11px] leading-relaxed text-slate-500">Sau khi được duyệt, BP Vật tư tổng hợp, kiểm tra tồn kho: còn hàng → xuất sử dụng; hết hàng → lựa chọn NCC, mua hàng, nhập kho.</div>
         </FormSection>
       </div>
+      <FormSection title="Danh sách vật liệu *" className="mt-4" right={err.lines && <span className="text-xs text-rose-600">{err.lines}</span>}>
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <div className="relative w-full max-w-xl">
+            <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <Input
+              ref={searchRef}
+              value={matSearch}
+              onChange={(e) => { setMatSearch(e.target.value); setPickerOpen(true); }}
+              onFocus={() => { clearTimeout(blurTimer.current); setPickerOpen(true); setTimeout(() => searchRef.current?.scrollIntoView({ block: "start", behavior: "smooth" }), 30); }}
+              onBlur={() => { blurTimer.current = setTimeout(() => setPickerOpen(false), 150); }}
+              placeholder="Tìm kiếm vật liệu theo mã, tên ..."
+              className="pl-8"
+            />
+            {pickerOpen && (
+              <div className="absolute z-30 mt-1 w-[min(760px,90vw)] overflow-hidden rounded-lg border bg-white shadow-xl">
+                <div className="grid grid-cols-[70px_1fr_50px_100px_90px_90px] gap-2 border-b bg-slate-50 px-3 py-2 text-[11px] font-semibold uppercase text-slate-500">
+                  <span>Mã</span><span>Tên vật tư</span><span>ĐVT</span><span className="text-right">Đơn giá</span><span className="text-right">Định mức</span><span className="text-right">Tồn kho</span>
+                </div>
+                <div className="max-h-72 overflow-y-auto">
+                  {suggestions.length === 0 && <div className="px-3 py-4 text-center text-xs text-slate-400">Không tìm thấy vật tư phù hợp</div>}
+                  {suggestions.map(({ m, s: st }) => (
+                    <button
+                      key={m.id}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => { set("lines", [...f.lines, { materialId: m.id, qty: 0, unitPrice: m.unitPrice, discount: 0, vat: 0 }]); setMatSearch(""); setPickerOpen(false); }}
+                      className="grid w-full grid-cols-[70px_1fr_50px_100px_90px_90px] items-center gap-2 border-b border-slate-50 px-3 py-2 text-left text-[13px] hover:bg-sky-50"
+                    >
+                      <span className="text-slate-500">{m.code}</span>
+                      <span className="min-w-0"><span className="block truncate font-medium text-slate-800">{m.name}</span><span className="block truncate text-[11px] text-slate-400">{m.spec}</span></span>
+                      <span className="text-slate-600">{m.unit}</span>
+                      <span className="tabular text-right">{fmtVnd(m.unitPrice)}</span>
+                      <span className="tabular text-right">{st ? fmtNumber(st.inv.normQty) : <span className="text-slate-300">—</span>}</span>
+                      <span className={`tabular text-right ${st && st.onHand < st.inv.minStock ? "font-semibold text-rose-600" : ""}`}>{st ? fmtNumber(st.onHand) : <span className="text-slate-300">0</span>}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <Button size="sm" variant="success" onMouseDown={(e) => e.preventDefault()} onClick={() => { clearTimeout(blurTimer.current); setPickerOpen(true); searchRef.current?.focus(); }}><Plus /> Thêm vật liệu</Button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[1080px] text-[13px]">
+            <thead className="bg-slate-50 text-[11px] uppercase text-slate-500">
+              <tr>
+                <th className="px-2 py-2 text-left">STT</th><th className="px-2 text-left">Tên vật liệu</th><th className="px-2 text-left">ĐV</th>
+                <th className="px-2 text-right">Đề xuất mới</th><th className="px-2 text-right">Đơn giá</th><th className="px-2 text-right">Chiết khấu (%)</th><th className="px-2 text-right">VAT (%)</th>
+                <th className="px-2 text-right">Thành tiền</th><th className="px-2 text-right">Định mức</th><th className="px-2 text-right">Tổng xuất</th><th className="px-2 text-right">Tồn kho</th><th className="px-2 text-right">Còn lại ĐM</th><th />
+              </tr>
+            </thead>
+            <tbody>
+              {f.lines.length === 0 && <tr><td colSpan={13} className="py-8 text-center text-xs text-slate-400">Chưa có vật liệu – bấm vào ô tìm kiếm hoặc “Thêm vật liệu” để chọn từ danh sách gợi ý</td></tr>}
+              {f.lines.map((l, i) => {
+                const m = db.materials.find((x) => x.id === l.materialId)!;
+                const info = lineInfo(l);
+                return (
+                  <tr key={l.materialId} className="border-b align-top">
+                    <td className="px-2 py-2">{i + 1}</td>
+                    <td className="px-2 py-2"><div className="font-medium">{m.name}</div>{info.warn && <div className="mt-1 flex items-center gap-1 text-[11px] text-rose-600"><AlertCircle className="h-3 w-3 shrink-0" />{info.warn}</div>}</td>
+                    <td className="px-2 py-2">{m.unit}</td>
+                    <td className="px-2 py-1.5"><Input type="number" min={0} value={l.qty || ""} onChange={(e) => setLine(i, { qty: Number(e.target.value) })} className={`ml-auto h-8 w-24 text-right ${info.warn ? "border-rose-300" : ""}`} /></td>
+                    <td className="px-2 py-1.5"><Input type="number" value={l.unitPrice} onChange={(e) => setLine(i, { unitPrice: Number(e.target.value) })} className="ml-auto h-8 w-28 text-right" /></td>
+                    <td className="px-2 py-1.5"><Input type="number" min={0} max={100} value={l.discount ?? 0} onChange={(e) => setLine(i, { discount: Number(e.target.value) })} className="ml-auto h-8 w-16 text-right" /></td>
+                    <td className="px-2 py-1.5"><Input type="number" min={0} max={100} value={l.vat ?? 0} onChange={(e) => setLine(i, { vat: Number(e.target.value) })} className="ml-auto h-8 w-16 text-right" /></td>
+                    <td className="tabular px-2 py-2 text-right font-medium">{fmtVnd(lineAmount(l))}</td>
+                    <td className="tabular px-2 py-2 text-right">{fmtNumber(info.norm)}</td>
+                    <td className="tabular px-2 py-2 text-right">{fmtNumber(info.issued)}</td>
+                    <td className="tabular px-2 py-2 text-right">{fmtNumber(info.onHand)}</td>
+                    <td className="tabular px-2 py-2 text-right">{fmtNumber(Math.max(0, info.remaining))}</td>
+                    <td className="px-1 py-2"><button className="text-slate-400 hover:text-rose-600" onClick={() => set("lines", f.lines.filter((_, j) => j !== i))}><Trash2 className="h-4 w-4" /></button></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            {f.lines.length > 0 && <tfoot><tr className="bg-slate-50 font-semibold"><td colSpan={7} className="px-2 py-2 text-right">Tổng tiền vật liệu</td><td className="tabular px-2 text-right">{fmtVnd(total)}</td><td colSpan={5} /></tr></tfoot>}
+          </table>
+        </div>
+      </FormSection>
     </div>
   );
 }
