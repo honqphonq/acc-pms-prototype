@@ -23,6 +23,8 @@ import { StockMoveDialog } from "./StockMoveDialog";
 import { getStockRows, STOCK_STATUS, type StockRow } from "@/services/selectors";
 import { updateInventory } from "@/services/actions";
 import { fmtMoneyShort, fmtNumber, fmtPct } from "@/utils/format";
+import { DEMO_TODAY, diffDays } from "@/utils/date";
+import { StocktakePanel } from "./StocktakePanel";
 
 const FLOW = ["Nhu cầu vật tư", "Lập đề xuất", "CHT phê duyệt", "Kiểm tra tồn kho", "Chọn NCC & mua hàng", "Nhập kho", "Xuất sử dụng"];
 
@@ -40,7 +42,10 @@ export default function InventoryPage() {
   const [norm, setNorm] = useState({ normQty: "", minStock: "" });
 
   const all = getStockRows(db);
-  const rows = all.filter((r) => (!projectId || r.inv.projectId === projectId) && (!materialId || r.inv.materialId === materialId) && (!status || r.status === status) && (!group || r.material.group === group));
+  const isSlow = (r: (typeof all)[number]) => r.onHand > 0 && r.issued > 0 && db.projects.find((p) => p.id === r.inv.projectId)?.status === "dang_thi_cong" && (!r.lastIssue || diffDays(r.lastIssue, DEMO_TODAY) > 45);
+  const base = all.filter((r) => (!projectId || r.inv.projectId === projectId) && (!materialId || r.inv.materialId === materialId) && (!group || r.material.group === group));
+  const rows = base.filter((r) => !status || (status === "cham_luan_chuyen" ? isSlow(r) : status === "sap_vuot" ? r.status === "sap_vuot" || r.status === "vuot_dinh_muc" : r.status === status));
+  const slow = base.filter(isSlow);
   const pName = (id: string) => db.projects.find((p) => p.id === id)?.shortName ?? "";
   const groups = [...new Set(db.materials.map((m) => m.group))];
 
@@ -78,8 +83,8 @@ export default function InventoryPage() {
   return (
     <div>
       <PageHeader
-        title="Nhu cầu & tồn kho vật tư"
-        description="Liên kết xuyên suốt từ định mức dự toán → nhu cầu → đề xuất → cung ứng → nhập kho → xuất sử dụng. Cảnh báo sớm thiếu hụt và vượt định mức."
+        title="Tồn kho và kiểm kê"
+        description="Tra cứu tồn kho theo kho công trình, kiểm kê định kỳ, cảnh báo tồn kho thấp, tồn lâu chậm luân chuyển và vượt định mức."
         actions={can("stock.move") && <><Button variant="outline" onClick={() => setMove({ type: "xuat", projectId: projectId || undefined })}><ArrowUpFromLine /> Xuất kho</Button><Button onClick={() => setMove({ type: "nhap", projectId: projectId || undefined })}><ArrowDownToLine /> Nhập kho</Button></>}
       />
       <Card className="mb-4 flex flex-wrap items-center gap-1.5 px-4 py-3 text-[12px]">
@@ -88,14 +93,15 @@ export default function InventoryPage() {
       </Card>
       <div className="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <KpiCard label="Giá trị tồn kho" value={fmtMoneyShort(rows.reduce((s, r) => s + r.value, 0))} tone="navy" sub={`${rows.length} mã vật tư tại các kho`} />
-        <KpiCard label="Thiếu hụt (dưới tồn tối thiểu)" value={rows.filter((r) => r.status === "thieu_hang").length} unit="mã" tone="danger" onClick={() => setStatus("thieu_hang")} sub="Bấm để lọc" />
-        <KpiCard label="Vượt / sắp vượt định mức" value={rows.filter((r) => r.status === "vuot_dinh_muc" || r.status === "sap_vuot").length} unit="mã" tone="warning" onClick={() => setStatus("sap_vuot")} sub="Tiêu hao ≥ 90% định mức dự toán" />
-        <KpiCard label="Đề xuất chờ duyệt" value={db.materialRequests.filter((r) => r.status === "cho_duyet" && (!projectId || r.projectId === projectId)).length} unit="đề xuất" tone="info" onClick={() => navigate("/materials/requests?tab=cho_duyet")} sub="Bấm để xem" />
+        <KpiCard label="Thiếu hụt (dưới tồn tối thiểu)" value={base.filter((r) => r.status === "thieu_hang").length} unit="mã" tone="danger" onClick={() => setStatus("thieu_hang")} sub="Bấm để lọc" />
+        <KpiCard label="Vượt / sắp vượt định mức" value={base.filter((r) => r.status === "vuot_dinh_muc" || r.status === "sap_vuot").length} unit="mã" tone="warning" onClick={() => setStatus("sap_vuot")} sub="Tiêu hao ≥ 90% định mức dự toán" />
+        <KpiCard label="Tồn lâu, chậm luân chuyển" value={slow.length} unit="mã" tone="info" onClick={() => setStatus("cham_luan_chuyen")} sub="Còn tồn nhưng không xuất dùng > 45 ngày" />
       </div>
       <Tabs defaultValue="stock">
         <TabsList className="rounded-t-xl bg-white px-2">
           <TabsTrigger value="stock">Tồn kho & định mức</TabsTrigger>
           <TabsTrigger value="demand">Nhu cầu vật tư còn lại ({demand.length})</TabsTrigger>
+          <TabsTrigger value="stocktake">Kiểm kê kho ({db.stocktakes.filter((s) => !projectId || s.projectId === projectId).length})</TabsTrigger>
         </TabsList>
         <TabsContent value="stock" className="mt-0">
           <Card className="rounded-t-none">
@@ -104,7 +110,7 @@ export default function InventoryPage() {
               toolbar={<>
                 <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả kho công trình" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
                 <FilterSelect value={group} onChange={setGroup} allLabel="Tất cả nhóm" options={groups.map((g) => ({ value: g, label: g }))} />
-                <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả tình trạng" options={Object.entries(STOCK_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
+                <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả tình trạng" options={[...Object.entries(STOCK_STATUS).map(([v, l]) => ({ value: v, label: l.label })), { value: "cham_luan_chuyen", label: "Tồn lâu, chậm luân chuyển" }]} />
                 {materialId && <Button size="sm" variant="ghost" onClick={() => setMaterialId("")}>Bỏ lọc vật tư</Button>}
               </>}
               rowClassName={(r) => (r.status === "thieu_hang" ? "bg-rose-50/40" : undefined)}
@@ -129,6 +135,7 @@ export default function InventoryPage() {
             />
           </Card>
         </TabsContent>
+        <TabsContent value="stocktake" className="mt-0"><StocktakePanel projectId={projectId} /></TabsContent>
       </Tabs>
       {move && <StockMoveDialog open={!!move} onOpenChange={(o) => !o && setMove(null)} type={move.type} projectId={move.projectId} materialId={move.materialId} />}
       <Dialog open={!!normEdit} onOpenChange={(o) => !o && setNormEdit(null)}>

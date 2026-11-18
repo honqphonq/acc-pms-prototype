@@ -18,7 +18,7 @@ export const EQUIPMENT_GROUPS = ["Máy rải bê tông", "Máy xúc", "Máy ủi
 type EqForm = Omit<Equipment, "id" | "maintenances">;
 export function EquipmentFormDialog({ open, onOpenChange, equipment }: { open: boolean; onOpenChange: (o: boolean) => void; equipment?: Equipment }) {
   const { db, run } = useDb();
-  const empty: EqForm = { code: "", name: "", group: EQUIPMENT_GROUPS[0], ownership: "so_huu", plate: "", brand: "", year: 2024, manageUnitId: "d-acc244", status: "nhan_roi", currentProjectId: null, operatorId: null, totalHours: 0, fuelNorm: 15, maintenanceInterval: 250, lastMaintenanceHours: 0 };
+  const empty: EqForm = { code: "", name: "", group: EQUIPMENT_GROUPS[0], ownership: "so_huu", plate: "", brand: "", year: 2024, manageUnitId: "d-acc244", status: "nhan_roi", currentProjectId: null, operatorId: null, totalHours: 0, fuelNorm: 15, maintenanceInterval: 250, lastMaintenanceHours: 0, kind: "may_thiet_bi", assetCode: "", chassisNo: "", engineNo: "", qualityGrade: "Cấp 1", decisionNo: "", inspectionDue: null, insuranceDue: null, ownerProof: true };
   const [f, setF] = useState<EqForm>(empty);
   const [err, setErr] = useState("");
   useEffect(() => { if (open) { setF(equipment ? { ...equipment } : empty); setErr(""); } }, [open, equipment]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -47,8 +47,18 @@ export function EquipmentFormDialog({ open, onOpenChange, equipment }: { open: b
           <FormField label="Định mức nhiên liệu (lít/giờ)"><Input type="number" value={f.fuelNorm} onChange={(e) => set("fuelNorm", Number(e.target.value))} /></FormField>
           <FormField label="Chu kỳ bảo dưỡng (giờ)"><Input type="number" value={f.maintenanceInterval} onChange={(e) => set("maintenanceInterval", Number(e.target.value))} /></FormField>
           <FormField label="Tổng giờ máy"><Input type="number" value={f.totalHours} onChange={(e) => set("totalHours", Number(e.target.value))} /></FormField>
+          <FormField label="Loại"><Select value={f.kind} onChange={(e) => set("kind", e.target.value as EqForm["kind"])} options={[{ value: "o_to", label: "Xe ô tô" }, { value: "xe_bien_do", label: "Xe biển đỏ" }, { value: "may_thiet_bi", label: "Máy thiết bị" }]} /></FormField>
+          <FormField label="Mã tài sản"><Input value={f.assetCode} onChange={(e) => set("assetCode", e.target.value)} /></FormField>
+          <FormField label="Cấp chất lượng"><Input value={f.qualityGrade} onChange={(e) => set("qualityGrade", e.target.value)} /></FormField>
+          <FormField label="Số khung"><Input value={f.chassisNo} onChange={(e) => set("chassisNo", e.target.value)} /></FormField>
+          <FormField label="Số máy"><Input value={f.engineNo} onChange={(e) => set("engineNo", e.target.value)} /></FormField>
+          <FormField label={f.ownership === "thue_ngoai" ? "Hợp đồng thuê ngoài" : "QĐ điều động về đơn vị"}><Input value={f.decisionNo} onChange={(e) => set("decisionNo", e.target.value)} /></FormField>
+          <FormField label="Ngày đến hạn kiểm định"><Input type="date" value={f.inspectionDue ?? ""} onChange={(e) => set("inspectionDue", e.target.value || null)} /></FormField>
+          {f.kind !== "may_thiet_bi" && <FormField label="Ngày hết hạn bảo hiểm"><Input type="date" value={f.insuranceDue ?? ""} onChange={(e) => set("insuranceDue", e.target.value || null)} /></FormField>}
+          {f.kind === "xe_bien_do" && <FormField label="Mã thẻ VETC / ePass"><Input value={f.vetcCode ?? ""} onChange={(e) => set("vetcCode", e.target.value)} /></FormField>}
           {f.ownership === "thue_ngoai" && (
             <>
+              <FormField label="Chứng minh chủ sở hữu"><label className="flex h-9 items-center gap-2 text-sm"><input type="checkbox" checked={f.ownerProof} onChange={(e) => set("ownerProof", e.target.checked)} /> Đã có</label></FormField>
               <FormField label="Đơn vị cho thuê" className="md:col-span-2"><Input value={f.rentalSupplier ?? ""} onChange={(e) => set("rentalSupplier", e.target.value)} /></FormField>
               <FormField label="Đơn giá thuê (đ/ca)"><Input type="number" value={f.rentalRate ?? 0} onChange={(e) => set("rentalRate", Number(e.target.value))} /></FormField>
             </>

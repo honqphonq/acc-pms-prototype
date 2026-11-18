@@ -18,6 +18,18 @@ import acceptanceRecords from "@/data/acceptance-records.json";
 import paymentRecords from "@/data/payment-records.json";
 import notifications from "@/data/notifications.json";
 import issues from "@/data/issues.json";
+import constructionMethods from "@/data/construction-methods.json";
+import siteStaff from "@/data/site-staff.json";
+import docFolders from "@/data/doc-folders.json";
+import documents from "@/data/documents.json";
+import operators from "@/data/operators.json";
+import maintenancePlans from "@/data/maintenance-plans.json";
+import repairs from "@/data/repairs.json";
+import disposals from "@/data/disposals.json";
+import incidents from "@/data/incidents.json";
+import routes from "@/data/routes.json";
+import stocktakes from "@/data/stocktakes.json";
+import loginHistory from "@/data/login-history.json";
 import type { Database } from "@/types";
 
 export function getSeedData(): Database {
@@ -42,5 +54,17 @@ export function getSeedData(): Database {
     paymentRecords,
     notifications,
     issues,
+    constructionMethods,
+    siteStaff,
+    docFolders,
+    documents,
+    operators,
+    maintenancePlans,
+    repairs,
+    disposals,
+    incidents,
+    routes,
+    stocktakes,
+    loginHistory,
   }) as unknown as Database;
 }

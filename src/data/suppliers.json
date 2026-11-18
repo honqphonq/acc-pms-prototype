@@ -25,7 +25,7 @@
       "Thép"
     ],
     "rating": 4.4,
-    "debt": 14700000
+    "debt": 0
   },
   {
     "id": "s03",
@@ -86,7 +86,7 @@
       "Vật liệu chèn khe"
     ],
     "rating": 4.2,
-    "debt": 0
+    "debt": 93600000
   },
   {
     "id": "s07",
@@ -115,6 +115,34 @@
       "Cọc"
     ],
     "rating": 4.5,
+    "debt": 0
+  },
+  {
+    "id": "s09",
+    "code": "NCC009",
+    "name": "Công ty CP Bê tông nhựa Kinh Bắc",
+    "taxCode": "2300456789",
+    "address": "KCN Quế Võ, Bắc Ninh",
+    "contact": "Trần Văn Bắc",
+    "phone": "0243898760",
+    "materialGroups": [
+      "Bê tông nhựa"
+    ],
+    "rating": 4.4,
+    "debt": 0
+  },
+  {
+    "id": "s10",
+    "code": "NCC010",
+    "name": "Công ty CP Xăng dầu Bắc Ninh",
+    "taxCode": "2300112233",
+    "address": "TP Bắc Ninh, Bắc Ninh",
+    "contact": "Nguyễn Thị Dầu",
+    "phone": "0243911105",
+    "materialGroups": [
+      "Nhiên liệu"
+    ],
+    "rating": 4.7,
     "debt": 0
   }
 ]

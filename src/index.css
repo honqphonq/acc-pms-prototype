@@ -92,3 +92,13 @@
 .scrollbar-visible::-webkit-scrollbar-thumb:hover {
   background: #64748b;
 }
+
+/* In biểu đồ Gantt */
+@media print {
+  @page { size: A3 landscape; margin: 8mm; }
+  html, body { background: #fff !important; }
+  .gantt-root, .gantt-right { overflow: visible !important; }
+  .gantt-left { width: 560px !important; }
+  [data-sonner-toaster] { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

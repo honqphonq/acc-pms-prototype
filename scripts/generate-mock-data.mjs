@@ -69,10 +69,10 @@ const users = [
   { id: "u03", code: "NV003", name: "Lê Thanh Thiện", role: "phong_ktkt", title: "Trưởng phòng Kế hoạch - Kỹ thuật", departmentId: "d-khkt", isDemoAccount: true },
   { id: "u04", code: "NV004", name: "Trần Quốc Hải", role: "chi_huy_truong", title: "Chỉ huy trưởng công trường", departmentId: "d-acc244", isDemoAccount: true },
   { id: "u05", code: "NV005", name: "Lê Thị Mai", role: "chi_huy_truong", title: "Phó chỉ huy trưởng kỹ thuật", departmentId: "d-acc244" },
-  { id: "u06", code: "NV006", name: "Phạm Văn Long", role: "to_truong", title: "Tổ trưởng tổ đất số 1", departmentId: "d-acc244", team: "Tổ đất số 1" },
-  { id: "u07", code: "NV007", name: "Nguyễn Minh Anh", role: "to_truong", title: "Mũi trưởng phần móng", departmentId: "d-acc244", team: "Mũi thi công móng" },
-  { id: "u08", code: "NV008", name: "Hoàng Quang Huy", role: "to_truong", title: "Tổ trưởng tổ bê tông số 2", departmentId: "d-acc244", team: "Tổ bê tông số 2", isDemoAccount: true },
-  { id: "u09", code: "NV009", name: "Đỗ Thanh Tùng", role: "to_truong", title: "Tổ trưởng tổ nề số 1", departmentId: "d-acc244", team: "Tổ nề số 1" },
+  { id: "u06", code: "NV006", name: "Phạm Văn Long", role: "to_truong", title: "Tổ trưởng tổ móng CPĐD", departmentId: "d-acc244", team: "Tổ móng CPĐD số 1" },
+  { id: "u07", code: "NV007", name: "Nguyễn Minh Anh", role: "to_truong", title: "Mũi trưởng thi công khu bay", departmentId: "d-acc244", team: "Mũi thi công khu bay" },
+  { id: "u08", code: "NV008", name: "Hoàng Quang Huy", role: "to_truong", title: "Tổ trưởng tổ BTXM mặt đường", departmentId: "d-acc244", team: "Tổ BTXM mặt đường số 1", isDemoAccount: true },
+  { id: "u09", code: "NV009", name: "Đỗ Thanh Tùng", role: "to_truong", title: "Tổ trưởng tổ BTXM móng M150", departmentId: "d-acc244", team: "Tổ BTXM M150 số 1" },
   { id: "u10", code: "NV010", name: "Chu Anh Tài", role: "bp_vat_tu", title: "Cán bộ vật tư công trường", departmentId: "d-acc244", isDemoAccount: true },
   { id: "u11", code: "NV011", name: "Lê Phú Khang", role: "bp_vat_tu", title: "Trưởng bộ phận vật tư", departmentId: "d-acc244" },
   { id: "u12", code: "NV012", name: "Phạm Văn Vinh", role: "phong_thiet_bi", title: "Trưởng phòng Thiết bị - Công nghệ", departmentId: "d-tbcn", isDemoAccount: true },
@@ -114,6 +114,7 @@ engineerNames.forEach((name, i) => {
     team: `Tổ thi công số ${i + 1}`,
   });
 });
+Object.assign(users.find((u) => u.id === "u30"), { title: "Tổ trưởng tổ thảm bê tông nhựa", departmentId: "d-acc244", team: "Tổ thảm BTN" });
 // Công nhân kỹ thuật vận hành (CMKT)
 const operatorNames = [
   "Nguyễn Văn Bảy", "Trần Văn Cường", "Lê Văn Dũng", "Phạm Văn Đông", "Hoàng Văn Giang", "Vũ Văn Hòa",
@@ -135,12 +136,12 @@ users.forEach((u, i) => {
 // ---------- projects ----------
 const projectDefs = [
   {
-    id: "p01", code: "ACC244-LHP", shortName: "Trường Lê Hồng Phong", name: "Dự án Xây dựng Trường Đào tạo cán bộ Lê Hồng Phong TP Hà Nội",
-    category: "dan_dung", location: "Hà Nội", unitId: "d-acc244", commanderId: "u04",
-    investor: "Ban Quản lý dự án đầu tư xây dựng công trình dân dụng và công nghiệp thành phố Hà Nội",
-    contractor: "Tổng công ty ACC – Công ty ĐTXL ACC – Công ty CP ACC 244",
-    packageName: "Gói thầu số 06: Thi công xây dựng công trình và lắp đặt thiết bị", contractNo: "0610/2025/HĐXD-XLTB", contractDate: "2025-10-06",
-    startDate: "2026-06-01", endDate: "2027-12-31", budget: 540e9, status: "dang_thi_cong", costRatio: 0.91,
+    id: "p01", code: "ACC244-GB", shortName: "Sân bay Gia Bình", name: "Cảng hàng không quốc tế Gia Bình – Giai đoạn 1.1",
+    category: "giao_thong", location: "Gia Bình, Bắc Ninh", unitId: "d-acc244", commanderId: "u04",
+    investor: "Ban Quản lý dự án Cảng hàng không quốc tế Gia Bình",
+    contractor: "Tổng công ty ACC – Công ty CP ACC 244",
+    packageName: "Gói thầu: Thi công kết cấu khu bay – Hạng mục: Thi công kết cấu hạ tầng sân bay và mặt đường", contractNo: "1504/2026/HĐXD-GB", contractDate: "2026-04-15",
+    startDate: "2026-04-28", endDate: "2027-04-25", status: "dang_thi_cong", costRatio: 0.91,
   },
   {
     id: "p02", code: "ACC244-DAD", shortName: "Sân đỗ máy bay Đà Nẵng", name: "Mở rộng sân đỗ máy bay – Cảng HKQT Đà Nẵng",
@@ -274,46 +275,76 @@ const constructionItems = [];
 const constructionPlans = [];
 const engineerIds = users.filter((u) => u.role === "to_truong" && !u.isOperator && +u.id.slice(1) >= 30).map((u) => u.id);
 
-// --- p01 handcrafted plan (tham chiếu trang 16-17 tài liệu) ---
-function addLhp() {
+// --- p01: SB Gia Bình – tiến độ thi công chi tiết thật (scripts/data/gia-binh-schedule.json) ---
+// Cấu trúc: A..E = hạng mục; KHU VỰC ZONE = nhóm cấp 1; Lòng đường / Lề vật liệu = nhóm cấp 2; còn lại = công việc.
+const GB_PRICES = [
+  [/CPĐD/, 165000], [/M150/, 420000], [/M350/, 680000], [/BTN C19/, 245000], [/BTN C16/, 215000],
+  [/khu phụ trợ/, 6800000000], [/Tập kết/, 3200000000], [/Vệ sinh/, 450000000], [/Nghiệm thu/, 0],
+];
+const GB_TEAM = (name, zoneIdx) => {
+  const n = (zoneIdx % 2) + 1;
+  if (/CPĐD/.test(name)) return ["u06", `Tổ móng CPĐD số ${n}`];
+  if (/M150/.test(name)) return ["u09", `Tổ BTXM M150 số ${n}`];
+  if (/M350/.test(name)) return ["u08", `Tổ BTXM mặt đường số ${n}`];
+  if (/BTN/.test(name)) return ["u30", "Tổ thảm BTN"];
+  if (/Nghiệm thu|Vệ sinh/.test(name)) return ["u04", "Ban chỉ huy công trường"];
+  return ["u05", "Tổ phụ trợ"];
+};
+/** Tiến độ thực tế tại ngày dữ liệu 14/11/2026: [tỷ lệ hoàn thành, số ngày kết thúc lệch so với kế hoạch] */
+const GB_ACTUAL = {
+  10: 0.88, 12: 0.7, 20: 0.93, 22: 0.55, 30: [1, 2], 32: [1, 3], 33: 0.78, 34: 0, 39: 0.91, 40: 0.64,
+  49: [1, 3], 50: 0.3, 59: 0.86, 60: 0.37, 90: 0.76, 91: 0.7, 92: 0.22, 9: [1, 4], 19: [1, -1], 29: [1, 2],
+};
+function addGiaBinh() {
   const pid = "p01";
-  const items = [
-    { id: "i-p01-1", code: "1.1.1", name: "Công tác chuẩn bị và san lấp mặt bằng", managerId: "u05" },
-    { id: "i-p01-2", code: "1.1.2", name: "Phần móng", managerId: "u07" },
-    { id: "i-p01-3", code: "1.1.3", name: "Phần thân – Nhà hành chính A", managerId: "u05" },
-    { id: "i-p01-4", code: "1.1.4", name: "Hoàn thiện và hạ tầng kỹ thuật", managerId: "u04" },
-  ];
-  items.forEach((it, i) => constructionItems.push({ ...it, projectId: pid, order: i + 1 }));
-  const t = (o) => ({
-    projectId: pid, parentId: null, isGroup: false, actualStart: null, actualEnd: null, note: "", ...o,
-  });
-  const rows = [
-    t({ id: "t-p01-001", itemId: "i-p01-1", code: "1.1.1.1", name: "Giải phóng mặt bằng", assigneeId: "u05", team: "Tổ đất số 1", unit: "m²", contractQty: 52000, unitPrice: 98000, actualQty: 52000, plannedStart: "2026-06-01", plannedEnd: "2026-06-15", actualStart: "2026-06-01", actualEnd: "2026-06-14" }),
-    t({ id: "t-p01-002", itemId: "i-p01-1", code: "1.1.1.2", name: "Xây dựng lán trại, hàng rào tạm", assigneeId: "u06", team: "Tổ nề số 1", unit: "gói", contractQty: 1, unitPrice: 1240000000, actualQty: 1, plannedStart: "2026-06-16", plannedEnd: "2026-06-25", actualStart: "2026-06-16", actualEnd: "2026-06-24" }),
-    t({ id: "t-p01-003", itemId: "i-p01-1", code: "1.1.1.3", name: "San lấp mặt bằng", assigneeId: "u06", team: "Tổ đất số 1", unit: "m³", contractQty: 20000, unitPrice: 120000, actualQty: 20000, plannedStart: "2026-06-26", plannedEnd: "2026-07-15", actualStart: "2026-06-26", actualEnd: "2026-07-14" }),
-    t({ id: "t-p01-004", itemId: "i-p01-2", code: "1.1.2.1", name: "Ép cọc", assigneeId: "u07", team: "Tổ cọc", unit: "m", contractQty: 96500, unitPrice: 1420000, actualQty: 96500, plannedStart: "2026-07-16", plannedEnd: "2026-08-14", actualStart: "2026-07-17", actualEnd: "2026-08-13" }),
-    t({ id: "t-p01-005", itemId: "i-p01-2", code: "1.1.2.2", name: "Đài móng, giằng móng và tường móng", assigneeId: "u07", team: "Mũi thi công móng", unit: "", contractQty: 0, unitPrice: 0, actualQty: 0, plannedStart: "2026-08-17", plannedEnd: "2026-11-25", actualStart: "2026-08-17", isGroup: true }),
-    t({ id: "t-p01-006", itemId: "i-p01-2", parentId: "t-p01-005", code: "1.1.2.2.1", name: "Đào đất hố móng", assigneeId: "u06", team: "Tổ đất số 1", unit: "m³", contractQty: 58000, unitPrice: 118000, actualQty: 58000, plannedStart: "2026-08-17", plannedEnd: "2026-08-28", actualStart: "2026-08-17", actualEnd: "2026-08-27" }),
-    t({ id: "t-p01-007", itemId: "i-p01-2", parentId: "t-p01-005", code: "1.1.2.2.2", name: "Đổ bê tông lót móng", assigneeId: "u06", team: "Tổ bê tông số 1", unit: "m³", contractQty: 1200, unitPrice: 1890000, actualQty: 1200, plannedStart: "2026-08-29", plannedEnd: "2026-09-03", actualStart: "2026-08-29", actualEnd: "2026-09-02" }),
-    t({ id: "t-p01-008", itemId: "i-p01-2", parentId: "t-p01-005", code: "1.1.2.2.3", name: "Gia công, lắp dựng cốt thép đài móng", assigneeId: "u08", team: "Tổ cốt thép", unit: "tấn", contractQty: 1100, unitPrice: 26800000, actualQty: 1100, plannedStart: "2026-09-04", plannedEnd: "2026-09-23", actualStart: "2026-09-05", actualEnd: "2026-09-26" }),
-    t({ id: "t-p01-009", itemId: "i-p01-2", parentId: "t-p01-005", code: "1.1.2.2.4", name: "Đổ bê tông đài móng, giằng móng", assigneeId: "u08", team: "Tổ bê tông số 2", unit: "m³", contractQty: 420, unitPrice: 2350000, actualQty: 336, plannedStart: "2026-10-01", plannedEnd: "2026-11-08", actualStart: "2026-10-03", note: "Đã đổ xong bê tông giằng móng trục A–C, đang tưới nước bảo dưỡng." }),
-    t({ id: "t-p01-010", itemId: "i-p01-2", parentId: "t-p01-005", code: "1.1.2.2.5", name: "Xây tường móng, lấp đất hố móng", assigneeId: "u09", team: "Tổ nề số 1", unit: "m³", contractQty: 2600, unitPrice: 480000, actualQty: 1560, plannedStart: "2026-10-20", plannedEnd: "2026-11-25", actualStart: "2026-10-22" }),
-    t({ id: "t-p01-011", itemId: "i-p01-2", code: "1.1.2.3", name: "Nghiệm thu phần móng", assigneeId: "u04", team: "Ban chỉ huy công trường", unit: "lần", contractQty: 1, unitPrice: 0, actualQty: 0, plannedStart: "2026-11-26", plannedEnd: "2026-11-30" }),
-    t({ id: "t-p01-012", itemId: "i-p01-3", code: "1.1.3.1", name: "Thi công cột, dầm, sàn tầng 1", assigneeId: "u08", team: "Tổ bê tông số 2", unit: "m³", contractQty: 3200, unitPrice: 3150000, actualQty: 704, plannedStart: "2026-11-03", plannedEnd: "2026-12-12", actualStart: "2026-11-05" }),
-    t({ id: "t-p01-013", itemId: "i-p01-3", code: "1.1.3.2", name: "Thi công cột, dầm, sàn tầng 2", assigneeId: "u08", team: "Tổ bê tông số 2", unit: "m³", contractQty: 3200, unitPrice: 3150000, actualQty: 0, plannedStart: "2026-12-13", plannedEnd: "2027-01-21" }),
-    t({ id: "t-p01-014", itemId: "i-p01-3", code: "1.1.3.3", name: "Thi công cột, dầm, sàn tầng 3", assigneeId: "u08", team: "Tổ bê tông số 2", unit: "m³", contractQty: 3200, unitPrice: 3150000, actualQty: 0, plannedStart: "2027-01-22", plannedEnd: "2027-03-02" }),
-    t({ id: "t-p01-015", itemId: "i-p01-4", code: "1.1.4.1", name: "Xây trát, ốp lát hoàn thiện", assigneeId: "u09", team: "Tổ nề số 1", unit: "m² sàn", contractQty: 100000, unitPrice: 1650000, actualQty: 0, plannedStart: "2027-03-03", plannedEnd: "2027-10-31" }),
-    t({ id: "t-p01-016", itemId: "i-p01-4", code: "1.1.4.2", name: "Hệ thống điện, nước, điều hòa thông gió", assigneeId: "u05", team: "Tổ điện nước", unit: "m² sàn", contractQty: 100000, unitPrice: 1280000, actualQty: 0, plannedStart: "2027-04-01", plannedEnd: "2027-11-30" }),
-    t({ id: "t-p01-017", itemId: "i-p01-4", code: "1.1.4.3", name: "Hệ thống PCCC, thông tin liên lạc", assigneeId: "u05", team: "Tổ điện nước", unit: "m² sàn", contractQty: 100000, unitPrice: 452000, actualQty: 0, plannedStart: "2027-06-01", plannedEnd: "2027-12-15" }),
-    t({ id: "t-p01-018", itemId: "i-p01-4", code: "1.1.4.4", name: "Hạ tầng kỹ thuật ngoài nhà, sân đường", assigneeId: "u06", team: "Tổ đất số 1", unit: "m² sàn", contractQty: 100000, unitPrice: 550000, actualQty: 0, plannedStart: "2027-08-01", plannedEnd: "2027-12-31" }),
-  ];
-  rows.forEach((r, i) => {
-    r.order = i + 1;
-    r.status = r.isGroup ? "dang_thuc_hien" : r.actualQty >= r.contractQty && r.contractQty > 0 ? "hoan_thanh" : r.actualQty > 0 || r.actualStart ? "dang_thuc_hien" : "chua_thuc_hien";
-    constructionPlans.push(r);
+  const rows = JSON.parse(fs.readFileSync(path.join(__dirname, "data/gia-binh-schedule.json"), "utf8"));
+  const managers = { A: "u05", B: "u07", C: "u07", D: "u06", E: "u04" };
+  let item = null, zone = null, sub = null, zoneIdx = 0, order = 0, lastLeaf = null;
+  const tid = (n) => `t-p01-${pad(n)}`;
+  for (const r of rows.slice(1)) {
+    const sec = r.name.match(/^([A-E])\.\s*(.*)$/);
+    if (sec) {
+      item = { id: `i-p01-${sec[1]}`, projectId: pid, code: sec[1], name: sec[2].charAt(0) + sec[2].slice(1).toLowerCase().replace("hạ cánh", "hạ cánh"), order: "ABCDE".indexOf(sec[1]) + 1, managerId: managers[sec[1]] };
+      item.name = { A: "Công tác chuẩn bị", B: "Kết cấu đường cất hạ cánh", C: "Kết cấu đường lăn", D: "Khu vực sân đỗ máy bay zone A2", E: "Nghiệm thu bàn giao công trình" }[sec[1]];
+      constructionItems.push(item);
+      zone = sub = lastLeaf = null;
+      continue;
+    }
+    const isLeaf = !!r.unit || item.code === "A";
+    const base = { projectId: pid, itemId: item.id, code: String(r.id), plannedStart: r.start, plannedEnd: r.end, actualStart: null, actualEnd: null, note: "", order: ++order, predecessors: [] };
+    if (!isLeaf) {
+      const isZone = r.name === r.name.toUpperCase() || /^SÂN ĐỖ máy bay/.test(r.name);
+      const name = isZone ? r.name.charAt(0) + r.name.slice(1).toLowerCase().replace(/zone (\w+)/i, (_, z) => `zone ${z.toUpperCase()}`).replace("chc", "CHC") : r.name;
+      const g = { ...base, id: tid(r.id), parentId: isZone ? null : zone?.id ?? null, isGroup: true, name, assigneeId: "u07", team: "Mũi thi công khu bay", unit: "", contractQty: 0, unitPrice: 0, actualQty: 0, status: "chua_thuc_hien" };
+      constructionPlans.push(g);
+      if (isZone) { zone = g; sub = null; zoneIdx++; lastLeaf = null; } else sub = g;
+      continue;
+    }
+    const [assigneeId, team] = GB_TEAM(r.name, zoneIdx);
+    const unit = r.unit === "m3" ? "m³" : r.unit === "m2" ? "m²" : r.unit === "HM" ? "HM" : "gói";
+    const unitPrice = GB_PRICES.find(([re]) => re.test(r.name))?.[1] ?? 0;
+    const t = { ...base, id: tid(r.id), parentId: sub?.id ?? zone?.id ?? null, isGroup: false, name: r.name, assigneeId, team, unit, contractQty: r.qty ?? 1, unitPrice, actualQty: 0, status: "chua_thuc_hien" };
+    // phụ thuộc: nối tiếp trong cùng nhóm (FS nếu bắt đầu sau khi việc trước kết thúc, ngược lại SS)
+    const prev = lastLeaf;
+    lastLeaf = t;
+    if (prev) t.predecessors = [{ id: prev.id, type: t.plannedStart > prev.plannedEnd ? "FS" : "SS" }];
+    if (item.code === "E" && r.id === 99) t.predecessors = [{ id: tid(86), type: "FS" }];
+    // thực tế
+    const ov = GB_ACTUAL[r.id];
+    let pct = r.end < TODAY ? 1 : r.start <= TODAY ? Math.min(0.97, plannedPct(t) * 0.94) : 0;
+    let endShift = rint(-3, 0);
+    if (Array.isArray(ov)) { pct = ov[0]; endShift = ov[1]; } else if (typeof ov === "number") pct = ov;
+    t.actualQty = roundQty(t.contractQty * pct, unit);
+    if (pct > 0) { t.actualStart = minDate(addDays(r.start, rint(0, 2)), TODAY); t.status = "dang_thuc_hien"; }
+    if (pct >= 1) { t.actualQty = t.contractQty; t.status = "hoan_thanh"; t.actualEnd = minDate(addDays(r.end, endShift), addDays(TODAY, -1)); if (t.actualEnd < t.actualStart) t.actualEnd = t.actualStart; }
+    constructionPlans.push(t);
+  }
+  constructionPlans.filter((g) => g.projectId === pid && g.isGroup).forEach((g) => {
+    const desc = constructionPlans.filter((x) => x.parentId === g.id || constructionPlans.find((y) => y.id === x.parentId)?.parentId === g.id).filter((x) => !x.isGroup);
+    if (desc.every((x) => x.status === "hoan_thanh")) g.status = "hoan_thanh"; else if (desc.some((x) => x.actualStart)) g.status = "dang_thuc_hien";
   });
 }
-addLhp();
+addGiaBinh();
 
 function genPlan(def) {
   const tpl = templates[def.template];
@@ -370,16 +401,21 @@ function genPlan(def) {
 projectDefs.forEach((def) => {
   genPlan(def);
   const memberPool = [def.commanderId, ...constructionPlans.filter((t) => t.projectId === def.id).map((t) => t.assigneeId)];
-  if (def.id === "p01") memberPool.push("u05", "u06", "u07", "u08", "u09", "u10", "u11", "u13", "u15");
+  if (def.id === "p01") memberPool.push("u05", "u06", "u07", "u08", "u09", "u10", "u11", "u13", "u15", "u30");
   const tasks = constructionPlans.filter((t) => t.projectId === def.id && !t.isGroup);
   const contractValue = def.id === "p01" || tasks.length ? tasks.reduce((s, t) => s + t.contractQty * t.unitPrice, 0) : def.value;
   projects.push({
     id: def.id, code: def.code, name: def.name, shortName: def.shortName, category: def.category, location: def.location,
     investor: def.investor, contractor: def.contractor, unitId: def.unitId, commanderId: def.commanderId,
     packageName: def.packageName, contractNo: def.contractNo, contractDate: def.contractDate,
-    startDate: def.startDate, endDate: def.endDate, contractValue, budget: def.budget, costRatio: def.costRatio,
+    startDate: def.startDate, endDate: def.endDate, contractValue, budget: def.budget ?? Math.round((contractValue * 0.9) / 1e6) * 1e6, costRatio: def.costRatio,
     status: def.status, settlementStatus: def.settlement || "chua_quyet_toan",
-    memberIds: [...new Set(memberPool)], description: descriptions[def.category], approvalStatus: def.approval || "da_duyet",
+    memberIds: [...new Set(memberPool)], description: def.id === "p01" ? "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp." : descriptions[def.category], approvalStatus: def.approval || "da_duyet",
+    appendices: def.id === "p01" ? [
+      { id: "pl-gb-1", code: "PL01/1504/2026", date: "2026-06-05", title: "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B", valueChange: 0, note: "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026" },
+      { id: "pl-gb-2", code: "PL02/1504/2026", date: "2026-08-20", title: "Bổ sung khối lượng BTXM M350 sân đỗ zone A2", valueChange: 3850000000, note: "Theo thiết kế điều chỉnh mở rộng vệt lăn" },
+      { id: "pl-gb-3", code: "PL03/1504/2026", date: "2026-10-28", title: "Điều chỉnh đơn giá nhân công theo Thông tư mới", valueChange: 1240000000, note: "Áp dụng từ đợt thanh toán 4" },
+    ] : rand() < 0.4 ? [{ id: `pl-${def.id}-1`, code: `PL01/${def.contractNo}`, date: addDays(def.contractDate, 120), title: "Điều chỉnh khối lượng phát sinh", valueChange: Math.round(def.value * 0.015 / 1e6) * 1e6, note: "" }] : [],
   });
 });
 
@@ -398,7 +434,8 @@ let logSeq = 0;
 constructionPlans.filter((t) => !t.isGroup && t.actualQty > 0).forEach((t) => {
   const end = t.actualEnd || addDays(TODAY, -1);
   const span = Math.max(1, diffDays(t.actualStart, end));
-  const n = INT_UNITS.has(t.unit) ? Math.min(t.actualQty, 2) : Math.min(8, Math.max(1, Math.ceil(span / 6)));
+  // dự án demo SB Gia Bình: nhật ký chi tiết; các dự án khác rút gọn để nhẹ dữ liệu
+  const n = INT_UNITS.has(t.unit) ? Math.min(t.actualQty, 2) : t.projectId === "p01" ? Math.min(10, Math.max(1, Math.ceil(span / 7))) : Math.min(2, Math.max(1, Math.ceil(span / 30)));
   const weights = Array.from({ length: n }, () => 0.6 + rand());
   const wsum = weights.reduce((a, b) => a + b, 0);
   let remain = t.actualQty;
@@ -423,12 +460,12 @@ constructionPlans.filter((t) => !t.isGroup && t.actualQty > 0).forEach((t) => {
     });
   }
 });
-// Nhật ký mẫu chi tiết cho đầu việc 1.1.2.2.4 (theo màn hình tham chiếu trang 17)
+// Nhật ký mẫu chi tiết cho công việc [10] BTXM M350 zone R2
 constructionLogs
-  .filter((l) => l.taskId === "t-p01-009")
+  .filter((l) => l.taskId === "t-p01-010")
   .forEach((l, i, arr) => {
     if (i === arr.length - 1) {
-      l.content = "Đã đổ xong bê tông giằng móng trục A–C, đang tưới nước bảo dưỡng. Đã lấy 3 tổ mẫu M300 gửi thí nghiệm.";
+      l.content = "Đã rải xong BTXM M350 tấm mặt đường làn 6–7 CHC zone R2, phủ nilon bảo dưỡng. Lấy 3 tổ mẫu uốn gửi thí nghiệm.";
       l.labor = [
         { role: "Thợ bê tông", grade: "3,5/7", people: 8, workdays: 8 },
         { role: "Phụ hồ", grade: "2/7", people: 6, workdays: 6 },
@@ -465,6 +502,12 @@ const materials = [
   ["VL023", "Matit chèn khe", "Vật liệu chèn khe", "kg", 52000, "Gốc polyurethane"],
   ["VL024", "Bulông neo M24", "Phụ kiện", "bộ", 145000, "Cấp bền 8.8"],
   ["VL025", "Màng nilon chống mất nước", "Phụ kiện", "m²", 2000, "Dày 0,15mm"],
+  ["VL026", "Bê tông xi măng M150/25 (móng)", "Bê tông", "m³", 1250000, "CĐT cấp – trạm trộn công trường, đá 1x2"],
+  ["VL027", "Bê tông nhựa chặt C19", "Bê tông nhựa", "tấn", 1550000, "TCVN 8819:2011, Dmax 19"],
+  ["VL028", "Bê tông nhựa chặt C16", "Bê tông nhựa", "tấn", 1620000, "TCVN 8819:2011, Dmax 16"],
+  ["VL029", "Nhũ tương nhựa đường tưới dính bám", "Nhựa đường", "kg", 14500, "CSS-1h, 0,5 kg/m²"],
+  ["VL030", "Thép thanh truyền lực Ø32", "Thép", "tấn", 16500000, "CĐT cấp – thép tròn trơn CB240-T, L=45cm"],
+  ["VL031", "Dầu diesel 0,05S", "Nhiên liệu", "lít", 21500, "Cấp cho xe máy thi công"],
 ].map(([code, name, group, unit, unitPrice, spec], i) => ({ id: `m${pad(i + 1, 2)}`, code, name, group, unit, unitPrice, spec }));
 const mat = (code) => materials.find((m) => m.code === code);
 
@@ -477,6 +520,8 @@ const suppliers = [
   ["NCC006", "Công ty CP Nhựa đường Hải Nam", "0200987654", "Cảng Đình Vũ, Hải Phòng", "Vũ Hải Nam", ["Nhựa đường", "Sơn", "Vật liệu chèn khe"], 4.2],
   ["NCC007", "Công ty CP Cơ điện Thành Long", "0105678901", "Số 8 Lê Văn Lương, Hà Nội", "Hoàng Thành Long", ["Điện", "Ống, phụ kiện"], 4.0],
   ["NCC008", "Công ty TNHH Cọc bê tông Sông Đà", "0106789012", "Ba Vì, Hà Nội", "Nguyễn Sông", ["Cọc"], 4.5],
+  ["NCC009", "Công ty CP Bê tông nhựa Kinh Bắc", "2300456789", "KCN Quế Võ, Bắc Ninh", "Trần Văn Bắc", ["Bê tông nhựa"], 4.4],
+  ["NCC010", "Công ty CP Xăng dầu Bắc Ninh", "2300112233", "TP Bắc Ninh, Bắc Ninh", "Nguyễn Thị Dầu", ["Nhiên liệu"], 4.7],
 ].map(([code, name, taxCode, address, contact, materialGroups, rating], i) => ({
   id: `s${pad(i + 1, 2)}`, code, name, taxCode, address, contact, phone: `024${pad(3800000 + i * 12345, 7)}`, materialGroups, rating, debt: 0,
 }));
@@ -487,7 +532,7 @@ const inventory = [];
 const stockTransactions = [];
 let txSeq = 0;
 const projectMaterials = {
-  p01: [["VL001", 1800], ["VL002", 620], ["VL003", 480], ["VL005", 3200], ["VL007", 4800], ["VL010", 21000], ["VL012", 1500], ["VL013", 1200000], ["VL014", 9000], ["VL015", 18000], ["VL016", 2400], ["VL017", 96500]],
+  p01: null, // tính từ khối lượng tiến độ SB Gia Bình (bên dưới)
   airport: [["VL001", 2400], ["VL004", 380], ["VL005", 2600], ["VL007", 4200], ["VL011", 52000], ["VL018", 64000], ["VL019", 120], ["VL020", 18000], ["VL021", 6200], ["VL023", 14000], ["VL025", 160000]],
   building: [["VL001", 900], ["VL002", 260], ["VL003", 210], ["VL005", 1600], ["VL007", 2400], ["VL010", 9000], ["VL013", 600000], ["VL014", 4200], ["VL015", 8000], ["VL017", 24000]],
 };
@@ -497,6 +542,17 @@ function projectProgress(pid) {
   return total ? ts.reduce((s, t) => s + t.actualQty * t.unitPrice, 0) / total : 0;
 }
 const tx = (o) => stockTransactions.push({ id: `tx-${pad(++txSeq, 4)}`, code: `${o.type === "nhap" ? "PNK" : "PXK"}-${pad(txSeq, 4)}`, requestId: null, taskId: null, supplierId: null, note: "", ...o });
+{
+  const gb = constructionPlans.filter((t) => t.projectId === "p01" && !t.isGroup);
+  const sum = (re) => gb.filter((t) => re.test(t.name)).reduce((s, t) => s + t.contractQty, 0);
+  const r0 = (x) => Math.round(x / 10) * 10;
+  const m350 = sum(/M350/);
+  projectMaterials.p01 = [
+    ["VL018", r0(sum(/CPĐD/) * 1.32)], ["VL026", r0(sum(/M150/) * 1.02)], ["VL011", r0(m350 * 1.02)],
+    ["VL027", r0(sum(/BTN C19/) * 0.08 * 2.35)], ["VL028", r0(sum(/BTN C16/) * 0.07 * 2.35)], ["VL029", r0((sum(/BTN C19/) + sum(/BTN C16/)) * 0.5 * 1.05)],
+    ["VL030", Math.round(m350 * 0.012)], ["VL023", r0(m350 * 0.9)], ["VL025", r0(m350 * 2.6)], ["VL031", 520000],
+  ];
+}
 projectDefs.forEach((def) => {
   if (def.status === "chuan_bi") return;
   const list = def.id === "p01" ? projectMaterials.p01 : def.template?.startsWith("airport") ? projectMaterials.airport : projectMaterials.building;
@@ -508,12 +564,12 @@ projectDefs.forEach((def) => {
     const normQty = roundQty(baseNorm * scale, m.unit === "viên" ? "viên" : "m³");
     let consumeFactor = 0.85 + rand() * 0.3;
     // tạo một vài tình huống cảnh báo
-    const special = (def.id === "p01" && code === "VL015") || (def.id === "p02" && code === "VL023") || (def.id === "p07" && code === "VL013") || (def.id === "p09" && code === "VL010");
+    const special = (def.id === "p01" && code === "VL029") || (def.id === "p02" && code === "VL023") || (def.id === "p07" && code === "VL013") || (def.id === "p09" && code === "VL010");
     if (special) consumeFactor = 0.93 / Math.max(prog, 0.05);
     const issued = roundQty(Math.min(normQty * 1.02, normQty * prog * consumeFactor), m.unit);
     let onHand = roundQty(normQty * (0.03 + rand() * 0.06), m.unit);
     const minStock = roundQty(normQty * 0.04, m.unit);
-    const shortage = (def.id === "p01" && (code === "VL002" || code === "VL010")) || (def.id === "p02" && code === "VL011") || (def.id === "p04" && code === "VL004") || (def.id === "p09" && code === "VL010");
+    const shortage = (def.id === "p01" && (code === "VL027" || code === "VL023")) || (def.id === "p02" && code === "VL011") || (def.id === "p04" && code === "VL004") || (def.id === "p09" && code === "VL010");
     if (shortage) onHand = roundQty(minStock * 0.35, m.unit);
     if (def.status === "hoan_thanh") onHand = 0;
     const received = roundQty(issued + onHand, m.unit);
@@ -556,18 +612,18 @@ const MR = (o) => {
   });
 };
 const H = (at, byId, action, note) => ({ at: `${at}T08:${pad(rint(10, 59), 2)}:00`, byId, action, note });
-MR({ title: "Thép Ø16 cột tầng trệt", projectId: "p01", itemId: "i-p01-3", taskId: "t-p01-012", requesterId: "u10", createdAt: "2026-11-12", neededDate: "2026-11-18", status: "cho_duyet", starred: true, lines: [["VL002", 12.5]], note: "Phục vụ thi công cột trục A–D tầng 1", history: [H("2026-11-12", "u10", "Tạo đề xuất"), H("2026-11-12", "u10", "Gửi phê duyệt")] });
-MR({ title: "Bê tông thương phẩm M300 cột tầng trệt", projectId: "p01", itemId: "i-p01-3", taskId: "t-p01-012", requesterId: "u10", createdAt: "2026-11-11", neededDate: "2026-11-17", status: "cho_duyet", lines: [["VL010", 38]], history: [H("2026-11-11", "u10", "Tạo đề xuất"), H("2026-11-11", "u10", "Gửi phê duyệt")] });
-MR({ title: "Cát vàng, đá 1x2 lấp hố móng", projectId: "p01", itemId: "i-p01-2", taskId: "t-p01-010", requesterId: "u11", createdAt: "2026-11-02", neededDate: "2026-11-08", status: "cho_duyet", starred: true, lines: [["VL005", 45], ["VL007", 60]], history: [H("2026-11-02", "u11", "Tạo đề xuất"), H("2026-11-02", "u11", "Gửi phê duyệt")] });
-MR({ title: "Ống PVC thoát nước ngầm", projectId: "p01", itemId: "i-p01-4", taskId: "t-p01-016", requesterId: "u10", createdAt: "2026-10-28", neededDate: "2026-11-05", status: "cho_duyet", lines: [["VL016", 120]], history: [H("2026-10-28", "u10", "Tạo đề xuất"), H("2026-10-28", "u10", "Gửi phê duyệt")] });
-MR({ title: "Điều chuyển cốp pha sang tầng 2", type: "dieu_chuyen", projectId: "p01", itemId: "i-p01-3", taskId: "t-p01-013", requesterId: "u13", createdAt: "2026-11-08", neededDate: "2026-12-10", status: "tra_lai", lines: [["VL014", 300]], history: [H("2026-11-08", "u13", "Tạo đề xuất"), H("2026-11-08", "u13", "Gửi phê duyệt"), H("2026-11-09", "u04", "Trả lại", "Bổ sung kế hoạch luân chuyển ván khuôn và biên bản kiểm tra chất lượng cốp pha")] });
-MR({ title: "Gạch không nung xây tường bao", projectId: "p01", itemId: "i-p01-4", taskId: "t-p01-015", requesterId: "u10", createdAt: "2026-11-13", neededDate: "2027-02-20", status: "nhap", lines: [["VL013", 45000]], history: [H("2026-11-13", "u10", "Tạo đề xuất (lưu nháp)")] });
-MR({ title: "Ván khuôn phủ phim sàn tầng trệt", projectId: "p01", itemId: "i-p01-3", taskId: "t-p01-012", requesterId: "u10", createdAt: "2026-11-04", neededDate: "2026-11-15", status: "da_duyet", lines: [["VL014", 850]], history: [H("2026-11-04", "u10", "Tạo đề xuất"), H("2026-11-04", "u10", "Gửi phê duyệt"), H("2026-11-05", "u04", "Phê duyệt", "Đồng ý, ưu tiên NCC có sẵn hàng")] });
-MR({ title: "Tạm ứng mua thép móng đợt 2", type: "tam_ung", projectId: "p01", itemId: "i-p01-2", taskId: "t-p01-008", requesterId: "u11", createdAt: "2026-10-20", neededDate: "2026-11-16", status: "dat_hang", starred: true, supplierId: "s02", orderNo: "ĐH-VH-2026-0412", orderDate: "2026-10-24", expectedDelivery: "2026-11-16", lines: [["VL002", 20], ["VL003", 8]], history: [H("2026-10-20", "u11", "Tạo đề xuất"), H("2026-10-20", "u11", "Gửi phê duyệt"), H("2026-10-21", "u04", "Phê duyệt"), H("2026-10-23", "u11", "Tổng hợp nhu cầu, kiểm tra tồn kho", "Tồn kho không đủ đáp ứng"), H("2026-10-24", "u11", "Chọn nhà cung cấp & đặt hàng", "Công ty CP Thép Việt Hưng – ĐH-VH-2026-0412")] });
-MR({ title: "Dây thép buộc, con kê bê tông", projectId: "p01", itemId: "i-p01-3", taskId: "t-p01-012", requesterId: "u10", createdAt: "2026-10-25", neededDate: "2026-11-03", status: "da_nhap_kho", supplierId: "s02", orderNo: "ĐH-VH-2026-0398", orderDate: "2026-10-27", expectedDelivery: "2026-11-02", lines: [["VL015", 600]], history: [H("2026-10-25", "u10", "Tạo đề xuất"), H("2026-10-25", "u10", "Gửi phê duyệt"), H("2026-10-26", "u04", "Phê duyệt"), H("2026-10-27", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-11-02", "u10", "Nhập kho", "PNK theo đề xuất")] });
-MR({ title: "Xi măng PCB40 xây hộc móng", projectId: "p01", itemId: "i-p01-2", taskId: "t-p01-010", requesterId: "u10", createdAt: "2026-10-12", neededDate: "2026-10-20", status: "hoan_thanh", supplierId: "s03", orderNo: "ĐH-MP-2026-1120", orderDate: "2026-10-14", expectedDelivery: "2026-10-19", lines: [["VL001", 35]], history: [H("2026-10-12", "u10", "Tạo đề xuất"), H("2026-10-12", "u10", "Gửi phê duyệt"), H("2026-10-13", "u04", "Phê duyệt"), H("2026-10-14", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-10-19", "u10", "Nhập kho"), H("2026-10-22", "u10", "Xuất sử dụng", "Xuất cho tổ nề số 1")] });
-MR({ title: "Thép Ø12 đài móng, giằng móng", projectId: "p01", itemId: "i-p01-2", taskId: "t-p01-008", requesterId: "u11", createdAt: "2026-09-02", neededDate: "2026-09-08", status: "hoan_thanh", supplierId: "s02", orderNo: "ĐH-VH-2026-0301", orderDate: "2026-09-03", expectedDelivery: "2026-09-08", lines: [["VL003", 18]], history: [H("2026-09-02", "u11", "Tạo đề xuất"), H("2026-09-02", "u11", "Gửi phê duyệt"), H("2026-09-02", "u04", "Phê duyệt"), H("2026-09-03", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-09-08", "u10", "Nhập kho"), H("2026-09-12", "u10", "Xuất sử dụng")] });
-MR({ title: "Bê tông M250 bổ sung giằng móng", projectId: "p01", itemId: "i-p01-2", taskId: "t-p01-009", requesterId: "u10", createdAt: "2026-10-30", neededDate: "2026-11-04", status: "tu_choi", lines: [["VL012", 120]], history: [H("2026-10-30", "u10", "Tạo đề xuất"), H("2026-10-30", "u10", "Gửi phê duyệt"), H("2026-10-31", "u04", "Từ chối", "Khối lượng đề xuất vượt định mức còn lại của công việc, đề nghị rà soát lại")] });
+MR({ title: "BTN C19 rải thảm lề CHC zone R2", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-014", requesterId: "u10", createdAt: "2026-11-12", neededDate: "2026-11-27", status: "cho_duyet", starred: true, lines: [["VL027", 1800]], note: "Đợt 1 – thảm lề vật liệu CHC zone R2 (18.684 m²)", history: [H("2026-11-12", "u10", "Tạo đề xuất"), H("2026-11-12", "u10", "Gửi phê duyệt")] });
+MR({ title: "Nhũ tương tưới dính bám lề CHC zone R2", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-014", requesterId: "u10", createdAt: "2026-11-11", neededDate: "2026-11-26", status: "cho_duyet", lines: [["VL029", 9500]], history: [H("2026-11-11", "u10", "Tạo đề xuất"), H("2026-11-11", "u10", "Gửi phê duyệt")] });
+MR({ title: "Matit chèn khe mặt đường CHC zone R4B", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-040", requesterId: "u11", createdAt: "2026-11-02", neededDate: "2026-11-08", status: "cho_duyet", starred: true, lines: [["VL023", 1500]], history: [H("2026-11-02", "u11", "Tạo đề xuất"), H("2026-11-02", "u11", "Gửi phê duyệt")] });
+MR({ title: "Màng nilon bảo dưỡng BTXM zone R3", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-020", requesterId: "u10", createdAt: "2026-10-28", neededDate: "2026-11-05", status: "cho_duyet", lines: [["VL025", 20000]], history: [H("2026-10-28", "u10", "Tạo đề xuất"), H("2026-10-28", "u10", "Gửi phê duyệt")] });
+MR({ title: "Điều chuyển thép thanh truyền lực sang đường lăn T2", type: "dieu_chuyen", projectId: "p01", itemId: "i-p01-C", taskId: "t-p01-051", requesterId: "u13", createdAt: "2026-11-08", neededDate: "2026-11-24", status: "tra_lai", lines: [["VL030", 12]], history: [H("2026-11-08", "u13", "Tạo đề xuất"), H("2026-11-08", "u13", "Gửi phê duyệt"), H("2026-11-09", "u04", "Trả lại", "Bổ sung biên bản bàn giao thép CĐT cấp và kế hoạch đổ BTXM M350 zone T2")] });
+MR({ title: "BTN C16 thảm lề CHC zone R3", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-025", requesterId: "u10", createdAt: "2026-11-13", neededDate: "2026-11-28", status: "nhap", lines: [["VL028", 1800]], history: [H("2026-11-13", "u10", "Tạo đề xuất (lưu nháp)")] });
+MR({ title: "Dầu diesel xe máy thi công tháng 11", projectId: "p01", itemId: "i-p01-A", taskId: null, requesterId: "u13", createdAt: "2026-11-04", neededDate: "2026-11-15", status: "da_duyet", lines: [["VL031", 60000]], history: [H("2026-11-04", "u13", "Tạo đề xuất"), H("2026-11-04", "u13", "Gửi phê duyệt"), H("2026-11-05", "u04", "Phê duyệt", "Đồng ý, cấp theo định mức ca máy")] });
+MR({ title: "Tạm ứng mua BTN C19 lề CHC zone R4A", type: "tam_ung", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-034", requesterId: "u11", createdAt: "2026-10-30", neededDate: "2026-11-10", status: "dat_hang", starred: true, supplierId: "s09", orderNo: "ĐH-KB-2026-0412", orderDate: "2026-11-02", expectedDelivery: "2026-11-16", lines: [["VL027", 2400]], history: [H("2026-10-30", "u11", "Tạo đề xuất"), H("2026-10-30", "u11", "Gửi phê duyệt"), H("2026-10-31", "u04", "Phê duyệt"), H("2026-11-01", "u11", "Tổng hợp nhu cầu, kiểm tra tồn kho", "Tồn kho BTN C19 không đủ – cần mua"), H("2026-11-02", "u11", "Chọn nhà cung cấp & đặt hàng", "Trạm trộn BTN Kinh Bắc, giao theo ca rải")] });
+MR({ title: "Matit chèn khe mặt đường CHC zone R2", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-010", requesterId: "u10", createdAt: "2026-10-25", neededDate: "2026-11-03", status: "da_nhap_kho", supplierId: "s06", orderNo: "ĐH-HN-2026-0398", orderDate: "2026-10-27", expectedDelivery: "2026-11-02", lines: [["VL023", 1800]], history: [H("2026-10-25", "u10", "Tạo đề xuất"), H("2026-10-25", "u10", "Gửi phê duyệt"), H("2026-10-26", "u04", "Phê duyệt"), H("2026-10-27", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-11-02", "u10", "Nhập kho", "PNK theo đề xuất")] });
+MR({ title: "Dầu diesel xe máy thi công tháng 10", projectId: "p01", itemId: "i-p01-A", taskId: null, requesterId: "u13", createdAt: "2026-10-01", neededDate: "2026-10-05", status: "hoan_thanh", supplierId: "s10", orderNo: "ĐH-XD-2026-1120", orderDate: "2026-10-02", expectedDelivery: "2026-10-04", lines: [["VL031", 55000]], history: [H("2026-10-01", "u13", "Tạo đề xuất"), H("2026-10-01", "u13", "Gửi phê duyệt"), H("2026-10-01", "u04", "Phê duyệt"), H("2026-10-02", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-10-04", "u10", "Nhập kho"), H("2026-10-06", "u10", "Xuất sử dụng")] });
+MR({ title: "Màng nilon bảo dưỡng BTXM zone R2", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-010", requesterId: "u11", createdAt: "2026-09-02", neededDate: "2026-09-08", status: "hoan_thanh", supplierId: "s05", orderNo: "ĐH-TL-2026-0301", orderDate: "2026-09-03", expectedDelivery: "2026-09-08", lines: [["VL025", 30000]], history: [H("2026-09-02", "u11", "Tạo đề xuất"), H("2026-09-02", "u11", "Gửi phê duyệt"), H("2026-09-02", "u04", "Phê duyệt"), H("2026-09-03", "u11", "Chọn nhà cung cấp & đặt hàng"), H("2026-09-08", "u10", "Nhập kho"), H("2026-09-12", "u10", "Xuất sử dụng")] });
+MR({ title: "Bê tông M350 bổ sung zone R4B", projectId: "p01", itemId: "i-p01-B", taskId: "t-p01-040", requesterId: "u10", createdAt: "2026-10-30", neededDate: "2026-11-04", status: "tu_choi", lines: [["VL011", 900]], history: [H("2026-10-30", "u10", "Tạo đề xuất"), H("2026-10-30", "u10", "Gửi phê duyệt"), H("2026-10-31", "u04", "Từ chối", "BTXM do Chủ đầu tư cấp – đề nghị lập phiếu yêu cầu cấp vật liệu gửi CĐT")] });
 MR({ title: "Bê tông M350 mặt đường sân đỗ đợt 5", projectId: "p02", itemId: "i-p02-4", taskId: "t-p02-008", requesterId: "u20", approverId: "u20", createdAt: "2026-11-10", neededDate: "2026-11-20", status: "cho_duyet", starred: true, lines: [["VL011", 1800]], history: [H("2026-11-10", "u20", "Tạo đề xuất"), H("2026-11-10", "u20", "Gửi phê duyệt")] });
 MR({ title: "Matit chèn khe co giãn", projectId: "p02", itemId: "i-p02-4", taskId: "t-p02-009", requesterId: "u20", approverId: "u20", createdAt: "2026-10-26", neededDate: "2026-11-12", status: "dat_hang", supplierId: "s06", orderNo: "ĐH-HN-2026-0087", orderDate: "2026-10-29", expectedDelivery: "2026-11-12", lines: [["VL023", 2500]], history: [H("2026-10-26", "u20", "Tạo đề xuất"), H("2026-10-26", "u20", "Gửi phê duyệt"), H("2026-10-27", "u20", "Phê duyệt"), H("2026-10-29", "u20", "Chọn nhà cung cấp & đặt hàng")] });
 MR({ title: "Cấp phối đá dăm loại I móng đường lăn", projectId: "p03", itemId: "i-p03-3", taskId: "t-p03-006", requesterId: "u21", approverId: "u21", createdAt: "2026-11-06", neededDate: "2026-11-25", status: "da_duyet", lines: [["VL018", 4200]], history: [H("2026-11-06", "u21", "Tạo đề xuất"), H("2026-11-06", "u21", "Gửi phê duyệt"), H("2026-11-07", "u21", "Phê duyệt")] });
@@ -614,7 +670,7 @@ const eqGroups = [
 const activeProjects = projectDefs.filter((p) => p.status === "dang_thi_cong").map((p) => p.id);
 const projectsForGroup = (g) => {
   const airport = activeProjects.filter((id) => projectDefs.find((p) => p.id === id).template === "airport");
-  const building = activeProjects.filter((id) => projectDefs.find((p) => p.id === id).template === "building" || id === "p01");
+  const building = activeProjects.filter((id) => projectDefs.find((p) => p.id === id).template === "building");
   if (["Máy rải bê tông", "Máy cắt khe", "Máy lu rung", "Máy tưới nước"].includes(g)) return airport.concat(["p01"]);
   if (["Cần trục tháp", "Trạm trộn BTXM"].includes(g)) return building;
   return activeProjects;
@@ -670,6 +726,22 @@ equipment.forEach((e) => {
 const seen = new Set();
 equipment.forEach((e) => { while (seen.has(e.code)) e.code = e.code.replace(/\d{4}$/, pad(rint(10, 999), 4)); seen.add(e.code); });
 
+// thông tin hồ sơ xe máy theo danh mục tính năng (ô tô / xe biển đỏ / máy thiết bị)
+equipment.forEach((e, i) => {
+  const vehicle = ["Ô tô tự đổ", "Máy tưới nước"].includes(e.group);
+  e.kind = vehicle ? (i % 4 === 0 ? "xe_bien_do" : "o_to") : "may_thiet_bi";
+  if (e.kind === "xe_bien_do") { e.plate = `${pick(["QA", "KT", "QB"])}-${rint(10, 99)}-${rint(10, 99)}`; e.vetcCode = `VETC${rint(100000, 999999)}`; }
+  e.assetCode = `TS-${e.code.replace(".", "-")}`;
+  e.chassisNo = `${e.brand.split(" ")[0].slice(0, 3).toUpperCase()}${rint(100000, 999999)}`;
+  e.engineNo = `E${rint(1000000, 9999999)}`;
+  e.qualityGrade = pick(["Cấp 1", "Cấp 2", "Cấp 2", "Cấp 3"]);
+  e.decisionNo = e.ownership === "thue_ngoai" ? `HĐ thuê ${rint(10, 99)}/2026/HĐTB` : `QĐ ${rint(100, 999)}/QĐ-TBCN ngày ${pad(rint(1, 28), 2)}/${pad(rint(1, 12), 2)}/${rint(2019, 2025)}`;
+  e.inspectionDue = vehicle || ["Cần trục tháp", "Máy lu rung"].includes(e.group) ? addDays(TODAY, rint(-20, 300)) : null;
+  e.insuranceDue = vehicle ? addDays(TODAY, rint(-10, 330)) : null;
+  e.ownerProof = e.ownership === "so_huu" || rand() < 0.75;
+});
+Object.assign(equipment[28], { inspectionDue: "2026-11-08", insuranceDue: "2026-12-01" });
+
 // ---------- equipment shifts (21 ngày gần nhất) ----------
 const equipmentShifts = [];
 let shSeq = 0;
@@ -708,7 +780,7 @@ equipment.filter((e) => e.currentProjectId && e !== equipment[16]).forEach((e) =
   if (end < addDays(TODAY, 30)) end = addDays(TODAY, rint(30, 120));
   equipmentAssignments.push({
     id: `as-${pad(++asSeq)}`, code: `QĐ-ĐĐ-2026-${pad(asSeq + 40)}`, equipmentId: e.id, fromProjectId: null, toProjectId: e.currentProjectId,
-    operatorId: e.operatorId, startDate: start, endDate: end, status: "dang_dieu_dong",
+    operatorId: e.operatorId, startDate: start, endDate: end, status: "dang_dieu_dong", kind: "phan_bo",
     requesterId: projects.find((p) => p.id === e.currentProjectId).commanderId, reason: "Phục vụ thi công theo kế hoạch tháng", createdAt: addDays(start, -3),
   });
 });
@@ -765,10 +837,10 @@ const lt = (id, accRatio = 1) => {
   const t = constructionPlans.find((x) => x.id === id);
   return { taskId: id, executedQty: t.actualQty, acceptedQty: roundQty(t.actualQty * accRatio, t.unit) };
 };
-const ac1 = addAcceptance("p01", "i-p01-1", "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng", "Đợt 1", [lt("t-p01-001"), lt("t-p01-002"), lt("t-p01-003")], "da_nghiem_thu", "2026-07-20", "2026-07-28", "u05", docSet.slice(0, 4));
-const ac2 = addAcceptance("p01", "i-p01-2", "Nghiệm thu thi công ép cọc", "Đợt 2", [lt("t-p01-004")], "da_nghiem_thu", "2026-08-24", "2026-09-04", "u07", docSet);
-addAcceptance("p01", "i-p01-2", "Nghiệm thu đào đất, bê tông lót và cốt thép đài móng", "Đợt 3", [lt("t-p01-006"), lt("t-p01-007"), lt("t-p01-008", 0.97)], "cho_cdt", "2026-10-12", null, "u07", docSet.slice(0, 3));
-addAcceptance("p01", "i-p01-2", "Nghiệm thu bê tông đài móng, giằng móng (phần đã thi công)", "Đợt 4", [lt("t-p01-009", 0.9)], "nhap", "2026-11-13", null, "u08", docSet.slice(0, 2));
+const ac1 = addAcceptance("p01", "i-p01-A", "Nghiệm thu khu phụ trợ sản xuất và tập kết thiết bị", "Đợt 1", [lt("t-p01-003"), lt("t-p01-004")], "da_nghiem_thu", "2026-07-06", "2026-07-15", "u05", docSet.slice(0, 4));
+const ac2 = addAcceptance("p01", "i-p01-B", "Nghiệm thu móng CPĐD và BTXM M150 lòng đường CHC zone R2", "Đợt 2", [lt("t-p01-008"), lt("t-p01-009")], "da_nghiem_thu", "2026-09-18", "2026-09-28", "u07", docSet);
+addAcceptance("p01", "i-p01-B", "Nghiệm thu móng CPĐD, BTXM M150 lòng đường CHC zone R3, R4A", "Đợt 3", [lt("t-p01-018"), lt("t-p01-019"), lt("t-p01-028"), lt("t-p01-029", 0.97)], "cho_cdt", "2026-10-12", null, "u07", docSet.slice(0, 3));
+addAcceptance("p01", "i-p01-B", "Nghiệm thu BTXM M350 mặt đường CHC zone R4A", "Đợt 4", [lt("t-p01-030", 0.9)], "nhap", "2026-11-13", null, "u08", docSet.slice(0, 2));
 // các dự án khác
 projectDefs.filter((p) => p.template).forEach((def) => {
   const items = constructionItems.filter((i) => i.projectId === def.id);
@@ -832,9 +904,9 @@ suppliers.forEach((s) => {
 
 // ---------- issues ----------
 const issues = [
-  ["p01", "Chậm nghiệm thu phần móng do thiếu kết quả thí nghiệm nén mẫu bê tông", "ky_thuat", "cao", "dang_xu_ly", "u04", "u07", "2026-11-03", "2026-11-18"],
-  ["p01", "Thiếu thép Ø16 cho cột tầng 1, tồn kho dưới mức tối thiểu", "vat_tu", "cao", "moi", "u10", "u11", "2026-11-12", "2026-11-16"],
-  ["p01", "Mưa lớn kéo dài làm ngập hố móng trục E–H", "thoi_tiet", "trung_binh", "da_xu_ly", "u05", "u06", "2026-10-15", "2026-10-18"],
+  ["p01", "BTXM M150 lòng đường CHC zone R4B chậm do CĐT cấp bê tông không đủ ca", "vat_tu", "cao", "dang_xu_ly", "u04", "u09", "2026-10-26", "2026-11-18"],
+  ["p01", "BTN C19 tồn kho dưới mức tối thiểu, chưa đủ cho thảm lề zone R2", "vat_tu", "cao", "moi", "u10", "u11", "2026-11-12", "2026-11-20"],
+  ["p01", "Mưa lớn kéo dài làm chậm thi công lề vật liệu CHC zone R4A", "thoi_tiet", "trung_binh", "dang_xu_ly", "u05", "u06", "2026-11-05", "2026-11-16"],
   ["p02", "Tiến độ bê tông mặt đường sân đỗ chậm 18 điểm % so với kế hoạch", "ky_thuat", "cao", "dang_xu_ly", "u01", "u20", "2026-11-01", "2026-11-30"],
   ["p02", "Máy rải bê tông hỏng bơm thủy lực, cần thuê máy thay thế", "thiet_bi", "cao", "dang_xu_ly", "u20", "u12", "2026-11-06", "2026-11-15"],
   ["p02", "Bê tông M350 tồn kho thấp, nhà cung cấp giao chậm", "vat_tu", "trung_binh", "moi", "u20", "u20", "2026-11-10", "2026-11-17"],
@@ -851,15 +923,171 @@ const issues = [
 
 // ---------- notifications ----------
 const notifications = [
-  ["approval", "warning", "Đề xuất vật tư chờ phê duyệt", "ĐXVT-2026-101 – Thép Ø16 cột tầng trệt (12,5 tấn) đang chờ bạn phê duyệt.", "p01", "/materials/requests/mr-001", "2026-11-12T09:15:00", false],
-  ["task", "danger", "Công việc quá hạn", "1.1.2.2.4 Đổ bê tông đài móng, giằng móng đã quá hạn kế hoạch (08/10/2026).", "p01", "/construction/plan/p01", "2026-11-12T07:30:00", false],
+  ["approval", "warning", "Đề xuất vật tư chờ phê duyệt", "ĐXVT-2026-101 – BTN C19 rải thảm lề CHC zone R2 (1.800 tấn) đang chờ bạn phê duyệt.", "p01", "/materials/requests/mr-001", "2026-11-12T09:15:00", false],
+  ["task", "danger", "Công việc quá hạn", "[39] Thi công BTXM M150/25 dày 30cm – lòng đường CHC zone R4B đã quá hạn kế hoạch (28/10/2026).", "p01", "/construction/plan/p01/task/t-p01-039", "2026-11-12T07:30:00", false],
   ["equipment", "warning", "Đề nghị điều động thiết bị", "CHT Vũ Đình Khôi đề nghị điều động máy xúc đào đến công trình Sân đỗ máy bay Đà Nẵng.", "p02", "/equipment/dispatch", "2026-11-12T14:05:00", false],
   ["material", "danger", "Cảnh báo tồn kho thấp", "Bê tông thương phẩm M350 tại kho Sân đỗ máy bay Đà Nẵng dưới mức tồn kho tối thiểu.", "p02", "/materials/inventory", "2026-11-11T16:40:00", false],
-  ["acceptance", "info", "Hồ sơ nghiệm thu chờ CĐT ký", "BBNT đợt 3 – đào đất, bê tông lót và cốt thép đài móng đã được TVGS xác nhận.", "p01", "/acceptance", "2026-11-10T10:20:00", true],
-  ["payment", "success", "Đã nhận thanh toán", "Chủ đầu tư đã thanh toán hồ sơ đợt 2 – thi công ép cọc.", "p01", "/payments", "2026-11-05T15:00:00", true],
-  ["task", "warning", "Nhật ký thi công chờ xác nhận", "Tổ bê tông số 2 đã gửi nhật ký ngày 13/11/2026, chờ CHT xác nhận.", "p01", "/construction/logs", "2026-11-13T17:30:00", false],
+  ["acceptance", "info", "Hồ sơ nghiệm thu chờ CĐT ký", "BBNT đợt 3 – móng CPĐD, BTXM M150 lòng đường CHC zone R3, R4A đã được TVGS xác nhận.", "p01", "/acceptance", "2026-11-10T10:20:00", true],
+  ["payment", "success", "Đã nhận thanh toán", "Chủ đầu tư đã thanh toán hồ sơ đợt 2 – lòng đường CHC zone R2.", "p01", "/payments", "2026-11-05T15:00:00", true],
+  ["task", "warning", "Nhật ký thi công chờ xác nhận", "Tổ BTXM mặt đường số 1 đã gửi nhật ký ngày 13/11/2026, chờ CHT xác nhận.", "p01", "/construction/logs", "2026-11-13T17:30:00", false],
   ["system", "info", "Cập nhật dữ liệu", "Dữ liệu tiến độ các công trường đã được đồng bộ lúc 08:30.", null, "/", "2026-11-14T08:30:00", true],
 ].map(([type, severity, title, message, projectId, link, createdAt, read], i) => ({ id: `nt-${pad(i + 1)}`, type, severity, title, message, projectId, link, createdAt, read }));
+
+// ---------- phương án tổ chức thi công ----------
+const V = (version, at, byId, note) => ({ version, at, byId, note });
+const C = (n, byId, at, content) => ({ id: `cm-${n}`, byId, at, content });
+const constructionMethods = [
+  { id: "pa-001", code: "PA-GB-001", projectId: "p01", itemId: null, title: "Phương án tổng thể tổ chức thi công khu bay", status: "da_duyet", version: 3, createdById: "u05", updatedAt: "2026-06-10",
+    summary: "Chia khu bay thành 4 mũi thi công (CHC R2–R4B, đường lăn T2–T4B, sân đỗ A2); bố trí 2 trạm trộn BTXM 120 m³/h, 3 máy rải ván khuôn trượt; thi công cuốn chiếu lòng đường → lề vật liệu.",
+    files: ["PA tong the khu bay v3.pdf", "So do mat bang to chuc thi cong.dwg", "Tien do tong the.mpp"],
+    versions: [V(1, "2026-04-20", "u05", "Lập phương án ban đầu"), V(2, "2026-05-08", "u05", "Điều chỉnh theo góp ý TVGS: bổ sung trạm trộn số 2"), V(3, "2026-06-10", "u04", "Cập nhật tiến độ bàn giao mặt bằng zone R4B")],
+    comments: [C(1, "u03", "2026-05-02", "Đề nghị bổ sung phương án cấp BTXM khi trạm trộn số 1 bảo dưỡng."), C(2, "u04", "2026-05-08", "Đã bổ sung trạm trộn dự phòng 90 m³/h."), C(3, "u01", "2026-06-12", "Thống nhất phương án v3.")] },
+  { id: "pa-002", code: "PA-GB-002", projectId: "p01", itemId: "i-p01-B", title: "Biện pháp thi công móng cấp phối đá dăm loại 1", status: "da_duyet", version: 2, createdById: "u06", updatedAt: "2026-06-15",
+    summary: "Rải CPĐD bằng máy rải, lu lèn 3 giai đoạn (lu tĩnh 8T – lu rung 25T – lu bánh lốp 16T), kiểm tra độ chặt K ≥ 0,98 mỗi 800 m².",
+    files: ["BPTC mong CPDD v2.pdf"], versions: [V(1, "2026-06-01", "u06", "Lập biện pháp"), V(2, "2026-06-15", "u06", "Bổ sung quy trình thí nghiệm độ chặt hiện trường")],
+    comments: [C(4, "u05", "2026-06-10", "Cần quy định chiều dày rải tối đa mỗi lớp 18cm."), C(5, "u06", "2026-06-15", "Đã cập nhật.")] },
+  { id: "pa-003", code: "PA-GB-003", projectId: "p01", itemId: "i-p01-B", title: "Biện pháp thi công BTXM M350 mặt đường bằng máy rải ván khuôn trượt", status: "cho_gop_y", version: 2, createdById: "u08", updatedAt: "2026-11-10",
+    summary: "Đổ BTXM M350/45 dày 40cm theo làn rộng 7,5m; cắt khe co sau 6–12 giờ; bảo dưỡng bằng nhũ tương và nilon 14 ngày; đặt thanh truyền lực Ø32 bằng DBI.",
+    files: ["BPTC BTXM M350 v2.pdf", "Ban ve bo tri khe.dwg"], versions: [V(1, "2026-08-05", "u08", "Lập biện pháp"), V(2, "2026-11-10", "u08", "Điều chỉnh thời điểm cắt khe theo nhiệt độ mùa đông")],
+    comments: [C(6, "u05", "2026-11-11", "Đề nghị bổ sung biện pháp che chắn khi mưa trong lúc đổ bê tông."), C(7, "u03", "2026-11-12", "Phòng KHKT đang rà soát định mức nhân công cắt khe.")] },
+  { id: "pa-004", code: "PA-GB-004", projectId: "p01", itemId: "i-p01-B", title: "Biện pháp thảm bê tông nhựa lề vật liệu", status: "du_thao", version: 1, createdById: "u30", updatedAt: "2026-11-13",
+    summary: "Tưới nhũ tương dính bám 0,5 kg/m², thảm BTN C19 dày 8cm và C16 dày 7cm bằng máy rải, lu bánh lốp + lu thép; nhiệt độ rải ≥ 120°C.",
+    files: ["BPTC tham BTN (du thao).docx"], versions: [V(1, "2026-11-13", "u30", "Lập dự thảo")], comments: [] },
+  { id: "pa-005", code: "PA-GB-005", projectId: "p01", itemId: null, title: "Kế hoạch an toàn, vệ sinh lao động và bảo vệ môi trường", status: "da_duyet", version: 1, createdById: "u05", updatedAt: "2026-05-05",
+    summary: "Tổ chức hệ thống quản lý ATVSLĐ, huấn luyện an toàn đầu vào, kiểm tra an toàn hằng ngày, phương án phòng chống cháy nổ khu trạm trộn.",
+    files: ["KH ATVSLD.pdf"], versions: [V(1, "2026-05-05", "u05", "Phê duyệt")], comments: [C(8, "u04", "2026-05-05", "Triển khai cho toàn bộ tổ đội.")] },
+  { id: "pa-006", code: "PA-DAD-001", projectId: "p02", itemId: null, title: "Phương án thi công sân đỗ trong điều kiện khai thác bay", status: "da_duyet", version: 2, createdById: "u20", updatedAt: "2025-10-02",
+    summary: "Phân khu thi công theo ca đêm, rào chắn an toàn khu bay, phối hợp cảng vụ.", files: ["PA thi cong san do.pdf"], versions: [V(1, "2025-09-10", "u20", "Lập phương án"), V(2, "2025-10-02", "u20", "Cập nhật theo góp ý Cảng vụ")], comments: [] },
+];
+
+// ---------- nhân sự thi công ----------
+const siteStaff = [];
+const famN = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đỗ", "Bùi", "Ngô", "Dương", "Đặng", "Phan"];
+const midN = ["Văn", "Văn", "Đức", "Minh", "Quang", "Thị", "Hữu", "Xuân"];
+const lastN = ["An", "Bình", "Cường", "Dũng", "Hải", "Hiếu", "Hùng", "Khánh", "Lâm", "Long", "Nam", "Phong", "Quân", "Sơn", "Thắng", "Tú", "Việt", "Vinh"];
+const towns = ["Bắc Ninh", "Bắc Giang", "Hải Dương", "Hưng Yên", "Thái Bình", "Nam Định", "Thanh Hóa", "Nghệ An", "Hà Nội", "Phú Thọ"];
+const addStaff = (projectId, o) => siteStaff.push({
+  id: `ns-${pad(siteStaff.length + 1)}`, code: `NS${pad(siteStaff.length + 1, 4)}`, projectId, phone: `09${rint(10000000, 99999999)}`, idNo: `0${rint(10, 99)}0${rint(10000000, 99999999)}`,
+  birthYear: rint(1972, 2002), hometown: pick(towns), joinDate: addDays("2026-04-28", rint(0, 90)), status: "dang_lam", certificates: "", safetyCard: true, healthCheck: addDays(TODAY, -rint(20, 300)), ...o,
+});
+[["u04", "chi_huy", "Chỉ huy trưởng công trường", "Ban chỉ huy công trường"], ["u05", "chi_huy", "Phó chỉ huy trưởng kỹ thuật", "Ban chỉ huy công trường"], ["u07", "chi_huy", "Mũi trưởng thi công khu bay", "Mũi thi công khu bay"],
+ ["u06", "can_bo_ky_thuat", "Tổ trưởng tổ móng CPĐD", "Tổ móng CPĐD số 1"], ["u09", "can_bo_ky_thuat", "Tổ trưởng tổ BTXM M150", "Tổ BTXM M150 số 1"], ["u08", "can_bo_ky_thuat", "Tổ trưởng tổ BTXM mặt đường", "Tổ BTXM mặt đường số 1"],
+ ["u30", "can_bo_ky_thuat", "Tổ trưởng tổ thảm BTN", "Tổ thảm BTN"], ["u10", "can_bo_ky_thuat", "Cán bộ vật tư", "Ban chỉ huy công trường"], ["u13", "can_bo_ky_thuat", "Cán bộ xe máy", "Ban chỉ huy công trường"]]
+  .forEach(([uid, type, position, team]) => addStaff("p01", { name: users.find((u) => u.id === uid).name, type, position, team, certificates: type === "chi_huy" ? "Chứng chỉ hành nghề giám sát hạng I" : "Kỹ sư cầu đường" }));
+const teamsGB = [["Tổ móng CPĐD số 1", 7], ["Tổ móng CPĐD số 2", 6], ["Tổ BTXM M150 số 1", 7], ["Tổ BTXM M150 số 2", 6], ["Tổ BTXM mặt đường số 1", 9], ["Tổ BTXM mặt đường số 2", 8], ["Tổ thảm BTN", 6], ["Tổ phụ trợ", 4]];
+teamsGB.forEach(([team, n]) => {
+  for (let i = 0; i < n; i++) {
+    const lao = i >= n - 2;
+    addStaff("p01", { name: `${pick(famN)} ${pick(midN)} ${pick(lastN)}`, type: lao ? "lao_dong_pho_thong" : "cong_nhan", position: lao ? "Lao động phổ thông" : pick(["Thợ bê tông bậc 3,5/7", "Thợ vận hành trạm trộn", "Thợ cắt khe", "Thợ lu", "Thợ bê tông bậc 4/7"]), team,
+      certificates: lao ? "" : "Thẻ an toàn nhóm 3", safetyCard: rand() > 0.06, status: rand() < 0.05 ? "da_nghi" : "dang_lam" });
+  }
+});
+siteStaff[20].healthCheck = addDays(TODAY, -400);
+
+// ---------- hồ sơ thi công ----------
+const docFolders = [];
+const documents = [];
+const F = (projectId, name, parentId = null) => { const id = `fd-${pad(docFolders.length + 1)}`; docFolders.push({ id, projectId, parentId, name, order: docFolders.length + 1 }); return id; };
+const D = (projectId, folderId, name, byId, at, versions = 1, sizeKb = rint(180, 9800)) => documents.push({
+  id: `doc-${pad(documents.length + 1, 4)}`, projectId, folderId, name, fileType: name.split(".").pop(), sizeKb, version: versions, uploadedById: byId, uploadedAt: at,
+  versions: Array.from({ length: versions }, (_, i) => V(i + 1, addDays(at, -(versions - 1 - i) * 12), byId, i === 0 ? "Tải lên" : "Cập nhật phiên bản")),
+});
+{
+  const pj = F("p01", "1. Hồ sơ pháp lý");
+  D("p01", pj, "Hop dong thi cong 1504-2026.pdf", "u04", "2026-04-16"); D("p01", pj, "Bien ban ban giao mat bang zone R2-R4B.pdf", "u05", "2026-06-18", 2);
+  const bv = F("p01", "2. Bản vẽ thiết kế thi công");
+  const bv1 = F("p01", "Đường cất hạ cánh", bv); const bv2 = F("p01", "Đường lăn", bv); const bv3 = F("p01", "Sân đỗ máy bay", bv);
+  D("p01", bv1, "BVTC CHC - mat bang tong the.dwg", "u05", "2026-05-20", 3); D("p01", bv1, "BVTC CHC - ket cau mat duong.pdf", "u05", "2026-05-20", 2); D("p01", bv1, "BVTC CHC - bo tri khe.dwg", "u08", "2026-08-02");
+  D("p01", bv2, "BVTC duong lan T2-T4B.pdf", "u05", "2026-08-25", 2); D("p01", bv3, "BVTC san do A2.pdf", "u05", "2026-08-10");
+  const bp = F("p01", "3. Biện pháp thi công");
+  D("p01", bp, "BPTC mong CPDD v2.pdf", "u06", "2026-06-15", 2); D("p01", bp, "BPTC BTXM M350 v2.pdf", "u08", "2026-11-10", 2);
+  const nk = F("p01", "4. Nhật ký thi công");
+  ["06", "07", "08", "09", "10"].forEach((m) => D("p01", nk, `Nhat ky thi cong thang ${m}-2026.pdf`, "u05", `2026-${m}-28`));
+  const tn = F("p01", "5. Kết quả thí nghiệm"); const tn1 = F("p01", "Thí nghiệm CPĐD", tn); const tn2 = F("p01", "Thí nghiệm BTXM", tn);
+  D("p01", tn1, "KQ do chat K98 zone R2.pdf", "u06", "2026-09-06"); D("p01", tn1, "KQ do chat K98 zone R3.pdf", "u06", "2026-09-10"); D("p01", tn2, "KQ nen mau BTXM M350 dot 1-6.xlsx", "u08", "2026-11-05", 4); D("p01", tn2, "KQ keo uon BTXM M350.pdf", "u08", "2026-11-12");
+  const nt = F("p01", "6. Biên bản nghiệm thu");
+  D("p01", nt, "BBNT dot 1 - khu phu tro.pdf", "u05", "2026-07-15"); D("p01", nt, "BBNT dot 2 - long duong CHC R2.pdf", "u07", "2026-09-28"); D("p01", nt, "BBNT dot 3 - long duong R3 R4A (cho CDT ky).pdf", "u07", "2026-10-15");
+  F("p01", "7. Hồ sơ hoàn công");
+  const at = F("p01", "8. Hồ sơ ATVSLĐ"); const at1 = F("p01", "Kế hoạch ATVSLĐ", at); const at2 = F("p01", "Huấn luyện an toàn", at); const at3 = F("p01", "Kiểm tra an toàn định kỳ", at);
+  D("p01", at1, "KH ATVSLD 2026.pdf", "u05", "2026-05-05"); D("p01", at2, "Danh sach huan luyen an toan dau vao.xlsx", "u05", "2026-05-12", 3); D("p01", at3, "BB kiem tra an toan thang 10.pdf", "u04", "2026-10-30"); D("p01", at3, "Anh hien truong kiem tra 10-2026.jpg", "u04", "2026-10-30");
+  const p2 = F("p02", "1. Hồ sơ pháp lý"); D("p02", p2, "Hop dong 1508-2025.pdf", "u20", "2025-08-16"); F("p02", "2. Bản vẽ thiết kế thi công");
+}
+
+// ---------- nhân viên CMKT ----------
+const operators = users.filter((u) => u.isOperator).map((u, i) => ({
+  id: u.id, code: u.code, name: u.name, phone: u.phone, rank: pick(["Thượng sĩ", "Trung sĩ", "QNCN 3/10", "Công nhân viên quốc phòng", "Hợp đồng lao động"]),
+  contractType: pick(["HĐLĐ không xác định thời hạn", "HĐLĐ 36 tháng", "HĐLĐ 12 tháng"]), licenseNo: `${rint(100000, 999999)}${rint(100000, 999999)}`,
+  licenseClass: pick(["C", "FC", "E", "Chứng chỉ máy thi công"]), licenseType: i % 3 === 0 ? "Quân sự" : "Dân sự", licenseExpiry: addDays(TODAY, rint(-15, 1500)),
+  skill: pick(["Vận hành máy rải bê tông", "Vận hành máy xúc", "Vận hành máy lu", "Lái xe tải nặng", "Vận hành trạm trộn", "Vận hành máy ủi"]),
+  workerGrade: `${rint(3, 6)}/7`, salaryCoef: Math.round((2.6 + rand() * 2.4) * 100) / 100, idNo: `0${rint(10, 99)}0${rint(10000000, 99999999)}`, hometown: pick(towns),
+  healthCheck: addDays(TODAY, -rint(30, 420)), safetyCard: rand() > 0.1, insurance24h: rand() > 0.15, yearsExp: rint(2, 22),
+  score: rint(68, 98), violations: rand() < 0.2 ? rint(1, 3) : 0, note: "",
+}));
+
+// ---------- kế hoạch bảo dưỡng, sửa chữa, thanh xử lý, sự cố ----------
+const eqAt = (pid) => equipment.filter((e) => e.currentProjectId === pid);
+const gbEq = eqAt("p01");
+const maintenancePlans = equipment.filter((e) => e.status !== "ngung").slice(0, 18).map((e, i) => ({
+  id: `kh-${pad(i + 1)}`, code: `KHBD-2026-${pad(i + 31)}`, equipmentId: e.id, type: ["dinh_ky", "thuong_xuyen", "dinh_ky", "dac_biet", "ra_tron"][i % 5],
+  plannedDate: addDays(TODAY, rint(-20, 40)), content: ["Bảo dưỡng cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu", "Kiểm tra trước ca: dầu, nước, lốp, phanh", "Bảo dưỡng cấp 2: kiểm tra hệ thống thủy lực, gầm", "Bảo dưỡng đặc biệt mùa mưa – vệ sinh, chống gỉ", "Bảo dưỡng rà trơn sau đại tu động cơ"][i % 5],
+  materials: pick(["Dầu động cơ 15W40: 24 lít; lọc nhớt: 1", "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2", "Mỡ bôi trơn: 5 kg"]), status: i < 5 ? "cho_duyet" : i < 12 ? "da_duyet" : "hoan_thanh",
+  createdById: "u13", approvedById: i < 5 ? null : "u12", cost: rint(4, 38) * 1000000,
+}));
+const repairs = [
+  ["eq-002", "vua", "Sửa chữa bơm thủy lực máy rải bê tông", "u13", "2026-11-20", "2026-11-06", "dang_sua", 86000000, "", "Biên bản kiểm tra trước sửa chữa"],
+  [equipment[17].id, "nho", "Thay xích, con lăn máy ủi 110CV", "u13", "2026-11-18", "2026-11-05", "dang_sua", 42000000, "", "Biên bản kiểm tra; báo giá"],
+  [gbEq[1]?.id ?? "eq-010", "nho", "Thay lốp trước, căn chỉnh phanh", "u13", "2026-11-25", "2026-11-12", "moi", 18000000, "", ""],
+  [gbEq[2]?.id ?? "eq-011", "lon", "Đại tu động cơ máy xúc sau 9.000 giờ", "u12", "2026-12-20", "2026-10-28", "moi", 420000000, "", "Biên bản kiểm tra; tờ trình"],
+  ["eq-020", "vua", "Sửa hộp số máy lu rung", "u13", "2026-10-30", "2026-10-10", "hoan_thanh", 65000000, "Đã thay bộ bánh răng, chạy thử đạt", "BB nghiệm thu sửa chữa; hóa đơn; thanh lý HĐ"],
+  ["eq-031", "nho", "Hàn vá thùng xe tự đổ", "u13", "2026-10-15", "2026-10-08", "hoan_thanh", 9500000, "Hoàn thành, đưa vào sử dụng", "BB nghiệm thu sửa chữa"],
+].map(([equipmentId, level, content, assigneeId, deadline, createdAt, status, cost, result, documents], i) => ({ id: `sc-${pad(i + 1)}`, code: `ĐNSC-2026-${pad(i + 21)}`, equipmentId, level, content, assigneeId, deadline, createdAt, status, cost, result, documents }));
+const disposals = [
+  [equipment[5].id, "Máy rải bê tông đã khấu hao hết, chi phí sửa chữa lớn hơn 60% giá trị còn lại", "ban_dau_gia", 380000000, "2026-12-15", "cho_duyet"],
+  ["eq-045", "Trạm trộn cũ, công suất không đáp ứng yêu cầu", "thanh_ly", 950000000, "2027-01-20", "lap_ke_hoach"],
+  ["eq-039", "Hư hỏng nặng do sự cố cháy hệ thống điện", "huy", 45000000, "2026-10-20", "hoan_thanh"],
+].map(([equipmentId, reason, method, residualValue, plannedDate, status], i) => ({ id: `tl-${pad(i + 1)}`, code: `KHTL-2026-${pad(i + 5)}`, equipmentId, reason, method, residualValue, plannedDate, status, createdById: "u12" }));
+const incidents = [
+  [gbEq[0]?.id ?? "eq-001", gbEq[0]?.operatorId ?? null, "p01", "2026-11-09", "hu_hong", "trung_binh", "Vỡ ống thủy lực khi đang rải BTXM zone R4B, dừng máy 6 giờ", "Thay ống thủy lực dự phòng, điều máy rải số 2 hỗ trợ", "da_duyet", "dang_xu_ly", "11/11: đã thay ống, chờ chạy thử"],
+  ["eq-030", "op05", "p02", "2026-10-21", "va_cham", "nhe", "Xe tưới nước va quệt rào chắn khu bay khi lùi", "Sửa rào chắn, nhắc nhở lái xe, bổ sung người cảnh giới", "da_duyet", "da_xu_ly", "Đã khắc phục 22/10"],
+  ["eq-033", "op09", "p03", "2026-11-13", "tai_nan", "nghiem_trong", "Ô tô tự đổ lật khi đổ vật liệu tại mép taluy, lái xe bị thương nhẹ", "", "chua_lap", "moi", ""],
+].map(([equipmentId, operatorId, projectId, date, type, severity, description, plan, planStatus, status, progress], i) => ({ id: `sk-${pad(i + 1)}`, code: `SC-2026-${pad(i + 11)}`, equipmentId, operatorId, projectId, date, type, severity, description, plan, planStatus, status, progress }));
+
+// ---------- tuyến đường ----------
+const routes = [
+  { name: "Mỏ đá Kiện Khê → Công trường Gia Bình", from: "Mỏ đá Kiện Khê, Hà Nam", to: "Kho bãi CPĐD – SB Gia Bình", projectId: "p01", lengthKm: 96, avgMinutes: 150, stops: "Trạm cân QL1A; Trạm dừng nghỉ Đồng Văn", conditions: "QL1A – QL38, cấm tải giờ cao điểm 6h–8h, 16h–19h", points: [[20.55, 105.86], [20.66, 105.92], [20.87, 105.98], [21.02, 106.08], [21.06, 106.2], [21.08, 106.28]] },
+  { name: "Trạm trộn BTXM → Mặt bằng CHC zone R2", from: "Trạm trộn BTXM số 1", to: "Zone R2", projectId: "p01", lengthKm: 3.2, avgMinutes: 12, stops: "", conditions: "Đường công vụ nội bộ, tốc độ tối đa 20 km/h", points: [[21.08, 106.28], [21.082, 106.285], [21.085, 106.29], [21.087, 106.296]] },
+  { name: "Trạm BTN Quế Võ → Công trường Gia Bình", from: "Trạm BTN Kinh Bắc – KCN Quế Võ", to: "Lề vật liệu CHC", projectId: "p01", lengthKm: 28, avgMinutes: 45, stops: "", conditions: "Xe phủ bạt giữ nhiệt, nhiệt độ BTN đến công trường ≥ 120°C", points: [[21.14, 106.17], [21.12, 106.21], [21.1, 106.25], [21.08, 106.28]] },
+  { name: "Kho TCT Hà Nội → Sân bay Gia Bình (điều động máy)", from: "Kho thiết bị TCT – Gia Lâm", to: "SB Gia Bình", projectId: null, lengthKm: 42, avgMinutes: 90, stops: "Trạm thu phí QL5", conditions: "Vận chuyển máy siêu trường siêu trọng ban đêm, có xe dẫn đường", points: [[21.03, 105.9], [21.02, 106.0], [21.05, 106.12], [21.08, 106.28]] },
+].map((r, i) => ({ id: `td-${pad(i + 1)}`, code: `TD-${pad(i + 1, 3)}`, ...r }));
+
+// ---------- kiểm kê ----------
+const stockOf = (pid, mid) => stockTransactions.filter((t) => t.projectId === pid && t.materialId === mid).reduce((s, t) => s + (t.type === "nhap" ? t.qty : -t.qty), 0);
+const stocktakes = [
+  { id: "kk-001", code: "KK-GB-2026-10", projectId: "p01", date: "2026-10-31", byId: "u10", status: "da_xu_ly", note: "Kiểm kê định kỳ tháng 10", lines: ["m23", "m25", "m31"].map((mid) => ({ materialId: mid, bookQty: 0, actualQty: 0 })) },
+  { id: "kk-002", code: "KK-GB-2026-11", projectId: "p01", date: "2026-11-14", byId: "u10", status: "nhap", note: "Kiểm kê giữa tháng 11 trước đợt thảm BTN", lines: [] },
+];
+// phân loại phiếu nhập / xuất
+stockTransactions.forEach((t, i) => {
+  t.subType = t.type === "nhap" ? (i % 17 === 3 ? "dieu_chuyen" : i % 29 === 7 ? "tra_lai" : "ncc") : i % 23 === 5 ? "dieu_chuyen" : "thi_cong";
+  t.docQty = t.qty;
+  t.confirmed = true;
+});
+stockTransactions.filter((t) => t.projectId === "p01" && t.type === "nhap").slice(-2).forEach((t) => { t.confirmed = false; t.docQty = roundQty(t.qty * 1.02, "m³"); });
+{
+  const lines = inventory.filter((i) => i.projectId === "p01").map((i) => ({ materialId: i.materialId, bookQty: roundQty(stockOf("p01", i.materialId), "m³") }));
+  stocktakes[1].lines = lines.map((l, k) => ({ ...l, actualQty: k === 2 ? roundQty(l.bookQty * 0.97, "m³") : k === 5 ? roundQty(l.bookQty - 1, "m³") : l.bookQty }));
+  stocktakes[0].lines = lines.slice(0, 4).map((l) => ({ ...l, actualQty: l.bookQty }));
+}
+
+// ---------- lịch sử đăng nhập ----------
+const loginHistory = [];
+users.filter((u) => u.isDemoAccount || ["u05", "u11", "u13", "u20"].includes(u.id)).forEach((u, i) => {
+  for (let k = 0; k < 6; k++) loginHistory.push({ id: `lh-${pad(loginHistory.length + 1, 4)}`, userId: u.id, at: `${addDays(TODAY, -rint(0, 20))}T${pad(rint(6, 21), 2)}:${pad(rint(0, 59), 2)}:00`, ip: `10.20.${rint(1, 30)}.${rint(2, 250)}`, device: pick(["Chrome / Windows", "Safari / iPhone", "Chrome / Android", "Edge / Windows"]), result: (i + k) % 11 === 4 ? "that_bai" : "thanh_cong" });
+});
+loginHistory.sort((a, b) => b.at.localeCompare(a.at));
+
+// chất lượng / nghiệm thu nội bộ công việc đã hoàn thành của SB Gia Bình
+constructionPlans.filter((t) => t.projectId === "p01" && !t.isGroup && t.status === "hoan_thanh").forEach((t) => { t.quality = { result: "dat", byId: "u05", at: addDays(t.actualEnd, 1), note: "Đạt yêu cầu kỹ thuật, đủ hồ sơ thí nghiệm" }; });
 
 // ---------- write ----------
 const files = {
@@ -882,6 +1110,18 @@ const files = {
   "payment-records.json": paymentRecords,
   "notifications.json": notifications,
   "issues.json": issues,
+  "construction-methods.json": constructionMethods,
+  "site-staff.json": siteStaff,
+  "doc-folders.json": docFolders,
+  "documents.json": documents,
+  "operators.json": operators,
+  "maintenance-plans.json": maintenancePlans,
+  "repairs.json": repairs,
+  "disposals.json": disposals,
+  "incidents.json": incidents,
+  "routes.json": routes,
+  "stocktakes.json": stocktakes,
+  "login-history.json": loginHistory,
 };
 for (const dir of OUT_DIRS) {
   fs.mkdirSync(dir, { recursive: true });

@@ -1,39 +1,66 @@
 [
   {
     "id": "p01",
-    "code": "ACC244-LHP",
-    "name": "Dự án Xây dựng Trường Đào tạo cán bộ Lê Hồng Phong TP Hà Nội",
-    "shortName": "Trường Lê Hồng Phong",
-    "category": "dan_dung",
-    "location": "Hà Nội",
-    "investor": "Ban Quản lý dự án đầu tư xây dựng công trình dân dụng và công nghiệp thành phố Hà Nội",
-    "contractor": "Tổng công ty ACC – Công ty ĐTXL ACC – Công ty CP ACC 244",
+    "code": "ACC244-GB",
+    "name": "Cảng hàng không quốc tế Gia Bình – Giai đoạn 1.1",
+    "shortName": "Sân bay Gia Bình",
+    "category": "giao_thong",
+    "location": "Gia Bình, Bắc Ninh",
+    "investor": "Ban Quản lý dự án Cảng hàng không quốc tế Gia Bình",
+    "contractor": "Tổng công ty ACC – Công ty CP ACC 244",
     "unitId": "d-acc244",
     "commanderId": "u04",
-    "packageName": "Gói thầu số 06: Thi công xây dựng công trình và lắp đặt thiết bị",
-    "contractNo": "0610/2025/HĐXD-XLTB",
-    "contractDate": "2025-10-06",
-    "startDate": "2026-06-01",
-    "endDate": "2027-12-31",
-    "contractValue": 610033000000,
-    "budget": 540000000000,
+    "packageName": "Gói thầu: Thi công kết cấu khu bay – Hạng mục: Thi công kết cấu hạ tầng sân bay và mặt đường",
+    "contractNo": "1504/2026/HĐXD-GB",
+    "contractDate": "2026-04-15",
+    "startDate": "2026-04-28",
+    "endDate": "2027-04-25",
+    "contractValue": 241809400000,
+    "budget": 217628000000,
     "costRatio": 0.91,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u04",
       "u05",
-      "u06",
       "u07",
-      "u08",
+      "u06",
       "u09",
+      "u08",
+      "u30",
       "u10",
       "u11",
       "u13",
       "u15"
     ],
-    "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "description": "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp.",
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-gb-1",
+        "code": "PL01/1504/2026",
+        "date": "2026-06-05",
+        "title": "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B",
+        "valueChange": 0,
+        "note": "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026"
+      },
+      {
+        "id": "pl-gb-2",
+        "code": "PL02/1504/2026",
+        "date": "2026-08-20",
+        "title": "Bổ sung khối lượng BTXM M350 sân đỗ zone A2",
+        "valueChange": 3850000000,
+        "note": "Theo thiết kế điều chỉnh mở rộng vệt lăn"
+      },
+      {
+        "id": "pl-gb-3",
+        "code": "PL03/1504/2026",
+        "date": "2026-10-28",
+        "title": "Điều chỉnh đơn giá nhân công theo Thông tư mới",
+        "valueChange": 1240000000,
+        "note": "Áp dụng từ đợt thanh toán 4"
+      }
+    ]
   },
   {
     "id": "p02",
@@ -58,18 +85,20 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u20",
-      "u31",
-      "u30",
       "u39",
-      "u34",
+      "u42",
       "u36",
-      "u44",
-      "u38",
-      "u32",
-      "u40"
+      "u45",
+      "u43",
+      "u37",
+      "u34",
+      "u31",
+      "u40",
+      "u35"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p03",
@@ -94,17 +123,16 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u21",
+      "u32",
       "u44",
-      "u34",
       "u37",
-      "u42",
-      "u39",
-      "u43",
-      "u30",
-      "u45"
+      "u45",
+      "u38",
+      "u30"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p04",
@@ -129,19 +157,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u22",
-      "u44",
       "u36",
-      "u30",
       "u31",
       "u40",
-      "u45",
-      "u32",
+      "u41",
       "u37",
       "u33",
-      "u39"
+      "u39",
+      "u32"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p05",
@@ -166,18 +193,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u23",
-      "u45",
-      "u38",
-      "u40",
-      "u42",
       "u34",
-      "u37",
-      "u39",
+      "u40",
+      "u45",
+      "u43",
+      "u30",
+      "u33",
+      "u32",
       "u31",
-      "u30"
+      "u38"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p06",
@@ -202,16 +230,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u24",
-      "u39",
-      "u36",
+      "u31",
+      "u44",
+      "u33",
       "u32",
+      "u43",
       "u34",
-      "u42",
-      "u30",
-      "u43"
+      "u35",
+      "u36"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p07",
@@ -236,19 +266,28 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u25",
-      "u40",
+      "u42",
+      "u34",
       "u32",
-      "u33",
-      "u35",
-      "u31",
+      "u37",
       "u39",
-      "u36",
-      "u44",
-      "u30",
-      "u42"
+      "u38",
+      "u41",
+      "u31",
+      "u44"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-p07-1",
+        "code": "PL01/1511/2025/HĐ-QC",
+        "date": "2026-03-15",
+        "title": "Điều chỉnh khối lượng phát sinh",
+        "valueChange": 4275000000,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "p08",
@@ -273,18 +312,17 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u26",
-      "u44",
-      "u42",
+      "u39",
+      "u33",
+      "u41",
       "u36",
-      "u34",
-      "u31",
-      "u43",
-      "u35",
       "u30",
-      "u37"
+      "u38",
+      "u31"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p09",
@@ -309,17 +347,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u27",
-      "u32",
-      "u45",
+      "u40",
+      "u44",
       "u34",
+      "u30",
+      "u33",
       "u37",
-      "u43",
-      "u39",
-      "u41",
-      "u35"
+      "u42",
+      "u31",
+      "u43"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p10",
@@ -346,7 +386,8 @@
       "u28"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "cho_duyet"
+    "approvalStatus": "cho_duyet",
+    "appendices": []
   },
   {
     "id": "p11",
@@ -371,14 +412,23 @@
     "settlementStatus": "dang_lap",
     "memberIds": [
       "u29",
-      "u34",
-      "u30",
-      "u41",
-      "u32",
-      "u38"
+      "u36",
+      "u44",
+      "u45",
+      "u35"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-p11-1",
+        "code": "PL01/1001/2025/HĐXD-ACV",
+        "date": "2025-05-10",
+        "title": "Điều chỉnh khối lượng phát sinh",
+        "valueChange": 2175000000,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "p12",
@@ -403,19 +453,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u60",
-      "u30",
-      "u38",
-      "u39",
-      "u44",
-      "u41",
-      "u37",
-      "u36",
-      "u42",
       "u31",
-      "u35"
+      "u37",
+      "u33",
+      "u41",
+      "u42",
+      "u36",
+      "u38",
+      "u34",
+      "u43"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p13",
@@ -441,16 +491,18 @@
     "memberIds": [
       "u61",
       "u42",
-      "u35",
-      "u38",
-      "u36",
       "u40",
+      "u36",
+      "u44",
+      "u33",
+      "u35",
       "u43",
-      "u32",
-      "u31"
+      "u41",
+      "u39"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p14",
@@ -475,19 +527,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u62",
-      "u37",
-      "u36",
-      "u42",
-      "u35",
-      "u34",
-      "u41",
-      "u31",
-      "u43",
+      "u45",
       "u40",
-      "u39"
+      "u35",
+      "u41",
+      "u42",
+      "u32",
+      "u39",
+      "u31",
+      "u30"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p15",
@@ -512,19 +564,28 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u63",
-      "u42",
-      "u40",
-      "u36",
+      "u43",
       "u44",
-      "u33",
       "u37",
+      "u42",
       "u30",
-      "u41",
-      "u38",
-      "u32"
+      "u36",
+      "u40",
+      "u45",
+      "u38"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-p15-1",
+        "code": "PL01/1310/2025/HĐXD",
+        "date": "2026-01-23",
+        "title": "Điều chỉnh khối lượng phát sinh",
+        "valueChange": 5325000000,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "p16",
@@ -549,19 +610,28 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u64",
-      "u40",
-      "u39",
-      "u41",
-      "u35",
-      "u36",
-      "u37",
       "u42",
-      "u30",
+      "u36",
+      "u38",
+      "u35",
+      "u34",
       "u44",
-      "u43"
+      "u41",
+      "u30",
+      "u37"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-p16-1",
+        "code": "PL01/1402/2026/HĐXD",
+        "date": "2026-05-12",
+        "title": "Điều chỉnh khối lượng phát sinh",
+        "valueChange": 3450000000,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "p17",
@@ -586,17 +656,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u65",
-      "u41",
-      "u33",
-      "u39",
-      "u40",
       "u45",
-      "u34",
+      "u40",
+      "u31",
+      "u43",
+      "u33",
+      "u36",
+      "u32",
       "u42",
-      "u35"
+      "u38"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p18",
@@ -621,17 +693,20 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u66",
-      "u39",
-      "u31",
+      "u44",
+      "u33",
+      "u42",
+      "u35",
       "u38",
-      "u36",
-      "u41",
+      "u34",
       "u30",
-      "u43",
-      "u40"
+      "u36",
+      "u39",
+      "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p19",
@@ -656,18 +731,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u67",
-      "u32",
-      "u38",
       "u39",
-      "u31",
-      "u34",
-      "u44",
+      "u30",
+      "u45",
       "u42",
-      "u36",
-      "u43"
+      "u34",
+      "u43",
+      "u32",
+      "u31",
+      "u37"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p20",
@@ -692,20 +768,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u68",
-      "u42",
-      "u45",
-      "u30",
-      "u35",
-      "u37",
-      "u31",
       "u39",
+      "u45",
+      "u41",
+      "u42",
+      "u35",
+      "u40",
       "u38",
-      "u33",
-      "u32",
-      "u43"
+      "u30",
+      "u33"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p21",
@@ -730,18 +805,29 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u69",
+      "u33",
+      "u36",
+      "u41",
+      "u38",
+      "u32",
+      "u30",
       "u43",
       "u44",
-      "u41",
-      "u36",
-      "u30",
-      "u33",
-      "u34",
-      "u32",
-      "u40"
+      "u45",
+      "u42"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": [
+      {
+        "id": "pl-p21-1",
+        "code": "PL01/1902/2026/HĐXD",
+        "date": "2026-05-26",
+        "title": "Điều chỉnh khối lượng phát sinh",
+        "valueChange": 5925000000,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "p22",
@@ -766,13 +852,16 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u70",
-      "u30",
-      "u37",
+      "u39",
+      "u44",
       "u41",
-      "u42"
+      "u31",
+      "u30",
+      "u45"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p23",
@@ -797,16 +886,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u71",
-      "u44",
-      "u31",
+      "u38",
+      "u43",
+      "u39",
       "u36",
       "u35",
-      "u45",
-      "u40",
-      "u38"
+      "u31",
+      "u42",
+      "u44"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p24",
@@ -831,17 +922,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u72",
-      "u32",
-      "u41",
-      "u43",
-      "u44",
-      "u37",
+      "u34",
+      "u35",
       "u31",
-      "u36",
-      "u30"
+      "u44",
+      "u45",
+      "u42",
+      "u37",
+      "u38",
+      "u39"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p25",
@@ -866,17 +959,20 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u73",
+      "u38",
       "u45",
-      "u37",
-      "u41",
+      "u34",
       "u39",
-      "u32",
-      "u35",
+      "u31",
       "u36",
-      "u42"
+      "u41",
+      "u35",
+      "u43",
+      "u44"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   },
   {
     "id": "p26",
@@ -901,17 +997,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u74",
-      "u34",
-      "u32",
-      "u36",
-      "u35",
-      "u38",
-      "u43",
+      "u37",
       "u39",
-      "u40",
-      "u42"
+      "u38",
+      "u45",
+      "u31",
+      "u35",
+      "u42",
+      "u30",
+      "u41"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "appendices": []
   }
 ]

@@ -1,8 +1,8 @@
 import type { CollectionKey, Database } from "@/types";
 import { getSeedData } from "./seed";
 
-const PREFIX = "acc-pms:v1:";
-export const SESSION_KEY = "acc-pms:v1:session";
+const PREFIX = "acc-pms:v2:";
+export const SESSION_KEY = "acc-pms:v2:session";
 
 /** Đọc DB: ưu tiên dữ liệu đã lưu trong localStorage, nếu không có thì dùng JSON gốc */
 export function loadDatabase(): Database {

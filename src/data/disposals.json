@@ -1,0 +1,35 @@
+[
+  {
+    "id": "tl-001",
+    "code": "KHTL-2026-005",
+    "equipmentId": "eq-006",
+    "reason": "Máy rải bê tông đã khấu hao hết, chi phí sửa chữa lớn hơn 60% giá trị còn lại",
+    "method": "ban_dau_gia",
+    "residualValue": 380000000,
+    "plannedDate": "2026-12-15",
+    "status": "cho_duyet",
+    "createdById": "u12"
+  },
+  {
+    "id": "tl-002",
+    "code": "KHTL-2026-006",
+    "equipmentId": "eq-045",
+    "reason": "Trạm trộn cũ, công suất không đáp ứng yêu cầu",
+    "method": "thanh_ly",
+    "residualValue": 950000000,
+    "plannedDate": "2027-01-20",
+    "status": "lap_ke_hoach",
+    "createdById": "u12"
+  },
+  {
+    "id": "tl-003",
+    "code": "KHTL-2026-007",
+    "equipmentId": "eq-039",
+    "reason": "Hư hỏng nặng do sự cố cháy hệ thống điện",
+    "method": "huy",
+    "residualValue": 45000000,
+    "plannedDate": "2026-10-20",
+    "status": "hoan_thanh",
+    "createdById": "u12"
+  }
+]

@@ -6,6 +6,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { Avatar } from "@/components/common/UserAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "sonner";
 import { ROLE_DESCRIPTIONS, ROLE_LABELS } from "@/utils/constants";
 import { cn } from "@/utils/cn";
 import type { RoleKey } from "@/types";
@@ -17,8 +19,8 @@ const LANDING: Partial<Record<RoleKey, string>> = {
   to_truong: "/construction/plan/p01",
   bp_vat_tu: "/materials/requests",
   phong_thiet_bi: "/equipment/list",
-  ke_toan: "/acceptance/reconcile",
-  admin: "/admin",
+  ke_toan: "/materials/inventory",
+  admin: "/admin/users",
 };
 
 export default function LoginPage() {
@@ -29,6 +31,8 @@ export default function LoginPage() {
   const demo = db.users.filter((u) => u.isDemoAccount);
   const [selected, setSelected] = useState(demo[0]?.id);
   const sel = db.users.find((u) => u.id === selected);
+  const [forgot, setForgot] = useState(false);
+  const [acc, setAcc] = useState("");
 
   const enter = () => {
     if (!sel) return;
@@ -57,7 +61,7 @@ export default function LoginPage() {
               [CalendarRange, "Kế hoạch & tiến độ"],
               [Package, "Vật tư vật liệu"],
               [Truck, "Xe máy thiết bị"],
-              [ClipboardCheck, "Nghiệm thu, thanh toán"],
+              [ClipboardCheck, "Tài chính kế toán"],
               [ShieldCheck, "Cảnh báo sớm"],
             ].map(([I, l]) => {
               const Icon = I as typeof Building2;
@@ -100,7 +104,7 @@ export default function LoginPage() {
             <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4">
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="text-xs font-medium text-slate-600">Tài khoản</label>
+                  <label className="text-xs font-medium text-slate-600">SĐT / email / mã nhân viên</label>
                   <Input className="mt-1.5" value={sel.email} readOnly />
                 </div>
                 <div>
@@ -108,7 +112,8 @@ export default function LoginPage() {
                   <Input className="mt-1.5" type="password" value="demo-acc" readOnly />
                 </div>
               </div>
-              <p className="mt-3 text-xs text-slate-500">
+              <div className="mt-2 text-right"><button className="text-xs font-medium text-primary hover:underline" onClick={() => setForgot(true)}>Quên mật khẩu?</button></div>
+              <p className="mt-1 text-xs text-slate-500">
                 <span className="font-medium text-slate-700">Quyền chính:</span> {ROLE_DESCRIPTIONS[sel.role]}
               </p>
               <Button className="mt-4 w-full" size="lg" onClick={enter}>
@@ -118,6 +123,16 @@ export default function LoginPage() {
           )}
         </div>
       </div>
+      <Dialog open={forgot} onOpenChange={setForgot}>
+        <DialogContent>
+          <DialogHeader><DialogTitle>Quên mật khẩu</DialogTitle></DialogHeader>
+          <DialogBody className="space-y-2">
+            <p className="text-sm text-slate-500">Nhập số điện thoại, email hoặc mã nhân viên. Hệ thống gửi mã xác thực (OTP) để đặt lại mật khẩu.</p>
+            <Input value={acc} onChange={(e) => setAcc(e.target.value)} placeholder="VD: 0912345678 hoặc NV010" />
+          </DialogBody>
+          <DialogFooter><Button variant="outline" onClick={() => setForgot(false)}>Hủy</Button><Button onClick={() => { if (!acc.trim()) return toast.error("Nhập tài khoản"); setForgot(false); toast.success("Đã gửi mã OTP đặt lại mật khẩu (mô phỏng)"); }}>Gửi mã xác thực</Button></DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

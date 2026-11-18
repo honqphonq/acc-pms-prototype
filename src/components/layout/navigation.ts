@@ -1,59 +1,67 @@
 import {
-  BarChart3, Building2, ClipboardCheck, HardHat, LayoutDashboard, Package, Settings, Siren, Truck, BookOpenCheck, type LucideIcon,
+  Building2, Calculator, LayoutDashboard, Settings, Truck, BookOpenCheck, HardHat, type LucideIcon,
 } from "lucide-react";
 
 export interface NavItem {
   label: string;
   to: string;
   icon: LucideIcon;
-  children?: { label: string; to: string }[];
+  children?: { label: string; to: string; soon?: boolean }[];
   badgeKey?: "alerts" | "approvals";
 }
 
+/** Menu theo “Danh mục tính năng phần mềm quản lý thi công xây dựng – ACC” (cập nhật 18/11) */
 export const NAV: NavItem[] = [
-  { label: "Dashboard", to: "/", icon: LayoutDashboard },
+  { label: "Trang chủ", to: "/", icon: LayoutDashboard },
   {
     label: "Quản lý công trình", to: "/projects", icon: Building2,
     children: [
-      { label: "Quản lý gói thầu", to: "/projects/packages" },
-      { label: "Quản lý hợp đồng nhận thầu", to: "/projects/contracts" },
-      { label: "Quản lý nhận thi công", to: "/projects" },
-      { label: "Kế hoạch thi công", to: "/construction/plan" },
-    ],
-  },
-  {
-    label: "Quản lý vật tư vật liệu", to: "/materials", icon: Package, badgeKey: "approvals",
-    children: [
-      { label: "Nhu cầu & tồn kho", to: "/materials/inventory" },
-      { label: "Đề xuất vật tư", to: "/materials/requests" },
-      { label: "Nhập – xuất kho", to: "/materials/transactions" },
-      { label: "Danh mục vật tư", to: "/materials/catalog" },
-      { label: "Nhà cung cấp", to: "/materials/suppliers" },
+      { label: "Danh sách công trình", to: "/projects" },
+      { label: "Hợp đồng & phụ lục", to: "/projects/contracts" },
+      { label: "Phương án tổ chức thi công", to: "/construction/methods" },
+      { label: "Tiến độ thi công", to: "/construction/plan" },
+      { label: "Nhân sự thi công", to: "/construction/staff" },
+      { label: "Hồ sơ thi công", to: "/construction/documents" },
     ],
   },
   {
     label: "Quản lý xe máy thiết bị", to: "/equipment", icon: Truck,
     children: [
-      { label: "Danh sách xe máy", to: "/equipment/list" },
-      { label: "Điều động thiết bị", to: "/equipment/dispatch" },
-      { label: "Ca máy & nhiên liệu", to: "/equipment/shifts" },
-      { label: "Bảo dưỡng, sửa chữa", to: "/equipment/maintenance" },
+      { label: "Danh mục xe máy thiết bị", to: "/equipment/list" },
+      { label: "Nhân viên CMKT", to: "/equipment/operators" },
+      { label: "Phân bổ điều động", to: "/equipment/dispatch" },
+      { label: "Theo dõi hoạt động", to: "/equipment/shifts" },
+      { label: "Bảo dưỡng", to: "/equipment/maintenance" },
+      { label: "Sửa chữa", to: "/equipment/repairs" },
+      { label: "Thanh xử lý", to: "/equipment/disposal" },
+      { label: "Sự cố tai nạn", to: "/equipment/incidents" },
+      { label: "Tuyến đường", to: "/equipment/routes" },
     ],
   },
   {
-    label: "Quản lý nghiệm thu, thanh quyết toán", to: "/finance", icon: ClipboardCheck,
+    label: "Tài chính kế toán", to: "/finance", icon: Calculator, badgeKey: "approvals",
     children: [
-      { label: "Hồ sơ nghiệm thu", to: "/acceptance" },
-      { label: "Đối chiếu khối lượng", to: "/acceptance/reconcile" },
-      { label: "Hồ sơ thanh toán", to: "/payments" },
-      { label: "Thanh quyết toán", to: "/payments/settlement" },
+      { label: "Dự toán thi công", to: "/finance/estimate", soon: true },
+      { label: "Danh mục vật tư, vật liệu", to: "/materials/catalog" },
+      { label: "Đề xuất vật tư", to: "/materials/requests" },
+      { label: "Nhập kho vật tư", to: "/materials/receipts" },
+      { label: "Xuất kho vật tư", to: "/materials/issues" },
+      { label: "Tồn kho và kiểm kê", to: "/materials/inventory" },
+      { label: "Chi phí tập hợp", to: "/finance/costs", soon: true },
+      { label: "Hồ sơ thanh toán với CĐT", to: "/finance/payments", soon: true },
+      { label: "Giá trị khối lượng thi công", to: "/finance/value", soon: true },
+      { label: "Công nợ thầu phụ, NCC", to: "/finance/debts", soon: true },
     ],
   },
   {
-    label: "Báo cáo", to: "/reports", icon: BarChart3,
+    label: "Quản lý hệ thống", to: "/admin", icon: Settings,
+    children: [
+      { label: "Người dùng", to: "/admin/users" },
+      { label: "Vai trò người dùng", to: "/admin/roles" },
+      { label: "Quyền hệ thống", to: "/admin/permissions" },
+      { label: "Lịch sử đăng nhập", to: "/admin/logins" },
+    ],
   },
-  { label: "Cảnh báo & vấn đề", to: "/alerts", icon: Siren, badgeKey: "alerts" },
-  { label: "Quản trị hệ thống", to: "/admin", icon: Settings },
   { label: "Hướng dẫn demo", to: "/guide", icon: BookOpenCheck },
 ];
 
@@ -61,29 +69,49 @@ export const NAV: NavItem[] = [
 export const PATH_LABELS: Record<string, string> = {
   projects: "Quản lý công trình",
   packages: "Quản lý gói thầu",
-  contracts: "Quản lý hợp đồng nhận thầu",
+  contracts: "Hợp đồng & phụ lục",
   construction: "Quản lý công trình",
-  plan: "Kế hoạch thi công",
+  plan: "Tiến độ thi công",
+  methods: "Phương án tổ chức thi công",
+  staff: "Nhân sự thi công",
+  documents: "Hồ sơ thi công",
   logs: "Nhật ký thi công",
   "value-report": "Giá trị thực hiện",
-  materials: "Quản lý vật tư vật liệu",
-  inventory: "Nhu cầu & tồn kho",
+  materials: "Tài chính kế toán",
+  inventory: "Tồn kho và kiểm kê",
   requests: "Đề xuất vật tư",
+  receipts: "Nhập kho vật tư",
+  issues: "Xuất kho vật tư",
   transactions: "Nhập – xuất kho",
   catalog: "Danh mục vật tư",
   suppliers: "Nhà cung cấp",
   equipment: "Quản lý xe máy thiết bị",
-  list: "Danh sách xe máy",
-  dispatch: "Điều động thiết bị",
-  shifts: "Ca máy & nhiên liệu",
-  maintenance: "Bảo dưỡng, sửa chữa",
+  list: "Danh mục xe máy thiết bị",
+  operators: "Nhân viên CMKT",
+  dispatch: "Phân bổ điều động",
+  shifts: "Theo dõi hoạt động",
+  maintenance: "Bảo dưỡng",
+  repairs: "Sửa chữa",
+  disposal: "Thanh xử lý",
+  incidents: "Sự cố tai nạn",
+  routes: "Tuyến đường",
+  finance: "Tài chính kế toán",
+  estimate: "Dự toán thi công",
+  costs: "Chi phí tập hợp",
+  payments: "Hồ sơ thanh toán",
+  value: "Giá trị khối lượng thi công",
+  debts: "Công nợ thầu phụ, NCC",
   acceptance: "Hồ sơ nghiệm thu",
   reconcile: "Đối chiếu khối lượng",
-  payments: "Hồ sơ thanh toán",
   settlement: "Thanh quyết toán",
   reports: "Báo cáo",
   alerts: "Cảnh báo & vấn đề",
-  admin: "Quản trị hệ thống",
+  admin: "Quản lý hệ thống",
+  users: "Người dùng",
+  roles: "Vai trò người dùng",
+  permissions: "Quyền hệ thống",
+  logins: "Lịch sử đăng nhập",
+  account: "Thông tin tài khoản",
   guide: "Hướng dẫn demo",
 };
 export { HardHat };

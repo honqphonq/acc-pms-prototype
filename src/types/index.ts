@@ -64,6 +64,16 @@ export interface Project {
   memberIds: ID[];
   description: string;
   approvalStatus: "da_duyet" | "cho_duyet" | "tu_choi";
+  appendices?: ContractAppendix[];
+}
+
+export interface ContractAppendix {
+  id: ID;
+  code: string;
+  date: string;
+  title: string;
+  valueChange: number; // giá trị điều chỉnh (+/-)
+  note: string;
 }
 
 export interface ConstructionItem {
@@ -99,6 +109,22 @@ export interface PlanTask {
   status: TaskStatus;
   order: number;
   note?: string;
+  /** công việc liền trước: FS = bắt đầu sau khi việc trước kết thúc, SS = bắt đầu cùng/sau khi việc trước bắt đầu */
+  predecessors?: TaskDependency[];
+  /** đánh giá chất lượng / nghiệm thu nội bộ */
+  quality?: QualityEvaluation | null;
+}
+
+export interface TaskDependency {
+  id: ID;
+  type: "FS" | "SS";
+}
+
+export interface QualityEvaluation {
+  result: "dat" | "khong_dat";
+  byId: ID;
+  at: string;
+  note: string;
 }
 
 export interface LaborLine {
@@ -210,6 +236,10 @@ export interface StockTransaction {
   id: ID;
   code: string;
   type: "nhap" | "xuat";
+  /** nhập: ncc | dieu_chuyen | tra_lai | kiem_ke; xuất: thi_cong | dieu_chuyen | tra_ncc | kiem_ke */
+  subType?: string;
+  docQty?: number; // số lượng theo chứng từ (đối chiếu)
+  confirmed?: boolean;
   projectId: ID;
   materialId: ID;
   qty: number;
@@ -237,6 +267,17 @@ export interface Equipment {
   code: string;
   name: string;
   group: string;
+  /** Ô tô / Xe biển đỏ (quân sự) / Máy thiết bị */
+  kind: "o_to" | "xe_bien_do" | "may_thiet_bi";
+  assetCode: string;
+  chassisNo: string;
+  engineNo: string;
+  qualityGrade: string;
+  decisionNo: string; // quyết định điều động về đơn vị / hợp đồng thuê
+  inspectionDue: string | null; // hạn kiểm định
+  insuranceDue: string | null; // hạn bảo hiểm
+  ownerProof: boolean; // có chứng minh chủ sở hữu (thiết bị thuê ngoài)
+  vetcCode?: string; // thẻ thu phí không dừng (xe biển đỏ)
   ownership: "so_huu" | "thue_ngoai";
   plate: string;
   brand: string;
@@ -264,6 +305,8 @@ export interface EquipmentAssignment {
   startDate: string;
   endDate: string;
   status: "cho_duyet" | "da_duyet" | "dang_dieu_dong" | "hoan_thanh" | "tu_choi";
+  /** de_xuat: đề xuất nhu cầu của dự án; dieu_chuyen: chuyển sang dự án khác; thu_hoi: thu hồi về TCT */
+  kind?: "phan_bo" | "dieu_chuyen" | "thu_hoi";
   requesterId: ID;
   reason: string;
   createdAt: string;
@@ -367,6 +410,194 @@ export interface Issue {
   description: string;
 }
 
+// ===== Phân hệ bổ sung theo danh mục tính năng 18/11 =====
+export interface VersionEntry {
+  version: number;
+  at: string;
+  byId: ID;
+  note: string;
+}
+export interface CommentEntry {
+  id: ID;
+  byId: ID;
+  at: string;
+  content: string;
+}
+
+/** Phương án tổ chức thi công */
+export interface ConstructionMethod {
+  id: ID;
+  code: string;
+  projectId: ID;
+  itemId: ID | null;
+  title: string;
+  summary: string;
+  status: "du_thao" | "cho_gop_y" | "da_duyet";
+  version: number;
+  createdById: ID;
+  updatedAt: string;
+  files: string[];
+  versions: VersionEntry[];
+  comments: CommentEntry[];
+}
+
+/** Nhân sự thi công (chỉ huy, cán bộ kỹ thuật, công nhân, lao động phổ thông) */
+export interface SiteStaff {
+  id: ID;
+  code: string;
+  projectId: ID;
+  name: string;
+  type: "chi_huy" | "can_bo_ky_thuat" | "cong_nhan" | "lao_dong_pho_thong";
+  position: string;
+  team: string;
+  phone: string;
+  idNo: string;
+  birthYear: number;
+  hometown: string;
+  joinDate: string;
+  status: "dang_lam" | "da_nghi";
+  certificates: string;
+  safetyCard: boolean;
+  healthCheck: string | null;
+}
+
+export interface DocFolder {
+  id: ID;
+  projectId: ID;
+  parentId: ID | null;
+  name: string;
+  order: number;
+}
+export interface SiteDocument {
+  id: ID;
+  projectId: ID;
+  folderId: ID;
+  name: string;
+  fileType: string;
+  sizeKb: number;
+  version: number;
+  uploadedById: ID;
+  uploadedAt: string;
+  versions: VersionEntry[];
+}
+
+/** Nhân viên chuyên môn kỹ thuật (lái xe, lái máy) */
+export interface Operator {
+  id: ID; // trùng id người dùng vận hành (op..)
+  code: string;
+  name: string;
+  phone: string;
+  rank: string; // cấp bậc
+  contractType: string;
+  licenseNo: string;
+  licenseClass: string;
+  licenseType: "Quân sự" | "Dân sự";
+  licenseExpiry: string;
+  skill: string; // chứng chỉ vận hành
+  workerGrade: string; // bậc thợ
+  salaryCoef: number;
+  idNo: string;
+  hometown: string;
+  healthCheck: string;
+  safetyCard: boolean;
+  insurance24h: boolean;
+  yearsExp: number;
+  score: number; // đánh giá hiệu suất (0–100)
+  violations: number;
+  note: string;
+}
+
+export interface MaintenancePlan {
+  id: ID;
+  code: string;
+  equipmentId: ID;
+  type: "thuong_xuyen" | "dinh_ky" | "ra_tron" | "dac_biet";
+  plannedDate: string;
+  content: string;
+  materials: string;
+  status: "cho_duyet" | "da_duyet" | "hoan_thanh";
+  createdById: ID;
+  approvedById: ID | null;
+  cost: number;
+}
+
+export interface RepairRequest {
+  id: ID;
+  code: string;
+  equipmentId: ID;
+  level: "nho" | "vua" | "lon";
+  content: string;
+  assigneeId: ID;
+  deadline: string;
+  createdAt: string;
+  status: "moi" | "dang_sua" | "hoan_thanh";
+  cost: number;
+  result: string;
+  documents: string;
+}
+
+export interface DisposalPlan {
+  id: ID;
+  code: string;
+  equipmentId: ID;
+  reason: string;
+  method: "thanh_ly" | "ban_dau_gia" | "huy";
+  residualValue: number;
+  plannedDate: string;
+  status: "lap_ke_hoach" | "cho_duyet" | "da_duyet" | "hoan_thanh";
+  createdById: ID;
+}
+
+export interface Incident {
+  id: ID;
+  code: string;
+  equipmentId: ID;
+  operatorId: ID | null;
+  projectId: ID | null;
+  date: string;
+  type: "tai_nan" | "hu_hong" | "va_cham";
+  severity: "nhe" | "trung_binh" | "nghiem_trong";
+  description: string;
+  plan: string; // phương án xử lý
+  planStatus: "chua_lap" | "cho_duyet" | "da_duyet";
+  status: "moi" | "dang_xu_ly" | "da_xu_ly";
+  progress: string;
+}
+
+export interface TransportRoute {
+  id: ID;
+  code: string;
+  name: string;
+  from: string;
+  to: string;
+  projectId: ID | null;
+  lengthKm: number;
+  avgMinutes: number;
+  stops: string;
+  conditions: string;
+  points: [number, number][];
+}
+
+export interface Stocktake {
+  id: ID;
+  code: string;
+  projectId: ID;
+  date: string;
+  byId: ID;
+  status: "nhap" | "da_xu_ly";
+  note: string;
+  lines: { materialId: ID; bookQty: number; actualQty: number }[];
+}
+
+export interface LoginEntry {
+  id: ID;
+  userId: ID;
+  at: string;
+  ip: string;
+  device: string;
+  result: "thanh_cong" | "that_bai";
+}
+
 /** Toàn bộ dữ liệu demo */
 export interface Database {
   projects: Project[];
@@ -388,6 +619,18 @@ export interface Database {
   paymentRecords: PaymentRecord[];
   notifications: Notification[];
   issues: Issue[];
+  constructionMethods: ConstructionMethod[];
+  siteStaff: SiteStaff[];
+  docFolders: DocFolder[];
+  documents: SiteDocument[];
+  operators: Operator[];
+  maintenancePlans: MaintenancePlan[];
+  repairs: RepairRequest[];
+  disposals: DisposalPlan[];
+  incidents: Incident[];
+  routes: TransportRoute[];
+  stocktakes: Stocktake[];
+  loginHistory: LoginEntry[];
 }
 
 export type CollectionKey = keyof Database;

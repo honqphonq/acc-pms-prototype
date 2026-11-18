@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { UserCell } from "@/components/common/UserAvatar";
 import { SitePhoto } from "@/components/common/SitePhoto";
@@ -15,7 +16,8 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { TaskUpdateForm, n1, p1 } from "./TaskUpdateForm";
 import { TaskFormDialog } from "./TaskFormDialog";
-import { confirmLog, deleteTask } from "@/services/actions";
+import { confirmLog, deleteTask, saveRow } from "@/services/actions";
+import { DEMO_TODAY } from "@/utils/date";
 import { taskActualPct, taskHealth, taskPlannedPct, TASK_HEALTH_LABEL } from "@/services/selectors";
 import { TASK_STATUS } from "@/utils/constants";
 import { diffDays } from "@/utils/date";
@@ -47,7 +49,7 @@ export default function TaskDetailPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <Link to={backTo} className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Kế hoạch thi công · {project?.shortName}</Link>
+          <Link to={backTo} className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Tiến độ thi công · {project?.shortName}</Link>
           <div className="text-[12px] text-slate-500">{item?.code} {item?.name}{parent ? ` › ${parent.name}` : ""}</div>
           <h1 className="mt-0.5 flex flex-wrap items-center gap-2 text-xl font-bold text-slate-900">
             <span className="text-slate-400">{task.code}</span> {task.name}
@@ -94,6 +96,8 @@ export default function TaskDetailPage() {
         </Card>
       )}
 
+      {!task.isGroup && <LinksAndQuality taskId={task.id} />}
+
       {!task.isGroup && (
         <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
           <Card>
@@ -123,6 +127,55 @@ export default function TaskDetailPage() {
         </div>
       )}
       <TaskFormDialog open={editOpen} onOpenChange={setEditOpen} projectId={task.projectId} task={task} />
+    </div>
+  );
+}
+
+/** Liên kết công việc (FS/SS) và đánh giá chất lượng / nghiệm thu nội bộ */
+function LinksAndQuality({ taskId }: { taskId: string }) {
+  const { db, run } = useDb();
+  const { can, user } = useAuth();
+  const [result, setResult] = useState<"dat" | "khong_dat">("dat");
+  const [note, setNote] = useState("");
+  const task = db.constructionPlans.find((t) => t.id === taskId)!;
+  const byId = (id: string) => db.constructionPlans.find((t) => t.id === id);
+  const preds = (task.predecessors ?? []).map((p) => ({ ...p, t: byId(p.id) })).filter((p) => p.t);
+  const succs = db.constructionPlans.filter((t) => t.predecessors?.some((p) => p.id === task.id));
+  const q = task.quality;
+  const link = (t: { id: string; code: string; name: string; projectId: string }) => <Link to={`/construction/plan/${t.projectId}/task/${t.id}`} className="hover:text-primary hover:underline">[{t.code}] {t.name}</Link>;
+  const linkWarn = preds.some((p) => p.type === "FS" && p.t!.status !== "hoan_thanh" && task.plannedStart <= DEMO_TODAY);
+  return (
+    <div className="grid gap-4 lg:grid-cols-2">
+      <Card>
+        <CardHeader><CardTitle>Liên kết công việc</CardTitle></CardHeader>
+        <CardContent className="space-y-3 text-[13px]">
+          <div><div className="mb-1 text-[11.5px] text-slate-500">Công việc liền trước</div>{preds.length ? preds.map((p) => <div key={p.id} className="flex items-center gap-2"><Badge tone="outline">{p.type}</Badge>{link(p.t!)}<span className="text-[11px] text-slate-400">· {Math.floor(taskActualPct(p.t!) * 100)}%</span></div>) : <span className="text-slate-400">Không có</span>}</div>
+          <div><div className="mb-1 text-[11.5px] text-slate-500">Công việc kế tiếp</div>{succs.length ? succs.map((t) => <div key={t.id} className="flex items-center gap-2"><Badge tone="outline">{t.predecessors!.find((p) => p.id === task.id)!.type}</Badge>{link(t)}</div>) : <span className="text-slate-400">Không có</span>}</div>
+          {linkWarn && <div className="rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800">Công việc liền trước (FS) chưa hoàn thành – có thể ảnh hưởng thời điểm bắt đầu công việc này.</div>}
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader><CardTitle>Đánh giá chất lượng / nghiệm thu</CardTitle></CardHeader>
+        <CardContent className="text-[13px]">
+          {q ? (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">{q.result === "dat" ? <Badge tone="success">Đạt yêu cầu</Badge> : <Badge tone="danger">Không đạt – yêu cầu khắc phục</Badge>}<span className="text-xs text-slate-500">{db.users.find((u) => u.id === q.byId)?.name} · {fmtDate(q.at)}</span></div>
+              <p className="text-slate-700">{q.note}</p>
+              {(can("log.confirm") || can("plan.edit")) && <Button size="sm" variant="outline" onClick={() => { run(saveRow, "constructionPlans", { ...task, quality: null }); toast.success("Đã hủy kết quả đánh giá"); }}>Đánh giá lại</Button>}
+            </div>
+          ) : task.actualQty <= 0 ? (
+            <p className="text-slate-400">Công việc chưa có khối lượng thực hiện để đánh giá.</p>
+          ) : can("log.confirm") || can("plan.edit") ? (
+            <div className="space-y-2.5">
+              <div className="flex gap-2">
+                {(["dat", "khong_dat"] as const).map((r) => <button key={r} onClick={() => setResult(r)} className={`flex-1 rounded-md border px-3 py-2 text-[13px] font-medium ${result === r ? (r === "dat" ? "border-success bg-success-soft text-success-fg" : "border-rose-400 bg-rose-50 text-rose-700") : "text-slate-600 hover:bg-slate-50"}`}>{r === "dat" ? "Đạt" : "Không đạt"}</button>)}
+              </div>
+              <Textarea rows={2} value={note} onChange={(e) => setNote(e.target.value)} placeholder="Nhận xét: kết quả thí nghiệm, kiểm tra hiện trường..." />
+              <Button size="sm" onClick={() => { run(saveRow, "constructionPlans", { ...task, quality: { result, byId: user!.id, at: DEMO_TODAY, note: note || (result === "dat" ? "Đạt yêu cầu kỹ thuật" : "Không đạt, yêu cầu khắc phục") } }); toast.success("Đã ghi nhận đánh giá chất lượng"); setNote(""); }}>Ghi nhận đánh giá</Button>
+            </div>
+          ) : <p className="text-slate-400">Chưa đánh giá. Chỉ huy trưởng / Phòng KHKT thực hiện đánh giá, nghiệm thu nội bộ.</p>}
+        </CardContent>
+      </Card>
     </div>
   );
 }

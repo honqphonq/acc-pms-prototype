@@ -113,7 +113,7 @@ export function TaskUpdateForm({ taskId, active = true, onDone, onCancel, footer
                 </div>
               </div>
               <FormField label="Nội dung đã thực hiện / ghi chú" className="mt-3">
-                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="VD: Đã đổ xong 24 m³ bê tông giằng móng trục C–E, đang tưới nước bảo dưỡng. Đã lấy 3 tổ mẫu M300 gửi thí nghiệm." />
+                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="VD: Đã rải 600 m³ BTXM M350 làn 8–9 CHC zone R2, phủ nilon bảo dưỡng; lấy 3 tổ mẫu uốn gửi thí nghiệm." />
               </FormField>
             </FormSection>
 

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "fd-001",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "1. Hồ sơ pháp lý",
+    "order": 1
+  },
+  {
+    "id": "fd-002",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "2. Bản vẽ thiết kế thi công",
+    "order": 2
+  },
+  {
+    "id": "fd-003",
+    "projectId": "p01",
+    "parentId": "fd-002",
+    "name": "Đường cất hạ cánh",
+    "order": 3
+  },
+  {
+    "id": "fd-004",
+    "projectId": "p01",
+    "parentId": "fd-002",
+    "name": "Đường lăn",
+    "order": 4
+  },
+  {
+    "id": "fd-005",
+    "projectId": "p01",
+    "parentId": "fd-002",
+    "name": "Sân đỗ máy bay",
+    "order": 5
+  },
+  {
+    "id": "fd-006",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "3. Biện pháp thi công",
+    "order": 6
+  },
+  {
+    "id": "fd-007",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "4. Nhật ký thi công",
+    "order": 7
+  },
+  {
+    "id": "fd-008",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "5. Kết quả thí nghiệm",
+    "order": 8
+  },
+  {
+    "id": "fd-009",
+    "projectId": "p01",
+    "parentId": "fd-008",
+    "name": "Thí nghiệm CPĐD",
+    "order": 9
+  },
+  {
+    "id": "fd-010",
+    "projectId": "p01",
+    "parentId": "fd-008",
+    "name": "Thí nghiệm BTXM",
+    "order": 10
+  },
+  {
+    "id": "fd-011",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "6. Biên bản nghiệm thu",
+    "order": 11
+  },
+  {
+    "id": "fd-012",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "7. Hồ sơ hoàn công",
+    "order": 12
+  },
+  {
+    "id": "fd-013",
+    "projectId": "p01",
+    "parentId": null,
+    "name": "8. Hồ sơ ATVSLĐ",
+    "order": 13
+  },
+  {
+    "id": "fd-014",
+    "projectId": "p01",
+    "parentId": "fd-013",
+    "name": "Kế hoạch ATVSLĐ",
+    "order": 14
+  },
+  {
+    "id": "fd-015",
+    "projectId": "p01",
+    "parentId": "fd-013",
+    "name": "Huấn luyện an toàn",
+    "order": 15
+  },
+  {
+    "id": "fd-016",
+    "projectId": "p01",
+    "parentId": "fd-013",
+    "name": "Kiểm tra an toàn định kỳ",
+    "order": 16
+  },
+  {
+    "id": "fd-017",
+    "projectId": "p02",
+    "parentId": null,
+    "name": "1. Hồ sơ pháp lý",
+    "order": 17
+  },
+  {
+    "id": "fd-018",
+    "projectId": "p02",
+    "parentId": null,
+    "name": "2. Bản vẽ thiết kế thi công",
+    "order": 18
+  }
+]

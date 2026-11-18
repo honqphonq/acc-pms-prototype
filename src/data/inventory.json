@@ -1,99 +1,83 @@
 [
   {
-    "id": "inv-p01-VL001",
+    "id": "inv-p01-VL018",
     "projectId": "p01",
-    "materialId": "m01",
-    "normQty": 1800,
-    "minStock": 72,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m18",
+    "normQty": 198880,
+    "minStock": 7955.2,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL002",
+    "id": "inv-p01-VL026",
     "projectId": "p01",
-    "materialId": "m02",
-    "normQty": 620,
-    "minStock": 24.8,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m26",
+    "normQty": 126140,
+    "minStock": 5045.6,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL003",
+    "id": "inv-p01-VL011",
     "projectId": "p01",
-    "materialId": "m03",
-    "normQty": 480,
-    "minStock": 19.2,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m11",
+    "normQty": 144170,
+    "minStock": 5766.8,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL005",
+    "id": "inv-p01-VL027",
     "projectId": "p01",
-    "materialId": "m05",
-    "normQty": 3200,
-    "minStock": 128,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m27",
+    "normQty": 26370,
+    "minStock": 1054.8,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL007",
+    "id": "inv-p01-VL028",
     "projectId": "p01",
-    "materialId": "m07",
-    "normQty": 4800,
-    "minStock": 192,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m28",
+    "normQty": 18420,
+    "minStock": 736.8,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL010",
+    "id": "inv-p01-VL029",
     "projectId": "p01",
-    "materialId": "m10",
-    "normQty": 21000,
-    "minStock": 840,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m29",
+    "normQty": 132440,
+    "minStock": 5297.6,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL012",
+    "id": "inv-p01-VL030",
     "projectId": "p01",
-    "materialId": "m12",
-    "normQty": 1500,
-    "minStock": 60,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m30",
+    "normQty": 1696,
+    "minStock": 67.8,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL013",
+    "id": "inv-p01-VL023",
     "projectId": "p01",
-    "materialId": "m13",
-    "normQty": 1200000,
-    "minStock": 48000,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m23",
+    "normQty": 127210,
+    "minStock": 5088.4,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL014",
+    "id": "inv-p01-VL025",
     "projectId": "p01",
-    "materialId": "m14",
-    "normQty": 9000,
-    "minStock": 360,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m25",
+    "normQty": 367490,
+    "minStock": 14699.6,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
-    "id": "inv-p01-VL015",
+    "id": "inv-p01-VL031",
     "projectId": "p01",
-    "materialId": "m15",
-    "normQty": 18000,
-    "minStock": 720,
-    "location": "Kho công trường Trường Lê Hồng Phong"
-  },
-  {
-    "id": "inv-p01-VL016",
-    "projectId": "p01",
-    "materialId": "m16",
-    "normQty": 2400,
-    "minStock": 96,
-    "location": "Kho công trường Trường Lê Hồng Phong"
-  },
-  {
-    "id": "inv-p01-VL017",
-    "projectId": "p01",
-    "materialId": "m17",
-    "normQty": 96500,
-    "minStock": 3860,
-    "location": "Kho công trường Trường Lê Hồng Phong"
+    "materialId": "m31",
+    "normQty": 520000,
+    "minStock": 20800,
+    "location": "Kho công trường Sân bay Gia Bình"
   },
   {
     "id": "inv-p02-VL001",

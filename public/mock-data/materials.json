@@ -223,5 +223,59 @@
     "unit": "m²",
     "unitPrice": 2000,
     "spec": "Dày 0,15mm"
+  },
+  {
+    "id": "m26",
+    "code": "VL026",
+    "name": "Bê tông xi măng M150/25 (móng)",
+    "group": "Bê tông",
+    "unit": "m³",
+    "unitPrice": 1250000,
+    "spec": "CĐT cấp – trạm trộn công trường, đá 1x2"
+  },
+  {
+    "id": "m27",
+    "code": "VL027",
+    "name": "Bê tông nhựa chặt C19",
+    "group": "Bê tông nhựa",
+    "unit": "tấn",
+    "unitPrice": 1550000,
+    "spec": "TCVN 8819:2011, Dmax 19"
+  },
+  {
+    "id": "m28",
+    "code": "VL028",
+    "name": "Bê tông nhựa chặt C16",
+    "group": "Bê tông nhựa",
+    "unit": "tấn",
+    "unitPrice": 1620000,
+    "spec": "TCVN 8819:2011, Dmax 16"
+  },
+  {
+    "id": "m29",
+    "code": "VL029",
+    "name": "Nhũ tương nhựa đường tưới dính bám",
+    "group": "Nhựa đường",
+    "unit": "kg",
+    "unitPrice": 14500,
+    "spec": "CSS-1h, 0,5 kg/m²"
+  },
+  {
+    "id": "m30",
+    "code": "VL030",
+    "name": "Thép thanh truyền lực Ø32",
+    "group": "Thép",
+    "unit": "tấn",
+    "unitPrice": 16500000,
+    "spec": "CĐT cấp – thép tròn trơn CB240-T, L=45cm"
+  },
+  {
+    "id": "m31",
+    "code": "VL031",
+    "name": "Dầu diesel 0,05S",
+    "group": "Nhiên liệu",
+    "unit": "lít",
+    "unitPrice": 21500,
+    "spec": "Cấp cho xe máy thi công"
   }
 ]

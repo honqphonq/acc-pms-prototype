@@ -105,7 +105,7 @@ export function deleteItem(db: Database, itemId: ID): Database {
   db = remove(db, "constructionPlans", (t) => t.itemId === itemId);
   return remove(db, "constructionLogs", (l) => ids.has(l.taskId));
 }
-export type TaskInput = Pick<PlanTask, "projectId" | "itemId" | "parentId" | "name" | "assigneeId" | "team" | "unit" | "contractQty" | "unitPrice" | "plannedStart" | "plannedEnd" | "isGroup"> & { note?: string };
+export type TaskInput = Pick<PlanTask, "projectId" | "itemId" | "parentId" | "name" | "assigneeId" | "team" | "unit" | "contractQty" | "unitPrice" | "plannedStart" | "plannedEnd" | "isGroup"> & { note?: string; predecessors?: PlanTask["predecessors"] };
 export function createTask(db: Database, input: TaskInput): Database {
   const siblings = db.constructionPlans.filter((t) => t.itemId === input.itemId && t.parentId === input.parentId);
   const parentCode = input.parentId ? db.constructionPlans.find((t) => t.id === input.parentId)!.code : db.constructionItems.find((i) => i.id === input.itemId)!.code;
@@ -113,7 +113,11 @@ export function createTask(db: Database, input: TaskInput): Database {
   const task: PlanTask = {
     ...input,
     id: genId("t"),
-    code: `${parentCode}.${siblings.length + 1}`,
+    code: (() => {
+      const codes = db.constructionPlans.filter((t) => t.projectId === input.projectId).map((t) => t.code);
+      // dự án đánh số ID liên tục (như tiến độ MS Project) → lấy số tiếp theo
+      return codes.length && codes.every((c) => /^\d+$/.test(c)) ? String(Math.max(...codes.map(Number)) + 1) : `${parentCode}.${siblings.length + 1}`;
+    })(),
     actualQty: 0,
     actualStart: null,
     actualEnd: null,
@@ -451,4 +455,46 @@ function addDaysLocal(s: string, n: number) {
   const d = new Date(s + "T00:00:00Z");
   d.setUTCDate(d.getUTCDate() + n);
   return d.toISOString().slice(0, 10);
+}
+
+// ======================= DANH MỤC ĐƠN GIẢN (dùng chung) =======================
+/** Thêm mới hoặc cập nhật một bản ghi theo id trong collection */
+export function saveRow<K extends Key>(db: Database, key: K, row: Database[K][number] & { id: ID }): Database {
+  const list = db[key] as unknown as { id: ID }[];
+  return list.some((x) => x.id === row.id) ? patch(db, key, row.id, row) : insert(db, key, row, true);
+}
+export function deleteRow<K extends Key>(db: Database, key: K, id: ID): Database {
+  return remove(db, key, (x) => (x as unknown as { id: ID }).id === id);
+}
+
+/** Xử lý chênh lệch kiểm kê: tạo phiếu điều chỉnh tồn kho (nhập thừa / xuất thiếu) và khóa phiếu kiểm kê */
+export function processStocktake(db: Database, id: ID, byId: ID): Database {
+  const st = db.stocktakes.find((x) => x.id === id);
+  if (!st) return db;
+  let next = db;
+  st.lines.forEach((l) => {
+    const diff = Math.round((l.actualQty - l.bookQty) * 100) / 100;
+    if (!diff) return;
+    const codes = next.stockTransactions.map((t) => t.code);
+    const type = diff > 0 ? "nhap" : "xuat";
+    const tx: StockTransaction = {
+      id: genId("tx"), code: nextCode(type === "nhap" ? "PNK-" : "PXK-", codes, 4), type, subType: "kiem_ke", projectId: st.projectId, materialId: l.materialId,
+      qty: Math.abs(diff), docQty: Math.abs(diff), confirmed: true, date: DEMO_TODAY, requestId: null, taskId: null, supplierId: null, byId, note: `Điều chỉnh tồn kho theo phiếu kiểm kê ${st.code}`,
+    };
+    next = insert(next, "stockTransactions", tx);
+  });
+  return patch(next, "stocktakes", id, { status: "da_xu_ly" });
+}
+
+/** Thu hồi XMTB về Tổng công ty: kết thúc quyết định điều động hiện hành, máy về trạng thái nhàn rỗi */
+export function recallEquipment(db: Database, assignmentId: ID, byId: ID): Database {
+  const a = db.equipmentAssignments.find((x) => x.id === assignmentId);
+  if (!a) return db;
+  let next = patch(db, "equipmentAssignments", a.id, { status: "hoan_thanh", endDate: DEMO_TODAY });
+  next = patch(next, "equipment", a.equipmentId, { status: "nhan_roi", currentProjectId: null, operatorId: null });
+  const rec: EquipmentAssignment = {
+    id: genId("as"), code: nextCode("QĐ-TH-2026-", next.equipmentAssignments.map((x) => x.code)), equipmentId: a.equipmentId, fromProjectId: a.toProjectId, toProjectId: "",
+    operatorId: null, startDate: DEMO_TODAY, endDate: DEMO_TODAY, status: "hoan_thanh", kind: "thu_hoi", requesterId: byId, reason: "Thu hồi thiết bị về kho Tổng công ty", createdAt: DEMO_TODAY,
+  };
+  return insert(next, "equipmentAssignments", rec, true);
 }

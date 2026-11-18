@@ -1,0 +1,231 @@
+[
+  {
+    "id": "pa-001",
+    "code": "PA-GB-001",
+    "projectId": "p01",
+    "itemId": null,
+    "title": "Phương án tổng thể tổ chức thi công khu bay",
+    "status": "da_duyet",
+    "version": 3,
+    "createdById": "u05",
+    "updatedAt": "2026-06-10",
+    "summary": "Chia khu bay thành 4 mũi thi công (CHC R2–R4B, đường lăn T2–T4B, sân đỗ A2); bố trí 2 trạm trộn BTXM 120 m³/h, 3 máy rải ván khuôn trượt; thi công cuốn chiếu lòng đường → lề vật liệu.",
+    "files": [
+      "PA tong the khu bay v3.pdf",
+      "So do mat bang to chuc thi cong.dwg",
+      "Tien do tong the.mpp"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2026-04-20",
+        "byId": "u05",
+        "note": "Lập phương án ban đầu"
+      },
+      {
+        "version": 2,
+        "at": "2026-05-08",
+        "byId": "u05",
+        "note": "Điều chỉnh theo góp ý TVGS: bổ sung trạm trộn số 2"
+      },
+      {
+        "version": 3,
+        "at": "2026-06-10",
+        "byId": "u04",
+        "note": "Cập nhật tiến độ bàn giao mặt bằng zone R4B"
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm-1",
+        "byId": "u03",
+        "at": "2026-05-02",
+        "content": "Đề nghị bổ sung phương án cấp BTXM khi trạm trộn số 1 bảo dưỡng."
+      },
+      {
+        "id": "cm-2",
+        "byId": "u04",
+        "at": "2026-05-08",
+        "content": "Đã bổ sung trạm trộn dự phòng 90 m³/h."
+      },
+      {
+        "id": "cm-3",
+        "byId": "u01",
+        "at": "2026-06-12",
+        "content": "Thống nhất phương án v3."
+      }
+    ]
+  },
+  {
+    "id": "pa-002",
+    "code": "PA-GB-002",
+    "projectId": "p01",
+    "itemId": "i-p01-B",
+    "title": "Biện pháp thi công móng cấp phối đá dăm loại 1",
+    "status": "da_duyet",
+    "version": 2,
+    "createdById": "u06",
+    "updatedAt": "2026-06-15",
+    "summary": "Rải CPĐD bằng máy rải, lu lèn 3 giai đoạn (lu tĩnh 8T – lu rung 25T – lu bánh lốp 16T), kiểm tra độ chặt K ≥ 0,98 mỗi 800 m².",
+    "files": [
+      "BPTC mong CPDD v2.pdf"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2026-06-01",
+        "byId": "u06",
+        "note": "Lập biện pháp"
+      },
+      {
+        "version": 2,
+        "at": "2026-06-15",
+        "byId": "u06",
+        "note": "Bổ sung quy trình thí nghiệm độ chặt hiện trường"
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm-4",
+        "byId": "u05",
+        "at": "2026-06-10",
+        "content": "Cần quy định chiều dày rải tối đa mỗi lớp 18cm."
+      },
+      {
+        "id": "cm-5",
+        "byId": "u06",
+        "at": "2026-06-15",
+        "content": "Đã cập nhật."
+      }
+    ]
+  },
+  {
+    "id": "pa-003",
+    "code": "PA-GB-003",
+    "projectId": "p01",
+    "itemId": "i-p01-B",
+    "title": "Biện pháp thi công BTXM M350 mặt đường bằng máy rải ván khuôn trượt",
+    "status": "cho_gop_y",
+    "version": 2,
+    "createdById": "u08",
+    "updatedAt": "2026-11-10",
+    "summary": "Đổ BTXM M350/45 dày 40cm theo làn rộng 7,5m; cắt khe co sau 6–12 giờ; bảo dưỡng bằng nhũ tương và nilon 14 ngày; đặt thanh truyền lực Ø32 bằng DBI.",
+    "files": [
+      "BPTC BTXM M350 v2.pdf",
+      "Ban ve bo tri khe.dwg"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2026-08-05",
+        "byId": "u08",
+        "note": "Lập biện pháp"
+      },
+      {
+        "version": 2,
+        "at": "2026-11-10",
+        "byId": "u08",
+        "note": "Điều chỉnh thời điểm cắt khe theo nhiệt độ mùa đông"
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm-6",
+        "byId": "u05",
+        "at": "2026-11-11",
+        "content": "Đề nghị bổ sung biện pháp che chắn khi mưa trong lúc đổ bê tông."
+      },
+      {
+        "id": "cm-7",
+        "byId": "u03",
+        "at": "2026-11-12",
+        "content": "Phòng KHKT đang rà soát định mức nhân công cắt khe."
+      }
+    ]
+  },
+  {
+    "id": "pa-004",
+    "code": "PA-GB-004",
+    "projectId": "p01",
+    "itemId": "i-p01-B",
+    "title": "Biện pháp thảm bê tông nhựa lề vật liệu",
+    "status": "du_thao",
+    "version": 1,
+    "createdById": "u30",
+    "updatedAt": "2026-11-13",
+    "summary": "Tưới nhũ tương dính bám 0,5 kg/m², thảm BTN C19 dày 8cm và C16 dày 7cm bằng máy rải, lu bánh lốp + lu thép; nhiệt độ rải ≥ 120°C.",
+    "files": [
+      "BPTC tham BTN (du thao).docx"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2026-11-13",
+        "byId": "u30",
+        "note": "Lập dự thảo"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "pa-005",
+    "code": "PA-GB-005",
+    "projectId": "p01",
+    "itemId": null,
+    "title": "Kế hoạch an toàn, vệ sinh lao động và bảo vệ môi trường",
+    "status": "da_duyet",
+    "version": 1,
+    "createdById": "u05",
+    "updatedAt": "2026-05-05",
+    "summary": "Tổ chức hệ thống quản lý ATVSLĐ, huấn luyện an toàn đầu vào, kiểm tra an toàn hằng ngày, phương án phòng chống cháy nổ khu trạm trộn.",
+    "files": [
+      "KH ATVSLD.pdf"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2026-05-05",
+        "byId": "u05",
+        "note": "Phê duyệt"
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm-8",
+        "byId": "u04",
+        "at": "2026-05-05",
+        "content": "Triển khai cho toàn bộ tổ đội."
+      }
+    ]
+  },
+  {
+    "id": "pa-006",
+    "code": "PA-DAD-001",
+    "projectId": "p02",
+    "itemId": null,
+    "title": "Phương án thi công sân đỗ trong điều kiện khai thác bay",
+    "status": "da_duyet",
+    "version": 2,
+    "createdById": "u20",
+    "updatedAt": "2025-10-02",
+    "summary": "Phân khu thi công theo ca đêm, rào chắn an toàn khu bay, phối hợp cảng vụ.",
+    "files": [
+      "PA thi cong san do.pdf"
+    ],
+    "versions": [
+      {
+        "version": 1,
+        "at": "2025-09-10",
+        "byId": "u20",
+        "note": "Lập phương án"
+      },
+      {
+        "version": 2,
+        "at": "2025-10-02",
+        "byId": "u20",
+        "note": "Cập nhật theo góp ý Cảng vụ"
+      }
+    ],
+    "comments": []
+  }
+]

@@ -36,6 +36,18 @@ const Alerts = lazy(() => import("@/pages/reports/AlertsPage"));
 const Admin = lazy(() => import("@/pages/admin/AdminPage"));
 const Guide = lazy(() => import("@/pages/admin/GuidePage"));
 const NotFound = lazy(() => import("@/pages/admin/NotFoundPage"));
+const Methods = lazy(() => import("@/pages/construction/MethodsPage"));
+const Staff = lazy(() => import("@/pages/construction/StaffPage"));
+const Documents = lazy(() => import("@/pages/construction/DocumentsPage"));
+const Operators = lazy(() => import("@/pages/equipment/OperatorsPage"));
+const Repairs = lazy(() => import("@/pages/equipment/RepairsPage"));
+const Disposal = lazy(() => import("@/pages/equipment/DisposalPage"));
+const Incidents = lazy(() => import("@/pages/equipment/IncidentsPage"));
+const RoutesPage = lazy(() => import("@/pages/equipment/RoutesPage"));
+const Receipts = lazy(() => import("@/pages/materials/TransactionsPage").then((m) => ({ default: m.ReceiptsPage })));
+const Issues = lazy(() => import("@/pages/materials/TransactionsPage").then((m) => ({ default: m.IssuesPage })));
+const ComingSoon = lazy(() => import("@/pages/finance/ComingSoonPage"));
+const Account = lazy(() => import("@/pages/auth/AccountPage"));
 
 const S = ({ children }: { children: ReactNode }) => <Suspense fallback={<PageSkeleton />}>{children}</Suspense>;
 
@@ -54,6 +66,9 @@ export function AppRoutes() {
         <Route path="construction/plan/:projectId" element={<S><Plan /></S>} />
         <Route path="construction/plan/:projectId/task/:taskId" element={<S><TaskDetail /></S>} />
         <Route path="construction/logs" element={<S><Logs /></S>} />
+        <Route path="construction/methods" element={<S><Methods /></S>} />
+        <Route path="construction/staff" element={<S><Staff /></S>} />
+        <Route path="construction/documents" element={<S><Documents /></S>} />
         <Route path="construction/value-report" element={<S><ValueReport /></S>} />
         <Route path="materials" element={<Navigate to="/materials/inventory" replace />} />
         <Route path="materials/inventory" element={<S><Inventory /></S>} />
@@ -62,6 +77,8 @@ export function AppRoutes() {
         <Route path="materials/requests/:id" element={<S><RequestDetail /></S>} />
         <Route path="materials/requests/:id/edit" element={<S><RequestForm /></S>} />
         <Route path="materials/transactions" element={<S><Transactions /></S>} />
+        <Route path="materials/receipts" element={<S><Receipts /></S>} />
+        <Route path="materials/issues" element={<S><Issues /></S>} />
         <Route path="materials/catalog" element={<S><Catalog /></S>} />
         <Route path="materials/suppliers" element={<S><Suppliers /></S>} />
         <Route path="equipment" element={<Navigate to="/equipment/list" replace />} />
@@ -69,8 +86,15 @@ export function AppRoutes() {
         <Route path="equipment/dispatch" element={<S><Dispatch /></S>} />
         <Route path="equipment/shifts" element={<S><Shifts /></S>} />
         <Route path="equipment/maintenance" element={<S><Maintenance /></S>} />
+        <Route path="equipment/operators" element={<S><Operators /></S>} />
+        <Route path="equipment/repairs" element={<S><Repairs /></S>} />
+        <Route path="equipment/disposal" element={<S><Disposal /></S>} />
+        <Route path="equipment/incidents" element={<S><Incidents /></S>} />
+        <Route path="equipment/routes" element={<S><RoutesPage /></S>} />
         <Route path="equipment/:id" element={<S><EquipmentDetail /></S>} />
-        <Route path="finance" element={<Navigate to="/acceptance" replace />} />
+        <Route path="finance" element={<Navigate to="/materials/requests" replace />} />
+        <Route path="finance/:section" element={<S><ComingSoon /></S>} />
+        <Route path="account" element={<S><Account /></S>} />
         <Route path="acceptance" element={<S><AcceptanceList /></S>} />
         <Route path="acceptance/reconcile" element={<S><Reconcile /></S>} />
         <Route path="acceptance/:id" element={<S><AcceptanceDetail /></S>} />
@@ -78,7 +102,8 @@ export function AppRoutes() {
         <Route path="payments/settlement" element={<S><Settlement /></S>} />
         <Route path="reports" element={<S><Reports /></S>} />
         <Route path="alerts" element={<S><Alerts /></S>} />
-        <Route path="admin" element={<S><Admin /></S>} />
+        <Route path="admin" element={<Navigate to="/admin/users" replace />} />
+        <Route path="admin/:section" element={<S><Admin /></S>} />
         <Route path="guide" element={<S><Guide /></S>} />
         <Route path="*" element={<S><NotFound /></S>} />
       </Route>

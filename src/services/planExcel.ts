@@ -55,8 +55,8 @@ export async function downloadTemplate(db: Database, projectId: ID) {
   const p = db.projects.find((x) => x.id === projectId);
   const item = db.constructionItems.find((i) => i.projectId === projectId);
   const sample: (string | number)[][] = [
-    [item?.code ?? "1.1.1", item?.name ?? "Phần móng", "Đổ bê tông đài móng trục E–H", "Hoàng Quang Huy", "Tổ bê tông số 2", "m³", 180, 2350000, toDMY(addDays(DEMO_TODAY, 3)), toDMY(addDays(DEMO_TODAY, 17))],
-    [item?.code ?? "1.1.1", item?.name ?? "Phần móng", "Lắp dựng cốt thép giằng móng trục E–H", "Hoàng Quang Huy", "Tổ cốt thép", "tấn", 24, 26800000, toDMY(addDays(DEMO_TODAY, 1)), toDMY(addDays(DEMO_TODAY, 10))],
+    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường lăn", "Thi công móng CPĐD loại 1", "Phạm Văn Long", "Tổ móng CPĐD số 1", "m³", 2400, 165000, toDMY(addDays(DEMO_TODAY, 3)), toDMY(addDays(DEMO_TODAY, 17))],
+    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường cất hạ cánh", "Thi công BTXM M350/45 dày 40cm", "Hoàng Quang Huy", "Tổ BTXM mặt đường số 1", "m³", 1200, 680000, toDMY(addDays(DEMO_TODAY, 1)), toDMY(addDays(DEMO_TODAY, 10))],
   ];
   save(XLSX, [[...TEMPLATE_COLUMNS], ...sample], "Kế hoạch thi công", `Template_ke_hoach_thi_cong_${p?.code ?? ""}.xlsx`, WIDTHS);
 }

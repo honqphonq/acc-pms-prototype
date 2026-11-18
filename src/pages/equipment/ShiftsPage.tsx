@@ -51,7 +51,7 @@ export default function ShiftsPage() {
   ];
   return (
     <div>
-      <PageHeader title="Ca máy & nhiên liệu" description="Tổng hợp thời gian hoạt động, ca máy, nhiên liệu và định mức tiêu hao – đánh giá hiệu quả sử dụng thiết bị tại từng công trình." actions={(can("equipment.edit") || can("progress.update")) && <Button onClick={() => setOpen(true)}><Plus /> Ghi ca máy</Button>} />
+      <PageHeader title="Theo dõi hoạt động xe máy" description="Phân giao nhân sự theo ca, cập nhật nhật trình (km, m³), nhiên liệu sử dụng; cảnh báo nhiên liệu vượt định mức." actions={(can("equipment.edit") || can("progress.update")) && <Button onClick={() => setOpen(true)}><Plus /> Ghi ca máy</Button>} />
       <div className="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <KpiCard label="Số ca máy (3 tuần)" value={rows.length} tone="navy" />
         <KpiCard label="Tổng giờ máy" value={fmtNumber(hours, 0)} unit="giờ" tone="info" />

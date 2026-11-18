@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { ChevronDown, Download, FileSpreadsheet, FileUp, FolderPlus, MoreVertical, Search } from "lucide-react";
+import { ChevronDown, Download, FileSpreadsheet, FileUp, FolderPlus, MoreVertical, Printer, Search } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -13,7 +13,7 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { TableSkeleton } from "@/components/common/LoadingState";
 import { Tip } from "@/components/ui/tooltip";
 import { TaskFormDialog, ItemFormDialog } from "./TaskFormDialog";
-import { GanttChart, GanttLegend, type GanttRow, type GanttStatus } from "./GanttChart";
+import { GanttChart, GanttLegend, type GanttRow, type GanttStatus, type GanttZoom } from "./GanttChart";
 import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services/selectors";
 import { importPlanTasks } from "@/services/actions";
 import { downloadTemplate, exportPlan, parsePlanFile, type ImportRow } from "@/services/planExcel";
@@ -44,6 +44,8 @@ interface Line {
   actual: number;
   planned: number;
   unit: string;
+  qty: number;
+  predecessors?: { id: string; type: "FS" | "SS" }[];
   late: boolean;
   taskId?: string;
   itemId?: string;
@@ -58,7 +60,8 @@ export default function PlanPage() {
   const { can } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const [showGantt, setShowGantt] = useState(false);
+  const [showGantt, setShowGantt] = useState(params.get("view") !== "table");
+  const [zoom, setZoom] = useState<GanttZoom>("month");
   const [baseline, setBaseline] = useState(false);
   const [onlyLate, setOnlyLate] = useState(false);
   const [q, setQ] = useState("");
@@ -100,9 +103,9 @@ export default function PlanPage() {
     const pStart = all.map((t) => t.plannedStart).sort()[0] ?? project.startDate;
     const pEnd = all.map((t) => t.plannedEnd).sort().pop() ?? project.endDate;
     const items = db.constructionItems.filter((i) => i.projectId === project.id).sort((a, b) => a.order - b.order);
-    const base = { team: "", unit: "", parentId: null, childKeys: [] as string[] };
+    const base = { team: "", unit: "", qty: 0, parentId: null, childKeys: [] as string[] };
     out.push({ ...base, key: "root", stt: "1", code: "W00001", name: "Thi công", depth: 0, kind: "root", assignee: "", start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), actual: st.actual, planned: st.planned, late: st.tasksOverdue > 0, childKeys: ["total"] });
-    out.push({ ...base, key: "total", stt: "1.1", code: "", name: "TỔNG HẠNG MỤC THI CÔNG", depth: 1, kind: "total", assignee: userName(project.commanderId), start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), actual: st.actual, planned: st.planned, late: st.tasksOverdue > 0, childKeys: items.map((i) => i.id) });
+    out.push({ ...base, key: "total", stt: "1.1", code: "", name: "TỔNG TIẾN ĐỘ THI CÔNG", depth: 1, kind: "total", assignee: userName(project.commanderId), start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), actual: st.actual, planned: st.planned, late: st.tasksOverdue > 0, childKeys: items.map((i) => i.id) });
     let w = 1;
     tree.forEach(({ itemId, rows }) => {
       const it = items.find((i) => i.id === itemId)!;
@@ -117,7 +120,7 @@ export default function PlanPage() {
             key: t.id, stt: t.code, code: `W${String(++w).padStart(5, "0")}`, name: t.name, depth, kind: r.children.length ? "group" : "task",
             assignee: userName(t.assigneeId), team: t.team, start: t.plannedStart, end: t.plannedEnd,
             actualStart: r.children.length ? minStart(desc) : t.actualStart, actualEnd: r.children.length ? maxEnd(desc) : t.actualEnd,
-            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, late: r.health === "qua_han" || r.health === "cham",
+            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, predecessors: t.predecessors, late: r.health === "qua_han" || r.health === "cham",
             taskId: t.id, itemId, parentId: t.parentId, childKeys: r.children.map((c) => c.task.id),
           });
           walk(r.children, depth + 1);
@@ -183,11 +186,19 @@ export default function PlanPage() {
     return "chua_bat_dau";
   };
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({
-    id: l.taskId ?? l.key, label: l.name, code: l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
+    id: l.taskId ?? l.key, label: l.kind === "item" ? `${l.stt}. ${l.name.toUpperCase()}` : l.name, code: l.kind === "total" ? "1" : l.kind === "item" ? "" : l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
     start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd,
-    status: ganttStatus(l),
+    status: ganttStatus(l), progress: l.actual, unit: l.unit, qty: l.qty, predecessors: l.predecessors,
     assignee: l.assignee || undefined,
   }));
+  const printGantt = () => {
+    const prev = zoom;
+    setShowGantt(true);
+    setZoom("print");
+    const restore = () => { setZoom(prev); window.removeEventListener("afterprint", restore); };
+    window.addEventListener("afterprint", restore);
+    setTimeout(() => window.print(), 350);
+  };
 
   /** % làm tròn xuống khi chưa xong để không hiển thị 100% cho việc chưa hoàn thành */
   const pct = (v: number) => (v >= 1 ? "100%" : `${Math.min(99, Math.round(v * 100))}%`);
@@ -196,12 +207,12 @@ export default function PlanPage() {
 
   return (
     <div>
-      <div className="mb-4">
-        <div className="text-[12px] text-slate-500">Quản lý công trình / Kế hoạch thi công</div>
-        <h1 className="mt-0.5 text-[22px] font-bold uppercase tracking-tight text-slate-900">Kế hoạch thi công dự án</h1>
+      <div className="mb-4 print:hidden">
+        <div className="text-[12px] text-slate-500">Quản lý công trình / Tiến độ thi công</div>
+        <h1 className="mt-0.5 text-[22px] font-bold uppercase tracking-tight text-slate-900">Tiến độ thi công dự án</h1>
       </div>
 
-      <Card className="mb-3 flex flex-wrap items-center gap-2 px-4 py-3 xl:flex-nowrap">
+      <Card className="mb-3 flex flex-wrap items-center gap-2 px-4 py-3 xl:flex-nowrap print:hidden">
         <div className="flex min-w-0 flex-1 items-center gap-1 text-[13.5px]">
           <Link to="/projects" className="shrink-0 text-success-fg hover:underline">Danh sách dự án</Link>
           <span className="text-slate-400">»</span>
@@ -221,8 +232,12 @@ export default function PlanPage() {
           <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm kiếm công việc..." className="h-8 pl-8" />
         </div>
-        <Button size="sm" variant="outline" className={cn(showGantt && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setShowGantt(!showGantt)}>{showGantt ? "Ẩn sơ đồ" : "Hiện sơ đồ"}</Button>
-        <Button size="sm" variant="outline" className={cn(baseline && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setBaseline(!baseline)}>{baseline ? "Ẩn baseline" : "Hiện baseline"}</Button>
+        <div className="flex rounded-md border border-slate-200 p-0.5">
+          <button className={cn("rounded px-2.5 py-1 text-[12.5px] font-medium", !showGantt ? "bg-slate-800 text-white" : "text-slate-600 hover:bg-slate-100")} onClick={() => setShowGantt(false)}>Danh sách</button>
+          <button className={cn("rounded px-2.5 py-1 text-[12.5px] font-medium", showGantt ? "bg-slate-800 text-white" : "text-slate-600 hover:bg-slate-100")} onClick={() => setShowGantt(true)}>Gantt</button>
+        </div>
+        {showGantt && <select value={zoom === "print" ? "month" : zoom} onChange={(e) => setZoom(e.target.value as GanttZoom)} className="h-8 rounded-md border border-slate-200 bg-white px-2 text-[12.5px]" aria-label="Thang thời gian"><option value="week">Theo tuần</option><option value="month">Theo tháng</option><option value="quarter">Theo quý</option></select>}
+        <Button size="sm" variant="outline" className={cn(baseline && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setBaseline(!baseline)}>{showGantt ? (baseline ? "Ẩn thực tế" : "Hiện thực tế") : baseline ? "Ẩn baseline" : "Hiện baseline"}</Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild><Button size="sm" variant="outline">Thao tác</Button></DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-60">
@@ -244,6 +259,8 @@ export default function PlanPage() {
               <DropdownMenuItem onClick={() => downloadTemplate(db, project.id).then(() => toast.success("Đã tải template Excel"))}><FileSpreadsheet /> Tải template Excel</DropdownMenuItem>
               <DropdownMenuItem disabled={!can("plan.edit")} onClick={() => fileRef.current?.click()}><FileUp /> Nhập Excel</DropdownMenuItem>
               <DropdownMenuItem onClick={() => exportPlan(db, project.id).then((n) => toast.success(`Đã xuất ${n} công việc ra Excel`))}><Download /> Xuất Excel</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={printGantt}><Printer /> In biểu đồ Gantt</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <input ref={fileRef} type="file" accept=".xlsx,.xls" className="hidden" onChange={(e) => { onImportFile(e.target.files?.[0]); e.target.value = ""; }} />
@@ -257,8 +274,13 @@ export default function PlanPage() {
           <EmptyState title="Chưa có kế hoạch thi công" description={project.approvalStatus === "cho_duyet" ? "Dự án đang chờ Tổng công ty phê duyệt nhận thi công." : "Thêm hạng mục, sau đó thêm công việc – hoặc nhập kế hoạch từ file Excel theo template."} action={can("plan.edit") && project.approvalStatus !== "cho_duyet" ? <Button onClick={() => setItemOpen(true)}><FolderPlus /> Thêm hạng mục</Button> : undefined} />
         ) : showGantt ? (
           <>
-            <div className="border-b px-4 py-2"><GanttLegend showBaseline={baseline} /></div>
-            <GanttChart rows={ganttRows} showBaseline={baseline} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
+            <div className="gantt-title border-b px-4 py-3 text-center">
+              <div className="text-[15px] font-bold uppercase text-slate-900">Tiến độ thi công tổng thể</div>
+              <div className="text-[12px] text-slate-600">Dự án: {project.name.toUpperCase()}</div>
+              <div className="text-[12px] text-slate-600">{project.packageName}</div>
+            </div>
+            <div className="border-b px-4 py-2 print:hidden"><GanttLegend showBaseline={baseline} /></div>
+            <GanttChart rows={ganttRows} showBaseline={baseline} zoom={zoom} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
           </>
         ) : (
           <div className="overflow-x-auto">
@@ -278,7 +300,8 @@ export default function PlanPage() {
                   <th className="px-1.5 text-left font-medium">Kết thúc<br />thực tế</th>
                   <th className="px-1.5 text-left font-medium">Tiến độ</th>
                   {baseline && <th className="px-1.5 text-left font-medium">Tiến độ<br />kế hoạch</th>}
-                  <th className="px-2 text-left font-medium">Đơn vị</th>
+                  <th className="px-2 text-left font-medium">ĐVT</th>
+                  <th className="px-2 text-right font-medium">Khối lượng</th>
                 </tr>
               </thead>
               <tbody>
@@ -317,16 +340,17 @@ export default function PlanPage() {
                       <td className={cn("tabular whitespace-nowrap px-1.5 py-2", l.actual >= 1 ? "text-success-fg" : l.late && l.kind !== "root" && l.kind !== "total" ? "text-rose-600" : "text-slate-700")}>{pct(l.actual)}</td>
                       {baseline && <td className="tabular whitespace-nowrap px-1.5 py-2 text-slate-500">{pct(l.planned)}</td>}
                       <td className="whitespace-nowrap px-2.5 py-2 text-slate-600">{l.unit}</td>
+                      <td className="tabular whitespace-nowrap px-2.5 py-2 text-right text-slate-700">{l.qty ? l.qty.toLocaleString("vi-VN") : ""}</td>
                     </tr>
                   );
                 })}
-                {shown.length <= 2 && <tr><td colSpan={14} className="py-8 text-center text-xs text-slate-400">Không có công việc phù hợp</td></tr>}
+                {shown.length <= 2 && <tr><td colSpan={15} className="py-8 text-center text-xs text-slate-400">Không có công việc phù hợp</td></tr>}
               </tbody>
             </table>
           </div>
         )}
       </Card>
-      <p className="mt-2 text-[11.5px] text-slate-400">Bấm vào tên công việc để mở màn hình chi tiết và cập nhật kết quả · <span className="font-bold text-rose-600">!</span> công việc chậm / quá hạn · “+” thêm công việc tại vị trí dòng</p>
+      <p className="mt-2 text-[11.5px] text-slate-400 print:hidden">Bấm vào tên công việc để mở màn hình chi tiết và cập nhật kết quả · <span className="font-bold text-rose-600">!</span> công việc chậm / quá hạn · “+” thêm công việc tại vị trí dòng</p>
 
       <TaskFormDialog open={formOpen} onOpenChange={setFormOpen} projectId={project.id} task={db.constructionPlans.find((t) => t.id === editTaskId)} defaults={formDefaults} />
       <ItemFormDialog open={itemOpen} onOpenChange={setItemOpen} projectId={project.id} />

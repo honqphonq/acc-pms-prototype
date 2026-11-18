@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sk-001",
+    "code": "SC-2026-011",
+    "equipmentId": "eq-001",
+    "operatorId": "op01",
+    "projectId": "p01",
+    "date": "2026-11-09",
+    "type": "hu_hong",
+    "severity": "trung_binh",
+    "description": "Vỡ ống thủy lực khi đang rải BTXM zone R4B, dừng máy 6 giờ",
+    "plan": "Thay ống thủy lực dự phòng, điều máy rải số 2 hỗ trợ",
+    "planStatus": "da_duyet",
+    "status": "dang_xu_ly",
+    "progress": "11/11: đã thay ống, chờ chạy thử"
+  },
+  {
+    "id": "sk-002",
+    "code": "SC-2026-012",
+    "equipmentId": "eq-030",
+    "operatorId": "op05",
+    "projectId": "p02",
+    "date": "2026-10-21",
+    "type": "va_cham",
+    "severity": "nhe",
+    "description": "Xe tưới nước va quệt rào chắn khu bay khi lùi",
+    "plan": "Sửa rào chắn, nhắc nhở lái xe, bổ sung người cảnh giới",
+    "planStatus": "da_duyet",
+    "status": "da_xu_ly",
+    "progress": "Đã khắc phục 22/10"
+  },
+  {
+    "id": "sk-003",
+    "code": "SC-2026-013",
+    "equipmentId": "eq-033",
+    "operatorId": "op09",
+    "projectId": "p03",
+    "date": "2026-11-13",
+    "type": "tai_nan",
+    "severity": "nghiem_trong",
+    "description": "Ô tô tự đổ lật khi đổ vật liệu tại mép taluy, lái xe bị thương nhẹ",
+    "plan": "",
+    "planStatus": "chua_lap",
+    "status": "moi",
+    "progress": ""
+  }
+]

@@ -68,12 +68,12 @@ export function TaskFormDialog({ open, onOpenChange, projectId, task, defaults }
             <FormField label="Thuộc nhóm công việc">
               <Select value={f.parentId ?? ""} onChange={(e) => set("parentId", e.target.value || null)} options={groups.map((g) => ({ value: g.id, label: `${g.code} ${g.name}` }))} placeholder="— Trực thuộc hạng mục —" />
             </FormField>
-            <FormField label="Tên công việc" required error={err.name} className="md:col-span-2"><Input value={f.name} onChange={(e) => set("name", e.target.value)} placeholder="VD: Đổ bê tông đài móng, giằng móng" /></FormField>
+            <FormField label="Tên công việc" required error={err.name} className="md:col-span-2"><Input value={f.name} onChange={(e) => set("name", e.target.value)} placeholder="VD: Thi công BTXM M350/45 dày 40cm" /></FormField>
             <label className="flex items-center gap-2 text-[13px] text-slate-600 md:col-span-2">
               <input type="checkbox" checked={f.isGroup} onChange={(e) => set("isGroup", e.target.checked)} className="accent-[#E60028]" /> Là nhóm công việc (phân rã thành các đầu việc con, tiến độ tự tổng hợp)
             </label>
             <FormField label="Giao cho (người phụ trách)"><Select value={f.assigneeId} onChange={(e) => set("assigneeId", e.target.value)} options={people.map((u) => ({ value: u.id, label: `${u.name} – ${u.title}` }))} /></FormField>
-            <FormField label="Tổ đội thực hiện"><Input value={f.team} onChange={(e) => set("team", e.target.value)} placeholder="VD: Tổ bê tông số 2" /></FormField>
+            <FormField label="Tổ đội thực hiện"><Input value={f.team} onChange={(e) => set("team", e.target.value)} placeholder="VD: Tổ BTXM mặt đường số 1" /></FormField>
             <FormField label="Bắt đầu kế hoạch"><Input type="date" value={f.plannedStart} onChange={(e) => set("plannedStart", e.target.value)} /></FormField>
             <FormField label="Kết thúc kế hoạch" error={err.plannedEnd} hint={`Thời gian: ${Math.max(0, diffDays(f.plannedStart, f.plannedEnd) + 1)} ngày`}><Input type="date" value={f.plannedEnd} onChange={(e) => set("plannedEnd", e.target.value)} /></FormField>
             {!f.isGroup && (
@@ -84,6 +84,12 @@ export function TaskFormDialog({ open, onOpenChange, projectId, task, defaults }
                 <FormField label="Giá trị kế hoạch"><Input disabled value={`${fmtVnd(f.contractQty * f.unitPrice)} đ`} /></FormField>
               </>
             )}
+            <FormField label="Công việc liền trước (liên kết)" hint="FS: bắt đầu sau khi việc trước kết thúc · SS: bắt đầu sau khi việc trước bắt đầu">
+              <Select value={f.predecessors?.[0]?.id ?? ""} onChange={(e) => set("predecessors", e.target.value ? [{ id: e.target.value, type: f.predecessors?.[0]?.type ?? "FS" }] : [])} placeholder="— Không có —" options={db.constructionPlans.filter((t) => t.projectId === projectId && !t.isGroup && t.id !== task?.id).sort((a, b) => a.order - b.order).map((t) => ({ value: t.id, label: `[${t.code}] ${t.name}` }))} />
+            </FormField>
+            <FormField label="Kiểu liên kết">
+              <Select value={f.predecessors?.[0]?.type ?? "FS"} disabled={!f.predecessors?.length} onChange={(e) => set("predecessors", f.predecessors?.length ? [{ id: f.predecessors[0].id, type: e.target.value as "FS" | "SS" }] : [])} options={[{ value: "FS", label: "FS – Kết thúc → Bắt đầu" }, { value: "SS", label: "SS – Bắt đầu → Bắt đầu" }]} />
+            </FormField>
             <FormField label="Ghi chú / yêu cầu kỹ thuật" className="md:col-span-2"><Textarea value={f.note} onChange={(e) => set("note", e.target.value)} /></FormField>
           </div>
         </DialogBody>
@@ -107,7 +113,7 @@ export function ItemFormDialog({ open, onOpenChange, projectId }: { open: boolea
       <DialogContent>
         <DialogHeader><DialogTitle>Thêm hạng mục thi công</DialogTitle></DialogHeader>
         <DialogBody className="space-y-3">
-          <FormField label="Tên hạng mục" required><Input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="VD: Phần thân – Nhà học B" /></FormField>
+          <FormField label="Tên hạng mục" required><Input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="VD: F. Hệ thống thoát nước khu bay" /></FormField>
           <FormField label="Phụ trách hạng mục"><Select value={managerId} onChange={(e) => setManagerId(e.target.value)} options={people.map((u) => ({ value: u.id, label: u.name }))} /></FormField>
         </DialogBody>
         <DialogFooter>

@@ -35,7 +35,7 @@ export default function ProjectListPage() {
   const [status, setStatus] = useState("");
   const [health, setHealth] = useState("");
   const [unit, setUnit] = useState("");
-  const [formOpen, setFormOpen] = useState(false);
+  const [formOpen, setFormOpen] = useState(() => new URLSearchParams(window.location.search).get("new") === "1");
   const [editing, setEditing] = useState<Project | undefined>();
 
   const rows = [...getProjectStatsMap(db).values()].filter(
@@ -94,7 +94,7 @@ export default function ProjectListPage() {
             <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm"><MoreHorizontal /></Button></DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => navigate(`/projects/${s.project.id}`)}><Eye /> Xem chi tiết</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => navigate(`/construction/plan/${s.project.id}`)}><Rows3 /> Kế hoạch thi công</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate(`/construction/plan/${s.project.id}`)}><Rows3 /> Tiến độ thi công</DropdownMenuItem>
               {can("project.edit") && <DropdownMenuItem onClick={() => { setEditing(s.project); setFormOpen(true); }}><Pencil /> Chỉnh sửa</DropdownMenuItem>}
               {can("project.approve") && s.project.approvalStatus === "cho_duyet" && (
                 <>

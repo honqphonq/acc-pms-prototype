@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Check, Database, Download, Pencil, Plus, RefreshCcw, Trash2 } from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Check, Database, Download, KeyRound, Pencil, Plus, RefreshCcw, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -23,7 +24,9 @@ import { hasLocalChanges } from "@/services/storage";
 import { PERMISSION_LABELS, ROLE_PERMISSIONS, type Permission } from "@/utils/permissions";
 import { ROLE_LABELS } from "@/utils/constants";
 import { genId } from "@/utils/id";
-import type { Department, RoleKey, User } from "@/types";
+import { ROLE_DESCRIPTIONS } from "@/utils/constants";
+import { fmtDateTime } from "@/utils/format";
+import type { Department, LoginEntry, RoleKey, User } from "@/types";
 
 export default function AdminPage() {
   const { db, run, resetDemo } = useDb();
@@ -33,6 +36,10 @@ export default function AdminPage() {
   const [role, setRole] = useState("");
   const [edit, setEdit] = useState<User | null>(null);
   const isAdmin = can("admin");
+  const { section = "users" } = useParams();
+  const navigate = useNavigate();
+  const [lu, setLu] = useState("");
+  const xlsx = async (name: string, data: Record<string, unknown>[]) => { const X = await import("xlsx"); const ws = X.utils.json_to_sheet(data); const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, "Data"); X.writeFile(wb, `${name}.xlsx`); toast.success(`Đã xuất ${data.length} dòng`); };
   const staff = db.users.filter((u) => !role || u.role === role);
 
   const cols: Column<User>[] = [
@@ -41,7 +48,7 @@ export default function AdminPage() {
     { key: "r", header: "Vai trò", sortValue: (u) => u.role, cell: (u) => <Badge tone="outline">{ROLE_LABELS[u.role]}</Badge> },
     { key: "d", header: "Đơn vị", sortValue: (u) => u.departmentId, cell: (u) => <span className="text-xs">{db.departments.find((d) => d.id === u.departmentId)?.name}</span> },
     { key: "p", header: "Điện thoại", cell: (u) => <span className="text-xs">{u.phone}</span> },
-    { key: "a", header: "", cell: (u) => isAdmin && <div className="flex justify-end gap-1"><Button size="icon-sm" variant="ghost" onClick={() => setEdit({ ...u })}><Pencil /></Button><Button size="icon-sm" variant="ghost" disabled={u.id === user?.id} className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa người dùng ${u.name}?`, destructive: true, confirmText: "Xóa" })) { run(deleteUser, u.id); toast.success("Đã xóa người dùng"); } }}><Trash2 /></Button></div> },
+    { key: "a", header: "", cell: (u) => isAdmin && <div className="flex justify-end gap-1"><Button size="icon-sm" variant="ghost" aria-label="Reset mật khẩu" onClick={async () => { if (await confirm({ title: `Reset mật khẩu cho ${u.name}?`, description: "Mật khẩu tạm thời được gửi qua SĐT / email của người dùng." })) toast.success("Đã reset mật khẩu (mô phỏng)"); }}><KeyRound /></Button><Button size="icon-sm" variant="ghost" onClick={() => setEdit({ ...u })}><Pencil /></Button><Button size="icon-sm" variant="ghost" disabled={u.id === user?.id} className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa người dùng ${u.name}?`, destructive: true, confirmText: "Xóa" })) { run(deleteUser, u.id); toast.success("Đã xóa người dùng"); } }}><Trash2 /></Button></div> },
   ];
 
   const tree = (parentId: string | null, depth = 0): JSX.Element[] =>
@@ -60,11 +67,13 @@ export default function AdminPage() {
 
   return (
     <div>
-      <PageHeader title="Quản trị hệ thống" description="Người dùng, vai trò & quyền, cơ cấu tổ chức và quản lý dữ liệu demo." />
-      <Tabs defaultValue="users">
+      <PageHeader title="Quản lý hệ thống" description="Người dùng, vai trò người dùng, quyền hệ thống, lịch sử đăng nhập, cơ cấu tổ chức và dữ liệu demo." />
+      <Tabs value={section} onValueChange={(v) => navigate(`/admin/${v}`)}>
         <TabsList className="mb-4 rounded-xl bg-white px-2">
           <TabsTrigger value="users">Người dùng</TabsTrigger>
-          <TabsTrigger value="roles">Vai trò & phân quyền</TabsTrigger>
+          <TabsTrigger value="roles">Vai trò người dùng</TabsTrigger>
+          <TabsTrigger value="permissions">Quyền hệ thống</TabsTrigger>
+          <TabsTrigger value="logins">Lịch sử đăng nhập</TabsTrigger>
           <TabsTrigger value="org">Cơ cấu tổ chức</TabsTrigger>
           <TabsTrigger value="data">Dữ liệu demo</TabsTrigger>
         </TabsList>
@@ -72,10 +81,17 @@ export default function AdminPage() {
           <Card>
             <DataTable columns={cols} rows={staff} rowKey={(u) => u.id} loading={loading} searchText={(u) => `${u.name} ${u.code} ${u.title} ${u.email}`} searchPlaceholder="Tìm người dùng..." pageSize={15}
               toolbar={<FilterSelect value={role} onChange={setRole} allLabel="Tất cả vai trò" options={Object.entries(ROLE_LABELS).map(([v, l]) => ({ value: v, label: l }))} />}
-              toolbarRight={isAdmin ? <Button size="sm" onClick={() => setEdit({ id: genId("u"), code: `NV${db.users.length + 100}`, name: "", role: "to_truong", title: "", departmentId: "d-acc244", phone: "", email: "" })}><Plus /> Thêm người dùng</Button> : <span className="text-xs text-slate-500">Đăng nhập vai trò Quản trị để chỉnh sửa</span>} />
+              toolbarRight={isAdmin ? <><Button size="sm" variant="outline" onClick={() => toast.info("Chọn file Excel danh sách người dùng theo mẫu (mô phỏng)")}><Upload /> Import</Button><Button size="sm" variant="outline" onClick={() => xlsx("Nguoi-dung", staff.map((u) => ({ "Mã NV": u.code, "Họ tên": u.name, "Chức danh": u.title, "Vai trò": ROLE_LABELS[u.role], "Email": u.email, "Điện thoại": u.phone })))}><Download /> Export</Button><Button size="sm" onClick={() => setEdit({ id: genId("u"), code: `NV${db.users.length + 100}`, name: "", role: "to_truong", title: "", departmentId: "d-acc244", phone: "", email: "" })}><Plus /> Thêm người dùng</Button></> : <span className="text-xs text-slate-500">Đăng nhập vai trò Quản trị để chỉnh sửa</span>} />
           </Card>
         </TabsContent>
         <TabsContent value="roles">
+          <Card className="mb-4">
+            <CardHeader><CardTitle>Danh sách vai trò người dùng</CardTitle></CardHeader>
+            <Table>
+              <TableHeader><TableRow><TableHead>Vai trò</TableHead><TableHead>Mô tả</TableHead><TableHead className="text-right">Số quyền</TableHead><TableHead className="text-right">Số người dùng</TableHead></TableRow></TableHeader>
+              <TableBody>{(Object.keys(ROLE_LABELS) as RoleKey[]).map((r) => <TableRow key={r}><TableCell className="font-medium">{ROLE_LABELS[r]}</TableCell><TableCell className="text-xs text-slate-600">{ROLE_DESCRIPTIONS[r]}</TableCell><TableCell className="text-right">{ROLE_PERMISSIONS[r].length}</TableCell><TableCell className="text-right">{db.users.filter((u) => u.role === r).length}</TableCell></TableRow>)}</TableBody>
+            </Table>
+          </Card>
           <Card>
             <CardHeader><CardTitle>Ma trận phân quyền theo vai trò</CardTitle><AssumptionTag>Ma trận phân quyền là đề xuất của prototype dựa trên mô hình tổ chức và các luồng nghiệp vụ; cần khảo sát chi tiết để xác nhận với ACC.</AssumptionTag></CardHeader>
             <Table>
@@ -86,6 +102,29 @@ export default function AdminPage() {
                 ))}
               </TableBody>
             </Table>
+          </Card>
+        </TabsContent>
+        <TabsContent value="permissions">
+          <Card>
+            <CardHeader><CardTitle>Tra cứu quyền hệ thống</CardTitle><Button size="sm" variant="outline" onClick={() => xlsx("Quyen-he-thong", (Object.keys(PERMISSION_LABELS) as Permission[]).map((p) => ({ "Mã quyền": p, "Tên quyền": PERMISSION_LABELS[p], "Vai trò được gán": (Object.keys(ROLE_LABELS) as RoleKey[]).filter((r) => ROLE_PERMISSIONS[r].includes(p)).map((r) => ROLE_LABELS[r]).join(", ") })))}><Download /> Xuất danh sách</Button></CardHeader>
+            <Table>
+              <TableHeader><TableRow><TableHead>Mã quyền</TableHead><TableHead>Tên quyền</TableHead><TableHead>Vai trò được gán</TableHead></TableRow></TableHeader>
+              <TableBody>{(Object.keys(PERMISSION_LABELS) as Permission[]).map((p) => <TableRow key={p}><TableCell><code className="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{p}</code></TableCell><TableCell className="font-medium">{PERMISSION_LABELS[p]}</TableCell><TableCell><div className="flex flex-wrap gap-1">{(Object.keys(ROLE_LABELS) as RoleKey[]).filter((r) => ROLE_PERMISSIONS[r].includes(p)).map((r) => <Badge key={r} tone="outline">{ROLE_LABELS[r]}</Badge>)}</div></TableCell></TableRow>)}</TableBody>
+            </Table>
+          </Card>
+        </TabsContent>
+        <TabsContent value="logins">
+          <Card>
+            <DataTable<LoginEntry> rows={db.loginHistory.filter((l) => !lu || l.userId === lu)} rowKey={(l) => l.id} loading={loading} pageSize={15} resetKey={lu}
+              searchText={(l) => `${db.users.find((u) => u.id === l.userId)?.name} ${l.ip} ${l.device}`} searchPlaceholder="Tìm người dùng, IP, thiết bị..."
+              toolbar={<FilterSelect value={lu} onChange={setLu} allLabel="Tất cả người dùng" options={[...new Set(db.loginHistory.map((l) => l.userId))].map((id) => ({ value: id, label: db.users.find((u) => u.id === id)?.name ?? id }))} />}
+              columns={[
+                { key: "at", header: "Thời gian", sortValue: (l) => l.at, cell: (l) => <span className="whitespace-nowrap">{fmtDateTime(l.at)}</span> },
+                { key: "u", header: "Người dùng", cell: (l) => { const u = db.users.find((x) => x.id === l.userId); return <div className="flex items-center gap-2"><Avatar name={u?.name ?? ""} size="xs" /><span>{u?.name}</span></div>; } },
+                { key: "ip", header: "Địa chỉ IP", cell: (l) => <code className="text-xs">{l.ip}</code> },
+                { key: "d", header: "Thiết bị / trình duyệt", cell: (l) => <span className="text-xs">{l.device}</span> },
+                { key: "r", header: "Kết quả", cell: (l) => l.result === "thanh_cong" ? <Badge tone="success">Thành công</Badge> : <Badge tone="danger">Sai mật khẩu</Badge> },
+              ]} />
           </Card>
         </TabsContent>
         <TabsContent value="org">

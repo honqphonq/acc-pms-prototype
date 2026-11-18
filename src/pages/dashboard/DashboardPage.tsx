@@ -49,7 +49,7 @@ export default function DashboardPage() {
   const countHealth = (h: keyof typeof HEALTH) => running.filter((s) => s.health === h).length;
 
   const alerts = getAlerts(db).filter((a) => !a.projectId || ids.has(a.projectId));
-  const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
+  const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => Number(b.project.id === "p01") - Number(a.project.id === "p01") || HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
 
   // ---- Máy móc thiết bị ----
   // Giờ máy lũy kế từ khi máy về công trình đến nay

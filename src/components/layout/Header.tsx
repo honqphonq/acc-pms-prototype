@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Bell, Building2, CalendarRange, ChevronRight, ClipboardList, LogOut, Menu, Package, RefreshCcw, Search, Truck, UserCog, CheckCheck } from "lucide-react";
+import { Bell, Building2, CalendarRange, ChevronRight, ClipboardList, LogOut, Menu, Package, RefreshCcw, Search, Truck, UserCog, CheckCheck, KeyRound, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -160,6 +160,13 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
                 <div className="text-sm font-semibold text-slate-800">{user.name}</div>
                 <div className="font-normal">{user.title}</div>
               </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => navigate("/account")}>
+                <UserRound /> Thông tin tài khoản
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/account?tab=password")}>
+                <KeyRound /> Đổi mật khẩu
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => { logout(); navigate("/login"); }}>
                 <UserCog /> Đổi vai trò demo

@@ -124,7 +124,7 @@ export default function ProjectDetailPage() {
                 <Button variant="outline" onClick={() => decide(false)}><XCircle /> Từ chối</Button>
               </>
             )}
-            <Button variant="navy" onClick={() => navigate(`/construction/plan/${project.id}`)}><CalendarRange /> Kế hoạch thi công</Button>
+            <Button variant="navy" onClick={() => navigate(`/construction/plan/${project.id}`)}><CalendarRange /> Tiến độ thi công</Button>
             <Button variant="outline" onClick={() => navigate(`/construction/value-report?project=${project.id}`)}><FileBarChart /> Giá trị thực hiện</Button>
             {can("project.edit") && <Button variant="outline" size="icon" onClick={() => setEditOpen(true)} title="Chỉnh sửa"><Pencil /></Button>}
           </div>

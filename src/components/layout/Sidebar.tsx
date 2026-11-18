@@ -74,11 +74,12 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onCloseMobile }: { co
                       <NavLink
                         key={c.to}
                         to={c.to}
-                        end={c.to === "/acceptance" || c.to === "/payments" || c.to === "/projects"}
+                        end={c.to === "/projects"}
                         onClick={onCloseMobile}
-                        className={({ isActive: a }) => cn("block rounded-md px-2.5 py-1.5 text-[12.5px] transition-colors", a ? "bg-white/10 font-semibold text-white" : "text-slate-400 hover:text-white")}
+                        className={({ isActive: a }) => cn("flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[12.5px] transition-colors", a ? "bg-white/10 font-semibold text-white" : c.soon ? "text-slate-500 hover:text-slate-300" : "text-slate-400 hover:text-white")}
                       >
-                        {c.label}
+                        <span className="min-w-0 flex-1">{c.label}</span>
+                        {c.soon && <span className="shrink-0 rounded bg-white/10 px-1 text-[9.5px] font-medium text-slate-400">Sắp có</span>}
                       </NavLink>
                     ))}
                   </div>

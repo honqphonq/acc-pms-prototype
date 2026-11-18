@@ -1,0 +1,94 @@
+[
+  {
+    "id": "kk-001",
+    "code": "KK-GB-2026-10",
+    "projectId": "p01",
+    "date": "2026-10-31",
+    "byId": "u10",
+    "status": "da_xu_ly",
+    "note": "Kiểm kê định kỳ tháng 10",
+    "lines": [
+      {
+        "materialId": "m18",
+        "bookQty": 9307.5,
+        "actualQty": 9307.5
+      },
+      {
+        "materialId": "m26",
+        "bookQty": 3852.1,
+        "actualQty": 3852.1
+      },
+      {
+        "materialId": "m11",
+        "bookQty": 4948.7,
+        "actualQty": 4948.7
+      },
+      {
+        "materialId": "m27",
+        "bookQty": 369.2,
+        "actualQty": 369.2
+      }
+    ]
+  },
+  {
+    "id": "kk-002",
+    "code": "KK-GB-2026-11",
+    "projectId": "p01",
+    "date": "2026-11-14",
+    "byId": "u10",
+    "status": "nhap",
+    "note": "Kiểm kê giữa tháng 11 trước đợt thảm BTN",
+    "lines": [
+      {
+        "materialId": "m18",
+        "bookQty": 9307.5,
+        "actualQty": 9307.5
+      },
+      {
+        "materialId": "m26",
+        "bookQty": 3852.1,
+        "actualQty": 3852.1
+      },
+      {
+        "materialId": "m11",
+        "bookQty": 4948.7,
+        "actualQty": 4800.2
+      },
+      {
+        "materialId": "m27",
+        "bookQty": 369.2,
+        "actualQty": 369.2
+      },
+      {
+        "materialId": "m28",
+        "bookQty": 774.3,
+        "actualQty": 774.3
+      },
+      {
+        "materialId": "m29",
+        "bookQty": 10164.5,
+        "actualQty": 10163.5
+      },
+      {
+        "materialId": "m30",
+        "bookQty": 123.1,
+        "actualQty": 123.1
+      },
+      {
+        "materialId": "m23",
+        "bookQty": 3580.9,
+        "actualQty": 3580.9
+      },
+      {
+        "materialId": "m25",
+        "bookQty": 19748.5,
+        "actualQty": 19748.5
+      },
+      {
+        "materialId": "m31",
+        "bookQty": 26222.1,
+        "actualQty": 26222.1
+      }
+    ]
+  }
+]

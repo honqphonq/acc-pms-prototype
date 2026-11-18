@@ -2,6 +2,8 @@
 
 High-fidelity interactive prototype cho **Tổng công ty Xây dựng Công trình Hàng không ACC**, xây dựng theo tài liệu *"Đề xuất giải pháp – Hệ thống quản lý dự án thi công"* (Viettel Solutions, 11/2026).
 
+**Cập nhật 18/11/2026:** menu và phân rã chức năng theo *Danh mục tính năng phần mềm quản lý thi công xây dựng – ACC*; dự án demo chính là **Cảng HKQT Gia Bình – GĐ 1.1** với tiến độ thi công chi tiết thật (`scripts/data/gia-binh-schedule.json`, 100 dòng). Phân hệ kế toán (dự toán, chi phí, thanh toán CĐT, giá trị KL, công nợ) để ở trạng thái *Sắp có*.
+
 > Đây là prototype **phục vụ trình diễn giải pháp**, không phải sản phẩm vận hành. Toàn bộ chạy ở trình duyệt – không backend, không API, không database. Dữ liệu là giả lập.
 
 ## Cài đặt & chạy
@@ -35,12 +37,12 @@ npm run preview
 | Vai trò | Người dùng | Màn hình bắt đầu |
 |---|---|---|
 | Lãnh đạo Tổng công ty | Nguyễn Văn Hùng | Dashboard tổng quan |
-| Phòng Kế hoạch - Kỹ thuật | Lê Thanh Thiện | Kế hoạch thi công |
-| Chỉ huy trưởng công trường | Trần Quốc Hải | Dự án Trường Lê Hồng Phong |
-| Tổ trưởng / Mũi trưởng | Hoàng Quang Huy | Kế hoạch thi công |
+| Phòng Kế hoạch - Kỹ thuật | Lê Thanh Thiện | Tiến độ thi công SB Gia Bình |
+| Chỉ huy trưởng công trường | Trần Quốc Hải | Dự án Sân bay Gia Bình |
+| Tổ trưởng / Mũi trưởng | Hoàng Quang Huy | Tiến độ thi công SB Gia Bình |
 | Bộ phận Vật tư | Chu Anh Tài | Đề xuất vật tư |
-| Phòng Thiết bị / BP Xe máy | Phạm Văn Vinh | Danh sách xe máy |
-| Tài chính - Kế toán | Hoàng Thị Bích | Đối chiếu khối lượng |
+| Phòng Thiết bị / BP Xe máy | Phạm Văn Vinh | Danh mục xe máy thiết bị |
+| Tài chính - Kế toán | Hoàng Thị Bích | Tồn kho và kiểm kê |
 | Quản trị hệ thống | Đặng Minh Quân | Quản trị (toàn quyền) |
 
 Đổi vai trò bất kỳ lúc nào: menu người dùng (góc trên phải) → **Đổi vai trò demo**, hoặc trang **Hướng dẫn demo** → nút *Bắt đầu với vai trò…*.
@@ -49,11 +51,11 @@ npm run preview
 
 Trang **Hướng dẫn demo** (`/guide`) liệt kê từng bước, có link trực tiếp:
 
-1. **Ban lãnh đạo giám sát dự án** – Dashboard → dự án chậm tiến độ → hạng mục, công việc quá hạn → cảnh báo.
-2. **Quản lý kế hoạch thi công** – Kế hoạch dự án Lê Hồng Phong → công việc 1.1.2.2.4 → *Cập nhật khối lượng* 24 m³ → tiến độ 80% → 85,7%, dự án và dashboard tự tính lại → CHT xác nhận nhật ký.
-3. **Quản lý vật tư** – Nhu cầu & tồn kho → tạo đề xuất (cảnh báo vượt định mức) → CHT phê duyệt (*Chờ duyệt → Đã phê duyệt*) → chọn NCC, đặt hàng → nhập kho → xuất sử dụng → tồn kho cập nhật.
-4. **Quản lý thiết bị** – Danh sách xe máy → lọc nhàn rỗi → điều động đến công trình → ca máy, nhiên liệu.
-5. **Nghiệm thu và thanh toán** – Đối chiếu khối lượng → lập hồ sơ nghiệm thu → TVGS → CĐT ký → lập hồ sơ thanh toán → ghi nhận thanh toán → thanh quyết toán.
+1. **Ban lãnh đạo giám sát dự án** – Trang chủ → Sân bay Gia Bình (chậm tiến độ) → Gantt tiến độ tổng thể → công việc [39] quá hạn.
+2. **Cập nhật tiến độ thi công** – Tiến độ SB Gia Bình → công việc [10] BTXM M350 zone R2 → nhập 600 m³ → 88% → 91,7%; CHT đánh giá chất lượng / nghiệm thu nội bộ.
+3. **Quản lý vật tư** – Tồn kho → đề xuất vật tư (gợi ý vật tư kèm định mức, tồn kho, đơn giá) → CHT phê duyệt → đặt hàng → nhập kho (đối chiếu, xác nhận) → xuất kho → kiểm kê.
+4. **Quản lý xe máy thiết bị** – Danh mục (ô tô / xe biển đỏ / máy thiết bị, cảnh báo kiểm định, bảo hiểm) → phân bổ điều động, thu hồi → bảo dưỡng → sửa chữa → sự cố → nhân viên CMKT.
+5. **Phương án, hồ sơ & nhân sự thi công** – góp ý, điều chỉnh phương án (lịch sử phiên bản) → hồ sơ thi công nhiều cấp → nhân sự thi công.
 
 ## Reset dữ liệu demo
 

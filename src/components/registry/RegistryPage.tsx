@@ -1,0 +1,189 @@
+import { useMemo, useState, type ReactNode } from "react";
+import { Download, Eye, Pencil, Plus, Trash2, Upload } from "lucide-react";
+import { toast } from "sonner";
+import { useDb } from "@/hooks/useDb";
+import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetBody, SheetContent, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { PageHeader } from "@/components/common/PageHeader";
+import { DataTable, FilterSelect, type Column } from "@/components/common/DataTable";
+import { FormField } from "@/components/common/FormField";
+import { KpiCard } from "@/components/common/KpiCard";
+import { useConfirm } from "@/components/common/ConfirmProvider";
+import { deleteRow, saveRow } from "@/services/actions";
+import { genId, nextCode } from "@/utils/id";
+import { cn } from "@/utils/cn";
+import type { CollectionKey, Database } from "@/types";
+
+export type Opt = { value: string; label: string };
+export interface FieldDef<T> {
+  key: keyof T & string;
+  label: string;
+  type?: "text" | "number" | "date" | "textarea" | "select" | "checkbox";
+  options?: Opt[] | ((db: Database) => Opt[]);
+  required?: boolean;
+  wide?: boolean;
+  hint?: string;
+}
+export interface FilterDef<T> {
+  label: string;
+  options: Opt[] | ((db: Database) => Opt[]);
+  test: (row: T, value: string) => boolean;
+  initial?: string;
+}
+type Row = { id: string; code?: string };
+
+interface Props<T extends Row> {
+  title: string;
+  description?: ReactNode;
+  collection: CollectionKey;
+  rows?: T[];
+  columns: Column<T>[];
+  fields: FieldDef<T>[];
+  newRecord?: (db: Database) => Partial<T>;
+  codePrefix?: string;
+  filters?: FilterDef<T>[];
+  kpis?: (rows: T[], db: Database) => { label: string; value: ReactNode; tone?: "primary" | "success" | "warning" | "danger" | "info" | "navy"; sub?: ReactNode }[];
+  searchText: (row: T) => string;
+  canEdit?: boolean;
+  addLabel?: string;
+  entityLabel?: string;
+  detail?: (row: T, close: () => void) => ReactNode;
+  rowActions?: (row: T) => ReactNode;
+  headerExtra?: ReactNode;
+  above?: ReactNode;
+  pageSize?: number;
+  rowClassName?: (row: T) => string | undefined;
+}
+
+/** Màn hình danh mục dùng chung: danh sách, tìm kiếm, lọc, thêm / sửa / xem / xóa, import / export */
+export function RegistryPage<T extends Row>(p: Props<T>) {
+  const { db, run } = useDb();
+  const confirm = useConfirm();
+  const loading = useSimulatedLoading();
+  const [edit, setEdit] = useState<Partial<T> | null>(null);
+  const [view, setView] = useState<string | null>(null);
+  const [fv, setFv] = useState<string[]>(() => (p.filters ?? []).map((f) => f.initial ?? ""));
+  const all = (p.rows ?? (db[p.collection] as unknown as T[])) as T[];
+  const rows = useMemo(() => all.filter((r) => (p.filters ?? []).every((f, i) => !fv[i] || f.test(r, fv[i]))), [all, fv, p.filters]);
+  const viewing = all.find((r) => r.id === view);
+  const opts = (o: FieldDef<T>["options"]) => (typeof o === "function" ? o(db) : o ?? []);
+  const label = p.entityLabel ?? p.title.toLowerCase();
+
+  const save = () => {
+    if (!edit) return;
+    const miss = p.fields.find((f) => f.required && (edit[f.key] === undefined || edit[f.key] === ""));
+    if (miss) return toast.error(`Nhập “${miss.label}”`);
+    const isNew = !edit.id;
+    const row = { ...edit, id: edit.id ?? genId(p.collection.slice(0, 3)) } as T;
+    if (isNew && p.codePrefix && !row.code) row.code = nextCode(p.codePrefix, all.map((r) => r.code ?? ""));
+    run(saveRow, p.collection, row as never);
+    toast.success(isNew ? `Đã thêm ${label}` : "Đã lưu thay đổi");
+    setEdit(null);
+  };
+  const del = async (r: T) => {
+    if (await confirm({ title: `Xóa ${label} ${r.code ?? ""}?`, destructive: true, confirmText: "Xóa" })) {
+      run(deleteRow, p.collection, r.id);
+      toast.success("Đã xóa");
+      setView(null);
+    }
+  };
+  const exportXlsx = async () => {
+    const XLSX = await import("xlsx");
+    const data = rows.map((r) => Object.fromEntries(p.fields.map((f) => [f.label, f.type === "select" ? opts(f.options).find((o) => o.value === String(r[f.key as keyof T]))?.label ?? r[f.key as keyof T] : f.type === "checkbox" ? (r[f.key as keyof T] ? "Có" : "Không") : r[f.key as keyof T]])));
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Danh sach");
+    XLSX.writeFile(wb, `${p.title}.xlsx`);
+    toast.success(`Đã xuất ${rows.length} dòng ra Excel`);
+  };
+
+  const cols: Column<T>[] = [
+    ...p.columns,
+    {
+      key: "__a", header: "", className: "w-px", cell: (r) => (
+        <div className="flex justify-end gap-0.5" onClick={(e) => e.stopPropagation()}>
+          {p.rowActions?.(r)}
+          <Button size="icon-sm" variant="ghost" aria-label="Xem" onClick={() => setView(r.id)}><Eye /></Button>
+          {p.canEdit !== false && <Button size="icon-sm" variant="ghost" aria-label="Sửa" onClick={() => setEdit({ ...r })}><Pencil /></Button>}
+          {p.canEdit !== false && <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={() => del(r)}><Trash2 /></Button>}
+        </div>
+      ),
+    },
+  ];
+  const kpis = p.kpis?.(all, db);
+
+  const fieldValue = (r: T, f: FieldDef<T>): ReactNode => {
+    const v = r[f.key as keyof T] as unknown;
+    if (f.type === "select") return opts(f.options).find((o) => o.value === String(v))?.label ?? String(v ?? "—");
+    if (f.type === "checkbox") return v ? "Có" : "Không";
+    if (f.type === "number" && typeof v === "number") return v.toLocaleString("vi-VN");
+    if (f.type === "date" && typeof v === "string" && v) return v.split("-").reverse().join("/");
+    return v === undefined || v === null || v === "" ? "—" : String(v);
+  };
+
+  return (
+    <div>
+      <PageHeader title={p.title} description={p.description} actions={<>
+        {p.headerExtra}
+        <Button variant="outline" onClick={() => toast.info("Chọn file Excel theo mẫu để nhập (mô phỏng)")}><Upload /> Import</Button>
+        <Button variant="outline" onClick={exportXlsx}><Download /> Export</Button>
+        {p.canEdit !== false && <Button onClick={() => setEdit({ ...(p.newRecord?.(db) ?? {}) } as Partial<T>)}><Plus /> {p.addLabel ?? "Thêm mới"}</Button>}
+      </>} />
+      {kpis && <div className={cn("mb-4 grid grid-cols-2 gap-4", kpis.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>{kpis.map((k) => <KpiCard key={k.label} label={k.label} value={k.value} tone={k.tone} sub={k.sub} />)}</div>}
+      {p.above}
+      <Card>
+        <DataTable columns={cols} rows={rows} rowKey={(r) => r.id} loading={loading} searchText={p.searchText} pageSize={p.pageSize ?? 12} onRowClick={(r) => setView(r.id)} rowClassName={p.rowClassName} resetKey={fv.join("|")}
+          toolbar={p.filters?.map((f, i) => <FilterSelect key={f.label} value={fv[i]} onChange={(v) => setFv((x) => x.map((y, k) => (k === i ? v : y)))} allLabel={f.label} options={opts(f.options)} />)} />
+      </Card>
+
+      <Sheet open={!!viewing} onOpenChange={(o) => !o && setView(null)}>
+        <SheetContent className="sm:max-w-2xl">
+          {viewing && <>
+            <SheetHeader><SheetTitle>{viewing.code ? `${viewing.code} · ` : ""}Chi tiết {label}</SheetTitle></SheetHeader>
+            <SheetBody>
+              <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                {p.fields.map((f) => (
+                  <div key={f.key} className={cn(f.wide || f.type === "textarea" ? "sm:col-span-2" : "")}>
+                    <dt className="text-[11.5px] text-slate-500">{f.label}</dt>
+                    <dd className="mt-0.5 whitespace-pre-line text-[13.5px] text-slate-800">{fieldValue(viewing, f)}</dd>
+                  </div>
+                ))}
+              </dl>
+              {p.detail && <div className="mt-5">{p.detail(viewing, () => setView(null))}</div>}
+            </SheetBody>
+            {p.canEdit !== false && <SheetFooter><Button variant="outline" className="text-rose-600" onClick={() => del(viewing)}><Trash2 /> Xóa</Button><Button onClick={() => { setEdit({ ...viewing }); setView(null); }}><Pencil /> Cập nhật</Button></SheetFooter>}
+          </>}
+        </SheetContent>
+      </Sheet>
+
+      <Dialog open={!!edit} onOpenChange={(o) => !o && setEdit(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader><DialogTitle>{edit?.id ? `Cập nhật ${label}` : p.addLabel ?? `Thêm ${label}`}</DialogTitle></DialogHeader>
+          {edit && (
+            <DialogBody className="grid max-h-[70vh] gap-3 overflow-y-auto sm:grid-cols-2">
+              {p.fields.map((f) => {
+                const v = edit[f.key as keyof T] as unknown;
+                const set = (x: unknown) => setEdit({ ...edit, [f.key]: x });
+                return (
+                  <FormField key={f.key} label={f.label} required={f.required} hint={f.hint} className={cn(f.wide || f.type === "textarea" ? "sm:col-span-2" : "")}>
+                    {f.type === "select" ? <Select value={String(v ?? "")} onChange={(e) => set(e.target.value)} placeholder="— Chọn —" options={opts(f.options)} />
+                      : f.type === "textarea" ? <Textarea rows={3} value={String(v ?? "")} onChange={(e) => set(e.target.value)} />
+                      : f.type === "checkbox" ? <label className="flex h-9 items-center gap-2 text-sm"><input type="checkbox" checked={!!v} onChange={(e) => set(e.target.checked)} /> Có</label>
+                      : <Input type={f.type ?? "text"} value={v === undefined || v === null ? "" : String(v)} onChange={(e) => set(f.type === "number" ? Number(e.target.value) : e.target.value)} />}
+                  </FormField>
+                );
+              })}
+            </DialogBody>
+          )}
+          <DialogFooter><Button variant="outline" onClick={() => setEdit(null)}>Hủy</Button><Button onClick={save}>Lưu</Button></DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}

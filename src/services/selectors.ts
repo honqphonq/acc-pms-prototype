@@ -285,12 +285,16 @@ export interface StockRow {
   usage: number; // issued / norm
   status: StockStatus;
   value: number;
+  lastIssue: string | null; // ngày xuất gần nhất – cảnh báo tồn lâu, chậm luân chuyển
 }
 export const getStockRows = memo((db: Database) => {
   const recv = new Map<string, number>();
   const iss = new Map<string, number>();
+  const lastOut = new Map<string, string>();
   db.stockTransactions.forEach((t) => {
+    if (t.confirmed === false) return; // phiếu chưa xác nhận chưa cập nhật tồn kho
     const k = `${t.projectId}|${t.materialId}`;
+    if (t.type === "xuat" && (lastOut.get(k) ?? "") < t.date) lastOut.set(k, t.date);
     const m = t.type === "nhap" ? recv : iss;
     m.set(k, (m.get(k) ?? 0) + t.qty);
   });
@@ -313,7 +317,7 @@ export const getStockRows = memo((db: Database) => {
     if (usage > 1) status = "vuot_dinh_muc";
     else if (inv.minStock > 0 && onHand < inv.minStock) status = "thieu_hang";
     else if (usage >= 0.9) status = "sap_vuot";
-    return { inv, material, received, issued, onHand, pending: pend.get(k) ?? 0, usage, status, value: onHand * material.unitPrice };
+    return { inv, material, received, issued, onHand, pending: pend.get(k) ?? 0, usage, status, value: onHand * material.unitPrice, lastIssue: lastOut.get(k) ?? null };
   });
 });
 export const STOCK_STATUS: Record<StockStatus, { label: string; tone: "danger" | "warning" | "success" | "purple" }> = {
@@ -533,3 +537,18 @@ export const getAlerts = memo((db: Database): Alert[] => {
 export const userName = (db: Database, id: ID | null | undefined) => db.users.find((u) => u.id === id)?.name ?? "—";
 export const projectName = (db: Database, id: ID | null | undefined) => db.projects.find((p) => p.id === id)?.name ?? "—";
 export const projectShort = (db: Database, id: ID | null | undefined) => db.projects.find((p) => p.id === id)?.shortName ?? "Chưa phân bổ";
+
+/** Cảnh báo hồ sơ xe máy: hết hạn / sắp hết hạn kiểm định, bảo hiểm, thiếu chứng minh chủ sở hữu (thuê ngoài) */
+export function equipmentDocWarnings(e: Equipment): { label: string; danger: boolean }[] {
+  const out: { label: string; danger: boolean }[] = [];
+  const chk = (d: string | null | undefined, name: string) => {
+    if (!d) return;
+    const left = diffDays(DEMO_TODAY, d);
+    if (left < 0) out.push({ label: `Hết hạn ${name}`, danger: true });
+    else if (left <= 30) out.push({ label: `Sắp hết hạn ${name} (${left} ngày)`, danger: false });
+  };
+  chk(e.inspectionDue, "kiểm định");
+  chk(e.insuranceDue, "bảo hiểm");
+  if (e.ownership === "thue_ngoai" && !e.ownerProof) out.push({ label: "Thiếu CM chủ sở hữu", danger: true });
+  return out;
+}

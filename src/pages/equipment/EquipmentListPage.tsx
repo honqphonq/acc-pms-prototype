@@ -17,7 +17,8 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { DispatchDialog, EquipmentFormDialog, EQUIPMENT_GROUPS } from "./EquipmentDialogs";
 import { deleteEquipment } from "@/services/actions";
-import { equipmentWork, maintenanceDue, utilizationOf } from "@/services/selectors";
+import { equipmentDocWarnings, equipmentWork, maintenanceDue, utilizationOf } from "@/services/selectors";
+import { EQUIPMENT_KIND } from "@/utils/labels";
 import { CATEGORY_LABELS, EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
@@ -37,16 +38,18 @@ export default function EquipmentListPage() {
   const [projectId, setProjectId] = useQueryParam("project");
   const [unit, setUnit] = useState("");
   const [own, setOwn] = useState("");
+  const [kind, setKind] = useQueryParam("kind");
+  const [warn, setWarn] = useState("");
   const [form, setForm] = useState<{ open: boolean; eq?: Equipment }>({ open: false });
   const [dispatch, setDispatch] = useState<string | null>(null);
   const all = db.equipment;
-  const rows = all.filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own));
+  const rows = all.filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own) && (!kind || e.kind === kind) && (!warn || equipmentDocWarnings(e).length > 0));
   const count = (s: string) => all.filter((e) => e.status === s).length;
   const groups = EQUIPMENT_GROUPS.filter((g) => all.some((e) => e.group === g));
 
   const cols: Column<Equipment>[] = [
     { key: "code", header: "Mã máy", sortValue: (e) => e.code, cell: (e) => <span className="font-semibold text-slate-700">{e.code}</span> },
-    { key: "name", header: "Tên máy thi công", sortValue: (e) => e.name, cell: (e) => <div><div className="font-semibold text-slate-800">{e.name}</div><div className="text-[11px] text-slate-400">{e.brand} · {e.plate} · {e.year}</div></div> },
+    { key: "name", header: "Tên máy thi công", sortValue: (e) => e.name, cell: (e) => <div><div className="font-semibold text-slate-800">{e.name}</div><div className="text-[11px] text-slate-400">{EQUIPMENT_KIND[e.kind]?.label} · {e.brand} · {e.plate} · {e.year}</div></div> },
     { key: "group", header: "Nhóm máy thi công", sortValue: (e) => e.group, cell: (e) => <Badge tone="outline" className="whitespace-nowrap"><span className="h-1.5 w-1.5 rounded-full" style={{ background: GROUP_COLOR[e.group] }} />{e.group}</Badge> },
     { key: "own", header: "Sở hữu", sortValue: (e) => e.ownership, cell: (e) => <Badge tone={e.ownership === "so_huu" ? "info" : "purple"}>{e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"}</Badge> },
     {
@@ -62,7 +65,7 @@ export default function EquipmentListPage() {
       },
     },
     { key: "hours", header: "Giờ máy tại CT", align: "right", sortValue: (e) => equipmentWork(db, e.id, e.currentProjectId).hours, cell: (e) => { if (!e.currentProjectId) return <span className="text-slate-300">—</span>; const w = equipmentWork(db, e.id, e.currentProjectId); return <Tip content={`Từ khi về công trình: ${fmtNumber(w.hours, 0)} giờ · hiệu suất ${fmtPct(utilizationOf(w), 0)} · nhiên liệu ${fmtNumber(w.fuel, 0)} lít`}><span>{fmtNumber(w.hours, 0)}</span></Tip>; } },
-    { key: "st", header: "Trạng thái", sortValue: (e) => e.status, cell: (e) => <div className="flex flex-col items-start gap-1"><StatusBadge map={EQUIPMENT_STATUS} value={e.status} />{e.status === "hoat_dong" && maintenanceDue(e) && <Badge tone="warning" className="text-[10px]">Đến hạn bảo dưỡng</Badge>}</div> },
+    { key: "st", header: "Trạng thái", sortValue: (e) => e.status, cell: (e) => <div className="flex flex-col items-start gap-1"><StatusBadge map={EQUIPMENT_STATUS} value={e.status} />{e.status === "hoat_dong" && maintenanceDue(e) && <Badge tone="warning" className="text-[10px]">Đến hạn bảo dưỡng</Badge>}{equipmentDocWarnings(e).map((w) => <Badge key={w.label} tone={w.danger ? "danger" : "warning"} className="text-[10px]">{w.label}</Badge>)}</div> },
     {
       key: "act", header: "Thao tác", cell: (e) => (
         <div className="flex gap-0.5" onClick={(ev) => ev.stopPropagation()}>
@@ -77,7 +80,16 @@ export default function EquipmentListPage() {
 
   return (
     <div>
-      <PageHeader title="Danh sách xe máy thiết bị" description="Quản lý thống nhất thiết bị sở hữu và thuê ngoài: tình trạng, công trình sử dụng, khả năng huy động trên toàn hệ thống." />
+      <PageHeader title="Danh mục xe máy thiết bị" description="Danh sách xe ô tô, xe biển đỏ và máy thiết bị do phòng TBCN quản lý (sở hữu và thuê ngoài): hồ sơ đăng ký, kiểm định, bảo hiểm, quyết định điều động, người vận hành." />
+      {all.some((e) => equipmentDocWarnings(e).length) && (
+        <div className="mb-4 flex flex-wrap items-center gap-2 rounded-xl border border-rose-200 bg-rose-50/60 px-4 py-2.5 text-[13px] text-rose-800">
+          <b>Cảnh báo hồ sơ:</b>
+          <span>{all.filter((e) => equipmentDocWarnings(e).some((w) => w.label.includes("kiểm định"))).length} xe hết / sắp hết hạn kiểm định</span>·
+          <span>{all.filter((e) => equipmentDocWarnings(e).some((w) => w.label.includes("bảo hiểm"))).length} xe hết / sắp hết hạn bảo hiểm</span>·
+          <span>{all.filter((e) => equipmentDocWarnings(e).some((w) => w.label.includes("chủ sở hữu"))).length} thiết bị thuê thiếu chứng minh chủ sở hữu</span>
+          <Button size="xs" variant="outline" className="ml-auto" onClick={() => setWarn(warn ? "" : "1")}>{warn ? "Bỏ lọc" : "Xem danh sách"}</Button>
+        </div>
+      )}
       <div className="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Tổng số xe máy" value={all.length} unit="máy" tone="navy" sub={`${groups.length} nhóm máy · ${all.filter((e) => e.ownership === "thue_ngoai").length} thuê ngoài`} onClick={() => setStatus("")} />
         <KpiCard label="Đang hoạt động" value={count("hoat_dong")} unit="máy" tone="success" progress={count("hoat_dong") / all.length} sub={`${fmtPct(count("hoat_dong") / all.length)} tổng số xe máy`} onClick={() => setStatus("hoat_dong")} />
@@ -100,13 +112,14 @@ export default function EquipmentListPage() {
             ))}
           </div>
         </div>
-        <DataTable columns={cols} rows={rows} rowKey={(e) => e.id} loading={loading} onRowClick={(e) => navigate(`/equipment/${e.id}`)} resetKey={group + status + projectId + unit + own}
+        <DataTable columns={cols} rows={rows} rowKey={(e) => e.id} loading={loading} onRowClick={(e) => navigate(`/equipment/${e.id}`)} resetKey={group + status + projectId + unit + own + kind + warn}
           searchText={(e) => `${e.code} ${e.name} ${e.plate} ${e.brand}`} searchPlaceholder="Tìm kiếm mã, tên xe máy..."
           toolbar={<>
             <FilterSelect label="Trạng thái" value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(EQUIPMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={[{ value: "none", label: "Chưa phân bổ" }, ...db.projects.map((p) => ({ value: p.id, label: p.shortName }))]} />
             <FilterSelect label="Đơn vị quản lý" value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.code }))} />
-            <FilterSelect value={own} onChange={setOwn} allLabel="Sở hữu & thuê" options={[{ value: "so_huu", label: "Sở hữu" }, { value: "thue_ngoai", label: "Thuê ngoài" }]} />
+            <FilterSelect value={own} onChange={setOwn} allLabel="Sở hữu & thuê ngoài" options={[{ value: "so_huu", label: "Sở hữu" }, { value: "thue_ngoai", label: "Thuê ngoài" }]} />
+            <FilterSelect value={kind} onChange={setKind} allLabel="Tất cả loại" options={Object.entries(EQUIPMENT_KIND).map(([value, l]) => ({ value, label: l.label }))} />
           </>}
         />
       </Card>
