@@ -29,7 +29,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onCloseMobile }: { co
         )}
       >
         <div className={cn("flex h-16 items-center gap-3 border-b border-sidebar-border px-4", collapsed && "lg:justify-center lg:px-0")}>
-          <img src={`${import.meta.env.BASE_URL}assets/acc-logo.svg`} alt="ACC" className="h-9 w-9 shrink-0 rounded-lg" />
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white p-1"><img src={`${import.meta.env.BASE_URL}assets/acc-logo.webp`} alt="ACC" className="h-full w-full object-contain" /></span>
           <div className={cn("min-w-0", collapsed && "lg:hidden")}>
             <div className="truncate text-[15px] font-bold text-white">Tổng công ty ACC</div>
             <div className="truncate text-[11px] text-sidebar-muted">Quản lý dự án thi công</div>

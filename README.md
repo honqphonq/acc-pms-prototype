@@ -36,7 +36,7 @@ npm run preview
 
 | Vai trò | Người dùng | Màn hình bắt đầu |
 |---|---|---|
-| Lãnh đạo Tổng công ty | Nguyễn Văn Hùng | Dashboard tổng quan |
+| Lãnh đạo Tổng công ty | Nguyễn Đức Toàn | Dashboard tổng quan |
 | Phòng Kế hoạch - Kỹ thuật | Lê Thanh Thiện | Tiến độ thi công SB Gia Bình |
 | Chỉ huy trưởng công trường | Trần Quốc Hải | Dự án Sân bay Gia Bình |
 | Tổ trưởng / Mũi trưởng | Hoàng Quang Huy | Tiến độ thi công SB Gia Bình |

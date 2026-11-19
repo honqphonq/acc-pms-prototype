@@ -46,7 +46,7 @@ const pad = (n, w = 3) => String(n).padStart(w, "0");
 
 // ---------- departments ----------
 const departments = [
-  { id: "d-hdtv", code: "HĐTV", name: "Chủ tịch Tổng công ty", type: "ban_lanh_dao", parentId: null, head: "Nguyễn Đức Toàn" },
+  { id: "d-hdtv", code: "HĐTV", name: "Chủ tịch Tổng công ty", type: "ban_lanh_dao", parentId: null, head: "Lê Quang Vinh" },
   { id: "d-btgd", code: "BTGĐ", name: "Ban Tổng Giám đốc", type: "ban_lanh_dao", parentId: "d-hdtv", head: "Nguyễn Văn Hùng" },
   { id: "d-cq", code: "CQTCT", name: "Cơ quan Tổng công ty", type: "co_quan", parentId: "d-btgd" },
   { id: "d-vp", code: "VP", name: "Văn phòng", type: "bo_phan", parentId: "d-cq" },
@@ -64,8 +64,8 @@ const departments = [
 
 // ---------- users ----------
 const users = [
-  { id: "u01", code: "NV001", name: "Nguyễn Văn Hùng", role: "lanh_dao", title: "Phó Tổng Giám đốc", departmentId: "d-btgd", isDemoAccount: true },
-  { id: "u02", code: "NV002", name: "Nguyễn Đức Toàn", role: "lanh_dao", title: "Tổng Giám đốc", departmentId: "d-btgd" },
+  { id: "u01", code: "NV001", name: "Nguyễn Đức Toàn", role: "lanh_dao", title: "Phó Tổng Giám đốc", departmentId: "d-btgd", isDemoAccount: true },
+  { id: "u02", code: "NV002", name: "Nguyễn Văn Hùng", role: "lanh_dao", title: "Tổng Giám đốc", departmentId: "d-btgd" },
   { id: "u03", code: "NV003", name: "Lê Thanh Thiện", role: "phong_ktkt", title: "Trưởng phòng Kế hoạch - Kỹ thuật", departmentId: "d-khkt", isDemoAccount: true },
   { id: "u04", code: "NV004", name: "Trần Quốc Hải", role: "chi_huy_truong", title: "Chỉ huy trưởng công trường", departmentId: "d-acc244", isDemoAccount: true },
   { id: "u05", code: "NV005", name: "Lê Thị Mai", role: "chi_huy_truong", title: "Phó chỉ huy trưởng kỹ thuật", departmentId: "d-acc244" },

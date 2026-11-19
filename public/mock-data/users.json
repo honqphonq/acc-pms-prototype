@@ -2,23 +2,23 @@
   {
     "id": "u01",
     "code": "NV001",
-    "name": "Nguyễn Văn Hùng",
+    "name": "Nguyễn Đức Toàn",
     "role": "lanh_dao",
     "title": "Phó Tổng Giám đốc",
     "departmentId": "d-btgd",
     "isDemoAccount": true,
     "phone": "0912345100",
-    "email": "hung.nv001@acc.vn"
+    "email": "toan.nv001@acc.vn"
   },
   {
     "id": "u02",
     "code": "NV002",
-    "name": "Nguyễn Đức Toàn",
+    "name": "Nguyễn Văn Hùng",
     "role": "lanh_dao",
     "title": "Tổng Giám đốc",
     "departmentId": "d-btgd",
     "phone": "0919458137",
-    "email": "toan.nv002@acc.vn"
+    "email": "hung.nv002@acc.vn"
   },
   {
     "id": "u03",

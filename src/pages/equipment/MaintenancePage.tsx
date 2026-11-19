@@ -21,7 +21,7 @@ import { fmtDate, fmtMoneyShort, fmtNumber } from "@/utils/format";
 import { MAINT_STATUS, MAINT_TYPE, equipmentOptions, toOptions } from "@/utils/labels";
 import type { MaintenancePlan } from "@/types";
 
-const CFG_KEY = "acc-pms:v3:maint-reminder";
+const CFG_KEY = "acc-pms:v4:maint-reminder";
 const loadCfg = () => { try { return JSON.parse(localStorage.getItem(CFG_KEY) ?? "") as { days: number; hours: number }; } catch { return { days: 7, hours: 30 }; } };
 
 export default function MaintenancePage() {
