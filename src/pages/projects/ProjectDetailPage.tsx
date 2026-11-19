@@ -114,6 +114,7 @@ export default function ProjectDetailPage() {
               <dt className="text-slate-500">Gói thầu / HĐ</dt><dd className="text-slate-800">{project.packageName} · HĐ số {project.contractNo} ngày {fmtDate(project.contractDate)}</dd>
               <dt className="text-slate-500">Thời gian thực hiện</dt><dd className="font-medium text-slate-800">{fmtDate(project.startDate)} – {fmtDate(project.endDate)} · {project.status === "hoan_thanh" ? "đã hoàn thành" : `còn lại ${s.daysLeft} ngày`}</dd>
               <dt className="text-slate-500">Đơn vị · Loại</dt><dd className="text-slate-800">{unit?.name} · {CATEGORY_LABELS[project.category]} · {project.location}</dd>
+              <dt className="text-slate-500">Người phê duyệt</dt><dd className="text-slate-800">{db.users.find((u) => u.id === (project.approverId ?? "u01"))?.name} · {project.approvalStatus === "cho_duyet" ? <span className="text-amber-600">chờ phê duyệt đơn xin nhận thi công</span> : project.approvalStatus === "tu_choi" ? <span className="text-rose-600">đã từ chối{project.approvalNote ? ` – ${project.approvalNote}` : ""}</span> : <span className="text-success-fg">đã phê duyệt{project.approvedAt ? ` ngày ${fmtDate(project.approvedAt)}` : ""}</span>}</dd>
               <dt className="self-center text-slate-500">Người thực hiện</dt><dd><AvatarGroup userIds={project.memberIds} max={8} /></dd>
             </dl>
           </div>

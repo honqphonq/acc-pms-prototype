@@ -410,7 +410,7 @@ projectDefs.forEach((def) => {
     packageName: def.packageName, contractNo: def.contractNo, contractDate: def.contractDate,
     startDate: def.startDate, endDate: def.endDate, contractValue, budget: def.budget ?? Math.round((contractValue * 0.9) / 1e6) * 1e6, costRatio: def.costRatio,
     status: def.status, settlementStatus: def.settlement || "chua_quyet_toan",
-    memberIds: [...new Set(memberPool)], description: def.id === "p01" ? "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp." : descriptions[def.category], approvalStatus: def.approval || "da_duyet",
+    memberIds: [...new Set(memberPool)], description: def.id === "p01" ? "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp." : descriptions[def.category], approvalStatus: def.approval || "da_duyet", approverId: "u01", approvedAt: def.approval ? null : addDays(def.contractDate, 5),
     appendices: def.id === "p01" ? [
       { id: "pl-gb-1", code: "PL01/1504/2026", date: "2026-06-05", title: "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B", valueChange: 0, note: "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026" },
       { id: "pl-gb-2", code: "PL02/1504/2026", date: "2026-08-20", title: "Bổ sung khối lượng BTXM M350 sân đỗ zone A2", valueChange: 3850000000, note: "Theo thiết kế điều chỉnh mở rộng vệt lăn" },

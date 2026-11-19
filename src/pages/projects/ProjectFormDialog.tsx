@@ -16,7 +16,7 @@ type Form = Omit<Project, "id" | "approvalStatus" | "settlementStatus">;
 const empty: Form = {
   code: "", name: "", shortName: "", category: "dan_dung", location: "", investor: "", contractor: "Tổng công ty ACC", unitId: "d-acc244", commanderId: "u04",
   packageName: "", contractNo: "", contractDate: "2026-11-14", startDate: "2027-01-04", endDate: "2028-06-30", contractValue: 0, budget: 0, costRatio: 0.9,
-  status: "chuan_bi", memberIds: [], description: "",
+  status: "chuan_bi", memberIds: [], description: "", approverId: "u01",
 };
 
 export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { open: boolean; onOpenChange: (o: boolean) => void; project?: Project; onSaved?: (id?: string) => void }) {
@@ -32,6 +32,8 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
   }, [open, project]);
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setF((x) => ({ ...x, [k]: v }));
   const commanders = db.users.filter((u) => u.role === "chi_huy_truong");
+  const approvers = db.users.filter((u) => u.role === "lanh_dao");
+  const approver = db.users.find((u) => u.id === f.approverId);
 
   const save = () => {
     const e: Record<string, string> = {};
@@ -40,6 +42,7 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
     if (!f.investor.trim()) e.investor = "Nhập chủ đầu tư";
     if (!f.location.trim()) e.location = "Nhập địa điểm";
     if (f.contractValue <= 0) e.contractValue = "Giá trị hợp đồng phải > 0";
+    if (!project && !f.approverId) e.approverId = "Chọn người phê duyệt";
     if (f.endDate <= f.startDate) e.endDate = "Ngày kết thúc phải sau ngày bắt đầu";
     if (db.projects.some((p) => p.code === f.code && p.id !== project?.id)) e.code = "Mã dự án đã tồn tại";
     setErrors(e);
@@ -51,7 +54,7 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
       onSaved?.(project.id);
     } else {
       const next = run(createProject, data, user!.id);
-      toast.success("Đã tạo dự án – hồ sơ nhận thi công đang chờ Tổng công ty phê duyệt");
+      toast.success(`Đã gửi đơn xin nhận thi công – chờ ${approver?.name ?? "lãnh đạo"} phê duyệt`);
       onSaved?.(next.projects[0].id);
     }
     onOpenChange(false);
@@ -98,6 +101,19 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
               <FormField label="Mô tả" className="md:col-span-3"><Textarea value={f.description} onChange={(e) => set("description", e.target.value)} /></FormField>
             </div>
           </div>
+          {(!project || project.approvalStatus === "cho_duyet") && (
+            <div>
+              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Quy trình xét duyệt</div>
+              <div className="grid gap-3 md:grid-cols-3">
+                <FormField label="Người phê duyệt" required error={errors.approverId}><Select value={f.approverId ?? ""} onChange={(e) => set("approverId", e.target.value)} placeholder="— Chọn lãnh đạo —" options={approvers.map((u) => ({ value: u.id, label: `${u.name} – ${u.title}` }))} /></FormField>
+                <div className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-[12px] text-slate-600 md:col-span-2">
+                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">Đơn vị lập đơn</span>→
+                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">{approver?.name ?? "Lãnh đạo TCT"} phê duyệt</span>→
+                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">Quyết định phân giao nhiệm vụ</span>
+                </div>
+              </div>
+            </div>
+          )}
         </DialogBody>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>Hủy</Button>

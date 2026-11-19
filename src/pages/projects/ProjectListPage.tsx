@@ -138,7 +138,7 @@ export default function ProjectListPage() {
       {pending.length > 0 && (
         <Card className="mb-4 flex flex-wrap items-center gap-3 border-amber-200 bg-amber-50/60 px-4 py-3 text-[13px]">
           <Badge tone="warning">QT quản lý dự án tổng thể</Badge>
-          <span className="text-slate-700"><b>{pending.length}</b> đơn xin nhận thi công chờ Tổng công ty phê duyệt: {pending.map((p) => p.shortName).join(", ")}</span>
+          <span className="text-slate-700"><b>{pending.length}</b> đơn xin nhận thi công chờ phê duyệt: {pending.map((p) => `${p.shortName} (người duyệt: ${db.users.find((u) => u.id === (p.approverId ?? "u01"))?.name})`).join(", ")}</span>
           {can("project.approve") ? (
             <div className="ml-auto flex gap-2">
               <Button size="sm" variant="success" onClick={() => decide(pending[0], true)}>Phê duyệt</Button>

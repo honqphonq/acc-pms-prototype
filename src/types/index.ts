@@ -64,6 +64,9 @@ export interface Project {
   memberIds: ID[];
   description: string;
   approvalStatus: "da_duyet" | "cho_duyet" | "tu_choi";
+  approverId?: ID; // người phê duyệt đơn xin nhận thi công
+  approvalNote?: string;
+  approvedAt?: string | null;
   appendices?: ContractAppendix[];
 }
 

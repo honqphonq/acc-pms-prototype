@@ -57,7 +57,7 @@ export type ProjectInput = Omit<Project, "id" | "memberIds" | "approvalStatus" |
 export function createProject(db: Database, input: ProjectInput, byId: ID): Database {
   const p: Project = { ...input, id: genId("p"), memberIds: input.memberIds ?? [input.commanderId], approvalStatus: "cho_duyet", settlementStatus: "chua_quyet_toan" };
   db = insert(db, "projects", p, true);
-  return pushNotification(db, { type: "approval", severity: "info", title: "Đơn xin nhận thi công mới", message: `${p.name} chờ Tổng công ty phê duyệt.`, projectId: p.id, link: `/projects/${p.id}` });
+  return pushNotification(db, { type: "approval", severity: "info", title: "Đơn xin nhận thi công mới", message: `${p.name} chờ ${db.users.find((u) => u.id === p.approverId)?.name ?? "Tổng công ty"} phê duyệt.`, projectId: p.id, link: `/projects/${p.id}` });
   void byId;
 }
 export const updateProject = (db: Database, id: ID, changes: Partial<Project>) => patch(db, "projects", id, changes);
@@ -81,7 +81,7 @@ export function deleteProject(db: Database, id: ID): Database {
 /** QT quản lý dự án tổng thể: TCT phê duyệt đơn xin nhận thi công → ban hành quyết định phân giao nhiệm vụ */
 export function decideProject(db: Database, id: ID, approve: boolean, note: string): Database {
   const p = db.projects.find((x) => x.id === id)!;
-  db = patch(db, "projects", id, { approvalStatus: approve ? "da_duyet" : "tu_choi", status: approve ? "chuan_bi" : p.status });
+  db = patch(db, "projects", id, { approvalStatus: approve ? "da_duyet" : "tu_choi", status: approve ? "chuan_bi" : p.status, approvalNote: note, approvedAt: DEMO_TODAY });
   return pushNotification(db, {
     type: "approval",
     severity: approve ? "success" : "danger",
