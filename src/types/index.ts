@@ -64,18 +64,30 @@ export interface Project {
   memberIds: ID[];
   description: string;
   approvalStatus: "da_duyet" | "cho_duyet" | "tu_choi";
-  approverId?: ID; // người phê duyệt đơn xin nhận thi công
-  approvalNote?: string;
-  approvedAt?: string | null;
-  appendices?: ContractAppendix[];
 }
 
-export interface ContractAppendix {
+/** File đính kèm (prototype: lưu dạng data URL trên trình duyệt hoặc ảnh mẫu trong /assets) */
+export interface Attachment {
+  id: ID;
+  name: string;
+  type: string; // MIME
+  size: number; // byte
+  url: string | null;
+}
+
+/** Hợp đồng / phụ lục hợp đồng của dự án */
+export interface Contract {
   id: ID;
   code: string;
-  date: string;
+  kind: "hop_dong" | "phu_luc";
+  projectId: ID;
+  parentId: ID | null; // phụ lục thuộc hợp đồng
   title: string;
-  valueChange: number; // giá trị điều chỉnh (+/-)
+  signDate: string;
+  value: number; // giá trị HĐ, hoặc giá trị điều chỉnh của phụ lục (+/-)
+  startDate: string;
+  endDate: string;
+  files: Attachment[];
   note: string;
 }
 
@@ -243,6 +255,9 @@ export interface StockTransaction {
   subType?: string;
   docQty?: number; // số lượng theo chứng từ (đối chiếu)
   confirmed?: boolean;
+  voucherCode?: string; // số phiếu (một phiếu có nhiều dòng vật tư)
+  toProjectId?: ID | null; // điều chuyển sang kho dự án
+  files?: Attachment[];
   projectId: ID;
   materialId: ID;
   qty: number;
@@ -281,6 +296,8 @@ export interface Equipment {
   insuranceDue: string | null; // hạn bảo hiểm
   ownerProof: boolean; // có chứng minh chủ sở hữu (thiết bị thuê ngoài)
   vetcCode?: string; // thẻ thu phí không dừng (xe biển đỏ)
+  images?: Attachment[];
+  docFiles?: Attachment[]; // giấy đăng ký, kiểm định, bảo hiểm...
   ownership: "so_huu" | "thue_ngoai";
   plate: string;
   brand: string;
@@ -326,6 +343,8 @@ export interface EquipmentShift {
   fuelLiters: number;
   output: string;
   note: string;
+  km?: number;
+  logged?: boolean; // đã cập nhật nhật trình
 }
 
 /** Giờ máy tổng hợp theo tháng tại một công trình (trước giai đoạn có ca máy chi tiết) */
@@ -439,7 +458,7 @@ export interface ConstructionMethod {
   version: number;
   createdById: ID;
   updatedAt: string;
-  files: string[];
+  files: Attachment[];
   versions: VersionEntry[];
   comments: CommentEntry[];
 }
@@ -462,6 +481,11 @@ export interface SiteStaff {
   certificates: string;
   safetyCard: boolean;
   healthCheck: string | null;
+  idFront?: Attachment | null;
+  idBack?: Attachment | null;
+  certFiles?: Attachment[];
+  safetyCardFile?: Attachment | null;
+  healthFile?: Attachment | null;
 }
 
 export interface DocFolder {
@@ -482,6 +506,7 @@ export interface SiteDocument {
   uploadedById: ID;
   uploadedAt: string;
   versions: VersionEntry[];
+  file?: Attachment | null;
 }
 
 /** Nhân viên chuyên môn kỹ thuật (lái xe, lái máy) */
@@ -492,11 +517,7 @@ export interface Operator {
   phone: string;
   rank: string; // cấp bậc
   contractType: string;
-  licenseNo: string;
-  licenseClass: string;
-  licenseType: "Quân sự" | "Dân sự";
-  licenseExpiry: string;
-  skill: string; // chứng chỉ vận hành
+  licenses: OperatorLicense[];
   workerGrade: string; // bậc thợ
   salaryCoef: number;
   idNo: string;
@@ -505,9 +526,19 @@ export interface Operator {
   safetyCard: boolean;
   insurance24h: boolean;
   yearsExp: number;
-  score: number; // đánh giá hiệu suất (0–100)
-  violations: number;
   note: string;
+}
+
+/** Giấy phép lái xe / chứng chỉ vận hành của nhân viên CMKT */
+export interface OperatorLicense {
+  id: ID;
+  kind: "gplx" | "chung_chi";
+  no: string;
+  name: string; // hạng GPLX (C, FC...) hoặc nội dung chứng chỉ (Vận hành máy lu...)
+  military: boolean; // GPLX quân sự
+  issueDate: string;
+  expiry: string | null;
+  file: Attachment | null;
 }
 
 export interface MaintenancePlan {
@@ -633,6 +664,7 @@ export interface Database {
   incidents: Incident[];
   routes: TransportRoute[];
   stocktakes: Stocktake[];
+  contracts: Contract[];
   loginHistory: LoginEntry[];
 }
 

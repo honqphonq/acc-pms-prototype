@@ -1,0 +1,948 @@
+[
+  {
+    "id": "hd-p01",
+    "code": "1504/2026/HĐXD-GB",
+    "kind": "hop_dong",
+    "projectId": "p01",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân bay Gia Bình",
+    "signDate": "2026-04-15",
+    "value": 241809400000,
+    "startDate": "2026-04-28",
+    "endDate": "2027-04-25",
+    "files": [
+      {
+        "id": "att-33-1043",
+        "name": "HD 1504-2026-HĐXD-GB (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 1851392,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-gb-1",
+    "code": "PL01/1504/2026",
+    "kind": "phu_luc",
+    "projectId": "p01",
+    "parentId": "hd-p01",
+    "title": "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B",
+    "signDate": "2026-06-05",
+    "value": 0,
+    "startDate": "2026-06-05",
+    "endDate": "2027-04-25",
+    "files": [
+      {
+        "id": "att-18-7713",
+        "name": "PL01-1504-2026.pdf",
+        "type": "application/pdf",
+        "size": 951296,
+        "url": null
+      }
+    ],
+    "note": "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026"
+  },
+  {
+    "id": "pl-gb-2",
+    "code": "PL02/1504/2026",
+    "kind": "phu_luc",
+    "projectId": "p01",
+    "parentId": "hd-p01",
+    "title": "Bổ sung khối lượng BTXM M350 sân đỗ zone A2",
+    "signDate": "2026-08-20",
+    "value": 3850000000,
+    "startDate": "2026-08-20",
+    "endDate": "2027-04-25",
+    "files": [
+      {
+        "id": "att-18-6251",
+        "name": "PL02-1504-2026.pdf",
+        "type": "application/pdf",
+        "size": 3843072,
+        "url": null
+      }
+    ],
+    "note": "Theo thiết kế điều chỉnh mở rộng vệt lăn"
+  },
+  {
+    "id": "pl-gb-3",
+    "code": "PL03/1504/2026",
+    "kind": "phu_luc",
+    "projectId": "p01",
+    "parentId": "hd-p01",
+    "title": "Điều chỉnh đơn giá nhân công theo Thông tư mới",
+    "signDate": "2026-10-28",
+    "value": 1240000000,
+    "startDate": "2026-10-28",
+    "endDate": "2027-04-25",
+    "files": [
+      {
+        "id": "att-18-3078",
+        "name": "PL03-1504-2026.pdf",
+        "type": "application/pdf",
+        "size": 3213312,
+        "url": null
+      }
+    ],
+    "note": "Áp dụng từ đợt thanh toán 4"
+  },
+  {
+    "id": "hd-p02",
+    "code": "1508/2025/HĐTC-ACV",
+    "kind": "hop_dong",
+    "projectId": "p02",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân đỗ máy bay Đà Nẵng",
+    "signDate": "2025-08-15",
+    "value": 759993450000,
+    "startDate": "2025-09-15",
+    "endDate": "2027-02-28",
+    "files": [
+      {
+        "id": "att-34-3737",
+        "name": "HD 1508-2025-HĐTC-ACV (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 359424,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p02-1",
+    "code": "PL01/1508/2025/HĐTC-ACV",
+    "kind": "phu_luc",
+    "projectId": "p02",
+    "parentId": "hd-p02",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2025-12-13",
+    "value": 11400000000,
+    "startDate": "2025-12-13",
+    "endDate": "2027-02-28",
+    "files": [
+      {
+        "id": "att-27-5574",
+        "name": "PL01-1508-2025-HĐTC-ACV.pdf",
+        "type": "application/pdf",
+        "size": 4803584,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p03",
+    "code": "2006/2025/HĐXD-ACV",
+    "kind": "hop_dong",
+    "projectId": "p03",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Cảng HKQT Cát Bi",
+    "signDate": "2025-06-20",
+    "value": 1250041920000,
+    "startDate": "2025-07-01",
+    "endDate": "2027-09-30",
+    "files": [
+      {
+        "id": "att-34-6557",
+        "name": "HD 2006-2025-HĐXD-ACV (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 3753984,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p04",
+    "code": "0911/2025/HĐXD-SGTVT",
+    "kind": "hop_dong",
+    "projectId": "p04",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Cảng HK Quảng Ninh",
+    "signDate": "2025-10-09",
+    "value": 540042280000,
+    "startDate": "2025-11-01",
+    "endDate": "2027-05-31",
+    "files": [
+      {
+        "id": "att-36-4429",
+        "name": "HD 0911-2025-HĐXD-SGTVT (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2231296,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p05",
+    "code": "1802/2026/HĐXD-ACV",
+    "kind": "hop_dong",
+    "projectId": "p05",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân bay Cần Thơ",
+    "signDate": "2026-02-18",
+    "value": 639946680000,
+    "startDate": "2026-03-01",
+    "endDate": "2028-03-31",
+    "files": [
+      {
+        "id": "att-34-8958",
+        "name": "HD 1802-2026-HĐXD-ACV (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2961408,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p06",
+    "code": "2507/2025/HĐ-BTL",
+    "kind": "hop_dong",
+    "projectId": "p06",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Kho kỹ thuật QK2",
+    "signDate": "2025-07-25",
+    "value": 419990430000,
+    "startDate": "2025-08-01",
+    "endDate": "2027-03-31",
+    "files": [
+      {
+        "id": "att-32-2480",
+        "name": "HD 2507-2025-HĐ-BTL (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 1549312,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p07",
+    "code": "1511/2025/HĐ-QC",
+    "kind": "hop_dong",
+    "projectId": "p07",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – TT huấn luyện K18",
+    "signDate": "2025-11-15",
+    "value": 284976570000,
+    "startDate": "2025-12-01",
+    "endDate": "2027-06-30",
+    "files": [
+      {
+        "id": "att-31-7580",
+        "name": "HD 1511-2025-HĐ-QC (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2939904,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p07-1",
+    "code": "PL01/1511/2025/HĐ-QC",
+    "kind": "phu_luc",
+    "projectId": "p07",
+    "parentId": "hd-p07",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-03-15",
+    "value": 4275000000,
+    "startDate": "2026-03-15",
+    "endDate": "2027-06-30",
+    "files": [
+      {
+        "id": "att-24-6794",
+        "name": "PL01-1511-2025-HĐ-QC.pdf",
+        "type": "application/pdf",
+        "size": 2068480,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p08",
+    "code": "0302/2025/HĐXD-CA",
+    "kind": "hop_dong",
+    "projectId": "p08",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Trụ sở CA Sóc Trăng",
+    "signDate": "2025-02-03",
+    "value": 190004140000,
+    "startDate": "2025-03-01",
+    "endDate": "2026-12-31",
+    "files": [
+      {
+        "id": "att-33-2254",
+        "name": "HD 0302-2025-HĐXD-CA (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 4687872,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p09",
+    "code": "2209/2025/HĐXD-BCH",
+    "kind": "hop_dong",
+    "projectId": "p09",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – BCH QS Vĩnh Phúc",
+    "signDate": "2025-09-22",
+    "value": 319996170000,
+    "startDate": "2025-10-01",
+    "endDate": "2027-04-30",
+    "files": [
+      {
+        "id": "att-34-3401",
+        "name": "HD 2209-2025-HĐXD-BCH (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 3604480,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p09-1",
+    "code": "PL01/2209/2025/HĐXD-BCH",
+    "kind": "phu_luc",
+    "projectId": "p09",
+    "parentId": "hd-p09",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-01-20",
+    "value": 4800000000,
+    "startDate": "2026-01-20",
+    "endDate": "2027-04-30",
+    "files": [
+      {
+        "id": "att-27-5323",
+        "name": "PL01-2209-2025-HĐXD-BCH.pdf",
+        "type": "application/pdf",
+        "size": 1415168,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p10",
+    "code": "2810/2026/HĐXD-VATM",
+    "kind": "hop_dong",
+    "projectId": "p10",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Đài KSKL Thọ Xuân",
+    "signDate": "2026-10-28",
+    "value": 480000000000,
+    "startDate": "2027-01-04",
+    "endDate": "2028-06-30",
+    "files": [
+      {
+        "id": "att-35-8168",
+        "name": "HD 2810-2026-HĐXD-VATM (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 3485696,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p10-1",
+    "code": "PL01/2810/2026/HĐXD-VATM",
+    "kind": "phu_luc",
+    "projectId": "p10",
+    "parentId": "hd-p10",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2027-02-25",
+    "value": 7200000000,
+    "startDate": "2027-02-25",
+    "endDate": "2028-06-30",
+    "files": [
+      {
+        "id": "att-28-6432",
+        "name": "PL01-2810-2026-HĐXD-VATM.pdf",
+        "type": "application/pdf",
+        "size": 2890752,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p11",
+    "code": "1001/2025/HĐXD-ACV",
+    "kind": "hop_dong",
+    "projectId": "p11",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân đỗ ô tô Điện Biên",
+    "signDate": "2025-01-10",
+    "value": 145004500000,
+    "startDate": "2025-01-15",
+    "endDate": "2026-08-30",
+    "files": [
+      {
+        "id": "att-34-8267",
+        "name": "HD 1001-2025-HĐXD-ACV (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 1295360,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p11-1",
+    "code": "PL01/1001/2025/HĐXD-ACV",
+    "kind": "phu_luc",
+    "projectId": "p11",
+    "parentId": "hd-p11",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2025-05-10",
+    "value": 2175000000,
+    "startDate": "2025-05-10",
+    "endDate": "2026-08-30",
+    "files": [
+      {
+        "id": "att-27-4043",
+        "name": "PL01-1001-2025-HĐXD-ACV.pdf",
+        "type": "application/pdf",
+        "size": 3810304,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p12",
+    "code": "1012/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p12",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân bay Kép",
+    "signDate": "2025-11-11",
+    "value": 680109500000,
+    "startDate": "2025-12-01",
+    "endDate": "2027-08-31",
+    "files": [
+      {
+        "id": "att-30-3295",
+        "name": "HD 1012-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 4159488,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p12-1",
+    "code": "PL01/1012/2025/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p12",
+    "parentId": "hd-p12",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-03-11",
+    "value": 10200000000,
+    "startDate": "2026-03-11",
+    "endDate": "2027-08-31",
+    "files": [
+      {
+        "id": "att-23-9529",
+        "name": "PL01-1012-2025-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 2802688,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p13",
+    "code": "1101/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p13",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Doanh trại E921",
+    "signDate": "2025-12-26",
+    "value": 264973210000,
+    "startDate": "2026-01-15",
+    "endDate": "2027-07-31",
+    "files": [
+      {
+        "id": "att-30-7338",
+        "name": "HD 1101-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 3714048,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p13-1",
+    "code": "PL01/1101/2026/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p13",
+    "parentId": "hd-p13",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-04-25",
+    "value": 3975000000,
+    "startDate": "2026-04-25",
+    "endDate": "2027-07-31",
+    "files": [
+      {
+        "id": "att-23-7770",
+        "name": "PL01-1101-2026-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 2693120,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p14",
+    "code": "1203/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p14",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Kho kỹ thuật Lữ đoàn 918",
+    "signDate": "2026-02-09",
+    "value": 198011150000,
+    "startDate": "2026-03-01",
+    "endDate": "2027-06-30",
+    "files": [
+      {
+        "id": "att-30-4338",
+        "name": "HD 1203-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 4368384,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p14-1",
+    "code": "PL01/1203/2026/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p14",
+    "parentId": "hd-p14",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-06-09",
+    "value": 2970000000,
+    "startDate": "2026-06-09",
+    "endDate": "2027-06-30",
+    "files": [
+      {
+        "id": "att-23-4410",
+        "name": "PL01-1203-2026-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 4227072,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p15",
+    "code": "1310/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p15",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân đỗ trực thăng Cam Ranh",
+    "signDate": "2025-09-25",
+    "value": 355083770000,
+    "startDate": "2025-10-15",
+    "endDate": "2027-03-31",
+    "files": [
+      {
+        "id": "att-30-8983",
+        "name": "HD 1310-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2768896,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p15-1",
+    "code": "PL01/1310/2025/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p15",
+    "parentId": "hd-p15",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-01-23",
+    "value": 5325000000,
+    "startDate": "2026-01-23",
+    "endDate": "2027-03-31",
+    "files": [
+      {
+        "id": "att-23-4854",
+        "name": "PL01-1310-2025-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 2190336,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p16",
+    "code": "1402/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p16",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – KTX Trường SQ Không quân",
+    "signDate": "2026-01-12",
+    "value": 229997540000,
+    "startDate": "2026-02-01",
+    "endDate": "2027-09-30",
+    "files": [
+      {
+        "id": "att-30-7121",
+        "name": "HD 1402-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 3630080,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p17",
+    "code": "1508/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p17",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân đỗ Cảng HKQT Phú Bài",
+    "signDate": "2025-07-12",
+    "value": 819922200000,
+    "startDate": "2025-08-01",
+    "endDate": "2027-04-30",
+    "files": [
+      {
+        "id": "att-30-4392",
+        "name": "HD 1508-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 1488896,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p17-1",
+    "code": "PL01/1508/2025/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p17",
+    "parentId": "hd-p17",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2025-11-09",
+    "value": 12300000000,
+    "startDate": "2025-11-09",
+    "endDate": "2027-04-30",
+    "files": [
+      {
+        "id": "att-23-3896",
+        "name": "PL01-1508-2025-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 4572160,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p18",
+    "code": "1611/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p18",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Đường CHC số 2 Phù Cát",
+    "signDate": "2025-10-12",
+    "value": 909926380000,
+    "startDate": "2025-11-01",
+    "endDate": "2028-02-29",
+    "files": [
+      {
+        "id": "att-30-8345",
+        "name": "HD 1611-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2928640,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p19",
+    "code": "1701/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p19",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Sân đỗ Liên Khương",
+    "signDate": "2025-12-16",
+    "value": 459975410000,
+    "startDate": "2026-01-05",
+    "endDate": "2027-10-31",
+    "files": [
+      {
+        "id": "att-30-7888",
+        "name": "HD 1701-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2391040,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p20",
+    "code": "1809/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p20",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Đường lăn Tân Sơn Nhất",
+    "signDate": "2025-08-26",
+    "value": 1149926020000,
+    "startDate": "2025-09-15",
+    "endDate": "2027-12-31",
+    "files": [
+      {
+        "id": "att-30-9436",
+        "name": "HD 1809-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 645120,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p20-1",
+    "code": "PL01/1809/2025/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p20",
+    "parentId": "hd-p20",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2025-12-24",
+    "value": 17250000000,
+    "startDate": "2025-12-24",
+    "endDate": "2027-12-31",
+    "files": [
+      {
+        "id": "att-23-8368",
+        "name": "PL01-1809-2025-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 3723264,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p21",
+    "code": "1902/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p21",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Đường CHC Pleiku",
+    "signDate": "2026-01-26",
+    "value": 395062720000,
+    "startDate": "2026-02-15",
+    "endDate": "2027-11-30",
+    "files": [
+      {
+        "id": "att-30-5036",
+        "name": "HD 1902-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2529280,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p22",
+    "code": "2003/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p22",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Đèn tín hiệu Côn Đảo",
+    "signDate": "2026-02-09",
+    "value": 168018700000,
+    "startDate": "2026-03-01",
+    "endDate": "2027-05-31",
+    "files": [
+      {
+        "id": "att-30-7695",
+        "name": "HD 2003-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 796672,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p22-1",
+    "code": "PL01/2003/2026/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p22",
+    "parentId": "hd-p22",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-06-09",
+    "value": 2520000000,
+    "startDate": "2026-06-09",
+    "endDate": "2027-05-31",
+    "files": [
+      {
+        "id": "att-23-2511",
+        "name": "PL01-2003-2026-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 863232,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p23",
+    "code": "2110/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p23",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Trụ sở Cục Hàng không",
+    "signDate": "2025-09-11",
+    "value": 540005100000,
+    "startDate": "2025-10-01",
+    "endDate": "2027-09-30",
+    "files": [
+      {
+        "id": "att-30-9444",
+        "name": "HD 2110-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2475008,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p24",
+    "code": "2212/2025/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p24",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – BV đa khoa Hà Nam",
+    "signDate": "2025-11-25",
+    "value": 385000080000,
+    "startDate": "2025-12-15",
+    "endDate": "2027-12-31",
+    "files": [
+      {
+        "id": "att-30-4813",
+        "name": "HD 2212-2025-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2122752,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p25",
+    "code": "2301/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p25",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Nhà điều hành Cảng HK Vinh",
+    "signDate": "2025-12-21",
+    "value": 274991640000,
+    "startDate": "2026-01-10",
+    "endDate": "2027-08-31",
+    "files": [
+      {
+        "id": "att-30-6696",
+        "name": "HD 2301-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 2664448,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p25-1",
+    "code": "PL01/2301/2026/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p25",
+    "parentId": "hd-p25",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-04-20",
+    "value": 4125000000,
+    "startDate": "2026-04-20",
+    "endDate": "2027-08-31",
+    "files": [
+      {
+        "id": "att-23-5429",
+        "name": "PL01-2301-2026-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 4745216,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "hd-p26",
+    "code": "2404/2026/HĐXD",
+    "kind": "hop_dong",
+    "projectId": "p26",
+    "parentId": null,
+    "title": "Hợp đồng thi công xây dựng – Trung tâm Kiểm soát đường dài",
+    "signDate": "2026-03-12",
+    "value": 309996560000,
+    "startDate": "2026-04-01",
+    "endDate": "2028-03-31",
+    "files": [
+      {
+        "id": "att-30-2266",
+        "name": "HD 2404-2026-HĐXD (ban ky).pdf",
+        "type": "application/pdf",
+        "size": 4593664,
+        "url": null
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "pl-p26-1",
+    "code": "PL01/2404/2026/HĐXD",
+    "kind": "phu_luc",
+    "projectId": "p26",
+    "parentId": "hd-p26",
+    "title": "Điều chỉnh khối lượng phát sinh",
+    "signDate": "2026-07-10",
+    "value": 4650000000,
+    "startDate": "2026-07-10",
+    "endDate": "2028-03-31",
+    "files": [
+      {
+        "id": "att-23-7546",
+        "name": "PL01-2404-2026-HĐXD.pdf",
+        "type": "application/pdf",
+        "size": 1443840,
+        "url": null
+      }
+    ],
+    "note": ""
+  }
+]

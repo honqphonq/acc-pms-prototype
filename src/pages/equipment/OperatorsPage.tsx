@@ -1,46 +1,113 @@
+import { useState } from "react";
+import { Plus, Trash2 } from "lucide-react";
 import { useDb } from "@/hooks/useDb";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Tip } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { RegistryPage } from "@/components/registry/RegistryPage";
+import { AttachmentList, SingleFileSlot } from "@/components/common/Attachments";
 import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { fmtDate, fmtNumber } from "@/utils/format";
-import type { Operator } from "@/types";
+import { genId } from "@/utils/id";
+import { cn } from "@/utils/cn";
+import type { Operator, OperatorLicense } from "@/types";
 
-const licenseState = (o: Operator) => { const d = diffDays(DEMO_TODAY, o.licenseExpiry); return d < 0 ? "het_han" : d <= 60 ? "sap_het" : "ok"; };
+const lstate = (l: OperatorLicense) => { if (!l.expiry) return "ok"; const d = diffDays(DEMO_TODAY, l.expiry); return d < 0 ? "het_han" : d <= 60 ? "sap_het" : "ok"; };
+const lname = (l: OperatorLicense) => (l.kind === "gplx" ? `GPLX ${l.name}${l.military ? " (QS)" : ""}` : l.name.replace(/^Vận hành /, ""));
+
+/** Bảng con: giấy phép lái xe & chứng chỉ vận hành (nhiều dòng) */
+function LicenseEditor({ value, onChange }: { value: OperatorLicense[]; onChange: (v: OperatorLicense[]) => void }) {
+  const set = (i: number, c: Partial<OperatorLicense>) => onChange(value.map((x, k) => (k === i ? { ...x, ...c } : x)));
+  return (
+    <div className="rounded-lg border">
+      <table className="w-full text-[13px]">
+        <thead className="bg-slate-50 text-left text-[11.5px] font-bold uppercase text-slate-700"><tr><th className="px-2 py-2">Loại</th><th>Hạng / nội dung</th><th>Số</th><th>QS/DS</th><th>Ngày cấp</th><th>Hết hạn</th><th>File</th><th /></tr></thead>
+        <tbody>
+          {value.map((l, i) => (
+            <tr key={l.id} className="border-t align-top">
+              <td className="px-2 py-1.5"><Select className="w-32" value={l.kind} onChange={(e) => set(i, { kind: e.target.value as OperatorLicense["kind"] })} options={[{ value: "gplx", label: "GPLX" }, { value: "chung_chi", label: "Chứng chỉ VH" }]} /></td>
+              <td className="py-1.5 pr-1"><Input className="h-9 min-w-[140px]" value={l.name} placeholder={l.kind === "gplx" ? "C, FC, E…" : "Vận hành máy lu…"} onChange={(e) => set(i, { name: e.target.value })} /></td>
+              <td className="py-1.5 pr-1"><Input className="h-9 w-28" value={l.no} onChange={(e) => set(i, { no: e.target.value })} /></td>
+              <td className="py-1.5 pr-1">{l.kind === "gplx" ? <Select className="w-24" value={l.military ? "qs" : "ds"} onChange={(e) => set(i, { military: e.target.value === "qs" })} options={[{ value: "ds", label: "Dân sự" }, { value: "qs", label: "Quân sự" }]} /> : <span className="text-slate-300">—</span>}</td>
+              <td className="py-1.5 pr-1"><Input type="date" className="h-9 w-36" value={l.issueDate} onChange={(e) => set(i, { issueDate: e.target.value })} /></td>
+              <td className="py-1.5 pr-1"><Input type="date" className="h-9 w-36" value={l.expiry ?? ""} onChange={(e) => set(i, { expiry: e.target.value || null })} /></td>
+              <td className="w-28 py-1.5 pr-1"><SingleFileSlot label="" value={l.file} onChange={(f) => set(i, { file: f })} /></td>
+              <td className="py-1.5 pr-1"><Button size="icon-sm" variant="ghost" className="text-slate-400 hover:text-rose-600" onClick={() => onChange(value.filter((_, k) => k !== i))}><Trash2 /></Button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="flex gap-2 border-t p-2">
+        <Button size="xs" variant="soft" onClick={() => onChange([...value, { id: genId("lc"), kind: "gplx", no: "", name: "", military: false, issueDate: DEMO_TODAY, expiry: null, file: null }])}><Plus /> Thêm GPLX</Button>
+        <Button size="xs" variant="soft" onClick={() => onChange([...value, { id: genId("lc"), kind: "chung_chi", no: "", name: "Vận hành ", military: false, issueDate: DEMO_TODAY, expiry: null, file: null }])}><Plus /> Thêm chứng chỉ vận hành</Button>
+      </div>
+    </div>
+  );
+}
+
+/** Lọc nhiều giấy phép / chứng chỉ cùng lúc, tùy chọn chỉ lấy giấy tờ còn hạn */
+function LicenseFilter({ all, value, valid, onChange }: { all: string[]; value: string[]; valid: boolean; onChange: (v: string[], valid: boolean) => void }) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" className={cn("h-10", value.length && "border-primary/50 bg-primary-soft text-primary")}>Giấy phép & chứng chỉ{value.length ? ` (${value.length})` : ""}</Button>
+      </PopoverTrigger>
+      <PopoverContent align="start" className="w-72 p-3 text-[13px]">
+        <div className="max-h-64 space-y-0.5 overflow-y-auto">
+          {all.map((o) => (
+            <label key={o} className="flex cursor-pointer items-center gap-2 rounded px-1.5 py-1 hover:bg-slate-50">
+              <input type="checkbox" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={value.includes(o)} onChange={() => onChange(value.includes(o) ? value.filter((x) => x !== o) : [...value, o], valid)} />{o}
+            </label>
+          ))}
+        </div>
+        <label className="mt-2 flex items-center gap-2 border-t pt-2"><input type="checkbox" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={valid} onChange={(e) => onChange(value, e.target.checked)} />Chỉ lấy giấy tờ còn hạn</label>
+        <p className="mt-1 text-[11.5px] text-slate-500">Nhân viên phải có <b>tất cả</b> giấy tờ đã chọn.</p>
+        <Button size="xs" variant="ghost" className="mt-1" disabled={!value.length && !valid} onClick={() => onChange([], false)}>Xóa lọc</Button>
+      </PopoverContent>
+    </Popover>
+  );
+}
 
 export default function OperatorsPage() {
   const { db } = useDb();
-  const work = (id: string) => {
-    const eqs = db.equipment.filter((e) => e.operatorId === id);
-    const shifts = db.equipmentShifts.filter((s) => s.operatorId === id);
-    const projects = new Set([...db.equipmentAssignments.filter((a) => a.operatorId === id).map((a) => a.toProjectId), ...shifts.map((s) => s.projectId)]);
-    return { eqs, shifts, hours: shifts.reduce((s, x) => s + x.hours, 0), projects: [...projects].map((p) => db.projects.find((x) => x.id === p)?.shortName).filter(Boolean) };
-  };
-  const skills = [...new Set(db.operators.map((o) => o.skill))].map((s) => ({ value: s, label: s }));
+  const [lic, setLic] = useState<string[]>([]);
+  const [valid, setValid] = useState(false);
+  const allNames = [...new Set(db.operators.flatMap((o) => (o.licenses ?? []).map(lname)))].sort((a, b) => a.localeCompare(b, "vi"));
+  const rows = db.operators.filter((o) => !lic.length || lic.every((n) => (o.licenses ?? []).some((l) => lname(l) === n && (!valid || lstate(l) !== "het_han"))));
+  const allLic = db.operators.flatMap((o) => o.licenses ?? []);
   return (
     <RegistryPage<Operator>
-      title="Nhân viên CMKT" entityLabel="nhân viên CMKT" addLabel="Thêm nhân viên CMKT" codePrefix="CN" collection="operators"
-      description="Hồ sơ lái xe, lái máy, nhân viên chuyên môn kỹ thuật: giấy phép, chứng chỉ, bậc thợ, quá trình làm việc và đánh giá hiệu suất."
-      searchText={(o) => `${o.code} ${o.name} ${o.skill} ${o.licenseClass}`}
-      filters={[
-        { label: "Tất cả chứng chỉ vận hành", options: skills, test: (o, v) => o.skill === v },
-        { label: "Tất cả loại GPLX", options: [{ value: "Quân sự", label: "GPLX quân sự" }, { value: "Dân sự", label: "GPLX dân sự" }], test: (o, v) => o.licenseType === v },
-        { label: "Kinh nghiệm", options: [{ value: "5", label: "≥ 5 năm" }, { value: "10", label: "≥ 10 năm" }], test: (o, v) => o.yearsExp >= Number(v) },
+      title="Nhân viên CMKT" entityLabel="nhân viên CMKT" addLabel="Thêm nhân viên CMKT" codePrefix="CN" collection="operators" rows={rows}
+      description="Hồ sơ lái xe, lái máy, nhân viên chuyên môn kỹ thuật: giấy phép lái xe, chứng chỉ vận hành, bậc thợ, ATVSLĐ và quá trình làm việc."
+      searchText={(o) => `${o.code} ${o.name} ${(o.licenses ?? []).map(lname).join(" ")}`}
+      headerExtra={<LicenseFilter all={allNames} value={lic} valid={valid} onChange={(v, ok) => { setLic(v); setValid(ok); }} />}
+      filters={[{ label: "Kinh nghiệm", options: [{ value: "3", label: "≥ 3 năm" }, { value: "5", label: "≥ 5 năm" }, { value: "10", label: "≥ 10 năm" }], test: (o, v) => o.yearsExp >= Number(v) }]}
+      kpis={() => [
+        { label: "Nhân viên CMKT", value: db.operators.length, tone: "navy", sub: `${allLic.length} giấy phép & chứng chỉ` },
+        { label: "Giấy tờ sắp hết hạn", value: allLic.filter((l) => lstate(l) === "sap_het").length, tone: "warning", sub: "Trong 60 ngày tới" },
+        { label: "Giấy tờ đã hết hạn", value: allLic.filter((l) => lstate(l) === "het_han").length, tone: "danger" },
       ]}
-      kpis={(rows) => [
-        { label: "Nhân viên CMKT", value: rows.length, tone: "navy", sub: `${db.equipment.filter((e) => e.operatorId).length} máy đã giao người vận hành` },
-        { label: "GPLX / chứng chỉ sắp hết hạn", value: rows.filter((o) => licenseState(o) === "sap_het").length, tone: "warning", sub: "Trong 60 ngày tới" },
-        { label: "GPLX đã hết hạn", value: rows.filter((o) => licenseState(o) === "het_han").length, tone: "danger" },
-        { label: "Hiệu suất bình quân", value: `${Math.round(rows.reduce((s, o) => s + o.score, 0) / Math.max(1, rows.length))}/100`, tone: "success" },
-      ]}
-      newRecord={() => ({ licenseType: "Dân sự", licenseExpiry: DEMO_TODAY, score: 80, violations: 0, yearsExp: 1, safetyCard: true, insurance24h: true, salaryCoef: 2.67, workerGrade: "3/7" })}
+      newRecord={() => ({ licenses: [], yearsExp: 1, safetyCard: false, insurance24h: false, salaryCoef: 2.67, workerGrade: "3/7", healthCheck: DEMO_TODAY, note: "" })}
       columns={[
-        { key: "n", header: "Họ và tên", sortValue: (o) => o.name, cell: (o) => <div><div className="font-medium text-slate-800">{o.name}</div><div className="text-[11px] text-slate-400">{o.code} · {o.rank}</div></div> },
-        { key: "s", header: "Chứng chỉ vận hành", cell: (o) => <div className="text-xs"><div>{o.skill}</div><div className="text-slate-400">Bậc {o.workerGrade} · {o.yearsExp} năm KN</div></div> },
-        { key: "l", header: "Giấy phép lái xe", sortValue: (o) => o.licenseExpiry, cell: (o) => { const st = licenseState(o); return <div className="text-xs"><div>Hạng {o.licenseClass} · {o.licenseType}</div><div className={st === "het_han" ? "font-semibold text-rose-600" : st === "sap_het" ? "font-semibold text-amber-600" : "text-slate-400"}>HH {fmtDate(o.licenseExpiry)}{st === "het_han" ? " – đã hết hạn" : st === "sap_het" ? " – sắp hết hạn" : ""}</div></div>; } },
-        { key: "e", header: "Đang vận hành", cell: (o) => { const w = work(o.id); return w.eqs.length ? <div className="text-xs">{w.eqs.map((e) => <div key={e.id}>{e.code}</div>)}<div className="text-slate-400">{db.projects.find((p) => p.id === w.eqs[0].currentProjectId)?.shortName}</div></div> : <span className="text-xs text-slate-400">Chưa giao máy</span>; } },
-        { key: "at", header: "ATVSLĐ", cell: (o) => <div className="flex flex-wrap gap-1">{o.safetyCard ? <Badge tone="success">Thẻ AT</Badge> : <Badge tone="danger">Thiếu thẻ AT</Badge>}{!o.insurance24h && <Badge tone="warning">Thiếu BH 24h</Badge>}</div> },
-        { key: "sc", header: "Hiệu suất", sortValue: (o) => o.score, cell: (o) => <div className="w-28"><div className="mb-1 text-[11.5px]">{o.score}/100{o.violations ? <span className="text-rose-600"> · {o.violations} vi phạm</span> : ""}</div><Progress value={o.score / 100} tone={o.score >= 85 ? "success" : o.score >= 75 ? "info" : "warning"} className="h-1.5" /></div> },
+        { key: "n", header: "Họ và tên", sortValue: (o) => o.name, cell: (o) => <div><div className="font-semibold">{o.name}</div><div className="text-[12px] text-slate-500">{o.code} · {o.rank}</div></div> },
+        { key: "g", header: "Bậc thợ / KN", sortValue: (o) => o.yearsExp, filter: false, cell: (o) => <span className="whitespace-nowrap">Bậc {o.workerGrade} · {o.yearsExp} năm</span> },
+        {
+          key: "lic", header: "Giấy phép & chứng chỉ", filter: false, cell: (o) => (
+            <div className="flex max-w-[420px] flex-wrap gap-1">
+              {(o.licenses ?? []).map((l) => { const st = lstate(l); return (
+                <Tip key={l.id} content={<div>{l.kind === "gplx" ? "Giấy phép lái xe" : "Chứng chỉ vận hành"} {l.name}<div>Số: {l.no || "—"}</div><div>{l.expiry ? `Hết hạn: ${fmtDate(l.expiry)}` : "Không thời hạn"}</div></div>}>
+                  <span className={cn("rounded px-1.5 py-0.5 text-[12px] font-medium", st === "het_han" ? "bg-rose-100 text-rose-700" : st === "sap_het" ? "bg-amber-100 text-amber-800" : l.kind === "gplx" ? "bg-sky-100 text-sky-800" : "bg-slate-100 text-slate-700")}>{lname(l)}</span>
+                </Tip>
+              ); })}
+              {!(o.licenses ?? []).length && <span className="text-slate-400">Chưa có</span>}
+            </div>
+          ),
+        },
+        { key: "at", header: "Thẻ ATLĐ", align: "center", filterValue: (o) => (o.safetyCard ? "Có" : "Chưa có"), cell: (o) => <input type="checkbox" readOnly checked={o.safetyCard} className="pointer-events-none h-4 w-4 accent-[hsl(var(--primary))]" aria-label="Thẻ ATLĐ" /> },
+        { key: "bh", header: "Thẻ BH TNLĐ", align: "center", filterValue: (o) => (o.insurance24h ? "Có" : "Chưa có"), cell: (o) => <input type="checkbox" readOnly checked={o.insurance24h} className="pointer-events-none h-4 w-4 accent-[hsl(var(--primary))]" aria-label="Thẻ BH TNLĐ" /> },
+        { key: "p", header: "Điện thoại", cell: (o) => <span className="whitespace-nowrap">{o.phone}</span> },
       ]}
       fields={[
         { key: "name", label: "Họ và tên", required: true },
@@ -49,34 +116,45 @@ export default function OperatorsPage() {
         { key: "contractType", label: "Hợp đồng lao động" },
         { key: "idNo", label: "CCCD / CMQĐ" },
         { key: "hometown", label: "Hộ khẩu thường trú" },
-        { key: "licenseNo", label: "Số giấy phép lái xe" },
-        { key: "licenseClass", label: "Hạng GPLX" },
-        { key: "licenseType", label: "Loại GPLX", type: "select", options: [{ value: "Quân sự", label: "Quân sự" }, { value: "Dân sự", label: "Dân sự" }] },
-        { key: "licenseExpiry", label: "Ngày hết hạn GPLX", type: "date" },
-        { key: "skill", label: "Chứng chỉ vận hành (trạm, máy rải...)" },
         { key: "workerGrade", label: "Bậc thợ" },
         { key: "salaryCoef", label: "Hệ số lương", type: "number" },
         { key: "yearsExp", label: "Số năm kinh nghiệm", type: "number" },
         { key: "healthCheck", label: "Ngày khám sức khỏe", type: "date" },
-        { key: "safetyCard", label: "Thẻ an toàn lao động", type: "checkbox" },
-        { key: "insurance24h", label: "Bảo hiểm TNLĐ 24h", type: "checkbox" },
-        { key: "score", label: "Điểm hiệu suất (0–100)", type: "number" },
-        { key: "violations", label: "Số lần vi phạm", type: "number" },
+        { key: "safetyCard", label: "Thẻ ATLĐ", type: "checkbox" },
+        { key: "insurance24h", label: "Thẻ BH TNLĐ", type: "checkbox" },
+        { key: "licenses", label: "Giấy phép lái xe & chứng chỉ vận hành", type: "custom", render: (v, set) => <LicenseEditor value={(v as OperatorLicense[]) ?? []} onChange={set} /> },
         { key: "note", label: "Ghi chú", type: "textarea" },
       ]}
       detail={(o) => {
-        const w = work(o.id);
+        const eqs = db.equipment.filter((e) => e.operatorId === o.id);
+        const shifts = db.equipmentShifts.filter((s) => s.operatorId === o.id && s.logged !== false);
+        const projects = [...new Set([...db.equipmentAssignments.filter((a) => a.operatorId === o.id).map((a) => a.toProjectId), ...shifts.map((s) => s.projectId)])].map((p) => db.projects.find((x) => x.id === p)?.shortName).filter(Boolean);
         return (
-          <section className="rounded-lg border p-4">
-            <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Quá trình làm việc & hiệu suất</h4>
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{w.projects.length}</div><div className="text-[11px] text-slate-500">Công trình đã làm</div></div>
-              <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{w.shifts.length}</div><div className="text-[11px] text-slate-500">Ca máy (3 tuần)</div></div>
-              <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{fmtNumber(w.hours, 1)}</div><div className="text-[11px] text-slate-500">Giờ máy (3 tuần)</div></div>
-            </div>
-            <p className="mt-3 text-xs text-slate-600">Công trình: {w.projects.join(", ") || "—"}</p>
-            <p className="mt-1 text-xs text-slate-500">Điểm hiệu suất được hệ thống tính từ: đủ thời gian làm việc theo ca, mức tiêu hao nhiên liệu so với định mức, số lần vi phạm và sự cố liên quan.</p>
-          </section>
+          <div className="space-y-4">
+            <section>
+              <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Giấy phép & chứng chỉ ({(o.licenses ?? []).length})</h4>
+              <div className="divide-y rounded-lg border">
+                {(o.licenses ?? []).map((l) => (
+                  <div key={l.id} className="flex flex-wrap items-center gap-3 px-3 py-2 text-[13px]">
+                    <span className="w-48 font-semibold">{l.kind === "gplx" ? `GPLX hạng ${l.name}` : l.name}</span>
+                    <span className="text-slate-600">Số {l.no || "—"} · {l.kind === "gplx" ? (l.military ? "Quân sự" : "Dân sự") : "Chứng chỉ"} · cấp {fmtDate(l.issueDate)}</span>
+                    <span className={cn("ml-auto font-medium", lstate(l) === "het_han" ? "text-rose-600" : lstate(l) === "sap_het" ? "text-amber-600" : "text-slate-600")}>{l.expiry ? `HH ${fmtDate(l.expiry)}` : "Không thời hạn"}</span>
+                    {l.file && <AttachmentList files={[l.file]} />}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="rounded-lg border p-4">
+              <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Quá trình làm việc</h4>
+              <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{projects.length}</div><div className="text-[11px] text-slate-500">Dự án đã làm</div></div>
+                <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{shifts.length}</div><div className="text-[11px] text-slate-500">Ca máy (3 tuần)</div></div>
+                <div className="rounded-lg bg-slate-50 p-2"><div className="text-lg font-bold">{fmtNumber(shifts.reduce((s, x) => s + x.hours, 0), 1)}</div><div className="text-[11px] text-slate-500">Giờ máy (3 tuần)</div></div>
+              </div>
+              <p className="mt-3 text-[13px] text-slate-700">Dự án: {projects.join(", ") || "—"}</p>
+              <p className="mt-1 text-[13px] text-slate-700">Máy được giao gần nhất: {eqs.map((e) => e.code).join(", ") || "—"}</p>
+            </section>
+          </div>
         );
       }}
     />

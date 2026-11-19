@@ -10,23 +10,23 @@
     "lines": [
       {
         "materialId": "m18",
-        "bookQty": 9307.5,
-        "actualQty": 9307.5
+        "bookQty": 11286.1,
+        "actualQty": 11286.1
       },
       {
         "materialId": "m26",
-        "bookQty": 3852.1,
-        "actualQty": 3852.1
+        "bookQty": 9681,
+        "actualQty": 9681
       },
       {
         "materialId": "m11",
-        "bookQty": 4948.7,
-        "actualQty": 4948.7
+        "bookQty": 11174.1,
+        "actualQty": 11174.1
       },
       {
         "materialId": "m27",
-        "bookQty": 369.2,
-        "actualQty": 369.2
+        "bookQty": 789.2,
+        "actualQty": 789.2
       }
     ]
   },
@@ -41,53 +41,53 @@
     "lines": [
       {
         "materialId": "m18",
-        "bookQty": 9307.5,
-        "actualQty": 9307.5
+        "bookQty": 11286.1,
+        "actualQty": 11286.1
       },
       {
         "materialId": "m26",
-        "bookQty": 3852.1,
-        "actualQty": 3852.1
+        "bookQty": 9681,
+        "actualQty": 9681
       },
       {
         "materialId": "m11",
-        "bookQty": 4948.7,
-        "actualQty": 4800.2
+        "bookQty": 11174.1,
+        "actualQty": 10838.9
       },
       {
         "materialId": "m27",
-        "bookQty": 369.2,
-        "actualQty": 369.2
+        "bookQty": 789.2,
+        "actualQty": 789.2
       },
       {
         "materialId": "m28",
-        "bookQty": 774.3,
-        "actualQty": 774.3
+        "bookQty": 1335.4,
+        "actualQty": 1335.4
       },
       {
         "materialId": "m29",
-        "bookQty": 10164.5,
-        "actualQty": 10163.5
+        "bookQty": 7984.2,
+        "actualQty": 7983.2
       },
       {
         "materialId": "m30",
-        "bookQty": 123.1,
-        "actualQty": 123.1
+        "bookQty": 146.3,
+        "actualQty": 146.3
       },
       {
         "materialId": "m23",
-        "bookQty": 3580.9,
-        "actualQty": 3580.9
+        "bookQty": 4180.9,
+        "actualQty": 4180.9
       },
       {
         "materialId": "m25",
-        "bookQty": 19748.5,
-        "actualQty": 19748.5
+        "bookQty": 26861.6,
+        "actualQty": 26861.6
       },
       {
         "materialId": "m31",
-        "bookQty": 26222.1,
-        "actualQty": 26222.1
+        "bookQty": 18238.1,
+        "actualQty": 18238.1
       }
     ]
   }

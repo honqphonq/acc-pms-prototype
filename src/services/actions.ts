@@ -3,9 +3,11 @@
  * Được gọi qua `run(fn, ...args)` của DbProvider, kết quả được lưu vào localStorage.
  */
 import type {
+  Attachment,
   AcceptanceRecord,
   AcceptanceStatus,
   ConstructionLog,
+  Contract,
   Database,
   Equipment,
   EquipmentAssignment,
@@ -55,10 +57,34 @@ export const markAllNotificationsRead = (db: Database) => setCol(db, "notificati
 // ======================= DỰ ÁN =======================
 export type ProjectInput = Omit<Project, "id" | "memberIds" | "approvalStatus" | "settlementStatus"> & { memberIds?: ID[] };
 export function createProject(db: Database, input: ProjectInput, byId: ID): Database {
-  const p: Project = { ...input, id: genId("p"), memberIds: input.memberIds ?? [input.commanderId], approvalStatus: "cho_duyet", settlementStatus: "chua_quyet_toan" };
+  // TCT tạo dự án và giao nhiệm vụ cho đơn vị luôn (không qua bước xét duyệt)
+  const p: Project = { ...input, id: genId("p"), memberIds: input.memberIds ?? [input.commanderId], approvalStatus: "da_duyet", settlementStatus: "chua_quyet_toan" };
   db = insert(db, "projects", p, true);
-  return pushNotification(db, { type: "approval", severity: "info", title: "Đơn xin nhận thi công mới", message: `${p.name} chờ ${db.users.find((u) => u.id === p.approverId)?.name ?? "Tổng công ty"} phê duyệt.`, projectId: p.id, link: `/projects/${p.id}` });
+  if (p.contractValue > 0 || p.contractNo) {
+    const c: Contract = { id: genId("hd"), code: p.contractNo || `HĐ-${p.code}`, kind: "hop_dong", projectId: p.id, parentId: null, title: `Hợp đồng thi công xây dựng – ${p.shortName}`, signDate: p.contractDate, value: p.contractValue, startDate: p.startDate, endDate: p.endDate, files: [], note: "" };
+    db = insert(db, "contracts", c, true);
+  }
+  const unit = db.departments.find((d) => d.id === p.unitId)?.name ?? "";
+  return pushNotification(db, { type: "task", severity: "info", title: "Giao nhiệm vụ dự án mới", message: `${p.name} được giao cho ${unit} – CHT ${db.users.find((u) => u.id === p.commanderId)?.name ?? ""}.`, projectId: p.id, link: `/projects/${p.id}` });
   void byId;
+}
+/** Giá trị hợp đồng của dự án = hợp đồng + cộng dồn các phụ lục */
+function syncProjectValue(db: Database, projectId: ID): Database {
+  const cs = db.contracts.filter((c) => c.projectId === projectId);
+  if (!cs.length) return db;
+  return patch(db, "projects", projectId, { contractValue: cs.reduce((s, c) => s + c.value, 0) });
+}
+export function saveContract(db: Database, c: Contract): Database {
+  const before = db.contracts.find((x) => x.id === c.id);
+  db = saveRow(db, "contracts", c);
+  db = syncProjectValue(db, c.projectId);
+  return before && before.projectId !== c.projectId ? syncProjectValue(db, before.projectId) : db;
+}
+export function deleteContract(db: Database, id: ID): Database {
+  const c = db.contracts.find((x) => x.id === id);
+  if (!c) return db;
+  db = remove(db, "contracts", (x) => x.id === id || x.parentId === id);
+  return syncProjectValue(db, c.projectId);
 }
 export const updateProject = (db: Database, id: ID, changes: Partial<Project>) => patch(db, "projects", id, changes);
 export function deleteProject(db: Database, id: ID): Database {
@@ -81,7 +107,7 @@ export function deleteProject(db: Database, id: ID): Database {
 /** QT quản lý dự án tổng thể: TCT phê duyệt đơn xin nhận thi công → ban hành quyết định phân giao nhiệm vụ */
 export function decideProject(db: Database, id: ID, approve: boolean, note: string): Database {
   const p = db.projects.find((x) => x.id === id)!;
-  db = patch(db, "projects", id, { approvalStatus: approve ? "da_duyet" : "tu_choi", status: approve ? "chuan_bi" : p.status, approvalNote: note, approvedAt: DEMO_TODAY });
+  db = patch(db, "projects", id, { approvalStatus: approve ? "da_duyet" : "tu_choi", status: approve ? "chuan_bi" : p.status });
   return pushNotification(db, {
     type: "approval",
     severity: approve ? "success" : "danger",
@@ -164,33 +190,40 @@ export type LogInput = Omit<ConstructionLog, "id" | "projectId" | "confirmedById
  * QT Tổ chức & theo dõi thi công: Tổ trưởng báo cáo kết quả, ghi nhận khối lượng thực hiện
  * → cập nhật lũy kế đầu việc → tiến độ hạng mục, dự án, dashboard tự tính lại.
  */
-export function addConstructionLog(db: Database, input: LogInput, statusOverride?: PlanTask["status"]): Database {
+/** Tính lại khối lượng lũy kế, trạng thái, ngày bắt đầu / kết thúc thực tế của công việc từ các lần cập nhật hằng ngày */
+export function recomputeTask(db: Database, taskId: ID): Database {
+  const task = db.constructionPlans.find((t) => t.id === taskId);
+  if (!task) return db;
+  const logs = db.constructionLogs.filter((l) => l.taskId === taskId && l.status !== "nhap").sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
+  let cum = 0;
+  let doneAt: string | null = null;
+  logs.forEach((l) => { cum = Math.round((cum + l.qty) * 100) / 100; if (!doneAt && task.contractQty > 0 && cum >= task.contractQty) doneAt = l.date; });
+  const status: PlanTask["status"] = doneAt ? "hoan_thanh" : cum > 0 ? "dang_thuc_hien" : "chua_thuc_hien";
+  return patch(db, "constructionPlans", taskId, { actualQty: cum, status, actualStart: logs[0]?.date ?? null, actualEnd: doneAt });
+}
+/**
+ * QT Tổ chức & theo dõi thi công: cập nhật khối lượng hằng ngày (cộng dồn)
+ * → lũy kế công việc → tiến độ hạng mục, dự án, dashboard tự tính lại.
+ */
+export function addConstructionLog(db: Database, input: LogInput): Database {
   const task = db.constructionPlans.find((t) => t.id === input.taskId)!;
   const log: ConstructionLog = { ...input, id: genId("lg"), projectId: task.projectId, confirmedById: null };
   db = insert(db, "constructionLogs", log, true);
   if (input.status === "nhap") return db; // lưu nháp: chưa cộng khối lượng
-  const newQty = Math.round((task.actualQty + input.qty) * 100) / 100;
-  const completed = task.contractQty > 0 ? newQty >= task.contractQty : statusOverride === "hoan_thanh";
-  const status = statusOverride ?? (completed ? "hoan_thanh" : newQty > 0 ? "dang_thuc_hien" : task.status);
-  db = patch(db, "constructionPlans", task.id, {
-    actualQty: newQty,
-    status,
-    actualStart: task.actualStart ?? input.date,
-    actualEnd: status === "hoan_thanh" ? input.date : null,
-    note: input.content || task.note,
-  });
+  db = recomputeTask(db, task.id);
   const p = db.projects.find((x) => x.id === task.projectId)!;
-  return pushNotification(db, { type: "task", severity: "info", title: "Nhật ký thi công mới chờ xác nhận", message: `${task.code} ${task.name}: +${input.qty.toLocaleString("vi-VN")} ${task.unit}.`, projectId: p.id, link: `/construction/logs?project=${p.id}` });
+  return pushNotification(db, { type: "task", severity: "info", title: "Cập nhật khối lượng mới", message: `${task.code} ${task.name}: +${input.qty.toLocaleString("vi-VN")} ${task.unit} (${input.date.split("-").reverse().join("/")}).`, projectId: p.id, link: `/construction/plan/${p.id}/task/${task.id}` });
+}
+export function updateConstructionLog(db: Database, id: ID, changes: Partial<ConstructionLog>): Database {
+  const log = db.constructionLogs.find((l) => l.id === id);
+  if (!log) return db;
+  return recomputeTask(patch(db, "constructionLogs", id, changes), log.taskId);
 }
 export const confirmLog = (db: Database, id: ID, byId: ID) => patch(db, "constructionLogs", id, { status: "da_xac_nhan", confirmedById: byId });
 export function deleteLog(db: Database, id: ID): Database {
-  const log = db.constructionLogs.find((l) => l.id === id)!;
-  db = remove(db, "constructionLogs", (l) => l.id === id);
-  if (log.status === "nhap") return db;
-  const task = db.constructionPlans.find((t) => t.id === log.taskId);
-  if (!task) return db;
-  const qty = Math.max(0, Math.round((task.actualQty - log.qty) * 100) / 100);
-  return patch(db, "constructionPlans", task.id, { actualQty: qty, status: qty <= 0 ? "chua_thuc_hien" : qty >= task.contractQty ? "hoan_thanh" : "dang_thuc_hien", actualEnd: qty >= task.contractQty ? task.actualEnd : null });
+  const log = db.constructionLogs.find((l) => l.id === id);
+  if (!log) return db;
+  return recomputeTask(remove(db, "constructionLogs", (l) => l.id === id), log.taskId);
 }
 
 // ======================= VẬT TƯ =======================
@@ -497,4 +530,60 @@ export function recallEquipment(db: Database, assignmentId: ID, byId: ID): Datab
     operatorId: null, startDate: DEMO_TODAY, endDate: DEMO_TODAY, status: "hoan_thanh", kind: "thu_hoi", requesterId: byId, reason: "Thu hồi thiết bị về kho Tổng công ty", createdAt: DEMO_TODAY,
   };
   return insert(next, "equipmentAssignments", rec, true);
+}
+
+/** Phân ca: xếp 1 nhân viên CMKT vận hành máy trong 1 ca (null = bỏ phân ca nếu chưa có nhật trình) */
+export function assignShift(db: Database, equipmentId: ID, projectId: ID, date: string, shift: EquipmentShift["shift"], operatorId: ID | null): Database {
+  const cur = db.equipmentShifts.find((s) => s.equipmentId === equipmentId && s.date === date && s.shift === shift);
+  if (!operatorId) return cur && cur.logged === false ? remove(db, "equipmentShifts", (s) => s.id === cur.id) : db;
+  if (cur) return patch(db, "equipmentShifts", cur.id, { operatorId });
+  return insert(db, "equipmentShifts", { id: genId("sh"), equipmentId, projectId, date, shift, operatorId, hours: 0, fuelLiters: 0, output: "", note: "", km: 0, logged: false }, true);
+}
+/** Nhật trình cuối ca: giờ máy / km, khối lượng, nhiên liệu → cộng giờ máy cho thiết bị */
+export function logShift(db: Database, id: ID, data: { hours: number; km: number; fuelLiters: number; output: string; note: string }): Database {
+  const s = db.equipmentShifts.find((x) => x.id === id);
+  if (!s) return db;
+  const e = db.equipment.find((x) => x.id === s.equipmentId)!;
+  const delta = data.hours - (s.logged ? s.hours : 0);
+  db = patch(db, "equipmentShifts", id, { ...data, logged: true });
+  return patch(db, "equipment", e.id, { totalHours: Math.round((e.totalHours + delta) * 10) / 10 });
+}
+
+// ======================= PHIẾU NHẬP / XUẤT NHIỀU DÒNG =======================
+export interface VoucherLine { materialId: ID; docQty: number; qty: number }
+export interface VoucherHeader {
+  type: "nhap" | "xuat";
+  subType: string; // nhập: ncc | dieu_chuyen | tra_lai; xuất: thi_cong | dieu_chuyen | tra_ncc
+  projectId: ID;
+  date: string;
+  supplierId: ID | null;
+  taskId: ID | null;
+  toProjectId: ID | null; // xuất điều chuyển sang kho dự án khác
+  note: string;
+  files: Attachment[];
+}
+/** Lập phiếu nhập / xuất gồm nhiều dòng vật tư; xác nhận thì mới cập nhật tồn kho.
+ *  Xuất điều chuyển tự sinh phiếu nhập (chờ xác nhận) ở kho nhận. */
+export function createVoucher(db: Database, h: VoucherHeader, lines: VoucherLine[], byId: ID, confirm: boolean): Database {
+  const prefix = h.type === "nhap" ? "PNK-" : "PXK-";
+  const codes = db.stockTransactions.filter((x) => x.type === h.type).map((x) => x.voucherCode ?? x.code);
+  const voucherCode = nextCode(prefix, codes, 4);
+  lines.filter((l) => l.materialId && l.qty > 0).forEach((l, i) => {
+    db = ensureInventory(db, h.projectId, l.materialId);
+    db = insert(db, "stockTransactions", {
+      id: genId("tx"), code: `${voucherCode}.${i + 1}`, voucherCode, type: h.type, subType: h.subType, projectId: h.projectId, materialId: l.materialId, qty: l.qty, docQty: l.docQty || l.qty, confirmed: confirm,
+      date: h.date, requestId: null, taskId: h.taskId, supplierId: h.supplierId, toProjectId: h.toProjectId, byId, note: h.note, files: h.files,
+    });
+  });
+  if (h.type === "xuat" && h.subType === "dieu_chuyen" && h.toProjectId) {
+    const from = db.projects.find((p) => p.id === h.projectId)?.shortName;
+    db = createVoucher(db, { ...h, type: "nhap", projectId: h.toProjectId, toProjectId: null, note: `Nhận điều chuyển từ kho ${from} (${voucherCode})` }, lines, byId, false);
+  }
+  return db;
+}
+export function confirmVoucher(db: Database, voucherCode: string): Database {
+  return setCol(db, "stockTransactions", db.stockTransactions.map((t) => ((t.voucherCode ?? t.code) === voucherCode ? { ...t, confirmed: true } : t)));
+}
+export function deleteVoucher(db: Database, voucherCode: string): Database {
+  return remove(db, "stockTransactions", (t) => (t.voucherCode ?? t.code) === voucherCode);
 }

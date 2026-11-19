@@ -15,7 +15,7 @@
     "contractDate": "2026-04-15",
     "startDate": "2026-04-28",
     "endDate": "2027-04-25",
-    "contractValue": 241809400000,
+    "contractValue": 246899400000,
     "budget": 217628000000,
     "costRatio": 0.91,
     "status": "dang_thi_cong",
@@ -34,35 +34,7 @@
       "u15"
     ],
     "description": "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-04-20",
-    "appendices": [
-      {
-        "id": "pl-gb-1",
-        "code": "PL01/1504/2026",
-        "date": "2026-06-05",
-        "title": "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B",
-        "valueChange": 0,
-        "note": "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026"
-      },
-      {
-        "id": "pl-gb-2",
-        "code": "PL02/1504/2026",
-        "date": "2026-08-20",
-        "title": "Bổ sung khối lượng BTXM M350 sân đỗ zone A2",
-        "valueChange": 3850000000,
-        "note": "Theo thiết kế điều chỉnh mở rộng vệt lăn"
-      },
-      {
-        "id": "pl-gb-3",
-        "code": "PL03/1504/2026",
-        "date": "2026-10-28",
-        "title": "Điều chỉnh đơn giá nhân công theo Thông tư mới",
-        "valueChange": 1240000000,
-        "note": "Áp dụng từ đợt thanh toán 4"
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p02",
@@ -80,7 +52,7 @@
     "contractDate": "2025-08-15",
     "startDate": "2025-09-15",
     "endDate": "2027-02-28",
-    "contractValue": 759993450000,
+    "contractValue": 771393450000,
     "budget": 690000000000,
     "costRatio": 0.96,
     "status": "dang_thi_cong",
@@ -99,10 +71,7 @@
       "u35"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-08-20",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p03",
@@ -127,18 +96,17 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u21",
-      "u32",
       "u44",
-      "u37",
+      "u36",
+      "u31",
+      "u33",
+      "u34",
+      "u30",
       "u45",
-      "u38",
-      "u30"
+      "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-06-25",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p04",
@@ -163,20 +131,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u22",
-      "u36",
-      "u31",
-      "u40",
-      "u41",
       "u37",
-      "u33",
-      "u39",
-      "u32"
+      "u35",
+      "u41",
+      "u44",
+      "u45",
+      "u36",
+      "u34",
+      "u30",
+      "u31",
+      "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-10-14",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p05",
@@ -201,21 +168,17 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u23",
+      "u42",
       "u34",
-      "u40",
-      "u45",
-      "u43",
       "u30",
-      "u33",
+      "u39",
       "u32",
-      "u31",
-      "u38"
+      "u33",
+      "u36",
+      "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-02-23",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p06",
@@ -240,20 +203,20 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u24",
-      "u31",
-      "u44",
-      "u33",
-      "u32",
-      "u43",
+      "u39",
+      "u36",
+      "u30",
+      "u42",
       "u34",
-      "u35",
-      "u36"
+      "u41",
+      "u44",
+      "u43",
+      "u38",
+      "u37",
+      "u31"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-07-30",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p07",
@@ -271,37 +234,25 @@
     "contractDate": "2025-11-15",
     "startDate": "2025-12-01",
     "endDate": "2027-06-30",
-    "contractValue": 284976570000,
+    "contractValue": 289251570000,
     "budget": 260000000000,
     "costRatio": 0.95,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u25",
-      "u42",
-      "u34",
-      "u32",
-      "u37",
       "u39",
+      "u36",
+      "u35",
+      "u30",
       "u38",
-      "u41",
       "u31",
-      "u44"
+      "u42",
+      "u37",
+      "u41"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-11-20",
-    "appendices": [
-      {
-        "id": "pl-p07-1",
-        "code": "PL01/1511/2025/HĐ-QC",
-        "date": "2026-03-15",
-        "title": "Điều chỉnh khối lượng phát sinh",
-        "valueChange": 4275000000,
-        "note": ""
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p08",
@@ -326,19 +277,19 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u26",
+      "u44",
       "u39",
-      "u33",
+      "u45",
       "u41",
+      "u35",
       "u36",
+      "u40",
       "u30",
       "u38",
-      "u31"
+      "u43"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-02-08",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p09",
@@ -356,28 +307,24 @@
     "contractDate": "2025-09-22",
     "startDate": "2025-10-01",
     "endDate": "2027-04-30",
-    "contractValue": 319996170000,
+    "contractValue": 324796170000,
     "budget": 292000000000,
     "costRatio": 0.94,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u27",
+      "u35",
       "u40",
-      "u44",
+      "u41",
       "u34",
       "u30",
-      "u33",
+      "u44",
       "u37",
-      "u42",
-      "u31",
-      "u43"
+      "u42"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-09-27",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p10",
@@ -395,7 +342,7 @@
     "contractDate": "2026-10-28",
     "startDate": "2027-01-04",
     "endDate": "2028-06-30",
-    "contractValue": 480000000000,
+    "contractValue": 487200000000,
     "budget": 438000000000,
     "costRatio": 0.9,
     "status": "chuan_bi",
@@ -404,10 +351,7 @@
       "u28"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "cho_duyet",
-    "approverId": "u01",
-    "approvedAt": null,
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p11",
@@ -425,32 +369,21 @@
     "contractDate": "2025-01-10",
     "startDate": "2025-01-15",
     "endDate": "2026-08-30",
-    "contractValue": 145004500000,
+    "contractValue": 147179500000,
     "budget": 132000000000,
     "costRatio": 0.9,
     "status": "hoan_thanh",
     "settlementStatus": "dang_lap",
     "memberIds": [
       "u29",
+      "u31",
+      "u35",
       "u36",
       "u44",
-      "u45",
-      "u35"
+      "u45"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-01-15",
-    "appendices": [
-      {
-        "id": "pl-p11-1",
-        "code": "PL01/1001/2025/HĐXD-ACV",
-        "date": "2025-05-10",
-        "title": "Điều chỉnh khối lượng phát sinh",
-        "valueChange": 2175000000,
-        "note": ""
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p12",
@@ -468,28 +401,23 @@
     "contractDate": "2025-11-11",
     "startDate": "2025-12-01",
     "endDate": "2027-08-31",
-    "contractValue": 680109500000,
+    "contractValue": 690309500000,
     "budget": 612000000000,
     "costRatio": 0.88,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u60",
-      "u31",
-      "u37",
-      "u33",
+      "u35",
       "u41",
-      "u42",
       "u36",
-      "u38",
       "u34",
-      "u43"
+      "u33",
+      "u32",
+      "u42"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-11-16",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p13",
@@ -507,28 +435,25 @@
     "contractDate": "2025-12-26",
     "startDate": "2026-01-15",
     "endDate": "2027-07-31",
-    "contractValue": 264973210000,
+    "contractValue": 268948210000,
     "budget": 238500000000,
     "costRatio": 0.9,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u61",
+      "u43",
+      "u31",
       "u42",
       "u40",
-      "u36",
+      "u39",
       "u44",
-      "u33",
-      "u35",
-      "u43",
       "u41",
-      "u39"
+      "u35",
+      "u30"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-12-31",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p14",
@@ -546,28 +471,22 @@
     "contractDate": "2026-02-09",
     "startDate": "2026-03-01",
     "endDate": "2027-06-30",
-    "contractValue": 198011150000,
+    "contractValue": 200981150000,
     "budget": 178200000000,
     "costRatio": 0.92,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u62",
-      "u45",
-      "u40",
-      "u35",
+      "u44",
       "u41",
-      "u42",
       "u32",
-      "u39",
-      "u31",
-      "u30"
+      "u38",
+      "u42",
+      "u39"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-02-14",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p15",
@@ -585,37 +504,22 @@
     "contractDate": "2025-09-25",
     "startDate": "2025-10-15",
     "endDate": "2027-03-31",
-    "contractValue": 355083770000,
+    "contractValue": 360408770000,
     "budget": 319500000000,
     "costRatio": 0.94,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u63",
-      "u43",
-      "u44",
-      "u37",
+      "u35",
+      "u31",
       "u42",
-      "u30",
-      "u36",
-      "u40",
-      "u45",
-      "u38"
+      "u43",
+      "u32",
+      "u40"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-09-30",
-    "appendices": [
-      {
-        "id": "pl-p15-1",
-        "code": "PL01/1310/2025/HĐXD",
-        "date": "2026-01-23",
-        "title": "Điều chỉnh khối lượng phát sinh",
-        "valueChange": 5325000000,
-        "note": ""
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p16",
@@ -640,30 +544,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u64",
-      "u42",
-      "u36",
-      "u38",
-      "u35",
+      "u45",
       "u34",
       "u44",
-      "u41",
+      "u42",
+      "u43",
+      "u37",
       "u30",
-      "u37"
+      "u32",
+      "u36"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-01-17",
-    "appendices": [
-      {
-        "id": "pl-p16-1",
-        "code": "PL01/1402/2026/HĐXD",
-        "date": "2026-05-12",
-        "title": "Điều chỉnh khối lượng phát sinh",
-        "valueChange": 3450000000,
-        "note": ""
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p17",
@@ -681,28 +573,26 @@
     "contractDate": "2025-07-12",
     "startDate": "2025-08-01",
     "endDate": "2027-04-30",
-    "contractValue": 819922200000,
+    "contractValue": 832222200000,
     "budget": 738000000000,
     "costRatio": 0.88,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u65",
-      "u45",
-      "u40",
+      "u41",
       "u31",
       "u43",
       "u33",
+      "u39",
+      "u45",
+      "u38",
       "u36",
-      "u32",
-      "u42",
-      "u38"
+      "u40",
+      "u32"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-07-17",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p18",
@@ -727,22 +617,18 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u66",
+      "u31",
+      "u43",
+      "u32",
       "u44",
       "u33",
       "u42",
-      "u35",
-      "u38",
       "u34",
       "u30",
-      "u36",
-      "u39",
-      "u43"
+      "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-10-17",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p19",
@@ -767,21 +653,20 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u67",
+      "u38",
       "u39",
-      "u30",
-      "u45",
-      "u42",
-      "u34",
       "u43",
-      "u32",
-      "u31",
-      "u37"
+      "u35",
+      "u30",
+      "u37",
+      "u41",
+      "u36",
+      "u40",
+      "u44",
+      "u34"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-12-21",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p20",
@@ -799,28 +684,25 @@
     "contractDate": "2025-08-26",
     "startDate": "2025-09-15",
     "endDate": "2027-12-31",
-    "contractValue": 1149926020000,
+    "contractValue": 1167176020000,
     "budget": 1035000000000,
     "costRatio": 0.94,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u68",
-      "u39",
-      "u45",
-      "u41",
-      "u42",
+      "u44",
       "u35",
-      "u40",
-      "u38",
+      "u42",
+      "u43",
       "u30",
-      "u33"
+      "u45",
+      "u37",
+      "u41",
+      "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-08-31",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p21",
@@ -845,31 +727,17 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u69",
-      "u33",
       "u36",
-      "u41",
+      "u35",
+      "u33",
+      "u40",
       "u38",
+      "u34",
       "u32",
-      "u30",
-      "u43",
-      "u44",
-      "u45",
-      "u42"
+      "u30"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-01-31",
-    "appendices": [
-      {
-        "id": "pl-p21-1",
-        "code": "PL01/1902/2026/HĐXD",
-        "date": "2026-05-26",
-        "title": "Điều chỉnh khối lượng phát sinh",
-        "valueChange": 5925000000,
-        "note": ""
-      }
-    ]
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p22",
@@ -887,25 +755,21 @@
     "contractDate": "2026-02-09",
     "startDate": "2026-03-01",
     "endDate": "2027-05-31",
-    "contractValue": 168018700000,
+    "contractValue": 170538700000,
     "budget": 151200000000,
     "costRatio": 0.88,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u70",
-      "u39",
-      "u44",
-      "u41",
       "u31",
-      "u30",
-      "u45"
+      "u33",
+      "u36",
+      "u42",
+      "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-02-14",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p23",
@@ -930,20 +794,16 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u71",
-      "u38",
-      "u43",
-      "u39",
       "u36",
+      "u45",
+      "u38",
+      "u41",
+      "u40",
       "u35",
-      "u31",
-      "u42",
-      "u44"
+      "u39"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-09-16",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p24",
@@ -968,21 +828,15 @@
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u72",
-      "u34",
-      "u35",
-      "u31",
-      "u44",
-      "u45",
-      "u42",
-      "u37",
       "u38",
-      "u39"
+      "u33",
+      "u36",
+      "u35",
+      "u40",
+      "u44"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-11-30",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p25",
@@ -1000,29 +854,27 @@
     "contractDate": "2025-12-21",
     "startDate": "2026-01-10",
     "endDate": "2027-08-31",
-    "contractValue": 274991640000,
+    "contractValue": 279116640000,
     "budget": 247500000000,
     "costRatio": 0.94,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u73",
+      "u33",
+      "u42",
       "u38",
-      "u45",
-      "u34",
-      "u39",
-      "u31",
-      "u36",
-      "u41",
+      "u30",
+      "u44",
       "u35",
-      "u43",
-      "u44"
+      "u45",
+      "u39",
+      "u41",
+      "u32",
+      "u34"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2025-12-26",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   },
   {
     "id": "p26",
@@ -1040,27 +892,24 @@
     "contractDate": "2026-03-12",
     "startDate": "2026-04-01",
     "endDate": "2028-03-31",
-    "contractValue": 309996560000,
+    "contractValue": 314646560000,
     "budget": 279000000000,
     "costRatio": 0.96,
     "status": "dang_thi_cong",
     "settlementStatus": "chua_quyet_toan",
     "memberIds": [
       "u74",
-      "u37",
-      "u39",
       "u38",
+      "u32",
+      "u41",
+      "u43",
+      "u33",
+      "u44",
+      "u34",
       "u45",
-      "u31",
-      "u35",
-      "u42",
-      "u30",
-      "u41"
+      "u37"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet",
-    "approverId": "u01",
-    "approvedAt": "2026-03-17",
-    "appendices": []
+    "approvalStatus": "da_duyet"
   }
 ]

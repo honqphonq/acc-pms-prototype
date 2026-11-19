@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
-import { ChevronDown, ChevronRight, Download, FileImage, FileSpreadsheet, FileText, Folder, FolderOpen, FolderPlus, History, Pencil, Search, Trash2, Upload } from "lucide-react";
+import { ChevronDown, ChevronRight, Download, Eye, FileImage, FileSpreadsheet, FileText, Folder, FolderOpen, FolderPlus, History, Pencil, Search, Trash2, Upload } from "lucide-react";
+import { FilePreview, readFiles } from "@/components/common/Attachments";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -40,10 +41,14 @@ export default function DocumentsPage() {
   const selected = folders.find((f) => f.id === sel) ?? null;
 
   const descendants = (id: string): string[] => [id, ...folders.filter((f) => f.parentId === id).flatMap((f) => descendants(f.id))];
-  const docs = useMemo(() => {
-    const scope = selected ? new Set(descendants(selected.id)) : null;
-    return db.documents.filter((d) => d.projectId === projectId && (!scope || scope.has(d.folderId)) && (!q || d.name.toLowerCase().includes(q.toLowerCase()))).sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt));
-  }, [db.documents, projectId, selected, q]); // eslint-disable-line react-hooks/exhaustive-deps
+  // tìm kiếm: mọi thư mục; còn lại: chỉ file nằm trực tiếp trong thư mục đang mở
+  const docs = useMemo(() => db.documents
+    .filter((d) => d.projectId === projectId && (q ? d.name.toLowerCase().includes(q.toLowerCase()) : !!selected && d.folderId === selected.id))
+    .sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt)), [db.documents, projectId, selected, q]);
+  const subFolders = folders.filter((f) => f.parentId === (selected?.id ?? null)).sort((a, b) => a.order - b.order);
+  const lastUpdate = (id: string) => { const s = new Set(descendants(id)); return db.documents.filter((d) => s.has(d.folderId)).map((d) => d.uploadedAt).sort().pop(); };
+  const chain = (id: string | null): DocFolder[] => { const f = folders.find((x) => x.id === id); return f ? [...chain(f.parentId), f] : []; };
+  const [preview, setPreview] = useState<SiteDocument | null>(null);
   const count = (id: string) => { const s = new Set(descendants(id)); return db.documents.filter((d) => s.has(d.folderId)).length; };
   const path = (id: string | null): string => { const f = folders.find((x) => x.id === id); return f ? `${f.parentId ? path(f.parentId) + " / " : ""}${f.name}` : ""; };
   const uName = (id: string) => db.users.find((u) => u.id === id)?.name ?? "";
@@ -84,13 +89,14 @@ export default function DocumentsPage() {
   const upload = (files: FileList | null) => {
     if (!files?.length) return;
     if (!selected) return toast.error("Chọn thư mục để tải tài liệu lên");
-    Array.from(files).forEach((f) => run(saveRow, "documents", { id: genId("doc"), projectId, folderId: selected.id, name: f.name, fileType: f.name.split(".").pop()?.toLowerCase() ?? "pdf", sizeKb: Math.max(1, Math.round(f.size / 1024)), version: 1, uploadedById: user!.id, uploadedAt: DEMO_TODAY, versions: [{ version: 1, at: DEMO_TODAY, byId: user!.id, note: "Tải lên" }] }));
+    readFiles(files).then((atts) => atts.forEach((a) => run(saveRow, "documents", { id: genId("doc"), projectId, folderId: selected.id, name: a.name, fileType: a.name.split(".").pop()?.toLowerCase() ?? "pdf", sizeKb: Math.max(1, Math.round(a.size / 1024)), version: 1, uploadedById: user!.id, uploadedAt: DEMO_TODAY, versions: [{ version: 1, at: DEMO_TODAY, byId: user!.id, note: "Tải lên" }], file: a })));
     toast.success(`Đã tải lên ${files.length} tài liệu vào “${selected.name}”`);
   };
   const newVersion = (files: FileList | null) => {
     if (!files?.length || !verDoc) return;
     const v = verDoc.version + 1;
-    run(saveRow, "documents", { ...verDoc, name: files[0].name, sizeKb: Math.max(1, Math.round(files[0].size / 1024)), version: v, uploadedAt: DEMO_TODAY, uploadedById: user!.id, versions: [...verDoc.versions, { version: v, at: DEMO_TODAY, byId: user!.id, note: "Cập nhật phiên bản" }] });
+    const doc = verDoc;
+    readFiles(files).then(([a]) => run(saveRow, "documents", { ...doc, name: a.name, sizeKb: Math.max(1, Math.round(a.size / 1024)), version: v, uploadedAt: DEMO_TODAY, uploadedById: user!.id, file: a, versions: [...doc.versions, { version: v, at: DEMO_TODAY, byId: user!.id, note: "Cập nhật phiên bản" }] }));
     toast.success(`Đã cập nhật phiên bản v${v}`);
     setVerDoc(null);
   };
@@ -119,35 +125,52 @@ export default function DocumentsPage() {
         </Card>
         <Card className="min-w-0">
           <div className="flex flex-wrap items-center gap-2 border-b px-4 py-3">
-            <div className="min-w-0 flex-1 truncate text-[13.5px] font-semibold text-slate-800">{selected ? path(selected.id) : "Tất cả hồ sơ"}</div>
-            <div className="relative w-64"><Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" /><Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tài liệu..." className="h-8 pl-8" /></div>
+            <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1 text-[14px]">
+              <button onClick={() => { setSel(null); setQ(""); }} className={cn("font-semibold hover:text-primary", !selected ? "text-slate-900" : "text-primary")}>Hồ sơ thi công</button>
+              {chain(selected?.id ?? null).map((f, i, arr) => <span key={f.id} className="flex items-center gap-1"><ChevronRight className="h-4 w-4 text-slate-400" /><button onClick={() => setSel(f.id)} className={cn("font-semibold hover:text-primary", i === arr.length - 1 ? "text-slate-900" : "text-primary")}>{f.name}</button></span>)}
+            </div>
+            <div className="relative w-64"><Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm tài liệu trong mọi thư mục..." className="h-9 pr-8" /><Search className="absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" /></div>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-[13px]">
-              <thead className="bg-slate-50 text-left text-[12px] text-slate-500"><tr><th className="px-4 py-2.5 font-medium">Tài liệu</th>{!selected && <th className="font-medium">Thư mục</th>}<th className="font-medium">Phiên bản</th><th className="font-medium">Dung lượng</th><th className="font-medium">Cập nhật</th><th /></tr></thead>
-              <tbody>
-                {docs.map((d) => (
-                  <tr key={d.id} className="border-t hover:bg-slate-50">
-                    <td className="px-4 py-2"><div className="flex items-center gap-2">{icon(d.fileType)}<span className="font-medium text-slate-800">{d.name}</span></div></td>
-                    {!selected && <td className="max-w-[220px] truncate text-xs text-slate-500">{path(d.folderId)}</td>}
-                    <td><Badge tone={d.version > 1 ? "info" : "outline"}>v{d.version}</Badge></td>
-                    <td className="text-xs text-slate-500">{size(d.sizeKb)}</td>
-                    <td className="whitespace-nowrap text-xs"><div>{fmtDate(d.uploadedAt)}</div><div className="text-slate-400">{uName(d.uploadedById)}</div></td>
-                    <td className="whitespace-nowrap pr-3 text-right">
-                      <Button size="icon-sm" variant="ghost" aria-label="Lịch sử phiên bản" onClick={() => setHist(d)}><History /></Button>
-                      <Button size="icon-sm" variant="ghost" aria-label="Cập nhật phiên bản" onClick={() => { setVerDoc(d); verRef.current?.click(); }}><Upload /></Button>
-                      <Button size="icon-sm" variant="ghost" aria-label="Tải về" onClick={() => toast.info("Prototype không lưu file thật – tài liệu minh họa")}><Download /></Button>
-                      <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa ${d.name}?`, destructive: true, confirmText: "Xóa" })) { run(deleteRow, "documents", d.id); toast.success("Đã xóa tài liệu"); } }}><Trash2 /></Button>
-                    </td>
-                  </tr>
-                ))}
-                {!docs.length && <tr><td colSpan={6} className="py-12 text-center text-sm text-slate-400">Thư mục chưa có tài liệu.</td></tr>}
-              </tbody>
-            </table>
-          </div>
+          {!q && subFolders.length > 0 && (
+            <div className="grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-3">
+              {subFolders.map((f) => (
+                <button key={f.id} onClick={() => { setSel(f.id); setOpen((o) => ({ ...o, [f.parentId ?? ""]: true })); }} className="flex items-center gap-3 rounded-xl border bg-white px-4 py-3 text-left hover:border-primary/60 hover:bg-primary-soft/40 hover:shadow-sm">
+                  <Folder className="h-9 w-9 shrink-0 fill-amber-100 text-amber-500" />
+                  <div className="min-w-0"><div className="truncate text-[14px] font-semibold text-slate-900">{f.name}</div><div className="text-[12px] text-slate-500">{count(f.id)} tài liệu{lastUpdate(f.id) ? ` · cập nhật ${fmtDate(lastUpdate(f.id))}` : ""}</div></div>
+                </button>
+              ))}
+            </div>
+          )}
+          {(q || selected) && (
+            <div className="overflow-x-auto">
+              <table className="w-full text-[13.5px]">
+                <thead className="bg-slate-100/80 text-left text-[12px] font-bold uppercase tracking-wide text-slate-800"><tr><th className="px-4 py-3">Tài liệu</th>{q && <th>Thư mục</th>}<th>Phiên bản</th><th>Dung lượng</th><th>Cập nhật</th><th /></tr></thead>
+                <tbody>
+                  {docs.map((d) => (
+                    <tr key={d.id} className="border-t border-slate-200/80 hover:bg-sky-50/50">
+                      <td className="px-4 py-2.5"><button onClick={() => setPreview(d)} className="flex items-center gap-2 text-left font-medium text-slate-900 hover:text-primary">{icon(d.fileType)}{d.name}</button></td>
+                      {q && <td className="max-w-[220px] truncate text-xs text-slate-600">{path(d.folderId)}</td>}
+                      <td><Badge tone={d.version > 1 ? "info" : "outline"}>v{d.version}</Badge></td>
+                      <td className="text-slate-600">{size(d.sizeKb)}</td>
+                      <td className="whitespace-nowrap"><div>{fmtDate(d.uploadedAt)}</div><div className="text-xs text-slate-500">{uName(d.uploadedById)}</div></td>
+                      <td className="whitespace-nowrap pr-3 text-right">
+                        <Button size="icon-sm" variant="ghost" aria-label="Xem trước" onClick={() => setPreview(d)}><Eye /></Button>
+                        <Button size="icon-sm" variant="ghost" aria-label="Lịch sử phiên bản" onClick={() => setHist(d)}><History /></Button>
+                        <Button size="icon-sm" variant="ghost" aria-label="Cập nhật phiên bản" onClick={() => { setVerDoc(d); verRef.current?.click(); }}><Upload /></Button>
+                        <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa ${d.name}?`, destructive: true, confirmText: "Xóa" })) { run(deleteRow, "documents", d.id); toast.success("Đã xóa tài liệu"); } }}><Trash2 /></Button>
+                      </td>
+                    </tr>
+                  ))}
+                  {!docs.length && <tr><td colSpan={6} className="py-10 text-center text-sm text-slate-400">{q ? "Không tìm thấy tài liệu" : subFolders.length ? "Không có tài liệu nằm trực tiếp trong thư mục này – mở thư mục con ở trên." : "Thư mục chưa có tài liệu. Bấm “Tải lên tài liệu”."}</td></tr>}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {!q && !selected && !subFolders.length && <div className="py-12 text-center text-sm text-slate-400">Chưa có thư mục hồ sơ.</div>}
         </Card>
       </div>
 
+      <FilePreview file={preview ? (preview.file ?? { id: preview.id, name: preview.name, type: "application/octet-stream", size: preview.sizeKb * 1024, url: null }) : null} onClose={() => setPreview(null)} />
       <Dialog open={!!folderDlg} onOpenChange={(o) => !o && setFolderDlg(null)}>
         <DialogContent>
           <DialogHeader><DialogTitle>{folderDlg?.id ? "Đổi tên thư mục" : "Tạo thư mục"}</DialogTitle></DialogHeader>

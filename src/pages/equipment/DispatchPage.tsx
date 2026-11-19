@@ -42,7 +42,6 @@ export default function DispatchPage() {
     { key: "kind", header: "Loại", cell: (a) => <Badge tone={KIND[kindOf(a)].tone}>{KIND[kindOf(a)].label}</Badge> },
     { key: "route", header: "Từ → Đến", cell: (a) => <div className="text-xs"><span className="text-slate-500">{pn(a.fromProjectId) ?? "Kho TCT"}</span> → <b className="text-slate-800">{pn(a.toProjectId) ?? "Kho TCT"}</b></div> },
     { key: "time", header: "Thời gian", sortValue: (a) => a.startDate, cell: (a) => <span className="whitespace-nowrap text-xs">{fmtDate(a.startDate)} – {fmtDate(a.endDate)}</span> },
-    { key: "op", header: "Người vận hành", cell: (a) => <UserCell userId={a.operatorId} /> },
     { key: "req", header: "Đề nghị bởi", cell: (a) => <UserCell userId={a.requesterId} /> },
     { key: "st", header: "Trạng thái", sortValue: (a) => a.status, cell: (a) => <StatusBadge map={ASSIGNMENT_STATUS} value={a.status} /> },
     {
@@ -60,8 +59,8 @@ export default function DispatchPage() {
     <div>
       <PageHeader title="Phân bổ, điều động xe máy thiết bị" description="Đề xuất nhu cầu XMTB của dự án → phê duyệt → phân bổ về dự án, giao người vận hành; điều chuyển sang dự án khác; thu hồi về TCT; lịch sử điều động." actions={(can("equipment.dispatch.request") || can("equipment.dispatch.approve")) && <Button onClick={() => setOpen(true)}><Plus /> Lập điều động</Button>} />
       <Card className="mb-4 p-4">
-        <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">QT phân công xe – máy</div>
-        <Stepper steps={["B1: Lập kế hoạch – yêu cầu sử dụng", "B2: Phân công nhân sự, thiết bị", "B3: Phân công ca làm việc", "B4: Vận hành & giám sát", "B5: Chấm công", "B6: Báo cáo"]} current={1} />
+        <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-500">QT phân bổ, điều động XMTB</div>
+        <Stepper steps={["B1: Đề xuất nhu cầu XMTB của dự án", "B2: Phê duyệt đề xuất", "B3: Phân bổ XMTB về dự án", "B4: Phân ca & nhật trình (màn Phân ca và nhật trình)", "B5: Điều chuyển / thu hồi về TCT"]} current={2} />
       </Card>
       <div className="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <KpiCard label="Đề nghị chờ duyệt" value={db.equipmentAssignments.filter((a) => a.status === "cho_duyet").length} tone="warning" onClick={() => setStatus("cho_duyet")} sub="Bấm để lọc" />
@@ -76,7 +75,7 @@ export default function DispatchPage() {
           toolbar={<>
             <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(ASSIGNMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect value={kind} onChange={setKind} allLabel="Tất cả loại" options={Object.entries(KIND).map(([v, l]) => ({ value: v, label: l.label }))} />
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả công trình" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
           </>}
         />
       </Card>

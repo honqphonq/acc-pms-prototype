@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClipboardList, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
@@ -19,7 +19,7 @@ import { cn } from "@/utils/cn";
 import type { Stocktake } from "@/types";
 
 /** Kiểm kê kho: lập phiếu, ghi nhận chênh lệch, xử lý điều chỉnh tồn kho */
-export function StocktakePanel({ projectId }: { projectId: string }) {
+export function StocktakePanel({ projectId, autoCreate }: { projectId: string; autoCreate?: boolean }) {
   const { db, run } = useDb();
   const { user, can } = useAuth();
   const confirm = useConfirm();
@@ -33,12 +33,13 @@ export function StocktakePanel({ projectId }: { projectId: string }) {
     setEdit({ id: genId("kk"), code: nextCode(`KK-${db.projects.find((p) => p.id === pid)?.code}-`, db.stocktakes.map((s) => s.code)), projectId: pid, date: DEMO_TODAY, byId: user!.id, status: "nhap", note: "", lines: rows.map((r) => ({ materialId: r.inv.materialId, bookQty: r.onHand, actualQty: r.onHand })) });
   };
   const editable = edit?.status === "nhap" && can("stock.move");
+  useEffect(() => { if (autoCreate && can("stock.move")) create(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <Card className="rounded-t-none">
       <div className="flex flex-wrap items-center gap-2 border-b px-4 py-3">
         <ClipboardList className="h-4 w-4 text-primary" /><span className="text-[13px] font-semibold text-slate-700">Phiếu kiểm kê kho</span>
         <span className="text-xs text-slate-500">Ghi nhận số lượng thực tế, so sánh với sổ sách, xử lý chênh lệch để điều chỉnh tồn kho.</span>
-        {can("stock.move") && <div className="ml-auto flex items-center gap-2"><Select className="w-56" value={pid} onChange={(e) => setPid(e.target.value)} options={db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => ({ value: p.id, label: p.shortName }))} /><Button size="sm" onClick={create}><Plus /> Lập phiếu kiểm kê</Button></div>}
+        {can("stock.move") && <div className="ml-auto flex items-center gap-2">{!projectId && <Select className="w-56" value={pid} onChange={(e) => setPid(e.target.value)} options={db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => ({ value: p.id, label: p.shortName }))} />}<Button size="sm" onClick={create}><Plus /> Lập phiếu kiểm kê</Button></div>}
       </div>
       <table className="w-full text-[13px]">
         <thead className="bg-slate-50 text-left text-[12px] text-slate-500"><tr><th className="px-4 py-2.5 font-medium">Số phiếu</th><th className="font-medium">Kho</th><th className="font-medium">Ngày kiểm kê</th><th className="font-medium">Người lập</th><th className="text-right font-medium">Số mã</th><th className="text-right font-medium">Mã lệch</th><th className="text-right font-medium">Giá trị chênh lệch</th><th className="px-4 font-medium">Trạng thái</th></tr></thead>

@@ -25,7 +25,7 @@ export default function ComingSoonPage() {
         <h2 className="mt-4 text-lg font-semibold text-slate-900">Chức năng sắp có</h2>
         <p className="mt-1 max-w-lg text-sm text-slate-500">Các nghiệp vụ dự kiến của màn hình này:</p>
         <ul className="mt-4 space-y-2 text-left text-[13.5px] text-slate-700">{info.items.map((i) => <li key={i} className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />{i}</li>)}</ul>
-        <div className="mt-6 flex gap-2"><Button variant="outline" onClick={() => navigate("/materials/requests")}>Đề xuất vật tư</Button><Button variant="outline" onClick={() => navigate("/materials/inventory")}>Tồn kho và kiểm kê</Button></div>
+        <div className="mt-6 flex gap-2"><Button variant="outline" onClick={() => navigate("/materials/stock")}>Quản lý vật tư</Button><Button variant="outline" onClick={() => navigate("/materials/inventory")}>Tồn kho và kiểm kê</Button></div>
       </Card>
     </div>
   );

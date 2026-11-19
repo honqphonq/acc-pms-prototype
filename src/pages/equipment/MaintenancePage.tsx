@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BellRing, CheckCircle2, Wrench } from "lucide-react";
+import { BellRing, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -15,19 +15,18 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { RegistryPage } from "@/components/registry/RegistryPage";
 import { MaintenanceDialog } from "./ShiftMaintDialogs";
 import { saveRow } from "@/services/actions";
-import { maintenanceDue } from "@/services/selectors";
+import { equipmentDocWarnings, maintenanceDue } from "@/services/selectors";
 import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { fmtDate, fmtMoneyShort, fmtNumber } from "@/utils/format";
 import { MAINT_STATUS, MAINT_TYPE, equipmentOptions, toOptions } from "@/utils/labels";
 import type { MaintenancePlan } from "@/types";
 
-const CFG_KEY = "acc-pms:v2:maint-reminder";
+const CFG_KEY = "acc-pms:v3:maint-reminder";
 const loadCfg = () => { try { return JSON.parse(localStorage.getItem(CFG_KEY) ?? "") as { days: number; hours: number }; } catch { return { days: 7, hours: 30 }; } };
 
 export default function MaintenancePage() {
   const { db, run } = useDb();
   const { can, user } = useAuth();
-  const navigate = useNavigate();
   const [cfg, setCfg] = useState(loadCfg);
   const [cfgOpen, setCfgOpen] = useState(false);
   const [rec, setRec] = useState<{ open: boolean; id?: string }>({ open: false });
@@ -50,20 +49,7 @@ export default function MaintenancePage() {
         ]}
         newRecord={() => ({ type: "dinh_ky", status: "cho_duyet", plannedDate: DEMO_TODAY, createdById: user!.id, approvedById: null, cost: 0, materials: "" })}
         rowClassName={(p) => (p.status !== "hoan_thanh" && p.plannedDate < DEMO_TODAY ? "bg-rose-50/40" : undefined)}
-        above={due.length > 0 && (
-          <Card className="mb-4">
-            <CardHeader><CardTitle className="flex items-center gap-2"><Wrench className="h-4 w-4 text-amber-500" /> Thông báo: máy đến hạn bảo dưỡng theo giờ máy ({due.length})</CardTitle></CardHeader>
-            <div className="grid gap-2 px-4 pb-4 sm:grid-cols-2 xl:grid-cols-3">
-              {due.slice(0, 6).map((e) => { const r = (e.totalHours - e.lastMaintenanceHours) / e.maintenanceInterval; return (
-                <div key={e.id} className="cursor-pointer rounded-lg border p-3 hover:bg-slate-50" onClick={() => navigate(`/equipment/${e.id}`)}>
-                  <div className="flex items-center justify-between gap-2"><span className="truncate text-[13px] font-medium">{e.code} – {e.name}</span>{can("equipment.edit") && <Button size="xs" variant="soft" onClick={(ev) => { ev.stopPropagation(); setRec({ open: true, id: e.id }); }}>Ghi nhận</Button>}</div>
-                  <div className="mt-1 text-[11.5px] text-slate-500">{fmtNumber(e.totalHours - e.lastMaintenanceHours, 0)} / {e.maintenanceInterval} giờ · {db.projects.find((p) => p.id === e.currentProjectId)?.shortName}</div>
-                  <Progress value={Math.min(1, r)} tone={r >= 1 ? "danger" : "warning"} className="mt-1.5 h-1.5" />
-                </div>
-              ); })}
-            </div>
-          </Card>
-        )}
+        above={<WarningsBlock dueIds={due.map((e) => e.id)} onRecord={(id) => setRec({ open: true, id })} />}
         columns={[
           { key: "c", header: "Số kế hoạch", sortValue: (p) => p.code, cell: (p) => <span className="whitespace-nowrap font-medium">{p.code}</span> },
           { key: "e", header: "Thiết bị", cell: (p) => <div className="text-xs"><div className="font-medium text-slate-800">{eq(p.equipmentId)?.code} – {eq(p.equipmentId)?.name}</div><div className="text-slate-400">{db.projects.find((x) => x.id === eq(p.equipmentId)?.currentProjectId)?.shortName ?? "Kho TCT"}</div></div> },
@@ -96,5 +82,39 @@ export default function MaintenancePage() {
       </Dialog>
       <MaintenanceDialog open={rec.open} onOpenChange={(o) => setRec({ open: o })} equipmentId={rec.id} />
     </>
+  );
+}
+
+/** Cảnh báo XMTB: đến hạn bảo dưỡng; hết / sắp hết hạn kiểm định, bảo hiểm; thiếu chứng minh chủ sở hữu */
+function WarningsBlock({ dueIds, onRecord }: { dueIds: string[]; onRecord: (id: string) => void }) {
+  const { db } = useDb();
+  const { can } = useAuth();
+  const navigate = useNavigate();
+  const [tab, setTab] = useState<"bd" | "hs" | "cm">("bd");
+  const due = db.equipment.filter((e) => dueIds.includes(e.id));
+  const docs = db.equipment.filter((e) => equipmentDocWarnings(e).some((w) => !w.label.includes("chủ sở hữu")));
+  const owner = db.equipment.filter((e) => e.ownership === "thue_ngoai" && !e.ownerProof);
+  const pn = (id: string | null) => db.projects.find((p) => p.id === id)?.shortName ?? "Kho TCT";
+  const tabs = [{ k: "bd" as const, l: "Đến hạn bảo dưỡng", n: due.length }, { k: "hs" as const, l: "Hết / sắp hết hạn kiểm định, bảo hiểm", n: docs.length }, { k: "cm" as const, l: "Thuê ngoài thiếu chứng minh chủ sở hữu", n: owner.length }];
+  const list = tab === "bd" ? due : tab === "hs" ? docs : owner;
+  return (
+    <Card className="mb-4 overflow-hidden border-rose-200">
+      <div className="flex flex-wrap items-center gap-1 border-b bg-rose-50/60 px-3 pt-2">
+        <span className="mr-3 flex items-center gap-1.5 px-1 pb-2 text-[13px] font-bold uppercase tracking-wide text-rose-700"><BellRing className="h-4 w-4" /> Cảnh báo XMTB</span>
+        {tabs.map((t) => <button key={t.k} onClick={() => setTab(t.k)} className={`-mb-px border-b-2 px-3 pb-2 text-[13px] font-semibold ${tab === t.k ? "border-rose-600 text-rose-700" : "border-transparent text-slate-600 hover:text-slate-900"}`}>{t.l} <span className="ml-1 rounded-full bg-rose-100 px-1.5 text-[11px] text-rose-700">{t.n}</span></button>)}
+      </div>
+      <div className="max-h-72 overflow-y-auto">
+        {list.length === 0 && <div className="py-6 text-center text-sm text-slate-400">Không có cảnh báo</div>}
+        {list.map((e) => (
+          <div key={e.id} onClick={() => navigate(`/equipment/${e.id}`)} className="flex cursor-pointer flex-wrap items-center gap-3 border-b border-slate-100 px-4 py-2.5 text-[13.5px] last:border-0 hover:bg-slate-50">
+            <span className="w-28 font-semibold">{e.code}</span>
+            <span className="min-w-[200px] flex-1">{e.name}<span className="ml-2 text-[12px] text-slate-500">{pn(e.currentProjectId)}</span></span>
+            {tab === "bd" && <><span className="text-[12.5px] text-slate-600">{fmtNumber(e.totalHours - e.lastMaintenanceHours, 0)} / {e.maintenanceInterval} giờ</span><Progress value={Math.min(1, (e.totalHours - e.lastMaintenanceHours) / e.maintenanceInterval)} tone={e.totalHours - e.lastMaintenanceHours >= e.maintenanceInterval ? "danger" : "warning"} className="h-1.5 w-28" />{can("equipment.edit") && <Button size="xs" variant="soft" onClick={(ev) => { ev.stopPropagation(); onRecord(e.id); }}>Ghi nhận bảo dưỡng</Button>}</>}
+            {tab === "hs" && equipmentDocWarnings(e).filter((w) => !w.label.includes("chủ sở hữu")).map((w) => <Badge key={w.label} tone={w.danger ? "danger" : "warning"}>{w.label}</Badge>)}
+            {tab === "cm" && <><span className="text-[12.5px] text-slate-600">Cho thuê: {e.rentalSupplier}</span><Badge tone="danger">Thiếu CM chủ sở hữu</Badge></>}
+          </div>
+        ))}
+      </div>
+    </Card>
   );
 }

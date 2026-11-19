@@ -63,7 +63,7 @@ export default function RequestDetailPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <Link to="/materials/requests" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Danh sách đề xuất</Link>
+          <Link to={`/materials/stock/${r.projectId}?tab=de_xuat`} className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Danh sách đề xuất</Link>
           <div className="flex flex-wrap items-center gap-2"><h1 className="text-xl font-bold text-slate-900">{r.title}</h1><StatusBadge map={MR_STATUS} value={r.status} />{isRequestOverdue(r) && <Badge tone="danger">Quá hạn cung ứng</Badge>}</div>
           <div className="mt-1 text-[13px] text-slate-500">{r.code} · {MR_TYPE[r.type]} · {project?.name}</div>
         </div>

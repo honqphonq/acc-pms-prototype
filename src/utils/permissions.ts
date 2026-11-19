@@ -22,7 +22,7 @@ export type Permission =
 const ALL: Permission[] = ["project.edit", "project.approve", "plan.edit", "progress.update", "log.confirm", "material.request", "material.approve", "material.purchase", "stock.move", "equipment.edit", "equipment.dispatch.request", "equipment.dispatch.approve", "acceptance.edit", "acceptance.approve", "payment.edit", "admin"];
 
 export const ROLE_PERMISSIONS: Record<RoleKey, Permission[]> = {
-  lanh_dao: ["project.edit", "project.approve", "material.approve", "equipment.dispatch.approve", "acceptance.approve", "log.confirm"],
+  lanh_dao: ALL, // tài khoản demo chính – toàn quyền
   phong_ktkt: ["project.edit", "plan.edit", "progress.update", "log.confirm", "acceptance.edit", "acceptance.approve", "equipment.dispatch.request"],
   chi_huy_truong: ["plan.edit", "progress.update", "log.confirm", "material.request", "material.approve", "equipment.dispatch.request", "acceptance.edit", "stock.move"],
   to_truong: ["progress.update", "material.request"],

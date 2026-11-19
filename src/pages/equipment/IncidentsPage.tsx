@@ -41,7 +41,7 @@ export default function IncidentsPage() {
       fields={[
         { key: "equipmentId", label: "Thiết bị", type: "select", options: equipmentOptions, required: true, wide: true },
         { key: "operatorId", label: "Người vận hành", type: "select", options: (d) => userOptions(d, (u) => !!u.isOperator) },
-        { key: "projectId", label: "Công trình", type: "select", options: projectOptions },
+        { key: "projectId", label: "Dự án", type: "select", options: projectOptions },
         { key: "date", label: "Ngày xảy ra", type: "date" },
         { key: "type", label: "Loại sự cố", type: "select", options: Object.entries(INCIDENT_TYPE).map(([value, label]) => ({ value, label })) },
         { key: "severity", label: "Mức độ", type: "select", options: toOptions(INCIDENT_SEVERITY) },

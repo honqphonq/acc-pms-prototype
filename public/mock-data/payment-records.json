@@ -12,29 +12,29 @@
     "amount": 10000000000,
     "retention": 500000000,
     "paidAmount": 9500000000,
-    "createdAt": "2026-07-21",
-    "dueDate": "2026-09-04",
-    "paidAt": "2026-08-20",
+    "createdAt": "2026-07-20",
+    "dueDate": "2026-09-03",
+    "paidAt": "2026-08-19",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-07-21T08:44:00",
+        "at": "2026-07-20T08:14:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-07-23T08:57:00",
+        "at": "2026-07-22T08:57:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-05T08:24:00",
+        "at": "2026-08-04T08:38:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-08-20T08:41:00",
+        "at": "2026-08-19T08:15:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -53,24 +53,24 @@
     "amount": 7303260000,
     "retention": 365163000,
     "paidAmount": 0,
-    "createdAt": "2026-09-30",
-    "dueDate": "2026-11-14",
+    "createdAt": "2026-10-04",
+    "dueDate": "2026-11-18",
     "paidAt": null,
     "status": "da_duyet",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-30T08:35:00",
+        "at": "2026-10-04T08:32:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-10-02T08:31:00",
+        "at": "2026-10-06T08:34:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-15T08:53:00",
+        "at": "2026-10-19T08:16:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       }
@@ -86,9 +86,9 @@
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 10563177400,
-    "retention": 528158870,
-    "paidAmount": 10035018530,
+    "amount": 10747420000,
+    "retention": 537371000,
+    "paidAmount": 10210049000,
     "createdAt": "2025-11-15",
     "dueDate": "2025-12-30",
     "paidAt": "2025-12-15",
@@ -96,22 +96,22 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-11-15T08:47:00",
+        "at": "2025-11-15T08:22:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-11-17T08:20:00",
+        "at": "2025-11-17T08:56:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-11-30T08:48:00",
+        "at": "2025-11-30T08:45:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-12-15T08:40:00",
+        "at": "2025-12-15T08:51:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -130,29 +130,29 @@
     "amount": 107474580000,
     "retention": 5373729000,
     "paidAmount": 102100851000,
-    "createdAt": "2026-04-09",
-    "dueDate": "2026-05-24",
-    "paidAt": "2026-05-09",
+    "createdAt": "2026-04-12",
+    "dueDate": "2026-05-27",
+    "paidAt": "2026-05-12",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-04-09T08:14:00",
+        "at": "2026-04-12T08:29:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-04-11T08:26:00",
+        "at": "2026-04-14T08:39:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-04-24T08:53:00",
+        "at": "2026-04-27T08:26:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-05-09T08:52:00",
+        "at": "2026-05-12T08:31:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -171,29 +171,29 @@
     "amount": 161210400000,
     "retention": 8060520000,
     "paidAmount": 153149880000,
-    "createdAt": "2026-08-26",
-    "dueDate": "2026-10-10",
-    "paidAt": "2026-09-25",
+    "createdAt": "2026-08-22",
+    "dueDate": "2026-10-06",
+    "paidAt": "2026-09-21",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-08-26T08:37:00",
+        "at": "2026-08-22T08:40:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-08-28T08:51:00",
+        "at": "2026-08-24T08:24:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-10T08:26:00",
+        "at": "2026-09-06T08:50:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-09-25T08:57:00",
+        "at": "2026-09-21T08:28:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -205,21 +205,21 @@
     "direction": "thu_cdt",
     "projectId": "p02",
     "acceptanceIds": [
-      "ac-008"
+      "ac-009"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 4 – hệ thống kỹ thuật & an toàn bay",
+    "title": "Thanh toán đợt 5 – hệ thống kỹ thuật & an toàn bay",
     "amount": 92130000000,
     "retention": 4606500000,
     "paidAmount": 0,
-    "createdAt": "2026-11-06",
-    "dueDate": "2026-12-21",
+    "createdAt": "2026-11-08",
+    "dueDate": "2026-12-23",
     "paidAt": null,
     "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-06T08:40:00",
+        "at": "2026-11-08T08:23:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
@@ -231,21 +231,21 @@
     "direction": "thu_cdt",
     "projectId": "p02",
     "acceptanceIds": [
-      "ac-009"
+      "ac-010"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 5 – khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "amount": 3312000000,
-    "retention": 165600000,
+    "title": "Thanh toán đợt 6 – khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
+    "amount": 2760000000,
+    "retention": 138000000,
     "paidAmount": 0,
-    "createdAt": "2026-11-11",
-    "dueDate": "2026-12-26",
+    "createdAt": "2026-11-12",
+    "dueDate": "2026-12-27",
     "paidAt": null,
     "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-11T08:11:00",
+        "at": "2026-11-12T08:37:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
@@ -257,36 +257,36 @@
     "direction": "thu_cdt",
     "projectId": "p03",
     "acceptanceIds": [
-      "ac-010"
+      "ac-011"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
     "amount": 17677060000,
     "retention": 883853000,
     "paidAmount": 16793207000,
-    "createdAt": "2025-09-18",
-    "dueDate": "2025-11-02",
-    "paidAt": "2025-10-18",
+    "createdAt": "2025-09-20",
+    "dueDate": "2025-11-04",
+    "paidAt": "2025-10-20",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-09-18T08:18:00",
+        "at": "2025-09-20T08:39:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-09-20T08:57:00",
+        "at": "2025-09-22T08:43:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-10-03T08:50:00",
+        "at": "2025-10-05T08:11:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-10-18T08:30:00",
+        "at": "2025-10-20T08:35:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -298,36 +298,36 @@
     "direction": "thu_cdt",
     "projectId": "p03",
     "acceptanceIds": [
-      "ac-011"
+      "ac-012"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 171464290700,
-    "retention": 8573214535,
-    "paidAmount": 162891076165,
-    "createdAt": "2026-05-20",
-    "dueDate": "2026-07-04",
-    "paidAt": "2026-06-19",
+    "amount": 175630941200,
+    "retention": 8781547060,
+    "paidAmount": 166849394140,
+    "createdAt": "2026-05-16",
+    "dueDate": "2026-06-30",
+    "paidAt": "2026-06-15",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-05-20T08:41:00",
+        "at": "2026-05-16T08:43:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-05-22T08:27:00",
+        "at": "2026-05-18T08:10:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-04T08:52:00",
+        "at": "2026-05-31T08:36:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-06-19T08:27:00",
+        "at": "2026-06-15T08:11:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -339,36 +339,36 @@
     "direction": "thu_cdt",
     "projectId": "p04",
     "acceptanceIds": [
-      "ac-013"
+      "ac-014"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 7636560000,
-    "retention": 381828000,
-    "paidAmount": 7254732000,
-    "createdAt": "2026-01-11",
-    "dueDate": "2026-02-25",
-    "paidAt": "2026-02-10",
+    "amount": 7505653200,
+    "retention": 375282660,
+    "paidAmount": 7130370540,
+    "createdAt": "2026-01-09",
+    "dueDate": "2026-02-23",
+    "paidAt": "2026-02-08",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-01-11T08:23:00",
+        "at": "2026-01-09T08:35:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-01-13T08:49:00",
+        "at": "2026-01-11T08:13:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-01-26T08:18:00",
+        "at": "2026-01-24T08:20:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-02-10T08:39:00",
+        "at": "2026-02-08T08:12:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -380,36 +380,36 @@
     "direction": "thu_cdt",
     "projectId": "p04",
     "acceptanceIds": [
-      "ac-014"
+      "ac-015"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 75874161400,
-    "retention": 3793708070,
-    "paidAmount": 72080453330,
-    "createdAt": "2026-06-15",
-    "dueDate": "2026-07-30",
-    "paidAt": "2026-07-15",
+    "amount": 74565026500,
+    "retention": 3728251325,
+    "paidAmount": 70836775175,
+    "createdAt": "2026-07-05",
+    "dueDate": "2026-08-19",
+    "paidAt": "2026-08-04",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-06-15T08:35:00",
+        "at": "2026-07-05T08:25:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-06-17T08:13:00",
+        "at": "2026-07-07T08:50:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-30T08:49:00",
+        "at": "2026-07-20T08:32:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-07-15T08:51:00",
+        "at": "2026-08-04T08:33:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -421,38 +421,23 @@
     "direction": "thu_cdt",
     "projectId": "p04",
     "acceptanceIds": [
-      "ac-015"
+      "ac-016"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 3 – móng mặt đường",
-    "amount": 59997600000,
-    "retention": 2999880000,
-    "paidAmount": 56997720000,
-    "createdAt": "2026-09-02",
-    "dueDate": "2026-10-17",
-    "paidAt": "2026-10-02",
-    "status": "da_thanh_toan",
+    "amount": 114543000000,
+    "retention": 5727150000,
+    "paidAmount": 0,
+    "createdAt": "2026-11-09",
+    "dueDate": "2026-12-24",
+    "paidAt": null,
+    "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-02T08:55:00",
+        "at": "2026-11-09T08:21:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-09-04T08:50:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-09-17T08:24:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-10-02T08:53:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
       }
     ]
   },
@@ -462,36 +447,36 @@
     "direction": "thu_cdt",
     "projectId": "p05",
     "acceptanceIds": [
-      "ac-017"
+      "ac-018"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 8895607200,
-    "retention": 444780360,
-    "paidAmount": 8450826840,
-    "createdAt": "2026-05-06",
-    "dueDate": "2026-06-20",
-    "paidAt": "2026-06-05",
+    "amount": 9050760000,
+    "retention": 452538000,
+    "paidAmount": 8598222000,
+    "createdAt": "2026-05-07",
+    "dueDate": "2026-06-21",
+    "paidAt": "2026-06-06",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-05-06T08:53:00",
+        "at": "2026-05-07T08:35:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-05-08T08:58:00",
+        "at": "2026-05-09T08:27:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-21T08:39:00",
+        "at": "2026-05-22T08:14:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-06-05T08:17:00",
+        "at": "2026-06-06T08:49:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -503,26 +488,26 @@
     "direction": "thu_cdt",
     "projectId": "p05",
     "acceptanceIds": [
-      "ac-018"
+      "ac-019"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
     "amount": 71110600000,
     "retention": 3555530000,
     "paidAmount": 0,
-    "createdAt": "2026-11-02",
-    "dueDate": "2026-12-17",
+    "createdAt": "2026-10-25",
+    "dueDate": "2026-12-09",
     "paidAt": null,
     "status": "da_trinh",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-02T08:14:00",
+        "at": "2026-10-25T08:47:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-11-04T08:51:00",
+        "at": "2026-10-27T08:34:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
@@ -530,27 +515,42 @@
   },
   {
     "id": "pay-015",
-    "code": "HSTT-ACC25-VCA-015",
+    "code": "HSTT-ACC24-QK2-015",
     "direction": "thu_cdt",
-    "projectId": "p05",
+    "projectId": "p06",
     "acceptanceIds": [
-      "ac-019"
+      "ac-021"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 3 – khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "amount": 9773088000,
-    "retention": 488654400,
-    "paidAmount": 0,
-    "createdAt": "2026-11-14",
-    "dueDate": "2026-12-30",
-    "paidAt": null,
-    "status": "lap_ho_so",
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
+    "amount": 7636250000,
+    "retention": 381812500,
+    "paidAmount": 7254437500,
+    "createdAt": "2025-10-11",
+    "dueDate": "2025-11-25",
+    "paidAt": "2025-11-10",
+    "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-15T08:32:00",
+        "at": "2025-10-11T08:36:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2025-10-13T08:14:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2025-10-26T08:12:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2025-11-10T08:38:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
       }
     ]
   },
@@ -560,36 +560,36 @@
     "direction": "thu_cdt",
     "projectId": "p06",
     "acceptanceIds": [
-      "ac-021"
+      "ac-022"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
-    "amount": 7483512500,
-    "retention": 374175625,
-    "paidAmount": 7109336875,
-    "createdAt": "2025-09-27",
-    "dueDate": "2025-11-11",
-    "paidAt": "2025-10-27",
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 76365480000,
+    "retention": 3818274000,
+    "paidAmount": 72547206000,
+    "createdAt": "2026-02-24",
+    "dueDate": "2026-04-10",
+    "paidAt": "2026-03-26",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-09-27T08:55:00",
+        "at": "2026-02-24T08:59:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-09-29T08:48:00",
+        "at": "2026-02-26T08:17:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-10-12T08:53:00",
+        "at": "2026-03-11T08:37:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-10-27T08:41:00",
+        "at": "2026-03-26T08:42:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -601,75 +601,34 @@
     "direction": "thu_cdt",
     "projectId": "p06",
     "acceptanceIds": [
-      "ac-022"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 75092592000,
-    "retention": 3754629600,
-    "paidAmount": 71337962400,
-    "createdAt": "2026-02-28",
-    "dueDate": "2026-04-14",
-    "paidAt": "2026-03-30",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-02-28T08:20:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-03-02T08:23:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-03-15T08:25:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-03-30T08:28:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-018",
-    "code": "HSTT-ACC24-QK2-018",
-    "direction": "thu_cdt",
-    "projectId": "p06",
-    "acceptanceIds": [
       "ac-023"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 3 – phần thân",
-    "amount": 127269000000,
-    "retention": 6363450000,
+    "amount": 126505170000,
+    "retention": 6325258500,
     "paidAmount": 0,
-    "createdAt": "2026-10-22",
-    "dueDate": "2026-12-06",
+    "createdAt": "2026-10-21",
+    "dueDate": "2026-12-05",
     "paidAt": null,
     "status": "da_trinh",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-10-22T08:11:00",
+        "at": "2026-10-21T08:52:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-10-24T08:36:00",
+        "at": "2026-10-23T08:53:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
     ]
   },
   {
-    "id": "pay-019",
-    "code": "HSTT-ACC25-K18-019",
+    "id": "pay-018",
+    "code": "HSTT-ACC25-K18-018",
     "direction": "thu_cdt",
     "projectId": "p07",
     "acceptanceIds": [
@@ -680,29 +639,70 @@
     "amount": 5182000000,
     "retention": 259100000,
     "paidAmount": 4922900000,
-    "createdAt": "2026-01-25",
-    "dueDate": "2026-03-11",
-    "paidAt": "2026-02-24",
+    "createdAt": "2026-02-04",
+    "dueDate": "2026-03-21",
+    "paidAt": "2026-03-06",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-01-25T08:39:00",
+        "at": "2026-02-04T08:53:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-01-27T08:40:00",
+        "at": "2026-02-06T08:22:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-02-09T08:31:00",
+        "at": "2026-02-19T08:56:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-02-24T08:24:00",
+        "at": "2026-03-06T08:33:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-019",
+    "code": "HSTT-ACC25-K18-019",
+    "direction": "thu_cdt",
+    "projectId": "p07",
+    "acceptanceIds": [
+      "ac-026"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 51813120000,
+    "retention": 2590656000,
+    "paidAmount": 49222464000,
+    "createdAt": "2026-06-15",
+    "dueDate": "2026-07-30",
+    "paidAt": "2026-07-15",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-06-15T08:45:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-06-17T08:32:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-06-30T08:21:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-07-15T08:39:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -714,38 +714,23 @@
     "direction": "thu_cdt",
     "projectId": "p07",
     "acceptanceIds": [
-      "ac-026"
+      "ac-027"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 51640403400,
-    "retention": 2582020170,
-    "paidAmount": 49058383230,
-    "createdAt": "2026-07-03",
-    "dueDate": "2026-08-17",
-    "paidAt": "2026-08-02",
-    "status": "da_thanh_toan",
+    "title": "Thanh toán đợt 3 – khối lượng hoàn thành phần thân (giai đoạn)",
+    "amount": 54314775000,
+    "retention": 2715738750,
+    "paidAmount": 0,
+    "createdAt": "2026-11-13",
+    "dueDate": "2026-12-28",
+    "paidAt": null,
+    "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-07-03T08:23:00",
+        "at": "2026-11-13T08:24:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-07-05T08:12:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-07-18T08:21:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-08-02T08:22:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
       }
     ]
   },
@@ -755,13 +740,13 @@
     "direction": "thu_cdt",
     "projectId": "p08",
     "acceptanceIds": [
-      "ac-027"
+      "ac-028"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
-    "amount": 3385425000,
-    "retention": 169271250,
-    "paidAmount": 3216153750,
+    "amount": 3454500000,
+    "retention": 172725000,
+    "paidAmount": 3281775000,
     "createdAt": "2025-05-10",
     "dueDate": "2025-06-24",
     "paidAt": "2025-06-09",
@@ -769,22 +754,22 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-05-10T08:30:00",
+        "at": "2025-05-10T08:49:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-05-12T08:51:00",
+        "at": "2025-05-12T08:54:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-05-25T08:10:00",
+        "at": "2025-05-25T08:37:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-06-09T08:31:00",
+        "at": "2025-06-09T08:22:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -796,36 +781,36 @@
     "direction": "thu_cdt",
     "projectId": "p08",
     "acceptanceIds": [
-      "ac-028"
+      "ac-029"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 34206490000,
-    "retention": 1710324500,
-    "paidAmount": 32496165500,
-    "createdAt": "2025-10-17",
-    "dueDate": "2025-12-01",
-    "paidAt": "2025-11-16",
+    "amount": 33860831800,
+    "retention": 1693041590,
+    "paidAmount": 32167790210,
+    "createdAt": "2025-10-21",
+    "dueDate": "2025-12-05",
+    "paidAt": "2025-11-20",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-10-17T08:19:00",
+        "at": "2025-10-21T08:23:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-10-19T08:11:00",
+        "at": "2025-10-23T08:13:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-11-01T08:20:00",
+        "at": "2025-11-05T08:17:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-11-16T08:31:00",
+        "at": "2025-11-20T08:30:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -837,36 +822,36 @@
     "direction": "thu_cdt",
     "projectId": "p08",
     "acceptanceIds": [
-      "ac-029"
+      "ac-030"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 3 – phần thân",
-    "amount": 56186910000,
-    "retention": 2809345500,
-    "paidAmount": 53377564500,
-    "createdAt": "2026-07-09",
-    "dueDate": "2026-08-23",
-    "paidAt": "2026-08-08",
+    "amount": 55841445000,
+    "retention": 2792072250,
+    "paidAmount": 53049372750,
+    "createdAt": "2026-07-08",
+    "dueDate": "2026-08-22",
+    "paidAt": "2026-08-07",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-07-09T08:48:00",
+        "at": "2026-07-08T08:53:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-07-11T08:11:00",
+        "at": "2026-07-10T08:23:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-07-24T08:52:00",
+        "at": "2026-07-23T08:29:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-08-08T08:10:00",
+        "at": "2026-08-07T08:14:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -885,29 +870,29 @@
     "amount": 5817750000,
     "retention": 290887500,
     "paidAmount": 5526862500,
-    "createdAt": "2025-12-09",
-    "dueDate": "2026-01-23",
-    "paidAt": "2026-01-08",
+    "createdAt": "2025-11-26",
+    "dueDate": "2026-01-10",
+    "paidAt": "2025-12-26",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-12-09T08:35:00",
+        "at": "2025-11-26T08:20:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-12-11T08:31:00",
+        "at": "2025-11-28T08:13:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-24T08:36:00",
+        "at": "2025-12-11T08:42:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-01-08T08:57:00",
+        "at": "2025-12-26T08:46:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -923,32 +908,32 @@
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 57590295000,
-    "retention": 2879514750,
-    "paidAmount": 54710780250,
-    "createdAt": "2026-05-06",
-    "dueDate": "2026-06-20",
-    "paidAt": "2026-06-05",
+    "amount": 56620719000,
+    "retention": 2831035950,
+    "paidAmount": 53789683050,
+    "createdAt": "2026-04-25",
+    "dueDate": "2026-06-09",
+    "paidAt": "2026-05-25",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-05-06T08:35:00",
+        "at": "2026-04-25T08:12:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-05-08T08:22:00",
+        "at": "2026-04-27T08:44:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-21T08:26:00",
+        "at": "2026-05-10T08:46:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-06-05T08:38:00",
+        "at": "2026-05-25T08:52:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -956,7 +941,43 @@
   },
   {
     "id": "pay-026",
-    "code": "HSTT-ACC25-DIN-026",
+    "code": "HSTT-ACC24-BCHVP-026",
+    "direction": "thu_cdt",
+    "projectId": "p09",
+    "acceptanceIds": [
+      "ac-034"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 3 – phần thân",
+    "amount": 77584500000,
+    "retention": 3879225000,
+    "paidAmount": 0,
+    "createdAt": "2026-10-15",
+    "dueDate": "2026-11-29",
+    "paidAt": null,
+    "status": "da_duyet",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-10-15T08:30:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-10-17T08:36:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-10-30T08:21:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-027",
+    "code": "HSTT-ACC25-DIN-027",
     "direction": "thu_cdt",
     "projectId": "p11",
     "acceptanceIds": [
@@ -967,37 +988,37 @@
     "amount": 54229042000,
     "retention": 2711452100,
     "paidAmount": 51517589900,
-    "createdAt": "2025-10-22",
-    "dueDate": "2025-12-06",
-    "paidAt": "2025-11-21",
+    "createdAt": "2025-11-09",
+    "dueDate": "2025-12-24",
+    "paidAt": "2025-12-09",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-10-22T08:29:00",
+        "at": "2025-11-09T08:34:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-10-24T08:59:00",
+        "at": "2025-11-11T08:58:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-11-06T08:40:00",
+        "at": "2025-11-24T08:31:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-11-21T08:53:00",
+        "at": "2025-12-09T08:50:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-027",
-    "code": "HSTT-ACC25-DIN-027",
+    "id": "pay-028",
+    "code": "HSTT-ACC25-DIN-028",
     "direction": "thu_cdt",
     "projectId": "p11",
     "acceptanceIds": [
@@ -1008,37 +1029,37 @@
     "amount": 58001000000,
     "retention": 2900050000,
     "paidAmount": 55100950000,
-    "createdAt": "2026-05-21",
-    "dueDate": "2026-07-05",
-    "paidAt": "2026-06-20",
+    "createdAt": "2026-05-25",
+    "dueDate": "2026-07-09",
+    "paidAt": "2026-06-24",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-05-21T08:45:00",
+        "at": "2026-05-25T08:31:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-05-23T08:43:00",
+        "at": "2026-05-27T08:24:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-05T08:26:00",
+        "at": "2026-06-09T08:20:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-06-20T08:56:00",
+        "at": "2026-06-24T08:32:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-028",
-    "code": "HSTT-ACC25-DIN-028",
+    "id": "pay-029",
+    "code": "HSTT-ACC25-DIN-029",
     "direction": "thu_cdt",
     "projectId": "p11",
     "acceptanceIds": [
@@ -1056,63 +1077,22 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-17T08:32:00",
+        "at": "2026-09-17T08:20:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-19T08:41:00",
+        "at": "2026-09-19T08:28:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-02T08:55:00",
+        "at": "2026-10-02T08:45:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-10-17T08:13:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-029",
-    "code": "HSTT-ACC24-KEP-029",
-    "direction": "thu_cdt",
-    "projectId": "p12",
-    "acceptanceIds": [
-      "ac-039"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 9615860000,
-    "retention": 480793000,
-    "paidAmount": 9135067000,
-    "createdAt": "2026-01-31",
-    "dueDate": "2026-03-17",
-    "paidAt": "2026-03-02",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-01-31T08:30:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-02-02T08:27:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-02-15T08:55:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-03-02T08:42:00",
+        "at": "2026-10-17T08:19:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1124,36 +1104,36 @@
     "direction": "thu_cdt",
     "projectId": "p12",
     "acceptanceIds": [
-      "ac-040"
+      "ac-039"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 96161990000,
-    "retention": 4808099500,
-    "paidAmount": 91353890500,
-    "createdAt": "2026-08-06",
-    "dueDate": "2026-09-20",
-    "paidAt": "2026-09-05",
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
+    "amount": 9615860000,
+    "retention": 480793000,
+    "paidAmount": 9135067000,
+    "createdAt": "2026-02-05",
+    "dueDate": "2026-03-22",
+    "paidAt": "2026-03-07",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-08-06T08:29:00",
+        "at": "2026-02-05T08:37:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-08-08T08:42:00",
+        "at": "2026-02-07T08:16:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-21T08:46:00",
+        "at": "2026-02-20T08:35:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-09-05T08:38:00",
+        "at": "2026-03-07T08:42:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1165,111 +1145,209 @@
     "direction": "thu_cdt",
     "projectId": "p12",
     "acceptanceIds": [
+      "ac-040"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
+    "amount": 95543808800,
+    "retention": 4777190440,
+    "paidAmount": 90766618360,
+    "createdAt": "2026-08-07",
+    "dueDate": "2026-09-21",
+    "paidAt": "2026-09-06",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-08-07T08:15:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-08-09T08:48:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-08-22T08:52:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-09-06T08:42:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-032",
+    "code": "HSTT-ACC24-KEP-032",
+    "direction": "thu_cdt",
+    "projectId": "p12",
+    "acceptanceIds": [
       "ac-041"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 3 – móng mặt đường",
-    "amount": 75556000000,
-    "retention": 3777800000,
+    "amount": 73289320000,
+    "retention": 3664466000,
     "paidAmount": 0,
-    "createdAt": "2026-11-06",
-    "dueDate": "2026-12-21",
+    "createdAt": "2026-11-05",
+    "dueDate": "2026-12-20",
+    "paidAt": null,
+    "status": "da_trinh",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-11-05T08:52:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-11-07T08:14:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      }
+    ]
+  },
+  {
+    "id": "pay-033",
+    "code": "HSTT-ACC24-KEP-033",
+    "direction": "thu_cdt",
+    "projectId": "p12",
+    "acceptanceIds": [
+      "ac-043"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 5 – khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
+    "amount": 26819450000,
+    "retention": 1340972500,
+    "paidAmount": 0,
+    "createdAt": "2026-11-14",
+    "dueDate": "2026-12-30",
     "paidAt": null,
     "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-06T08:51:00",
+        "at": "2026-11-15T08:26:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
     ]
   },
   {
-    "id": "pay-032",
-    "code": "HSTT-ACC25-HL921-032",
+    "id": "pay-034",
+    "code": "HSTT-ACC25-HL921-034",
     "direction": "thu_cdt",
     "projectId": "p13",
     "acceptanceIds": [
-      "ac-045"
+      "ac-044"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
     "amount": 4818500000,
     "retention": 240925000,
     "paidAmount": 4577575000,
-    "createdAt": "2026-03-07",
-    "dueDate": "2026-04-21",
-    "paidAt": "2026-04-06",
+    "createdAt": "2026-03-12",
+    "dueDate": "2026-04-26",
+    "paidAt": "2026-04-11",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-03-07T08:14:00",
+        "at": "2026-03-12T08:58:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-03-09T08:57:00",
+        "at": "2026-03-14T08:19:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-22T08:46:00",
+        "at": "2026-03-27T08:17:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-04-06T08:28:00",
+        "at": "2026-04-11T08:30:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-033",
-    "code": "HSTT-ACC25-HL921-033",
+    "id": "pay-035",
+    "code": "HSTT-ACC25-HL921-035",
+    "direction": "thu_cdt",
+    "projectId": "p13",
+    "acceptanceIds": [
+      "ac-045"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 48171160000,
+    "retention": 2408558000,
+    "paidAmount": 45762602000,
+    "createdAt": "2026-07-28",
+    "dueDate": "2026-09-11",
+    "paidAt": "2026-08-27",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-07-28T08:51:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-07-30T08:40:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-08-12T08:18:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-08-27T08:44:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-036",
+    "code": "HSTT-ACC25-HL921-036",
     "direction": "thu_cdt",
     "projectId": "p13",
     "acceptanceIds": [
       "ac-046"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 48010550200,
-    "retention": 2400527510,
-    "paidAmount": 45610022690,
-    "createdAt": "2026-07-27",
-    "dueDate": "2026-09-10",
-    "paidAt": "2026-08-26",
-    "status": "da_thanh_toan",
+    "title": "Thanh toán đợt 3 – khối lượng hoàn thành phần thân (giai đoạn)",
+    "amount": 40971645000,
+    "retention": 2048582250,
+    "paidAmount": 0,
+    "createdAt": "2026-11-14",
+    "dueDate": "2027-01-02",
+    "paidAt": null,
+    "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-07-27T08:55:00",
+        "at": "2026-11-18T08:41:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-07-29T08:26:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-08-11T08:40:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-08-26T08:25:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-034",
-    "code": "HSTT-ACC244-LD918-034",
+    "id": "pay-037",
+    "code": "HSTT-ACC244-LD918-037",
     "direction": "thu_cdt",
     "projectId": "p14",
     "acceptanceIds": [
@@ -1280,37 +1358,37 @@
     "amount": 3600000000,
     "retention": 180000000,
     "paidAmount": 3420000000,
-    "createdAt": "2026-04-18",
-    "dueDate": "2026-06-02",
-    "paidAt": "2026-05-18",
+    "createdAt": "2026-04-24",
+    "dueDate": "2026-06-08",
+    "paidAt": "2026-05-24",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-04-18T08:37:00",
+        "at": "2026-04-24T08:25:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-04-20T08:12:00",
+        "at": "2026-04-26T08:35:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-03T08:45:00",
+        "at": "2026-05-09T08:48:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-05-18T08:40:00",
+        "at": "2026-05-24T08:29:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-035",
-    "code": "HSTT-ACC244-LD918-035",
+    "id": "pay-038",
+    "code": "HSTT-ACC244-LD918-038",
     "direction": "thu_cdt",
     "projectId": "p14",
     "acceptanceIds": [
@@ -1318,40 +1396,40 @@
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 35522039000,
-    "retention": 1776101950,
-    "paidAmount": 33745937050,
-    "createdAt": "2026-08-18",
-    "dueDate": "2026-10-02",
-    "paidAt": "2026-09-17",
+    "amount": 35402492000,
+    "retention": 1770124600,
+    "paidAmount": 33632367400,
+    "createdAt": "2026-08-25",
+    "dueDate": "2026-10-09",
+    "paidAt": "2026-09-24",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-08-18T08:28:00",
+        "at": "2026-08-25T08:50:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-08-20T08:21:00",
+        "at": "2026-08-27T08:27:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-02T08:40:00",
+        "at": "2026-09-09T08:32:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-09-17T08:59:00",
+        "at": "2026-09-24T08:10:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-036",
-    "code": "HSTT-ACC245-CR-036",
+    "id": "pay-039",
+    "code": "HSTT-ACC245-CR-039",
     "direction": "thu_cdt",
     "projectId": "p15",
     "acceptanceIds": [
@@ -1362,152 +1440,29 @@
     "amount": 5020660000,
     "retention": 251033000,
     "paidAmount": 4769627000,
-    "createdAt": "2025-12-14",
-    "dueDate": "2026-01-28",
-    "paidAt": "2026-01-13",
+    "createdAt": "2025-12-08",
+    "dueDate": "2026-01-22",
+    "paidAt": "2026-01-07",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-12-14T08:19:00",
+        "at": "2025-12-08T08:15:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-12-16T08:41:00",
+        "at": "2025-12-10T08:30:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-29T08:42:00",
+        "at": "2025-12-23T08:29:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-01-13T08:35:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-037",
-    "code": "HSTT-ACC245-CR-037",
-    "direction": "thu_cdt",
-    "projectId": "p15",
-    "acceptanceIds": [
-      "ac-050"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 49125175700,
-    "retention": 2456258785,
-    "paidAmount": 46668916915,
-    "createdAt": "2026-05-15",
-    "dueDate": "2026-06-29",
-    "paidAt": "2026-06-14",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-05-15T08:12:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-05-17T08:55:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-05-30T08:43:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-06-14T08:47:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-038",
-    "code": "HSTT-ACC245-CR-038",
-    "direction": "thu_cdt",
-    "projectId": "p15",
-    "acceptanceIds": [
-      "ac-051"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 3 – móng mặt đường",
-    "amount": 74222902000,
-    "retention": 3711145100,
-    "paidAmount": 70511756900,
-    "createdAt": "2026-09-21",
-    "dueDate": "2026-11-05",
-    "paidAt": "2026-10-21",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-09-21T08:44:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-09-23T08:26:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-10-06T08:24:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-10-21T08:59:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-039",
-    "code": "HSTT-ACC24-SQKQ-039",
-    "direction": "thu_cdt",
-    "projectId": "p16",
-    "acceptanceIds": [
-      "ac-053"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
-    "amount": 4097875000,
-    "retention": 204893750,
-    "paidAmount": 3892981250,
-    "createdAt": "2026-04-04",
-    "dueDate": "2026-05-19",
-    "paidAt": "2026-05-04",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-04-04T08:14:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-04-06T08:41:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-04-19T08:33:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-05-04T08:17:00",
+        "at": "2026-01-07T08:37:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1515,40 +1470,40 @@
   },
   {
     "id": "pay-040",
-    "code": "HSTT-ACC24-SQKQ-040",
+    "code": "HSTT-ACC245-CR-040",
     "direction": "thu_cdt",
-    "projectId": "p16",
+    "projectId": "p15",
     "acceptanceIds": [
-      "ac-054"
+      "ac-050"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 41813540000,
-    "retention": 2090677000,
-    "paidAmount": 39722863000,
-    "createdAt": "2026-09-08",
-    "dueDate": "2026-10-23",
-    "paidAt": "2026-10-08",
+    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
+    "amount": 49447899500,
+    "retention": 2472394975,
+    "paidAmount": 46975504525,
+    "createdAt": "2026-05-13",
+    "dueDate": "2026-06-27",
+    "paidAt": "2026-06-12",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-08T08:48:00",
+        "at": "2026-05-13T08:59:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-10T08:49:00",
+        "at": "2026-05-15T08:10:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-23T08:54:00",
+        "at": "2026-05-28T08:30:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-10-08T08:27:00",
+        "at": "2026-06-12T08:45:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1556,40 +1511,40 @@
   },
   {
     "id": "pay-041",
-    "code": "HSTT-ACC244-HUI-041",
+    "code": "HSTT-ACC245-CR-041",
     "direction": "thu_cdt",
-    "projectId": "p17",
+    "projectId": "p15",
     "acceptanceIds": [
-      "ac-056"
+      "ac-051"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 11397549800,
-    "retention": 569877490,
-    "paidAmount": 10827672310,
-    "createdAt": "2025-10-10",
-    "dueDate": "2025-11-24",
-    "paidAt": "2025-11-09",
+    "title": "Thanh toán đợt 3 – móng mặt đường",
+    "amount": 75298600000,
+    "retention": 3764930000,
+    "paidAmount": 71533670000,
+    "createdAt": "2026-09-15",
+    "dueDate": "2026-10-30",
+    "paidAt": "2026-10-15",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-10-10T08:41:00",
+        "at": "2026-09-15T08:23:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-10-12T08:41:00",
+        "at": "2026-09-17T08:22:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-10-25T08:46:00",
+        "at": "2026-09-30T08:42:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2025-11-09T08:14:00",
+        "at": "2026-10-15T08:31:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1597,40 +1552,40 @@
   },
   {
     "id": "pay-042",
-    "code": "HSTT-ACC244-HUI-042",
+    "code": "HSTT-ACC24-SQKQ-042",
     "direction": "thu_cdt",
-    "projectId": "p17",
+    "projectId": "p16",
     "acceptanceIds": [
-      "ac-057"
+      "ac-053"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 115958910000,
-    "retention": 5797945500,
-    "paidAmount": 110160964500,
-    "createdAt": "2026-04-05",
-    "dueDate": "2026-05-20",
-    "paidAt": "2026-05-05",
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
+    "amount": 4181500000,
+    "retention": 209075000,
+    "paidAmount": 3972425000,
+    "createdAt": "2026-04-08",
+    "dueDate": "2026-05-23",
+    "paidAt": "2026-05-08",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-04-05T08:38:00",
+        "at": "2026-04-08T08:43:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-04-07T08:15:00",
+        "at": "2026-04-10T08:55:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-04-20T08:57:00",
+        "at": "2026-04-23T08:21:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-05-05T08:32:00",
+        "at": "2026-05-08T08:45:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1638,40 +1593,40 @@
   },
   {
     "id": "pay-043",
-    "code": "HSTT-ACC244-HUI-043",
+    "code": "HSTT-ACC24-SQKQ-043",
     "direction": "thu_cdt",
-    "projectId": "p17",
+    "projectId": "p16",
     "acceptanceIds": [
-      "ac-058"
+      "ac-054"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 3 – móng mặt đường",
-    "amount": 173937400000,
-    "retention": 8696870000,
-    "paidAmount": 165240530000,
-    "createdAt": "2026-09-11",
-    "dueDate": "2026-10-26",
-    "paidAt": "2026-10-11",
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 41674134800,
+    "retention": 2083706740,
+    "paidAmount": 39590428060,
+    "createdAt": "2026-09-04",
+    "dueDate": "2026-10-19",
+    "paidAt": "2026-10-04",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-11T08:16:00",
+        "at": "2026-09-04T08:10:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-13T08:54:00",
+        "at": "2026-09-06T08:17:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-26T08:22:00",
+        "at": "2026-09-19T08:11:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-10-11T08:56:00",
+        "at": "2026-10-04T08:46:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1679,40 +1634,40 @@
   },
   {
     "id": "pay-044",
-    "code": "HSTT-ACC245-UIH-044",
+    "code": "HSTT-ACC244-HUI-044",
     "direction": "thu_cdt",
-    "projectId": "p18",
+    "projectId": "p17",
     "acceptanceIds": [
-      "ac-060"
+      "ac-055"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 12647933800,
-    "retention": 632396690,
-    "paidAmount": 12015537110,
-    "createdAt": "2026-01-22",
-    "dueDate": "2026-03-08",
-    "paidAt": "2026-02-21",
+    "amount": 11596340000,
+    "retention": 579817000,
+    "paidAmount": 11016523000,
+    "createdAt": "2025-09-30",
+    "dueDate": "2025-11-14",
+    "paidAt": "2025-10-30",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-01-22T08:51:00",
+        "at": "2025-09-30T08:51:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-01-24T08:10:00",
+        "at": "2025-10-02T08:46:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-02-06T08:29:00",
+        "at": "2025-10-15T08:38:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-02-21T08:39:00",
+        "at": "2025-10-30T08:42:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1720,40 +1675,40 @@
   },
   {
     "id": "pay-045",
-    "code": "HSTT-ACC245-UIH-045",
+    "code": "HSTT-ACC244-HUI-045",
     "direction": "thu_cdt",
-    "projectId": "p18",
+    "projectId": "p17",
     "acceptanceIds": [
-      "ac-061"
+      "ac-056"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 127583754500,
-    "retention": 6379187725,
-    "paidAmount": 121204566775,
-    "createdAt": "2026-09-20",
-    "dueDate": "2026-11-04",
-    "paidAt": "2026-10-20",
+    "amount": 115958910000,
+    "retention": 5797945500,
+    "paidAmount": 110160964500,
+    "createdAt": "2026-04-14",
+    "dueDate": "2026-05-29",
+    "paidAt": "2026-05-14",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-20T08:31:00",
+        "at": "2026-04-14T08:57:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-22T08:10:00",
+        "at": "2026-04-16T08:59:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-05T08:40:00",
+        "at": "2026-04-29T08:23:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-10-20T08:24:00",
+        "at": "2026-05-14T08:29:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1761,40 +1716,40 @@
   },
   {
     "id": "pay-046",
-    "code": "HSTT-ACC25-DLI-046",
+    "code": "HSTT-ACC244-HUI-046",
     "direction": "thu_cdt",
-    "projectId": "p19",
+    "projectId": "p17",
     "acceptanceIds": [
-      "ac-063"
+      "ac-057"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 6505180000,
-    "retention": 325259000,
-    "paidAmount": 6179921000,
-    "createdAt": "2026-03-15",
-    "dueDate": "2026-04-29",
-    "paidAt": "2026-04-14",
+    "title": "Thanh toán đợt 3 – móng mặt đường",
+    "amount": 173937400000,
+    "retention": 8696870000,
+    "paidAmount": 165240530000,
+    "createdAt": "2026-09-10",
+    "dueDate": "2026-10-25",
+    "paidAt": "2026-10-10",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-03-15T08:28:00",
+        "at": "2026-09-10T08:15:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-03-17T08:12:00",
+        "at": "2026-09-12T08:45:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-30T08:23:00",
+        "at": "2026-09-25T08:22:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-04-14T08:10:00",
+        "at": "2026-10-10T08:25:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1802,40 +1757,40 @@
   },
   {
     "id": "pay-047",
-    "code": "HSTT-ACC25-DLI-047",
+    "code": "HSTT-ACC245-UIH-047",
     "direction": "thu_cdt",
-    "projectId": "p19",
+    "projectId": "p18",
     "acceptanceIds": [
-      "ac-064"
+      "ac-059"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 65051530000,
-    "retention": 3252576500,
-    "paidAmount": 61798953500,
-    "createdAt": "2026-09-21",
-    "dueDate": "2026-11-05",
-    "paidAt": "2026-10-21",
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
+    "amount": 12868540000,
+    "retention": 643427000,
+    "paidAmount": 12225113000,
+    "createdAt": "2026-01-17",
+    "dueDate": "2026-03-03",
+    "paidAt": "2026-02-16",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-21T08:38:00",
+        "at": "2026-01-17T08:33:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-23T08:39:00",
+        "at": "2026-01-19T08:58:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-06T08:43:00",
+        "at": "2026-02-01T08:42:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-10-21T08:11:00",
+        "at": "2026-02-16T08:27:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1843,66 +1798,81 @@
   },
   {
     "id": "pay-048",
-    "code": "HSTT-ACC25-DLI-048",
+    "code": "HSTT-ACC245-UIH-048",
     "direction": "thu_cdt",
-    "projectId": "p19",
+    "projectId": "p18",
     "acceptanceIds": [
-      "ac-066"
+      "ac-060"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 4 – khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "amount": 12465300000,
-    "retention": 623265000,
-    "paidAmount": 0,
-    "createdAt": "2026-11-14",
-    "dueDate": "2027-01-01",
-    "paidAt": null,
-    "status": "lap_ho_so",
+    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
+    "amount": 127583754500,
+    "retention": 6379187725,
+    "paidAmount": 121204566775,
+    "createdAt": "2026-09-26",
+    "dueDate": "2026-11-10",
+    "paidAt": "2026-10-26",
+    "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-17T08:50:00",
+        "at": "2026-09-26T08:12:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-09-28T08:58:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-10-11T08:35:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-10-26T08:44:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
     "id": "pay-049",
-    "code": "HSTT-ACC244-SGN-049",
+    "code": "HSTT-ACC25-DLI-049",
     "direction": "thu_cdt",
-    "projectId": "p20",
+    "projectId": "p19",
     "acceptanceIds": [
-      "ac-067"
+      "ac-062"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 16262860000,
-    "retention": 813143000,
-    "paidAmount": 15449717000,
-    "createdAt": "2025-12-02",
-    "dueDate": "2026-01-16",
-    "paidAt": "2026-01-01",
+    "amount": 6393664600,
+    "retention": 319683230,
+    "paidAmount": 6073981370,
+    "createdAt": "2026-03-16",
+    "dueDate": "2026-04-30",
+    "paidAt": "2026-04-15",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2025-12-02T08:10:00",
+        "at": "2026-03-16T08:41:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2025-12-04T08:36:00",
+        "at": "2026-03-18T08:10:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-17T08:11:00",
+        "at": "2026-03-31T08:46:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-01-01T08:14:00",
+        "at": "2026-04-15T08:17:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1910,40 +1880,40 @@
   },
   {
     "id": "pay-050",
-    "code": "HSTT-ACC244-SGN-050",
+    "code": "HSTT-ACC25-DLI-050",
     "direction": "thu_cdt",
-    "projectId": "p20",
+    "projectId": "p19",
     "acceptanceIds": [
-      "ac-068"
+      "ac-063"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 160186115200,
-    "retention": 8009305760,
-    "paidAmount": 152176809440,
-    "createdAt": "2026-07-30",
-    "dueDate": "2026-09-13",
-    "paidAt": "2026-08-29",
+    "amount": 64075739500,
+    "retention": 3203786975,
+    "paidAmount": 60871952525,
+    "createdAt": "2026-09-11",
+    "dueDate": "2026-10-26",
+    "paidAt": "2026-10-11",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-07-30T08:13:00",
+        "at": "2026-09-11T08:51:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-08-01T08:20:00",
+        "at": "2026-09-13T08:35:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-14T08:12:00",
+        "at": "2026-09-26T08:12:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-08-29T08:48:00",
+        "at": "2026-10-11T08:17:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1951,40 +1921,40 @@
   },
   {
     "id": "pay-051",
-    "code": "HSTT-ACC245-PXU-051",
+    "code": "HSTT-ACC244-SGN-051",
     "direction": "thu_cdt",
-    "projectId": "p21",
+    "projectId": "p20",
     "acceptanceIds": [
-      "ac-071"
+      "ac-064"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
-    "amount": 5585940000,
-    "retention": 279297000,
-    "paidAmount": 5306643000,
-    "createdAt": "2026-04-22",
-    "dueDate": "2026-06-06",
-    "paidAt": "2026-05-22",
+    "amount": 15984074200,
+    "retention": 799203710,
+    "paidAmount": 15184870490,
+    "createdAt": "2025-12-05",
+    "dueDate": "2026-01-19",
+    "paidAt": "2026-01-04",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-04-22T08:50:00",
+        "at": "2025-12-05T08:37:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-04-24T08:32:00",
+        "at": "2025-12-07T08:33:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-07T08:33:00",
+        "at": "2025-12-20T08:55:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-05-22T08:16:00",
+        "at": "2026-01-04T08:45:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
@@ -1992,56 +1962,66 @@
   },
   {
     "id": "pay-052",
-    "code": "HSTT-ACC245-PXU-052",
+    "code": "HSTT-ACC244-SGN-052",
     "direction": "thu_cdt",
-    "projectId": "p21",
+    "projectId": "p20",
     "acceptanceIds": [
-      "ac-072"
+      "ac-065"
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
-    "amount": 55380530000,
-    "retention": 2769026500,
-    "paidAmount": 0,
-    "createdAt": "2026-10-27",
-    "dueDate": "2026-12-11",
-    "paidAt": null,
-    "status": "da_trinh",
+    "amount": 162625510000,
+    "retention": 8131275500,
+    "paidAmount": 154494234500,
+    "createdAt": "2026-07-29",
+    "dueDate": "2026-09-12",
+    "paidAt": "2026-08-28",
+    "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-10-27T08:28:00",
+        "at": "2026-07-29T08:31:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-10-29T08:35:00",
+        "at": "2026-07-31T08:17:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-08-13T08:41:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-08-28T08:53:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
     "id": "pay-053",
-    "code": "HSTT-ACC245-PXU-053",
+    "code": "HSTT-ACC244-SGN-053",
     "direction": "thu_cdt",
-    "projectId": "p21",
+    "projectId": "p20",
     "acceptanceIds": [
-      "ac-073"
+      "ac-066"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 3 – khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "amount": 16385616000,
-    "retention": 819280800,
+    "title": "Thanh toán đợt 3 – móng mặt đường",
+    "amount": 127779600000,
+    "retention": 6388980000,
     "paidAmount": 0,
-    "createdAt": "2026-11-12",
-    "dueDate": "2026-12-27",
+    "createdAt": "2026-11-14",
+    "dueDate": "2026-12-31",
     "paidAt": null,
     "status": "lap_ho_so",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-12T08:14:00",
+        "at": "2026-11-16T08:43:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
@@ -2049,216 +2029,16 @@
   },
   {
     "id": "pay-054",
-    "code": "HSTT-ACCDTXL-VCS-054",
+    "code": "HSTT-ACC244-SGN-054",
     "direction": "thu_cdt",
-    "projectId": "p22",
+    "projectId": "p20",
     "acceptanceIds": [
-      "ac-074"
+      "ac-067"
     ],
     "supplierId": null,
-    "title": "Thanh toán đợt 1 – nền và móng",
-    "amount": 63839200000,
-    "retention": 3191960000,
-    "paidAmount": 0,
-    "createdAt": "2026-10-08",
-    "dueDate": "2026-11-22",
-    "paidAt": null,
-    "status": "da_duyet",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-10-08T08:31:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-10-10T08:47:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-10-23T08:34:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-055",
-    "code": "HSTT-ACC24-CAAV-055",
-    "direction": "thu_cdt",
-    "projectId": "p23",
-    "acceptanceIds": [
-      "ac-076"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
-    "amount": 9621650000,
-    "retention": 481082500,
-    "paidAmount": 9140567500,
-    "createdAt": "2025-12-12",
-    "dueDate": "2026-01-26",
-    "paidAt": "2026-01-11",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2025-12-12T08:36:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2025-12-14T08:14:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2025-12-27T08:12:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-01-11T08:38:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-056",
-    "code": "HSTT-ACC24-CAAV-056",
-    "direction": "thu_cdt",
-    "projectId": "p23",
-    "acceptanceIds": [
-      "ac-077"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 97859527000,
-    "retention": 4892976350,
-    "paidAmount": 92966550650,
-    "createdAt": "2026-06-06",
-    "dueDate": "2026-07-21",
-    "paidAt": "2026-07-06",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-06-06T08:59:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-06-08T08:17:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-06-21T08:37:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-07-06T08:42:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-057",
-    "code": "HSTT-ACC25-HNM-057",
-    "direction": "thu_cdt",
-    "projectId": "p24",
-    "acceptanceIds": [
-      "ac-078"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
-    "amount": 6859262500,
-    "retention": 342963125,
-    "paidAmount": 6516299375,
-    "createdAt": "2026-02-18",
-    "dueDate": "2026-04-04",
-    "paidAt": "2026-03-20",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-02-18T08:52:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-02-20T08:53:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-03-05T08:41:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-03-20T08:53:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-058",
-    "code": "HSTT-ACC25-HNM-058",
-    "direction": "thu_cdt",
-    "projectId": "p24",
-    "acceptanceIds": [
-      "ac-079"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 68139801000,
-    "retention": 3406990050,
-    "paidAmount": 64732810950,
-    "createdAt": "2026-08-26",
-    "dueDate": "2026-10-10",
-    "paidAt": "2026-09-25",
-    "status": "da_thanh_toan",
-    "createdById": "u15",
-    "history": [
-      {
-        "at": "2026-08-26T08:56:00",
-        "byId": "u15",
-        "action": "Lập hồ sơ thanh toán"
-      },
-      {
-        "at": "2026-08-28T08:33:00",
-        "byId": "u14",
-        "action": "Trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-09-10T08:17:00",
-        "byId": "u14",
-        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-09-25T08:45:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
-      }
-    ]
-  },
-  {
-    "id": "pay-059",
-    "code": "HSTT-ACC25-HNM-059",
-    "direction": "thu_cdt",
-    "projectId": "p24",
-    "acceptanceIds": [
-      "ac-080"
-    ],
-    "supplierId": null,
-    "title": "Thanh toán đợt 3 – khối lượng hoàn thành phần thân (giai đoạn)",
-    "amount": 35344260000,
-    "retention": 1767213000,
+    "title": "Thanh toán đợt 4 – khối lượng hoàn thành móng mặt đường (giai đoạn)",
+    "amount": 51835056000,
+    "retention": 2591752800,
     "paidAmount": 0,
     "createdAt": "2026-11-12",
     "dueDate": "2026-12-27",
@@ -2267,15 +2047,287 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-12T08:21:00",
+        "at": "2026-11-12T08:11:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
     ]
   },
   {
+    "id": "pay-055",
+    "code": "HSTT-ACC245-PXU-055",
+    "direction": "thu_cdt",
+    "projectId": "p21",
+    "acceptanceIds": [
+      "ac-069"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị mặt bằng",
+    "amount": 5490181800,
+    "retention": 274509090,
+    "paidAmount": 5215672710,
+    "createdAt": "2026-04-25",
+    "dueDate": "2026-06-09",
+    "paidAt": "2026-05-25",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-04-25T08:12:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-04-27T08:46:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-05-10T08:16:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-05-25T08:26:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-056",
+    "code": "HSTT-ACC245-PXU-056",
+    "direction": "thu_cdt",
+    "projectId": "p21",
+    "acceptanceIds": [
+      "ac-070"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – nền sân đỗ, đường lăn",
+    "amount": 55021437500,
+    "retention": 2751071875,
+    "paidAmount": 0,
+    "createdAt": "2026-10-30",
+    "dueDate": "2026-12-14",
+    "paidAt": null,
+    "status": "da_trinh",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-10-30T08:41:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-11-01T08:51:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      }
+    ]
+  },
+  {
+    "id": "pay-057",
+    "code": "HSTT-ACCDTXL-VCS-057",
+    "direction": "thu_cdt",
+    "projectId": "p22",
+    "acceptanceIds": [
+      "ac-072"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 1 – nền và móng",
+    "amount": 61924024000,
+    "retention": 3096201200,
+    "paidAmount": 0,
+    "createdAt": "2026-10-05",
+    "dueDate": "2026-11-19",
+    "paidAt": null,
+    "status": "da_duyet",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-10-05T08:47:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-10-07T08:38:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-10-20T08:36:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-058",
+    "code": "HSTT-ACC24-CAAV-058",
+    "direction": "thu_cdt",
+    "projectId": "p23",
+    "acceptanceIds": [
+      "ac-074"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
+    "amount": 9818000000,
+    "retention": 490900000,
+    "paidAmount": 9327100000,
+    "createdAt": "2025-12-09",
+    "dueDate": "2026-01-23",
+    "paidAt": "2026-01-08",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-12-09T08:12:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2025-12-11T08:29:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2025-12-24T08:57:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-01-08T08:38:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-059",
+    "code": "HSTT-ACC24-CAAV-059",
+    "direction": "thu_cdt",
+    "projectId": "p23",
+    "acceptanceIds": [
+      "ac-075"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 98186800000,
+    "retention": 4909340000,
+    "paidAmount": 93277460000,
+    "createdAt": "2026-06-07",
+    "dueDate": "2026-07-22",
+    "paidAt": "2026-07-07",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-06-07T08:52:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-06-09T08:19:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-06-22T08:26:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-07-07T08:44:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
     "id": "pay-060",
-    "code": "HSTT-ACCDTXL-VII-060",
+    "code": "HSTT-ACC25-HNM-060",
+    "direction": "thu_cdt",
+    "projectId": "p24",
+    "acceptanceIds": [
+      "ac-078"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 1 – công tác chuẩn bị và san lấp mặt bằng",
+    "amount": 6999250000,
+    "retention": 349962500,
+    "paidAmount": 6649287500,
+    "createdAt": "2026-03-04",
+    "dueDate": "2026-04-18",
+    "paidAt": "2026-04-03",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-03-04T08:27:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-03-06T08:18:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-03-19T08:51:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-04-03T08:28:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-061",
+    "code": "HSTT-ACC25-HNM-061",
+    "direction": "thu_cdt",
+    "projectId": "p24",
+    "acceptanceIds": [
+      "ac-079"
+    ],
+    "supplierId": null,
+    "title": "Thanh toán đợt 2 – phần móng",
+    "amount": 70006680000,
+    "retention": 3500334000,
+    "paidAmount": 66506346000,
+    "createdAt": "2026-09-04",
+    "dueDate": "2026-10-19",
+    "paidAt": "2026-10-04",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-09-04T08:32:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ thanh toán"
+      },
+      {
+        "at": "2026-09-06T08:53:00",
+        "byId": "u14",
+        "action": "Trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-09-19T08:54:00",
+        "byId": "u14",
+        "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
+      },
+      {
+        "at": "2026-10-04T08:30:00",
+        "byId": "u14",
+        "action": "Đã nhận thanh toán"
+      }
+    ]
+  },
+  {
+    "id": "pay-062",
+    "code": "HSTT-ACCDTXL-VII-062",
     "direction": "thu_cdt",
     "projectId": "p25",
     "acceptanceIds": [
@@ -2286,37 +2338,37 @@
     "amount": 5000750000,
     "retention": 250037500,
     "paidAmount": 4750712500,
-    "createdAt": "2026-03-08",
-    "dueDate": "2026-04-22",
-    "paidAt": "2026-04-07",
+    "createdAt": "2026-03-13",
+    "dueDate": "2026-04-27",
+    "paidAt": "2026-04-12",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-03-08T08:11:00",
+        "at": "2026-03-13T08:54:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-03-10T08:24:00",
+        "at": "2026-03-15T08:53:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-23T08:34:00",
+        "at": "2026-03-28T08:31:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-04-07T08:49:00",
+        "at": "2026-04-12T08:33:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-061",
-    "code": "HSTT-ACCDTXL-VII-061",
+    "id": "pay-063",
+    "code": "HSTT-ACCDTXL-VII-063",
     "direction": "thu_cdt",
     "projectId": "p25",
     "acceptanceIds": [
@@ -2324,40 +2376,40 @@
     ],
     "supplierId": null,
     "title": "Thanh toán đợt 2 – phần móng",
-    "amount": 48492375800,
-    "retention": 2424618790,
-    "paidAmount": 46067757010,
-    "createdAt": "2026-08-14",
-    "dueDate": "2026-09-28",
-    "paidAt": "2026-09-13",
+    "amount": 49492295000,
+    "retention": 2474614750,
+    "paidAmount": 47017680250,
+    "createdAt": "2026-08-05",
+    "dueDate": "2026-09-19",
+    "paidAt": "2026-09-04",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-08-14T08:37:00",
+        "at": "2026-08-05T08:18:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-08-16T08:22:00",
+        "at": "2026-08-07T08:54:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-29T08:27:00",
+        "at": "2026-08-20T08:11:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-09-13T08:23:00",
+        "at": "2026-09-04T08:50:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-062",
-    "code": "HSTT-ACC244-ATC-062",
+    "id": "pay-064",
+    "code": "HSTT-ACC244-ATC-064",
     "direction": "thu_cdt",
     "projectId": "p26",
     "acceptanceIds": [
@@ -2368,37 +2420,37 @@
     "amount": 5636500000,
     "retention": 281825000,
     "paidAmount": 5354675000,
-    "createdAt": "2026-06-06",
-    "dueDate": "2026-07-21",
-    "paidAt": "2026-07-06",
+    "createdAt": "2026-06-17",
+    "dueDate": "2026-08-01",
+    "paidAt": "2026-07-17",
     "status": "da_thanh_toan",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-06-06T08:17:00",
+        "at": "2026-06-17T08:52:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-06-08T08:30:00",
+        "at": "2026-06-19T08:10:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-21T08:34:00",
+        "at": "2026-07-02T08:23:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       },
       {
-        "at": "2026-07-06T08:53:00",
+        "at": "2026-07-17T08:40:00",
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-063",
-    "code": "HSTT-ACC244-ATC-063",
+    "id": "pay-065",
+    "code": "HSTT-ACC244-ATC-065",
     "direction": "thu_cdt",
     "projectId": "p26",
     "acceptanceIds": [
@@ -2408,38 +2460,33 @@
     "title": "Thanh toán đợt 2 – phần móng",
     "amount": 36633930000,
     "retention": 1831696500,
-    "paidAmount": 34802233500,
-    "createdAt": "2026-09-25",
-    "dueDate": "2026-11-09",
-    "paidAt": "2026-10-25",
-    "status": "da_thanh_toan",
+    "paidAmount": 0,
+    "createdAt": "2026-10-04",
+    "dueDate": "2026-11-18",
+    "paidAt": null,
+    "status": "da_duyet",
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-25T08:29:00",
+        "at": "2026-10-04T08:29:00",
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       },
       {
-        "at": "2026-09-27T08:14:00",
+        "at": "2026-10-06T08:37:00",
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-10T08:18:00",
+        "at": "2026-10-19T08:18:00",
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
-      },
-      {
-        "at": "2026-10-25T08:20:00",
-        "byId": "u14",
-        "action": "Đã nhận thanh toán"
       }
     ]
   },
   {
-    "id": "pay-064",
-    "code": "TTNCC-2026-064",
+    "id": "pay-066",
+    "code": "TTNCC-2026-066",
     "direction": "tra_ncc",
     "projectId": "p01",
     "acceptanceIds": [],
@@ -2455,20 +2502,20 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-11-02T08:13:00",
+        "at": "2026-11-02T08:14:00",
         "byId": "u15",
         "action": "Lập đề nghị thanh toán NCC"
       },
       {
-        "at": "2026-11-04T08:42:00",
+        "at": "2026-11-04T08:56:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       }
     ]
   },
   {
-    "id": "pay-065",
-    "code": "TTNCC-2026-065",
+    "id": "pay-067",
+    "code": "TTNCC-2026-067",
     "direction": "tra_ncc",
     "projectId": "p01",
     "acceptanceIds": [],
@@ -2484,25 +2531,25 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-10-04T08:46:00",
+        "at": "2026-10-04T08:42:00",
         "byId": "u15",
         "action": "Lập đề nghị thanh toán NCC"
       },
       {
-        "at": "2026-10-06T08:33:00",
+        "at": "2026-10-06T08:29:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       },
       {
-        "at": "2026-10-16T08:12:00",
+        "at": "2026-10-16T08:31:00",
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
     ]
   },
   {
-    "id": "pay-066",
-    "code": "TTNCC-2026-066",
+    "id": "pay-068",
+    "code": "TTNCC-2026-068",
     "direction": "tra_ncc",
     "projectId": "p01",
     "acceptanceIds": [],
@@ -2518,25 +2565,25 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-08T08:44:00",
+        "at": "2026-09-08T08:35:00",
         "byId": "u15",
         "action": "Lập đề nghị thanh toán NCC"
       },
       {
-        "at": "2026-09-10T08:46:00",
+        "at": "2026-09-10T08:25:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       },
       {
-        "at": "2026-09-20T08:52:00",
+        "at": "2026-09-20T08:35:00",
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
     ]
   },
   {
-    "id": "pay-067",
-    "code": "TTNCC-2026-067",
+    "id": "pay-069",
+    "code": "TTNCC-2026-069",
     "direction": "tra_ncc",
     "projectId": "p06",
     "acceptanceIds": [],
@@ -2552,25 +2599,25 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-09-24T08:15:00",
+        "at": "2026-09-24T08:47:00",
         "byId": "u15",
         "action": "Lập đề nghị thanh toán NCC"
       },
       {
-        "at": "2026-09-26T08:30:00",
+        "at": "2026-09-26T08:43:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       },
       {
-        "at": "2026-10-06T08:36:00",
+        "at": "2026-10-06T08:35:00",
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
     ]
   },
   {
-    "id": "pay-068",
-    "code": "TTNCC-2026-068",
+    "id": "pay-070",
+    "code": "TTNCC-2026-070",
     "direction": "tra_ncc",
     "projectId": "p07",
     "acceptanceIds": [],
@@ -2586,12 +2633,12 @@
     "createdById": "u15",
     "history": [
       {
-        "at": "2026-10-31T08:21:00",
+        "at": "2026-10-31T08:48:00",
         "byId": "u15",
         "action": "Lập đề nghị thanh toán NCC"
       },
       {
-        "at": "2026-11-02T08:51:00",
+        "at": "2026-11-02T08:39:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       }

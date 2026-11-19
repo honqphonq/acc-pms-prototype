@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ReactNode } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppLayout } from "@/layouts/AppLayout";
 import { PageSkeleton } from "@/components/common/LoadingState";
 import LoginPage from "@/pages/auth/LoginPage";
@@ -8,17 +8,13 @@ import { PlanIndexRedirect } from "@/pages/construction/PlanPage";
 const Dashboard = lazy(() => import("@/pages/dashboard/DashboardPage"));
 const ProjectList = lazy(() => import("@/pages/projects/ProjectListPage"));
 const ProjectDetail = lazy(() => import("@/pages/projects/ProjectDetailPage"));
-const Packages = lazy(() => import("@/pages/projects/PackagesPage"));
 const Contracts = lazy(() => import("@/pages/projects/ContractsPage"));
 const Plan = lazy(() => import("@/pages/construction/PlanPage"));
 const TaskDetail = lazy(() => import("@/pages/construction/TaskDetailPage"));
 const Logs = lazy(() => import("@/pages/construction/LogsPage"));
 const ValueReport = lazy(() => import("@/pages/construction/ValueReportPage"));
-const Inventory = lazy(() => import("@/pages/materials/InventoryPage"));
-const RequestList = lazy(() => import("@/pages/materials/RequestListPage"));
 const RequestDetail = lazy(() => import("@/pages/materials/RequestDetailPage"));
 const RequestForm = lazy(() => import("@/pages/materials/RequestFormPage"));
-const Transactions = lazy(() => import("@/pages/materials/TransactionsPage"));
 const Catalog = lazy(() => import("@/pages/materials/CatalogPage"));
 const Suppliers = lazy(() => import("@/pages/materials/SuppliersPage"));
 const EquipmentList = lazy(() => import("@/pages/equipment/EquipmentListPage"));
@@ -44,10 +40,16 @@ const Repairs = lazy(() => import("@/pages/equipment/RepairsPage"));
 const Disposal = lazy(() => import("@/pages/equipment/DisposalPage"));
 const Incidents = lazy(() => import("@/pages/equipment/IncidentsPage"));
 const RoutesPage = lazy(() => import("@/pages/equipment/RoutesPage"));
-const Receipts = lazy(() => import("@/pages/materials/TransactionsPage").then((m) => ({ default: m.ReceiptsPage })));
-const Issues = lazy(() => import("@/pages/materials/TransactionsPage").then((m) => ({ default: m.IssuesPage })));
 const ComingSoon = lazy(() => import("@/pages/finance/ComingSoonPage"));
+const StockHub = lazy(() => import("@/pages/materials/StockHubPage"));
+const ProjectStock = lazy(() => import("@/pages/materials/StockHubPage").then((m) => ({ default: m.ProjectStockPage })));
 const Account = lazy(() => import("@/pages/auth/AccountPage"));
+
+/** Đường dẫn cũ của phân hệ vật tư → kho dự án */
+function ToStock({ tab }: { tab?: string }) {
+  const project = new URLSearchParams(useLocation().search).get("project");
+  return <Navigate to={project ? `/materials/stock/${project}${tab ? `?tab=${tab}` : ""}` : "/materials/stock"} replace />;
+}
 
 const S = ({ children }: { children: ReactNode }) => <Suspense fallback={<PageSkeleton />}>{children}</Suspense>;
 
@@ -58,7 +60,7 @@ export function AppRoutes() {
       <Route element={<AppLayout />}>
         <Route index element={<S><Dashboard /></S>} />
         <Route path="projects" element={<S><ProjectList /></S>} />
-        <Route path="projects/packages" element={<S><Packages /></S>} />
+        <Route path="projects/packages" element={<Navigate to="/projects/contracts" replace />} />
         <Route path="projects/contracts" element={<S><Contracts /></S>} />
         <Route path="projects/:id" element={<S><ProjectDetail /></S>} />
         <Route path="construction" element={<Navigate to="/construction/plan" replace />} />
@@ -70,15 +72,17 @@ export function AppRoutes() {
         <Route path="construction/staff" element={<S><Staff /></S>} />
         <Route path="construction/documents" element={<S><Documents /></S>} />
         <Route path="construction/value-report" element={<S><ValueReport /></S>} />
-        <Route path="materials" element={<Navigate to="/materials/inventory" replace />} />
-        <Route path="materials/inventory" element={<S><Inventory /></S>} />
-        <Route path="materials/requests" element={<S><RequestList /></S>} />
+        <Route path="materials" element={<Navigate to="/materials/stock" replace />} />
+        <Route path="materials/stock" element={<S><StockHub /></S>} />
+        <Route path="materials/stock/:projectId" element={<S><ProjectStock /></S>} />
+        <Route path="materials/inventory" element={<ToStock />} />
+        <Route path="materials/requests" element={<ToStock tab="de_xuat" />} />
         <Route path="materials/requests/new" element={<S><RequestForm /></S>} />
         <Route path="materials/requests/:id" element={<S><RequestDetail /></S>} />
         <Route path="materials/requests/:id/edit" element={<S><RequestForm /></S>} />
-        <Route path="materials/transactions" element={<S><Transactions /></S>} />
-        <Route path="materials/receipts" element={<S><Receipts /></S>} />
-        <Route path="materials/issues" element={<S><Issues /></S>} />
+        <Route path="materials/transactions" element={<ToStock tab="nhap" />} />
+        <Route path="materials/receipts" element={<ToStock tab="nhap" />} />
+        <Route path="materials/issues" element={<ToStock tab="xuat" />} />
         <Route path="materials/catalog" element={<S><Catalog /></S>} />
         <Route path="materials/suppliers" element={<S><Suppliers /></S>} />
         <Route path="equipment" element={<Navigate to="/equipment/list" replace />} />
@@ -92,7 +96,7 @@ export function AppRoutes() {
         <Route path="equipment/incidents" element={<S><Incidents /></S>} />
         <Route path="equipment/routes" element={<S><RoutesPage /></S>} />
         <Route path="equipment/:id" element={<S><EquipmentDetail /></S>} />
-        <Route path="finance" element={<Navigate to="/materials/requests" replace />} />
+        <Route path="finance" element={<Navigate to="/materials/stock" replace />} />
         <Route path="finance/:section" element={<S><ComingSoon /></S>} />
         <Route path="account" element={<S><Account /></S>} />
         <Route path="acceptance" element={<S><AcceptanceList /></S>} />

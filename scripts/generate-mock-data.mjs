@@ -410,13 +410,27 @@ projectDefs.forEach((def) => {
     packageName: def.packageName, contractNo: def.contractNo, contractDate: def.contractDate,
     startDate: def.startDate, endDate: def.endDate, contractValue, budget: def.budget ?? Math.round((contractValue * 0.9) / 1e6) * 1e6, costRatio: def.costRatio,
     status: def.status, settlementStatus: def.settlement || "chua_quyet_toan",
-    memberIds: [...new Set(memberPool)], description: def.id === "p01" ? "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp." : descriptions[def.category], approvalStatus: def.approval || "da_duyet", approverId: "u01", approvedAt: def.approval ? null : addDays(def.contractDate, 5),
-    appendices: def.id === "p01" ? [
+    memberIds: [...new Set(memberPool)], description: def.id === "p01" ? "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp." : descriptions[def.category], approvalStatus: "da_duyet",
+  });
+});
+
+// ---------- hợp đồng & phụ lục ----------
+const ATT = (name, url = null, size = rint(200, 4800) * 1024) => ({ id: `att-${name.length}-${rint(1000, 9999)}`, name, type: /\.(webp|jpg|png)$/.test(name) ? "image/" + name.split(".").pop() : /\.svg$/.test(name) ? "image/svg+xml" : /\.pdf$/.test(name) ? "application/pdf" : "application/octet-stream", size, url });
+const contracts = [];
+projectDefs.forEach((def) => {
+  const p = projects.find((x) => x.id === def.id);
+  const main = { id: `hd-${def.id}`, code: def.contractNo, kind: "hop_dong", projectId: def.id, parentId: null, title: `Hợp đồng thi công xây dựng – ${p.shortName}`, signDate: def.contractDate, value: p.contractValue, startDate: def.startDate, endDate: def.endDate, files: [ATT(`HD ${def.contractNo.replace(/\//g, "-")} (ban ky).pdf`)], note: "" };
+  contracts.push(main);
+  const apps = ((def) => (def.id === "p01" ? [
       { id: "pl-gb-1", code: "PL01/1504/2026", date: "2026-06-05", title: "Điều chỉnh tiến độ bàn giao mặt bằng zone R4B", valueChange: 0, note: "Lùi thời điểm bàn giao mặt bằng R4B sang 12/09/2026" },
       { id: "pl-gb-2", code: "PL02/1504/2026", date: "2026-08-20", title: "Bổ sung khối lượng BTXM M350 sân đỗ zone A2", valueChange: 3850000000, note: "Theo thiết kế điều chỉnh mở rộng vệt lăn" },
       { id: "pl-gb-3", code: "PL03/1504/2026", date: "2026-10-28", title: "Điều chỉnh đơn giá nhân công theo Thông tư mới", valueChange: 1240000000, note: "Áp dụng từ đợt thanh toán 4" },
-    ] : rand() < 0.4 ? [{ id: `pl-${def.id}-1`, code: `PL01/${def.contractNo}`, date: addDays(def.contractDate, 120), title: "Điều chỉnh khối lượng phát sinh", valueChange: Math.round(def.value * 0.015 / 1e6) * 1e6, note: "" }] : [],
+    ] : rand() < 0.4 ? [{ id: `pl-${def.id}-1`, code: `PL01/${def.contractNo}`, date: addDays(def.contractDate, 120), title: "Điều chỉnh khối lượng phát sinh", valueChange: Math.round(def.value * 0.015 / 1e6) * 1e6, note: "" }] : []))(def);
+  apps.forEach((a, k) => {
+    contracts.push({ id: a.id, code: a.code, kind: "phu_luc", projectId: def.id, parentId: main.id, title: a.title, signDate: a.date, value: a.valueChange, startDate: a.date, endDate: def.endDate, files: [ATT(`${a.code.replace(/\//g, "-")}.pdf`)], note: a.note });
+    void k;
   });
+  p.contractValue = contracts.filter((c) => c.projectId === def.id).reduce((s, c) => s + c.value, 0);
 });
 
 // ---------- construction logs (tổng = actualQty) ----------
@@ -568,9 +582,11 @@ projectDefs.forEach((def) => {
     if (special) consumeFactor = 0.93 / Math.max(prog, 0.05);
     const issued = roundQty(Math.min(normQty * 1.02, normQty * prog * consumeFactor), m.unit);
     let onHand = roundQty(normQty * (0.03 + rand() * 0.06), m.unit);
-    const minStock = roundQty(normQty * 0.04, m.unit);
+    let minStock = roundQty(normQty * 0.04, m.unit);
     const shortage = (def.id === "p01" && (code === "VL027" || code === "VL023")) || (def.id === "p02" && code === "VL011") || (def.id === "p04" && code === "VL004") || (def.id === "p09" && code === "VL010");
     if (shortage) onHand = roundQty(minStock * 0.35, m.unit);
+    // SB Gia Bình: tồn tối thiểu hợp lý theo từng vật tư; 1 vật tư "sắp hết" (≤ 120% tối thiểu)
+    if (def.id === "p01" && !shortage) minStock = roundQty(onHand * (code === "VL025" ? 0.9 : 0.35 + rand() * 0.3), m.unit);
     if (def.status === "hoan_thanh") onHand = 0;
     const received = roundQty(issued + onHand, m.unit);
     inventory.push({ id: `inv-${def.id}-${code}`, projectId: def.id, materialId: m.id, normQty, minStock: def.status === "hoan_thanh" ? 0 : minStock, location: `Kho công trường ${def.shortName}` });
@@ -741,6 +757,10 @@ equipment.forEach((e, i) => {
   e.ownerProof = e.ownership === "so_huu" || rand() < 0.75;
 });
 Object.assign(equipment[28], { inspectionDue: "2026-11-08", insuranceDue: "2026-12-01" });
+equipment.forEach((e) => {
+  e.images = e.group === "Máy rải bê tông" ? [{ id: `img-${e.id}`, name: "XCMG RP903.webp", type: "image/webp", size: 139374, url: "assets/samples/may-rai-xcmg.webp" }] : [];
+  e.docFiles = [];
+});
 
 // ---------- equipment shifts (21 ngày gần nhất) ----------
 const equipmentShifts = [];
@@ -760,8 +780,22 @@ equipment.filter((e) => e.status === "hoat_dong").forEach((e) => {
     });
   }
 });
+equipmentShifts.forEach((s) => {
+  s.logged = true;
+  const e = equipment.find((x) => x.id === s.equipmentId);
+  s.km = e.kind === "may_thiet_bi" ? 0 : Math.round(s.hours * rint(6, 14));
+});
+// lịch phân ca tuần tới cho máy tại SB Gia Bình (chưa có nhật trình)
+equipment.filter((e) => e.status === "hoat_dong" && e.currentProjectId === "p01").forEach((e, k) => {
+  for (let n = 0; n <= 6; n++) {
+    const date = addDays(TODAY, n);
+    if (d(date).getUTCDay() === 0) continue;
+    equipmentShifts.push({ id: `sh-${pad(++shSeq, 4)}`, equipmentId: e.id, projectId: "p01", date, shift: "Ca 1", operatorId: e.operatorId, hours: 0, fuelLiters: 0, output: "", note: "", km: 0, logged: false });
+    if (k % 2 === 0) equipmentShifts.push({ id: `sh-${pad(++shSeq, 4)}`, equipmentId: e.id, projectId: "p01", date, shift: "Ca 2", operatorId: `op${pad(((k + n) % 24) + 1, 2)}`, hours: 0, fuelLiters: 0, output: "", note: "", km: 0, logged: false });
+  }
+});
 // một số ca vượt định mức nhiên liệu
-equipmentShifts.filter((_, i) => i % 37 === 5).forEach((s) => {
+equipmentShifts.filter((x, i) => x.logged && i % 37 === 5).forEach((s) => {
   const e = equipment.find((x) => x.id === s.equipmentId);
   s.fuelLiters = Math.round(s.hours * e.fuelNorm * 1.32 * 10) / 10;
   s.note = "Tiêu hao nhiên liệu cao hơn định mức – cần kiểm tra";
@@ -960,6 +994,9 @@ const constructionMethods = [
     summary: "Phân khu thi công theo ca đêm, rào chắn an toàn khu bay, phối hợp cảng vụ.", files: ["PA thi cong san do.pdf"], versions: [V(1, "2025-09-10", "u20", "Lập phương án"), V(2, "2025-10-02", "u20", "Cập nhật theo góp ý Cảng vụ")], comments: [] },
 ];
 
+constructionMethods.forEach((m) => { m.files = m.files.map((f) => ATT(f)); });
+constructionMethods[0].files.unshift(ATT("Mat bang to chuc thi cong giai doan 1.webp", "assets/samples/mat-bang-tctc.webp", 296958));
+
 // ---------- nhân sự thi công ----------
 const siteStaff = [];
 const famN = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đỗ", "Bùi", "Ngô", "Dương", "Đặng", "Phan"];
@@ -983,6 +1020,14 @@ teamsGB.forEach(([team, n]) => {
   }
 });
 siteStaff[20].healthCheck = addDays(TODAY, -400);
+siteStaff.forEach((x, i) => {
+  const full = x.projectId === "p01" && i < 14;
+  x.idFront = full ? ATT("CCCD mat truoc.svg", "assets/samples/cccd-truoc.svg", 3200) : null;
+  x.idBack = full ? ATT("CCCD mat sau.svg", "assets/samples/cccd-sau.svg", 3100) : null;
+  x.certFiles = full && x.type !== "lao_dong_pho_thong" ? [ATT("Chung chi.svg", "assets/samples/chung-chi.svg", 3000)] : [];
+  x.safetyCardFile = x.safetyCard ? ATT("The ATLD.svg", "assets/samples/the-atld.svg", 3000) : null;
+  x.healthFile = full ? ATT("Giay kham suc khoe.svg", "assets/samples/giay-ksk.svg", 3000) : null;
+});
 
 // ---------- hồ sơ thi công ----------
 const docFolders = [];
@@ -1016,13 +1061,27 @@ const D = (projectId, folderId, name, byId, at, versions = 1, sizeKb = rint(180,
 // ---------- nhân viên CMKT ----------
 const operators = users.filter((u) => u.isOperator).map((u, i) => ({
   id: u.id, code: u.code, name: u.name, phone: u.phone, rank: pick(["Thượng sĩ", "Trung sĩ", "QNCN 3/10", "Công nhân viên quốc phòng", "Hợp đồng lao động"]),
-  contractType: pick(["HĐLĐ không xác định thời hạn", "HĐLĐ 36 tháng", "HĐLĐ 12 tháng"]), licenseNo: `${rint(100000, 999999)}${rint(100000, 999999)}`,
-  licenseClass: pick(["C", "FC", "E", "Chứng chỉ máy thi công"]), licenseType: i % 3 === 0 ? "Quân sự" : "Dân sự", licenseExpiry: addDays(TODAY, rint(-15, 1500)),
-  skill: pick(["Vận hành máy rải bê tông", "Vận hành máy xúc", "Vận hành máy lu", "Lái xe tải nặng", "Vận hành trạm trộn", "Vận hành máy ủi"]),
+  contractType: pick(["HĐLĐ không xác định thời hạn", "HĐLĐ 36 tháng", "HĐLĐ 12 tháng"]),
+  licenses: [
+    { id: `lc-${i}-1`, kind: "gplx", no: `${rint(100000, 999999)}${rint(100000, 999999)}`, name: pick(["C", "FC", "E", "D"]), military: i % 3 === 0, issueDate: addDays(TODAY, -rint(800, 3000)), expiry: i === 4 ? addDays(TODAY, -6) : i === 9 ? addDays(TODAY, 35) : addDays(TODAY, rint(200, 1500)), file: i < 8 ? ATT("GPLX.svg", "assets/samples/gplx.svg", 3000) : null },
+    ...(i % 4 === 1 ? [{ id: `lc-${i}-2`, kind: "gplx", no: `${rint(100000, 999999)}${rint(100000, 999999)}`, name: "FC", military: false, issueDate: addDays(TODAY, -rint(400, 1500)), expiry: addDays(TODAY, rint(300, 1500)), file: null }] : []),
+    { id: `lc-${i}-3`, kind: "chung_chi", no: `CC-${rint(1000, 9999)}`, name: pick(["Vận hành máy rải bê tông", "Vận hành máy xúc", "Vận hành máy lu", "Vận hành trạm trộn", "Vận hành máy ủi", "Vận hành cần trục"]), military: false, issueDate: addDays(TODAY, -rint(300, 2500)), expiry: i === 12 ? addDays(TODAY, 20) : null, file: i < 6 ? ATT("Chung chi van hanh.svg", "assets/samples/chung-chi.svg", 3000) : null },
+    ...(i % 3 === 2 ? [{ id: `lc-${i}-4`, kind: "chung_chi", no: `CC-${rint(1000, 9999)}`, name: pick(["Vận hành máy lu", "Vận hành máy xúc", "Vận hành máy rải bê tông"]), military: false, issueDate: addDays(TODAY, -rint(300, 2000)), expiry: null, file: null }] : []),
+  ],
   workerGrade: `${rint(3, 6)}/7`, salaryCoef: Math.round((2.6 + rand() * 2.4) * 100) / 100, idNo: `0${rint(10, 99)}0${rint(10000000, 99999999)}`, hometown: pick(towns),
   healthCheck: addDays(TODAY, -rint(30, 420)), safetyCard: rand() > 0.1, insurance24h: rand() > 0.15, yearsExp: rint(2, 22),
-  score: rint(68, 98), violations: rand() < 0.2 ? rint(1, 3) : 0, note: "",
+  note: "",
 }));
+
+// chứng chỉ vận hành khớp với nhóm XMTB người đó đang vận hành
+const GROUP_CC = { "Máy rải bê tông": "Vận hành máy rải bê tông", "Máy xúc": "Vận hành máy xúc", "Máy ủi": "Vận hành máy ủi", "Máy lu rung": "Vận hành máy lu", "Trạm trộn BTXM": "Vận hành trạm trộn", "Cần trục tháp": "Vận hành cần trục" };
+operators.forEach((o) => {
+  equipment.filter((e) => e.operatorId === o.id).forEach((e) => {
+    const cc = GROUP_CC[e.group];
+    if (cc && !o.licenses.some((l) => l.name === cc)) o.licenses.push({ id: `lc-${o.id}-${e.id}`, kind: "chung_chi", no: `CC-${rint(1000, 9999)}`, name: cc, military: false, issueDate: addDays(TODAY, -rint(300, 2000)), expiry: null, file: null });
+    if (!cc && !o.licenses.some((l) => l.kind === "gplx" && /^(C|D|E|FC)/.test(l.name) && (!l.expiry || l.expiry >= TODAY))) o.licenses.push({ id: `lc-${o.id}-${e.id}`, kind: "gplx", no: `${rint(100000, 999999)}${rint(100000, 999999)}`, name: "C", military: false, issueDate: addDays(TODAY, -rint(500, 2000)), expiry: addDays(TODAY, rint(400, 1500)), file: null });
+  });
+});
 
 // ---------- kế hoạch bảo dưỡng, sửa chữa, thanh xử lý, sự cố ----------
 const eqAt = (pid) => equipment.filter((e) => e.currentProjectId === pid);
@@ -1072,7 +1131,10 @@ stockTransactions.forEach((t, i) => {
   t.docQty = t.qty;
   t.confirmed = true;
 });
-stockTransactions.filter((t) => t.projectId === "p01" && t.type === "nhap").slice(-2).forEach((t) => { t.confirmed = false; t.docQty = roundQty(t.qty * 1.02, "m³"); });
+// 2 phiếu nhập mới về kho SB Gia Bình đang chờ xác nhận (lệch chứng từ 1 dòng)
+[["VL027", 420, 432], ["VL023", 600, 600]].forEach(([code, qty, docQty], k) => {
+  stockTransactions.push({ id: `tx-${pad(++txSeq, 4)}`, code: `PNK-${pad(txSeq, 4)}`, voucherCode: `PNK-${pad(txSeq, 4)}`, type: "nhap", subType: "ncc", projectId: "p01", materialId: mat(code).id, qty, docQty, confirmed: false, date: addDays(TODAY, -k), requestId: null, taskId: null, supplierId: k === 0 ? "s09" : "s06", byId: "u10", note: k === 0 ? "Giao BTN C19 theo ĐH-KB-2026-0412 (đợt 1)" : "Giao matit chèn khe – chờ kiểm tra chất lượng" });
+});
 {
   const lines = inventory.filter((i) => i.projectId === "p01").map((i) => ({ materialId: i.materialId, bookQty: roundQty(stockOf("p01", i.materialId), "m³") }));
   stocktakes[1].lines = lines.map((l, k) => ({ ...l, actualQty: k === 2 ? roundQty(l.bookQty * 0.97, "m³") : k === 5 ? roundQty(l.bookQty - 1, "m³") : l.bookQty }));
@@ -1121,6 +1183,7 @@ const files = {
   "incidents.json": incidents,
   "routes.json": routes,
   "stocktakes.json": stocktakes,
+  "contracts.json": contracts,
   "login-history.json": loginHistory,
 };
 for (const dir of OUT_DIRS) {

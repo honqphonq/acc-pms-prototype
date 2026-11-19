@@ -4,7 +4,7 @@
     "projectId": "p01",
     "materialId": "m18",
     "normQty": 198880,
-    "minStock": 7955.2,
+    "minStock": 4629.4,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -12,7 +12,7 @@
     "projectId": "p01",
     "materialId": "m26",
     "normQty": 126140,
-    "minStock": 5045.6,
+    "minStock": 3788.8,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -20,7 +20,7 @@
     "projectId": "p01",
     "materialId": "m11",
     "normQty": 144170,
-    "minStock": 5766.8,
+    "minStock": 6238,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -36,7 +36,7 @@
     "projectId": "p01",
     "materialId": "m28",
     "normQty": 18420,
-    "minStock": 736.8,
+    "minStock": 733.3,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -44,7 +44,7 @@
     "projectId": "p01",
     "materialId": "m29",
     "normQty": 132440,
-    "minStock": 5297.6,
+    "minStock": 3197.6,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -52,7 +52,7 @@
     "projectId": "p01",
     "materialId": "m30",
     "normQty": 1696,
-    "minStock": 67.8,
+    "minStock": 84.6,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -68,7 +68,7 @@
     "projectId": "p01",
     "materialId": "m25",
     "normQty": 367490,
-    "minStock": 14699.6,
+    "minStock": 24175.4,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {
@@ -76,7 +76,7 @@
     "projectId": "p01",
     "materialId": "m31",
     "normQty": 520000,
-    "minStock": 20800,
+    "minStock": 7807.3,
     "location": "Kho công trường Sân bay Gia Bình"
   },
   {

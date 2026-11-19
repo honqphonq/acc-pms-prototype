@@ -502,7 +502,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
           ? `${pName(r.inv.projectId)} · tồn ${r.onHand.toLocaleString("vi-VN")} ${r.material.unit} < tối thiểu ${r.inv.minStock.toLocaleString("vi-VN")} ${r.material.unit}`
           : `${pName(r.inv.projectId)} · đã xuất ${(r.usage * 100).toFixed(0)}% định mức dự toán`,
       projectId: r.inv.projectId,
-      link: `/materials/inventory?project=${r.inv.projectId}`,
+      link: `/materials/stock/${r.inv.projectId}`,
     });
   });
   db.materialRequests.filter(isRequestOverdue).forEach((r) =>

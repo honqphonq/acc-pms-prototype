@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { NumberInput } from "@/components/ui/number-input";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { FormField } from "@/components/common/FormField";
@@ -16,7 +17,7 @@ type Form = Omit<Project, "id" | "approvalStatus" | "settlementStatus">;
 const empty: Form = {
   code: "", name: "", shortName: "", category: "dan_dung", location: "", investor: "", contractor: "Tổng công ty ACC", unitId: "d-acc244", commanderId: "u04",
   packageName: "", contractNo: "", contractDate: "2026-11-14", startDate: "2027-01-04", endDate: "2028-06-30", contractValue: 0, budget: 0, costRatio: 0.9,
-  status: "chuan_bi", memberIds: [], description: "", approverId: "u01",
+  status: "chuan_bi", memberIds: [], description: "",
 };
 
 export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { open: boolean; onOpenChange: (o: boolean) => void; project?: Project; onSaved?: (id?: string) => void }) {
@@ -32,8 +33,6 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
   }, [open, project]);
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setF((x) => ({ ...x, [k]: v }));
   const commanders = db.users.filter((u) => u.role === "chi_huy_truong");
-  const approvers = db.users.filter((u) => u.role === "lanh_dao");
-  const approver = db.users.find((u) => u.id === f.approverId);
 
   const save = () => {
     const e: Record<string, string> = {};
@@ -42,7 +41,6 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
     if (!f.investor.trim()) e.investor = "Nhập chủ đầu tư";
     if (!f.location.trim()) e.location = "Nhập địa điểm";
     if (f.contractValue <= 0) e.contractValue = "Giá trị hợp đồng phải > 0";
-    if (!project && !f.approverId) e.approverId = "Chọn người phê duyệt";
     if (f.endDate <= f.startDate) e.endDate = "Ngày kết thúc phải sau ngày bắt đầu";
     if (db.projects.some((p) => p.code === f.code && p.id !== project?.id)) e.code = "Mã dự án đã tồn tại";
     setErrors(e);
@@ -54,7 +52,7 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
       onSaved?.(project.id);
     } else {
       const next = run(createProject, data, user!.id);
-      toast.success(`Đã gửi đơn xin nhận thi công – chờ ${approver?.name ?? "lãnh đạo"} phê duyệt`);
+      toast.success("Đã tạo dự án và giao nhiệm vụ cho đơn vị thực hiện");
       onSaved?.(next.projects[0].id);
     }
     onOpenChange(false);
@@ -64,8 +62,8 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <DialogTitle>{project ? "Chỉnh sửa dự án" : "Tạo mới dự án / Đơn xin nhận thi công"}</DialogTitle>
-          <DialogDescription>Thông tin gói thầu, hợp đồng nhận thầu với Chủ đầu tư và đơn vị thực hiện.</DialogDescription>
+          <DialogTitle>{project ? "Chỉnh sửa dự án" : "Tạo mới dự án"}</DialogTitle>
+          <DialogDescription>Tổng công ty nhập thông tin dự án và giao nhiệm vụ cho đơn vị thực hiện. Sau khi tạo, dự án có sẵn ở các phân hệ: hợp đồng, phương án, tiến độ, nhân sự, hồ sơ, vật tư…</DialogDescription>
         </DialogHeader>
         <DialogBody className="space-y-5">
           <div>
@@ -74,18 +72,17 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
               <FormField label="Mã dự án" required error={errors.code}><Input value={f.code} onChange={(e) => set("code", e.target.value)} placeholder="VD: ACC244-THX" /></FormField>
               <FormField label="Tên dự án" required error={errors.name} className="md:col-span-2"><Input value={f.name} onChange={(e) => set("name", e.target.value)} /></FormField>
               <FormField label="Tên viết tắt"><Input value={f.shortName} onChange={(e) => set("shortName", e.target.value)} /></FormField>
-              <FormField label="Loại công trình"><Select value={f.category} onChange={(e) => set("category", e.target.value as Form["category"])} options={Object.entries(CATEGORY_LABELS).map(([value, label]) => ({ value, label }))} /></FormField>
+              <FormField label="Loại dự án"><Select value={f.category} onChange={(e) => set("category", e.target.value as Form["category"])} options={Object.entries(CATEGORY_LABELS).map(([value, label]) => ({ value, label }))} /></FormField>
               <FormField label="Địa điểm" required error={errors.location}><Input value={f.location} onChange={(e) => set("location", e.target.value)} /></FormField>
               <FormField label="Chủ đầu tư" required error={errors.investor} className="md:col-span-3"><Input value={f.investor} onChange={(e) => set("investor", e.target.value)} /></FormField>
             </div>
           </div>
           <div>
-            <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Gói thầu & hợp đồng</div>
+            <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Hợp đồng</div>
             <div className="grid gap-3 md:grid-cols-3">
-              <FormField label="Gói thầu" className="md:col-span-2"><Input value={f.packageName} onChange={(e) => set("packageName", e.target.value)} /></FormField>
               <FormField label="Số hợp đồng"><Input value={f.contractNo} onChange={(e) => set("contractNo", e.target.value)} /></FormField>
-              <FormField label="Giá trị hợp đồng (VNĐ)" required error={errors.contractValue}><Input type="number" value={f.contractValue || ""} onChange={(e) => set("contractValue", Number(e.target.value))} /></FormField>
-              <FormField label="Ngân sách chi phí dự kiến (VNĐ)"><Input type="number" value={f.budget || ""} onChange={(e) => set("budget", Number(e.target.value))} /></FormField>
+              <FormField label="Giá trị hợp đồng (VNĐ)" required error={errors.contractValue} hint={project && db.contracts.some((c) => c.projectId === project.id) ? "Cộng dồn tự động từ hợp đồng và phụ lục (Quản lý hợp đồng)" : undefined}><NumberInput value={f.contractValue} onChange={(v) => set("contractValue", v)} placeholder="VD: 241.800.000.000" disabled={!!project && db.contracts.some((c) => c.projectId === project.id)} /></FormField>
+              <FormField label="Ngân sách chi phí dự kiến (VNĐ)"><NumberInput value={f.budget} onChange={(v) => set("budget", v)} /></FormField>
               <FormField label="Ngày ký hợp đồng"><Input type="date" value={f.contractDate} onChange={(e) => set("contractDate", e.target.value)} /></FormField>
               <FormField label="Ngày khởi công"><Input type="date" value={f.startDate} onChange={(e) => set("startDate", e.target.value)} /></FormField>
               <FormField label="Ngày hoàn thành" error={errors.endDate}><Input type="date" value={f.endDate} onChange={(e) => set("endDate", e.target.value)} /></FormField>
@@ -101,23 +98,10 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
               <FormField label="Mô tả" className="md:col-span-3"><Textarea value={f.description} onChange={(e) => set("description", e.target.value)} /></FormField>
             </div>
           </div>
-          {(!project || project.approvalStatus === "cho_duyet") && (
-            <div>
-              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Quy trình xét duyệt</div>
-              <div className="grid gap-3 md:grid-cols-3">
-                <FormField label="Người phê duyệt" required error={errors.approverId}><Select value={f.approverId ?? ""} onChange={(e) => set("approverId", e.target.value)} placeholder="— Chọn lãnh đạo —" options={approvers.map((u) => ({ value: u.id, label: `${u.name} – ${u.title}` }))} /></FormField>
-                <div className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-[12px] text-slate-600 md:col-span-2">
-                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">Đơn vị lập đơn</span>→
-                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">{approver?.name ?? "Lãnh đạo TCT"} phê duyệt</span>→
-                  <span className="rounded bg-white px-2 py-1 ring-1 ring-slate-200">Quyết định phân giao nhiệm vụ</span>
-                </div>
-              </div>
-            </div>
-          )}
         </DialogBody>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>Hủy</Button>
-          <Button onClick={save}>{project ? "Lưu thay đổi" : "Tạo dự án & gửi phê duyệt"}</Button>
+          <Button onClick={save}>{project ? "Lưu thay đổi" : "Tạo dự án"}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

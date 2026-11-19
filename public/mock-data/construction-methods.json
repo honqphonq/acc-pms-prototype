@@ -11,9 +11,34 @@
     "updatedAt": "2026-06-10",
     "summary": "Chia khu bay thành 4 mũi thi công (CHC R2–R4B, đường lăn T2–T4B, sân đỗ A2); bố trí 2 trạm trộn BTXM 120 m³/h, 3 máy rải ván khuôn trượt; thi công cuốn chiếu lòng đường → lề vật liệu.",
     "files": [
-      "PA tong the khu bay v3.pdf",
-      "So do mat bang to chuc thi cong.dwg",
-      "Tien do tong the.mpp"
+      {
+        "id": "att-42-8929",
+        "name": "Mat bang to chuc thi cong giai doan 1.webp",
+        "type": "image/webp",
+        "size": 296958,
+        "url": "assets/samples/mat-bang-tctc.webp"
+      },
+      {
+        "id": "att-26-4597",
+        "name": "PA tong the khu bay v3.pdf",
+        "type": "application/pdf",
+        "size": 4809728,
+        "url": null
+      },
+      {
+        "id": "att-35-3864",
+        "name": "So do mat bang to chuc thi cong.dwg",
+        "type": "application/octet-stream",
+        "size": 4219904,
+        "url": null
+      },
+      {
+        "id": "att-20-6712",
+        "name": "Tien do tong the.mpp",
+        "type": "application/octet-stream",
+        "size": 4445184,
+        "url": null
+      }
     ],
     "versions": [
       {
@@ -68,7 +93,13 @@
     "updatedAt": "2026-06-15",
     "summary": "Rải CPĐD bằng máy rải, lu lèn 3 giai đoạn (lu tĩnh 8T – lu rung 25T – lu bánh lốp 16T), kiểm tra độ chặt K ≥ 0,98 mỗi 800 m².",
     "files": [
-      "BPTC mong CPDD v2.pdf"
+      {
+        "id": "att-21-8173",
+        "name": "BPTC mong CPDD v2.pdf",
+        "type": "application/pdf",
+        "size": 3140608,
+        "url": null
+      }
     ],
     "versions": [
       {
@@ -111,8 +142,20 @@
     "updatedAt": "2026-11-10",
     "summary": "Đổ BTXM M350/45 dày 40cm theo làn rộng 7,5m; cắt khe co sau 6–12 giờ; bảo dưỡng bằng nhũ tương và nilon 14 ngày; đặt thanh truyền lực Ø32 bằng DBI.",
     "files": [
-      "BPTC BTXM M350 v2.pdf",
-      "Ban ve bo tri khe.dwg"
+      {
+        "id": "att-21-1791",
+        "name": "BPTC BTXM M350 v2.pdf",
+        "type": "application/pdf",
+        "size": 3402752,
+        "url": null
+      },
+      {
+        "id": "att-21-9081",
+        "name": "Ban ve bo tri khe.dwg",
+        "type": "application/octet-stream",
+        "size": 4015104,
+        "url": null
+      }
     ],
     "versions": [
       {
@@ -155,7 +198,13 @@
     "updatedAt": "2026-11-13",
     "summary": "Tưới nhũ tương dính bám 0,5 kg/m², thảm BTN C19 dày 8cm và C16 dày 7cm bằng máy rải, lu bánh lốp + lu thép; nhiệt độ rải ≥ 120°C.",
     "files": [
-      "BPTC tham BTN (du thao).docx"
+      {
+        "id": "att-28-5810",
+        "name": "BPTC tham BTN (du thao).docx",
+        "type": "application/octet-stream",
+        "size": 1954816,
+        "url": null
+      }
     ],
     "versions": [
       {
@@ -179,7 +228,13 @@
     "updatedAt": "2026-05-05",
     "summary": "Tổ chức hệ thống quản lý ATVSLĐ, huấn luyện an toàn đầu vào, kiểm tra an toàn hằng ngày, phương án phòng chống cháy nổ khu trạm trộn.",
     "files": [
-      "KH ATVSLD.pdf"
+      {
+        "id": "att-13-3935",
+        "name": "KH ATVSLD.pdf",
+        "type": "application/pdf",
+        "size": 1472512,
+        "url": null
+      }
     ],
     "versions": [
       {
@@ -210,7 +265,13 @@
     "updatedAt": "2025-10-02",
     "summary": "Phân khu thi công theo ca đêm, rào chắn an toàn khu bay, phối hợp cảng vụ.",
     "files": [
-      "PA thi cong san do.pdf"
+      {
+        "id": "att-22-9102",
+        "name": "PA thi cong san do.pdf",
+        "type": "application/pdf",
+        "size": 406528,
+        "url": null
+      }
     ],
     "versions": [
       {

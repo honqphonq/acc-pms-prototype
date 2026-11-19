@@ -10,9 +10,9 @@
     --card-foreground: 222 30% 18%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 30% 18%;
-    --primary: 349 100% 45%; /* Viettel Red #E60028 */
+    --primary: 211 82% 46%; /* Xanh dương chủ đạo #1572D3 */
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 349 100% 96%;
+    --primary-soft: 211 90% 95%;
     --secondary: 220 14% 94%;
     --secondary-foreground: 222 30% 22%;
     --muted: 220 14% 95%;
@@ -21,9 +21,9 @@
     --accent-foreground: 222 30% 18%;
     --destructive: 349 100% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 90%;
+    --border: 220 13% 86%;
     --input: 220 13% 86%;
-    --ring: 349 100% 45%;
+    --ring: 211 82% 46%;
     --radius: 0.6rem;
   }
   * {
@@ -98,7 +98,7 @@
   @page { size: A3 landscape; margin: 8mm; }
   html, body { background: #fff !important; }
   .gantt-root, .gantt-right { overflow: visible !important; }
-  .gantt-left { width: 560px !important; }
+  .gantt-left { width: 660px !important; }
   [data-sonner-toaster] { display: none !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

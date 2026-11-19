@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { BarChart3, CalendarRange, CheckCircle2, ClipboardList, FileBarChart, Pencil, TrendingUp, Users, Wallet, XCircle } from "lucide-react";
+import { BarChart3, CalendarRange, CheckCircle2, ClipboardList, Download, FileBarChart, Pencil, TrendingUp, Users, Wallet } from "lucide-react";
 import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis, ReferenceLine } from "recharts";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
@@ -20,24 +20,21 @@ import { AvatarGroup, UserCell, Avatar } from "@/components/common/UserAvatar";
 import { EmptyState } from "@/components/common/EmptyState";
 import { PageSkeleton } from "@/components/common/LoadingState";
 import { SitePhoto } from "@/components/common/SitePhoto";
-import { useConfirm } from "@/components/common/ConfirmProvider";
 import { ProjectFormDialog } from "./ProjectFormDialog";
 import { TaskProgressDialog } from "../construction/TaskProgressDialog";
 import {
   acceptanceValue, equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
   STOCK_STATUS, taskActualPct, taskPlannedPct, TASK_HEALTH_LABEL, taskHealth,
 } from "@/services/selectors";
-import { decideProject } from "@/services/actions";
 import { ACCEPTANCE_STATUS, CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PAYMENT_STATUS, PROJECT_STATUS, ROLE_LABELS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtMoneyShort } from "@/utils/format";
 import { DEMO_TODAY, monthLabel } from "@/utils/date";
 
 export default function ProjectDetailPage() {
   const { id = "" } = useParams();
-  const { db, run } = useDb();
+  const { db } = useDb();
   const { can } = useAuth();
   const navigate = useNavigate();
-  const confirm = useConfirm();
   const loading = useSimulatedLoading(380, [id]);
   const [editOpen, setEditOpen] = useState(false);
   const [taskId, setTaskId] = useState<string | null>(null);
@@ -90,13 +87,6 @@ export default function ProjectDetailPage() {
     };
   });
 
-  const decide = async (approve: boolean) => {
-    if (await confirm({ title: approve ? "Phê duyệt & ban hành quyết định phân giao nhiệm vụ?" : "Từ chối đơn xin nhận thi công?", destructive: !approve })) {
-      run(decideProject, project.id, approve, "");
-      toast.success(approve ? "Đã phê duyệt – đơn vị có thể lập kế hoạch thi công nội bộ" : "Đã từ chối");
-    }
-  };
-
   return (
     <div className="space-y-4">
       <Card className="p-5">
@@ -106,27 +96,20 @@ export default function ProjectDetailPage() {
               <h1 className="text-xl font-bold text-slate-900">{project.name}</h1>
               <StatusBadge map={HEALTH} value={s.health} />
               <StatusBadge map={PROJECT_STATUS} value={project.status} dot={false} />
-              {project.approvalStatus === "cho_duyet" && <Badge tone="warning">Chờ phê duyệt nhận thi công</Badge>}
             </div>
             <dl className="mt-3 grid gap-x-6 gap-y-1.5 text-[13px] md:grid-cols-[130px_1fr]">
               <dt className="text-slate-500">Chủ đầu tư</dt><dd className="font-medium text-slate-800">{project.investor}</dd>
               <dt className="text-slate-500">Nhà thầu thi công</dt><dd className="text-slate-800">{project.contractor}</dd>
-              <dt className="text-slate-500">Gói thầu / HĐ</dt><dd className="text-slate-800">{project.packageName} · HĐ số {project.contractNo} ngày {fmtDate(project.contractDate)}</dd>
+              <dt className="text-slate-500">Hợp đồng</dt><dd className="text-slate-800">HĐ số {project.contractNo} ngày {fmtDate(project.contractDate)}{db.contracts.filter((c) => c.projectId === project.id && c.kind === "phu_luc").length ? ` · ${db.contracts.filter((c) => c.projectId === project.id && c.kind === "phu_luc").length} phụ lục` : ""}</dd>
               <dt className="text-slate-500">Thời gian thực hiện</dt><dd className="font-medium text-slate-800">{fmtDate(project.startDate)} – {fmtDate(project.endDate)} · {project.status === "hoan_thanh" ? "đã hoàn thành" : `còn lại ${s.daysLeft} ngày`}</dd>
               <dt className="text-slate-500">Đơn vị · Loại</dt><dd className="text-slate-800">{unit?.name} · {CATEGORY_LABELS[project.category]} · {project.location}</dd>
-              <dt className="text-slate-500">Người phê duyệt</dt><dd className="text-slate-800">{db.users.find((u) => u.id === (project.approverId ?? "u01"))?.name} · {project.approvalStatus === "cho_duyet" ? <span className="text-amber-600">chờ phê duyệt đơn xin nhận thi công</span> : project.approvalStatus === "tu_choi" ? <span className="text-rose-600">đã từ chối{project.approvalNote ? ` – ${project.approvalNote}` : ""}</span> : <span className="text-success-fg">đã phê duyệt{project.approvedAt ? ` ngày ${fmtDate(project.approvedAt)}` : ""}</span>}</dd>
               <dt className="self-center text-slate-500">Người thực hiện</dt><dd><AvatarGroup userIds={project.memberIds} max={8} /></dd>
             </dl>
           </div>
           <div className="flex flex-wrap gap-2">
-            {project.approvalStatus === "cho_duyet" && can("project.approve") && (
-              <>
-                <Button variant="success" onClick={() => decide(true)}><CheckCircle2 /> Phê duyệt</Button>
-                <Button variant="outline" onClick={() => decide(false)}><XCircle /> Từ chối</Button>
-              </>
-            )}
             <Button variant="navy" onClick={() => navigate(`/construction/plan/${project.id}`)}><CalendarRange /> Tiến độ thi công</Button>
             <Button variant="outline" onClick={() => navigate(`/construction/value-report?project=${project.id}`)}><FileBarChart /> Giá trị thực hiện</Button>
+            <Button variant="outline" onClick={() => toast.info("Chức năng “Xuất hồ sơ dự án” đang phát triển")}><Download /> Xuất hồ sơ dự án</Button>
             {can("project.edit") && <Button variant="outline" size="icon" onClick={() => setEditOpen(true)} title="Chỉnh sửa"><Pencil /></Button>}
           </div>
         </div>
@@ -161,7 +144,7 @@ export default function ProjectDetailPage() {
 
       {tasks.length === 0 ? (
         <Card>
-          <EmptyState icon={<CalendarRange />} title="Dự án chưa có kế hoạch thi công" description={project.approvalStatus === "cho_duyet" ? "Sau khi Tổng công ty phê duyệt và ban hành quyết định phân giao nhiệm vụ, Ban chỉ huy công trường lập kế hoạch thi công nội bộ." : "Bắt đầu lập kế hoạch thi công nội bộ: tạo hạng mục, phân rã công việc và giao cho tổ đội."} action={project.approvalStatus !== "cho_duyet" && <Button onClick={() => navigate(`/construction/plan/${project.id}`)}>Lập kế hoạch thi công</Button>} />
+          <EmptyState icon={<CalendarRange />} title="Dự án chưa có kế hoạch thi công" description="Bắt đầu lập kế hoạch thi công nội bộ: tạo hạng mục, phân rã công việc và giao cho tổ đội." action={<Button onClick={() => navigate(`/construction/plan/${project.id}`)}>Lập kế hoạch thi công</Button>} />
         </Card>
       ) : (
         <Tabs defaultValue="overview">

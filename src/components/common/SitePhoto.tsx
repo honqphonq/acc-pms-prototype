@@ -18,6 +18,15 @@ const STYLE: Record<string, { from: string; to: string; Icon: typeof Camera }> =
 
 /** Ảnh hiện trường giả lập (minh họa) – prototype không lưu ảnh thật */
 export function SitePhoto({ kind, className, caption = true, date }: { kind: string; className?: string; caption?: boolean; date?: string }) {
+  if (kind.startsWith("data:") || kind.startsWith("assets/") || kind.startsWith("blob:")) {
+    const src = kind.startsWith("assets/") ? `${import.meta.env.BASE_URL}${kind}` : kind;
+    return (
+      <div className={cn("relative aspect-[4/3] overflow-hidden rounded-lg bg-slate-200", className)}>
+        <img src={src} alt="Ảnh hiện trường" className="h-full w-full object-cover" />
+        {caption && date && <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-2 pb-1.5 pt-4 text-[10.5px] font-medium text-white">{date}</div>}
+      </div>
+    );
+  }
   const s = STYLE[kind] ?? STYLE.site;
   const Icon = s.Icon;
   return (

@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { Download, Eye, Pencil, Plus, Trash2, Upload } from "lucide-react";
+import { Download, Eye, MoreHorizontal, Pencil, Plus, Trash2, Upload } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
@@ -18,13 +19,16 @@ import { useConfirm } from "@/components/common/ConfirmProvider";
 import { deleteRow, saveRow } from "@/services/actions";
 import { genId, nextCode } from "@/utils/id";
 import { cn } from "@/utils/cn";
-import type { CollectionKey, Database } from "@/types";
+import { AttachmentList, FileUploader } from "@/components/common/Attachments";
+import type { Attachment, CollectionKey, Database } from "@/types";
 
 export type Opt = { value: string; label: string };
 export interface FieldDef<T> {
   key: keyof T & string;
   label: string;
-  type?: "text" | "number" | "date" | "textarea" | "select" | "checkbox";
+  type?: "text" | "number" | "date" | "textarea" | "select" | "checkbox" | "files" | "custom";
+  render?: (value: unknown, set: (v: unknown) => void, row: Record<string, unknown>, patch: (p: Record<string, unknown>) => void) => ReactNode;
+  hideInDetail?: boolean;
   options?: Opt[] | ((db: Database) => Opt[]);
   required?: boolean;
   wide?: boolean;
@@ -95,7 +99,7 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
   };
   const exportXlsx = async () => {
     const XLSX = await import("xlsx");
-    const data = rows.map((r) => Object.fromEntries(p.fields.map((f) => [f.label, f.type === "select" ? opts(f.options).find((o) => o.value === String(r[f.key as keyof T]))?.label ?? r[f.key as keyof T] : f.type === "checkbox" ? (r[f.key as keyof T] ? "Có" : "Không") : r[f.key as keyof T]])));
+    const data = rows.map((r) => Object.fromEntries(p.fields.filter((f) => f.type !== "files" && f.type !== "custom").map((f) => [f.label, f.type === "select" ? opts(f.options).find((o) => o.value === String(r[f.key as keyof T]))?.label ?? r[f.key as keyof T] : f.type === "checkbox" ? (r[f.key as keyof T] ? "Có" : "Không") : r[f.key as keyof T]])));
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Danh sach");
@@ -122,6 +126,7 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
     const v = r[f.key as keyof T] as unknown;
     if (f.type === "select") return opts(f.options).find((o) => o.value === String(v))?.label ?? String(v ?? "—");
     if (f.type === "checkbox") return v ? "Có" : "Không";
+    if (f.type === "files") return <AttachmentList files={(v as Attachment[]) ?? []} />;
     if (f.type === "number" && typeof v === "number") return v.toLocaleString("vi-VN");
     if (f.type === "date" && typeof v === "string" && v) return v.split("-").reverse().join("/");
     return v === undefined || v === null || v === "" ? "—" : String(v);
@@ -131,9 +136,14 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
     <div>
       <PageHeader title={p.title} description={p.description} actions={<>
         {p.headerExtra}
-        <Button variant="outline" onClick={() => toast.info("Chọn file Excel theo mẫu để nhập (mô phỏng)")}><Upload /> Import</Button>
-        <Button variant="outline" onClick={exportXlsx}><Download /> Export</Button>
-        {p.canEdit !== false && <Button onClick={() => setEdit({ ...(p.newRecord?.(db) ?? {}) } as Partial<T>)}><Plus /> {p.addLabel ?? "Thêm mới"}</Button>}
+        {p.canEdit !== false && <Button size="lg" onClick={() => setEdit({ ...(p.newRecord?.(db) ?? {}) } as Partial<T>)}><Plus /> {p.addLabel ?? "Thêm mới"}</Button>}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild><Button size="icon" variant="ghost" aria-label="Thao tác khác"><MoreHorizontal /></Button></DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => toast.info("Chọn file Excel theo mẫu để nhập (mô phỏng)")}><Upload /> Import</DropdownMenuItem>
+            <DropdownMenuItem onClick={exportXlsx}><Download /> Export</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </>} />
       {kpis && <div className={cn("mb-4 grid grid-cols-2 gap-4", kpis.length >= 4 ? "lg:grid-cols-4" : "lg:grid-cols-3")}>{kpis.map((k) => <KpiCard key={k.label} label={k.label} value={k.value} tone={k.tone} sub={k.sub} />)}</div>}
       {p.above}
@@ -148,10 +158,10 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
             <SheetHeader><SheetTitle>{viewing.code ? `${viewing.code} · ` : ""}Chi tiết {label}</SheetTitle></SheetHeader>
             <SheetBody>
               <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2">
-                {p.fields.map((f) => (
-                  <div key={f.key} className={cn(f.wide || f.type === "textarea" ? "sm:col-span-2" : "")}>
+                {p.fields.filter((f) => !f.hideInDetail && f.type !== "custom").map((f) => (
+                  <div key={f.key} className={cn(f.wide || f.type === "textarea" || f.type === "files" ? "sm:col-span-2" : "")}>
                     <dt className="text-[11.5px] text-slate-500">{f.label}</dt>
-                    <dd className="mt-0.5 whitespace-pre-line text-[13.5px] text-slate-800">{fieldValue(viewing, f)}</dd>
+                    <dd className="mt-0.5 whitespace-pre-line text-[14px] font-medium text-slate-900">{fieldValue(viewing, f)}</dd>
                   </div>
                 ))}
               </dl>
@@ -171,8 +181,10 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
                 const v = edit[f.key as keyof T] as unknown;
                 const set = (x: unknown) => setEdit({ ...edit, [f.key]: x });
                 return (
-                  <FormField key={f.key} label={f.label} required={f.required} hint={f.hint} className={cn(f.wide || f.type === "textarea" ? "sm:col-span-2" : "")}>
-                    {f.type === "select" ? <Select value={String(v ?? "")} onChange={(e) => set(e.target.value)} placeholder="— Chọn —" options={opts(f.options)} />
+                  <FormField key={f.key} label={f.label} required={f.required} hint={f.hint} className={cn(f.wide || f.type === "textarea" || f.type === "files" || f.type === "custom" ? "sm:col-span-2" : "")}>
+                    {f.type === "custom" && f.render ? f.render(v, set, edit as Record<string, unknown>, (x) => setEdit({ ...edit, ...x } as Partial<T>))
+                      : f.type === "files" ? <FileUploader value={(v as Attachment[]) ?? []} onChange={(x) => set(x)} />
+                      : f.type === "select" ? <Select value={String(v ?? "")} onChange={(e) => set(e.target.value)} placeholder="— Chọn —" options={opts(f.options)} />
                       : f.type === "textarea" ? <Textarea rows={3} value={String(v ?? "")} onChange={(e) => set(e.target.value)} />
                       : f.type === "checkbox" ? <label className="flex h-9 items-center gap-2 text-sm"><input type="checkbox" checked={!!v} onChange={(e) => set(e.target.checked)} /> Có</label>
                       : <Input type={f.type ?? "text"} value={v === undefined || v === null ? "" : String(v)} onChange={(e) => set(f.type === "number" ? Number(e.target.value) : e.target.value)} />}

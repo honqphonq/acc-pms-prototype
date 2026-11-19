@@ -31,22 +31,22 @@
     ],
     "history": [
       {
-        "at": "2026-07-06T08:41:00",
+        "at": "2026-07-06T08:43:00",
         "byId": "u05",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-07-07T08:20:00",
+        "at": "2026-07-07T08:52:00",
         "byId": "u05",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-07-09T08:55:00",
+        "at": "2026-07-09T08:31:00",
         "byId": "u05",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-07-15T08:32:00",
+        "at": "2026-07-15T08:41:00",
         "byId": "u05",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -86,22 +86,22 @@
     ],
     "history": [
       {
-        "at": "2026-09-18T08:49:00",
+        "at": "2026-09-18T08:12:00",
         "byId": "u07",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-09-19T08:24:00",
+        "at": "2026-09-19T08:49:00",
         "byId": "u07",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-21T08:10:00",
+        "at": "2026-09-21T08:16:00",
         "byId": "u07",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-28T08:46:00",
+        "at": "2026-09-28T08:14:00",
         "byId": "u07",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -149,17 +149,17 @@
     ],
     "history": [
       {
-        "at": "2026-10-12T08:40:00",
+        "at": "2026-10-12T08:44:00",
         "byId": "u07",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-13T08:36:00",
+        "at": "2026-10-13T08:19:00",
         "byId": "u07",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-15T08:43:00",
+        "at": "2026-10-15T08:27:00",
         "byId": "u07",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
@@ -191,7 +191,7 @@
     ],
     "history": [
       {
-        "at": "2026-11-13T08:43:00",
+        "at": "2026-11-13T08:55:00",
         "byId": "u08",
         "action": "Lập hồ sơ nghiệm thu"
       }
@@ -206,15 +206,15 @@
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-10-30",
-    "acceptedAt": "2025-11-12",
+    "createdAt": "2025-10-31",
+    "acceptedAt": "2025-11-09",
     "createdById": "u20",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p02-001",
         "executedQty": 341190,
-        "acceptedQty": 330954.3
+        "acceptedQty": 341190
       },
       {
         "taskId": "t-p02-002",
@@ -230,22 +230,22 @@
     ],
     "history": [
       {
-        "at": "2025-10-30T08:19:00",
+        "at": "2025-10-31T08:42:00",
         "byId": "u20",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-10-31T08:21:00",
+        "at": "2025-11-01T08:23:00",
         "byId": "u20",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-11-02T08:51:00",
+        "at": "2025-11-03T08:50:00",
         "byId": "u20",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-11-12T08:16:00",
+        "at": "2025-11-09T08:58:00",
         "byId": "u20",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -260,8 +260,8 @@
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-03-31",
-    "acceptedAt": "2026-04-06",
+    "createdAt": "2026-04-03",
+    "acceptedAt": "2026-04-10",
     "createdById": "u20",
     "status": "da_nghiem_thu",
     "lines": [
@@ -284,26 +284,27 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-03-31T08:29:00",
+        "at": "2026-04-03T08:45:00",
         "byId": "u20",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-01T08:31:00",
+        "at": "2026-04-04T08:37:00",
         "byId": "u20",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-04-03T08:17:00",
+        "at": "2026-04-06T08:21:00",
         "byId": "u20",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-04-06T08:49:00",
+        "at": "2026-04-10T08:21:00",
         "byId": "u20",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -318,7 +319,7 @@
     "title": "Nghiệm thu móng mặt đường",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-08-14",
+    "createdAt": "2026-08-09",
     "acceptedAt": "2026-08-20",
     "createdById": "u20",
     "status": "da_nghiem_thu",
@@ -340,22 +341,22 @@
     ],
     "history": [
       {
-        "at": "2026-08-14T08:13:00",
+        "at": "2026-08-09T08:46:00",
         "byId": "u20",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-15T08:12:00",
+        "at": "2026-08-10T08:19:00",
         "byId": "u20",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-17T08:35:00",
+        "at": "2026-08-12T08:56:00",
         "byId": "u20",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-20T08:39:00",
+        "at": "2026-08-20T08:41:00",
         "byId": "u20",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -366,12 +367,55 @@
     "id": "ac-008",
     "code": "BBNT-ACC244-DAD-008",
     "projectId": "p02",
-    "itemId": "i-p02-5",
-    "title": "Nghiệm thu hệ thống kỹ thuật & an toàn bay",
+    "itemId": "i-p02-4",
+    "title": "Nghiệm thu khối lượng hoàn thành mặt đường bê tông xi măng (giai đoạn)",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-10-26",
-    "acceptedAt": "2026-11-04",
+    "createdAt": "2026-10-10",
+    "acceptedAt": null,
+    "createdById": "u20",
+    "status": "cho_tvgs",
+    "lines": [
+      {
+        "taskId": "t-p02-008",
+        "executedQty": 56194.7,
+        "acceptedQty": 36908.3
+      },
+      {
+        "taskId": "t-p02-009",
+        "executedQty": 64476.9,
+        "acceptedQty": 56200.7
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-10T08:47:00",
+        "byId": "u20",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-11T08:50:00",
+        "byId": "u20",
+        "action": "Trình TVGS kiểm tra"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-009",
+    "code": "BBNT-ACC244-DAD-009",
+    "projectId": "p02",
+    "itemId": "i-p02-5",
+    "title": "Nghiệm thu hệ thống kỹ thuật & an toàn bay",
+    "phase": "Đợt 5",
+    "type": "giai_doan",
+    "createdAt": "2026-10-23",
+    "acceptedAt": "2026-11-06",
     "createdById": "u20",
     "status": "da_nghiem_thu",
     "lines": [
@@ -384,26 +428,28 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-10-26T08:22:00",
+        "at": "2026-10-23T08:23:00",
         "byId": "u20",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-27T08:18:00",
+        "at": "2026-10-24T08:49:00",
         "byId": "u20",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-29T08:22:00",
+        "at": "2026-10-26T08:58:00",
         "byId": "u20",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-11-04T08:47:00",
+        "at": "2026-11-06T08:53:00",
         "byId": "u20",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -411,22 +457,22 @@
     "note": ""
   },
   {
-    "id": "ac-009",
-    "code": "BBNT-ACC244-DAD-009",
+    "id": "ac-010",
+    "code": "BBNT-ACC244-DAD-010",
     "projectId": "p02",
     "itemId": "i-p02-5",
     "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "phase": "Đợt 5",
+    "phase": "Đợt 6",
     "type": "giai_doan",
-    "createdAt": "2026-10-27",
-    "acceptedAt": "2026-11-07",
+    "createdAt": "2026-10-29",
+    "acceptedAt": "2026-11-10",
     "createdById": "u20",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p02-011",
         "executedQty": 44,
-        "acceptedQty": 36
+        "acceptedQty": 30
       }
     ],
     "documents": [
@@ -436,22 +482,22 @@
     ],
     "history": [
       {
-        "at": "2026-10-27T08:46:00",
+        "at": "2026-10-29T08:17:00",
         "byId": "u20",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-28T08:17:00",
+        "at": "2026-10-30T08:55:00",
         "byId": "u20",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-30T08:56:00",
+        "at": "2026-11-01T08:30:00",
         "byId": "u20",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-11-07T08:19:00",
+        "at": "2026-11-10T08:30:00",
         "byId": "u20",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -459,15 +505,15 @@
     "note": ""
   },
   {
-    "id": "ac-010",
-    "code": "BBNT-ACC245-CBI-010",
+    "id": "ac-011",
+    "code": "BBNT-ACC245-CBI-011",
     "projectId": "p03",
     "itemId": "i-p03-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-08-31",
-    "acceptedAt": "2025-09-13",
+    "createdAt": "2025-09-04",
+    "acceptedAt": "2025-09-16",
     "createdById": "u21",
     "status": "da_nghiem_thu",
     "lines": [
@@ -485,26 +531,28 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2025-08-31T08:38:00",
+        "at": "2025-09-04T08:35:00",
         "byId": "u21",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-09-01T08:58:00",
+        "at": "2025-09-05T08:11:00",
         "byId": "u21",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-09-03T08:16:00",
+        "at": "2025-09-07T08:55:00",
         "byId": "u21",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-09-13T08:36:00",
+        "at": "2025-09-16T08:38:00",
         "byId": "u21",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -512,27 +560,27 @@
     "note": ""
   },
   {
-    "id": "ac-011",
-    "code": "BBNT-ACC245-CBI-011",
+    "id": "ac-012",
+    "code": "BBNT-ACC245-CBI-012",
     "projectId": "p03",
     "itemId": "i-p03-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-05-03",
-    "acceptedAt": "2026-05-18",
+    "createdAt": "2026-04-25",
+    "acceptedAt": "2026-05-10",
     "createdById": "u21",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p03-003",
         "executedQty": 531630,
-        "acceptedQty": 515681.1
+        "acceptedQty": 531630
       },
       {
         "taskId": "t-p03-004",
         "executedQty": 376100,
-        "acceptedQty": 364817
+        "acceptedQty": 376100
       },
       {
         "taskId": "t-p03-005",
@@ -543,26 +591,28 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-05-03T08:19:00",
+        "at": "2026-04-25T08:39:00",
         "byId": "u21",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-05-04T08:53:00",
+        "at": "2026-04-26T08:34:00",
         "byId": "u21",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-05-06T08:16:00",
+        "at": "2026-04-28T08:43:00",
         "byId": "u21",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-18T08:35:00",
+        "at": "2026-05-10T08:25:00",
         "byId": "u21",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -570,8 +620,8 @@
     "note": ""
   },
   {
-    "id": "ac-012",
-    "code": "BBNT-ACC245-CBI-012",
+    "id": "ac-013",
+    "code": "BBNT-ACC245-CBI-013",
     "projectId": "p03",
     "itemId": "i-p03-3",
     "title": "Nghiệm thu móng mặt đường",
@@ -585,7 +635,7 @@
       {
         "taskId": "t-p03-006",
         "executedQty": 267090,
-        "acceptedQty": 259077.3
+        "acceptedQty": 267090
       },
       {
         "taskId": "t-p03-007",
@@ -599,17 +649,17 @@
     ],
     "history": [
       {
-        "at": "2026-11-07T08:18:00",
+        "at": "2026-11-07T08:11:00",
         "byId": "u21",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-11-08T08:24:00",
+        "at": "2026-11-08T08:31:00",
         "byId": "u21",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-11-10T08:27:00",
+        "at": "2026-11-10T08:15:00",
         "byId": "u21",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
@@ -617,22 +667,22 @@
     "note": ""
   },
   {
-    "id": "ac-013",
-    "code": "BBNT-ACC24-VDO-013",
+    "id": "ac-014",
+    "code": "BBNT-ACC24-VDO-014",
     "projectId": "p04",
     "itemId": "i-p04-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-12-24",
-    "acceptedAt": "2026-01-05",
+    "createdAt": "2025-12-27",
+    "acceptedAt": "2026-01-07",
     "createdById": "u22",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p04-001",
         "executedQty": 242420,
-        "acceptedQty": 242420
+        "acceptedQty": 235147.4
       },
       {
         "taskId": "t-p04-002",
@@ -644,84 +694,26 @@
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2025-12-24T08:35:00",
+        "at": "2025-12-27T08:39:00",
         "byId": "u22",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-12-25T08:46:00",
+        "at": "2025-12-28T08:29:00",
         "byId": "u22",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-12-27T08:44:00",
+        "at": "2025-12-30T08:48:00",
         "byId": "u22",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-01-05T08:53:00",
-        "byId": "u22",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-014",
-    "code": "BBNT-ACC24-VDO-014",
-    "projectId": "p04",
-    "itemId": "i-p04-2",
-    "title": "Nghiệm thu nền sân đỗ, đường lăn",
-    "phase": "Đợt 2",
-    "type": "giai_doan",
-    "createdAt": "2026-06-01",
-    "acceptedAt": "2026-06-09",
-    "createdById": "u22",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p04-003",
-        "executedQty": 229670,
-        "acceptedQty": 229670
-      },
-      {
-        "taskId": "t-p04-004",
-        "executedQty": 162480,
-        "acceptedQty": 162480
-      },
-      {
-        "taskId": "t-p04-005",
-        "executedQty": 389610,
-        "acceptedQty": 377921.7
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
-    ],
-    "history": [
-      {
-        "at": "2026-06-01T08:27:00",
-        "byId": "u22",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-06-02T08:44:00",
-        "byId": "u22",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-06-04T08:53:00",
-        "byId": "u22",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-06-09T08:21:00",
+        "at": "2026-01-07T08:23:00",
         "byId": "u22",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -732,44 +724,53 @@
     "id": "ac-015",
     "code": "BBNT-ACC24-VDO-015",
     "projectId": "p04",
-    "itemId": "i-p04-3",
-    "title": "Nghiệm thu móng mặt đường",
-    "phase": "Đợt 3",
+    "itemId": "i-p04-2",
+    "title": "Nghiệm thu nền sân đỗ, đường lăn",
+    "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-08-17",
-    "acceptedAt": "2026-08-30",
+    "createdAt": "2026-06-16",
+    "acceptedAt": "2026-06-30",
     "createdById": "u22",
     "status": "da_nghiem_thu",
     "lines": [
       {
-        "taskId": "t-p04-006",
-        "executedQty": 115380,
-        "acceptedQty": 115380
+        "taskId": "t-p04-003",
+        "executedQty": 229670,
+        "acceptedQty": 222779.9
+      },
+      {
+        "taskId": "t-p04-004",
+        "executedQty": 162480,
+        "acceptedQty": 157605.6
+      },
+      {
+        "taskId": "t-p04-005",
+        "executedQty": 389610,
+        "acceptedQty": 389610
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-08-17T08:45:00",
+        "at": "2026-06-16T08:19:00",
         "byId": "u22",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-18T08:37:00",
+        "at": "2026-06-17T08:22:00",
         "byId": "u22",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-20T08:10:00",
+        "at": "2026-06-19T08:30:00",
         "byId": "u22",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-30T08:53:00",
+        "at": "2026-06-30T08:52:00",
         "byId": "u22",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -780,19 +781,74 @@
     "id": "ac-016",
     "code": "BBNT-ACC24-VDO-016",
     "projectId": "p04",
+    "itemId": "i-p04-3",
+    "title": "Nghiệm thu móng mặt đường",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-11-01",
+    "acceptedAt": "2026-11-07",
+    "createdById": "u22",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p04-006",
+        "executedQty": 115380,
+        "acceptedQty": 115380
+      },
+      {
+        "taskId": "t-p04-007",
+        "executedQty": 69930,
+        "acceptedQty": 69930
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-11-01T08:54:00",
+        "byId": "u22",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-11-02T08:17:00",
+        "byId": "u22",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-11-04T08:17:00",
+        "byId": "u22",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-11-07T08:15:00",
+        "byId": "u22",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-017",
+    "code": "BBNT-ACC24-VDO-017",
+    "projectId": "p04",
     "itemId": "i-p04-5",
     "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-10-06",
+    "createdAt": "2026-10-13",
     "acceptedAt": null,
     "createdById": "u22",
     "status": "cho_tvgs",
     "lines": [
       {
         "taskId": "t-p04-010",
-        "executedQty": 2561.3,
-        "acceptedQty": 1898.5
+        "executedQty": 2656,
+        "acceptedQty": 2355.7
       }
     ],
     "documents": [
@@ -802,12 +858,12 @@
     ],
     "history": [
       {
-        "at": "2026-10-06T08:10:00",
+        "at": "2026-10-13T08:59:00",
         "byId": "u22",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-07T08:24:00",
+        "at": "2026-10-14T08:29:00",
         "byId": "u22",
         "action": "Trình TVGS kiểm tra"
       }
@@ -815,22 +871,22 @@
     "note": ""
   },
   {
-    "id": "ac-017",
-    "code": "BBNT-ACC25-VCA-017",
+    "id": "ac-018",
+    "code": "BBNT-ACC25-VCA-018",
     "projectId": "p05",
     "itemId": "i-p05-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
     "createdAt": "2026-04-25",
-    "acceptedAt": "2026-05-02",
+    "acceptedAt": "2026-05-04",
     "createdById": "u23",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p05-001",
         "executedQty": 287320,
-        "acceptedQty": 278700.4
+        "acceptedQty": 287320
       },
       {
         "taskId": "t-p05-002",
@@ -840,26 +896,28 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-04-25T08:49:00",
+        "at": "2026-04-25T08:46:00",
         "byId": "u23",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-26T08:26:00",
+        "at": "2026-04-26T08:25:00",
         "byId": "u23",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-04-28T08:44:00",
+        "at": "2026-04-28T08:42:00",
         "byId": "u23",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-02T08:45:00",
+        "at": "2026-05-04T08:58:00",
         "byId": "u23",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -867,15 +925,15 @@
     "note": ""
   },
   {
-    "id": "ac-018",
-    "code": "BBNT-ACC25-VCA-018",
+    "id": "ac-019",
+    "code": "BBNT-ACC25-VCA-019",
     "projectId": "p05",
     "itemId": "i-p05-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-10-19",
-    "acceptedAt": "2026-10-31",
+    "createdAt": "2026-10-12",
+    "acceptedAt": "2026-10-21",
     "createdById": "u23",
     "status": "da_nghiem_thu",
     "lines": [
@@ -893,74 +951,28 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-10-19T08:21:00",
+        "at": "2026-10-12T08:25:00",
         "byId": "u23",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-20T08:58:00",
+        "at": "2026-10-13T08:48:00",
         "byId": "u23",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-22T08:11:00",
+        "at": "2026-10-15T08:14:00",
         "byId": "u23",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-31T08:26:00",
-        "byId": "u23",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-019",
-    "code": "BBNT-ACC25-VCA-019",
-    "projectId": "p05",
-    "itemId": "i-p05-3",
-    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "phase": "Đợt 3",
-    "type": "giai_doan",
-    "createdAt": "2026-10-15",
-    "acceptedAt": "2026-11-09",
-    "createdById": "u23",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p05-006",
-        "executedQty": 25006.4,
-        "acceptedQty": 18794.4
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-15T08:33:00",
-        "byId": "u23",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-16T08:28:00",
-        "byId": "u23",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-18T08:56:00",
-        "byId": "u23",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-11-09T08:38:00",
+        "at": "2026-10-21T08:51:00",
         "byId": "u23",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -971,19 +983,19 @@
     "id": "ac-020",
     "code": "BBNT-ACC25-VCA-020",
     "projectId": "p05",
-    "itemId": "i-p05-5",
-    "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "phase": "Đợt 4",
+    "itemId": "i-p05-3",
+    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
+    "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-10-16",
+    "createdAt": "2026-10-08",
     "acceptedAt": null,
     "createdById": "u23",
     "status": "cho_tvgs",
     "lines": [
       {
-        "taskId": "t-p05-010",
-        "executedQty": 202.3,
-        "acceptedQty": 161.8
+        "taskId": "t-p05-006",
+        "executedQty": 25726.8,
+        "acceptedQty": 22227.3
       }
     ],
     "documents": [
@@ -993,12 +1005,12 @@
     ],
     "history": [
       {
-        "at": "2026-10-16T08:41:00",
+        "at": "2026-10-08T08:26:00",
         "byId": "u23",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-17T08:36:00",
+        "at": "2026-10-09T08:45:00",
         "byId": "u23",
         "action": "Trình TVGS kiểm tra"
       }
@@ -1013,15 +1025,15 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-09-12",
-    "acceptedAt": "2025-09-23",
+    "createdAt": "2025-09-20",
+    "acceptedAt": "2025-10-05",
     "createdById": "u24",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p06-001",
         "executedQty": 40730,
-        "acceptedQty": 39508.1
+        "acceptedQty": 40730
       },
       {
         "taskId": "t-p06-002",
@@ -1031,26 +1043,29 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2025-09-12T08:12:00",
+        "at": "2025-09-20T08:17:00",
         "byId": "u24",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-09-13T08:39:00",
+        "at": "2025-09-21T08:20:00",
         "byId": "u24",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-09-15T08:47:00",
+        "at": "2025-09-23T08:42:00",
         "byId": "u24",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-09-23T08:56:00",
+        "at": "2025-10-05T08:38:00",
         "byId": "u24",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1065,15 +1080,15 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-02-17",
-    "acceptedAt": "2026-02-25",
+    "createdAt": "2026-02-15",
+    "acceptedAt": "2026-02-22",
     "createdById": "u24",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p06-003",
         "executedQty": 29880,
-        "acceptedQty": 28983.6
+        "acceptedQty": 29880
       },
       {
         "taskId": "t-p06-004",
@@ -1088,29 +1103,26 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-02-17T08:58:00",
+        "at": "2026-02-15T08:54:00",
         "byId": "u24",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-02-18T08:32:00",
+        "at": "2026-02-16T08:52:00",
         "byId": "u24",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-02-20T08:55:00",
+        "at": "2026-02-18T08:46:00",
         "byId": "u24",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-02-25T08:24:00",
+        "at": "2026-02-22T08:27:00",
         "byId": "u24",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1125,8 +1137,8 @@
     "title": "Nghiệm thu phần thân",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-10-10",
-    "acceptedAt": "2026-10-16",
+    "createdAt": "2026-10-04",
+    "acceptedAt": "2026-10-17",
     "createdById": "u24",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1138,34 +1150,33 @@
       {
         "taskId": "t-p06-007",
         "executedQty": 18860,
-        "acceptedQty": 18860
+        "acceptedQty": 18294.2
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-10-10T08:29:00",
+        "at": "2026-10-04T08:16:00",
         "byId": "u24",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-11T08:24:00",
+        "at": "2026-10-05T08:24:00",
         "byId": "u24",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-13T08:42:00",
+        "at": "2026-10-07T08:17:00",
         "byId": "u24",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-16T08:26:00",
+        "at": "2026-10-17T08:34:00",
         "byId": "u24",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1180,25 +1191,25 @@
     "title": "Nghiệm thu khối lượng hoàn thành hoàn thiện (giai đoạn)",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-10-09",
+    "createdAt": "2026-10-10",
     "acceptedAt": null,
     "createdById": "u24",
-    "status": "cho_cdt",
+    "status": "cho_tvgs",
     "lines": [
       {
         "taskId": "t-p06-008",
-        "executedQty": 149150.4,
-        "acceptedQty": 99211.5
+        "executedQty": 137429.9,
+        "acceptedQty": 109236.8
       },
       {
         "taskId": "t-p06-009",
-        "executedQty": 49190.3,
-        "acceptedQty": 33278.9
+        "executedQty": 46824.3,
+        "acceptedQty": 37988.7
       },
       {
         "taskId": "t-p06-010",
-        "executedQty": 32657.1,
-        "acceptedQty": 25273.3
+        "executedQty": 34754.9,
+        "acceptedQty": 21023.8
       }
     ],
     "documents": [
@@ -1208,19 +1219,14 @@
     ],
     "history": [
       {
-        "at": "2026-10-09T08:41:00",
+        "at": "2026-10-10T08:24:00",
         "byId": "u24",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-10T08:12:00",
+        "at": "2026-10-11T08:16:00",
         "byId": "u24",
         "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-12T08:49:00",
-        "byId": "u24",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
     ],
     "note": ""
@@ -1233,8 +1239,8 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-01-17",
-    "acceptedAt": "2026-01-23",
+    "createdAt": "2026-01-22",
+    "acceptedAt": "2026-01-30",
     "createdById": "u25",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1251,27 +1257,26 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-01-17T08:55:00",
+        "at": "2026-01-22T08:33:00",
         "byId": "u25",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-01-18T08:47:00",
+        "at": "2026-01-23T08:50:00",
         "byId": "u25",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-01-20T08:27:00",
+        "at": "2026-01-25T08:16:00",
         "byId": "u25",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-01-23T08:40:00",
+        "at": "2026-01-30T08:48:00",
         "byId": "u25",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1286,8 +1291,8 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-06-19",
-    "acceptedAt": "2026-06-30",
+    "createdAt": "2026-06-05",
+    "acceptedAt": "2026-06-13",
     "createdById": "u25",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1299,7 +1304,7 @@
       {
         "taskId": "t-p07-004",
         "executedQty": 48790,
-        "acceptedQty": 47326.3
+        "acceptedQty": 48790
       },
       {
         "taskId": "t-p07-005",
@@ -1310,28 +1315,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-06-19T08:31:00",
+        "at": "2026-06-05T08:19:00",
         "byId": "u25",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-06-20T08:17:00",
+        "at": "2026-06-06T08:25:00",
         "byId": "u25",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-06-22T08:57:00",
+        "at": "2026-06-08T08:33:00",
         "byId": "u25",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-30T08:58:00",
+        "at": "2026-06-13T08:28:00",
         "byId": "u25",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1340,21 +1343,74 @@
   },
   {
     "id": "ac-027",
-    "code": "BBNT-ACC245-CAST-027",
+    "code": "BBNT-ACC25-K18-027",
+    "projectId": "p07",
+    "itemId": "i-p07-3",
+    "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-10-06",
+    "acceptedAt": "2026-11-11",
+    "createdById": "u25",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p07-006",
+        "executedQty": 18034.4,
+        "acceptedQty": 15357.5
+      },
+      {
+        "taskId": "t-p07-007",
+        "executedQty": 6843.9,
+        "acceptedQty": 4399
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-06T08:55:00",
+        "byId": "u25",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-07T08:29:00",
+        "byId": "u25",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-09T08:46:00",
+        "byId": "u25",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-11-11T08:47:00",
+        "byId": "u25",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-028",
+    "code": "BBNT-ACC245-CAST-028",
     "projectId": "p08",
     "itemId": "i-p08-1",
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-04-24",
-    "acceptedAt": "2025-05-05",
+    "createdAt": "2025-04-25",
+    "acceptedAt": "2025-05-06",
     "createdById": "u26",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p08-001",
         "executedQty": 18420,
-        "acceptedQty": 17867.4
+        "acceptedQty": 18420
       },
       {
         "taskId": "t-p08-002",
@@ -1365,83 +1421,27 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2025-04-24T08:39:00",
+        "at": "2025-04-25T08:22:00",
         "byId": "u26",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-04-25T08:43:00",
+        "at": "2025-04-26T08:25:00",
         "byId": "u26",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-04-27T08:56:00",
+        "at": "2025-04-28T08:17:00",
         "byId": "u26",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-05-05T08:19:00",
-        "byId": "u26",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-028",
-    "code": "BBNT-ACC245-CAST-028",
-    "projectId": "p08",
-    "itemId": "i-p08-2",
-    "title": "Nghiệm thu phần móng",
-    "phase": "Đợt 2",
-    "type": "giai_doan",
-    "createdAt": "2025-10-08",
-    "acceptedAt": "2025-10-15",
-    "createdById": "u26",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p08-003",
-        "executedQty": 13520,
-        "acceptedQty": 13520
-      },
-      {
-        "taskId": "t-p08-004",
-        "executedQty": 32530,
-        "acceptedQty": 32530
-      },
-      {
-        "taskId": "t-p08-005",
-        "executedQty": 4900,
-        "acceptedQty": 4753
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
-    ],
-    "history": [
-      {
-        "at": "2025-10-08T08:55:00",
-        "byId": "u26",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2025-10-09T08:35:00",
-        "byId": "u26",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2025-10-11T08:51:00",
-        "byId": "u26",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2025-10-15T08:51:00",
+        "at": "2025-05-06T08:20:00",
         "byId": "u26",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1452,12 +1452,71 @@
     "id": "ac-029",
     "code": "BBNT-ACC245-CAST-029",
     "projectId": "p08",
+    "itemId": "i-p08-2",
+    "title": "Nghiệm thu phần móng",
+    "phase": "Đợt 2",
+    "type": "giai_doan",
+    "createdAt": "2025-10-09",
+    "acceptedAt": "2025-10-18",
+    "createdById": "u26",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p08-003",
+        "executedQty": 13520,
+        "acceptedQty": 13114.4
+      },
+      {
+        "taskId": "t-p08-004",
+        "executedQty": 32530,
+        "acceptedQty": 31554.1
+      },
+      {
+        "taskId": "t-p08-005",
+        "executedQty": 4900,
+        "acceptedQty": 4900
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
+    ],
+    "history": [
+      {
+        "at": "2025-10-09T08:22:00",
+        "byId": "u26",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2025-10-10T08:17:00",
+        "byId": "u26",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2025-10-12T08:53:00",
+        "byId": "u26",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2025-10-18T08:27:00",
+        "byId": "u26",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-030",
+    "code": "BBNT-ACC245-CAST-030",
+    "projectId": "p08",
     "itemId": "i-p08-3",
     "title": "Nghiệm thu phần thân",
     "phase": "Đợt 3",
     "type": "giai_doan",
     "createdAt": "2026-06-19",
-    "acceptedAt": "2026-07-03",
+    "acceptedAt": "2026-07-04",
     "createdById": "u26",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1469,33 +1528,32 @@
       {
         "taskId": "t-p08-007",
         "executedQty": 8530,
-        "acceptedQty": 8530
+        "acceptedQty": 8274.1
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-06-19T08:47:00",
+        "at": "2026-06-19T08:58:00",
         "byId": "u26",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-06-20T08:23:00",
+        "at": "2026-06-20T08:40:00",
         "byId": "u26",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-06-22T08:49:00",
+        "at": "2026-06-22T08:25:00",
         "byId": "u26",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-07-03T08:58:00",
+        "at": "2026-07-04T08:54:00",
         "byId": "u26",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1503,14 +1561,14 @@
     "note": ""
   },
   {
-    "id": "ac-030",
-    "code": "BBNT-ACC245-CAST-030",
+    "id": "ac-031",
+    "code": "BBNT-ACC245-CAST-031",
     "projectId": "p08",
     "itemId": "i-p08-4",
     "title": "Nghiệm thu hoàn thiện",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-11-12",
+    "createdAt": "2026-11-09",
     "acceptedAt": null,
     "createdById": "u26",
     "status": "cho_cdt",
@@ -1528,67 +1586,31 @@
       {
         "taskId": "t-p08-010",
         "executedQty": 24570,
-        "acceptedQty": 23832.9
+        "acceptedQty": 24570
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-11-12T08:17:00",
+        "at": "2026-11-09T08:43:00",
         "byId": "u26",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-11-13T08:55:00",
+        "at": "2026-11-10T08:17:00",
         "byId": "u26",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-11-15T08:30:00",
+        "at": "2026-11-12T08:23:00",
         "byId": "u26",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-031",
-    "code": "BBNT-ACC245-CAST-031",
-    "projectId": "p08",
-    "itemId": "i-p08-5",
-    "title": "Nghiệm thu khối lượng hoàn thành hạ tầng ngoài nhà (giai đoạn)",
-    "phase": "Đợt 5",
-    "type": "giai_doan",
-    "createdAt": "2026-10-17",
-    "acceptedAt": null,
-    "createdById": "u26",
-    "status": "cho_tvgs",
-    "lines": [
-      {
-        "taskId": "t-p08-011",
-        "executedQty": 15170.4,
-        "acceptedQty": 12753.3
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-17T08:56:00",
-        "byId": "u26",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-18T08:35:00",
-        "byId": "u26",
-        "action": "Trình TVGS kiểm tra"
       }
     ],
     "note": ""
@@ -1601,8 +1623,8 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-11-19",
-    "acceptedAt": "2025-12-04",
+    "createdAt": "2025-11-14",
+    "acceptedAt": "2025-11-24",
     "createdById": "u27",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1620,28 +1642,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2025-11-19T08:42:00",
+        "at": "2025-11-14T08:54:00",
         "byId": "u27",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-11-20T08:54:00",
+        "at": "2025-11-15T08:30:00",
         "byId": "u27",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-11-22T08:12:00",
+        "at": "2025-11-17T08:50:00",
         "byId": "u27",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-04T08:58:00",
+        "at": "2025-11-24T08:37:00",
         "byId": "u27",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1656,15 +1676,15 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-04-21",
-    "acceptedAt": "2026-05-01",
+    "createdAt": "2026-04-11",
+    "acceptedAt": "2026-04-21",
     "createdById": "u27",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p09-003",
         "executedQty": 22760,
-        "acceptedQty": 22760
+        "acceptedQty": 22077.2
       },
       {
         "taskId": "t-p09-004",
@@ -1680,27 +1700,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-04-21T08:31:00",
+        "at": "2026-04-11T08:59:00",
         "byId": "u27",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-22T08:31:00",
+        "at": "2026-04-12T08:29:00",
         "byId": "u27",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-04-24T08:13:00",
+        "at": "2026-04-14T08:35:00",
         "byId": "u27",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-01T08:11:00",
+        "at": "2026-04-21T08:54:00",
         "byId": "u27",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1715,34 +1734,43 @@
     "title": "Nghiệm thu phần thân",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-11-14",
-    "acceptedAt": null,
+    "createdAt": "2026-09-28",
+    "acceptedAt": "2026-10-13",
     "createdById": "u27",
-    "status": "nhap",
+    "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p09-006",
         "executedQty": 24630,
         "acceptedQty": 24630
-      },
-      {
-        "taskId": "t-p09-007",
-        "executedQty": 14370,
-        "acceptedQty": 14370
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-11-14T08:37:00",
+        "at": "2026-09-28T08:58:00",
         "byId": "u27",
         "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-09-29T08:10:00",
+        "byId": "u27",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-01T08:21:00",
+        "byId": "u27",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-10-13T08:21:00",
+        "byId": "u27",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
     ],
     "note": ""
@@ -1751,29 +1779,19 @@
     "id": "ac-035",
     "code": "BBNT-ACC24-BCHVP-035",
     "projectId": "p09",
-    "itemId": "i-p09-4",
-    "title": "Nghiệm thu khối lượng hoàn thành hoàn thiện (giai đoạn)",
+    "itemId": "i-p09-3",
+    "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-10-12",
+    "createdAt": "2026-10-06",
     "acceptedAt": null,
     "createdById": "u27",
     "status": "cho_tvgs",
     "lines": [
       {
-        "taskId": "t-p09-008",
-        "executedQty": 50923.5,
-        "acceptedQty": 32935.2
-      },
-      {
-        "taskId": "t-p09-009",
-        "executedQty": 14512,
-        "acceptedQty": 11640.6
-      },
-      {
-        "taskId": "t-p09-010",
-        "executedQty": 13581.3,
-        "acceptedQty": 10528.6
+        "taskId": "t-p09-007",
+        "executedQty": 11122.6,
+        "acceptedQty": 8887.2
       }
     ],
     "documents": [
@@ -1783,12 +1801,12 @@
     ],
     "history": [
       {
-        "at": "2026-10-12T08:46:00",
+        "at": "2026-10-06T08:37:00",
         "byId": "u27",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-13T08:54:00",
+        "at": "2026-10-07T08:34:00",
         "byId": "u27",
         "action": "Trình TVGS kiểm tra"
       }
@@ -1803,8 +1821,8 @@
     "title": "Nghiệm thu nền và móng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-10-12",
-    "acceptedAt": "2025-10-20",
+    "createdAt": "2025-10-19",
+    "acceptedAt": "2025-11-03",
     "createdById": "u29",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1821,26 +1839,29 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2025-10-12T08:22:00",
+        "at": "2025-10-19T08:28:00",
         "byId": "u29",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-10-13T08:30:00",
+        "at": "2025-10-20T08:53:00",
         "byId": "u29",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-10-15T08:52:00",
+        "at": "2025-10-22T08:59:00",
         "byId": "u29",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-10-20T08:55:00",
+        "at": "2025-11-03T08:30:00",
         "byId": "u29",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1855,8 +1876,8 @@
     "title": "Nghiệm thu mặt đường và sân đỗ",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-05-05",
-    "acceptedAt": "2026-05-19",
+    "createdAt": "2026-05-14",
+    "acceptedAt": "2026-05-20",
     "createdById": "u29",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1875,27 +1896,26 @@
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-05-05T08:17:00",
+        "at": "2026-05-14T08:41:00",
         "byId": "u29",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-05-06T08:17:00",
+        "at": "2026-05-15T08:43:00",
         "byId": "u29",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-05-08T08:15:00",
+        "at": "2026-05-17T08:24:00",
         "byId": "u29",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-19T08:38:00",
+        "at": "2026-05-20T08:26:00",
         "byId": "u29",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1910,8 +1930,8 @@
     "title": "Nghiệm thu hoàn thiện, cây xanh",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-08-30",
-    "acceptedAt": "2026-09-14",
+    "createdAt": "2026-09-06",
+    "acceptedAt": "2026-09-12",
     "createdById": "u29",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1934,22 +1954,22 @@
     ],
     "history": [
       {
-        "at": "2026-08-30T08:59:00",
+        "at": "2026-09-06T08:13:00",
         "byId": "u29",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-31T08:29:00",
+        "at": "2026-09-07T08:13:00",
         "byId": "u29",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-02T08:29:00",
+        "at": "2026-09-09T08:44:00",
         "byId": "u29",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-14T08:27:00",
+        "at": "2026-09-12T08:10:00",
         "byId": "u29",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -1964,8 +1984,8 @@
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-01-18",
-    "acceptedAt": "2026-01-27",
+    "createdAt": "2026-01-16",
+    "acceptedAt": "2026-01-31",
     "createdById": "u60",
     "status": "da_nghiem_thu",
     "lines": [
@@ -1983,26 +2003,27 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-01-18T08:42:00",
+        "at": "2026-01-16T08:21:00",
         "byId": "u60",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-01-19T08:58:00",
+        "at": "2026-01-17T08:35:00",
         "byId": "u60",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-01-21T08:14:00",
+        "at": "2026-01-19T08:25:00",
         "byId": "u60",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-01-27T08:29:00",
+        "at": "2026-01-31T08:15:00",
         "byId": "u60",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2017,7 +2038,7 @@
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-07-21",
+    "createdAt": "2026-07-22",
     "acceptedAt": "2026-08-03",
     "createdById": "u60",
     "status": "da_nghiem_thu",
@@ -2035,31 +2056,32 @@
       {
         "taskId": "t-p12-005",
         "executedQty": 490620,
-        "acceptedQty": 490620
+        "acceptedQty": 475901.4
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-07-21T08:51:00",
+        "at": "2026-07-22T08:36:00",
         "byId": "u60",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-07-22T08:48:00",
+        "at": "2026-07-23T08:44:00",
         "byId": "u60",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-07-24T08:27:00",
+        "at": "2026-07-25T08:28:00",
         "byId": "u60",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-03T08:53:00",
+        "at": "2026-08-03T08:48:00",
         "byId": "u60",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2074,7 +2096,7 @@
     "title": "Nghiệm thu móng mặt đường",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-10-18",
+    "createdAt": "2026-10-21",
     "acceptedAt": "2026-11-02",
     "createdById": "u60",
     "status": "da_nghiem_thu",
@@ -2082,32 +2104,33 @@
       {
         "taskId": "t-p12-006",
         "executedQty": 145300,
-        "acceptedQty": 145300
+        "acceptedQty": 140941
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-10-18T08:45:00",
+        "at": "2026-10-21T08:29:00",
         "byId": "u60",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-19T08:53:00",
+        "at": "2026-10-22T08:33:00",
         "byId": "u60",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-21T08:55:00",
+        "at": "2026-10-24T08:29:00",
         "byId": "u60",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-11-02T08:57:00",
+        "at": "2026-11-02T08:15:00",
         "byId": "u60",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2118,19 +2141,19 @@
     "id": "ac-042",
     "code": "BBNT-ACC24-KEP-042",
     "projectId": "p12",
-    "itemId": "i-p12-3",
-    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
+    "itemId": "i-p12-4",
+    "title": "Nghiệm thu khối lượng hoàn thành mặt đường bê tông xi măng (giai đoạn)",
     "phase": "Đợt 4",
     "type": "giai_doan",
-    "createdAt": "2026-10-31",
+    "createdAt": "2026-10-10",
     "acceptedAt": null,
     "createdById": "u60",
     "status": "cho_cdt",
     "lines": [
       {
-        "taskId": "t-p12-007",
-        "executedQty": 57173.8,
-        "acceptedQty": 44727.5
+        "taskId": "t-p12-008",
+        "executedQty": 13263.6,
+        "acceptedQty": 10387.2
       }
     ],
     "documents": [
@@ -2140,17 +2163,17 @@
     ],
     "history": [
       {
-        "at": "2026-10-31T08:42:00",
+        "at": "2026-10-10T08:59:00",
         "byId": "u60",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-11-01T08:38:00",
+        "at": "2026-10-11T08:50:00",
         "byId": "u60",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-11-03T08:30:00",
+        "at": "2026-10-13T08:29:00",
         "byId": "u60",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
@@ -2161,19 +2184,19 @@
     "id": "ac-043",
     "code": "BBNT-ACC24-KEP-043",
     "projectId": "p12",
-    "itemId": "i-p12-4",
-    "title": "Nghiệm thu khối lượng hoàn thành mặt đường bê tông xi măng (giai đoạn)",
+    "itemId": "i-p12-5",
+    "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
     "phase": "Đợt 5",
     "type": "giai_doan",
-    "createdAt": "2026-10-05",
-    "acceptedAt": null,
+    "createdAt": "2026-10-10",
+    "acceptedAt": "2026-11-13",
     "createdById": "u60",
-    "status": "cho_cdt",
+    "status": "da_nghiem_thu",
     "lines": [
       {
-        "taskId": "t-p12-008",
-        "executedQty": 13938.6,
-        "acceptedQty": 10069.7
+        "taskId": "t-p12-010",
+        "executedQty": 2387.5,
+        "acceptedQty": 1449.7
       }
     ],
     "documents": [
@@ -2183,76 +2206,38 @@
     ],
     "history": [
       {
-        "at": "2026-10-05T08:54:00",
+        "at": "2026-10-10T08:45:00",
         "byId": "u60",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-06T08:52:00",
+        "at": "2026-10-11T08:15:00",
         "byId": "u60",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-08T08:46:00",
+        "at": "2026-10-13T08:26:00",
         "byId": "u60",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-11-13T08:44:00",
+        "byId": "u60",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
     ],
     "note": ""
   },
   {
     "id": "ac-044",
-    "code": "BBNT-ACC24-KEP-044",
-    "projectId": "p12",
-    "itemId": "i-p12-5",
-    "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "phase": "Đợt 6",
-    "type": "giai_doan",
-    "createdAt": "2026-10-13",
-    "acceptedAt": null,
-    "createdById": "u60",
-    "status": "cho_cdt",
-    "lines": [
-      {
-        "taskId": "t-p12-010",
-        "executedQty": 2214.7,
-        "acceptedQty": 1335.1
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-13T08:41:00",
-        "byId": "u60",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-14T08:16:00",
-        "byId": "u60",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-16T08:24:00",
-        "byId": "u60",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-045",
-    "code": "BBNT-ACC25-HL921-045",
+    "code": "BBNT-ACC25-HL921-044",
     "projectId": "p13",
     "itemId": "i-p13-1",
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-02-23",
-    "acceptedAt": "2026-03-05",
+    "createdAt": "2026-02-26",
+    "acceptedAt": "2026-03-06",
     "createdById": "u61",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2275,22 +2260,22 @@
     ],
     "history": [
       {
-        "at": "2026-02-23T08:10:00",
+        "at": "2026-02-26T08:22:00",
         "byId": "u61",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-02-24T08:27:00",
+        "at": "2026-02-27T08:14:00",
         "byId": "u61",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-02-26T08:51:00",
+        "at": "2026-03-01T08:18:00",
         "byId": "u61",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-05T08:10:00",
+        "at": "2026-03-06T08:54:00",
         "byId": "u61",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2298,15 +2283,15 @@
     "note": ""
   },
   {
-    "id": "ac-046",
-    "code": "BBNT-ACC25-HL921-046",
+    "id": "ac-045",
+    "code": "BBNT-ACC25-HL921-045",
     "projectId": "p13",
     "itemId": "i-p13-2",
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-07-17",
-    "acceptedAt": "2026-07-24",
+    "createdAt": "2026-07-14",
+    "acceptedAt": "2026-07-23",
     "createdById": "u61",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2318,7 +2303,7 @@
       {
         "taskId": "t-p13-004",
         "executedQty": 45370,
-        "acceptedQty": 44008.9
+        "acceptedQty": 45370
       },
       {
         "taskId": "t-p13-005",
@@ -2335,22 +2320,75 @@
     ],
     "history": [
       {
-        "at": "2026-07-17T08:20:00",
+        "at": "2026-07-14T08:32:00",
         "byId": "u61",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-07-18T08:33:00",
+        "at": "2026-07-15T08:43:00",
         "byId": "u61",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-07-20T08:50:00",
+        "at": "2026-07-17T08:16:00",
         "byId": "u61",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-07-24T08:16:00",
+        "at": "2026-07-23T08:48:00",
+        "byId": "u61",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-046",
+    "code": "BBNT-ACC25-HL921-046",
+    "projectId": "p13",
+    "itemId": "i-p13-3",
+    "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-10-16",
+    "acceptedAt": "2026-11-13",
+    "createdById": "u61",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p13-006",
+        "executedQty": 14929,
+        "acceptedQty": 11736.8
+      },
+      {
+        "taskId": "t-p13-007",
+        "executedQty": 4396.1,
+        "acceptedQty": 2963.5
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-16T08:18:00",
+        "byId": "u61",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-17T08:51:00",
+        "byId": "u61",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-19T08:18:00",
+        "byId": "u61",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-11-13T08:44:00",
         "byId": "u61",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2365,8 +2403,8 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-04-06",
-    "acceptedAt": "2026-04-14",
+    "createdAt": "2026-04-08",
+    "acceptedAt": "2026-04-22",
     "createdById": "u62",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2388,22 +2426,22 @@
     ],
     "history": [
       {
-        "at": "2026-04-06T08:22:00",
+        "at": "2026-04-08T08:32:00",
         "byId": "u62",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-07T08:19:00",
+        "at": "2026-04-09T08:17:00",
         "byId": "u62",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-04-09T08:25:00",
+        "at": "2026-04-11T08:53:00",
         "byId": "u62",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-04-14T08:33:00",
+        "at": "2026-04-22T08:37:00",
         "byId": "u62",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2418,52 +2456,51 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-08-05",
-    "acceptedAt": "2026-08-15",
+    "createdAt": "2026-08-07",
+    "acceptedAt": "2026-08-19",
     "createdById": "u62",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p14-003",
         "executedQty": 14080,
-        "acceptedQty": 14080
+        "acceptedQty": 13657.6
       },
       {
         "taskId": "t-p14-004",
         "executedQty": 33900,
-        "acceptedQty": 32883
+        "acceptedQty": 33900
       },
       {
         "taskId": "t-p14-005",
         "executedQty": 5110,
-        "acceptedQty": 4956.7
+        "acceptedQty": 5110
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-08-05T08:24:00",
+        "at": "2026-08-07T08:19:00",
         "byId": "u62",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-06T08:55:00",
+        "at": "2026-08-08T08:13:00",
         "byId": "u62",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-08T08:29:00",
+        "at": "2026-08-10T08:17:00",
         "byId": "u62",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-15T08:46:00",
+        "at": "2026-08-19T08:51:00",
         "byId": "u62",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2478,8 +2515,8 @@
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-11-24",
-    "acceptedAt": "2025-12-09",
+    "createdAt": "2025-11-26",
+    "acceptedAt": "2025-12-06",
     "createdById": "u63",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2497,28 +2534,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2025-11-24T08:35:00",
+        "at": "2025-11-26T08:34:00",
         "byId": "u63",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-11-25T08:22:00",
+        "at": "2025-11-27T08:49:00",
         "byId": "u63",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-11-27T08:25:00",
+        "at": "2025-11-29T08:47:00",
         "byId": "u63",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-09T08:17:00",
+        "at": "2025-12-06T08:21:00",
         "byId": "u63",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2533,8 +2568,8 @@
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-04-28",
-    "acceptedAt": "2026-05-12",
+    "createdAt": "2026-04-27",
+    "acceptedAt": "2026-05-09",
     "createdById": "u63",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2551,34 +2586,32 @@
       {
         "taskId": "t-p15-005",
         "executedQty": 256130,
-        "acceptedQty": 248446.1
+        "acceptedQty": 256130
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-04-28T08:41:00",
+        "at": "2026-04-27T08:13:00",
         "byId": "u63",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-29T08:22:00",
+        "at": "2026-04-28T08:15:00",
         "byId": "u63",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-05-01T08:17:00",
+        "at": "2026-04-30T08:26:00",
         "byId": "u63",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-05-12T08:53:00",
+        "at": "2026-05-09T08:55:00",
         "byId": "u63",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2593,8 +2626,8 @@
     "title": "Nghiệm thu móng mặt đường",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-09-02",
-    "acceptedAt": "2026-09-17",
+    "createdAt": "2026-09-01",
+    "acceptedAt": "2026-09-11",
     "createdById": "u63",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2606,31 +2639,34 @@
       {
         "taskId": "t-p15-007",
         "executedQty": 45970,
-        "acceptedQty": 44590.9
+        "acceptedQty": 45970
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-09-02T08:29:00",
+        "at": "2026-09-01T08:39:00",
         "byId": "u63",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-09-03T08:58:00",
+        "at": "2026-09-02T08:30:00",
         "byId": "u63",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-05T08:40:00",
+        "at": "2026-09-04T08:21:00",
         "byId": "u63",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-17T08:25:00",
+        "at": "2026-09-11T08:13:00",
         "byId": "u63",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2659,9 +2695,7 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
@@ -2680,15 +2714,15 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-03-18",
-    "acceptedAt": "2026-03-30",
+    "createdAt": "2026-03-22",
+    "acceptedAt": "2026-04-03",
     "createdById": "u64",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p16-001",
         "executedQty": 22300,
-        "acceptedQty": 21631
+        "acceptedQty": 22300
       },
       {
         "taskId": "t-p16-002",
@@ -2699,28 +2733,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-03-18T08:21:00",
+        "at": "2026-03-22T08:37:00",
         "byId": "u64",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-03-19T08:33:00",
+        "at": "2026-03-23T08:47:00",
         "byId": "u64",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-03-21T08:32:00",
+        "at": "2026-03-25T08:31:00",
         "byId": "u64",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-30T08:34:00",
+        "at": "2026-04-03T08:38:00",
         "byId": "u64",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2735,8 +2767,8 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-08-20",
-    "acceptedAt": "2026-09-03",
+    "createdAt": "2026-08-18",
+    "acceptedAt": "2026-08-29",
     "createdById": "u64",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2748,7 +2780,7 @@
       {
         "taskId": "t-p16-004",
         "executedQty": 39380,
-        "acceptedQty": 39380
+        "acceptedQty": 38198.6
       },
       {
         "taskId": "t-p16-005",
@@ -2764,22 +2796,22 @@
     ],
     "history": [
       {
-        "at": "2026-08-20T08:30:00",
+        "at": "2026-08-18T08:16:00",
         "byId": "u64",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-21T08:22:00",
+        "at": "2026-08-19T08:46:00",
         "byId": "u64",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-23T08:36:00",
+        "at": "2026-08-21T08:28:00",
         "byId": "u64",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-03T08:22:00",
+        "at": "2026-08-29T08:35:00",
         "byId": "u64",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2788,64 +2820,21 @@
   },
   {
     "id": "ac-055",
-    "code": "BBNT-ACC24-SQKQ-055",
-    "projectId": "p16",
-    "itemId": "i-p16-3",
-    "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
-    "phase": "Đợt 3",
-    "type": "giai_doan",
-    "createdAt": "2026-10-08",
-    "acceptedAt": null,
-    "createdById": "u64",
-    "status": "cho_tvgs",
-    "lines": [
-      {
-        "taskId": "t-p16-006",
-        "executedQty": 9486.8,
-        "acceptedQty": 8512.2
-      },
-      {
-        "taskId": "t-p16-007",
-        "executedQty": 971.3,
-        "acceptedQty": 698.7
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-08T08:58:00",
-        "byId": "u64",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-09T08:28:00",
-        "byId": "u64",
-        "action": "Trình TVGS kiểm tra"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-056",
-    "code": "BBNT-ACC244-HUI-056",
+    "code": "BBNT-ACC244-HUI-055",
     "projectId": "p17",
     "itemId": "i-p17-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-09-23",
-    "acceptedAt": "2025-10-08",
+    "createdAt": "2025-09-19",
+    "acceptedAt": "2025-09-26",
     "createdById": "u65",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p17-001",
         "executedQty": 368130,
-        "acceptedQty": 357086.1
+        "acceptedQty": 368130
       },
       {
         "taskId": "t-p17-002",
@@ -2855,26 +2844,27 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2025-09-23T08:15:00",
+        "at": "2025-09-19T08:12:00",
         "byId": "u65",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-09-24T08:43:00",
+        "at": "2025-09-20T08:48:00",
         "byId": "u65",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-09-26T08:35:00",
+        "at": "2025-09-22T08:12:00",
         "byId": "u65",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-10-08T08:56:00",
+        "at": "2025-09-26T08:15:00",
         "byId": "u65",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2882,15 +2872,15 @@
     "note": ""
   },
   {
-    "id": "ac-057",
-    "code": "BBNT-ACC244-HUI-057",
+    "id": "ac-056",
+    "code": "BBNT-ACC244-HUI-056",
     "projectId": "p17",
     "itemId": "i-p17-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-03-19",
-    "acceptedAt": "2026-03-30",
+    "createdAt": "2026-03-27",
+    "acceptedAt": "2026-04-11",
     "createdById": "u65",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2912,29 +2902,26 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-03-19T08:46:00",
+        "at": "2026-03-27T08:25:00",
         "byId": "u65",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-03-20T08:22:00",
+        "at": "2026-03-28T08:23:00",
         "byId": "u65",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-03-22T08:55:00",
+        "at": "2026-03-30T08:34:00",
         "byId": "u65",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-30T08:28:00",
+        "at": "2026-04-11T08:21:00",
         "byId": "u65",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2942,15 +2929,15 @@
     "note": ""
   },
   {
-    "id": "ac-058",
-    "code": "BBNT-ACC244-HUI-058",
+    "id": "ac-057",
+    "code": "BBNT-ACC244-HUI-057",
     "projectId": "p17",
     "itemId": "i-p17-3",
     "title": "Nghiệm thu móng mặt đường",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-08-23",
-    "acceptedAt": "2026-09-07",
+    "createdAt": "2026-08-22",
+    "acceptedAt": "2026-09-04",
     "createdById": "u65",
     "status": "da_nghiem_thu",
     "lines": [
@@ -2967,26 +2954,27 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-08-23T08:25:00",
+        "at": "2026-08-22T08:10:00",
         "byId": "u65",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-24T08:58:00",
+        "at": "2026-08-23T08:21:00",
         "byId": "u65",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-26T08:35:00",
+        "at": "2026-08-25T08:45:00",
         "byId": "u65",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-07T08:41:00",
+        "at": "2026-09-04T08:16:00",
         "byId": "u65",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -2994,8 +2982,8 @@
     "note": ""
   },
   {
-    "id": "ac-059",
-    "code": "BBNT-ACC244-HUI-059",
+    "id": "ac-058",
+    "code": "BBNT-ACC244-HUI-058",
     "projectId": "p17",
     "itemId": "i-p17-5",
     "title": "Nghiệm thu hệ thống kỹ thuật & an toàn bay",
@@ -3018,7 +3006,7 @@
     ],
     "history": [
       {
-        "at": "2026-11-14T08:38:00",
+        "at": "2026-11-14T08:10:00",
         "byId": "u65",
         "action": "Lập hồ sơ nghiệm thu"
       }
@@ -3026,22 +3014,22 @@
     "note": ""
   },
   {
-    "id": "ac-060",
-    "code": "BBNT-ACC245-UIH-060",
+    "id": "ac-059",
+    "code": "BBNT-ACC245-UIH-059",
     "projectId": "p18",
     "itemId": "i-p18-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-01-05",
-    "acceptedAt": "2026-01-17",
+    "createdAt": "2026-01-06",
+    "acceptedAt": "2026-01-14",
     "createdById": "u66",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p18-001",
         "executedQty": 408530,
-        "acceptedQty": 396274.1
+        "acceptedQty": 408530
       },
       {
         "taskId": "t-p18-002",
@@ -3052,27 +3040,26 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-01-05T08:10:00",
+        "at": "2026-01-06T08:39:00",
         "byId": "u66",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-01-06T08:22:00",
+        "at": "2026-01-07T08:29:00",
         "byId": "u66",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-01-08T08:59:00",
+        "at": "2026-01-09T08:38:00",
         "byId": "u66",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-01-17T08:59:00",
+        "at": "2026-01-14T08:17:00",
         "byId": "u66",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3080,15 +3067,15 @@
     "note": ""
   },
   {
-    "id": "ac-061",
-    "code": "BBNT-ACC245-UIH-061",
+    "id": "ac-060",
+    "code": "BBNT-ACC245-UIH-060",
     "projectId": "p18",
     "itemId": "i-p18-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-09-05",
-    "acceptedAt": "2026-09-17",
+    "createdAt": "2026-09-07",
+    "acceptedAt": "2026-09-20",
     "createdById": "u66",
     "status": "da_nghiem_thu",
     "lines": [
@@ -3110,26 +3097,27 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-09-05T08:15:00",
+        "at": "2026-09-07T08:12:00",
         "byId": "u66",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-09-06T08:40:00",
+        "at": "2026-09-08T08:15:00",
         "byId": "u66",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-08T08:25:00",
+        "at": "2026-09-10T08:36:00",
         "byId": "u66",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-17T08:59:00",
+        "at": "2026-09-20T08:39:00",
         "byId": "u66",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3137,27 +3125,27 @@
     "note": ""
   },
   {
-    "id": "ac-062",
-    "code": "BBNT-ACC245-UIH-062",
+    "id": "ac-061",
+    "code": "BBNT-ACC245-UIH-061",
     "projectId": "p18",
     "itemId": "i-p18-3",
     "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-10-24",
+    "createdAt": "2026-10-06",
     "acceptedAt": null,
     "createdById": "u66",
     "status": "cho_cdt",
     "lines": [
       {
         "taskId": "t-p18-006",
-        "executedQty": 129444.4,
-        "acceptedQty": 95831.1
+        "executedQty": 135021.6,
+        "acceptedQty": 91622.6
       },
       {
         "taskId": "t-p18-007",
-        "executedQty": 17453.9,
-        "acceptedQty": 13207.4
+        "executedQty": 15879.9,
+        "acceptedQty": 10060.8
       }
     ],
     "documents": [
@@ -3167,17 +3155,17 @@
     ],
     "history": [
       {
-        "at": "2026-10-24T08:59:00",
+        "at": "2026-10-06T08:41:00",
         "byId": "u66",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-25T08:44:00",
+        "at": "2026-10-07T08:14:00",
         "byId": "u66",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-27T08:10:00",
+        "at": "2026-10-09T08:43:00",
         "byId": "u66",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
@@ -3185,22 +3173,22 @@
     "note": ""
   },
   {
-    "id": "ac-063",
-    "code": "BBNT-ACC25-DLI-063",
+    "id": "ac-062",
+    "code": "BBNT-ACC25-DLI-062",
     "projectId": "p19",
     "itemId": "i-p19-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-02-27",
-    "acceptedAt": "2026-03-09",
+    "createdAt": "2026-02-26",
+    "acceptedAt": "2026-03-11",
     "createdById": "u67",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p19-001",
         "executedQty": 206510,
-        "acceptedQty": 206510
+        "acceptedQty": 200314.7
       },
       {
         "taskId": "t-p19-002",
@@ -3210,29 +3198,26 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-02-27T08:12:00",
+        "at": "2026-02-26T08:24:00",
         "byId": "u67",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-02-28T08:40:00",
+        "at": "2026-02-27T08:23:00",
         "byId": "u67",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-03-02T08:43:00",
+        "at": "2026-03-01T08:51:00",
         "byId": "u67",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-09T08:51:00",
+        "at": "2026-03-11T08:47:00",
         "byId": "u67",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3240,15 +3225,15 @@
     "note": ""
   },
   {
-    "id": "ac-064",
-    "code": "BBNT-ACC25-DLI-064",
+    "id": "ac-063",
+    "code": "BBNT-ACC25-DLI-063",
     "projectId": "p19",
     "itemId": "i-p19-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-09-02",
-    "acceptedAt": "2026-09-17",
+    "createdAt": "2026-09-01",
+    "acceptedAt": "2026-09-07",
     "createdById": "u67",
     "status": "da_nghiem_thu",
     "lines": [
@@ -3260,7 +3245,7 @@
       {
         "taskId": "t-p19-004",
         "executedQty": 138410,
-        "acceptedQty": 138410
+        "acceptedQty": 134257.7
       },
       {
         "taskId": "t-p19-005",
@@ -3270,26 +3255,29 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-09-02T08:26:00",
+        "at": "2026-09-01T08:50:00",
         "byId": "u67",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-09-03T08:50:00",
+        "at": "2026-09-02T08:31:00",
         "byId": "u67",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-05T08:10:00",
+        "at": "2026-09-04T08:14:00",
         "byId": "u67",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-17T08:45:00",
+        "at": "2026-09-07T08:32:00",
         "byId": "u67",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3297,113 +3285,22 @@
     "note": ""
   },
   {
-    "id": "ac-065",
-    "code": "BBNT-ACC25-DLI-065",
-    "projectId": "p19",
-    "itemId": "i-p19-3",
-    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "phase": "Đợt 3",
-    "type": "giai_doan",
-    "createdAt": "2026-10-28",
-    "acceptedAt": null,
-    "createdById": "u67",
-    "status": "cho_tvgs",
-    "lines": [
-      {
-        "taskId": "t-p19-006",
-        "executedQty": 80944,
-        "acceptedQty": 56348.9
-      },
-      {
-        "taskId": "t-p19-007",
-        "executedQty": 16697.4,
-        "acceptedQty": 13517.6
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-28T08:21:00",
-        "byId": "u67",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-29T08:39:00",
-        "byId": "u67",
-        "action": "Trình TVGS kiểm tra"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-066",
-    "code": "BBNT-ACC25-DLI-066",
-    "projectId": "p19",
-    "itemId": "i-p19-5",
-    "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
-    "phase": "Đợt 4",
-    "type": "giai_doan",
-    "createdAt": "2026-10-08",
-    "acceptedAt": "2026-11-13",
-    "createdById": "u67",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p19-010",
-        "executedQty": 1076.7,
-        "acceptedQty": 673.8
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-08T08:28:00",
-        "byId": "u67",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-09T08:47:00",
-        "byId": "u67",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-11T08:48:00",
-        "byId": "u67",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-11-13T08:58:00",
-        "byId": "u67",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-067",
-    "code": "BBNT-ACC244-SGN-067",
+    "id": "ac-064",
+    "code": "BBNT-ACC244-SGN-064",
     "projectId": "p20",
     "itemId": "i-p20-1",
     "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2025-11-17",
-    "acceptedAt": "2025-11-27",
+    "createdAt": "2025-11-14",
+    "acceptedAt": "2025-11-29",
     "createdById": "u68",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p20-001",
         "executedQty": 516270,
-        "acceptedQty": 516270
+        "acceptedQty": 500781.9
       },
       {
         "taskId": "t-p20-002",
@@ -3415,27 +3312,182 @@
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
       "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
+    ],
+    "history": [
+      {
+        "at": "2025-11-14T08:55:00",
+        "byId": "u68",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2025-11-15T08:44:00",
+        "byId": "u68",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2025-11-17T08:57:00",
+        "byId": "u68",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2025-11-29T08:24:00",
+        "byId": "u68",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-065",
+    "code": "BBNT-ACC244-SGN-065",
+    "projectId": "p20",
+    "itemId": "i-p20-2",
+    "title": "Nghiệm thu nền sân đỗ, đường lăn",
+    "phase": "Đợt 2",
+    "type": "giai_doan",
+    "createdAt": "2026-07-18",
+    "acceptedAt": "2026-07-25",
+    "createdById": "u68",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p20-003",
+        "executedQty": 489100,
+        "acceptedQty": 489100
+      },
+      {
+        "taskId": "t-p20-004",
+        "executedQty": 346010,
+        "acceptedQty": 346010
+      },
+      {
+        "taskId": "t-p20-005",
+        "executedQty": 829730,
+        "acceptedQty": 829730
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-07-18T08:47:00",
+        "byId": "u68",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-07-19T08:20:00",
+        "byId": "u68",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-07-21T08:48:00",
+        "byId": "u68",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-07-25T08:40:00",
+        "byId": "u68",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-066",
+    "code": "BBNT-ACC244-SGN-066",
+    "projectId": "p20",
+    "itemId": "i-p20-3",
+    "title": "Nghiệm thu móng mặt đường",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-11-08",
+    "acceptedAt": "2026-11-14",
+    "createdById": "u68",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p20-006",
+        "executedQty": 245730,
+        "acceptedQty": 245730
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
       "Hình ảnh hiện trường.zip",
       "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2025-11-17T08:11:00",
+        "at": "2026-11-08T08:52:00",
         "byId": "u68",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-11-18T08:41:00",
+        "at": "2026-11-09T08:50:00",
         "byId": "u68",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-11-20T08:22:00",
+        "at": "2026-11-11T08:37:00",
         "byId": "u68",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-11-27T08:19:00",
+        "at": "2026-11-14T08:51:00",
+        "byId": "u68",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-067",
+    "code": "BBNT-ACC244-SGN-067",
+    "projectId": "p20",
+    "itemId": "i-p20-3",
+    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
+    "phase": "Đợt 4",
+    "type": "giai_doan",
+    "createdAt": "2026-10-17",
+    "acceptedAt": "2026-11-10",
+    "createdById": "u68",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p20-007",
+        "executedQty": 75228.9,
+        "acceptedQty": 66455.2
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-17T08:11:00",
+        "byId": "u68",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-18T08:48:00",
+        "byId": "u68",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-20T08:18:00",
+        "byId": "u68",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-11-10T08:57:00",
         "byId": "u68",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3446,78 +3498,62 @@
     "id": "ac-068",
     "code": "BBNT-ACC244-SGN-068",
     "projectId": "p20",
-    "itemId": "i-p20-2",
-    "title": "Nghiệm thu nền sân đỗ, đường lăn",
-    "phase": "Đợt 2",
+    "itemId": "i-p20-5",
+    "title": "Nghiệm thu khối lượng hoàn thành hệ thống kỹ thuật & an toàn bay (giai đoạn)",
+    "phase": "Đợt 5",
     "type": "giai_doan",
-    "createdAt": "2026-07-20",
-    "acceptedAt": "2026-07-26",
+    "createdAt": "2026-10-24",
+    "acceptedAt": null,
     "createdById": "u68",
-    "status": "da_nghiem_thu",
+    "status": "cho_tvgs",
     "lines": [
       {
-        "taskId": "t-p20-003",
-        "executedQty": 489100,
-        "acceptedQty": 474427
-      },
-      {
-        "taskId": "t-p20-004",
-        "executedQty": 346010,
-        "acceptedQty": 346010
-      },
-      {
-        "taskId": "t-p20-005",
-        "executedQty": 829730,
-        "acceptedQty": 804838.1
+        "taskId": "t-p20-010",
+        "executedQty": 3234.6,
+        "acceptedQty": 1980.9
       }
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip"
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-07-20T08:30:00",
+        "at": "2026-10-24T08:27:00",
         "byId": "u68",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-07-21T08:53:00",
+        "at": "2026-10-25T08:54:00",
         "byId": "u68",
         "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-07-23T08:37:00",
-        "byId": "u68",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-07-26T08:18:00",
-        "byId": "u68",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
     ],
     "note": ""
   },
   {
     "id": "ac-069",
-    "code": "BBNT-ACC244-SGN-069",
-    "projectId": "p20",
-    "itemId": "i-p20-3",
-    "title": "Nghiệm thu móng mặt đường",
-    "phase": "Đợt 3",
+    "code": "BBNT-ACC245-PXU-069",
+    "projectId": "p21",
+    "itemId": "i-p21-1",
+    "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
+    "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-11-11",
-    "acceptedAt": null,
-    "createdById": "u68",
-    "status": "cho_cdt",
+    "createdAt": "2026-04-08",
+    "acceptedAt": "2026-04-21",
+    "createdById": "u69",
+    "status": "da_nghiem_thu",
     "lines": [
       {
-        "taskId": "t-p20-006",
-        "executedQty": 245730,
-        "acceptedQty": 238358.1
+        "taskId": "t-p21-001",
+        "executedQty": 177330,
+        "acceptedQty": 172010.1
+      },
+      {
+        "taskId": "t-p21-002",
+        "executedQty": 1,
+        "acceptedQty": 1
       }
     ],
     "documents": [
@@ -3529,113 +3565,22 @@
     ],
     "history": [
       {
-        "at": "2026-11-11T08:37:00",
-        "byId": "u68",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-11-12T08:34:00",
-        "byId": "u68",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-11-14T08:44:00",
-        "byId": "u68",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-070",
-    "code": "BBNT-ACC244-SGN-070",
-    "projectId": "p20",
-    "itemId": "i-p20-3",
-    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "phase": "Đợt 4",
-    "type": "giai_doan",
-    "createdAt": "2026-10-17",
-    "acceptedAt": null,
-    "createdById": "u68",
-    "status": "cho_cdt",
-    "lines": [
-      {
-        "taskId": "t-p20-007",
-        "executedQty": 76620.4,
-        "acceptedQty": 63892.1
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-17T08:13:00",
-        "byId": "u68",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-18T08:17:00",
-        "byId": "u68",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-20T08:51:00",
-        "byId": "u68",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-071",
-    "code": "BBNT-ACC245-PXU-071",
-    "projectId": "p21",
-    "itemId": "i-p21-1",
-    "title": "Nghiệm thu công tác chuẩn bị mặt bằng",
-    "phase": "Đợt 1",
-    "type": "giai_doan",
-    "createdAt": "2026-04-05",
-    "acceptedAt": "2026-04-19",
-    "createdById": "u69",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p21-001",
-        "executedQty": 177330,
-        "acceptedQty": 177330
-      },
-      {
-        "taskId": "t-p21-002",
-        "executedQty": 1,
-        "acceptedQty": 1
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-04-05T08:49:00",
+        "at": "2026-04-08T08:35:00",
         "byId": "u69",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-04-06T08:47:00",
+        "at": "2026-04-09T08:13:00",
         "byId": "u69",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-04-08T08:21:00",
+        "at": "2026-04-11T08:49:00",
         "byId": "u69",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-04-19T08:36:00",
+        "at": "2026-04-21T08:51:00",
         "byId": "u69",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3643,27 +3588,27 @@
     "note": ""
   },
   {
-    "id": "ac-072",
-    "code": "BBNT-ACC245-PXU-072",
+    "id": "ac-070",
+    "code": "BBNT-ACC245-PXU-070",
     "projectId": "p21",
     "itemId": "i-p21-2",
     "title": "Nghiệm thu nền sân đỗ, đường lăn",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-10-15",
-    "acceptedAt": "2026-10-24",
+    "createdAt": "2026-10-13",
+    "acceptedAt": "2026-10-28",
     "createdById": "u69",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p21-003",
         "executedQty": 168000,
-        "acceptedQty": 162960
+        "acceptedQty": 168000
       },
       {
         "taskId": "t-p21-004",
         "executedQty": 118850,
-        "acceptedQty": 118850
+        "acceptedQty": 115284.5
       },
       {
         "taskId": "t-p21-005",
@@ -3673,27 +3618,124 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
     ],
     "history": [
       {
-        "at": "2026-10-15T08:15:00",
+        "at": "2026-10-13T08:53:00",
         "byId": "u69",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-16T08:26:00",
+        "at": "2026-10-14T08:58:00",
         "byId": "u69",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-18T08:55:00",
+        "at": "2026-10-16T08:39:00",
         "byId": "u69",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-10-24T08:31:00",
+        "at": "2026-10-28T08:17:00",
         "byId": "u69",
+        "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-071",
+    "code": "BBNT-ACC245-PXU-071",
+    "projectId": "p21",
+    "itemId": "i-p21-3",
+    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-10-05",
+    "acceptedAt": null,
+    "createdById": "u69",
+    "status": "cho_cdt",
+    "lines": [
+      {
+        "taskId": "t-p21-006",
+        "executedQty": 45895.7,
+        "acceptedQty": 28722.1
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-05T08:39:00",
+        "byId": "u69",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-06T08:55:00",
+        "byId": "u69",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-08T08:48:00",
+        "byId": "u69",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-072",
+    "code": "BBNT-ACCDTXL-VCS-072",
+    "projectId": "p22",
+    "itemId": "i-p22-1",
+    "title": "Nghiệm thu nền và móng",
+    "phase": "Đợt 1",
+    "type": "giai_doan",
+    "createdAt": "2026-09-23",
+    "acceptedAt": "2026-10-02",
+    "createdById": "u70",
+    "status": "da_nghiem_thu",
+    "lines": [
+      {
+        "taskId": "t-p22-001",
+        "executedQty": 131480,
+        "acceptedQty": 127535.6
+      },
+      {
+        "taskId": "t-p22-002",
+        "executedQty": 65880,
+        "acceptedQty": 63903.6
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-09-23T08:28:00",
+        "byId": "u70",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-09-24T08:58:00",
+        "byId": "u70",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-09-26T08:11:00",
+        "byId": "u70",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
+      },
+      {
+        "at": "2026-10-02T08:36:00",
+        "byId": "u70",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
     ],
@@ -3701,128 +3743,26 @@
   },
   {
     "id": "ac-073",
-    "code": "BBNT-ACC245-PXU-073",
-    "projectId": "p21",
-    "itemId": "i-p21-3",
-    "title": "Nghiệm thu khối lượng hoàn thành móng mặt đường (giai đoạn)",
-    "phase": "Đợt 3",
-    "type": "giai_doan",
-    "createdAt": "2026-10-05",
-    "acceptedAt": "2026-11-09",
-    "createdById": "u69",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p21-006",
-        "executedQty": 45007.9,
-        "acceptedQty": 31510.8
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-05T08:30:00",
-        "byId": "u69",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-06T08:21:00",
-        "byId": "u69",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-08T08:13:00",
-        "byId": "u69",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-11-09T08:49:00",
-        "byId": "u69",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-074",
-    "code": "BBNT-ACCDTXL-VCS-074",
-    "projectId": "p22",
-    "itemId": "i-p22-1",
-    "title": "Nghiệm thu nền và móng",
-    "phase": "Đợt 1",
-    "type": "giai_doan",
-    "createdAt": "2026-09-25",
-    "acceptedAt": "2026-10-03",
-    "createdById": "u70",
-    "status": "da_nghiem_thu",
-    "lines": [
-      {
-        "taskId": "t-p22-001",
-        "executedQty": 131480,
-        "acceptedQty": 131480
-      },
-      {
-        "taskId": "t-p22-002",
-        "executedQty": 65880,
-        "acceptedQty": 65880
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip"
-    ],
-    "history": [
-      {
-        "at": "2026-09-25T08:44:00",
-        "byId": "u70",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-09-26T08:51:00",
-        "byId": "u70",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-09-28T08:55:00",
-        "byId": "u70",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-10-03T08:30:00",
-        "byId": "u70",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-075",
-    "code": "BBNT-ACCDTXL-VCS-075",
+    "code": "BBNT-ACCDTXL-VCS-073",
     "projectId": "p22",
     "itemId": "i-p22-2",
     "title": "Nghiệm thu khối lượng hoàn thành mặt đường và sân đỗ (giai đoạn)",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-10-31",
+    "createdAt": "2026-10-26",
     "acceptedAt": null,
     "createdById": "u70",
     "status": "cho_tvgs",
     "lines": [
       {
         "taskId": "t-p22-003",
-        "executedQty": 86336,
-        "acceptedQty": 71288.5
+        "executedQty": 83007.5,
+        "acceptedQty": 64325.9
       },
       {
         "taskId": "t-p22-004",
-        "executedQty": 2178,
-        "acceptedQty": 1590.8
+        "executedQty": 2209.8,
+        "acceptedQty": 1736.3
       }
     ],
     "documents": [
@@ -3832,12 +3772,12 @@
     ],
     "history": [
       {
-        "at": "2026-10-31T08:45:00",
+        "at": "2026-10-26T08:23:00",
         "byId": "u70",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-11-01T08:16:00",
+        "at": "2026-10-27T08:12:00",
         "byId": "u70",
         "action": "Trình TVGS kiểm tra"
       }
@@ -3845,22 +3785,22 @@
     "note": ""
   },
   {
-    "id": "ac-076",
-    "code": "BBNT-ACC24-CAAV-076",
+    "id": "ac-074",
+    "code": "BBNT-ACC24-CAAV-074",
     "projectId": "p23",
     "itemId": "i-p23-1",
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
     "createdAt": "2025-11-25",
-    "acceptedAt": "2025-12-06",
+    "acceptedAt": "2025-12-03",
     "createdById": "u71",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p23-001",
         "executedQty": 52360,
-        "acceptedQty": 50789.2
+        "acceptedQty": 52360
       },
       {
         "taskId": "t-p23-002",
@@ -3871,26 +3811,28 @@
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
       "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2025-11-25T08:35:00",
+        "at": "2025-11-25T08:10:00",
         "byId": "u71",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2025-11-26T08:49:00",
+        "at": "2025-11-26T08:31:00",
         "byId": "u71",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2025-11-28T08:37:00",
+        "at": "2025-11-28T08:11:00",
         "byId": "u71",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2025-12-06T08:17:00",
+        "at": "2025-12-03T08:19:00",
         "byId": "u71",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -3898,15 +3840,15 @@
     "note": ""
   },
   {
-    "id": "ac-077",
-    "code": "BBNT-ACC24-CAAV-077",
+    "id": "ac-075",
+    "code": "BBNT-ACC24-CAAV-075",
     "projectId": "p23",
     "itemId": "i-p23-2",
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-05-26",
-    "acceptedAt": "2026-06-04",
+    "createdAt": "2026-05-25",
+    "acceptedAt": "2026-06-02",
     "createdById": "u71",
     "status": "da_nghiem_thu",
     "lines": [
@@ -3918,7 +3860,7 @@
       {
         "taskId": "t-p23-004",
         "executedQty": 92450,
-        "acceptedQty": 89676.5
+        "acceptedQty": 92450
       },
       {
         "taskId": "t-p23-005",
@@ -3932,24 +3874,110 @@
     ],
     "history": [
       {
-        "at": "2026-05-26T08:15:00",
+        "at": "2026-05-25T08:52:00",
         "byId": "u71",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-05-27T08:49:00",
+        "at": "2026-05-26T08:10:00",
         "byId": "u71",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-05-29T08:58:00",
+        "at": "2026-05-28T08:49:00",
         "byId": "u71",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-04T08:39:00",
+        "at": "2026-06-02T08:35:00",
         "byId": "u71",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-076",
+    "code": "BBNT-ACC24-CAAV-076",
+    "projectId": "p23",
+    "itemId": "i-p23-3",
+    "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
+    "phase": "Đợt 3",
+    "type": "giai_doan",
+    "createdAt": "2026-10-20",
+    "acceptedAt": null,
+    "createdById": "u71",
+    "status": "cho_tvgs",
+    "lines": [
+      {
+        "taskId": "t-p23-006",
+        "executedQty": 31640.5,
+        "acceptedQty": 24083.5
+      },
+      {
+        "taskId": "t-p23-007",
+        "executedQty": 10339.6,
+        "acceptedQty": 9122.2
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-20T08:26:00",
+        "byId": "u71",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-21T08:38:00",
+        "byId": "u71",
+        "action": "Trình TVGS kiểm tra"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "ac-077",
+    "code": "BBNT-ACC24-CAAV-077",
+    "projectId": "p23",
+    "itemId": "i-p23-4",
+    "title": "Nghiệm thu khối lượng hoàn thành hoàn thiện (giai đoạn)",
+    "phase": "Đợt 4",
+    "type": "giai_doan",
+    "createdAt": "2026-10-16",
+    "acceptedAt": null,
+    "createdById": "u71",
+    "status": "cho_cdt",
+    "lines": [
+      {
+        "taskId": "t-p23-010",
+        "executedQty": 2112.9,
+        "acceptedQty": 1517.6
+      }
+    ],
+    "documents": [
+      "Biên bản nghiệm thu khối lượng.pdf",
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf"
+    ],
+    "history": [
+      {
+        "at": "2026-10-16T08:13:00",
+        "byId": "u71",
+        "action": "Lập hồ sơ nghiệm thu"
+      },
+      {
+        "at": "2026-10-17T08:45:00",
+        "byId": "u71",
+        "action": "Trình TVGS kiểm tra"
+      },
+      {
+        "at": "2026-10-19T08:43:00",
+        "byId": "u71",
+        "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
     ],
     "note": ""
@@ -3962,15 +3990,15 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-02-05",
-    "acceptedAt": "2026-02-14",
+    "createdAt": "2026-02-11",
+    "acceptedAt": "2026-02-26",
     "createdById": "u72",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p24-001",
         "executedQty": 37330,
-        "acceptedQty": 36210.1
+        "acceptedQty": 37330
       },
       {
         "taskId": "t-p24-002",
@@ -3980,26 +4008,28 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip"
     ],
     "history": [
       {
-        "at": "2026-02-05T08:51:00",
+        "at": "2026-02-11T08:55:00",
         "byId": "u72",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-02-06T08:47:00",
+        "at": "2026-02-12T08:13:00",
         "byId": "u72",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-02-08T08:43:00",
+        "at": "2026-02-14T08:39:00",
         "byId": "u72",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-02-14T08:36:00",
+        "at": "2026-02-26T08:30:00",
         "byId": "u72",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -4014,15 +4044,15 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-08-17",
-    "acceptedAt": "2026-08-23",
+    "createdAt": "2026-08-15",
+    "acceptedAt": "2026-08-30",
     "createdById": "u72",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p24-003",
         "executedQty": 27390,
-        "acceptedQty": 26568.3
+        "acceptedQty": 27390
       },
       {
         "taskId": "t-p24-004",
@@ -4032,7 +4062,7 @@
       {
         "taskId": "t-p24-005",
         "executedQty": 9930,
-        "acceptedQty": 9632.1
+        "acceptedQty": 9930
       }
     ],
     "documents": [
@@ -4043,22 +4073,22 @@
     ],
     "history": [
       {
-        "at": "2026-08-17T08:33:00",
+        "at": "2026-08-15T08:46:00",
         "byId": "u72",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-08-18T08:43:00",
+        "at": "2026-08-16T08:38:00",
         "byId": "u72",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-08-20T08:48:00",
+        "at": "2026-08-18T08:30:00",
         "byId": "u72",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-23T08:15:00",
+        "at": "2026-08-30T08:51:00",
         "byId": "u72",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -4073,15 +4103,15 @@
     "title": "Nghiệm thu khối lượng hoàn thành phần thân (giai đoạn)",
     "phase": "Đợt 3",
     "type": "giai_doan",
-    "createdAt": "2026-10-19",
-    "acceptedAt": "2026-11-08",
+    "createdAt": "2026-10-13",
+    "acceptedAt": null,
     "createdById": "u72",
-    "status": "da_nghiem_thu",
+    "status": "cho_cdt",
     "lines": [
       {
         "taskId": "t-p24-006",
-        "executedQty": 13909,
-        "acceptedQty": 11220.4
+        "executedQty": 14612.6,
+        "acceptedQty": 9155.3
       }
     ],
     "documents": [
@@ -4091,24 +4121,19 @@
     ],
     "history": [
       {
-        "at": "2026-10-19T08:31:00",
+        "at": "2026-10-13T08:23:00",
         "byId": "u72",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-10-20T08:39:00",
+        "at": "2026-10-14T08:55:00",
         "byId": "u72",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-10-22T08:29:00",
+        "at": "2026-10-16T08:26:00",
         "byId": "u72",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
-      },
-      {
-        "at": "2026-11-08T08:38:00",
-        "byId": "u72",
-        "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
     ],
     "note": ""
@@ -4121,8 +4146,8 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-02-21",
-    "acceptedAt": "2026-03-04",
+    "createdAt": "2026-02-26",
+    "acceptedAt": "2026-03-07",
     "createdById": "u73",
     "status": "da_nghiem_thu",
     "lines": [
@@ -4139,29 +4164,26 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf",
-      "Hình ảnh hiện trường.zip",
-      "Kết quả thí nghiệm vật liệu.pdf"
+      "Bảng tính khối lượng chi tiết.xlsx"
     ],
     "history": [
       {
-        "at": "2026-02-21T08:55:00",
+        "at": "2026-02-26T08:45:00",
         "byId": "u73",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-02-22T08:31:00",
+        "at": "2026-02-27T08:40:00",
         "byId": "u73",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-02-24T08:12:00",
+        "at": "2026-03-01T08:25:00",
         "byId": "u73",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-03-04T08:15:00",
+        "at": "2026-03-07T08:28:00",
         "byId": "u73",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -4176,20 +4198,20 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-07-28",
-    "acceptedAt": "2026-08-08",
+    "createdAt": "2026-07-20",
+    "acceptedAt": "2026-08-01",
     "createdById": "u73",
     "status": "da_nghiem_thu",
     "lines": [
       {
         "taskId": "t-p25-003",
         "executedQty": 19560,
-        "acceptedQty": 18973.2
+        "acceptedQty": 19560
       },
       {
         "taskId": "t-p25-004",
         "executedQty": 47080,
-        "acceptedQty": 45667.6
+        "acceptedQty": 47080
       },
       {
         "taskId": "t-p25-005",
@@ -4205,22 +4227,22 @@
     ],
     "history": [
       {
-        "at": "2026-07-28T08:57:00",
+        "at": "2026-07-20T08:42:00",
         "byId": "u73",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-07-29T08:22:00",
+        "at": "2026-07-21T08:35:00",
         "byId": "u73",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-07-31T08:41:00",
+        "at": "2026-07-23T08:28:00",
         "byId": "u73",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-08-08T08:14:00",
+        "at": "2026-08-01T08:12:00",
         "byId": "u73",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -4235,8 +4257,8 @@
     "title": "Nghiệm thu công tác chuẩn bị và san lấp mặt bằng",
     "phase": "Đợt 1",
     "type": "giai_doan",
-    "createdAt": "2026-05-25",
-    "acceptedAt": "2026-06-04",
+    "createdAt": "2026-05-29",
+    "acceptedAt": "2026-06-11",
     "createdById": "u74",
     "status": "da_nghiem_thu",
     "lines": [
@@ -4258,22 +4280,22 @@
     ],
     "history": [
       {
-        "at": "2026-05-25T08:21:00",
+        "at": "2026-05-29T08:24:00",
         "byId": "u74",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-05-26T08:24:00",
+        "at": "2026-05-30T08:59:00",
         "byId": "u74",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-05-28T08:23:00",
+        "at": "2026-06-01T08:42:00",
         "byId": "u74",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-06-04T08:51:00",
+        "at": "2026-06-11T08:14:00",
         "byId": "u74",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
       }
@@ -4288,8 +4310,8 @@
     "title": "Nghiệm thu phần móng",
     "phase": "Đợt 2",
     "type": "giai_doan",
-    "createdAt": "2026-09-15",
-    "acceptedAt": "2026-09-22",
+    "createdAt": "2026-09-18",
+    "acceptedAt": "2026-09-28",
     "createdById": "u74",
     "status": "da_nghiem_thu",
     "lines": [
@@ -4306,71 +4328,31 @@
     ],
     "documents": [
       "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx"
+      "Bảng tính khối lượng chi tiết.xlsx",
+      "Nhật ký thi công (trích).pdf",
+      "Hình ảnh hiện trường.zip",
+      "Kết quả thí nghiệm vật liệu.pdf"
     ],
     "history": [
       {
-        "at": "2026-09-15T08:46:00",
+        "at": "2026-09-18T08:49:00",
         "byId": "u74",
         "action": "Lập hồ sơ nghiệm thu"
       },
       {
-        "at": "2026-09-16T08:58:00",
+        "at": "2026-09-19T08:54:00",
         "byId": "u74",
         "action": "Trình TVGS kiểm tra"
       },
       {
-        "at": "2026-09-18T08:50:00",
+        "at": "2026-09-21T08:27:00",
         "byId": "u74",
         "action": "TVGS xác nhận, trình Chủ đầu tư"
       },
       {
-        "at": "2026-09-22T08:31:00",
+        "at": "2026-09-28T08:12:00",
         "byId": "u74",
         "action": "Chủ đầu tư ký biên bản nghiệm thu"
-      }
-    ],
-    "note": ""
-  },
-  {
-    "id": "ac-085",
-    "code": "BBNT-ACC244-ATC-085",
-    "projectId": "p26",
-    "itemId": "i-p26-2",
-    "title": "Nghiệm thu khối lượng hoàn thành phần móng (giai đoạn)",
-    "phase": "Đợt 3",
-    "type": "giai_doan",
-    "createdAt": "2026-10-17",
-    "acceptedAt": null,
-    "createdById": "u74",
-    "status": "cho_cdt",
-    "lines": [
-      {
-        "taskId": "t-p26-005",
-        "executedQty": 7844.8,
-        "acceptedQty": 5750.3
-      }
-    ],
-    "documents": [
-      "Biên bản nghiệm thu khối lượng.pdf",
-      "Bảng tính khối lượng chi tiết.xlsx",
-      "Nhật ký thi công (trích).pdf"
-    ],
-    "history": [
-      {
-        "at": "2026-10-17T08:57:00",
-        "byId": "u74",
-        "action": "Lập hồ sơ nghiệm thu"
-      },
-      {
-        "at": "2026-10-18T08:24:00",
-        "byId": "u74",
-        "action": "Trình TVGS kiểm tra"
-      },
-      {
-        "at": "2026-10-20T08:45:00",
-        "byId": "u74",
-        "action": "TVGS xác nhận, trình Chủ đầu tư"
       }
     ],
     "note": ""

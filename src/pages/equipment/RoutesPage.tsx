@@ -36,7 +36,7 @@ export default function RoutesPage() {
       title="Quản lý tuyến đường" entityLabel="tuyến đường" addLabel="Thêm tuyến đường" codePrefix="TD-" collection="routes"
       description="Thông tin tuyến vận chuyển: tọa độ, bản đồ, độ dài, thời gian đi lại, điểm dừng nghỉ và điều kiện giao thông."
       searchText={(r) => `${r.code} ${r.name} ${r.from} ${r.to}`}
-      filters={[{ label: "Tất cả công trình", options: projectOptions, test: (r, v) => r.projectId === v }]}
+      filters={[{ label: "Tất cả dự án", options: projectOptions, test: (r, v) => r.projectId === v }]}
       kpis={(rows) => [
         { label: "Tuyến đường", value: rows.length, tone: "navy" },
         { label: "Tổng chiều dài", value: `${rows.reduce((s, r) => s + r.lengthKm, 0).toLocaleString("vi-VN")} km`, tone: "info" },
@@ -54,7 +54,7 @@ export default function RoutesPage() {
         { key: "name", label: "Tên tuyến", required: true, wide: true },
         { key: "from", label: "Điểm đi" },
         { key: "to", label: "Điểm đến" },
-        { key: "projectId", label: "Công trình", type: "select", options: projectOptions },
+        { key: "projectId", label: "Dự án", type: "select", options: projectOptions },
         { key: "lengthKm", label: "Độ dài (km)", type: "number" },
         { key: "avgMinutes", label: "Thời gian đi lại (phút)", type: "number" },
         { key: "stops", label: "Điểm dừng nghỉ" },

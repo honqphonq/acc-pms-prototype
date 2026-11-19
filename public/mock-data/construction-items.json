@@ -85,7 +85,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u44"
+    "managerId": "u43"
   },
   {
     "id": "i-p03-2",
@@ -93,7 +93,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u36"
+    "managerId": "u35"
   },
   {
     "id": "i-p03-3",
@@ -101,7 +101,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u34"
+    "managerId": "u43"
   },
   {
     "id": "i-p03-4",
@@ -109,7 +109,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u45"
+    "managerId": "u38"
   },
   {
     "id": "i-p03-5",
@@ -117,7 +117,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u33"
+    "managerId": "u37"
   },
   {
     "id": "i-p04-1",
@@ -125,7 +125,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u40"
+    "managerId": "u35"
   },
   {
     "id": "i-p04-2",
@@ -133,7 +133,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u44"
+    "managerId": "u45"
   },
   {
     "id": "i-p04-3",
@@ -141,7 +141,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u32"
+    "managerId": "u34"
   },
   {
     "id": "i-p04-4",
@@ -149,7 +149,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u36"
+    "managerId": "u37"
   },
   {
     "id": "i-p04-5",
@@ -157,7 +157,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u34"
+    "managerId": "u43"
   },
   {
     "id": "i-p05-1",
@@ -165,7 +165,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u42"
+    "managerId": "u36"
   },
   {
     "id": "i-p05-2",
@@ -197,7 +197,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u45"
+    "managerId": "u35"
   },
   {
     "id": "i-p06-1",
@@ -205,7 +205,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u43"
+    "managerId": "u39"
   },
   {
     "id": "i-p06-2",
@@ -213,7 +213,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u35"
+    "managerId": "u30"
   },
   {
     "id": "i-p06-3",
@@ -221,7 +221,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u35"
+    "managerId": "u37"
   },
   {
     "id": "i-p06-4",
@@ -229,7 +229,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u34"
+    "managerId": "u30"
   },
   {
     "id": "i-p06-5",
@@ -237,7 +237,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u38"
+    "managerId": "u31"
   },
   {
     "id": "i-p07-1",
@@ -245,7 +245,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u43"
+    "managerId": "u31"
   },
   {
     "id": "i-p07-2",
@@ -253,7 +253,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u38"
+    "managerId": "u45"
   },
   {
     "id": "i-p07-3",
@@ -261,7 +261,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u38"
+    "managerId": "u42"
   },
   {
     "id": "i-p07-4",
@@ -269,7 +269,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u33"
+    "managerId": "u32"
   },
   {
     "id": "i-p07-5",
@@ -277,7 +277,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u30"
+    "managerId": "u37"
   },
   {
     "id": "i-p08-1",
@@ -285,7 +285,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u31"
+    "managerId": "u43"
   },
   {
     "id": "i-p08-2",
@@ -293,7 +293,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u41"
+    "managerId": "u33"
   },
   {
     "id": "i-p08-3",
@@ -301,7 +301,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u34"
+    "managerId": "u41"
   },
   {
     "id": "i-p08-4",
@@ -309,7 +309,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u36"
+    "managerId": "u41"
   },
   {
     "id": "i-p08-5",
@@ -317,7 +317,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u30"
+    "managerId": "u38"
   },
   {
     "id": "i-p09-1",
@@ -325,7 +325,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u32"
+    "managerId": "u30"
   },
   {
     "id": "i-p09-2",
@@ -341,7 +341,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u36"
+    "managerId": "u33"
   },
   {
     "id": "i-p09-4",
@@ -349,7 +349,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u33"
+    "managerId": "u41"
   },
   {
     "id": "i-p09-5",
@@ -365,7 +365,7 @@
     "code": "1.1",
     "name": "Nền và móng",
     "order": 1,
-    "managerId": "u32"
+    "managerId": "u38"
   },
   {
     "id": "i-p11-2",
@@ -373,7 +373,7 @@
     "code": "1.2",
     "name": "Mặt đường và sân đỗ",
     "order": 2,
-    "managerId": "u41"
+    "managerId": "u32"
   },
   {
     "id": "i-p11-3",
@@ -381,7 +381,7 @@
     "code": "1.3",
     "name": "Hoàn thiện, cây xanh",
     "order": 3,
-    "managerId": "u44"
+    "managerId": "u41"
   },
   {
     "id": "i-p12-1",
@@ -389,7 +389,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u37"
+    "managerId": "u44"
   },
   {
     "id": "i-p12-2",
@@ -397,7 +397,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u37"
+    "managerId": "u31"
   },
   {
     "id": "i-p12-3",
@@ -405,7 +405,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u43"
+    "managerId": "u41"
   },
   {
     "id": "i-p12-4",
@@ -413,7 +413,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u30"
+    "managerId": "u43"
   },
   {
     "id": "i-p12-5",
@@ -421,7 +421,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u40"
+    "managerId": "u31"
   },
   {
     "id": "i-p13-1",
@@ -429,7 +429,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u35"
+    "managerId": "u43"
   },
   {
     "id": "i-p13-2",
@@ -437,7 +437,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u39"
+    "managerId": "u35"
   },
   {
     "id": "i-p13-3",
@@ -445,7 +445,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u32"
+    "managerId": "u45"
   },
   {
     "id": "i-p13-4",
@@ -453,7 +453,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u35"
+    "managerId": "u44"
   },
   {
     "id": "i-p13-5",
@@ -461,7 +461,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u38"
+    "managerId": "u44"
   },
   {
     "id": "i-p14-1",
@@ -469,7 +469,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u32"
+    "managerId": "u41"
   },
   {
     "id": "i-p14-2",
@@ -477,7 +477,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u39"
+    "managerId": "u38"
   },
   {
     "id": "i-p14-3",
@@ -485,7 +485,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u36"
+    "managerId": "u35"
   },
   {
     "id": "i-p14-4",
@@ -493,7 +493,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u40"
+    "managerId": "u42"
   },
   {
     "id": "i-p14-5",
@@ -501,7 +501,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u40"
+    "managerId": "u44"
   },
   {
     "id": "i-p15-1",
@@ -509,7 +509,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u39"
+    "managerId": "u40"
   },
   {
     "id": "i-p15-2",
@@ -517,7 +517,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u39"
+    "managerId": "u44"
   },
   {
     "id": "i-p15-3",
@@ -533,7 +533,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u30"
+    "managerId": "u43"
   },
   {
     "id": "i-p15-5",
@@ -541,7 +541,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u45"
+    "managerId": "u43"
   },
   {
     "id": "i-p16-1",
@@ -549,7 +549,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u35"
+    "managerId": "u43"
   },
   {
     "id": "i-p16-2",
@@ -557,7 +557,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u45"
+    "managerId": "u42"
   },
   {
     "id": "i-p16-3",
@@ -573,7 +573,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u42"
+    "managerId": "u35"
   },
   {
     "id": "i-p16-5",
@@ -581,7 +581,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u32"
+    "managerId": "u44"
   },
   {
     "id": "i-p17-1",
@@ -597,7 +597,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u43"
+    "managerId": "u37"
   },
   {
     "id": "i-p17-3",
@@ -605,7 +605,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u40"
+    "managerId": "u31"
   },
   {
     "id": "i-p17-4",
@@ -613,7 +613,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u40"
+    "managerId": "u35"
   },
   {
     "id": "i-p17-5",
@@ -621,7 +621,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u36"
+    "managerId": "u30"
   },
   {
     "id": "i-p18-1",
@@ -629,7 +629,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u38"
+    "managerId": "u37"
   },
   {
     "id": "i-p18-2",
@@ -637,7 +637,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u34"
+    "managerId": "u42"
   },
   {
     "id": "i-p18-3",
@@ -653,7 +653,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u41"
+    "managerId": "u44"
   },
   {
     "id": "i-p18-5",
@@ -661,7 +661,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u33"
+    "managerId": "u34"
   },
   {
     "id": "i-p19-1",
@@ -669,7 +669,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u35"
+    "managerId": "u37"
   },
   {
     "id": "i-p19-2",
@@ -677,7 +677,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u37"
+    "managerId": "u36"
   },
   {
     "id": "i-p19-3",
@@ -685,7 +685,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u41"
+    "managerId": "u44"
   },
   {
     "id": "i-p19-4",
@@ -693,7 +693,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u30"
+    "managerId": "u38"
   },
   {
     "id": "i-p19-5",
@@ -701,7 +701,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u35"
+    "managerId": "u30"
   },
   {
     "id": "i-p20-1",
@@ -709,7 +709,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u45"
+    "managerId": "u32"
   },
   {
     "id": "i-p20-2",
@@ -717,7 +717,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u45"
+    "managerId": "u30"
   },
   {
     "id": "i-p20-3",
@@ -725,7 +725,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u34"
+    "managerId": "u30"
   },
   {
     "id": "i-p20-4",
@@ -733,7 +733,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u44"
+    "managerId": "u34"
   },
   {
     "id": "i-p20-5",
@@ -741,7 +741,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u35"
+    "managerId": "u34"
   },
   {
     "id": "i-p21-1",
@@ -749,7 +749,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị mặt bằng",
     "order": 1,
-    "managerId": "u33"
+    "managerId": "u35"
   },
   {
     "id": "i-p21-2",
@@ -757,7 +757,7 @@
     "code": "1.2",
     "name": "Nền sân đỗ, đường lăn",
     "order": 2,
-    "managerId": "u34"
+    "managerId": "u40"
   },
   {
     "id": "i-p21-3",
@@ -765,7 +765,7 @@
     "code": "1.3",
     "name": "Móng mặt đường",
     "order": 3,
-    "managerId": "u44"
+    "managerId": "u42"
   },
   {
     "id": "i-p21-4",
@@ -773,7 +773,7 @@
     "code": "1.4",
     "name": "Mặt đường bê tông xi măng",
     "order": 4,
-    "managerId": "u31"
+    "managerId": "u35"
   },
   {
     "id": "i-p21-5",
@@ -781,7 +781,7 @@
     "code": "1.5",
     "name": "Hệ thống kỹ thuật & an toàn bay",
     "order": 5,
-    "managerId": "u37"
+    "managerId": "u36"
   },
   {
     "id": "i-p22-1",
@@ -789,7 +789,7 @@
     "code": "1.1",
     "name": "Nền và móng",
     "order": 1,
-    "managerId": "u42"
+    "managerId": "u37"
   },
   {
     "id": "i-p22-2",
@@ -797,7 +797,7 @@
     "code": "1.2",
     "name": "Mặt đường và sân đỗ",
     "order": 2,
-    "managerId": "u33"
+    "managerId": "u43"
   },
   {
     "id": "i-p22-3",
@@ -813,7 +813,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u34"
+    "managerId": "u42"
   },
   {
     "id": "i-p23-2",
@@ -821,7 +821,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u40"
+    "managerId": "u42"
   },
   {
     "id": "i-p23-3",
@@ -829,7 +829,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u39"
+    "managerId": "u43"
   },
   {
     "id": "i-p23-4",
@@ -837,7 +837,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u32"
+    "managerId": "u43"
   },
   {
     "id": "i-p23-5",
@@ -845,7 +845,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u39"
+    "managerId": "u41"
   },
   {
     "id": "i-p24-1",
@@ -861,7 +861,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u40"
+    "managerId": "u34"
   },
   {
     "id": "i-p24-3",
@@ -869,7 +869,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u33"
+    "managerId": "u32"
   },
   {
     "id": "i-p24-4",
@@ -877,7 +877,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u40"
+    "managerId": "u43"
   },
   {
     "id": "i-p24-5",
@@ -885,7 +885,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u44"
+    "managerId": "u36"
   },
   {
     "id": "i-p25-1",
@@ -893,7 +893,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u43"
+    "managerId": "u39"
   },
   {
     "id": "i-p25-2",
@@ -901,7 +901,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u30"
+    "managerId": "u35"
   },
   {
     "id": "i-p25-3",
@@ -909,7 +909,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u34"
+    "managerId": "u41"
   },
   {
     "id": "i-p25-4",
@@ -917,7 +917,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u32"
+    "managerId": "u44"
   },
   {
     "id": "i-p25-5",
@@ -925,7 +925,7 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u43"
+    "managerId": "u32"
   },
   {
     "id": "i-p26-1",
@@ -933,7 +933,7 @@
     "code": "1.1",
     "name": "Công tác chuẩn bị và san lấp mặt bằng",
     "order": 1,
-    "managerId": "u37"
+    "managerId": "u39"
   },
   {
     "id": "i-p26-2",
@@ -941,7 +941,7 @@
     "code": "1.2",
     "name": "Phần móng",
     "order": 2,
-    "managerId": "u44"
+    "managerId": "u43"
   },
   {
     "id": "i-p26-3",
@@ -949,7 +949,7 @@
     "code": "1.3",
     "name": "Phần thân",
     "order": 3,
-    "managerId": "u38"
+    "managerId": "u36"
   },
   {
     "id": "i-p26-4",
@@ -957,7 +957,7 @@
     "code": "1.4",
     "name": "Hoàn thiện",
     "order": 4,
-    "managerId": "u33"
+    "managerId": "u31"
   },
   {
     "id": "i-p26-5",
@@ -965,6 +965,6 @@
     "code": "1.5",
     "name": "Hạ tầng ngoài nhà",
     "order": 5,
-    "managerId": "u36"
+    "managerId": "u43"
   }
 ]

@@ -17,9 +17,9 @@ const LANDING: Partial<Record<RoleKey, string>> = {
   phong_ktkt: "/construction/plan/p01",
   chi_huy_truong: "/projects/p01",
   to_truong: "/construction/plan/p01",
-  bp_vat_tu: "/materials/requests",
+  bp_vat_tu: "/materials/stock/p01",
   phong_thiet_bi: "/equipment/list",
-  ke_toan: "/materials/inventory",
+  ke_toan: "/materials/stock",
   admin: "/admin/users",
 };
 

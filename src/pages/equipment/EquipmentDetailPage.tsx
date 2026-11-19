@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Clock, Fuel, Pencil, Plus, Truck, Undo2, Wrench } from "lucide-react";
+import { ArrowLeft, Clock, Fuel, Pencil, Plus, Truck, Undo2, Wrench, ImagePlus } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
@@ -18,7 +18,10 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { DispatchDialog, EquipmentFormDialog } from "./EquipmentDialogs";
 import { MaintenanceDialog, ShiftDialog } from "./ShiftMaintDialogs";
-import { releaseEquipment } from "@/services/actions";
+import { releaseEquipment, saveRow } from "@/services/actions";
+import { AttachmentList, FilePreview, fileUrl, readFiles } from "@/components/common/Attachments";
+import { cn } from "@/utils/cn";
+import type { Attachment } from "@/types";
 import { equipmentWork, getEquipmentUsage, maintenanceDue, utilizationOf } from "@/services/selectors";
 import { ASSIGNMENT_STATUS, EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
@@ -48,7 +51,7 @@ export default function EquipmentDetailPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <Link to="/equipment/list" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Danh sách xe máy</Link>
+          <Link to="/equipment/list" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-primary"><ArrowLeft className="h-3.5 w-3.5" /> Danh mục XMTB</Link>
           <div className="flex flex-wrap items-center gap-2"><h1 className="text-xl font-bold">{e.code} – {e.name}</h1><StatusBadge map={EQUIPMENT_STATUS} value={e.status} /><Badge tone={e.ownership === "so_huu" ? "info" : "purple"}>{e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"}</Badge></div>
           <div className="mt-1 text-[13px] text-slate-500">{e.group} · {e.brand} · {e.plate} · SX {e.year} · Quản lý: {db.departments.find((d) => d.id === e.manageUnitId)?.code}</div>
         </div>
@@ -60,9 +63,11 @@ export default function EquipmentDetailPage() {
         </div>
       </div>
 
+      <EquipmentGallery equipmentId={e.id} />
+
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
-        <KpiCard label="Công trình đang sử dụng" value={<span className="text-base">{project?.shortName ?? "Chưa phân bổ"}</span>} tone="info" sub={e.operatorId ? `Vận hành: ${db.users.find((x) => x.id === e.operatorId)?.name}` : "Chưa phân công người vận hành"} icon={<Truck />} onClick={project ? () => navigate(`/projects/${project.id}`) : undefined} />
-        <KpiCard label="Giờ máy tại công trình hiện tại" value={fmtNumber(work.hours, 0)} unit="giờ" tone="success" icon={<Clock />} progress={utilizationOf(work)} sub={project ? `Từ khi về công trình · hiệu suất ${fmtPct(utilizationOf(work), 0)} · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ` : `Chưa phân bổ · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ`} />
+        <KpiCard label="Dự án đang sử dụng" value={<span className="text-base">{project?.shortName ?? "Chưa phân bổ"}</span>} tone="info" sub={e.operatorId ? `Vận hành: ${db.users.find((x) => x.id === e.operatorId)?.name}` : "Chưa phân công người vận hành"} icon={<Truck />} onClick={project ? () => navigate(`/projects/${project.id}`) : undefined} />
+        <KpiCard label="Giờ máy tại dự án hiện tại" value={fmtNumber(work.hours, 0)} unit="giờ" tone="success" icon={<Clock />} progress={utilizationOf(work)} sub={project ? `Từ khi về công trình · hiệu suất ${fmtPct(utilizationOf(work), 0)} · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ` : `Chưa phân bổ · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ`} />
         <KpiCard label="Nhiên liệu tiêu hao (3 tuần)" value={fmtNumber(u?.fuel ?? 0, 0)} unit="lít" tone={u && u.fuel > u.fuelNormTotal * 1.08 ? "danger" : "warning"} icon={<Fuel />} progress={u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0} sub={`Định mức ${e.fuelNorm} lít/giờ · ${fmtPct(u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0, 0)} định mức`} />
         <KpiCard label="Bảo dưỡng định kỳ" value={fmtNumber(sinceMaint, 0)} unit={`/ ${e.maintenanceInterval} giờ`} tone={maintenanceDue(e) ? "danger" : "navy"} icon={<Wrench />} progress={sinceMaint / e.maintenanceInterval} sub={maintenanceDue(e) ? "Đã đến hạn bảo dưỡng" : `Còn ${e.maintenanceInterval - sinceMaint} giờ đến kỳ bảo dưỡng`} />
       </div>
@@ -150,7 +155,7 @@ export default function EquipmentDetailPage() {
         <TabsContent value="info">
           <Card className="p-5">
             <dl className="grid gap-x-8 gap-y-3 text-[13px] md:grid-cols-3">
-              {[["Mã máy", e.code], ["Tên máy", e.name], ["Nhóm máy", e.group], ["Hãng / model", e.brand], ["Biển số / số hiệu", e.plate], ["Năm sản xuất", e.year], ["Hình thức", e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"], ["Đơn vị cho thuê", e.rentalSupplier ?? "—"], ["Đơn giá thuê", e.rentalRate ? `${fmtVnd(e.rentalRate)} đ/ca` : "—"], ["Định mức nhiên liệu", `${e.fuelNorm} lít/giờ`], ["Chu kỳ bảo dưỡng", `${e.maintenanceInterval} giờ`], ["Tổng giờ máy", fmtNumber(e.totalHours, 0)], ["Loại", { o_to: "Xe ô tô", xe_bien_do: "Xe biển đỏ", may_thiet_bi: "Máy thiết bị" }[e.kind] ?? "—"], ["Mã tài sản", e.assetCode || "—"], ["Số khung / số máy", `${e.chassisNo || "—"} / ${e.engineNo || "—"}`], ["Cấp chất lượng", e.qualityGrade || "—"], ["QĐ điều động / HĐ thuê", e.decisionNo || "—"], ["Hạn kiểm định", e.inspectionDue ? e.inspectionDue.split("-").reverse().join("/") : "—"], ["Hạn bảo hiểm", e.insuranceDue ? e.insuranceDue.split("-").reverse().join("/") : "—"], ["Chứng minh chủ sở hữu", e.ownership === "so_huu" ? "Tài sản TCT" : e.ownerProof ? "Đã có" : "Chưa có"], ...(e.vetcCode ? [["Thẻ VETC / ePass", e.vetcCode]] : [])].map(([k, v]) => (
+              {[["Mã máy", e.code], ["XMTB", e.name], ["Nhóm XMTB", e.group], ["Hãng / model", e.brand], ["Biển số / số hiệu", e.plate], ["Năm sản xuất", e.year], ["Nguồn gốc", e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"], ["Đơn vị cho thuê", e.rentalSupplier ?? "—"], ["Đơn giá thuê", e.rentalRate ? `${fmtVnd(e.rentalRate)} đ/ca` : "—"], ["Định mức nhiên liệu", `${e.fuelNorm} lít/giờ`], ["Chu kỳ bảo dưỡng", `${e.maintenanceInterval} giờ`], ["Tổng giờ máy", fmtNumber(e.totalHours, 0)], ["Loại", { o_to: "Xe ô tô", xe_bien_do: "Xe biển đỏ", may_thiet_bi: "Máy thiết bị" }[e.kind] ?? "—"], ["Mã tài sản", e.assetCode || "—"], ["Số khung / số máy", `${e.chassisNo || "—"} / ${e.engineNo || "—"}`], ["Cấp chất lượng", e.qualityGrade || "—"], ["QĐ điều động / HĐ thuê", e.decisionNo || "—"], ["Hạn kiểm định", e.inspectionDue ? e.inspectionDue.split("-").reverse().join("/") : "—"], ["Hạn bảo hiểm", e.insuranceDue ? e.insuranceDue.split("-").reverse().join("/") : "—"], ["Chứng minh chủ sở hữu", e.ownership === "so_huu" ? "Tài sản TCT" : e.ownerProof ? "Đã có" : "Chưa có"], ...(e.vetcCode ? [["Thẻ VETC / ePass", e.vetcCode]] : [])].map(([k, v]) => (
                 <div key={k as string}><dt className="text-xs text-slate-500">{k}</dt><dd className="font-medium text-slate-800">{v}</dd></div>
               ))}
             </dl>
@@ -163,5 +168,49 @@ export default function EquipmentDetailPage() {
       <ShiftDialog open={dlg === "shift"} onOpenChange={(o) => !o && setDlg(null)} equipmentId={e.id} />
       <MaintenanceDialog open={dlg === "maint"} onOpenChange={(o) => !o && setDlg(null)} equipmentId={e.id} />
     </div>
+  );
+}
+
+/** Hình ảnh XMTB (ảnh chính + ảnh nhỏ) và giấy tờ đính kèm */
+function EquipmentGallery({ equipmentId }: { equipmentId: string }) {
+  const { db, run } = useDb();
+  const { can } = useAuth();
+  const e = db.equipment.find((x) => x.id === equipmentId)!;
+  const imgs = e.images ?? [];
+  const [idx, setIdx] = useState(0);
+  const [view, setView] = useState<Attachment | null>(null);
+  const main = imgs[Math.min(idx, imgs.length - 1)];
+  return (
+    <Card className="grid gap-4 p-4 lg:grid-cols-[420px_1fr]">
+      <div>
+        {main ? (
+          <button onClick={() => setView(main)} className="block w-full overflow-hidden rounded-lg border bg-slate-100"><img src={fileUrl(main)!} alt={e.name} className="aspect-[4/3] w-full object-cover" /></button>
+        ) : (
+          <div className="flex aspect-[4/3] w-full flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed text-sm text-slate-400"><Truck className="h-10 w-10" />Chưa có hình ảnh</div>
+        )}
+        <div className="mt-2 flex flex-wrap gap-2">
+          {imgs.map((im, i) => (
+            <div key={im.id} className="group relative">
+              <button onClick={() => setIdx(i)} className={cn("overflow-hidden rounded-md border-2", i === idx ? "border-primary" : "border-transparent")}><img src={fileUrl(im)!} alt="" className="h-14 w-20 object-cover" /></button>
+              {can("equipment.edit") && <button aria-label="Xóa ảnh" onClick={() => { run(saveRow, "equipment", { ...e, images: imgs.filter((x) => x.id !== im.id) }); setIdx(0); toast.success("Đã xóa ảnh"); }} className="absolute -right-1.5 -top-1.5 hidden h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[11px] text-white group-hover:flex">×</button>}
+            </div>
+          ))}
+          {can("equipment.edit") && (
+            <label className="flex h-14 w-20 cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed text-[11px] text-slate-500 hover:border-primary hover:text-primary">
+              <ImagePlus className="h-4 w-4" />Thêm ảnh
+              <input type="file" accept="image/*" multiple className="hidden" onChange={async (ev) => { const a = await readFiles(ev.target.files); ev.target.value = ""; if (a.length) { run(saveRow, "equipment", { ...e, images: [...imgs, ...a] }); toast.success(`Đã thêm ${a.length} ảnh`); } }} />
+            </label>
+          )}
+        </div>
+      </div>
+      <div>
+        <h3 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Giấy tờ đính kèm</h3>
+        <AttachmentList files={e.docFiles ?? []} empty="Chưa có giấy tờ – cập nhật trong form sửa XMTB (giấy đăng ký, kiểm định, bảo hiểm…)" />
+        <dl className="mt-4 grid gap-x-6 gap-y-2 text-[13.5px] sm:grid-cols-2">
+          {[["Loại", { o_to: "Xe ô tô", xe_bien_do: "Xe biển đỏ", may_thiet_bi: "Máy thiết bị" }[e.kind] ?? "—"], ["Nguồn gốc", e.ownership === "so_huu" ? "Sở hữu" : `Thuê ngoài – ${e.rentalSupplier ?? ""}`], ["Hạn kiểm định", e.inspectionDue ? e.inspectionDue.split("-").reverse().join("/") : "—"], ["Hạn bảo hiểm", e.insuranceDue ? e.insuranceDue.split("-").reverse().join("/") : "—"], ["Cấp chất lượng", e.qualityGrade || "—"], ["QĐ điều động / HĐ thuê", e.decisionNo || "—"]].map(([k, v]) => <div key={k}><dt className="text-[12px] text-slate-500">{k}</dt><dd className="font-medium text-slate-900">{v}</dd></div>)}
+        </dl>
+      </div>
+      <FilePreview file={view} onClose={() => setView(null)} />
+    </Card>
   );
 }

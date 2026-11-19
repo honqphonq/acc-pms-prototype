@@ -45,6 +45,7 @@ interface Line {
   planned: number;
   unit: string;
   qty: number;
+  actualQty?: number;
   predecessors?: { id: string; type: "FS" | "SS" }[];
   late: boolean;
   taskId?: string;
@@ -120,7 +121,7 @@ export default function PlanPage() {
             key: t.id, stt: t.code, code: `W${String(++w).padStart(5, "0")}`, name: t.name, depth, kind: r.children.length ? "group" : "task",
             assignee: userName(t.assigneeId), team: t.team, start: t.plannedStart, end: t.plannedEnd,
             actualStart: r.children.length ? minStart(desc) : t.actualStart, actualEnd: r.children.length ? maxEnd(desc) : t.actualEnd,
-            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, predecessors: t.predecessors, late: r.health === "qua_han" || r.health === "cham",
+            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, actualQty: r.children.length ? 0 : t.actualQty, predecessors: t.predecessors, late: r.health === "qua_han" || r.health === "cham",
             taskId: t.id, itemId, parentId: t.parentId, childKeys: r.children.map((c) => c.task.id),
           });
           walk(r.children, depth + 1);
@@ -188,7 +189,7 @@ export default function PlanPage() {
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({
     id: l.taskId ?? l.key, label: l.kind === "item" ? `${l.stt}. ${l.name.toUpperCase()}` : l.name, code: l.kind === "total" ? "1" : l.kind === "item" ? "" : l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
     start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd,
-    status: ganttStatus(l), progress: l.actual, unit: l.unit, qty: l.qty, predecessors: l.predecessors,
+    status: ganttStatus(l), progress: l.actual, unit: l.unit, qty: l.qty, actualQty: l.actualQty, predecessors: l.predecessors,
     assignee: l.assignee || undefined,
   }));
   const printGantt = () => {
@@ -277,7 +278,6 @@ export default function PlanPage() {
             <div className="gantt-title border-b px-4 py-3 text-center">
               <div className="text-[15px] font-bold uppercase text-slate-900">Tiến độ thi công tổng thể</div>
               <div className="text-[12px] text-slate-600">Dự án: {project.name.toUpperCase()}</div>
-              <div className="text-[12px] text-slate-600">{project.packageName}</div>
             </div>
             <div className="border-b px-4 py-2 print:hidden"><GanttLegend showBaseline={baseline} /></div>
             <GanttChart rows={ganttRows} showBaseline={baseline} zoom={zoom} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
@@ -298,10 +298,11 @@ export default function PlanPage() {
                   <th className="px-1.5 text-left font-medium">Kết thúc<br />kế hoạch</th>
                   <th className="px-1.5 text-left font-medium">Bắt đầu<br />thực tế</th>
                   <th className="px-1.5 text-left font-medium">Kết thúc<br />thực tế</th>
-                  <th className="px-1.5 text-left font-medium">Tiến độ</th>
+                  <th className="px-1.5 text-left font-medium">% hoàn thành</th>
                   {baseline && <th className="px-1.5 text-left font-medium">Tiến độ<br />kế hoạch</th>}
                   <th className="px-2 text-left font-medium">ĐVT</th>
-                  <th className="px-2 text-right font-medium">Khối lượng</th>
+                  <th className="px-2 text-right font-medium">KL hợp đồng</th>
+                  <th className="px-2 text-right font-medium">KL thực tế</th>
                 </tr>
               </thead>
               <tbody>
@@ -341,10 +342,11 @@ export default function PlanPage() {
                       {baseline && <td className="tabular whitespace-nowrap px-1.5 py-2 text-slate-500">{pct(l.planned)}</td>}
                       <td className="whitespace-nowrap px-2.5 py-2 text-slate-600">{l.unit}</td>
                       <td className="tabular whitespace-nowrap px-2.5 py-2 text-right text-slate-700">{l.qty ? l.qty.toLocaleString("vi-VN") : ""}</td>
+                      <td className={cn("tabular whitespace-nowrap px-2.5 py-2 text-right", l.qty && (l.actualQty ?? 0) > l.qty ? "font-semibold text-amber-600" : l.actual >= 1 ? "text-success-fg" : "text-slate-700")}>{l.kind === "task" && l.qty ? `${(l.actualQty ?? 0) > l.qty ? "+" : ""}${(l.actualQty ?? 0).toLocaleString("vi-VN")}` : ""}</td>
                     </tr>
                   );
                 })}
-                {shown.length <= 2 && <tr><td colSpan={15} className="py-8 text-center text-xs text-slate-400">Không có công việc phù hợp</td></tr>}
+                {shown.length <= 2 && <tr><td colSpan={16} className="py-8 text-center text-xs text-slate-400">Không có công việc phù hợp</td></tr>}
               </tbody>
             </table>
           </div>

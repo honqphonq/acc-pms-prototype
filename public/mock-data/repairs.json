@@ -30,7 +30,7 @@
   {
     "id": "sc-003",
     "code": "ĐNSC-2026-023",
-    "equipmentId": "eq-005",
+    "equipmentId": "eq-007",
     "level": "nho",
     "content": "Thay lốp trước, căn chỉnh phanh",
     "assigneeId": "u13",
@@ -44,7 +44,7 @@
   {
     "id": "sc-004",
     "code": "ĐNSC-2026-024",
-    "equipmentId": "eq-007",
+    "equipmentId": "eq-008",
     "level": "lon",
     "content": "Đại tu động cơ máy xúc sau 9.000 giờ",
     "assigneeId": "u12",

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300">
+<rect x="4" y="4" width="472" height="292" rx="18" fill="#F8FAFC" stroke="#7C3AED" stroke-width="3"/>
+<rect x="4" y="4" width="472" height="58" rx="18" fill="#7C3AED"/><rect x="4" y="40" width="472" height="22" fill="#7C3AED"/>
+<text x="240" y="42" text-anchor="middle" font-family="Arial" font-weight="700" font-size="20" fill="#fff">GIẤY KHÁM SỨC KHỎE</text>
+<rect x="30" y="92" width="140" height="170" rx="8" fill="#E2E8F0"/><circle cx="100" cy="150" r="32" fill="#CBD5E1"/><rect x="55" y="192" width="90" height="56" rx="28" fill="#CBD5E1"/>
+<g font-family="Arial"><text x="200" y="140" font-size="16" fill="#334155">Kết luận: Đủ sức khỏe</text><text x="200" y="166" font-size="16" fill="#334155">Phân loại: Loại II</text><text x="200" y="192" font-size="16" fill="#334155">Ngày khám: 2026</text><text x="200" y="218" font-size="16" fill="#334155">BV Đa khoa tỉnh</text></g>
+<text x="240" y="180.0" text-anchor="middle" font-family="Arial" font-weight="800" font-size="72" fill="#DC2626" fill-opacity="0.18" transform="rotate(-18 240 150.0)">MẪU</text>
+</svg>

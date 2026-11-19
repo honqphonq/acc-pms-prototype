@@ -16,7 +16,9 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { TaskUpdateForm, n1, p1 } from "./TaskUpdateForm";
 import { TaskFormDialog } from "./TaskFormDialog";
-import { confirmLog, deleteTask, saveRow } from "@/services/actions";
+import { confirmLog, deleteLog, deleteTask, saveRow } from "@/services/actions";
+import { TaskProgressDialog } from "./TaskProgressDialog";
+import { cn } from "@/utils/cn";
 import { DEMO_TODAY } from "@/utils/date";
 import { taskActualPct, taskHealth, taskPlannedPct, TASK_HEALTH_LABEL } from "@/services/selectors";
 import { TASK_STATUS } from "@/utils/constants";
@@ -31,6 +33,8 @@ export default function TaskDetailPage() {
   const navigate = useNavigate();
   const confirm = useConfirm();
   const [editOpen, setEditOpen] = useState(false);
+  const [editLog, setEditLog] = useState<string | null>(null);
+  const [quick, setQuick] = useState<string | null>(null);
   const task = db.constructionPlans.find((t) => t.id === taskId);
   const backTo = `/construction/plan/${projectId}`;
   if (!task) return <Card><EmptyState title="Không tìm thấy công việc" description="Công việc có thể đã bị xóa." action={<Button onClick={() => navigate(backTo)}>Về kế hoạch thi công</Button>} /></Card>;
@@ -40,7 +44,6 @@ export default function TaskDetailPage() {
   const parent = db.constructionPlans.find((t) => t.id === task.parentId);
   const children = db.constructionPlans.filter((t) => t.parentId === task.id).sort((a, b) => a.order - b.order);
   const logs = db.constructionLogs.filter((l) => l.taskId === task.id).sort((a, b) => b.date.localeCompare(a.date));
-  const photos = logs.flatMap((l) => l.photos.map((p) => ({ p, date: l.date })));
   const a = taskActualPct(task);
   const pl = taskPlannedPct(task);
   const h = taskHealth({ actual: a, planned: pl, plannedEnd: task.plannedEnd, plannedStart: task.plannedStart });
@@ -84,7 +87,7 @@ export default function TaskDetailPage() {
             {children.map((c) => (
               <Link key={c.id} to={`/construction/plan/${projectId}/task/${c.id}`} className="flex items-center justify-between gap-3 rounded-lg border px-3 py-2.5 hover:bg-slate-50">
                 <span className="text-[13px]"><span className="text-slate-400">{c.code}</span> {c.name}</span>
-                <span className="w-40"><Progress value={taskActualPct(c)} tone={taskActualPct(c) >= 1 ? "success" : "info"} className="h-1.5" /></span>
+                <span className="flex items-center gap-3"><span className="w-40"><Progress value={taskActualPct(c)} tone={taskActualPct(c) >= 1 ? "success" : "info"} className="h-1.5" /></span><span className="w-12 text-right text-[12px] font-semibold">{Math.floor(taskActualPct(c) * 1000) / 10}%</span>{!c.isGroup && can("progress.update") && <Button size="xs" variant="soft" onClick={(e) => { e.preventDefault(); setQuick(c.id); }}>Cập nhật</Button>}</span>
               </Link>
             ))}
           </CardContent>
@@ -92,40 +95,54 @@ export default function TaskDetailPage() {
       ) : (
         <Card className="overflow-hidden">
           <div className="border-b px-5 py-3 text-[13px] font-semibold uppercase tracking-wide text-slate-700">Cập nhật kết quả thực hiện</div>
-          <TaskUpdateForm taskId={task.id} />
+          <TaskUpdateForm taskId={task.id} editLogId={editLog} onEditDone={() => setEditLog(null)} />
         </Card>
       )}
 
       {!task.isGroup && <LinksAndQuality taskId={task.id} />}
 
-      {!task.isGroup && (
-        <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
+      {!task.isGroup && (() => {
+        const asc = [...logs].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
+        const cum = new Map<string, number>();
+        let acc = 0;
+        asc.forEach((l) => { if (l.status !== "nhap") acc = Math.round((acc + l.qty) * 100) / 100; cum.set(l.id, acc); });
+        return (
           <Card>
-            <CardHeader><CardTitle>Lịch sử nhật ký thi công ({logs.length})</CardTitle></CardHeader>
-            <CardContent className="space-y-2">
-              {logs.length === 0 && <EmptyState title="Chưa có nhật ký" description="Cập nhật khối lượng ở form phía trên để ghi nhận nhật ký." className="py-8" />}
-              {logs.map((l) => (
-                <div key={l.id} className="rounded-lg border p-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="text-[13px] font-semibold">{fmtDate(l.date)} · <span className="text-success-fg">+{fmtNumber(l.qty)} {task.unit}</span></div>
-                    {l.status === "da_xac_nhan" ? <Badge tone="success">CHT đã xác nhận</Badge> : l.status === "nhap" ? <Badge>Nháp</Badge> : can("log.confirm") ? (
-                      <Button size="xs" variant="success" onClick={() => { run(confirmLog, l.id, user!.id); toast.success("Đã xác nhận kết quả"); }}><CheckCircle2 /> Xác nhận</Button>
-                    ) : <Badge tone="warning">Chờ CHT xác nhận</Badge>}
-                  </div>
-                  <div className="mt-1 text-[13px] text-slate-600">{l.content}</div>
-                  <div className="mt-1 text-[11.5px] text-slate-400">{db.users.find((u) => u.id === l.reporterId)?.name} · {l.labor.reduce((s, x) => s + x.people, 0)} nhân công · {l.photos.length} ảnh</div>
-                </div>
-              ))}
-            </CardContent>
+            <CardHeader><CardTitle>Lịch sử cập nhật hằng ngày ({logs.length})</CardTitle>{task.actualQty > task.contractQty && task.contractQty > 0 && <Badge tone="warning">Khối lượng phát sinh: {fmtNumber(task.actualQty - task.contractQty)} {task.unit}</Badge>}</CardHeader>
+            {logs.length === 0 ? <EmptyState title="Chưa có cập nhật" description="Nhập khối lượng thực hiện trong ngày ở form phía trên." className="py-8" /> : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-[13.5px]">
+                  <thead className="bg-slate-100/80 text-left text-[12px] font-bold uppercase tracking-wide text-slate-800"><tr><th className="px-4 py-3">Ngày</th><th className="text-right">KL trong ngày</th><th className="text-right">Lũy kế</th><th className="pl-4">Nội dung</th><th>Nhân công</th><th>Ảnh</th><th>Người cập nhật</th><th>Trạng thái</th><th /></tr></thead>
+                  <tbody>
+                    {logs.map((l) => {
+                      const c = cum.get(l.id) ?? 0;
+                      return (
+                        <tr key={l.id} className={cn("border-t border-slate-200/80", editLog === l.id && "bg-sky-50")}>
+                          <td className="whitespace-nowrap px-4 py-2.5 font-medium">{fmtDate(l.date)}</td>
+                          <td className="tabular whitespace-nowrap text-right font-semibold text-success-fg">+{fmtNumber(l.qty)} {task.unit}</td>
+                          <td className={cn("tabular whitespace-nowrap text-right", task.contractQty && c > task.contractQty ? "font-semibold text-amber-600" : "")}>{fmtNumber(c)}{task.contractQty ? <span className="ml-1 text-[11.5px] text-slate-500">({Math.min(100, Math.round((c / task.contractQty) * 1000) / 10).toLocaleString("vi-VN")}%)</span> : null}</td>
+                          <td className="max-w-[320px] pl-4"><div className="line-clamp-2 text-slate-700">{l.content}</div></td>
+                          <td className="whitespace-nowrap">{l.labor.reduce((s, x) => s + x.people, 0)} người</td>
+                          <td>{l.photos.length ? <div className="flex gap-1">{l.photos.slice(0, 3).map((p, k) => <SitePhoto key={k} kind={p} caption={false} className="h-9 w-12" />)}</div> : <span className="text-slate-300">—</span>}</td>
+                          <td className="whitespace-nowrap text-slate-700">{db.users.find((u) => u.id === l.reporterId)?.name}</td>
+                          <td className="whitespace-nowrap">{l.status === "da_xac_nhan" ? <Badge tone="success">CHT đã xác nhận</Badge> : l.status === "nhap" ? <Badge>Nháp</Badge> : can("log.confirm") ? <Button size="xs" variant="success" onClick={() => { run(confirmLog, l.id, user!.id); toast.success("Đã xác nhận kết quả"); }}><CheckCircle2 /> Xác nhận</Button> : <Badge tone="warning">Chờ xác nhận</Badge>}</td>
+                          <td className="whitespace-nowrap pr-3 text-right">
+                            {can("progress.update") && <>
+                              <Button size="icon-sm" variant="ghost" aria-label="Sửa" onClick={() => { setEditLog(l.id); window.scrollTo({ top: 300, behavior: "smooth" }); }}><Pencil /></Button>
+                              <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa bản ghi ngày ${fmtDate(l.date)}?`, description: "Lũy kế, tiến độ và trạng thái công việc sẽ được tính lại.", destructive: true, confirmText: "Xóa" })) { run(deleteLog, l.id); if (editLog === l.id) setEditLog(null); toast.success("Đã xóa bản ghi"); } }}><Trash2 /></Button>
+                            </>}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </Card>
-          <Card className="h-fit">
-            <CardHeader><CardTitle>Hình ảnh hiện trường ({photos.length})</CardTitle></CardHeader>
-            <CardContent>
-              {photos.length === 0 ? <EmptyState title="Chưa có hình ảnh" className="py-8" /> : <div className="grid grid-cols-2 gap-2">{photos.map((x, i) => <SitePhoto key={i} kind={x.p} date={fmtDate(x.date)} />)}</div>}
-            </CardContent>
-          </Card>
-        </div>
-      )}
+        );
+      })()}
+      <TaskProgressDialog taskId={quick} open={!!quick} onOpenChange={(o) => !o && setQuick(null)} />
       <TaskFormDialog open={editOpen} onOpenChange={setEditOpen} projectId={task.projectId} task={task} />
     </div>
   );
