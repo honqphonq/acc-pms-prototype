@@ -24,7 +24,7 @@ export default function StaffPage() {
       description="Danh sách chỉ huy, cán bộ kỹ thuật, công nhân và lao động phổ thông tại công trường; hồ sơ nhân sự và các yêu cầu ATVSLĐ."
       searchText={(s) => `${s.code} ${s.name} ${s.position} ${s.team} ${s.phone}`}
       filters={[
-        { label: "Tất cả dự án", options: projectOptions, test: (s, v) => s.projectId === v, initial: "p01" },
+        { label: "Tất cả dự án", options: projectOptions, test: (s, v) => s.projectId === v, initial: new URLSearchParams(window.location.search).get("project") ?? "p01" },
         { label: "Tất cả loại nhân sự", options: toOptions(STAFF_TYPE), test: (s, v) => s.type === v },
         { label: "Tất cả tổ đội", options: teams, test: (s, v) => s.team === v },
       ]}

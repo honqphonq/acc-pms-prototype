@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { BarChart3, CalendarRange, CheckCircle2, ClipboardList, Download, FileBarChart, Pencil, TrendingUp, Users, Wallet } from "lucide-react";
+import { BarChart3, CalendarRange, CheckCircle2, ClipboardList, Download, FileBarChart, Pencil, TrendingUp, Users, Wallet, ChevronRight } from "lucide-react";
 import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis, ReferenceLine } from "recharts";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
@@ -11,28 +11,31 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useQueryParam } from "@/hooks/useQueryParam";
+import { ContractsTab, DocsTab, MethodsTab, StaffTab } from "./ProjectTabs";
 import { Tip } from "@/components/ui/tooltip";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { KpiCard } from "@/components/common/KpiCard";
 import { ChartCard } from "@/components/common/ChartCard";
 import { StatusBadge } from "@/components/common/StatusBadge";
-import { AvatarGroup, UserCell, Avatar } from "@/components/common/UserAvatar";
+import { AvatarGroup, UserCell } from "@/components/common/UserAvatar";
 import { EmptyState } from "@/components/common/EmptyState";
 import { PageSkeleton } from "@/components/common/LoadingState";
 import { SitePhoto } from "@/components/common/SitePhoto";
 import { ProjectFormDialog } from "./ProjectFormDialog";
 import { TaskProgressDialog } from "../construction/TaskProgressDialog";
 import {
-  acceptanceValue, equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
+  equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
   STOCK_STATUS, taskActualPct, taskPlannedPct, TASK_HEALTH_LABEL, taskHealth,
 } from "@/services/selectors";
-import { ACCEPTANCE_STATUS, CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PAYMENT_STATUS, PROJECT_STATUS, ROLE_LABELS, SERIES } from "@/utils/constants";
+import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PROJECT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtMoneyShort } from "@/utils/format";
 import { DEMO_TODAY, monthLabel } from "@/utils/date";
 
 export default function ProjectDetailPage() {
   const { id = "" } = useParams();
   const { db } = useDb();
+  const [tab, setTab] = useQueryParam("tab", "overview");
   const { can } = useAuth();
   const navigate = useNavigate();
   const loading = useSimulatedLoading(380, [id]);
@@ -47,7 +50,6 @@ export default function ProjectDetailPage() {
   const s = projectStats(db, project.id);
   const tasks = leafTasks(db, project.id);
   const items = db.constructionItems.filter((i) => i.projectId === project.id).sort((a, b) => a.order - b.order);
-  const members = project.memberIds.map((m) => db.users.find((u) => u.id === m)).filter(Boolean);
   const unit = db.departments.find((d) => d.id === project.unitId);
   const lateTasks = tasks
     .map((t) => ({ t, a: taskActualPct(t), p: taskPlannedPct(t) }))
@@ -67,8 +69,6 @@ export default function ProjectDetailPage() {
   const eqUtil = utilizationOf({ hours: eqHours, availableDays: eqWork.reduce((x, w) => x + w.availableDays, 0) });
   const stock = getStockRows(db).filter((r) => r.inv.projectId === project.id);
   const requests = db.materialRequests.filter((r) => r.projectId === project.id);
-  const acs = db.acceptanceRecords.filter((a) => a.projectId === project.id);
-  const pays = db.paymentRecords.filter((p) => p.projectId === project.id);
   const logs = db.constructionLogs.filter((l) => l.projectId === project.id).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
   const issues = db.issues.filter((i) => i.projectId === project.id);
   const sNow = series.filter((r) => r.month >= project.startDate.slice(0, 7));
@@ -137,29 +137,32 @@ export default function ProjectDetailPage() {
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Số công việc" value={s.tasksTotal} unit="công việc" icon={<ClipboardList />} tone="info" progress={s.tasksTotal ? s.tasksDone / s.tasksTotal : 0} sub={<>{s.tasksDone} hoàn thành ({fmtPct(s.tasksTotal ? s.tasksDone / s.tasksTotal : 0)}) · {s.tasksOverdue > 0 ? <Badge tone="danger">{s.tasksOverdue} quá hạn</Badge> : "0 quá hạn"}</>} />
         <KpiCard label="Tiến độ thực tế / kế hoạch" value={fmtPct(s.actual)} icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} marker={s.planned} sub={`Kế hoạch ${fmtPct(s.planned)} · ${s.healthReason}`} />
-        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Giá trị khối lượng thực hiện ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
+        <KpiCard onClick={() => setTab("contracts")} label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Giá trị khối lượng thực hiện ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(s.acceptedValue / 1e9)} unit="tỷ đồng" icon={<CheckCircle2 />} tone="warning" progress={s.acceptedValue / (project.contractValue || 1)} sub={`${fmtPct(s.acceptedValue / (project.contractValue || 1))} giá trị HĐ · chờ duyệt ${fmtNumber(s.pendingAcceptanceValue / 1e9)} tỷ`} />
         <KpiCard label="Chi phí thực hiện" value={fmtNumber(s.cost / 1e9)} unit="tỷ đồng" icon={<BarChart3 />} tone="navy" progress={s.cost / (project.budget || 1)} sub={`${fmtPct(s.cost / (project.budget || 1))} ngân sách dự kiến ${fmtNumber(project.budget / 1e9, 0)} tỷ`} />
       </div>
 
-      {tasks.length === 0 ? (
-        <Card>
-          <EmptyState icon={<CalendarRange />} title="Dự án chưa có kế hoạch thi công" description="Bắt đầu lập kế hoạch thi công nội bộ: tạo hạng mục, phân rã công việc và giao cho tổ đội." action={<Button onClick={() => navigate(`/construction/plan/${project.id}`)}>Lập kế hoạch thi công</Button>} />
-        </Card>
-      ) : (
-        <Tabs defaultValue="overview">
-          <TabsList className="rounded-t-xl bg-white px-2">
+      {(
+        <Tabs value={tab} onValueChange={setTab}>
+          <TabsList className="h-auto flex-wrap rounded-t-xl bg-white px-2">
             <TabsTrigger value="overview">Tổng quan</TabsTrigger>
-            <TabsTrigger value="items">Hạng mục thi công ({items.length})</TabsTrigger>
-            <TabsTrigger value="people">Nhân sự ({members.length})</TabsTrigger>
+            <TabsTrigger value="contracts">Hợp đồng ({db.contracts.filter((c) => c.projectId === project.id).length})</TabsTrigger>
+            <TabsTrigger value="methods">Phương án TCTC ({db.constructionMethods.filter((m) => m.projectId === project.id).length})</TabsTrigger>
+            <TabsTrigger value="items">Tiến độ thi công ({items.length})</TabsTrigger>
+            <TabsTrigger value="staff">Nhân sự thi công ({db.siteStaff.filter((x) => x.projectId === project.id && x.status === "dang_lam").length})</TabsTrigger>
+            <TabsTrigger value="docs">Hồ sơ thi công ({db.documents.filter((d) => d.projectId === project.id).length})</TabsTrigger>
             <TabsTrigger value="materials">Vật tư ({stock.length})</TabsTrigger>
             <TabsTrigger value="equipment">Thiết bị ({eqList.length})</TabsTrigger>
-            <TabsTrigger value="finance">Nghiệm thu & thanh toán</TabsTrigger>
             <TabsTrigger value="logs">Nhật ký & hình ảnh</TabsTrigger>
             <TabsTrigger value="issues">Vấn đề phát sinh ({issues.filter((i) => i.status !== "da_xu_ly").length})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
+            {tasks.length === 0 ? (
+              <Card>
+                <EmptyState icon={<CalendarRange />} title="Dự án chưa có tiến độ thi công" description="Bắt đầu lập tiến độ: tạo hạng mục, phân rã công việc và giao cho tổ đội – hoặc nhập từ Excel." action={<Button onClick={() => navigate(`/construction/plan/${project.id}`)}>Lập tiến độ thi công</Button>} />
+              </Card>
+            ) : <>
             <div className="grid gap-4 xl:grid-cols-12">
               <ChartCard className="xl:col-span-4" title="Tình trạng công việc">
                 <div className="relative h-44">
@@ -246,10 +249,18 @@ export default function ProjectDetailPage() {
                 </CardContent>
               </Card>
             </div>
+            </>}
           </TabsContent>
+
+          <TabsContent value="contracts"><ContractsTab projectId={project.id} /></TabsContent>
+          <TabsContent value="methods"><MethodsTab projectId={project.id} /></TabsContent>
+          <TabsContent value="staff"><StaffTab projectId={project.id} /></TabsContent>
+          <TabsContent value="docs"><DocsTab projectId={project.id} /></TabsContent>
 
           <TabsContent value="items">
             <Card>
+              <CardHeader><CardTitle>Tiến độ theo hạng mục</CardTitle><Button size="sm" variant="outline" onClick={() => navigate(`/construction/plan/${project.id}`)}>Mở Gantt tiến độ <ChevronRight /></Button></CardHeader>
+              {items.length === 0 && <EmptyState title="Chưa có hạng mục" action={<Button onClick={() => navigate(`/construction/plan/${project.id}`)}>Lập tiến độ thi công</Button>} />}
               <Table>
                 <TableHeader><TableRow><TableHead>Mã</TableHead><TableHead>Hạng mục</TableHead><TableHead>Phụ trách</TableHead><TableHead>Thời gian</TableHead><TableHead className="text-right">Giá trị (tỷ)</TableHead><TableHead>Tiến độ TT / KH</TableHead><TableHead>Quá hạn</TableHead></TableRow></TableHeader>
                 <TableBody>
@@ -272,29 +283,9 @@ export default function ProjectDetailPage() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="people">
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {members.map((u) => {
-                const assigned = tasks.filter((t) => t.assigneeId === u!.id);
-                return (
-                  <Card key={u!.id} className="flex items-start gap-3 p-4">
-                    <Avatar name={u!.name} size="lg" />
-                    <div className="min-w-0">
-                      <div className="font-semibold text-slate-800">{u!.name}</div>
-                      <div className="text-xs text-slate-500">{u!.title}</div>
-                      <Badge tone={u!.id === project.commanderId ? "primary" : "neutral"} className="mt-1.5">{u!.id === project.commanderId ? "Chỉ huy trưởng" : ROLE_LABELS[u!.role]}</Badge>
-                      <div className="mt-2 text-[11.5px] text-slate-500">{assigned.length} công việc được giao · {u!.phone}</div>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
-            <div className="mt-3 flex items-center gap-2 text-xs text-slate-500"><Users className="h-4 w-4" /> Ban chỉ huy công trường gồm: BP Kỹ thuật, BP Vật tư, BP Hồ sơ, BP Kế toán, BP ATLĐ – VSMT, BP Xe máy (theo mô hình tổ chức ACC).</div>
-          </TabsContent>
-
           <TabsContent value="materials" className="grid gap-4 xl:grid-cols-2">
             <Card>
-              <CardHeader><CardTitle>Tồn kho công trường</CardTitle><Link className="text-xs text-primary hover:underline" to={`/materials/inventory?project=${project.id}`}>Quản lý kho</Link></CardHeader>
+              <CardHeader><CardTitle>Tồn kho dự án</CardTitle><Button size="sm" variant="outline" onClick={() => navigate(`/materials/stock/${project.id}`)}>Mở kho vật tư <ChevronRight /></Button></CardHeader>
               <Table>
                 <TableHeader><TableRow><TableHead>Vật tư</TableHead><TableHead className="text-right">Tồn</TableHead><TableHead>Đã dùng / ĐM</TableHead><TableHead>Tình trạng</TableHead></TableRow></TableHeader>
                 <TableBody>
@@ -310,7 +301,7 @@ export default function ProjectDetailPage() {
               </Table>
             </Card>
             <Card>
-              <CardHeader><CardTitle>Đề xuất vật tư</CardTitle><Link className="text-xs text-primary hover:underline" to={`/materials/requests?project=${project.id}`}>Tất cả</Link></CardHeader>
+              <CardHeader><CardTitle>Đề xuất vật tư</CardTitle><Link className="text-xs text-primary hover:underline" to={`/materials/stock/${project.id}?tab=de_xuat`}>Tất cả</Link></CardHeader>
               <Table>
                 <TableBody>
                   {requests.length === 0 && <TableRow><TableCell className="py-8 text-center text-slate-500">Chưa có đề xuất</TableCell></TableRow>}
@@ -344,37 +335,6 @@ export default function ProjectDetailPage() {
                   </TableBody>
                 </Table>
               )}
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="finance" className="grid gap-4 xl:grid-cols-2">
-            <Card>
-              <CardHeader><CardTitle>Hồ sơ nghiệm thu</CardTitle><Link className="text-xs text-primary hover:underline" to={`/acceptance?project=${project.id}`}>Tất cả</Link></CardHeader>
-              <Table>
-                <TableBody>
-                  {acs.map((a) => (
-                    <TableRow key={a.id} className="cursor-pointer" onClick={() => navigate(`/acceptance/${a.id}`)}>
-                      <TableCell><div className="font-medium">{a.title}</div><div className="text-[11px] text-slate-400">{a.code} · {a.phase}</div></TableCell>
-                      <TableCell className="tabular whitespace-nowrap text-right">{fmtMoneyShort(acceptanceValue(db, a))}</TableCell>
-                      <TableCell><StatusBadge map={ACCEPTANCE_STATUS} value={a.status} /></TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Card>
-            <Card>
-              <CardHeader><CardTitle>Hồ sơ thanh toán</CardTitle><Link className="text-xs text-primary hover:underline" to="/payments">Tất cả</Link></CardHeader>
-              <Table>
-                <TableBody>
-                  {pays.map((p) => (
-                    <TableRow key={p.id}>
-                      <TableCell><div className="font-medium">{p.title}</div><div className="text-[11px] text-slate-400">{p.code} · {p.direction === "thu_cdt" ? "Thu từ CĐT" : "Trả NCC"}</div></TableCell>
-                      <TableCell className="tabular whitespace-nowrap text-right">{fmtMoneyShort(p.amount)}</TableCell>
-                      <TableCell><StatusBadge map={PAYMENT_STATUS} value={p.status} /></TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
             </Card>
           </TabsContent>
 

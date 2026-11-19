@@ -42,7 +42,7 @@ export default function ContractsPage() {
   const confirm = useConfirm();
   const loading = useSimulatedLoading();
   const [tab, setTab] = useState("");
-  const [projectId, setProjectId] = useState("");
+  const [projectId, setProjectId] = useState(() => new URLSearchParams(window.location.search).get("project") ?? "");
   const [quick, setQuick] = useState<"" | "sap_het">("");
   const [view, setView] = useState<string | null>(null);
   const [edit, setEdit] = useState<Contract | null>(null);

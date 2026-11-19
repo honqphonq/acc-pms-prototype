@@ -87,7 +87,7 @@ export default function MethodsPage() {
       title="Phương án tổ chức thi công" entityLabel="phương án" addLabel="Tạo phương án" codePrefix="PA-" collection="constructionMethods"
       description="Lập, góp ý, điều chỉnh và quản lý lịch sử phiên bản phương án tổ chức thi công, biện pháp thi công của từng công trình."
       searchText={(m) => `${m.code} ${m.title} ${m.summary}`}
-      filters={[{ label: "Tất cả dự án", options: projectOptions, test: (m, v) => m.projectId === v, initial: "p01" }, { label: "Tất cả trạng thái", options: toOptions(METHOD_STATUS), test: (m, v) => m.status === v }]}
+      filters={[{ label: "Tất cả dự án", options: projectOptions, test: (m, v) => m.projectId === v, initial: new URLSearchParams(window.location.search).get("project") ?? "p01" }, { label: "Tất cả trạng thái", options: toOptions(METHOD_STATUS), test: (m, v) => m.status === v }]}
       kpis={(rows) => [
         { label: "Phương án / biện pháp", value: rows.length, tone: "navy" },
         { label: "Đang lấy góp ý", value: rows.filter((r) => r.status === "cho_gop_y").length, tone: "warning" },
