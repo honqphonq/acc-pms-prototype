@@ -16,6 +16,7 @@ import { DEMO_TODAY } from "@/utils/date";
 import { fmtNumber, fmtVnd } from "@/utils/format";
 import { cn } from "@/utils/cn";
 import type { Attachment } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export const SUBTYPE: Record<string, string> = {
   ncc: "Nhập từ nhà cung cấp", dieu_chuyen: "Điều chuyển", tra_lai: "Hoàn trả từ công trường", kiem_ke: "Điều chỉnh kiểm kê",
@@ -66,7 +67,7 @@ export function VoucherDialog({ open, onOpenChange, projectId, type, transfer, m
             <FormField label="Ngày"><Input type="date" value={date} max={DEMO_TODAY} onChange={(e) => setDate(e.target.value)} /></FormField>
             {sub === "ncc" || sub === "tra_ncc" ? <FormField label="Nhà cung cấp" required={sub === "ncc"} className="md:col-span-2"><Select value={supplierId} placeholder="— Chọn nhà cung cấp —" onChange={(e) => setSupplierId(e.target.value)} options={db.suppliers.map((s) => ({ value: s.id, label: s.name }))} /></FormField>
               : type === "xuat" && sub === "thi_cong" ? <FormField label="Phục vụ công việc" className="md:col-span-2"><Select value={taskId} placeholder="— Chọn công việc —" onChange={(e) => setTaskId(e.target.value)} options={db.constructionPlans.filter((t) => t.projectId === projectId && !t.isGroup && t.status !== "hoan_thanh").map((t) => ({ value: t.id, label: `[${t.code}] ${t.name}` }))} /></FormField>
-              : type === "xuat" && sub === "dieu_chuyen" ? <FormField label="Kho dự án nhận" required className="md:col-span-2"><Select value={toProjectId} placeholder="— Chọn dự án —" onChange={(e) => setToProjectId(e.target.value)} options={db.projects.filter((p) => p.id !== projectId && p.status !== "hoan_thanh").map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
+              : type === "xuat" && sub === "dieu_chuyen" ? <FormField label="Kho dự án nhận" required className="md:col-span-2"><Select value={toProjectId} placeholder="— Chọn dự án —" onChange={(e) => setToProjectId(e.target.value)} options={activeProjects(db).filter((p) => p.id !== projectId).map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
               : <div className="md:col-span-2" />}
             <FormField label="Chứng từ gốc / ghi chú" className="md:col-span-4"><Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="VD: Hóa đơn 0001234, biên bản giao nhận ngày…" /></FormField>
           </div>

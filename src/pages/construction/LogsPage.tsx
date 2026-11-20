@@ -24,6 +24,7 @@ import { taskActualPct } from "@/services/selectors";
 import { fmtDate, fmtNumber } from "@/utils/format";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import type { ConstructionLog } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const LOG_STATUS = { nhap: { label: "Nháp", tone: "neutral" }, da_gui: { label: "Chờ CHT xác nhận", tone: "warning" }, da_xac_nhan: { label: "CHT đã xác nhận", tone: "success" } } as const;
 
@@ -83,7 +84,7 @@ export default function LogsPage() {
           searchText={(l) => { const t = taskOf(l.taskId); return `${t?.code} ${t?.name} ${l.content} ${db.users.find((u) => u.id === l.reporterId)?.name}`; }}
           searchPlaceholder="Tìm công việc, nội dung, người báo cáo..."
           toolbar={<>
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
             <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(LOG_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect value={period} onChange={setPeriod} allLabel="Toàn thời gian" options={[{ value: "7", label: "7 ngày qua" }, { value: "30", label: "30 ngày qua" }, { value: "90", label: "90 ngày qua" }]} />
           </>}
@@ -119,7 +120,7 @@ export default function LogsPage() {
         <DialogContent>
           <DialogHeader><DialogTitle>Chọn công việc cần cập nhật</DialogTitle></DialogHeader>
           <DialogBody className="space-y-3">
-            <FormField label="Dự án"><Select value={pickProject} onChange={(e) => { setPickProject(e.target.value); setPickTask(""); }} options={db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
+            <FormField label="Dự án"><Select value={pickProject} onChange={(e) => { setPickProject(e.target.value); setPickTask(""); }} options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
             <FormField label="Công việc (chưa hoàn thành)" required><Select value={pickTask} onChange={(e) => setPickTask(e.target.value)} placeholder="— Chọn công việc —" options={openTasks.map((t) => ({ value: t.id, label: `${t.code} ${t.name} (${Math.round(taskActualPct(t) * 100)}%)` }))} /></FormField>
           </DialogBody>
           <DialogFooter><Button variant="outline" onClick={() => setPickOpen(false)}>Hủy</Button><Button disabled={!pickTask} onClick={() => { setPickOpen(false); setProgressId(pickTask); }}>Tiếp tục</Button></DialogFooter>

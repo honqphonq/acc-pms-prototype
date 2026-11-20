@@ -20,7 +20,7 @@ import { deleteEquipment } from "@/services/actions";
 import { equipmentWork, utilizationOf } from "@/services/selectors";
 import { fileUrl } from "@/components/common/Attachments";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { EQUIPMENT_KIND } from "@/utils/labels";
+import { EQUIPMENT_KIND, activeProjects } from "@/utils/labels";
 import { EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
@@ -103,7 +103,7 @@ export default function EquipmentListPage() {
           searchText={(e) => `${e.code} ${e.name} ${e.plate} ${e.brand}`} searchPlaceholder="Tìm kiếm mã, tên XMTB..."
           toolbar={<>
             <FilterSelect label="Trạng thái" value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(EQUIPMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
-            <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={[{ value: "none", label: "Chưa phân bổ" }, ...db.projects.map((p) => ({ value: p.id, label: p.shortName }))]} />
+            <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={[{ value: "none", label: "Chưa phân bổ" }, ...activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))]} />
             <FilterSelect label="Đơn vị quản lý" value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.code }))} />
             <FilterSelect value={own} onChange={setOwn} allLabel="Tất cả nguồn gốc" options={[{ value: "so_huu", label: "Sở hữu" }, { value: "thue_ngoai", label: "Thuê ngoài" }]} />
             <FilterSelect value={kind} onChange={setKind} allLabel="Tất cả loại" options={Object.entries(EQUIPMENT_KIND).map(([value, l]) => ({ value, label: l.label }))} />

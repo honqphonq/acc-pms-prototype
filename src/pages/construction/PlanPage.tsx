@@ -20,6 +20,7 @@ import { downloadTemplate, exportPlan, parsePlanFile, type ImportRow } from "@/s
 import { fmtDateShort } from "@/utils/format";
 import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { cn } from "@/utils/cn";
+import { activeProjects } from "@/utils/labels";
 
 export function PlanIndexRedirect() {
   const { db } = useDb();
@@ -223,7 +224,7 @@ export default function PlanPage() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="max-h-80 w-80 overflow-y-auto">
               <DropdownMenuLabel>Chọn dự án</DropdownMenuLabel>
-              {db.projects.map((p) => <DropdownMenuItem key={p.id} onClick={() => navigate(`/construction/plan/${p.id}`)} className={cn(p.id === project.id && "font-semibold text-primary")}>{p.name}</DropdownMenuItem>)}
+              {activeProjects(db).map((p) => <DropdownMenuItem key={p.id} onClick={() => navigate(`/construction/plan/${p.id}`)} className={cn(p.id === project.id && "font-semibold text-primary")}>{p.name}</DropdownMenuItem>)}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

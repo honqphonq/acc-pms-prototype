@@ -1,81 +1,199 @@
 [
   {
-    "id": "dr01",
-    "code": "CĐ-001",
-    "title": "Xử lý chậm tiến độ – Sân bay Gia Bình",
-    "content": "Rà soát lại nhân lực, máy móc khu vực đường cất hạ cánh; báo cáo phương án tăng ca bù tiến độ.",
-    "refLabel": "Dự án: Sân bay Gia Bình",
-    "link": "/projects/p01",
+    "id": "cv01",
+    "code": "CV-001",
+    "title": "Lập phương án tăng ca bù tiến độ đường cất hạ cánh",
+    "content": "Rà soát nhân lực, máy móc khu vực đường CHC; lập phương án tăng ca 2 ca/ngày để bù tiến độ hạng mục móng CPĐD. Báo cáo phương án trước ngày 20/11.",
     "projectId": "p01",
     "assigneeId": "u04",
     "assignedBy": "u01",
+    "followerIds": [
+      "u03"
+    ],
     "createdAt": "2026-11-10",
-    "dueDate": "2026-11-17",
+    "dueDate": "2026-11-20",
     "status": "dang_thuc_hien",
-    "files": []
+    "attachments": [
+      {
+        "id": "at01",
+        "name": "Bao-cao-tien-do-tuan-45.pdf",
+        "type": "application/pdf",
+        "size": 812000,
+        "url": null
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm01",
+        "userId": "u04",
+        "at": "2026-11-11T08:15:00",
+        "text": "Đã nhận việc. Đang làm việc với mũi thi công khu bay để chốt nhân lực tăng ca."
+      },
+      {
+        "id": "cm02",
+        "userId": "u01",
+        "at": "2026-11-11T09:02:00",
+        "text": "Lưu ý bố trí thêm đèn chiếu sáng và an toàn ca đêm."
+      },
+      {
+        "id": "cm03",
+        "userId": "u04",
+        "at": "2026-11-13T16:40:00",
+        "text": "Đã có dự thảo phương án, dự kiến gửi anh duyệt ngày 18/11."
+      }
+    ]
   },
   {
-    "id": "dr02",
-    "code": "CĐ-002",
-    "title": "Bổ sung máy rải bê tông cho Sân bay Gia Bình",
-    "content": "Điều chuyển 01 máy rải đang nhàn rỗi về công trường trong tuần.",
-    "refLabel": "XMTB: Máy rải bê tông",
-    "link": "/equipment/list",
+    "id": "cv02",
+    "code": "CV-002",
+    "title": "Điều chuyển 01 máy rải bê tông xi măng về Sân bay Gia Bình",
+    "content": "Điều chuyển máy rải đang nhàn rỗi tại Sân bay Kép về Gia Bình phục vụ đổ BTXM mặt đường lăn.",
     "projectId": "p01",
     "assigneeId": "u12",
     "assignedBy": "u01",
-    "createdAt": "2026-11-05",
-    "dueDate": "2026-11-12",
+    "followerIds": [
+      "u04"
+    ],
+    "createdAt": "2026-11-03",
+    "dueDate": "2026-11-10",
     "status": "dang_thuc_hien",
-    "files": []
+    "attachments": [],
+    "comments": [
+      {
+        "id": "cm04",
+        "userId": "u12",
+        "at": "2026-11-09T10:20:00",
+        "text": "Đang chờ xe vận chuyển chuyên dụng, dự kiến chậm 3–4 ngày."
+      }
+    ]
   },
   {
-    "id": "dr03",
-    "code": "CĐ-003",
-    "title": "Đôn đốc thu hồi công nợ – Mở rộng sân đỗ Đà Nẵng",
-    "content": "Làm việc với Chủ đầu tư về hồ sơ thanh toán đợt 3.",
-    "refLabel": "Dự án: Sân đỗ máy bay Đà Nẵng",
-    "link": "/projects/p02",
-    "projectId": "p02",
-    "assigneeId": "u03",
+    "id": "cv03",
+    "code": "CV-003",
+    "title": "Báo cáo nguyên nhân chậm tiến độ và giải pháp khắc phục",
+    "content": "Làm rõ nguyên nhân các công việc quá hạn, đề xuất giải pháp và mốc hoàn thành mới. Gửi kèm tiến độ điều chỉnh.",
+    "projectId": "p03",
+    "assigneeId": "u21",
+    "assignedBy": "u01",
+    "followerIds": [
+      "u03",
+      "u17"
+    ],
+    "createdAt": "2026-11-12",
+    "dueDate": "2026-11-19",
+    "status": "dang_thuc_hien",
+    "attachments": [],
+    "comments": []
+  },
+  {
+    "id": "cv04",
+    "code": "CV-004",
+    "title": "Chuẩn bị báo cáo giao ban quý IV/2026",
+    "content": "Tổng hợp tình hình sản xuất kinh doanh, tiến độ các dự án trọng điểm và kế hoạch quý I/2027 để trình bày tại cuộc họp giao ban.",
+    "projectId": null,
+    "assigneeId": "u01",
     "assignedBy": "u02",
+    "followerIds": [
+      "u03",
+      "u14"
+    ],
     "createdAt": "2026-11-08",
     "dueDate": "2026-11-25",
     "status": "dang_thuc_hien",
-    "files": []
+    "attachments": [
+      {
+        "id": "at02",
+        "name": "Mau-bao-cao-giao-ban.docx",
+        "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "size": 96000,
+        "url": null
+      }
+    ],
+    "comments": [
+      {
+        "id": "cm05",
+        "userId": "u02",
+        "at": "2026-11-08T14:00:00",
+        "text": "Anh Toàn chủ trì, phòng KH-KT và Kế toán phối hợp số liệu."
+      }
+    ]
   },
   {
-    "id": "dr04",
-    "code": "CĐ-004",
-    "title": "Hoàn thiện hồ sơ đăng kiểm xe biển đỏ",
-    "content": "Các xe sắp hết hạn đăng kiểm phải hoàn thành trước 15/11.",
-    "refLabel": "Cảnh báo: Hồ sơ XMTB",
-    "link": "/equipment/maintenance",
+    "id": "cv05",
+    "code": "CV-005",
+    "title": "Rà soát quy chế an toàn lao động toàn Tổng công ty",
+    "content": "Rà soát, cập nhật quy chế ATVSLĐ theo quy định mới; phổ biến đến các đơn vị thành viên.",
     "projectId": null,
-    "assigneeId": "u12",
+    "assigneeId": "u03",
     "assignedBy": "u01",
-    "createdAt": "2026-10-28",
-    "dueDate": "2026-11-08",
+    "followerIds": [
+      "u02"
+    ],
+    "createdAt": "2026-10-20",
+    "dueDate": "2026-11-05",
     "status": "hoan_thanh",
-    "completedAt": "2026-11-07",
-    "result": "Đã đăng kiểm xong 3/3 xe, cập nhật giấy tờ lên hệ thống.",
-    "files": []
+    "attachments": [],
+    "comments": [],
+    "completedAt": "2026-11-04",
+    "result": "Đã ban hành quy chế ATVSLĐ sửa đổi và gửi các đơn vị thành viên.",
+    "files": [
+      {
+        "id": "at03",
+        "name": "Quy-che-ATVSLD-2026.pdf",
+        "type": "application/pdf",
+        "size": 1240000,
+        "url": null
+      }
+    ]
   },
   {
-    "id": "dr05",
-    "code": "CĐ-005",
-    "title": "Kiểm tra vật tư sắp hết tại kho Gia Bình",
-    "content": "Lập đề xuất bổ sung đá dăm, xi măng.",
-    "refLabel": "Dự án: Sân bay Gia Bình",
-    "link": "/materials/stock/p01",
-    "projectId": "p01",
-    "assigneeId": "u11",
-    "assignedBy": "u01",
-    "createdAt": "2026-11-03",
-    "dueDate": "2026-11-06",
-    "status": "hoan_thanh",
-    "completedAt": "2026-11-06",
-    "result": "Đã lập đề xuất VT bổ sung, nhà cung cấp giao ngày 09/11.",
-    "files": []
+    "id": "cv06",
+    "code": "CV-006",
+    "title": "Đôn đốc chủ đầu tư thanh toán đợt 3",
+    "content": "Làm việc với ACV để đẩy nhanh thanh toán giá trị nghiệm thu đợt 3, báo cáo kết quả.",
+    "projectId": "p02",
+    "assigneeId": "u14",
+    "assignedBy": "u02",
+    "followerIds": [
+      "u01"
+    ],
+    "createdAt": "2026-11-06",
+    "dueDate": "2026-11-18",
+    "status": "dang_thuc_hien",
+    "attachments": [
+      {
+        "id": "at04",
+        "name": "Bang-tong-hop-cong-no-p02.xlsx",
+        "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "size": 54000,
+        "url": null
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "cv07",
+    "code": "CV-007",
+    "title": "Phê duyệt phương án tổ chức thi công mùa mưa",
+    "content": "Xem xét, phê duyệt phương án thi công mùa mưa của công trường Sân đỗ Phú Bài.",
+    "projectId": "p17",
+    "assigneeId": "u01",
+    "assignedBy": "u02",
+    "followerIds": [
+      "u65"
+    ],
+    "createdAt": "2026-11-02",
+    "dueDate": "2026-11-12",
+    "status": "dang_thuc_hien",
+    "attachments": [
+      {
+        "id": "at05",
+        "name": "PA-thi-cong-mua-mua.pdf",
+        "type": "application/pdf",
+        "size": 2300000,
+        "url": null
+      }
+    ],
+    "comments": []
   }
 ]

@@ -1,7 +1,9 @@
 import type { Database } from "@/types";
 import type { LabelTone } from "./constants";
 
-export const projectOptions = (db: Database) => db.projects.map((p) => ({ value: p.id, label: p.shortName }));
+/** Dự án đang thực hiện (giai đoạn Đang thi công) – chỉ những dự án này hiển thị trên các màn hình nghiệp vụ */
+export const activeProjects = (db: Database) => db.projects.filter((p) => p.status === "dang_thi_cong");
+export const projectOptions = (db: Database) => activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }));
 export const equipmentOptions = (db: Database) => db.equipment.map((e) => ({ value: e.id, label: `${e.code} – ${e.name}` }));
 export const userOptions = (db: Database, filter?: (u: Database["users"][number]) => boolean) => db.users.filter((u) => !filter || filter(u)).map((u) => ({ value: u.id, label: `${u.name} – ${u.title}` }));
 export const toOptions = (m: Record<string, LabelTone | string>) => Object.entries(m).map(([value, l]) => ({ value, label: typeof l === "string" ? l : l.label }));

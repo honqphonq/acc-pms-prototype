@@ -19,9 +19,10 @@ import { ProjectCard } from "../dashboard/ProjectCard";
 import { ProjectFormDialog } from "./ProjectFormDialog";
 import { getProjectStatsMap, type ProjectStats } from "@/services/selectors";
 import { deleteProject } from "@/services/actions";
-import { CATEGORY_LABELS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
+import { CATEGORY_LABELS, PROJECT_HEALTH, PROJECT_STATUS } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
 import type { Project } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export default function ProjectListPage() {
   const { db, run } = useDb();
@@ -31,7 +32,7 @@ export default function ProjectListPage() {
   const loading = useSimulatedLoading();
   const [view, setView] = useState<"table" | "grid">("table");
   const [category, setCategory] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("dang_thi_cong");
   const [health, setHealth] = useState("");
   const [unit, setUnit] = useState("");
   const [formOpen, setFormOpen] = useState(() => new URLSearchParams(window.location.search).get("new") === "1");
@@ -71,8 +72,8 @@ export default function ProjectListPage() {
         </div>
       ),
     },
-    { key: "health", header: "Tình trạng", sortValue: (s) => s.delta, cell: (s) => <StatusBadge map={HEALTH} value={s.health} /> },
-    { key: "status", header: "Trạng thái", sortValue: (s) => s.project.status, cell: (s) => <StatusBadge map={PROJECT_STATUS} value={s.project.status} dot={false} /> },
+    { key: "health", header: "Trạng thái", sortValue: (s) => s.delta, cell: (s) => (PROJECT_HEALTH[s.health] ? <StatusBadge map={PROJECT_HEALTH} value={s.health} /> : <span className="text-slate-400">—</span>) },
+    { key: "status", header: "Giai đoạn", sortValue: (s) => s.project.status, cell: (s) => <StatusBadge map={PROJECT_STATUS} value={s.project.status} dot={false} /> },
     {
       key: "act", header: "", className: "w-10",
       cell: (s) => (
@@ -95,8 +96,8 @@ export default function ProjectListPage() {
     <>
       <FilterSelect value={category} onChange={setCategory} allLabel="Tất cả loại dự án" options={Object.entries(CATEGORY_LABELS).map(([v, l]) => ({ value: v, label: l }))} />
       <FilterSelect value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.code }))} />
-      <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(PROJECT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
-      <FilterSelect value={health} onChange={setHealth} allLabel="Tất cả tình trạng" options={Object.entries(HEALTH).map(([v, l]) => ({ value: v, label: l.label }))} />
+      <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả giai đoạn" options={Object.entries(PROJECT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
+      <FilterSelect value={health} onChange={setHealth} allLabel="Tất cả trạng thái" options={Object.entries(PROJECT_HEALTH).map(([v, l]) => ({ value: v, label: l.label }))} />
     </>
   );
 
@@ -104,7 +105,7 @@ export default function ProjectListPage() {
     <div>
       <PageHeader
         title="Danh sách dự án"
-        description={`${db.projects.length} dự án · ${db.projects.filter((p) => p.status === "dang_thi_cong").length} đang thi công · tổng giá trị hợp đồng ${fmtNumber(db.projects.reduce((s, p) => s + p.contractValue, 0) / 1e9, 0)} tỷ đồng`}
+        description={`${db.projects.length} dự án · ${activeProjects(db).length} đang thi công · tổng giá trị hợp đồng ${fmtNumber(db.projects.reduce((s, p) => s + p.contractValue, 0) / 1e9, 0)} tỷ đồng`}
         actions={
           <>
             <div className="flex rounded-lg border bg-white p-0.5">

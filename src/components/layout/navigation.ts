@@ -13,7 +13,7 @@ export interface NavItem {
 /** Menu theo “Danh mục tính năng phần mềm quản lý thi công xây dựng – ACC” (cập nhật 18/11) */
 export const NAV: NavItem[] = [
   { label: "Trang chủ", to: "/", icon: LayoutDashboard },
-  { label: "Việc chỉ đạo", to: "/directives", icon: Send, badgeKey: "directives" },
+  { label: "Công việc điều hành", to: "/directives", icon: Send, badgeKey: "directives" },
   {
     label: "Quản lý công trình", to: "/projects", icon: Building2,
     children: [
@@ -65,7 +65,7 @@ export const NAV: NavItem[] = [
 
 /** Nhãn breadcrumb theo đường dẫn */
 export const PATH_LABELS: Record<string, string> = {
-  directives: "Việc chỉ đạo",
+  directives: "Công việc điều hành",
   projects: "Danh sách dự án",
   packages: "Quản lý gói thầu",
   contracts: "Quản lý hợp đồng",

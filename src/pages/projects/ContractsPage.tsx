@@ -24,6 +24,7 @@ import { fmtDate, fmtNumber, fmtVnd } from "@/utils/format";
 import { genId } from "@/utils/id";
 import { cn } from "@/utils/cn";
 import type { Contract } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 type Validity = "con_han" | "sap_het" | "het_han";
 const VALIDITY: Record<Validity, { label: string; color: string }> = {
@@ -118,7 +119,7 @@ export default function ContractsPage() {
         <DataTable columns={cols} rows={rows} rowKey={(c) => c.id} loading={loading} pageSize={30} onRowClick={(c) => setView(c.id)} resetKey={tab + projectId + quick}
           searchText={(c) => `${c.code} ${c.title} ${pName(c.projectId)}`} searchPlaceholder="Tìm số hợp đồng, nội dung, dự án..."
           toolbar={<>
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
             {quick && <Button size="sm" variant="outline" className="border-amber-300 bg-amber-50 text-amber-800" onClick={() => setQuick("")}>Đang lọc: sắp đến hạn ✕</Button>}
             <Button variant="outline" className="h-10 border-primary/40 bg-primary-soft text-primary hover:bg-primary-soft/70" onClick={() => setOverview(true)}><LayoutGrid /> Tổng quan <span className="rounded-full bg-rose-100 px-2 text-[12px] font-semibold text-rose-600">{stats.count}</span></Button>
           </>} />
@@ -189,7 +190,7 @@ export default function ContractsPage() {
           <DialogHeader><DialogTitle>{edit?.id ? "Cập nhật" : "Thêm"} {edit?.kind === "phu_luc" ? "phụ lục hợp đồng" : "hợp đồng"}</DialogTitle></DialogHeader>
           {edit && (
             <DialogBody className="grid max-h-[70vh] gap-3 overflow-y-auto sm:grid-cols-2">
-              <FormField label="Dự án" required className="sm:col-span-2"><Select value={edit.projectId} onChange={(e) => setEdit({ ...edit, projectId: e.target.value, parentId: null })} options={db.projects.map((p) => ({ value: p.id, label: `${p.code} – ${p.name}` }))} /></FormField>
+              <FormField label="Dự án" required className="sm:col-span-2"><Select value={edit.projectId} onChange={(e) => setEdit({ ...edit, projectId: e.target.value, parentId: null })} options={activeProjects(db).map((p) => ({ value: p.id, label: `${p.code} – ${p.name}` }))} /></FormField>
               <FormField label="Hợp đồng / Phụ lục" required>
                 <div className="flex rounded-md border p-0.5">
                   {(["hop_dong", "phu_luc"] as const).map((k) => <button key={k} type="button" onClick={() => setEdit({ ...edit, kind: k, parentId: k === "hop_dong" ? null : edit.parentId })} className={cn("flex-1 rounded px-3 py-1.5 text-[13px] font-medium", edit.kind === k ? "bg-primary text-white" : "text-slate-600 hover:bg-slate-50")}>{k === "hop_dong" ? "Hợp đồng" : "Phụ lục hợp đồng"}</button>)}

@@ -12,6 +12,7 @@ import { createAcceptance } from "@/services/actions";
 import { reconcile } from "@/services/selectors";
 import { fmtNumber, fmtVnd } from "@/utils/format";
 import type { AcceptanceLine } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const DOCS = ["Biên bản nghiệm thu khối lượng.pdf", "Bảng tính khối lượng chi tiết.xlsx", "Nhật ký thi công (trích).pdf", "Hình ảnh hiện trường.zip", "Kết quả thí nghiệm vật liệu.pdf", "Bản vẽ hoàn công.pdf"];
 
@@ -61,7 +62,7 @@ export function AcceptanceFormDialog({ open, onOpenChange, projectId: initProjec
         <DialogHeader><DialogTitle>Lập hồ sơ nghiệm thu khối lượng</DialogTitle><DialogDescription>Khối lượng đề nghị nghiệm thu lấy từ khối lượng thi công thực tế (nhật ký) chưa được nghiệm thu</DialogDescription></DialogHeader>
         <DialogBody className="space-y-4">
           <div className="grid gap-3 md:grid-cols-3">
-            <FormField label="Dự án"><Select value={pid} onChange={(e) => { setPid(e.target.value); setItemId(""); }} options={db.projects.filter((p) => db.constructionPlans.some((t) => t.projectId === p.id && t.actualQty > 0)).map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
+            <FormField label="Dự án"><Select value={pid} onChange={(e) => { setPid(e.target.value); setItemId(""); }} options={activeProjects(db).filter((p) => db.constructionPlans.some((t) => t.projectId === p.id && t.actualQty > 0)).map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
             <FormField label="Hạng mục"><Select value={itemId} onChange={(e) => setItemId(e.target.value)} placeholder="— Tất cả hạng mục —" options={db.constructionItems.filter((i) => i.projectId === pid).map((i) => ({ value: i.id, label: `${i.code} ${i.name}` }))} /></FormField>
             <FormField label="Đợt nghiệm thu"><Input value={phase} disabled /></FormField>
             <FormField label="Tên hồ sơ" className="md:col-span-3"><Input value={title} onChange={(e) => setTitle(e.target.value)} /></FormField>

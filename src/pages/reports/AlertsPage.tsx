@@ -28,6 +28,7 @@ import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtDate } from "@/utils/format";
 import { cn } from "@/utils/cn";
 import type { Issue } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const SEV = { danger: { label: "Nghiêm trọng", tone: "danger" }, warning: { label: "Cảnh báo", tone: "warning" }, info: { label: "Lưu ý", tone: "info" } } as const;
 type IssueForm = Omit<Issue, "id" | "code">;
@@ -75,7 +76,7 @@ export default function AlertsPage() {
 
   return (
     <div>
-      <PageHeader title="Cảnh báo & vấn đề phát sinh" description="Cảnh báo được hệ thống tự động phát hiện từ dữ liệu tiến độ, kho, thiết bị, thanh toán; vấn đề phát sinh do công trường báo cáo." actions={<><FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} /><Button onClick={() => { setTab("issues"); setEdit({ f: newIssue() }); }}><Plus /> Báo cáo vấn đề</Button></>} />
+      <PageHeader title="Cảnh báo & vấn đề phát sinh" description="Cảnh báo được hệ thống tự động phát hiện từ dữ liệu tiến độ, kho, thiết bị, thanh toán; vấn đề phát sinh do công trường báo cáo." actions={<><FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} /><Button onClick={() => { setTab("issues"); setEdit({ f: newIssue() }); }}><Plus /> Báo cáo vấn đề</Button></>} />
       <div className="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-5">
         {(["tien_do", "vat_tu", "thiet_bi", "thanh_toan"] as const).map((k) => (
           <KpiCard key={k} label={`Cảnh báo ${ALERT_KIND_LABEL[k].toLowerCase()}`} value={allAlerts.filter((a) => a.kind === k && (!projectId || a.projectId === projectId)).length} tone={k === "tien_do" ? "danger" : k === "vat_tu" ? "warning" : k === "thiet_bi" ? "info" : "navy"} onClick={() => { setTab("alerts"); setKind(k); }} sub={`${allAlerts.filter((a) => a.kind === k && a.severity === "danger" && (!projectId || a.projectId === projectId)).length} nghiêm trọng`} />
@@ -110,7 +111,7 @@ export default function AlertsPage() {
           <DialogHeader><DialogTitle>{edit?.id ? "Cập nhật vấn đề" : "Báo cáo vấn đề phát sinh"}</DialogTitle></DialogHeader>
           {f && (
             <DialogBody className="grid gap-3 sm:grid-cols-2">
-              <FormField label="Dự án" className="sm:col-span-2"><Select value={f.projectId} onChange={(e) => setF({ projectId: e.target.value })} options={db.projects.map((p) => ({ value: p.id, label: p.name }))} /></FormField>
+              <FormField label="Dự án" className="sm:col-span-2"><Select value={f.projectId} onChange={(e) => setF({ projectId: e.target.value })} options={activeProjects(db).map((p) => ({ value: p.id, label: p.name }))} /></FormField>
               <FormField label="Tiêu đề" required className="sm:col-span-2"><Input value={f.title} onChange={(e) => setF({ title: e.target.value })} /></FormField>
               <FormField label="Phân loại"><Select value={f.category} onChange={(e) => setF({ category: e.target.value as Issue["category"] })} options={Object.entries(ISSUE_CATEGORY).map(([v, l]) => ({ value: v, label: l }))} /></FormField>
               <FormField label="Mức độ"><Select value={f.severity} onChange={(e) => setF({ severity: e.target.value as Issue["severity"] })} options={Object.entries(ISSUE_SEVERITY).map(([v, l]) => ({ value: v, label: l.label }))} /></FormField>

@@ -29,6 +29,7 @@ import { MR_STATUS } from "@/utils/constants";
 import { fmtDate, fmtMoneyShort, fmtNumber, fmtPct } from "@/utils/format";
 import { cn } from "@/utils/cn";
 import type { MaterialRequest, StockTransaction } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 type Level = "duoi" | "sap_het" | "vuot" | "sap_vuot" | "ok";
 /** Cảnh báo theo tồn tối thiểu của từng vật tư: tồn ≤ 120% tối thiểu = sắp hết (đỏ), dưới tối thiểu = đỏ đậm */
@@ -62,7 +63,7 @@ export default function StockHubPage() {
   const navigate = useNavigate();
   const loading = useSimulatedLoading();
   const all = getStockRows(db);
-  const rows = db.projects.filter((p) => p.status !== "hoan_thanh").map((p) => {
+  const rows = activeProjects(db).map((p) => {
     const rs = all.filter((r) => r.inv.projectId === p.id);
     return {
       p, items: rs.length, value: rs.reduce((s, r) => s + r.value, 0),

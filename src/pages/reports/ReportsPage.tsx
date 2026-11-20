@@ -19,10 +19,11 @@ import { FilterSelect } from "@/components/common/DataTable";
 import {
   acceptanceValue, equipmentByGroup, equipmentWork, utilizationOf, getPortfolio, getStockRows, itemStats, leafTasks, monthlyProgress, taskActualPct, taskPlannedPct,
 } from "@/services/selectors";
-import { CHART_COLORS, HEALTH, SERIES } from "@/utils/constants";
+import { CHART_COLORS, HEALTH, PROJECT_HEALTH, SERIES } from "@/utils/constants";
 import { DATA_UPDATED_AT, DEMO_TODAY, monthLabel } from "@/utils/date";
 import { fmtDate, fmtMoneyShort, fmtNumber, fmtPct } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
+import { activeProjects } from "@/utils/labels";
 
 export default function ReportsPage() {
   const { db } = useDb();
@@ -35,7 +36,7 @@ export default function ReportsPage() {
   const monthly = useMemo(() => monthlyProgress(db, projectId || undefined).filter((m) => m.month <= DEMO_TODAY.slice(0, 7)).slice(-12), [db, projectId]);
   const stock = getStockRows(db).filter((r) => !projectId || r.inv.projectId === projectId);
   const pName = (id: string | null) => db.projects.find((p) => p.id === id)?.shortName ?? "";
-  const projFilter = <FilterSelect value={projectId} onChange={setProjectId} allLabel="Toàn Tổng công ty" options={db.projects.filter((p) => p.status !== "chuan_bi").map((p) => ({ value: p.id, label: p.shortName }))} />;
+  const projFilter = <FilterSelect value={projectId} onChange={setProjectId} allLabel="Toàn Tổng công ty" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />;
 
   return (
     <div>
@@ -59,7 +60,7 @@ export default function ReportsPage() {
             <KpiCard label="Đã thu" value={fmtNumber(pf.paid / 1e9, 0)} unit="tỷ" tone="navy" />
           </div>
           <Card>
-            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH %", "TT %", "Lệch (điểm)", "Tình trạng", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), (s.delta * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
+            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH %", "TT %", "Lệch (điểm)", "Trạng thái", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), (s.delta * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
             <Table>
               <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ</TableHead><TableHead className="text-right">Lệch</TableHead><TableHead>Tình trạng</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
               <TableBody>
@@ -69,7 +70,7 @@ export default function ReportsPage() {
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.project.contractValue)}</TableCell>
                     <TableCell className="w-40"><div className="mb-1 text-[11.5px]"><b>{fmtPct(s.actual)}</b></div><Progress value={s.actual} className="h-1.5" tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} /></TableCell>
                     <TableCell className={`tabular text-right ${s.delta < -0.03 ? "text-rose-600" : "text-slate-600"}`}>{fmtNumber(s.delta * 100)}</TableCell>
-                    <TableCell><StatusBadge map={HEALTH} value={s.health} /></TableCell>
+                    <TableCell><StatusBadge map={PROJECT_HEALTH} value={s.health} /></TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.execValue)}</TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.acceptedValue)}</TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.paidValue)}</TableCell>

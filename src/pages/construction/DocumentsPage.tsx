@@ -18,6 +18,7 @@ import { fmtDate } from "@/utils/format";
 import { genId } from "@/utils/id";
 import { cn } from "@/utils/cn";
 import type { DocFolder, SiteDocument } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const icon = (t: string) => (["xlsx", "xls"].includes(t) ? <FileSpreadsheet className="h-4 w-4 text-emerald-600" /> : ["jpg", "png"].includes(t) ? <FileImage className="h-4 w-4 text-sky-600" /> : t === "dwg" ? <FileText className="h-4 w-4 text-amber-600" /> : <FileText className="h-4 w-4 text-rose-600" />);
 const size = (kb: number) => (kb >= 1024 ? `${(kb / 1024).toFixed(1).replace(".", ",")} MB` : `${kb} KB`);
@@ -65,7 +66,7 @@ export default function DocumentsPage() {
 
   // Nội dung cấp hiện tại: thư mục con trước, file sau (tìm kiếm: mọi cấp bên dưới)
   const kw = q.trim().toLowerCase();
-  const projects = db.projects.filter((p) => !kw || `${p.name} ${p.shortName}`.toLowerCase().includes(kw));
+  const projects = activeProjects(db).filter((p) => !kw || `${p.name} ${p.shortName}`.toLowerCase().includes(kw));
   const subFolders = project && !kw ? kids(project.id, selected?.id ?? null) : [];
   const docs = useMemo(() => {
     if (!project) return [];
@@ -147,7 +148,7 @@ export default function DocumentsPage() {
         <Card className="scrollbar-visible h-fit max-h-[calc(100vh-180px)] overflow-y-auto p-2">
           <div className="mb-1 px-2 pt-1 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Dự án</div>
           <button onClick={goRoot} className={cn("flex w-full items-center gap-1.5 rounded-md px-2 py-1.5 text-[13px] hover:bg-slate-50", !project && "bg-primary-soft font-semibold text-primary")}><Folder className="h-4 w-4 text-slate-400" /> Tất cả dự án <span className="ml-auto text-[11px] font-normal text-slate-400">{db.projects.length}</span></button>
-          {db.projects.map((p) => {
+          {activeProjects(db).map((p) => {
             const isOpen = !!open[p.id];
             return (
               <div key={p.id}>

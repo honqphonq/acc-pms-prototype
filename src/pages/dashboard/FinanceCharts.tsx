@@ -2,34 +2,56 @@ import { useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useDb } from "@/hooks/useDb";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { revenueCost } from "@/services/selectors";
+import { revenueCost, revenueCostCumulative } from "@/services/selectors";
 import { fmtNumber } from "@/utils/format";
 
 const ty = (v: number) => `${fmtNumber(v / 1e9, v >= 1e11 ? 0 : 1)} tỷ`;
 const vnd = (v: number) => `${Math.round(v).toLocaleString("vi-VN")} VNĐ`;
 const NOTE = "Số liệu ước tính: doanh thu = giá trị khối lượng thực hiện; chi phí = doanh thu × hệ số chi phí dự án (chờ phân hệ kế toán).";
 
-/** Doanh thu – chi phí 12 tháng gần nhất (toàn TCT / theo bộ lọc) */
-export function RevenueCostTrend({ projectIds, scope }: { projectIds: Set<string>; scope: string }) {
+const GREEN = "#16A34A";
+const ORANGE = "#F97316";
+
+/** Doanh thu – chi phí lũy kế từ đầu năm: kế hoạch (nét đứt) và thực tế (nét liền), lọc theo dự án ngay trong biểu đồ */
+export function RevenueCostTrend({ projectIds, year }: { projectIds: Set<string>; year: number }) {
   const { db } = useDb();
-  const data = revenueCost(db, projectIds).months;
+  const [pid, setPid] = useState("");
+  const options = db.projects.filter((p) => projectIds.has(p.id));
+  const ids = pid && projectIds.has(pid) ? new Set([pid]) : projectIds;
+  const data = revenueCostCumulative(db, ids, year);
+  const last = [...data].reverse().find((d) => d.rev != null);
+  const pct = (a?: number | null, b?: number) => (b ? `${Math.round(((a ?? 0) / b) * 100)}%` : "—");
   return (
     <Card>
-      <CardHeader className="items-start"><div><CardTitle>Doanh thu – Chi phí</CardTitle><p className="mt-0.5 text-[12px] text-slate-500">12 tháng gần nhất · {scope}</p></div></CardHeader>
-      <div className="h-72 px-2 pb-2">
+      <CardHeader className="flex-wrap items-start gap-2">
+        <div>
+          <CardTitle>Doanh thu – Chi phí lũy kế năm {year}</CardTitle>
+          <p className="mt-0.5 text-[12px] text-slate-500">
+            Cộng dồn từ đầu năm · nét liền: thực tế, nét đứt: kế hoạch
+            {last && <> · đến {last.label}: doanh thu <b className="text-slate-800">{ty(last.rev!)}</b> ({pct(last.rev, last.planRev)} KH), chi phí <b className="text-slate-800">{ty(last.cost!)}</b> ({pct(last.cost, last.planCost)} KH)</>}
+          </p>
+        </div>
+        <select value={pid} onChange={(e) => setPid(e.target.value)} className="h-8 max-w-[260px] rounded-md border border-slate-300 bg-white px-2 text-[12.5px]">
+          <option value="">Tất cả dự án ({options.length})</option>
+          {options.map((p) => <option key={p.id} value={p.id}>{p.shortName}</option>)}
+        </select>
+      </CardHeader>
+      <div className="h-80 px-2 pb-2">
         <ResponsiveContainer>
           <LineChart data={data} margin={{ left: 8, right: 16, top: 8 }}>
             <CartesianGrid stroke="#eef2f6" vertical={false} />
             <XAxis dataKey="label" tickLine={false} tick={{ fontSize: 11.5 }} />
             <YAxis tickLine={false} axisLine={false} tickFormatter={ty} width={64} tick={{ fontSize: 11.5 }} />
-            <Tooltip formatter={(v: number, n) => [vnd(v), n]} labelFormatter={(l) => `Tháng ${l}`} />
+            <Tooltip formatter={(v: number, n) => [vnd(v), n]} labelFormatter={(l) => `Lũy kế đến hết ${String(l).replace("T", "tháng ")}/${year}`} />
             <Legend verticalAlign="top" height={28} />
-            <Line type="linear" dataKey="revenue" name="Doanh thu" stroke="#16A34A" strokeWidth={2} dot={{ r: 3, strokeWidth: 2, fill: "#fff" }} activeDot={{ r: 5 }} />
-            <Line type="linear" dataKey="cost" name="Chi phí" stroke="#DC2626" strokeWidth={2} dot={{ r: 3, strokeWidth: 2, fill: "#fff" }} activeDot={{ r: 5 }} />
+            <Line type="linear" dataKey="rev" name="Doanh thu thực tế" stroke={GREEN} strokeWidth={2.5} dot={{ r: 3, strokeWidth: 2, fill: "#fff" }} activeDot={{ r: 5 }} connectNulls={false} />
+            <Line type="linear" dataKey="planRev" name="Doanh thu kế hoạch" stroke={GREEN} strokeWidth={1.75} strokeDasharray="6 4" dot={false} />
+            <Line type="linear" dataKey="cost" name="Chi phí thực tế" stroke={ORANGE} strokeWidth={2.5} dot={{ r: 3, strokeWidth: 2, fill: "#fff" }} activeDot={{ r: 5 }} connectNulls={false} />
+            <Line type="linear" dataKey="planCost" name="Chi phí kế hoạch" stroke={ORANGE} strokeWidth={1.75} strokeDasharray="6 4" dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <p className="border-t px-4 py-2 text-[11.5px] text-slate-500">{NOTE}</p>
+      <p className="border-t px-4 py-2 text-[11.5px] text-slate-500">{NOTE} Kế hoạch tính theo tiến độ kế hoạch của các công việc.</p>
     </Card>
   );
 }
@@ -42,7 +64,7 @@ export function ByProjectBar({ projectIds, kind }: { projectIds: Set<string>; ki
   const data = db.projects.filter((p) => projectIds.has(p.id)).map((p) => ({ id: p.id, name: p.shortName, value: rc.get(p.id)?.[kind] ?? 0 }))
     .sort((a, b) => (sort === "value" ? b.value - a.value : a.name.localeCompare(b.name, "vi")));
   const total = data.reduce((s, d) => s + d.value, 0);
-  const color = kind === "revenue" ? "#16A34A" : "#DC2626";
+  const color = kind === "revenue" ? GREEN : ORANGE;
   const width = Math.max(560, data.length * 64);
   return (
     <Card className="min-w-0">

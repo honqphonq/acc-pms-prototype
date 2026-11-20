@@ -576,3 +576,26 @@ export function revenueCost(db: Database, projectIds: Set<ID>) {
     months: last12.map((m) => ({ month: m, label: `${Number(m.slice(5))}/${m.slice(0, 4)}`, revenue: byMonth.get(m)?.revenue ?? 0, cost: byMonth.get(m)?.cost ?? 0 })),
   };
 }
+
+/** Doanh thu – chi phí lũy kế từ đầu năm theo tháng: kế hoạch (theo tiến độ kế hoạch) và thực tế (theo nhật ký) */
+export function revenueCostCumulative(db: Database, projectIds: Set<ID>, year: number) {
+  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
+  const ratio = new Map(db.projects.map((p) => [p.id, p.costRatio]));
+  const tasks = db.constructionPlans.filter((t) => !t.isGroup && projectIds.has(t.projectId));
+  const logs = db.constructionLogs.filter((l) => l.status !== "nhap" && projectIds.has(l.projectId) && l.date.slice(0, 4) === String(year));
+  const yStart = `${year - 1}-12-31`;
+  const today = DEMO_TODAY.slice(0, 7);
+  return Array.from({ length: 12 }, (_, i) => {
+    const m = `${year}-${String(i + 1).padStart(2, "0")}`;
+    const eom = endOfMonth(m);
+    let planRev = 0, planCost = 0;
+    tasks.forEach((t) => {
+      const v = (taskPlannedPct(t, eom) - taskPlannedPct(t, yStart)) * taskValue(t);
+      planRev += v; planCost += v * (ratio.get(t.projectId) ?? 0.9);
+    });
+    let r = 0, c = 0;
+    logs.forEach((l) => { if (l.date <= eom) { const v = l.qty * (price.get(l.taskId) ?? 0); r += v; c += v * (ratio.get(l.projectId) ?? 0.9); } });
+    const past = m <= today;
+    return { month: m, label: `T${i + 1}`, planRev, planCost, rev: past ? r : null, cost: past ? c : null };
+  });
+}

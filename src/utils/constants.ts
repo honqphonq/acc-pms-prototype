@@ -47,7 +47,7 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
 };
 
 export const PROJECT_STATUS: Record<ProjectStatus, LabelTone> = {
-  chuan_bi: { label: "Chuẩn bị", tone: "neutral" },
+  chuan_bi: { label: "Chưa thi công", tone: "neutral" },
   dang_thi_cong: { label: "Đang thi công", tone: "info" },
   tam_dung: { label: "Tạm dừng", tone: "warning" },
   hoan_thanh: { label: "Hoàn thành", tone: "success" },
@@ -61,6 +61,8 @@ export const HEALTH: Record<ScheduleHealth, LabelTone> = {
   chua_bat_dau: { label: "Chưa khởi công", tone: "neutral" },
   hoan_thanh: { label: "Hoàn thành", tone: "success" },
 };
+/** Trạng thái dự án (chỉ 3 giá trị) – dự án chưa thi công / hoàn thành không có trạng thái */
+export const PROJECT_HEALTH: Record<string, LabelTone> = { dung_tien_do: HEALTH.dung_tien_do, nguy_co_cham: HEALTH.nguy_co_cham, cham_tien_do: HEALTH.cham_tien_do };
 
 export const SETTLEMENT_STATUS: Record<SettlementStatus, LabelTone> = {
   chua_quyet_toan: { label: "Chưa quyết toán", tone: "neutral" },

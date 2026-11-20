@@ -91,7 +91,7 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
               <FormField label="Ngày ký hợp đồng"><Input type="date" value={f.contractDate} onChange={(e) => set("contractDate", e.target.value)} /></FormField>
               <FormField label="Ngày khởi công"><Input type="date" value={f.startDate} onChange={(e) => set("startDate", e.target.value)} /></FormField>
               <FormField label="Ngày hoàn thành" error={errors.endDate}><Input type="date" value={f.endDate} onChange={(e) => set("endDate", e.target.value)} /></FormField>
-              <FormField label="Trạng thái"><Select value={f.status} onChange={(e) => set("status", e.target.value as Form["status"])} options={Object.entries(PROJECT_STATUS).map(([value, l]) => ({ value, label: l.label }))} /></FormField>
+              <FormField label="Giai đoạn"><Select value={f.status} onChange={(e) => set("status", e.target.value as Form["status"])} options={Object.entries(PROJECT_STATUS).map(([value, l]) => ({ value, label: l.label }))} /></FormField>
             </div>
           </div>
           <div>

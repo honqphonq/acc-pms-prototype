@@ -13,6 +13,7 @@ import { EQUIPMENT_STATUS } from "@/utils/constants";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import { FileUploader } from "@/components/common/Attachments";
 import type { Equipment } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export const EQUIPMENT_GROUPS = ["Máy rải bê tông", "Máy xúc", "Máy ủi", "Máy lu rung", "Máy tưới nước", "Máy cắt khe", "Ô tô tự đổ", "Cần trục tháp", "Trạm trộn BTXM"];
 
@@ -105,7 +106,7 @@ export function DispatchDialog({ open, onOpenChange, equipmentId, toProjectId }:
         <DialogBody className="grid gap-3 sm:grid-cols-2">
           <FormField label="Thiết bị" required className="sm:col-span-2"><Select value={eqId} onChange={(e) => setEqId(e.target.value)} placeholder="— Chọn thiết bị —" options={db.equipment.filter((e) => e.status !== "ngung").map((e) => ({ value: e.id, label: `${e.code} – ${e.name} (${EQUIPMENT_STATUS[e.status].label})` }))} /></FormField>
           {eq && <div className="rounded-md bg-slate-50 px-3 py-2 text-xs text-slate-600 sm:col-span-2">Hiện đang phục vụ tại: <b>{db.projects.find((p) => p.id === eq.currentProjectId)?.shortName ?? "Chưa phân bổ – sẵn sàng điều động"}</b> · {eq.ownership === "so_huu" ? "Sở hữu" : `Thuê ngoài (${eq.rentalSupplier})`}</div>}
-          <FormField label="Về phục vụ thi công cho" required className="sm:col-span-2"><Select value={pid} onChange={(e) => setPid(e.target.value)} placeholder="— Chọn dự án —" options={db.projects.filter((p) => p.status === "dang_thi_cong" || p.status === "chuan_bi").map((p) => ({ value: p.id, label: p.name }))} /></FormField>
+          <FormField label="Về phục vụ thi công cho" required className="sm:col-span-2"><Select value={pid} onChange={(e) => setPid(e.target.value)} placeholder="— Chọn dự án —" options={activeProjects(db).map((p) => ({ value: p.id, label: p.name }))} /></FormField>
           <FormField label="Từ ngày"><Input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></FormField>
           <FormField label="Đến ngày (dự kiến)"><Input type="date" value={end} onChange={(e) => setEnd(e.target.value)} /></FormField>
           <div className="rounded-md bg-sky-50 px-3 py-2 text-xs text-sky-800 sm:col-span-2">Người vận hành được phân giao theo từng ca ở màn <b>Phân ca và nhật trình</b> sau khi máy về dự án.</div>

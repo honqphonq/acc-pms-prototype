@@ -19,6 +19,7 @@ import { MR_TYPE } from "@/utils/constants";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtNumber, fmtVnd } from "@/utils/format";
 import type { MaterialRequest, MaterialRequestLine } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 /** Trang tạo / sửa đề xuất (truy cập trực tiếp qua URL) */
 export default function RequestFormPage() {
@@ -130,7 +131,7 @@ export function RequestForm({ existingId, initProject: initProjectProp, initTeam
             <div className="grid gap-3 md:grid-cols-2">
               <FormField label="Tiêu đề" required error={err.title} className="md:col-span-2"><Input value={f.title} onChange={(e) => set("title", e.target.value)} placeholder="VD: BTN C19 thảm lề CHC zone R3" /></FormField>
               <FormField label="Nhóm đề xuất"><Select value={f.type} onChange={(e) => set("type", e.target.value as MaterialRequest["type"])} options={Object.entries(MR_TYPE).map(([v, l]) => ({ value: v, label: l }))} /></FormField>
-              <FormField label="Hợp đồng nhận thầu / dự án"><Select value={f.projectId} onChange={(e) => { const pid = e.target.value; setF((x) => ({ ...x, projectId: pid, itemId: null, taskId: null, approverId: db.projects.find((p) => p.id === pid)?.commanderId ?? x.approverId })); }} options={db.projects.filter((p) => p.status !== "hoan_thanh").map((p) => ({ value: p.id, label: `${p.contractNo} – ${p.shortName}` }))} /></FormField>
+              <FormField label="Hợp đồng nhận thầu / dự án"><Select value={f.projectId} onChange={(e) => { const pid = e.target.value; setF((x) => ({ ...x, projectId: pid, itemId: null, taskId: null, approverId: db.projects.find((p) => p.id === pid)?.commanderId ?? x.approverId })); }} options={activeProjects(db).map((p) => ({ value: p.id, label: `${p.contractNo} – ${p.shortName}` }))} /></FormField>
               <FormField label="Hạng mục"><Select value={f.itemId ?? ""} onChange={(e) => { set("itemId", e.target.value || null); set("taskId", null); }} placeholder="— Tất cả hạng mục —" options={items.map((i) => ({ value: i.id, label: `${i.code} ${i.name}` }))} /></FormField>
               <FormField label="Công việc"><Select value={f.taskId ?? ""} onChange={(e) => set("taskId", e.target.value || null)} placeholder="— Chọn công việc —" options={tasks.map((t) => ({ value: t.id, label: `${t.code} ${t.name}` }))} /></FormField>
               <FormField label="Ngày cần vật tư" required error={err.neededDate}><Input type="date" value={f.neededDate} min={DEMO_TODAY} onChange={(e) => set("neededDate", e.target.value)} /></FormField>

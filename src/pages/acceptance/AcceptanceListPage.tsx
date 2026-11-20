@@ -17,6 +17,7 @@ import { acceptanceValue } from "@/services/selectors";
 import { ACCEPTANCE_STATUS } from "@/utils/constants";
 import { fmtDate, fmtMoneyShort } from "@/utils/format";
 import type { AcceptanceRecord } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export default function AcceptanceListPage() {
   const { db } = useDb();
@@ -58,7 +59,7 @@ export default function AcceptanceListPage() {
         <DataTable columns={cols} rows={rows} rowKey={(a) => a.id} loading={loading} onRowClick={(a) => navigate(`/acceptance/${a.id}`)} resetKey={projectId + status}
           searchText={(a) => `${a.code} ${a.title}`} searchPlaceholder="Tìm hồ sơ..."
           toolbar={<>
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
             <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(ACCEPTANCE_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
           </>}
         />

@@ -14,6 +14,7 @@ import { DEMO_TODAY } from "@/utils/date";
 import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
 import { cn } from "@/utils/cn";
+import { activeProjects } from "@/utils/labels";
 
 /** Báo cáo giá trị thực hiện (tham chiếu trang 18): Giá trị thực hiện = KL thực hiện × đơn giá, KL lấy tự động từ nhật ký */
 export default function ValueReportPage() {
@@ -49,7 +50,7 @@ export default function ValueReportPage() {
           <h1 className="text-lg font-bold uppercase text-slate-900">Báo cáo giá trị thực hiện</h1>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <FilterSelect value={projectId} onChange={(v) => v && setProjectId(v)} allLabel="— Dự án —" options={db.projects.filter((p) => db.constructionPlans.some((t) => t.projectId === p.id)).map((p) => ({ value: p.id, label: p.shortName }))} />
+          <FilterSelect value={projectId} onChange={(v) => v && setProjectId(v)} allLabel="— Dự án —" options={activeProjects(db).filter((p) => db.constructionPlans.some((t) => t.projectId === p.id)).map((p) => ({ value: p.id, label: p.shortName }))} />
           <label className="flex items-center gap-2 rounded-md border bg-white px-2.5 text-xs text-slate-500">Đến ngày <Input type="date" value={asOf} max={DEMO_TODAY} onChange={(e) => setAsOf(e.target.value || DEMO_TODAY)} className="h-8 w-36 border-0 px-0 shadow-none" /></label>
           <label className="flex items-center gap-2 rounded-md border bg-white px-2.5 py-1 text-xs text-slate-500">Phí dự phòng
             <select value={contingency} onChange={(e) => setContingency(e.target.value)} className="h-7 bg-transparent text-[13px] text-slate-800 focus:outline-none"><option value="0">Không bao gồm</option><option value="5">Bao gồm 5%</option><option value="10">Bao gồm 10%</option></select>

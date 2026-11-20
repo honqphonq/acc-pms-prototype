@@ -27,6 +27,7 @@ import { PAYMENT_STATUS } from "@/utils/constants";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtDate, fmtMoneyShort, fmtVnd } from "@/utils/format";
 import type { PaymentRecord } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const NEXT_LABEL: Record<string, string> = { lap_ho_so: "Trình duyệt", da_trinh: "Ghi nhận phê duyệt", da_duyet: "Ghi nhận thanh toán", thanh_toan_mot_phan: "Ghi nhận thanh toán tiếp" };
 const STEP = { lap_ho_so: 0, da_trinh: 1, da_duyet: 2, thanh_toan_mot_phan: 3, da_thanh_toan: 4 } as const;
@@ -82,7 +83,7 @@ export default function PaymentsPage() {
         <DataTable columns={cols} rows={rows} rowKey={(p) => p.id} loading={loading} onRowClick={(p) => setSelId(p.id)} resetKey={dir + projectId + status}
           searchText={(p) => `${p.code} ${p.title}`} searchPlaceholder="Tìm hồ sơ..."
           toolbar={<>
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
             <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(PAYMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
           </>}
         />
@@ -124,7 +125,7 @@ export default function PaymentsPage() {
           <DialogHeader><DialogTitle>Lập hồ sơ thanh toán với Chủ đầu tư</DialogTitle><DialogDescription>Chọn các hồ sơ đã nghiệm thu làm căn cứ thanh toán</DialogDescription></DialogHeader>
           <DialogBody className="space-y-3">
             <div className="grid gap-3 sm:grid-cols-2">
-              <FormField label="Dự án"><Select value={cp.projectId} onChange={(e) => setCp({ ...cp, projectId: e.target.value, ids: [] })} options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
+              <FormField label="Dự án"><Select value={cp.projectId} onChange={(e) => setCp({ ...cp, projectId: e.target.value, ids: [] })} options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} /></FormField>
               <FormField label="Tỷ lệ giữ lại bảo hành (%)"><Input type="number" value={cp.retention} onChange={(e) => setCp({ ...cp, retention: e.target.value })} /></FormField>
             </div>
             <div className="space-y-2">

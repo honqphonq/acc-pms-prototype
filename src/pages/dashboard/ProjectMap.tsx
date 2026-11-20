@@ -8,19 +8,18 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { StatusBadge } from "@/components/common/StatusBadge";
-import { HEALTH } from "@/utils/constants";
+import { PROJECT_HEALTH } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
 import { PROVINCES, REGION_LABEL, provinceOf } from "@/utils/provinces";
 import VN_GEO from "@/data/vn-geo.json";
 import { cn } from "@/utils/cn";
-import { AssignButton } from "@/components/common/AssignDirective";
 import type { ProjectStats } from "@/services/selectors";
 
 const COLOR: Record<string, string> = { cham_tien_do: "#DC2626", nguy_co_cham: "#F59E0B", dung_tien_do: "#16A34A", hoan_thanh: "#2563EB", chua_bat_dau: "#64748B" };
 const RANK: Record<string, number> = { cham_tien_do: 0, nguy_co_cham: 1, dung_tien_do: 2, chua_bat_dau: 3, hoan_thanh: 4 };
 const VN_BOUNDS = L.latLngBounds([8.3, 102.1], [23.4, 114.6]);
 const GROUP_ZOOM = 7; // dưới mức zoom này gộp dự án theo tỉnh; từ mức này hiện tên dự án
-const LEGEND = ["dung_tien_do", "nguy_co_cham", "cham_tien_do", "chua_bat_dau", "hoan_thanh"] as const;
+const LEGEND = ["dung_tien_do", "nguy_co_cham", "cham_tien_do"] as const;
 // Quần đảo Hoàng Sa (TP Đà Nẵng) và Trường Sa (tỉnh Khánh Hòa)
 const ISLANDS: { name: string; label: [number, number]; dots: [number, number][] }[] = [
   { name: "QĐ. Hoàng Sa", label: [16.5, 112.0], dots: [[16.83, 112.33], [16.53, 111.6], [16.45, 111.72], [16.67, 112.73], [15.78, 111.2], [16.97, 112.27], [16.25, 112.0]] },
@@ -70,6 +69,19 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
     layer.clearLayers();
     const pl = provLayerRef.current;
     if (pl && mapRef.current) { if (zoom >= 6.5) pl.addTo(mapRef.current); else pl.remove(); }
+    const map = mapRef.current;
+    // tách các điểm đè lên nhau (cách nhau < 26px) để dễ nhìn
+    const placed: L.Point[] = [];
+    const spot = (lat: number, lng: number, r: number): L.LatLngExpression => {
+      if (!map) return [lat, lng];
+      let pt = map.latLngToLayerPoint([lat, lng]);
+      for (let k = 0; k < 12 && placed.some((q) => q.distanceTo(pt) < r); k++) {
+        const a = (k * Math.PI) / 3;
+        pt = pt.add(L.point(Math.cos(a) * r * 0.9, Math.sin(a) * r * 0.9));
+      }
+      placed.push(pt);
+      return map.layerPointToLatLng(pt);
+    };
     const byProv = new Map<string, ProjectStats[]>();
     items.forEach((s) => { const k = s.project.province ?? "?"; byProv.set(k, [...(byProv.get(k) ?? []), s]); });
     byProv.forEach((list, prov) => {
@@ -79,13 +91,13 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
         const lat = p?.lat ?? list[0].project.lat!;
         const lng = p?.lng ?? list[0].project.lng!;
         const icon = L.divIcon({ className: "", iconSize: [34, 34], iconAnchor: [17, 17], html: `<div style="width:34px;height:34px;border-radius:50%;background:${COLOR[worst]};color:#fff;font:700 13px Inter,sans-serif;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)">${list.length}</div>` });
-        L.marker([lat, lng], { icon, title: `${prov}: ${list.length} dự án` }).addTo(layer).on("click", () => { setProvince(prov); setSel(null); mapRef.current?.flyTo([lat, lng], GROUP_ZOOM + 1.5, { duration: 0.6 }); });
+        L.marker(spot(lat, lng, 34), { icon, title: `${prov}: ${list.length} dự án` }).addTo(layer).on("click", () => { setProvince(prov); setSel(null); mapRef.current?.flyTo([lat, lng], GROUP_ZOOM + 1.5, { duration: 0.6 }); });
       } else {
         list.forEach((s) => {
           const active = s.project.id === sel;
           const size = active ? 22 : 16;
           const icon = L.divIcon({ className: "", iconSize: [size, size], iconAnchor: [size / 2, size / 2], html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${COLOR[s.health] ?? "#64748B"};border:3px solid #fff;box-shadow:0 0 0 ${active ? 3 : 1}px ${active ? "#1572D3" : "rgba(0,0,0,.25)"},0 2px 5px rgba(0,0,0,.3)"></div>` });
-          L.marker([s.project.lat!, s.project.lng!], { icon, title: s.project.shortName, zIndexOffset: active ? 1000 : 0 })
+          L.marker(zoom < GROUP_ZOOM ? spot(s.project.lat!, s.project.lng!, 20) : [s.project.lat!, s.project.lng!], { icon, title: s.project.shortName, zIndexOffset: active ? 1000 : 0 })
             .bindTooltip(s.project.shortName, { permanent: zoom >= GROUP_ZOOM || active, direction: "right", offset: [8, 0], className: cn("vn-label", active && "vn-label-active") })
             .addTo(layer).on("click", () => focusRef.current(s));
         });
@@ -108,11 +120,11 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
       <CardHeader className="flex-wrap gap-y-2">
         <CardTitle className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Bản đồ dự án</CardTitle>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px] text-slate-600">
-          {LEGEND.map((h) => <span key={h} className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: COLOR[h] }} />{HEALTH[h].label}</span>)}
+          {LEGEND.map((h) => <span key={h} className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full" style={{ background: COLOR[h] }} />{PROJECT_HEALTH[h].label}</span>)}
           <Button size="xs" variant="outline" onClick={reset}><LocateFixed /> Toàn quốc</Button>
         </div>
       </CardHeader>
-      <div className="grid flex-1 sm:grid-cols-[minmax(0,360px)_1fr]">
+      <div className="grid flex-1 sm:grid-cols-[minmax(0,480px)_1fr]">
         <div ref={boxRef} className="isolate z-0 h-[520px] w-full" style={{ background: "#E3EEF9" }} />
         <div className="max-h-[520px] overflow-y-auto border-t p-4 sm:border-l sm:border-t-0">
           {cur ? (
@@ -120,7 +132,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
               <button className="text-[12px] text-primary hover:underline" onClick={() => setSel(null)}>← {province ? `Dự án tại ${province}` : "Tổng hợp"}</button>
               <div>
                 <div className="text-[15px] font-bold leading-snug text-slate-900">{cur.project.name}</div>
-                <div className="mt-1 flex items-center gap-2"><StatusBadge map={HEALTH} value={cur.health} /><span className="text-[12px] text-slate-500">{cur.project.location}</span></div>
+                <div className="mt-1 flex items-center gap-2"><StatusBadge map={PROJECT_HEALTH} value={cur.health} /><span className="text-[12px] text-slate-500">{cur.project.location}</span></div>
               </div>
               <dl className="space-y-2 text-[13px]">
                 <div><dt className="text-[11.5px] text-slate-500">Chủ đầu tư</dt><dd className="font-medium text-slate-900">{cur.project.investor}</dd></div>
@@ -129,7 +141,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
                 <div><dt className="text-[11.5px] text-slate-500">Thời gian thực hiện</dt><dd className="font-medium text-slate-900">{fmtDate(cur.project.startDate)} – {fmtDate(cur.project.endDate)}</dd></div>
                 <div><dt className="mb-1 flex justify-between text-[11.5px] text-slate-500"><span>Tiến độ thực hiện</span><b className="text-slate-800">{fmtPct(cur.actual)}</b></dt><dd><Progress value={cur.actual} tone={cur.health === "cham_tien_do" ? "danger" : cur.health === "nguy_co_cham" ? "warning" : "success"} className="h-2" /></dd></div>
               </dl>
-              <div className="flex gap-2"><Button className="flex-1" onClick={() => navigate(`/projects/${cur.project.id}`)}>Mở dự án <ArrowRight /></Button><AssignButton size="sm" className="h-9" ctx={{ title: `${cur.health === "cham_tien_do" ? "Xử lý chậm tiến độ" : cur.health === "nguy_co_cham" ? "Đôn đốc tiến độ" : "Theo dõi"} – ${cur.project.shortName}`, refLabel: `Dự án: ${cur.project.shortName}`, link: `/projects/${cur.project.id}`, projectId: cur.project.id, suggest: [cur.project.commanderId] }} /></div>
+              <Button className="w-full" onClick={() => navigate(`/projects/${cur.project.id}`)}>Mở dự án <ArrowRight /></Button>
             </div>
           ) : province ? (
             <div>

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DirectiveWorkspace } from "@/pages/directives/DirectivesPage";
 import { useQueryParam } from "@/hooks/useQueryParam";
 import { ContractsTab, DocsTab, MethodsTab, StaffTab } from "./ProjectTabs";
 import { Tip } from "@/components/ui/tooltip";
@@ -28,7 +29,7 @@ import {
   equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
   STOCK_STATUS, taskActualPct, taskPlannedPct, TASK_HEALTH_LABEL, taskHealth,
 } from "@/services/selectors";
-import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PROJECT_STATUS, SERIES } from "@/utils/constants";
+import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, PROJECT_HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PROJECT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtMoneyShort } from "@/utils/format";
 import { DEMO_TODAY, monthLabel } from "@/utils/date";
 
@@ -94,7 +95,7 @@ export default function ProjectDetailPage() {
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="text-xl font-bold text-slate-900">{project.name}</h1>
-              <StatusBadge map={HEALTH} value={s.health} />
+              <StatusBadge map={PROJECT_HEALTH} value={s.health} />
               <StatusBadge map={PROJECT_STATUS} value={project.status} dot={false} />
             </div>
             <dl className="mt-3 grid gap-x-6 gap-y-1.5 text-[13px] md:grid-cols-[130px_1fr]">
@@ -154,6 +155,7 @@ export default function ProjectDetailPage() {
             <TabsTrigger value="materials">Vật tư ({stock.length})</TabsTrigger>
             <TabsTrigger value="equipment">Thiết bị ({eqList.length})</TabsTrigger>
             <TabsTrigger value="logs">Nhật ký & hình ảnh</TabsTrigger>
+            <TabsTrigger value="directives">Công việc điều hành ({db.directives.filter((d) => d.projectId === project.id && d.status !== "hoan_thanh").length})</TabsTrigger>
             <TabsTrigger value="issues">Vấn đề phát sinh ({issues.filter((i) => i.status !== "da_xu_ly").length})</TabsTrigger>
           </TabsList>
 
@@ -357,6 +359,8 @@ export default function ProjectDetailPage() {
             </div>
             <div className="mt-3 text-right"><Link to={`/construction/logs?project=${project.id}`} className="text-xs font-medium text-primary hover:underline">Xem toàn bộ nhật ký thi công →</Link></div>
           </TabsContent>
+
+          <TabsContent value="directives"><DirectiveWorkspace projectId={project.id} /></TabsContent>
 
           <TabsContent value="issues">
             <Card>

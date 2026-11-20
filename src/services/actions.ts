@@ -589,16 +589,23 @@ export function deleteVoucher(db: Database, voucherCode: string): Database {
   return remove(db, "stockTransactions", (t) => (t.voucherCode ?? t.code) === voucherCode);
 }
 
-// ---------- Việc chỉ đạo ----------
-export type DirectiveInput = Pick<Directive, "title" | "content" | "refLabel" | "link" | "projectId" | "assigneeId" | "dueDate">;
+// ---------- Công việc điều hành ----------
+export type DirectiveInput = Pick<Directive, "title" | "content" | "projectId" | "assigneeId" | "dueDate" | "followerIds" | "attachments">;
+const dueVi = (d: string) => d.split("-").reverse().join("/");
 export function createDirective(db: Database, input: DirectiveInput, byId: ID): Database {
-  const code = nextCode("CĐ-", db.directives.map((d) => d.code));
+  const code = nextCode("CV-", db.directives.map((d) => d.code));
+  const id = genId("cv");
   const who = db.users.find((u) => u.id === input.assigneeId)?.name ?? "";
-  const next = insert(db, "directives", { ...input, id: genId("dr"), code, assignedBy: byId, createdAt: DEMO_TODAY, status: "dang_thuc_hien", files: [] }, true);
-  return pushNotification(next, { type: "task", severity: "info", title: `Việc chỉ đạo mới: ${input.title}`, message: `${code} · giao cho ${who} · hạn ${input.dueDate.split("-").reverse().join("/")}`, projectId: input.projectId, link: "/directives" });
+  const next = insert(db, "directives", { ...input, id, code, assignedBy: byId, createdAt: DEMO_TODAY, status: "dang_thuc_hien", comments: [], files: [] }, true);
+  return pushNotification(next, { type: "task", severity: "info", title: `Công việc mới: ${input.title}`, message: `${code} · giao cho ${who} · hạn ${dueVi(input.dueDate)}`, projectId: input.projectId, link: `/directives?id=${id}` });
+}
+export function addDirectiveComment(db: Database, id: ID, userId: ID, text: string): Database {
+  const d = db.directives.find((x) => x.id === id);
+  if (!d) return db;
+  return patch(db, "directives", id, { comments: [...(d.comments ?? []), { id: genId("cm"), userId, at: `${DEMO_TODAY}T${new Date().toTimeString().slice(0, 8)}`, text }] });
 }
 export function completeDirective(db: Database, id: ID, result: string, files: Attachment[]): Database {
   const d = db.directives.find((x) => x.id === id);
   const next = patch(db, "directives", id, { status: "hoan_thanh", completedAt: DEMO_TODAY, result, files });
-  return d ? pushNotification(next, { type: "task", severity: "success", title: `Đã hoàn thành: ${d.title}`, message: `${d.code} · ${db.users.find((u) => u.id === d.assigneeId)?.name ?? ""} đã báo cáo hoàn thành`, projectId: d.projectId, link: "/directives" }) : next;
+  return d ? pushNotification(next, { type: "task", severity: "success", title: `Đã hoàn thành: ${d.title}`, message: `${d.code} · ${db.users.find((u) => u.id === d.assigneeId)?.name ?? ""} đã báo cáo hoàn thành`, projectId: d.projectId, link: `/directives?id=${id}` }) : next;
 }

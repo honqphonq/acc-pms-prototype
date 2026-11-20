@@ -16,6 +16,7 @@ import { AcceptanceFormDialog } from "./AcceptanceFormDialog";
 import { reconcile, type ReconcileRow } from "@/services/selectors";
 import { CHART_COLORS, SERIES } from "@/utils/constants";
 import { fmtMoneyShort, fmtNumber, fmtPct } from "@/utils/format";
+import { activeProjects } from "@/utils/labels";
 
 /** Đối chiếu khối lượng thi công thực tế – khối lượng nghiệm thu (căn cứ thanh toán) */
 export default function ReconcilePage() {
@@ -50,7 +51,7 @@ export default function ReconcilePage() {
   return (
     <div>
       <PageHeader title="Đối chiếu khối lượng thực hiện – nghiệm thu" description="Căn cứ để BP Kế toán đối chiếu khối lượng thi công thực tế tại công trường và khối lượng nghiệm thu dùng làm căn cứ thanh toán."
-        actions={<><FilterSelect value={projectId} onChange={(v) => v && setProjectId(v)} allLabel="— Dự án —" options={db.projects.filter((p) => db.constructionPlans.some((t) => t.projectId === p.id)).map((p) => ({ value: p.id, label: p.shortName }))} />{can("acceptance.edit") && <Button onClick={() => setOpen("")}><FilePlus2 /> Lập hồ sơ nghiệm thu</Button>}</>} />
+        actions={<><FilterSelect value={projectId} onChange={(v) => v && setProjectId(v)} allLabel="— Dự án —" options={activeProjects(db).filter((p) => db.constructionPlans.some((t) => t.projectId === p.id)).map((p) => ({ value: p.id, label: p.shortName }))} />{can("acceptance.edit") && <Button onClick={() => setOpen("")}><FilePlus2 /> Lập hồ sơ nghiệm thu</Button>}</>} />
       <div className="mb-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <KpiCard label="Giá trị thi công thực tế" value={fmtMoneyShort(execV)} tone="info" />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtMoneyShort(accV)} tone="success" progress={execV ? accV / execV : 0} sub={`${fmtPct(execV ? accV / execV : 0)} giá trị thực hiện`} />

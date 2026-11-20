@@ -17,6 +17,7 @@ import { DEMO_TODAY, addDays } from "@/utils/date";
 import { fmtNumber } from "@/utils/format";
 import { cn } from "@/utils/cn";
 import type { Equipment, EquipmentShift, Operator } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 const SHIFTS: EquipmentShift["shift"][] = ["Ca 1", "Ca 2", "Ca 3"];
 const SHIFT_TIME: Record<string, string> = { "Ca 1": "06:00 – 14:00", "Ca 2": "14:00 – 22:00", "Ca 3": "22:00 – 06:00" };
@@ -53,7 +54,7 @@ export function ShiftSchedule() {
   return (
     <Card>
       <div className="flex flex-wrap items-center gap-2 border-b px-4 py-3">
-        <Select className="w-56" value={pid} onChange={(e) => setPid(e.target.value)} options={db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => ({ value: p.id, label: p.shortName }))} />
+        <Select className="w-56" value={pid} onChange={(e) => setPid(e.target.value)} options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
         <div className="flex items-center rounded-md border">
           <Button size="icon-sm" variant="ghost" onClick={() => setWeek(addDays(week, -7))}><ChevronLeft /></Button>
           <span className="px-2 text-[13px] font-semibold">Tuần {days[0].slice(8, 10)}/{days[0].slice(5, 7)} – {days[6].slice(8, 10)}/{days[6].slice(5, 7)}/{days[6].slice(0, 4)}</span>

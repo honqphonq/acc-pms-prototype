@@ -22,6 +22,7 @@ import { CHART_COLORS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
 import { DEMO_TODAY, addDays } from "@/utils/date";
 import type { EquipmentShift } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export default function ShiftsPage() {
   const { db, run } = useDb();
@@ -37,7 +38,7 @@ export default function ShiftsPage() {
   const hours = rows.reduce((x, s) => x + s.hours, 0);
   const fuel = rows.reduce((x, s) => x + s.fuelLiters, 0);
   const norm = rows.reduce((x, s) => x + normOf(s), 0);
-  const byProject = db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => {
+  const byProject = activeProjects(db).map((p) => {
     const ss = db.equipmentShifts.filter((s) => s.logged !== false && s.projectId === p.id && (!group || eq(s.equipmentId)?.group === group));
     return { name: p.shortName, "Nhiên liệu thực tế": Math.round(ss.reduce((x, s) => x + s.fuelLiters, 0)), "Định mức": Math.round(ss.reduce((x, s) => x + normOf(s), 0)) };
   }).filter((x) => x["Định mức"] > 0);
@@ -88,7 +89,7 @@ export default function ShiftsPage() {
           searchText={(s) => `${eq(s.equipmentId)?.code} ${eq(s.equipmentId)?.name} ${db.users.find((u) => u.id === s.operatorId)?.name}`} searchPlaceholder="Tìm thiết bị, người vận hành..."
           toolbarRight={(can("equipment.edit") || can("progress.update")) && <Button onClick={() => setOpen(true)}><Plus /> Ghi nhật trình</Button>}
           toolbar={<>
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.filter((p) => p.status === "dang_thi_cong").map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
             <FilterSelect value={group} onChange={setGroup} allLabel="Tất cả nhóm máy" options={[...new Set(db.equipment.map((e) => e.group))].map((g) => ({ value: g, label: g }))} />
             <FilterSelect value={onlyOver} onChange={setOnlyOver} allLabel="Mọi ca" options={[{ value: "1", label: "Chỉ ca vượt định mức" }]} />
           </>}

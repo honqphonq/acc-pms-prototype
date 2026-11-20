@@ -636,23 +636,31 @@ export interface LoginEntry {
 }
 
 /** Toàn bộ dữ liệu demo */
-/** Việc chỉ đạo: lãnh đạo giao trực tiếp từ màn hình báo cáo */
+
+export interface DirectiveComment {
+  id: ID;
+  userId: ID;
+  at: string; // ISO datetime
+  text: string;
+}
+/** Công việc điều hành – lãnh đạo giao việc, có thể thuộc 1 dự án hoặc là việc chung */
 export interface Directive {
   id: ID;
   code: string;
   title: string;
-  content: string;
-  refLabel: string; // liên quan đến (dự án / XMTB / cảnh báo)
-  link: string;
+  content: string; // mô tả công việc
   projectId: ID | null;
   assigneeId: ID;
   assignedBy: ID;
+  followerIds: ID[];
   createdAt: string;
   dueDate: string;
   status: "dang_thuc_hien" | "hoan_thanh";
+  attachments: Attachment[]; // tài liệu đính kèm khi giao
+  comments: DirectiveComment[];
   completedAt?: string;
   result?: string;
-  files?: Attachment[];
+  files?: Attachment[]; // tài liệu kèm báo cáo hoàn thành
 }
 
 export interface Database {

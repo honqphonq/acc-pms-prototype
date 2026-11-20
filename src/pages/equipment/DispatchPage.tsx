@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { ASSIGNMENT_STATUS } from "@/utils/constants";
 import { fmtDate } from "@/utils/format";
 import type { EquipmentAssignment } from "@/types";
+import { activeProjects } from "@/utils/labels";
 
 export default function DispatchPage() {
   const { db, run } = useDb();
@@ -75,7 +76,7 @@ export default function DispatchPage() {
           toolbar={<>
             <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(ASSIGNMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect value={kind} onChange={setKind} allLabel="Tất cả loại" options={Object.entries(KIND).map(([v, l]) => ({ value: v, label: l.label }))} />
-            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={db.projects.map((p) => ({ value: p.id, label: p.shortName }))} />
+            <FilterSelect value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))} />
           </>}
         />
       </Card>

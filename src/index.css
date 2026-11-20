@@ -110,3 +110,4 @@
 .leaflet-tooltip.vn-label-active { max-width: none; z-index: 10; }
 .leaflet-tooltip.vn-label::before { display: none; }
 .leaflet-tooltip.vn-label-active { background: #1572D3; color: #fff; border-color: #1572D3; }
+.recharts-label-list { pointer-events: none; }
