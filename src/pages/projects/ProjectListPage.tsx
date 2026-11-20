@@ -63,11 +63,11 @@ export default function ProjectListPage() {
     { key: "time", header: "Thời gian", sortValue: (s) => s.project.startDate, cell: (s) => <span className="whitespace-nowrap text-xs text-slate-600">{fmtDate(s.project.startDate)} – {fmtDate(s.project.endDate)}</span> },
     { key: "value", header: "Giá trị HĐ (tỷ)", align: "right", sortValue: (s) => s.project.contractValue, cell: (s) => fmtNumber(s.project.contractValue / 1e9) },
     {
-      key: "progress", header: "Tiến độ (TT / KH)", sortValue: (s) => s.actual,
+      key: "progress", header: "Tiến độ", sortValue: (s) => s.actual,
       cell: (s) => (
         <div className="w-36">
-          <div className="mb-1 flex justify-between text-[11.5px]"><span className="font-semibold">{fmtPct(s.actual)}</span><span className="text-slate-400">{fmtPct(s.planned)}</span></div>
-          <Progress value={s.actual} marker={s.planned} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} className="h-1.5" />
+          <div className="mb-1 text-[11.5px]"><span className="font-semibold">{fmtPct(s.actual)}</span></div>
+          <Progress value={s.actual} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} className="h-1.5" />
         </div>
       ),
     },

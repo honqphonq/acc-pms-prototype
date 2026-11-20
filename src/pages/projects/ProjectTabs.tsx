@@ -141,7 +141,7 @@ export function DocsTab({ projectId }: { projectId: string }) {
             const docs = db.documents.filter((d) => ids.has(d.folderId));
             const last = docs.map((d) => d.uploadedAt).sort().pop();
             return (
-              <button key={f.id} onClick={go} className="flex items-center gap-3 rounded-xl border bg-white px-4 py-3 text-left hover:border-primary/60 hover:bg-primary-soft/40">
+              <button key={f.id} onClick={() => navigate(`/construction/documents?project=${projectId}&folder=${f.id}`)} className="flex items-center gap-3 rounded-xl border bg-white px-4 py-3 text-left hover:border-primary/60 hover:bg-primary-soft/40">
                 <Folder className="h-9 w-9 shrink-0 fill-amber-100 text-amber-500" />
                 <div className="min-w-0"><div className="truncate text-[14px] font-semibold">{f.name}</div><div className="text-[12px] text-slate-500">{fmtNumber(docs.length, 0)} tài liệu{last ? ` · ${fmtDate(last)}` : ""}</div></div>
               </button>

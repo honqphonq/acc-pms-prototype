@@ -136,7 +136,7 @@ export default function ProjectDetailPage() {
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Số công việc" value={s.tasksTotal} unit="công việc" icon={<ClipboardList />} tone="info" progress={s.tasksTotal ? s.tasksDone / s.tasksTotal : 0} sub={<>{s.tasksDone} hoàn thành ({fmtPct(s.tasksTotal ? s.tasksDone / s.tasksTotal : 0)}) · {s.tasksOverdue > 0 ? <Badge tone="danger">{s.tasksOverdue} quá hạn</Badge> : "0 quá hạn"}</>} />
-        <KpiCard label="Tiến độ thực tế / kế hoạch" value={fmtPct(s.actual)} icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} marker={s.planned} sub={`Kế hoạch ${fmtPct(s.planned)} · ${s.healthReason}`} />
+        <KpiCard label="Tiến độ thực hiện" value={fmtPct(s.actual)} icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} sub={`so với tổng khối lượng · ${s.healthReason}`} />
         <KpiCard onClick={() => setTab("contracts")} label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Giá trị khối lượng thực hiện ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(s.acceptedValue / 1e9)} unit="tỷ đồng" icon={<CheckCircle2 />} tone="warning" progress={s.acceptedValue / (project.contractValue || 1)} sub={`${fmtPct(s.acceptedValue / (project.contractValue || 1))} giá trị HĐ · chờ duyệt ${fmtNumber(s.pendingAcceptanceValue / 1e9)} tỷ`} />
         <KpiCard label="Chi phí thực hiện" value={fmtNumber(s.cost / 1e9)} unit="tỷ đồng" icon={<BarChart3 />} tone="navy" progress={s.cost / (project.budget || 1)} sub={`${fmtPct(s.cost / (project.budget || 1))} ngân sách dự kiến ${fmtNumber(project.budget / 1e9, 0)} tỷ`} />
@@ -207,7 +207,7 @@ export default function ProjectDetailPage() {
                 <CardContent className="px-0 pb-2">
                   {lateTasks.length === 0 ? <EmptyState title="Không có công việc chậm tiến độ" className="py-8" /> : (
                     <Table>
-                      <TableHeader><TableRow><TableHead>Công việc</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Tổ</TableHead><TableHead>Hạn KH</TableHead><TableHead>KH / TT</TableHead><TableHead /></TableRow></TableHeader>
+                      <TableHeader><TableRow><TableHead>Công việc</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Tổ</TableHead><TableHead>Hạn KH</TableHead><TableHead>Tiến độ</TableHead><TableHead /></TableRow></TableHeader>
                       <TableBody>
                         {lateTasks.slice(0, 8).map(({ t, a, p }) => {
                           const h = taskHealth({ actual: a, planned: p, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart });
@@ -217,7 +217,7 @@ export default function ProjectDetailPage() {
                               <TableCell className="whitespace-nowrap"><UserCell userId={t.assigneeId} /></TableCell>
                               <TableCell className="whitespace-nowrap text-xs text-slate-600">{t.team || "—"}</TableCell>
                               <TableCell className="whitespace-nowrap text-xs">{fmtDate(t.plannedEnd)}</TableCell>
-                              <TableCell className="w-32"><div className="mb-1 text-[11.5px]"><span className="text-slate-400">{fmtPct(p, 0)}</span> / <b className="text-rose-600">{fmtPct(a, 1)}</b></div><Progress value={a} marker={p} tone="danger" className="h-1.5" /></TableCell>
+                              <TableCell className="w-32"><div className="mb-1 text-[11.5px]"><b className="text-rose-600">{fmtPct(a, 1)}</b></div><Progress value={a} tone="danger" className="h-1.5" /></TableCell>
                               <TableCell>{can("progress.update") && <Button size="xs" variant="soft" onClick={() => setTaskId(t.id)}>Cập nhật</Button>}</TableCell>
                             </TableRow>
                           );
@@ -273,7 +273,7 @@ export default function ProjectDetailPage() {
                         <TableCell><UserCell userId={it.managerId} /></TableCell>
                         <TableCell className="whitespace-nowrap text-xs">{fmtDate(st.start)} – {fmtDate(st.end)}</TableCell>
                         <TableCell className="tabular text-right">{fmtNumber(st.value / 1e9, 2)}</TableCell>
-                        <TableCell className="w-48"><div className="mb-1 flex justify-between text-[11.5px]"><b>{fmtPct(st.actual)}</b><span className="text-slate-400">{fmtPct(st.planned)}</span></div><Progress value={st.actual} marker={st.planned} tone={st.actual + 0.03 >= st.planned ? "success" : "warning"} className="h-1.5" /></TableCell>
+                        <TableCell className="w-48"><div className="mb-1 text-[11.5px]"><b>{fmtPct(st.actual)}</b></div><Progress value={st.actual} tone={st.actual + 0.03 >= st.planned ? "success" : "warning"} className="h-1.5" /></TableCell>
                         <TableCell>{st.overdue ? <Badge tone="danger">{st.overdue} việc</Badge> : <span className="text-slate-400">—</span>}</TableCell>
                       </TableRow>
                     );

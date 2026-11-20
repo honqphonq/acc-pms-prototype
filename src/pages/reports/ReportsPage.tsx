@@ -53,7 +53,7 @@ export default function ReportsPage() {
         <TabsContent value="tong-hop" className="space-y-4">
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
             <KpiCard label="Dự án đang thi công" value={pf.runningProjects} tone="info" sub={`${pf.onTrack} đúng · ${pf.atRisk} nguy cơ · ${pf.delayed} chậm`} />
-            <KpiCard label="Tiến độ tổng thể" value={fmtPct(pf.overallActual)} tone="primary" progress={pf.overallActual} marker={pf.overallPlanned} sub={`Kế hoạch ${fmtPct(pf.overallPlanned)}`} />
+            <KpiCard label="Tiến độ tổng thể" value={fmtPct(pf.overallActual)} tone="primary" progress={pf.overallActual} sub="so với tổng khối lượng" />
             <KpiCard label="Giá trị khối lượng thực hiện" value={fmtNumber(pf.execValue / 1e9, 0)} unit="tỷ" tone="success" />
             <KpiCard label="Đã nghiệm thu" value={fmtNumber(pf.accepted / 1e9, 0)} unit="tỷ" tone="warning" />
             <KpiCard label="Đã thu" value={fmtNumber(pf.paid / 1e9, 0)} unit="tỷ" tone="navy" />
@@ -61,13 +61,13 @@ export default function ReportsPage() {
           <Card>
             <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH %", "TT %", "Lệch (điểm)", "Tình trạng", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), (s.delta * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
             <Table>
-              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ TT / KH</TableHead><TableHead className="text-right">Lệch</TableHead><TableHead>Tình trạng</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ</TableHead><TableHead className="text-right">Lệch</TableHead><TableHead>Tình trạng</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
               <TableBody>
                 {pf.stats.map((s) => (
                   <TableRow key={s.project.id} className="cursor-pointer" onClick={() => navigate(`/projects/${s.project.id}`)}>
                     <TableCell className="font-medium">{s.project.shortName}</TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.project.contractValue)}</TableCell>
-                    <TableCell className="w-40"><div className="mb-1 text-[11.5px]"><b>{fmtPct(s.actual)}</b> / {fmtPct(s.planned)}</div><Progress value={s.actual} marker={s.planned} className="h-1.5" tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} /></TableCell>
+                    <TableCell className="w-40"><div className="mb-1 text-[11.5px]"><b>{fmtPct(s.actual)}</b></div><Progress value={s.actual} className="h-1.5" tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} /></TableCell>
                     <TableCell className={`tabular text-right ${s.delta < -0.03 ? "text-rose-600" : "text-slate-600"}`}>{fmtNumber(s.delta * 100)}</TableCell>
                     <TableCell><StatusBadge map={HEALTH} value={s.health} /></TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.execValue)}</TableCell>
@@ -112,7 +112,7 @@ export default function ReportsPage() {
                       <TableCell className="text-xs text-slate-500">{pName(it.projectId)}</TableCell><TableCell className="font-medium">{it.code} {it.name}</TableCell>
                       <TableCell className="whitespace-nowrap text-xs">{fmtDate(st.start)} – {fmtDate(st.end)}</TableCell>
                       <TableCell className="tabular text-right">{fmtMoneyShort(st.value)}</TableCell>
-                      <TableCell className="w-36"><div className="mb-1 text-[11.5px]"><b>{fmtPct(st.actual)}</b> / {fmtPct(st.planned)}</div><Progress value={st.actual} marker={st.planned} className="h-1.5" tone={st.actual + 0.03 >= st.planned ? "success" : "warning"} /></TableCell>
+                      <TableCell className="w-36"><div className="mb-1 text-[11.5px]"><b>{fmtPct(st.actual)}</b></div><Progress value={st.actual} className="h-1.5" tone={st.actual + 0.03 >= st.planned ? "success" : "warning"} /></TableCell>
                       <TableCell className="text-right">{st.overdue ? <Badge tone="danger">{st.overdue}</Badge> : "—"}</TableCell>
                     </TableRow>
                   );
