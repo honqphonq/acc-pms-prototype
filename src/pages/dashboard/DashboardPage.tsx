@@ -16,6 +16,8 @@ import { PageSkeleton } from "@/components/common/LoadingState";
 import { FilterSelect } from "@/components/common/DataTable";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
+import { ProjectMap } from "./ProjectMap";
+import { ByProjectBar, RevenueCostTrend } from "./FinanceCharts";
 import { equipmentWork, getAlerts, getProjectStatsMap, utilizationOf, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
@@ -145,6 +147,16 @@ export default function DashboardPage() {
             ))}
           </CardContent>
         </Card>
+      </div>
+
+      {/* Bản đồ dự án */}
+      <div className="mt-4"><ProjectMap stats={stats} /></div>
+
+      {/* Doanh thu – chi phí */}
+      <div className="mt-4"><RevenueCostTrend projectIds={ids} scope={filtering ? "theo bộ lọc" : "toàn Tổng công ty"} /></div>
+      <div className="mt-4 grid gap-4 xl:grid-cols-2">
+        <ByProjectBar projectIds={ids} kind="cost" />
+        <ByProjectBar projectIds={ids} kind="revenue" />
       </div>
 
       {/* 3. Thẻ công trình theo loại – cuộn ngang, tối đa 2 dòng */}

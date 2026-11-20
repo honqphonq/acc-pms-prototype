@@ -64,6 +64,9 @@ export interface Project {
   memberIds: ID[];
   description: string;
   approvalStatus: "da_duyet" | "cho_duyet" | "tu_choi";
+  province?: string; // tỉnh, thành (34 đơn vị sau sắp xếp 7/2025)
+  lat?: number;
+  lng?: number;
 }
 
 /** File đính kèm (prototype: lưu dạng data URL trên trình duyệt hoặc ảnh mẫu trong /assets) */

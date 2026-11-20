@@ -552,3 +552,27 @@ export function equipmentDocWarnings(e: Equipment): { label: string; danger: boo
   if (e.ownership === "thue_ngoai" && !e.ownerProof) out.push({ label: "Thiếu CM chủ sở hữu", danger: true });
   return out;
 }
+
+// ---------- doanh thu – chi phí (ước tính, chờ phân hệ kế toán) ----------
+/** Doanh thu = giá trị khối lượng thực hiện (khối lượng cập nhật hằng ngày × đơn giá HĐ); chi phí = doanh thu × hệ số chi phí của dự án */
+export function revenueCost(db: Database, projectIds: Set<ID>) {
+  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
+  const ratio = new Map(db.projects.map((p) => [p.id, p.costRatio]));
+  const byProject = new Map<ID, { revenue: number; cost: number }>();
+  const byMonth = new Map<string, { revenue: number; cost: number }>();
+  db.constructionLogs.forEach((l) => {
+    if (l.status === "nhap" || !projectIds.has(l.projectId)) return;
+    const rev = l.qty * (price.get(l.taskId) ?? 0);
+    const cost = rev * (ratio.get(l.projectId) ?? 0.9);
+    const p = byProject.get(l.projectId) ?? { revenue: 0, cost: 0 };
+    p.revenue += rev; p.cost += cost; byProject.set(l.projectId, p);
+    const m = l.date.slice(0, 7);
+    const x = byMonth.get(m) ?? { revenue: 0, cost: 0 };
+    x.revenue += rev; x.cost += cost; byMonth.set(m, x);
+  });
+  const last12 = Array.from({ length: 12 }, (_, i) => { const d = new Date(DEMO_TODAY.slice(0, 7) + "-01T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 11 + i); return d.toISOString().slice(0, 7); });
+  return {
+    byProject,
+    months: last12.map((m) => ({ month: m, label: `${Number(m.slice(5))}/${m.slice(0, 4)}`, revenue: byMonth.get(m)?.revenue ?? 0, cost: byMonth.get(m)?.cost ?? 0 })),
+  };
+}

@@ -4,6 +4,7 @@ import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTi
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { NumberInput } from "@/components/ui/number-input";
+import { PROVINCES, provinceOf } from "@/utils/provinces";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { FormField } from "@/components/common/FormField";
@@ -40,12 +41,15 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
     if (!f.name.trim()) e.name = "Nhập tên dự án";
     if (!f.investor.trim()) e.investor = "Nhập chủ đầu tư";
     if (!f.location.trim()) e.location = "Nhập địa điểm";
+    if (!f.province) e.province = "Chọn tỉnh, thành";
     if (f.contractValue <= 0) e.contractValue = "Giá trị hợp đồng phải > 0";
     if (f.endDate <= f.startDate) e.endDate = "Ngày kết thúc phải sau ngày bắt đầu";
     if (db.projects.some((p) => p.code === f.code && p.id !== project?.id)) e.code = "Mã dự án đã tồn tại";
     setErrors(e);
     if (Object.keys(e).length) return;
-    const data = { ...f, shortName: f.shortName || f.name.slice(0, 32) };
+    const pv = provinceOf(f.province);
+    const moved = !project || project.province !== f.province;
+    const data = { ...f, shortName: f.shortName || f.name.slice(0, 32), ...(pv && moved ? { lat: pv.lat + (Math.random() - 0.5) * 0.08, lng: pv.lng + (Math.random() - 0.5) * 0.08 } : {}) };
     if (project) {
       run(updateProject, project.id, data);
       toast.success("Đã cập nhật thông tin dự án");
@@ -73,7 +77,8 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
               <FormField label="Tên dự án" required error={errors.name} className="md:col-span-2"><Input value={f.name} onChange={(e) => set("name", e.target.value)} /></FormField>
               <FormField label="Tên viết tắt"><Input value={f.shortName} onChange={(e) => set("shortName", e.target.value)} /></FormField>
               <FormField label="Loại dự án"><Select value={f.category} onChange={(e) => set("category", e.target.value as Form["category"])} options={Object.entries(CATEGORY_LABELS).map(([value, label]) => ({ value, label }))} /></FormField>
-              <FormField label="Địa điểm" required error={errors.location}><Input value={f.location} onChange={(e) => set("location", e.target.value)} /></FormField>
+              <FormField label="Tỉnh, thành" required error={errors.province}><Select value={f.province ?? ""} placeholder="— Chọn tỉnh, thành —" onChange={(e) => set("province", e.target.value)} options={PROVINCES.map((p) => ({ value: p.name, label: p.name }))} /></FormField>
+              <FormField label="Địa điểm" required error={errors.location} className="md:col-span-2"><Input value={f.location} placeholder="VD: Gia Bình, Bắc Ninh" onChange={(e) => set("location", e.target.value)} /></FormField>
               <FormField label="Chủ đầu tư" required error={errors.investor} className="md:col-span-3"><Input value={f.investor} onChange={(e) => set("investor", e.target.value)} /></FormField>
             </div>
           </div>

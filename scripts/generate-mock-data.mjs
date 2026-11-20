@@ -414,6 +414,20 @@ projectDefs.forEach((def) => {
   });
 });
 
+// ---------- vị trí dự án theo 34 tỉnh, thành (sau sắp xếp đơn vị hành chính 7/2025) ----------
+const GEO = {
+  p01: ["Bắc Ninh", "Gia Bình, Bắc Ninh", 21.06, 106.29], p02: ["TP Đà Nẵng", "TP Đà Nẵng", 16.05, 108.2], p03: ["TP Hải Phòng", "TP Hải Phòng", 20.82, 106.72],
+  p04: ["Quảng Ninh", "Vân Đồn, Quảng Ninh", 21.12, 107.41], p05: ["TP Cần Thơ", "TP Cần Thơ", 10.08, 105.71], p06: ["Phú Thọ", "Việt Trì, Phú Thọ", 21.32, 105.4],
+  p07: ["Phú Thọ", "Hòa Bình, Phú Thọ", 20.81, 105.34], p08: ["TP Cần Thơ", "Sóc Trăng, TP Cần Thơ", 9.6, 105.97], p09: ["Phú Thọ", "Vĩnh Yên, Phú Thọ", 21.31, 105.6],
+  p10: ["Thanh Hóa", "Thọ Xuân, Thanh Hóa", 19.9, 105.47], p11: ["Điện Biên", "Điện Biên Phủ, Điện Biên", 21.4, 103.01], p12: ["Bắc Ninh", "Kép, Bắc Ninh", 21.39, 106.26],
+  p13: ["TP Hà Nội", "TP Hà Nội", 21.06, 105.72], p14: ["TP Hà Nội", "Gia Lâm, TP Hà Nội", 21.04, 105.9], p15: ["Khánh Hòa", "Cam Ranh, Khánh Hòa", 11.99, 109.22],
+  p16: ["Khánh Hòa", "Nha Trang, Khánh Hòa", 12.25, 109.19], p17: ["TP Huế", "Phú Bài, TP Huế", 16.4, 107.7], p18: ["Gia Lai", "Phù Cát, Gia Lai", 13.95, 109.04],
+  p19: ["Lâm Đồng", "Liên Khương, Lâm Đồng", 11.75, 108.37], p20: ["TP Hồ Chí Minh", "TP Hồ Chí Minh", 10.82, 106.66], p21: ["Gia Lai", "Pleiku, Gia Lai", 14.0, 108.02],
+  p22: ["TP Hồ Chí Minh", "Côn Đảo, TP Hồ Chí Minh", 8.73, 106.63], p23: ["TP Hà Nội", "TP Hà Nội", 21.02, 105.81], p24: ["Ninh Bình", "Phủ Lý, Ninh Bình", 20.54, 105.91],
+  p25: ["Nghệ An", "Vinh, Nghệ An", 18.74, 105.67], p26: ["TP Hà Nội", "TP Hà Nội", 20.98, 105.85],
+};
+projects.forEach((p) => { const g = GEO[p.id]; if (g) Object.assign(p, { province: g[0], location: g[1], lat: g[2], lng: g[3] }); });
+
 // ---------- hợp đồng & phụ lục ----------
 const ATT = (name, url = null, size = rint(200, 4800) * 1024) => ({ id: `att-${name.length}-${rint(1000, 9999)}`, name, type: /\.(webp|jpg|png)$/.test(name) ? "image/" + name.split(".").pop() : /\.svg$/.test(name) ? "image/svg+xml" : /\.pdf$/.test(name) ? "application/pdf" : "application/octet-stream", size, url });
 const contracts = [];

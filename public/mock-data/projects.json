@@ -34,7 +34,10 @@
       "u15"
     ],
     "description": "Thi công kết cấu khu bay: đường cất hạ cánh (zone R2–R4B), đường lăn (zone T2–T4B), sân đỗ máy bay zone A2 – móng CPĐD loại 1, BTXM M150 & M350, lề BTN C19/C16. Vật liệu CPĐD, BTXM, thép do Chủ đầu tư cấp.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Bắc Ninh",
+    "lat": 21.06,
+    "lng": 106.29
   },
   {
     "id": "p02",
@@ -42,7 +45,7 @@
     "name": "Mở rộng sân đỗ máy bay – Cảng HKQT Đà Nẵng",
     "shortName": "Sân đỗ máy bay Đà Nẵng",
     "category": "giao_thong",
-    "location": "Đà Nẵng",
+    "location": "TP Đà Nẵng",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 244",
     "unitId": "d-acc244",
@@ -71,7 +74,10 @@
       "u35"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Đà Nẵng",
+    "lat": 16.05,
+    "lng": 108.2
   },
   {
     "id": "p03",
@@ -79,7 +85,7 @@
     "name": "Cảng hàng không quốc tế Cát Bi – Mở rộng đường lăn song song",
     "shortName": "Cảng HKQT Cát Bi",
     "category": "giao_thong",
-    "location": "Hải Phòng",
+    "location": "TP Hải Phòng",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 245",
     "unitId": "d-acc245",
@@ -106,7 +112,10 @@
       "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hải Phòng",
+    "lat": 20.82,
+    "lng": 106.72
   },
   {
     "id": "p04",
@@ -114,7 +123,7 @@
     "name": "Cảng Hàng không Quảng Ninh – Mở rộng sân đỗ tàu bay",
     "shortName": "Cảng HK Quảng Ninh",
     "category": "giao_thong",
-    "location": "Quảng Ninh",
+    "location": "Vân Đồn, Quảng Ninh",
     "investor": "Sở Giao thông vận tải tỉnh Quảng Ninh",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -143,7 +152,10 @@
       "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Quảng Ninh",
+    "lat": 21.12,
+    "lng": 107.41
   },
   {
     "id": "p05",
@@ -151,7 +163,7 @@
     "name": "Nâng cấp và cải tạo sân bay Cần Thơ",
     "shortName": "Sân bay Cần Thơ",
     "category": "giao_thong",
-    "location": "Cần Thơ",
+    "location": "TP Cần Thơ",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -178,7 +190,10 @@
       "u43"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Cần Thơ",
+    "lat": 10.08,
+    "lng": 105.71
   },
   {
     "id": "p06",
@@ -186,7 +201,7 @@
     "name": "Kho kỹ thuật Quân khu 2",
     "shortName": "Kho kỹ thuật QK2",
     "category": "quoc_phong",
-    "location": "Phú Thọ",
+    "location": "Việt Trì, Phú Thọ",
     "investor": "Bộ Tư lệnh Quân khu 2",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -216,7 +231,10 @@
       "u31"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Phú Thọ",
+    "lat": 21.32,
+    "lng": 105.4
   },
   {
     "id": "p07",
@@ -224,7 +242,7 @@
     "name": "Trung tâm huấn luyện K18",
     "shortName": "TT huấn luyện K18",
     "category": "quoc_phong",
-    "location": "Hòa Bình",
+    "location": "Hòa Bình, Phú Thọ",
     "investor": "Bộ Tham mưu Quân chủng Phòng không – Không quân",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -252,7 +270,10 @@
       "u41"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Phú Thọ",
+    "lat": 20.81,
+    "lng": 105.34
   },
   {
     "id": "p08",
@@ -260,7 +281,7 @@
     "name": "Trụ sở làm việc Công an tỉnh Sóc Trăng",
     "shortName": "Trụ sở CA Sóc Trăng",
     "category": "dan_dung",
-    "location": "Sóc Trăng",
+    "location": "Sóc Trăng, TP Cần Thơ",
     "investor": "Công an tỉnh Sóc Trăng",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 245",
     "unitId": "d-acc245",
@@ -289,7 +310,10 @@
       "u43"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Cần Thơ",
+    "lat": 9.6,
+    "lng": 105.97
   },
   {
     "id": "p09",
@@ -297,7 +321,7 @@
     "name": "Bộ Chỉ huy Quân sự tỉnh Vĩnh Phúc",
     "shortName": "BCH QS Vĩnh Phúc",
     "category": "dan_dung",
-    "location": "Vĩnh Phúc",
+    "location": "Vĩnh Yên, Phú Thọ",
     "investor": "Bộ Chỉ huy Quân sự tỉnh Vĩnh Phúc",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -324,7 +348,10 @@
       "u42"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Phú Thọ",
+    "lat": 21.31,
+    "lng": 105.6
   },
   {
     "id": "p10",
@@ -332,7 +359,7 @@
     "name": "Nhà chỉ huy và đài kiểm soát không lưu – Cảng HK Thọ Xuân",
     "shortName": "Đài KSKL Thọ Xuân",
     "category": "giao_thong",
-    "location": "Thanh Hóa",
+    "location": "Thọ Xuân, Thanh Hóa",
     "investor": "Tổng công ty Quản lý bay Việt Nam",
     "contractor": "Tổng công ty ACC – Công ty TNHH MTV Đầu tư và Xây lắp ACC",
     "unitId": "d-accdtxl",
@@ -351,7 +378,10 @@
       "u28"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Thanh Hóa",
+    "lat": 19.9,
+    "lng": 105.47
   },
   {
     "id": "p11",
@@ -359,7 +389,7 @@
     "name": "Sân đỗ ô tô và đường nội bộ – Cảng HK Điện Biên",
     "shortName": "Sân đỗ ô tô Điện Biên",
     "category": "giao_thong",
-    "location": "Điện Biên",
+    "location": "Điện Biên Phủ, Điện Biên",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -383,7 +413,10 @@
       "u45"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Điện Biên",
+    "lat": 21.4,
+    "lng": 103.01
   },
   {
     "id": "p12",
@@ -391,7 +424,7 @@
     "name": "Cải tạo đường lăn, sân đỗ Sân bay quân sự Kép",
     "shortName": "Sân bay Kép",
     "category": "quoc_phong",
-    "location": "Bắc Giang",
+    "location": "Kép, Bắc Ninh",
     "investor": "Bộ Tư lệnh Quân chủng Phòng không – Không quân",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -417,7 +450,10 @@
       "u42"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Bắc Ninh",
+    "lat": 21.39,
+    "lng": 106.26
   },
   {
     "id": "p13",
@@ -425,7 +461,7 @@
     "name": "Doanh trại Trung đoàn Không quân 921",
     "shortName": "Doanh trại E921",
     "category": "quoc_phong",
-    "location": "Hà Nội",
+    "location": "TP Hà Nội",
     "investor": "Bộ Tham mưu Quân chủng Phòng không – Không quân",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -453,7 +489,10 @@
       "u30"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hà Nội",
+    "lat": 21.06,
+    "lng": 105.72
   },
   {
     "id": "p14",
@@ -461,7 +500,7 @@
     "name": "Khu kho kỹ thuật Lữ đoàn Không quân 918",
     "shortName": "Kho kỹ thuật Lữ đoàn 918",
     "category": "quoc_phong",
-    "location": "Hà Nội",
+    "location": "Gia Lâm, TP Hà Nội",
     "investor": "Lữ đoàn Không quân Vận tải 918",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 244",
     "unitId": "d-acc244",
@@ -486,7 +525,10 @@
       "u39"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hà Nội",
+    "lat": 21.04,
+    "lng": 105.9
   },
   {
     "id": "p15",
@@ -494,7 +536,7 @@
     "name": "Sân đỗ trực thăng Vùng 4 Hải quân – Cam Ranh",
     "shortName": "Sân đỗ trực thăng Cam Ranh",
     "category": "quoc_phong",
-    "location": "Khánh Hòa",
+    "location": "Cam Ranh, Khánh Hòa",
     "investor": "Bộ Tư lệnh Vùng 4 Hải quân",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 245",
     "unitId": "d-acc245",
@@ -519,7 +561,10 @@
       "u40"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Khánh Hòa",
+    "lat": 11.99,
+    "lng": 109.22
   },
   {
     "id": "p16",
@@ -527,7 +572,7 @@
     "name": "Ký túc xá học viên Trường Sĩ quan Không quân",
     "shortName": "KTX Trường SQ Không quân",
     "category": "quoc_phong",
-    "location": "Khánh Hòa",
+    "location": "Nha Trang, Khánh Hòa",
     "investor": "Trường Sĩ quan Không quân",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -555,7 +600,10 @@
       "u36"
     ],
     "description": "Công trình quốc phòng – yêu cầu bảo mật thông tin; kết cấu BTCT, khung thép tiền chế.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Khánh Hòa",
+    "lat": 12.25,
+    "lng": 109.19
   },
   {
     "id": "p17",
@@ -563,7 +611,7 @@
     "name": "Mở rộng sân đỗ máy bay – Cảng HKQT Phú Bài",
     "shortName": "Sân đỗ Cảng HKQT Phú Bài",
     "category": "giao_thong",
-    "location": "Thừa Thiên Huế",
+    "location": "Phú Bài, TP Huế",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 244",
     "unitId": "d-acc244",
@@ -592,7 +640,10 @@
       "u32"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Huế",
+    "lat": 16.4,
+    "lng": 107.7
   },
   {
     "id": "p18",
@@ -600,7 +651,7 @@
     "name": "Đường cất hạ cánh số 2 – Cảng HK Phù Cát",
     "shortName": "Đường CHC số 2 Phù Cát",
     "category": "giao_thong",
-    "location": "Bình Định",
+    "location": "Phù Cát, Gia Lai",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 245",
     "unitId": "d-acc245",
@@ -628,7 +679,10 @@
       "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Gia Lai",
+    "lat": 13.95,
+    "lng": 109.04
   },
   {
     "id": "p19",
@@ -636,7 +690,7 @@
     "name": "Mở rộng sân đỗ tàu bay – Cảng HK Liên Khương",
     "shortName": "Sân đỗ Liên Khương",
     "category": "giao_thong",
-    "location": "Lâm Đồng",
+    "location": "Liên Khương, Lâm Đồng",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -666,7 +720,10 @@
       "u34"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Lâm Đồng",
+    "lat": 11.75,
+    "lng": 108.37
   },
   {
     "id": "p20",
@@ -702,7 +759,10 @@
       "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hồ Chí Minh",
+    "lat": 10.82,
+    "lng": 106.66
   },
   {
     "id": "p21",
@@ -710,7 +770,7 @@
     "name": "Cải tạo đường cất hạ cánh – Cảng HK Pleiku",
     "shortName": "Đường CHC Pleiku",
     "category": "giao_thong",
-    "location": "Gia Lai",
+    "location": "Pleiku, Gia Lai",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 245",
     "unitId": "d-acc245",
@@ -737,7 +797,10 @@
       "u30"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Gia Lai",
+    "lat": 14,
+    "lng": 108.02
   },
   {
     "id": "p22",
@@ -745,7 +808,7 @@
     "name": "Hệ thống đèn tín hiệu và sân đỗ – Cảng HK Côn Đảo",
     "shortName": "Đèn tín hiệu Côn Đảo",
     "category": "giao_thong",
-    "location": "Bà Rịa – Vũng Tàu",
+    "location": "Côn Đảo, TP Hồ Chí Minh",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty TNHH MTV Đầu tư và Xây lắp ACC",
     "unitId": "d-accdtxl",
@@ -769,7 +832,10 @@
       "u39"
     ],
     "description": "Công trình hạ tầng hàng không: kết cấu mặt đường bê tông xi măng, hệ thống thoát nước và đèn tín hiệu.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hồ Chí Minh",
+    "lat": 8.73,
+    "lng": 106.63
   },
   {
     "id": "p23",
@@ -777,7 +843,7 @@
     "name": "Trụ sở làm việc Cục Hàng không Việt Nam – khối văn phòng",
     "shortName": "Trụ sở Cục Hàng không",
     "category": "dan_dung",
-    "location": "Hà Nội",
+    "location": "TP Hà Nội",
     "investor": "Cục Hàng không Việt Nam",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 24",
     "unitId": "d-acc24",
@@ -803,7 +869,10 @@
       "u39"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hà Nội",
+    "lat": 21.02,
+    "lng": 105.81
   },
   {
     "id": "p24",
@@ -811,7 +880,7 @@
     "name": "Bệnh viện đa khoa tỉnh Hà Nam – khối kỹ thuật nghiệp vụ",
     "shortName": "BV đa khoa Hà Nam",
     "category": "dan_dung",
-    "location": "Hà Nam",
+    "location": "Phủ Lý, Ninh Bình",
     "investor": "Sở Y tế tỉnh Hà Nam",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 25",
     "unitId": "d-acc25",
@@ -836,7 +905,10 @@
       "u44"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Ninh Bình",
+    "lat": 20.54,
+    "lng": 105.91
   },
   {
     "id": "p25",
@@ -844,7 +916,7 @@
     "name": "Nhà điều hành và khu kỹ thuật – Cảng HK Vinh",
     "shortName": "Nhà điều hành Cảng HK Vinh",
     "category": "dan_dung",
-    "location": "Nghệ An",
+    "location": "Vinh, Nghệ An",
     "investor": "Tổng công ty Cảng hàng không Việt Nam – CTCP (ACV)",
     "contractor": "Tổng công ty ACC – Công ty TNHH MTV Đầu tư và Xây lắp ACC",
     "unitId": "d-accdtxl",
@@ -874,7 +946,10 @@
       "u34"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "Nghệ An",
+    "lat": 18.74,
+    "lng": 105.67
   },
   {
     "id": "p26",
@@ -882,7 +957,7 @@
     "name": "Trung tâm Kiểm soát đường dài Hà Nội – nhà kỹ thuật",
     "shortName": "Trung tâm Kiểm soát đường dài",
     "category": "dan_dung",
-    "location": "Hà Nội",
+    "location": "TP Hà Nội",
     "investor": "Tổng công ty Quản lý bay Việt Nam",
     "contractor": "Tổng công ty ACC – Công ty CP ACC 244",
     "unitId": "d-acc244",
@@ -910,6 +985,9 @@
       "u37"
     ],
     "description": "Công trình dân dụng cấp II, kết cấu khung bê tông cốt thép toàn khối, móng cọc ép BTCT.",
-    "approvalStatus": "da_duyet"
+    "approvalStatus": "da_duyet",
+    "province": "TP Hà Nội",
+    "lat": 20.98,
+    "lng": 105.85
   }
 ]
