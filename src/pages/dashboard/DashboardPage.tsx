@@ -14,17 +14,15 @@ import { KpiCard } from "@/components/common/KpiCard";
 import { ChartCard } from "@/components/common/ChartCard";
 import { PageSkeleton } from "@/components/common/LoadingState";
 import { FilterSelect } from "@/components/common/DataTable";
-import { StatusBadge } from "@/components/common/StatusBadge";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectMap } from "./ProjectMap";
+import { ProjectListDialog, type ListSpec } from "./ProjectListDialog";
 import { ByProjectBar, RevenueCostTrend } from "./FinanceCharts";
 import { equipmentWork, getAlerts, getProjectStatsMap, utilizationOf, ALERT_KIND_LABEL, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, HEALTH, PROJECT_STATUS } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import type { ProjectCategory } from "@/types";
 import { cn } from "@/utils/cn";
-
-const HEALTH_RANK = { cham_tien_do: 0, nguy_co_cham: 1, dung_tien_do: 2, chua_bat_dau: 3, hoan_thanh: 4 } as const;
 
 export default function DashboardPage() {
   const { db } = useDb();
@@ -51,7 +49,18 @@ export default function DashboardPage() {
   const countHealth = (h: keyof typeof HEALTH) => running.filter((s) => s.health === h).length;
 
   const alerts = getAlerts(db).filter((a) => !a.projectId || ids.has(a.projectId));
-  const attention = running.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").sort((a, b) => Number(b.project.id === "p01") - Number(a.project.id === "p01") || HEALTH_RANK[a.health] - HEALTH_RANK[b.health] || b.maxDaysLate - a.maxDaysLate);
+  const [list, setList] = useState<ListSpec | null>(null);
+  const byDesc = (f: (s: ProjectStats) => number) => (rows: ProjectStats[]) => rows.slice().sort((a, b) => f(b) - f(a));
+  const tbl = (f: (s: ProjectStats) => number, label: string) => ({ value: { label, get: f }, sort: byDesc(f) });
+  const openHealth = (tab?: string) => setList({
+    title: "Tình trạng dự án", subtitle: `Tổng số ${running.length} dự án đang thi công`, tab,
+    tabs: (["cham_tien_do", "nguy_co_cham", "dung_tien_do"] as const).map((h) => ({ key: h, label: HEALTH[h].label, color: { cham_tien_do: CHART_COLORS.danger, nguy_co_cham: CHART_COLORS.warning, dung_tien_do: CHART_COLORS.success }[h], rows: running.filter((s) => s.health === h) })),
+  });
+  const openValue = (title: string, subtitle: string, f: (s: ProjectStats) => number, label: string, groups: { key: string; label: string; color: string; test: (s: ProjectStats) => boolean }[]) => {
+    const t = tbl(f, label);
+    setList({ title, subtitle, value: t.value, tabs: [{ key: "all", label: "Tất cả", color: CHART_COLORS.info, rows: t.sort(stats) }, ...groups.map((g) => ({ key: g.key, label: g.label, color: g.color, rows: t.sort(stats.filter(g.test)) }))] });
+  };
+  const ty = (v: number) => `${fmtNumber(v / 1e9, 0)} tỷ đồng`;
 
   // ---- Máy móc thiết bị ----
   // Giờ máy lũy kế từ khi máy về công trình đến nay
@@ -73,14 +82,15 @@ export default function DashboardPage() {
   if (loading) return <PageSkeleton />;
 
   const pie = [
-    { name: HEALTH.dung_tien_do.label, value: countHealth("dung_tien_do"), color: CHART_COLORS.success },
-    { name: HEALTH.nguy_co_cham.label, value: countHealth("nguy_co_cham"), color: CHART_COLORS.warning },
-    { name: HEALTH.cham_tien_do.label, value: countHealth("cham_tien_do"), color: CHART_COLORS.danger },
+    { key: "dung_tien_do", name: HEALTH.dung_tien_do.label, value: countHealth("dung_tien_do"), color: CHART_COLORS.success },
+    { key: "nguy_co_cham", name: HEALTH.nguy_co_cham.label, value: countHealth("nguy_co_cham"), color: CHART_COLORS.warning },
+    { key: "cham_tien_do", name: HEALTH.cham_tien_do.label, value: countHealth("cham_tien_do"), color: CHART_COLORS.danger },
   ];
   const pName = (id: string) => db.projects.find((p) => p.id === id)?.shortName ?? "";
 
   return (
     <div>
+      <ProjectListDialog spec={list} onClose={() => setList(null)} />
       <PageHeader title="Tổng quan hoạt động dự án" description="Góc nhìn tổng thể cho Ban lãnh đạo Tổng công ty – số liệu tính trực tiếp từ kế hoạch, nhật ký, kho và hồ sơ nghiệm thu." />
 
       <Card className="mb-5 flex flex-wrap items-center gap-3 px-4 py-3">
@@ -98,11 +108,11 @@ export default function DashboardPage() {
 
       {/* 1. Chỉ số tổng hợp */}
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
-        <KpiCard label="Số dự án đang triển khai" value={running.length} unit="dự án" icon={<Construction />} tone="info" onClick={() => navigate("/projects")} sub={`${countHealth("cham_tien_do")} chậm · ${countHealth("nguy_co_cham")} nguy cơ chậm · ${countHealth("dung_tien_do")} đúng tiến độ`} />
-        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(contract / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" sub={`Tổng giá trị hợp đồng của ${stats.length} dự án`} />
-        <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(accepted / 1e9, 0)} unit="tỷ đồng" icon={<ClipboardCheck />} tone="warning" progress={contract ? accepted / contract : 0} sub={`${fmtPct(contract ? accepted / contract : 0)} giá trị hợp đồng`} onClick={() => navigate("/acceptance/reconcile")} />
-        <KpiCard label="Chi phí thực hiện" value={fmtNumber(cost / 1e9, 0)} unit="tỷ đồng" icon={<Receipt />} tone="navy" progress={budget ? cost / budget : 0} sub={`${fmtPct(budget ? cost / budget : 0)} ngân sách dự kiến (${fmtNumber(budget / 1e9, 0)} tỷ)`} />
-        <KpiCard label="Đã thu từ Chủ đầu tư" value={fmtNumber(paid / 1e9, 0)} unit="tỷ đồng" icon={<Banknote />} tone="success" progress={accepted ? paid / accepted : 0} sub={`${fmtPct(accepted ? paid / accepted : 0)} giá trị nghiệm thu`} onClick={() => navigate("/payments")} />
+        <KpiCard label="Số dự án đang triển khai" value={running.length} unit="dự án" icon={<Construction />} tone="info" onClick={() => openHealth()} sub={`${countHealth("cham_tien_do")} chậm · ${countHealth("nguy_co_cham")} nguy cơ chậm · ${countHealth("dung_tien_do")} đúng tiến độ`} />
+        <KpiCard label="Giá trị hợp đồng" value={fmtNumber(contract / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" onClick={() => openValue("Giá trị hợp đồng", `Tổng ${ty(contract)} · ${stats.length} dự án`, (s) => s.project.contractValue, "Giá trị hợp đồng", (Object.keys(CATEGORY_LABELS) as ProjectCategory[]).map((c) => ({ key: c, label: CATEGORY_LABELS[c], color: CATEGORY_COLORS[c], test: (s) => s.project.category === c })))} sub={`Tổng giá trị hợp đồng của ${stats.length} dự án`} />
+        <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(accepted / 1e9, 0)} unit="tỷ đồng" icon={<ClipboardCheck />} tone="warning" progress={contract ? accepted / contract : 0} sub={`${fmtPct(contract ? accepted / contract : 0)} giá trị hợp đồng`} onClick={() => openValue("Giá trị đã nghiệm thu", `Tổng ${ty(accepted)} · ${fmtPct(contract ? accepted / contract : 0)} giá trị hợp đồng`, (s) => s.acceptedValue, "Đã nghiệm thu", [{ key: "co", label: "Đã có nghiệm thu", color: CHART_COLORS.success, test: (s) => s.acceptedValue > 0 }, { key: "chua", label: "Chưa nghiệm thu", color: CHART_COLORS.warning, test: (s) => s.acceptedValue <= 0 }])} />
+        <KpiCard label="Chi phí thực hiện" value={fmtNumber(cost / 1e9, 0)} unit="tỷ đồng" icon={<Receipt />} tone="navy" onClick={() => openValue("Chi phí thực hiện", `Tổng ${ty(cost)} · ${fmtPct(budget ? cost / budget : 0)} ngân sách dự kiến`, (s) => s.cost, "Chi phí", [{ key: "trong", label: "Trong ngân sách", color: CHART_COLORS.success, test: (s) => s.cost <= s.project.budget }, { key: "vuot", label: "Vượt ngân sách", color: CHART_COLORS.danger, test: (s) => s.cost > s.project.budget }])} progress={budget ? cost / budget : 0} sub={`${fmtPct(budget ? cost / budget : 0)} ngân sách dự kiến (${fmtNumber(budget / 1e9, 0)} tỷ)`} />
+        <KpiCard label="Đã thu từ Chủ đầu tư" value={fmtNumber(paid / 1e9, 0)} unit="tỷ đồng" icon={<Banknote />} tone="success" progress={accepted ? paid / accepted : 0} sub={`${fmtPct(accepted ? paid / accepted : 0)} giá trị nghiệm thu`} onClick={() => openValue("Đã thu từ Chủ đầu tư", `Tổng ${ty(paid)} · ${fmtPct(accepted ? paid / accepted : 0)} giá trị nghiệm thu`, (s) => s.paidValue, "Đã thu", [{ key: "con", label: "Còn phải thu", color: CHART_COLORS.warning, test: (s) => s.paidValue < s.acceptedValue }, { key: "du", label: "Đã thu đủ", color: CHART_COLORS.success, test: (s) => s.acceptedValue > 0 && s.paidValue >= s.acceptedValue }])} />
       </div>
 
       <div className="mt-4 grid gap-4 xl:grid-cols-12">
@@ -110,7 +120,7 @@ export default function DashboardPage() {
           <div className="relative h-40">
             <ResponsiveContainer>
               <PieChart>
-                <Pie data={pie} isAnimationActive={false} dataKey="value" innerRadius={48} outerRadius={70} paddingAngle={2} stroke="#fff" strokeWidth={2}>
+                <Pie data={pie} isAnimationActive={false} className="cursor-pointer" onClick={(d: { key?: string }) => openHealth(d.key)} dataKey="value" innerRadius={48} outerRadius={70} paddingAngle={2} stroke="#fff" strokeWidth={2}>
                   {pie.map((p) => <Cell key={p.name} fill={p.color} />)}
                 </Pie>
                 <Tooltip formatter={(v: number, n) => [`${v} dự án`, n]} />
@@ -123,34 +133,17 @@ export default function DashboardPage() {
           </div>
           <div className="mt-3 space-y-1.5">
             {pie.map((p) => (
-              <div key={p.name} className="flex items-center justify-between text-[13px]">
+              <button key={p.name} onClick={() => openHealth(p.key)} className="-mx-2 flex w-[calc(100%+1rem)] items-center justify-between rounded-md px-2 py-0.5 text-[13px] hover:bg-slate-50">
                 <span className="flex items-center gap-2 text-slate-600"><span className="h-2.5 w-2.5 rounded-full" style={{ background: p.color }} />{p.name}</span>
                 <span className="tabular font-semibold">{p.value} <span className="font-normal text-slate-400">({fmtPct(running.length ? p.value / running.length : 0)})</span></span>
-              </div>
+              </button>
             ))}
           </div>
-          <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Xác định theo thời hạn công việc: có việc quá hạn &gt; {LATE_DAYS_DELAYED} ngày = chậm; quá hạn ≤ {LATE_DAYS_DELAYED} ngày hoặc đang làm chậm so với kế hoạch = nguy cơ chậm.</p>
+          <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Bấm vào biểu đồ để xem danh sách dự án. Xác định theo thời hạn công việc: có việc quá hạn &gt; {LATE_DAYS_DELAYED} ngày = chậm; quá hạn ≤ {LATE_DAYS_DELAYED} ngày hoặc đang làm chậm so với kế hoạch = nguy cơ chậm.</p>
         </ChartCard>
 
-        <Card className="xl:col-span-8">
-          <CardHeader>
-            <CardTitle>Dự án cần xử lý</CardTitle>
-            <Badge tone="neutral">{attention.length} dự án</Badge>
-          </CardHeader>
-          <CardContent className="scrollbar-visible grid max-h-[340px] content-start gap-2 overflow-y-auto md:grid-cols-2">
-            {attention.length === 0 && <div className="py-6 text-center text-xs text-slate-500 md:col-span-2">Tất cả dự án đang đúng tiến độ</div>}
-            {attention.map((s) => (
-              <Link key={s.project.id} to={`/projects/${s.project.id}`} className="flex items-center justify-between gap-2 rounded-lg border border-slate-100 px-3 py-2.5 hover:border-slate-200 hover:bg-slate-50">
-                <span className="truncate text-[13px] font-medium text-slate-800">{s.project.shortName}</span>
-                <Tip content={s.healthReason}><span><StatusBadge map={HEALTH} value={s.health} dot={false} /></span></Tip>
-              </Link>
-            ))}
-          </CardContent>
-        </Card>
+        <ProjectMap stats={stats} className="xl:col-span-8" />
       </div>
-
-      {/* Bản đồ dự án */}
-      <div className="mt-4"><ProjectMap stats={stats} /></div>
 
       {/* Doanh thu – chi phí */}
       <div className="mt-4"><RevenueCostTrend projectIds={ids} scope={filtering ? "theo bộ lọc" : "toàn Tổng công ty"} /></div>

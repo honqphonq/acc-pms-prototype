@@ -102,3 +102,11 @@
   [data-sonner-toaster] { display: none !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* Bản đồ dự án (tự vẽ, không dùng nền bản đồ ngoài) */
+.vn-prov { transform: translate(-50%, -50%); white-space: nowrap; font: 500 10px Inter, sans-serif; color: #94A3B8; pointer-events: none; }
+.vn-island { transform: translate(-50%, 6px); white-space: nowrap; font: 600 10px Inter, sans-serif; color: #5B7398; font-style: italic; pointer-events: none; }
+.leaflet-tooltip.vn-label { background: rgba(255,255,255,.92); border: 1px solid #E2E8F0; box-shadow: 0 1px 2px rgba(0,0,0,.12); padding: 1px 6px; border-radius: 4px; font: 600 11px Inter, sans-serif; color: #1E293B; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.leaflet-tooltip.vn-label-active { max-width: none; z-index: 10; }
+.leaflet-tooltip.vn-label::before { display: none; }
+.leaflet-tooltip.vn-label-active { background: #1572D3; color: #fff; border-color: #1572D3; }
