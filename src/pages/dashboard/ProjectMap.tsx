@@ -13,6 +13,7 @@ import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
 import { PROVINCES, REGION_LABEL, provinceOf } from "@/utils/provinces";
 import VN_GEO from "@/data/vn-geo.json";
 import { cn } from "@/utils/cn";
+import { AssignButton } from "@/components/common/AssignDirective";
 import type { ProjectStats } from "@/services/selectors";
 
 const COLOR: Record<string, string> = { cham_tien_do: "#DC2626", nguy_co_cham: "#F59E0B", dung_tien_do: "#16A34A", hoan_thanh: "#2563EB", chua_bat_dau: "#64748B" };
@@ -128,7 +129,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
                 <div><dt className="text-[11.5px] text-slate-500">Thời gian thực hiện</dt><dd className="font-medium text-slate-900">{fmtDate(cur.project.startDate)} – {fmtDate(cur.project.endDate)}</dd></div>
                 <div><dt className="mb-1 flex justify-between text-[11.5px] text-slate-500"><span>Tiến độ thực tế / kế hoạch</span><b className="text-slate-800">{fmtPct(cur.actual)} / {fmtPct(cur.planned)}</b></dt><dd><Progress value={cur.actual} marker={cur.planned} tone={cur.health === "cham_tien_do" ? "danger" : cur.health === "nguy_co_cham" ? "warning" : "success"} className="h-2" /></dd></div>
               </dl>
-              <Button className="w-full" onClick={() => navigate(`/projects/${cur.project.id}`)}>Mở dự án <ArrowRight /></Button>
+              <div className="flex gap-2"><Button className="flex-1" onClick={() => navigate(`/projects/${cur.project.id}`)}>Mở dự án <ArrowRight /></Button><AssignButton size="sm" className="h-9" ctx={{ title: `${cur.health === "cham_tien_do" ? "Xử lý chậm tiến độ" : cur.health === "nguy_co_cham" ? "Đôn đốc tiến độ" : "Theo dõi"} – ${cur.project.shortName}`, refLabel: `Dự án: ${cur.project.shortName}`, link: `/projects/${cur.project.id}`, projectId: cur.project.id, suggest: [cur.project.commanderId] }} /></div>
             </div>
           ) : province ? (
             <div>

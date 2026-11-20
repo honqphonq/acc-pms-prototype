@@ -31,6 +31,7 @@ import routes from "@/data/routes.json";
 import stocktakes from "@/data/stocktakes.json";
 import loginHistory from "@/data/login-history.json";
 import contracts from "@/data/contracts.json";
+import directives from "@/data/directives.json";
 import type { Database } from "@/types";
 
 export function getSeedData(): Database {
@@ -68,5 +69,6 @@ export function getSeedData(): Database {
     stocktakes,
     loginHistory,
     contracts,
+    directives,
   }) as unknown as Database;
 }

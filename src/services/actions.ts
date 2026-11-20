@@ -9,6 +9,7 @@ import type {
   ConstructionLog,
   Contract,
   Database,
+  Directive,
   Equipment,
   EquipmentAssignment,
   EquipmentShift,
@@ -586,4 +587,18 @@ export function confirmVoucher(db: Database, voucherCode: string): Database {
 }
 export function deleteVoucher(db: Database, voucherCode: string): Database {
   return remove(db, "stockTransactions", (t) => (t.voucherCode ?? t.code) === voucherCode);
+}
+
+// ---------- Việc chỉ đạo ----------
+export type DirectiveInput = Pick<Directive, "title" | "content" | "refLabel" | "link" | "projectId" | "assigneeId" | "dueDate">;
+export function createDirective(db: Database, input: DirectiveInput, byId: ID): Database {
+  const code = nextCode("CĐ-", db.directives.map((d) => d.code));
+  const who = db.users.find((u) => u.id === input.assigneeId)?.name ?? "";
+  const next = insert(db, "directives", { ...input, id: genId("dr"), code, assignedBy: byId, createdAt: DEMO_TODAY, status: "dang_thuc_hien", files: [] }, true);
+  return pushNotification(next, { type: "task", severity: "info", title: `Việc chỉ đạo mới: ${input.title}`, message: `${code} · giao cho ${who} · hạn ${input.dueDate.split("-").reverse().join("/")}`, projectId: input.projectId, link: "/directives" });
+}
+export function completeDirective(db: Database, id: ID, result: string, files: Attachment[]): Database {
+  const d = db.directives.find((x) => x.id === id);
+  const next = patch(db, "directives", id, { status: "hoan_thanh", completedAt: DEMO_TODAY, result, files });
+  return d ? pushNotification(next, { type: "task", severity: "success", title: `Đã hoàn thành: ${d.title}`, message: `${d.code} · ${db.users.find((u) => u.id === d.assigneeId)?.name ?? ""} đã báo cáo hoàn thành`, projectId: d.projectId, link: "/directives" }) : next;
 }

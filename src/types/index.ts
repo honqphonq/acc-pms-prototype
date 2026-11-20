@@ -636,6 +636,25 @@ export interface LoginEntry {
 }
 
 /** Toàn bộ dữ liệu demo */
+/** Việc chỉ đạo: lãnh đạo giao trực tiếp từ màn hình báo cáo */
+export interface Directive {
+  id: ID;
+  code: string;
+  title: string;
+  content: string;
+  refLabel: string; // liên quan đến (dự án / XMTB / cảnh báo)
+  link: string;
+  projectId: ID | null;
+  assigneeId: ID;
+  assignedBy: ID;
+  createdAt: string;
+  dueDate: string;
+  status: "dang_thuc_hien" | "hoan_thanh";
+  completedAt?: string;
+  result?: string;
+  files?: Attachment[];
+}
+
 export interface Database {
   projects: Project[];
   users: User[];
@@ -669,6 +688,7 @@ export interface Database {
   stocktakes: Stocktake[];
   contracts: Contract[];
   loginHistory: LoginEntry[];
+  directives: Directive[];
 }
 
 export type CollectionKey = keyof Database;

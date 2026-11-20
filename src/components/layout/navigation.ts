@@ -1,5 +1,5 @@
 import {
-  Building2, Calculator, LayoutDashboard, Settings, Truck, BookOpenCheck, HardHat, type LucideIcon,
+  Building2, Calculator, LayoutDashboard, Send, Settings, Truck, BookOpenCheck, HardHat, type LucideIcon,
 } from "lucide-react";
 
 export interface NavItem {
@@ -7,12 +7,13 @@ export interface NavItem {
   to: string;
   icon: LucideIcon;
   children?: { label: string; to: string; soon?: boolean }[];
-  badgeKey?: "alerts" | "approvals";
+  badgeKey?: "alerts" | "approvals" | "directives";
 }
 
 /** Menu theo “Danh mục tính năng phần mềm quản lý thi công xây dựng – ACC” (cập nhật 18/11) */
 export const NAV: NavItem[] = [
   { label: "Trang chủ", to: "/", icon: LayoutDashboard },
+  { label: "Việc chỉ đạo", to: "/directives", icon: Send, badgeKey: "directives" },
   {
     label: "Quản lý công trình", to: "/projects", icon: Building2,
     children: [
@@ -64,6 +65,7 @@ export const NAV: NavItem[] = [
 
 /** Nhãn breadcrumb theo đường dẫn */
 export const PATH_LABELS: Record<string, string> = {
+  directives: "Việc chỉ đạo",
   projects: "Danh sách dự án",
   packages: "Quản lý gói thầu",
   contracts: "Quản lý hợp đồng",

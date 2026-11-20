@@ -43,6 +43,7 @@ const RoutesPage = lazy(() => import("@/pages/equipment/RoutesPage"));
 const ComingSoon = lazy(() => import("@/pages/finance/ComingSoonPage"));
 const StockHub = lazy(() => import("@/pages/materials/StockHubPage"));
 const ProjectStock = lazy(() => import("@/pages/materials/StockHubPage").then((m) => ({ default: m.ProjectStockPage })));
+const Directives = lazy(() => import("@/pages/directives/DirectivesPage"));
 const Account = lazy(() => import("@/pages/auth/AccountPage"));
 
 /** Đường dẫn cũ của phân hệ vật tư → kho dự án */
@@ -59,6 +60,7 @@ export function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route element={<AppLayout />}>
         <Route index element={<S><Dashboard /></S>} />
+        <Route path="directives" element={<S><Directives /></S>} />
         <Route path="projects" element={<S><ProjectList /></S>} />
         <Route path="projects/packages" element={<Navigate to="/projects/contracts" replace />} />
         <Route path="projects/contracts" element={<S><Contracts /></S>} />
