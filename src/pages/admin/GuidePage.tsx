@@ -49,7 +49,7 @@ const SCENARIOS: Scenario[] = [
     no: 4, title: "Quản lý xe máy thiết bị", role: "phong_thiet_bi", userId: "u12", goal: "Danh mục XMTB có hình ảnh, điều động về dự án, phân ca – nhật trình, bảo dưỡng và cảnh báo hồ sơ.",
     steps: [
       { text: "Danh mục XMTB: lọc ô tô / xe biển đỏ / máy thiết bị, nguồn gốc sở hữu / thuê ngoài; mở máy rải bê tông xem hình ảnh", to: "/equipment/list" },
-      { text: "Điều động XMTB về dự án (không gắn người vận hành); duyệt / thu hồi ở Phân bổ điều động", to: "/equipment/dispatch" },
+      { text: "Điều động XMTB ngay trên Danh mục XMTB (một hoặc nhiều máy, có hiệu lực ngay); thu hồi về kho TCT", to: "/equipment/list" },
       { text: "Phân ca và nhật trình: xếp nhân viên CMKT cho từng ca, nhập nhật trình cuối ca (giờ máy, km, nhiên liệu)", to: "/equipment/shifts" },
       { text: "Bảo dưỡng: khối Cảnh báo XMTB – đến hạn bảo dưỡng, hết hạn kiểm định / bảo hiểm, thiếu CM chủ sở hữu", to: "/equipment/maintenance" },
       { text: "Nhân viên CMKT: lọc theo giấy phép & chứng chỉ còn hạn", to: "/equipment/operators" },

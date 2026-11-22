@@ -22,6 +22,8 @@ export interface Column<T> {
   headClassName?: string;
   align?: "left" | "right" | "center";
   footer?: ReactNode;
+  /** cột đứng yên bên trái khi kéo bảng sang phải */
+  sticky?: boolean;
 }
 
 interface DataTableProps<T> {
@@ -44,6 +46,8 @@ interface DataTableProps<T> {
   showFooter?: boolean;
   resetKey?: unknown;
   selectable?: boolean;
+  /** thao tác hàng loạt cho các dòng đã chọn */
+  selectionActions?: (keys: string[], clear: () => void) => ReactNode;
 }
 
 /** Lấy chữ hiển thị từ nội dung ô (phục vụ lọc theo cột) */
@@ -65,7 +69,7 @@ const fmtDmy = (d: string) => d.slice(0, 10).split("-").reverse().join("/");
 /** Bảng dữ liệu: tìm kiếm, lọc theo cột, sắp xếp, chọn dòng, phân trang */
 export function DataTable<T>({
   columns, rows, rowKey, searchText, searchPlaceholder = "Tìm kiếm...", toolbar, toolbarRight, onRowClick, pageSize = 10, loading,
-  emptyTitle = "Không có dữ liệu", emptyDescription, emptyAction, initialSort, rowClassName, dense, showFooter, resetKey, selectable = true,
+  emptyTitle = "Không có dữ liệu", emptyDescription, emptyAction, initialSort, rowClassName, dense, showFooter, resetKey, selectable = true, selectionActions,
 }: DataTableProps<T>) {
   const fval = (row: T, key: string) => {
     const c = columns.find((x) => x.key === key);
@@ -119,6 +123,7 @@ export function DataTable<T>({
           {toolbar}
           {activeCount > 0 && <Button size="sm" variant="outline" className="border-primary/40 text-primary" onClick={st.clearColFilters}><X /> Xóa {activeCount} bộ lọc cột</Button>}
           {selected.size > 0 && <span className="rounded-md bg-primary-soft px-2.5 py-1.5 text-xs font-medium text-primary">Đã chọn {selected.size} dòng · <button className="underline" onClick={() => setSelected(new Set())}>Bỏ chọn</button></span>}
+          {selected.size > 0 && selectionActions?.([...selected], () => setSelected(new Set()))}
           {toolbarRight && <div className="ml-auto flex flex-wrap items-center gap-2">{toolbarRight}</div>}
         </div>
       )}
@@ -134,7 +139,7 @@ export function DataTable<T>({
                 const ft = filterTypes[c.key];
                 const f = st.colFilters[c.key];
                 return (
-                  <TableHead key={c.key} className={cn(c.align === "right" && "text-right", c.align === "center" && "text-center", c.headClassName)}>
+                  <TableHead key={c.key} className={cn(c.align === "right" && "text-right", c.align === "center" && "text-center", c.sticky && STICKY + " bg-slate-100", c.headClassName)}>
                     <span className={cn("inline-flex items-center gap-1", c.align === "right" && "flex-row-reverse")}>
                       {c.sortValue ? (
                         <button onClick={() => st.toggleSort(c.key)} className={cn("inline-flex items-center gap-1 uppercase hover:text-primary", sorted && "text-primary")}>
@@ -160,10 +165,10 @@ export function DataTable<T>({
             {st.pageRows.map((row, i) => {
               const k = rowKey(row);
               return (
-                <TableRow key={k} data-state={selected.has(k) ? "selected" : undefined} onClick={onRowClick ? () => onRowClick(row) : undefined} className={cn(onRowClick && "cursor-pointer", rowClassName?.(row))}>
+                <TableRow key={k} data-state={selected.has(k) ? "selected" : undefined} onClick={onRowClick ? () => onRowClick(row) : undefined} className={cn("group", onRowClick && "cursor-pointer", rowClassName?.(row))}>
                   {selectable && <TableCell className="w-10 pl-4 pr-0" onClick={(e) => e.stopPropagation()}><input type="checkbox" aria-label="Chọn dòng" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={selected.has(k)} onChange={() => setSelected((s) => { const n = new Set(s); if (n.has(k)) n.delete(k); else n.add(k); return n; })} /></TableCell>}
                   {columns.map((c) => (
-                    <TableCell key={c.key} className={cn(dense && "py-2", c.align === "right" && "text-right tabular", c.align === "center" && "text-center", c.className)}>
+                    <TableCell key={c.key} className={cn(dense && "py-2", c.align === "right" && "text-right tabular", c.align === "center" && "text-center", c.sticky && STICKY + " bg-white group-hover:bg-sky-50", c.className)}>
                       {c.cell(row, (st.page - 1) * st.pageSize + i)}
                     </TableCell>
                   ))}
@@ -213,6 +218,8 @@ export function DataTable<T>({
     </div>
   );
 }
+
+const STICKY = "sticky left-0 z-[2] shadow-[inset_-1px_0_0_#e2e8f0]";
 
 /** Ô lọc theo cột (icon phễu trên tiêu đề cột) */
 function ColumnFilter({ type, value, options, onChange }: { type: ColFilterType; value?: ColFilter; options: string[]; onChange: (v: ColFilter | null) => void }) {

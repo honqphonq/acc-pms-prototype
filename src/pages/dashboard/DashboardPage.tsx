@@ -4,11 +4,8 @@ import { Banknote, ChevronLeft, ChevronRight, ClipboardCheck, Construction, Rece
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, Legend, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useDb } from "@/hooks/useDb";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tip } from "@/components/ui/tooltip";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PageHeader } from "@/components/common/PageHeader";
 import { KpiCard } from "@/components/common/KpiCard";
 import { ChartCard } from "@/components/common/ChartCard";
@@ -75,15 +72,6 @@ export default function DashboardPage() {
   const eqHours = eqWork.reduce((x, w) => x + w.hours, 0);
   const eqDays = eqWork.reduce((x, w) => x + w.availableDays, 0);
   const eqUtil = utilizationOf({ hours: eqHours, availableDays: eqDays });
-  const eqGroups = [...new Set(eqList.map((e) => e.group))]
-    .map((group) => {
-      const idx = eqList.map((e, i) => (e.group === group ? i : -1)).filter((i) => i >= 0);
-      const hours = idx.reduce((x, i) => x + eqWork[i].hours, 0);
-      const days = idx.reduce((x, i) => x + eqWork[i].availableDays, 0);
-      const projects = [...new Set(idx.map((i) => eqList[i].currentProjectId).filter(Boolean))] as string[];
-      return { group, count: idx.length, hours, projects, utilization: utilizationOf({ hours, availableDays: days }) };
-    })
-    .sort((a, b) => b.count - a.count);
 
   const pName = (id: string) => db.projects.find((p) => p.id === id)?.shortName ?? "";
   const EQ_COLORS: Record<string, string> = { hoat_dong: CHART_COLORS.success, nhan_roi: "#94A3B8", bao_tri: CHART_COLORS.warning, ngung: CHART_COLORS.danger };
@@ -228,43 +216,6 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
 
-      <div className="mt-4 grid gap-4 xl:grid-cols-12">
-        <Card className="xl:col-span-12">
-          <CardHeader className="items-start">
-            <div>
-              <CardTitle>Chi tiết theo loại máy</CardTitle>
-              <p className="mt-0.5 text-[11.5px] text-slate-500">Giờ máy lũy kế từ khi máy được điều động về công trình đến nay · Hiệu suất = giờ máy thực tế ÷ (số ngày làm việc tại công trình × 8 giờ/ca)</p>
-            </div>
-          </CardHeader>
-          <Table>
-            <TableHeader>
-              <TableRow><TableHead>Tên máy</TableHead><TableHead className="text-right">Số máy</TableHead><TableHead>Dự án</TableHead><TableHead>Hiệu suất sử dụng</TableHead><TableHead className="text-right">Giờ máy</TableHead></TableRow>
-            </TableHeader>
-            <TableBody>
-              {eqGroups.map((g) => (
-                <TableRow key={g.group} className="cursor-pointer" onClick={() => navigate(`/equipment/list?group=${encodeURIComponent(g.group)}`)}>
-                  <TableCell className="whitespace-nowrap font-semibold text-slate-800">{g.group}</TableCell>
-                  <TableCell className="tabular text-right">{g.count}</TableCell>
-                  <TableCell className="max-w-[180px]">
-                    {g.projects.length === 0 ? <span className="text-xs text-slate-400">Chưa phân bổ</span> : (
-                      <Tip content={g.projects.map(pName).join(", ")}>
-                        <span className="block truncate text-xs text-slate-600">{g.projects.slice(0, 2).map(pName).join(", ")}{g.projects.length > 2 && <span className="text-slate-400"> +{g.projects.length - 2}</span>}</span>
-                      </Tip>
-                    )}
-                  </TableCell>
-                  <TableCell className="w-44">
-                    <div className="flex items-center gap-2">
-                      <span className="tabular w-10 text-xs font-semibold">{fmtPct(g.utilization, 0)}</span>
-                      <Progress value={g.utilization} tone={g.utilization >= 0.75 ? "success" : g.utilization >= 0.5 ? "info" : "warning"} className="h-1.5" />
-                    </div>
-                  </TableCell>
-                  <TableCell className="tabular text-right">{fmtNumber(g.hours, 0)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Card>
-      </div>
 
     </div>
   );

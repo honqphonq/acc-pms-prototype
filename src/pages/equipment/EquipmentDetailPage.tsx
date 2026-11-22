@@ -22,7 +22,7 @@ import { releaseEquipment, saveRow } from "@/services/actions";
 import { AttachmentList, FilePreview, fileUrl, readFiles } from "@/components/common/Attachments";
 import { cn } from "@/utils/cn";
 import type { Attachment } from "@/types";
-import { equipmentWork, getEquipmentUsage, maintenanceDue, utilizationOf } from "@/services/selectors";
+import { equipmentWork, fuelUnit, getEquipmentUsage, isVehicle, maintenanceDue, maintenanceLeft, meterUnit, shiftFuelNorm, shiftMeter, sinceMaintenance, utilizationOf } from "@/services/selectors";
 import { ASSIGNMENT_STATUS, EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtVnd } from "@/utils/format";
 import { DEMO_TODAY, addDays } from "@/utils/date";
@@ -41,7 +41,9 @@ export default function EquipmentDetailPage() {
   const work = equipmentWork(db, e.id, e.currentProjectId);
   const shifts = db.equipmentShifts.filter((s) => s.equipmentId === e.id).sort((a, b) => b.date.localeCompare(a.date));
   const assigns = db.equipmentAssignments.filter((a) => a.equipmentId === e.id).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  const sinceMaint = e.totalHours - e.lastMaintenanceHours;
+  const sinceMaint = sinceMaintenance(e);
+  const mu = meterUnit(e);
+  const veh = isVehicle(e);
   const daily = Array.from({ length: 21 }, (_, i) => addDays(DEMO_TODAY, i - 21)).map((d) => {
     const ss = shifts.filter((s) => s.date === d);
     return { date: d.slice(8, 10) + "/" + d.slice(5, 7), "Giờ máy": ss.reduce((x, s) => x + s.hours, 0), "Nhiên liệu (lít)": ss.reduce((x, s) => x + s.fuelLiters, 0) };
@@ -67,9 +69,9 @@ export default function EquipmentDetailPage() {
 
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         <KpiCard label="Dự án đang sử dụng" value={<span className="text-base">{project?.shortName ?? "Chưa phân bổ"}</span>} tone="info" sub={e.operatorId ? `Vận hành: ${db.users.find((x) => x.id === e.operatorId)?.name}` : "Chưa phân công người vận hành"} icon={<Truck />} onClick={project ? () => navigate(`/projects/${project.id}`) : undefined} />
-        <KpiCard label="Giờ máy tại dự án hiện tại" value={fmtNumber(work.hours, 0)} unit="giờ" tone="success" icon={<Clock />} progress={utilizationOf(work)} sub={project ? `Từ khi về công trình · hiệu suất ${fmtPct(utilizationOf(work), 0)} · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ` : `Chưa phân bổ · tổng đời máy ${fmtNumber(e.totalHours, 0)} giờ`} />
-        <KpiCard label="Nhiên liệu tiêu hao (3 tuần)" value={fmtNumber(u?.fuel ?? 0, 0)} unit="lít" tone={u && u.fuel > u.fuelNormTotal * 1.08 ? "danger" : "warning"} icon={<Fuel />} progress={u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0} sub={`Định mức ${e.fuelNorm} lít/giờ · ${fmtPct(u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0, 0)} định mức`} />
-        <KpiCard label="Bảo dưỡng định kỳ" value={fmtNumber(sinceMaint, 0)} unit={`/ ${e.maintenanceInterval} giờ`} tone={maintenanceDue(e) ? "danger" : "navy"} icon={<Wrench />} progress={sinceMaint / e.maintenanceInterval} sub={maintenanceDue(e) ? "Đã đến hạn bảo dưỡng" : `Còn ${e.maintenanceInterval - sinceMaint} giờ đến kỳ bảo dưỡng`} />
+        <KpiCard label="Giờ máy tại dự án hiện tại" value={fmtNumber(work.hours, 0)} unit="giờ" tone="success" icon={<Clock />} progress={utilizationOf(work)} sub={project ? `Từ khi về công trình · hiệu suất ${fmtPct(utilizationOf(work), 0)} · đồng hồ ${fmtNumber(e.totalHours, 0)} ${mu}` : `Chưa phân bổ · đồng hồ ${fmtNumber(e.totalHours, 0)} ${mu}`} />
+        <KpiCard label="Nhiên liệu tiêu hao (3 tuần)" value={fmtNumber(u?.fuel ?? 0, 0)} unit="lít" tone={u && u.fuel > u.fuelNormTotal * 1.08 ? "danger" : "warning"} icon={<Fuel />} progress={u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0} sub={`Định mức ${e.fuelNorm} ${fuelUnit(e)} · ${fmtPct(u?.fuelNormTotal ? u.fuel / u.fuelNormTotal : 0, 0)} định mức`} />
+        <KpiCard label="Bảo dưỡng định kỳ" value={fmtNumber(sinceMaint, 0)} unit={`/ ${fmtNumber(e.maintenanceInterval, 0)} ${mu}`} tone={maintenanceDue(e) ? "danger" : "navy"} icon={<Wrench />} progress={sinceMaint / e.maintenanceInterval} sub={`${maintenanceDue(e) ? "Đã đến hạn · " : ""}${maintenanceLeft(e)}${e.maintenanceMonths ? ` (chu kỳ ${e.maintenanceMonths} tháng)` : ""}`} />
       </div>
 
       <Tabs defaultValue="shifts">
@@ -99,15 +101,15 @@ export default function EquipmentDetailPage() {
             <CardHeader><CardTitle>Nhật ký ca máy</CardTitle>{e.status === "hoat_dong" && <Button size="sm" onClick={() => setDlg("shift")}><Plus /> Ghi ca máy</Button>}</CardHeader>
             {shifts.length === 0 ? <EmptyState title="Chưa có ca máy" /> : (
               <Table>
-                <TableHeader><TableRow><TableHead>Ngày</TableHead><TableHead>Ca</TableHead><TableHead>Công trình</TableHead><TableHead>Người vận hành</TableHead><TableHead className="text-right">Giờ máy</TableHead><TableHead className="text-right">Nhiên liệu</TableHead><TableHead>Khối lượng</TableHead><TableHead>Ghi chú</TableHead></TableRow></TableHeader>
+                <TableHeader><TableRow><TableHead>Ngày</TableHead><TableHead>Ca</TableHead><TableHead>Công trình</TableHead><TableHead>Người vận hành</TableHead><TableHead className="text-right">{veh ? "Km" : "Giờ máy"}</TableHead><TableHead className="text-right">Nhiên liệu</TableHead><TableHead>Khối lượng</TableHead><TableHead>Ghi chú</TableHead></TableRow></TableHeader>
                 <TableBody>
                   {shifts.slice(0, 30).map((s) => {
-                    const over = s.fuelLiters > s.hours * e.fuelNorm * 1.08;
+                    const over = s.fuelLiters > shiftFuelNorm(e, s) * 1.08;
                     return (
                       <TableRow key={s.id}>
                         <TableCell>{fmtDate(s.date)}</TableCell><TableCell>{s.shift}</TableCell><TableCell className="text-xs">{db.projects.find((p) => p.id === s.projectId)?.shortName}</TableCell>
                         <TableCell><UserCell userId={s.operatorId} /></TableCell>
-                        <TableCell className="tabular text-right">{fmtNumber(s.hours)}</TableCell>
+                        <TableCell className="tabular text-right">{fmtNumber(shiftMeter(e, s))}</TableCell>
                         <TableCell className={`tabular text-right ${over ? "font-semibold text-rose-600" : ""}`}>{fmtNumber(s.fuelLiters)} l</TableCell>
                         <TableCell className="text-xs">{s.output}</TableCell><TableCell className="text-xs text-rose-600">{s.note}</TableCell>
                       </TableRow>
@@ -155,7 +157,7 @@ export default function EquipmentDetailPage() {
         <TabsContent value="info">
           <Card className="p-5">
             <dl className="grid gap-x-8 gap-y-3 text-[13px] md:grid-cols-3">
-              {[["Mã máy", e.code], ["XMTB", e.name], ["Nhóm XMTB", e.group], ["Hãng / model", e.brand], ["Biển số / số hiệu", e.plate], ["Năm sản xuất", e.year], ["Nguồn gốc", e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"], ["Đơn vị cho thuê", e.rentalSupplier ?? "—"], ["Đơn giá thuê", e.rentalRate ? `${fmtVnd(e.rentalRate)} đ/ca` : "—"], ["Định mức nhiên liệu", `${e.fuelNorm} lít/giờ`], ["Chu kỳ bảo dưỡng", `${e.maintenanceInterval} giờ`], ["Tổng giờ máy", fmtNumber(e.totalHours, 0)], ["Loại", { o_to: "Xe ô tô", xe_bien_do: "Xe biển đỏ", may_thiet_bi: "Máy thiết bị" }[e.kind] ?? "—"], ["Mã tài sản", e.assetCode || "—"], ["Số khung / số máy", `${e.chassisNo || "—"} / ${e.engineNo || "—"}`], ["Cấp chất lượng", e.qualityGrade || "—"], ["QĐ điều động / HĐ thuê", e.decisionNo || "—"], ["Hạn kiểm định", e.inspectionDue ? e.inspectionDue.split("-").reverse().join("/") : "—"], ["Hạn bảo hiểm", e.insuranceDue ? e.insuranceDue.split("-").reverse().join("/") : "—"], ["Chứng minh chủ sở hữu", e.ownership === "so_huu" ? "Tài sản TCT" : e.ownerProof ? "Đã có" : "Chưa có"], ...(e.vetcCode ? [["Thẻ VETC / ePass", e.vetcCode]] : [])].map(([k, v]) => (
+              {[["Mã máy", e.code], ["XMTB", e.name], ["Nhóm XMTB", e.group], ["Hãng / model", e.brand], ["Biển số / số hiệu", e.plate], ["Năm sản xuất", e.year], ["Nguồn gốc", e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"], ["Đơn vị cho thuê", e.rentalSupplier ?? "—"], ["Đơn giá thuê", e.rentalRate ? `${fmtVnd(e.rentalRate)} đ/ca` : "—"], ["Định mức nhiên liệu", `${e.fuelNorm} ${fuelUnit(e)}`], ["Chu kỳ bảo dưỡng", `${fmtNumber(e.maintenanceInterval, 0)} ${mu}${e.maintenanceMonths ? ` hoặc ${e.maintenanceMonths} tháng` : ""}`], ["Chỉ số đồng hồ", `${fmtNumber(e.totalHours, 0)} ${mu}`], ["Bảo dưỡng gần nhất", e.lastMaintenanceDate ? e.lastMaintenanceDate.split("-").reverse().join("/") : "—"], ["Loại", { o_to: "Xe ô tô", xe_bien_do: "Xe biển đỏ", may_thiet_bi: "Máy thiết bị" }[e.kind] ?? "—"], ["Mã tài sản", e.assetCode || "—"], ["Số khung / số máy", `${e.chassisNo || "—"} / ${e.engineNo || "—"}`], ["Cấp chất lượng", e.qualityGrade || "—"], ["QĐ điều động / HĐ thuê", e.decisionNo || "—"], ["Hạn kiểm định", e.inspectionDue ? e.inspectionDue.split("-").reverse().join("/") : "—"], ["Hạn bảo hiểm", e.insuranceDue ? e.insuranceDue.split("-").reverse().join("/") : "—"], ["Chứng minh chủ sở hữu", e.ownership === "so_huu" ? "Tài sản TCT" : e.ownerProof ? "Đã có" : "Chưa có"], ...(e.vetcCode ? [["Thẻ VETC / ePass", e.vetcCode]] : [])].map(([k, v]) => (
                 <div key={k as string}><dt className="text-xs text-slate-500">{k}</dt><dd className="font-medium text-slate-800">{v}</dd></div>
               ))}
             </dl>
@@ -164,7 +166,7 @@ export default function EquipmentDetailPage() {
         </TabsContent>
       </Tabs>
       <EquipmentFormDialog open={dlg === "edit"} onOpenChange={(o) => !o && setDlg(null)} equipment={e} />
-      <DispatchDialog open={dlg === "dispatch"} onOpenChange={(o) => !o && setDlg(null)} equipmentId={e.id} />
+      <DispatchDialog open={dlg === "dispatch"} onOpenChange={(o) => !o && setDlg(null)} equipmentIds={[e.id]} />
       <ShiftDialog open={dlg === "shift"} onOpenChange={(o) => !o && setDlg(null)} equipmentId={e.id} />
       <MaintenanceDialog open={dlg === "maint"} onOpenChange={(o) => !o && setDlg(null)} equipmentId={e.id} />
     </div>

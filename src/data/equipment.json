@@ -54,7 +54,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-29"
   },
   {
     "id": "eq-002",
@@ -109,7 +111,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-06"
   },
   {
     "id": "eq-003",
@@ -166,7 +170,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-29"
   },
   {
     "id": "eq-004",
@@ -223,7 +229,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-03"
   },
   {
     "id": "eq-005",
@@ -278,7 +286,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-02"
   },
   {
     "id": "eq-006",
@@ -333,7 +343,9 @@
         "url": "assets/samples/may-rai-xcmg.webp"
       }
     ],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-25"
   },
   {
     "id": "eq-007",
@@ -382,7 +394,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-14"
   },
   {
     "id": "eq-008",
@@ -429,7 +443,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-04"
   },
   {
     "id": "eq-009",
@@ -476,7 +492,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-23"
   },
   {
     "id": "eq-010",
@@ -523,7 +541,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-11-02"
   },
   {
     "id": "eq-011",
@@ -570,7 +590,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-30"
   },
   {
     "id": "eq-012",
@@ -617,7 +639,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-12"
   },
   {
     "id": "eq-013",
@@ -666,7 +690,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-10"
   },
   {
     "id": "eq-014",
@@ -713,7 +739,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-20"
   },
   {
     "id": "eq-015",
@@ -760,7 +788,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-11-05"
   },
   {
     "id": "eq-016",
@@ -809,7 +839,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-25"
   },
   {
     "id": "eq-017",
@@ -858,7 +890,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-03"
   },
   {
     "id": "eq-018",
@@ -905,7 +939,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-08"
   },
   {
     "id": "eq-019",
@@ -952,7 +988,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-20"
   },
   {
     "id": "eq-020",
@@ -999,7 +1037,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-12"
   },
   {
     "id": "eq-021",
@@ -1048,7 +1088,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-14"
   },
   {
     "id": "eq-022",
@@ -1095,7 +1137,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-14"
   },
   {
     "id": "eq-023",
@@ -1142,7 +1186,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-23"
   },
   {
     "id": "eq-024",
@@ -1189,7 +1235,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-22"
   },
   {
     "id": "eq-025",
@@ -1236,7 +1284,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-06"
   },
   {
     "id": "eq-026",
@@ -1283,7 +1333,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-07"
   },
   {
     "id": "eq-027",
@@ -1330,7 +1382,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-28"
   },
   {
     "id": "eq-028",
@@ -1377,7 +1431,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-01"
   },
   {
     "id": "eq-029",
@@ -1392,10 +1448,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p02",
     "operatorId": "op23",
-    "totalHours": 2517,
-    "fuelNorm": 9,
-    "maintenanceInterval": 250,
-    "lastMaintenanceHours": 2239,
+    "totalHours": 30200,
+    "fuelNorm": 45,
+    "maintenanceInterval": 5000,
+    "lastMaintenanceHours": 24640,
     "maintenances": [
       {
         "id": "mt-29-1",
@@ -1403,7 +1459,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 17000000,
-        "hoursAt": 1989
+        "hoursAt": 23870
       },
       {
         "id": "mt-29-2",
@@ -1411,7 +1467,7 @@
         "type": "bao_duong",
         "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
         "cost": 79000000,
-        "hoursAt": 2239
+        "hoursAt": 26870
       }
     ],
     "kind": "xe_bien_do",
@@ -1425,7 +1481,9 @@
     "insuranceDue": "2026-12-01",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-05"
   },
   {
     "id": "eq-030",
@@ -1440,10 +1498,10 @@
     "status": "nhan_roi",
     "currentProjectId": null,
     "operatorId": null,
-    "totalHours": 2378,
-    "fuelNorm": 9,
-    "maintenanceInterval": 250,
-    "lastMaintenanceHours": 2141,
+    "totalHours": 28540,
+    "fuelNorm": 45,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 20960,
     "maintenances": [
       {
         "id": "mt-30-1",
@@ -1451,7 +1509,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 25000000,
-        "hoursAt": 1891
+        "hoursAt": 22690
       },
       {
         "id": "mt-30-2",
@@ -1459,7 +1517,7 @@
         "type": "bao_duong",
         "content": "Thay xích, kiểm tra hệ thống di chuyển",
         "cost": 25000000,
-        "hoursAt": 2141
+        "hoursAt": 25690
       }
     ],
     "kind": "o_to",
@@ -1472,7 +1530,9 @@
     "insuranceDue": "2027-04-17",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-02"
   },
   {
     "id": "eq-031",
@@ -1487,10 +1547,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p04",
     "operatorId": "op01",
-    "totalHours": 1285,
-    "fuelNorm": 9,
-    "maintenanceInterval": 250,
-    "lastMaintenanceHours": 1249,
+    "totalHours": 15420,
+    "fuelNorm": 45,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 14270,
     "maintenances": [
       {
         "id": "mt-31-1",
@@ -1498,7 +1558,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 18000000,
-        "hoursAt": 999
+        "hoursAt": 11990
       },
       {
         "id": "mt-31-2",
@@ -1506,7 +1566,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
         "cost": 25000000,
-        "hoursAt": 1249
+        "hoursAt": 14990
       }
     ],
     "kind": "o_to",
@@ -1519,7 +1579,9 @@
     "insuranceDue": "2027-05-13",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-25"
   },
   {
     "id": "eq-032",
@@ -1534,10 +1596,10 @@
     "status": "nhan_roi",
     "currentProjectId": null,
     "operatorId": null,
-    "totalHours": 8437,
-    "fuelNorm": 9,
-    "maintenanceInterval": 250,
-    "lastMaintenanceHours": 8206,
+    "totalHours": 101240,
+    "fuelNorm": 45,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 93850,
     "maintenances": [
       {
         "id": "mt-32-1",
@@ -1545,7 +1607,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 20000000,
-        "hoursAt": 7956
+        "hoursAt": 95470
       },
       {
         "id": "mt-32-2",
@@ -1553,7 +1615,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
         "cost": 52000000,
-        "hoursAt": 8206
+        "hoursAt": 98470
       }
     ],
     "kind": "o_to",
@@ -1566,7 +1628,9 @@
     "insuranceDue": "2027-08-16",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-11-06"
   },
   {
     "id": "eq-033",
@@ -1581,10 +1645,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p18",
     "operatorId": "op02",
-    "totalHours": 8741,
-    "fuelNorm": 9,
-    "maintenanceInterval": 250,
-    "lastMaintenanceHours": 8632,
+    "totalHours": 104890,
+    "fuelNorm": 45,
+    "maintenanceInterval": 5000,
+    "lastMaintenanceHours": 102710,
     "maintenances": [
       {
         "id": "mt-33-1",
@@ -1592,7 +1656,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 22000000,
-        "hoursAt": 8382
+        "hoursAt": 100580
       },
       {
         "id": "mt-33-2",
@@ -1600,7 +1664,7 @@
         "type": "sua_chua",
         "content": "Bảo dưỡng định kỳ cấp 1",
         "cost": 10000000,
-        "hoursAt": 8632
+        "hoursAt": 103580
       }
     ],
     "kind": "xe_bien_do",
@@ -1614,7 +1678,9 @@
     "insuranceDue": "2027-08-16",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-17"
   },
   {
     "id": "eq-034",
@@ -1663,7 +1729,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-19"
   },
   {
     "id": "eq-035",
@@ -1710,7 +1778,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-11"
   },
   {
     "id": "eq-036",
@@ -1759,7 +1829,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-12"
   },
   {
     "id": "eq-037",
@@ -1808,7 +1880,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-26"
   },
   {
     "id": "eq-038",
@@ -1823,10 +1897,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p26",
     "operatorId": "op07",
-    "totalHours": 5103,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 4594,
+    "totalHours": 61240,
+    "fuelNorm": 38,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 53100,
     "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
     "rentalRate": 7300000,
     "maintenances": [
@@ -1836,7 +1910,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 25000000,
-        "hoursAt": 4094
+        "hoursAt": 49130
       },
       {
         "id": "mt-38-2",
@@ -1844,7 +1918,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
         "cost": 20000000,
-        "hoursAt": 4594
+        "hoursAt": 55130
       }
     ],
     "kind": "o_to",
@@ -1857,7 +1931,9 @@
     "insuranceDue": "2026-11-15",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-11-06"
   },
   {
     "id": "eq-039",
@@ -1872,10 +1948,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p18",
     "operatorId": "op08",
-    "totalHours": 3647,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 3354,
+    "totalHours": 43760,
+    "fuelNorm": 38,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 39070,
     "maintenances": [
       {
         "id": "mt-39-1",
@@ -1883,7 +1959,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 8000000,
-        "hoursAt": 2854
+        "hoursAt": 34250
       },
       {
         "id": "mt-39-2",
@@ -1891,7 +1967,7 @@
         "type": "bao_duong",
         "content": "Thay xích, kiểm tra hệ thống di chuyển",
         "cost": 59000000,
-        "hoursAt": 3354
+        "hoursAt": 40250
       }
     ],
     "kind": "o_to",
@@ -1904,7 +1980,9 @@
     "insuranceDue": "2027-01-01",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-29"
   },
   {
     "id": "eq-040",
@@ -1919,10 +1997,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p14",
     "operatorId": "op09",
-    "totalHours": 3969,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 3676,
+    "totalHours": 47630,
+    "fuelNorm": 38,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 42940,
     "maintenances": [
       {
         "id": "mt-40-1",
@@ -1930,7 +2008,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 21000000,
-        "hoursAt": 3176
+        "hoursAt": 38110
       },
       {
         "id": "mt-40-2",
@@ -1938,7 +2016,7 @@
         "type": "sua_chua",
         "content": "Bảo dưỡng định kỳ cấp 2: kiểm tra hệ thống thủy lực",
         "cost": 40000000,
-        "hoursAt": 3676
+        "hoursAt": 44110
       }
     ],
     "kind": "o_to",
@@ -1951,7 +2029,9 @@
     "insuranceDue": "2027-08-01",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-24"
   },
   {
     "id": "eq-041",
@@ -1966,10 +2046,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p09",
     "operatorId": "op10",
-    "totalHours": 4538,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 4108,
+    "totalHours": 54460,
+    "fuelNorm": 38,
+    "maintenanceInterval": 5000,
+    "lastMaintenanceHours": 50160,
     "maintenances": [
       {
         "id": "mt-41-1",
@@ -1977,7 +2057,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 22000000,
-        "hoursAt": 3608
+        "hoursAt": 43300
       },
       {
         "id": "mt-41-2",
@@ -1985,7 +2065,7 @@
         "type": "bao_duong",
         "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
         "cost": 13000000,
-        "hoursAt": 4108
+        "hoursAt": 49300
       }
     ],
     "kind": "xe_bien_do",
@@ -1999,7 +2079,9 @@
     "insuranceDue": "2027-06-01",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-30"
   },
   {
     "id": "eq-042",
@@ -2014,10 +2096,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p04",
     "operatorId": "op11",
-    "totalHours": 3185,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 2666,
+    "totalHours": 38220,
+    "fuelNorm": 38,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 29920,
     "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
     "rentalRate": 4600000,
     "maintenances": [
@@ -2027,7 +2109,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 8000000,
-        "hoursAt": 2166
+        "hoursAt": 25990
       },
       {
         "id": "mt-42-2",
@@ -2035,7 +2117,7 @@
         "type": "sua_chua",
         "content": "Sửa chữa bơm thủy lực, thay gioăng xi lanh",
         "cost": 40000000,
-        "hoursAt": 2666
+        "hoursAt": 31990
       }
     ],
     "kind": "o_to",
@@ -2048,7 +2130,9 @@
     "insuranceDue": "2027-02-25",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-08"
   },
   {
     "id": "eq-043",
@@ -2063,10 +2147,10 @@
     "status": "hoat_dong",
     "currentProjectId": "p16",
     "operatorId": "op12",
-    "totalHours": 9719,
-    "fuelNorm": 14,
-    "maintenanceInterval": 500,
-    "lastMaintenanceHours": 9291,
+    "totalHours": 116630,
+    "fuelNorm": 38,
+    "maintenanceInterval": 8000,
+    "lastMaintenanceHours": 109780,
     "rentalSupplier": "Công ty CP Cơ giới Hà Đông",
     "rentalRate": 4400000,
     "maintenances": [
@@ -2076,7 +2160,7 @@
         "type": "bao_duong",
         "content": "Bảo dưỡng định kỳ cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
         "cost": 8000000,
-        "hoursAt": 8791
+        "hoursAt": 105490
       },
       {
         "id": "mt-43-2",
@@ -2084,7 +2168,7 @@
         "type": "sua_chua",
         "content": "Bảo dưỡng định kỳ cấp 1",
         "cost": 11000000,
-        "hoursAt": 9291
+        "hoursAt": 111490
       }
     ],
     "kind": "o_to",
@@ -2097,7 +2181,9 @@
     "insuranceDue": "2027-04-12",
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-25"
   },
   {
     "id": "eq-044",
@@ -2144,7 +2230,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-22"
   },
   {
     "id": "eq-045",
@@ -2191,7 +2279,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-06-17"
   },
   {
     "id": "eq-046",
@@ -2240,7 +2330,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-02"
   },
   {
     "id": "eq-047",
@@ -2287,7 +2379,9 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-30"
   },
   {
     "id": "eq-048",
@@ -2334,6 +2428,8 @@
     "insuranceDue": null,
     "ownerProof": true,
     "images": [],
-    "docFiles": []
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-10-05"
   }
 ]

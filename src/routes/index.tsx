@@ -19,7 +19,6 @@ const Catalog = lazy(() => import("@/pages/materials/CatalogPage"));
 const Suppliers = lazy(() => import("@/pages/materials/SuppliersPage"));
 const EquipmentList = lazy(() => import("@/pages/equipment/EquipmentListPage"));
 const EquipmentDetail = lazy(() => import("@/pages/equipment/EquipmentDetailPage"));
-const Dispatch = lazy(() => import("@/pages/equipment/DispatchPage"));
 const Shifts = lazy(() => import("@/pages/equipment/ShiftsPage"));
 const Maintenance = lazy(() => import("@/pages/equipment/MaintenancePage"));
 const AcceptanceList = lazy(() => import("@/pages/acceptance/AcceptanceListPage"));
@@ -89,7 +88,7 @@ export function AppRoutes() {
         <Route path="materials/suppliers" element={<S><Suppliers /></S>} />
         <Route path="equipment" element={<Navigate to="/equipment/list" replace />} />
         <Route path="equipment/list" element={<S><EquipmentList /></S>} />
-        <Route path="equipment/dispatch" element={<S><Dispatch /></S>} />
+        <Route path="equipment/dispatch" element={<Navigate to="/equipment/list" replace />} />
         <Route path="equipment/shifts" element={<S><Shifts /></S>} />
         <Route path="equipment/maintenance" element={<S><Maintenance /></S>} />
         <Route path="equipment/operators" element={<S><Operators /></S>} />

@@ -46,7 +46,7 @@ export default function TaskDetailPage() {
   const logs = db.constructionLogs.filter((l) => l.taskId === task.id).sort((a, b) => b.date.localeCompare(a.date));
   const a = taskActualPct(task);
   const pl = taskPlannedPct(task);
-  const h = taskHealth({ actual: a, planned: pl, plannedEnd: task.plannedEnd, plannedStart: task.plannedStart });
+  const h = taskHealth({ actual: a, planned: pl, plannedEnd: task.plannedEnd, plannedStart: task.plannedStart, actualEnd: task.actualEnd });
 
   return (
     <div className="space-y-4">
@@ -75,7 +75,7 @@ export default function TaskDetailPage() {
         <div><div className="mb-1 text-[11.5px] text-slate-500">Thực tế</div><div className="text-[13px] font-medium text-slate-800">{task.actualStart ? `${fmtDate(task.actualStart)} – ${task.actualEnd ? fmtDate(task.actualEnd) : "đang thực hiện"}` : "Chưa bắt đầu"}</div></div>
         <div>
           <div className="mb-1 flex justify-between text-[11.5px] text-slate-500"><span>Tiến độ (theo khối lượng)</span><b className="text-slate-800">{p1(a)}</b></div>
-          <Progress value={a} tone={a >= 1 ? "success" : h === "qua_han" || h === "cham" ? "danger" : "info"} />
+          <Progress value={a} tone={a >= 1 ? "success" : h === "cham" ? "danger" : "info"} />
           {!task.isGroup && <div className="mt-1 text-[11px] text-slate-400">{n1(task.actualQty)} / {n1(task.contractQty)} {task.unit}</div>}
         </div>
       </Card>

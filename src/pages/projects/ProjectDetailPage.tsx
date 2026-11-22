@@ -212,7 +212,7 @@ export default function ProjectDetailPage() {
                       <TableHeader><TableRow><TableHead>Công việc</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Tổ</TableHead><TableHead>Hạn KH</TableHead><TableHead>Tiến độ</TableHead><TableHead /></TableRow></TableHeader>
                       <TableBody>
                         {lateTasks.slice(0, 8).map(({ t, a, p }) => {
-                          const h = taskHealth({ actual: a, planned: p, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart });
+                          const h = taskHealth({ actual: a, planned: p, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart, actualEnd: t.actualEnd });
                           return (
                             <TableRow key={t.id}>
                               <TableCell className="min-w-[200px]"><div className="font-medium text-slate-800">{t.code} {t.name}</div><Badge tone={TASK_HEALTH_LABEL[h].tone} className="mt-0.5">{TASK_HEALTH_LABEL[h].label}</Badge></TableCell>

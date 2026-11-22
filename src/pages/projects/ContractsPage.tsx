@@ -85,7 +85,7 @@ export default function ContractsPage() {
   };
 
   const cols: Column<Contract>[] = [
-    { key: "code", header: "Số hợp đồng / phụ lục", sortValue: (c) => c.code, cell: (c) => <div className={cn(c.kind === "phu_luc" && "pl-4")}><div className="whitespace-nowrap font-semibold">{c.kind === "phu_luc" && <span className="mr-1 text-slate-400">└</span>}{c.code}</div><div className="text-[12px] text-slate-500">Ký {fmtDate(c.signDate)}</div></div> },
+    { key: "code", header: "Số hợp đồng / phụ lục", sortValue: (c) => c.code, cell: (c) => <div><div className="whitespace-nowrap font-semibold">{c.code}</div><div className="text-[12px] text-slate-500">Ký {fmtDate(c.signDate)}</div></div> },
     { key: "kind", header: "Loại", filterValue: (c) => (c.kind === "hop_dong" ? "Hợp đồng" : "Phụ lục"), cell: (c) => <span className={cn("whitespace-nowrap rounded px-2 py-0.5 text-[12px] font-medium", c.kind === "hop_dong" ? "bg-primary-soft text-primary" : "bg-slate-100 text-slate-700")}>{c.kind === "hop_dong" ? "Hợp đồng" : "Phụ lục"}</span> },
     { key: "proj", header: "Dự án", sortValue: (c) => pName(c.projectId), cell: (c) => <span className="whitespace-nowrap">{pName(c.projectId)}</span> },
     { key: "title", header: "Nội dung", cell: (c) => <div className="max-w-[340px] truncate" title={c.title}>{c.title}</div>, filter: "text", filterValue: (c) => c.title },
@@ -153,24 +153,27 @@ export default function ContractsPage() {
               <dl className="grid gap-3 text-[13.5px] sm:grid-cols-2">
                 {[["Nội dung", cur.title], ["Ngày ký", fmtDate(cur.signDate)], [cur.kind === "hop_dong" ? "Giá trị hợp đồng" : "Giá trị điều chỉnh", `${cur.value > 0 && cur.kind === "phu_luc" ? "+" : ""}${fmtVnd(cur.value)} đ`], ...(cur.kind === "hop_dong" && children(cur.id).length ? [["Giá trị sau phụ lục", `${fmtVnd(totalValue(cur))} đ`]] : []), ["Thời gian thực hiện", `${fmtDate(cur.startDate)} – ${fmtDate(cur.endDate)}`], ["Hiệu lực", VALIDITY[validity(cur)].label], ...(cur.note ? [["Ghi chú", cur.note]] : [])].map(([k, v]) => <div key={k} className={k === "Nội dung" ? "sm:col-span-2" : ""}><dt className="text-[12px] text-slate-500">{k}</dt><dd className="font-medium text-slate-900">{v}</dd></div>)}
               </dl>
-              {cur.kind === "phu_luc" && cur.parentId && (
-                <div className="rounded-lg bg-slate-50 px-3 py-2 text-[13px]">Thuộc hợp đồng: <button className="font-semibold text-primary hover:underline" onClick={() => setView(cur.parentId)}>{db.contracts.find((c) => c.id === cur.parentId)?.code}</button></div>
-              )}
-              {cur.kind === "hop_dong" && (
-                <section>
-                  <div className="mb-2 flex items-center justify-between"><h4 className="text-[12px] font-semibold uppercase tracking-wide text-slate-600">Phụ lục hợp đồng ({children(cur.id).length})</h4>{editable && <Button size="xs" variant="soft" onClick={() => { setEdit({ ...blank(), kind: "phu_luc", projectId: cur.projectId, parentId: cur.id, endDate: cur.endDate }); setView(null); }}><Plus /> Thêm phụ lục</Button>}</div>
-                  <div className="divide-y rounded-lg border">
-                    {children(cur.id).map((a) => (
-                      <button key={a.id} onClick={() => setView(a.id)} className="flex w-full items-start gap-3 px-3 py-2.5 text-left text-[13px] hover:bg-slate-50">
-                        <div className="min-w-0 flex-1"><div className="font-semibold text-primary">{a.code}</div><div className="text-slate-700">{a.title}</div><div className="text-[11.5px] text-slate-500">Ký {fmtDate(a.signDate)}</div></div>
-                        <div className="whitespace-nowrap font-semibold">{a.value > 0 ? "+" : ""}{fmtVnd(a.value)} đ</div>
-                        <ChevronRight className="mt-0.5 h-4 w-4 text-slate-400" />
-                      </button>
-                    ))}
-                    {!children(cur.id).length && <div className="px-3 py-4 text-center text-xs text-slate-400">Chưa có phụ lục</div>}
-                  </div>
-                </section>
-              )}
+              {(() => {
+                const root = cur.kind === "hop_dong" ? cur : db.contracts.find((c) => c.id === cur.parentId);
+                if (!root) return null;
+                const family = [root, ...children(root.id).sort((x, y) => x.signDate.localeCompare(y.signDate))];
+                return (
+                  <section>
+                    <div className="mb-2 flex items-center justify-between"><h4 className="text-[12px] font-semibold uppercase tracking-wide text-slate-600">Hợp đồng & phụ lục liên quan ({family.length})</h4>{editable && <Button size="xs" variant="soft" onClick={() => { setEdit({ ...blank(), kind: "phu_luc", projectId: root.projectId, parentId: root.id, endDate: root.endDate }); setView(null); }}><Plus /> Thêm phụ lục</Button>}</div>
+                    <div className="divide-y rounded-lg border">
+                      {family.map((a) => (
+                        <button key={a.id} onClick={() => setView(a.id)} className={cn("flex w-full items-start gap-3 px-3 py-2.5 text-left text-[13px] hover:bg-slate-50", a.id === cur.id && "bg-primary-soft/60")}>
+                          <span className={cn("mt-0.5 whitespace-nowrap rounded px-1.5 py-0.5 text-[11px] font-medium", a.kind === "hop_dong" ? "bg-primary-soft text-primary" : "bg-slate-100 text-slate-700")}>{a.kind === "hop_dong" ? "Hợp đồng" : "Phụ lục"}</span>
+                          <div className="min-w-0 flex-1"><div className="font-semibold text-slate-900">{a.code}{a.id === cur.id && <span className="ml-2 text-[11px] font-normal text-primary">(đang xem)</span>}</div><div className="text-slate-700">{a.title}</div><div className="text-[11.5px] text-slate-500">Ký {fmtDate(a.signDate)}</div></div>
+                          <div className="whitespace-nowrap font-semibold">{a.kind === "phu_luc" && a.value > 0 ? "+" : ""}{fmtVnd(a.value)} đ</div>
+                          <ChevronRight className="mt-0.5 h-4 w-4 text-slate-400" />
+                        </button>
+                      ))}
+                      <div className="flex justify-between bg-slate-50 px-3 py-2 text-[13px] font-semibold"><span>Giá trị sau các phụ lục</span><span>{fmtVnd(totalValue(root))} đ</span></div>
+                    </div>
+                  </section>
+                );
+              })()}
               <section>
                 <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">File đính kèm ({cur.files.length})</h4>
                 <AttachmentList files={cur.files} />

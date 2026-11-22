@@ -54,7 +54,6 @@ export default function ProjectListPage() {
       cell: (s) => (
         <div className="min-w-[260px]">
           <div className="font-semibold text-slate-800 hover:text-primary">{s.project.name}</div>
-          <div className="mt-0.5 text-[12px] text-slate-500">{s.project.code} · {s.project.location}</div>
         </div>
       ),
     },

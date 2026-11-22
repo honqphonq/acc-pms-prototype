@@ -21,6 +21,7 @@ import { deleteShift } from "@/services/actions";
 import { CHART_COLORS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
 import { DEMO_TODAY, addDays } from "@/utils/date";
+import { shiftFuelNorm } from "@/services/selectors";
 import type { EquipmentShift } from "@/types";
 import { activeProjects } from "@/utils/labels";
 
@@ -33,7 +34,7 @@ export default function ShiftsPage() {
   const [onlyOver, setOnlyOver] = useState("");
   const [open, setOpen] = useState(false);
   const eq = (id: string) => db.equipment.find((e) => e.id === id);
-  const normOf = (s: EquipmentShift) => s.hours * (eq(s.equipmentId)?.fuelNorm ?? 0);
+  const normOf = (s: EquipmentShift) => shiftFuelNorm(eq(s.equipmentId), s);
   const rows = db.equipmentShifts.filter((s) => s.logged !== false && (!projectId || s.projectId === projectId) && (!group || eq(s.equipmentId)?.group === group) && (!onlyOver || s.fuelLiters > normOf(s) * 1.08)).sort((a, b) => b.date.localeCompare(a.date));
   const hours = rows.reduce((x, s) => x + s.hours, 0);
   const fuel = rows.reduce((x, s) => x + s.fuelLiters, 0);

@@ -40,20 +40,26 @@ export function taskPlannedPct(t: Pick<PlanTask, "plannedStart" | "plannedEnd">,
 }
 export const taskDuration = (t: Pick<PlanTask, "plannedStart" | "plannedEnd">) => diffDays(t.plannedStart, t.plannedEnd) + 1;
 
-export type TaskHealth = "hoan_thanh" | "qua_han" | "cham" | "dung" | "chua_bat_dau";
-export function taskHealth(t: { actual: number; planned: number; plannedEnd: string; plannedStart: string }): TaskHealth {
-  if (t.actual >= 1) return "hoan_thanh";
-  if (t.plannedEnd < DEMO_TODAY) return "qua_han";
-  if (t.planned - t.actual > 0.15) return "cham";
-  if (t.plannedStart > DEMO_TODAY && t.actual === 0) return "chua_bat_dau";
-  return "dung";
+/**
+ * Trạng thái công việc (Gantt, danh sách):
+ * - Chưa bắt đầu: chưa có khối lượng, kế hoạch chưa yêu cầu khối lượng nào
+ * - Đang thực hiện: % thực tế ≥ % kế hoạch đến hôm nay
+ * - Chậm tiến độ: % thực tế < % kế hoạch đến hôm nay (gồm cả đã đến ngày bắt đầu mà chưa làm, đã quá hạn mà chưa xong)
+ * - Hoàn thành / Hoàn thành muộn: xong 100% – đúng hạn hoặc sau hạn kế hoạch
+ */
+export type TaskHealth = "hoan_thanh" | "hoan_thanh_muon" | "cham" | "dung" | "chua_bat_dau";
+export function taskHealth(t: { actual: number; planned: number; plannedEnd: string; plannedStart: string; actualEnd?: string | null }): TaskHealth {
+  if (t.actual >= 1) return t.actualEnd && t.actualEnd > t.plannedEnd ? "hoan_thanh_muon" : "hoan_thanh";
+  if (t.actual + 1e-9 < t.planned) return "cham";
+  if (t.actual > 0) return "dung";
+  return "chua_bat_dau";
 }
 export const TASK_HEALTH_LABEL: Record<TaskHealth, { label: string; tone: "success" | "danger" | "warning" | "info" | "neutral" }> = {
   hoan_thanh: { label: "Hoàn thành", tone: "success" },
-  qua_han: { label: "Quá hạn", tone: "danger" },
-  cham: { label: "Chậm", tone: "warning" },
-  dung: { label: "Đúng kế hoạch", tone: "info" },
-  chua_bat_dau: { label: "Chưa đến hạn", tone: "neutral" },
+  hoan_thanh_muon: { label: "Hoàn thành muộn", tone: "warning" },
+  cham: { label: "Chậm tiến độ", tone: "danger" },
+  dung: { label: "Đang thực hiện", tone: "info" },
+  chua_bat_dau: { label: "Chưa bắt đầu", tone: "neutral" },
 };
 
 /** Số liệu tổng hợp của một đầu việc (gồm cả nhóm công việc có con) */
@@ -83,11 +89,11 @@ export function buildTaskTree(db: Database, projectId: ID): { itemId: ID; rows: 
           const plannedV = children.reduce((s, c) => s + c.planned * c.value, 0);
           const planned = value ? plannedV / value : taskPlannedPct(t);
           const actual = value ? doneValue / value : 0;
-          return { task: t, depth, value, doneValue, planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart }), children };
+          return { task: t, depth, value, doneValue, planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart, actualEnd: t.actualEnd }), children };
         }
         const planned = taskPlannedPct(t);
         const actual = taskActualPct(t);
-        return { task: t, depth, value: taskValue(t), doneValue: taskDoneValue(t), planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart }), children };
+        return { task: t, depth, value: taskValue(t), doneValue: taskDoneValue(t), planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart, actualEnd: t.actualEnd }), children };
       });
   return items.map((it) => ({ itemId: it.id, rows: build(null, it.id, 1) }));
 }
@@ -344,7 +350,28 @@ export const isRequestOverdue = (r: { status: string; neededDate: string }) =>
   ["cho_duyet", "da_duyet", "dat_hang"].includes(r.status) && r.neededDate < DEMO_TODAY;
 
 // ---------- thiết bị ----------
-export const maintenanceDue = (e: Equipment) => e.totalHours - e.lastMaintenanceHours >= e.maintenanceInterval * 0.9;
+/** Xe (ô tô, xe biển đỏ) tính theo km; máy thiết bị tính theo giờ máy */
+export const isVehicle = (e: Pick<Equipment, "kind">) => e.kind !== "may_thiet_bi";
+export const meterUnit = (e: Pick<Equipment, "kind">) => (isVehicle(e) ? "km" : "giờ");
+export const fuelUnit = (e: Pick<Equipment, "kind">) => (isVehicle(e) ? "lít/100 km" : "lít/giờ");
+/** Chỉ số đồng hồ tăng thêm trong một ca: km (xe) hoặc giờ máy (máy) */
+export const shiftMeter = (e: Pick<Equipment, "kind"> | undefined, s: { hours: number; km?: number }) => (e && isVehicle(e) ? s.km ?? 0 : s.hours);
+/** Định mức nhiên liệu của một ca */
+export const shiftFuelNorm = (e: Pick<Equipment, "kind" | "fuelNorm"> | undefined, s: { hours: number; km?: number }) => (!e ? 0 : isVehicle(e) ? ((s.km ?? 0) * e.fuelNorm) / 100 : s.hours * e.fuelNorm);
+export const sinceMaintenance = (e: Equipment) => e.totalHours - e.lastMaintenanceHours;
+export const monthsSinceMaintenance = (e: Equipment) => (e.lastMaintenanceDate ? diffDays(e.lastMaintenanceDate, DEMO_TODAY) / 30.4 : 0);
+/** Đến hạn bảo dưỡng: còn ≤ 10% chu kỳ (giờ / km) hoặc còn ≤ 15 ngày theo mốc tháng – mốc nào đến trước */
+export const maintenanceDue = (e: Equipment) =>
+  sinceMaintenance(e) >= e.maintenanceInterval * 0.9 || (!!e.maintenanceMonths && !!e.lastMaintenanceDate && monthsSinceMaintenance(e) >= e.maintenanceMonths - 0.5);
+/** Mô tả còn bao lâu đến kỳ bảo dưỡng */
+export function maintenanceLeft(e: Equipment) {
+  const left = e.maintenanceInterval - sinceMaintenance(e);
+  const byMeter = left <= 0 ? `Quá ${Math.round(-left).toLocaleString("vi-VN")} ${meterUnit(e)}` : `Còn ${Math.round(left).toLocaleString("vi-VN")} ${meterUnit(e)}`;
+  if (!e.maintenanceMonths || !e.lastMaintenanceDate) return byMeter;
+  const due = addDays(e.lastMaintenanceDate, Math.round(e.maintenanceMonths * 30.4));
+  const d = diffDays(DEMO_TODAY, due);
+  return `${byMeter} · ${d < 0 ? `quá ${-d} ngày` : `hoặc ${d} ngày`}`;
+}
 export const getEquipmentUsage = memo((db: Database) => {
   const from = addDays(DEMO_TODAY, -21);
   const map = new Map<ID, { hours: number; fuel: number; shifts: number; fuelNormTotal: number }>();
@@ -354,7 +381,7 @@ export const getEquipmentUsage = memo((db: Database) => {
     cur.hours += s.hours;
     cur.fuel += s.fuelLiters;
     cur.shifts += 1;
-    cur.fuelNormTotal += s.hours * (e?.fuelNorm ?? 0);
+    cur.fuelNormTotal += shiftFuelNorm(e, s);
     map.set(s.equipmentId, cur);
   });
   return map;
@@ -518,7 +545,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
     if (e.status === "bao_tri" && e.currentProjectId)
       out.push({ id: `eq-bt-${e.id}`, kind: "thiet_bi", severity: "warning", title: `Thiết bị không sẵn sàng: ${e.code} ${e.name}`, detail: `Đang bảo trì tại ${pName(e.currentProjectId)}`, projectId: e.currentProjectId, link: `/equipment/${e.id}` });
     else if (e.status === "hoat_dong" && maintenanceDue(e))
-      out.push({ id: `eq-md-${e.id}`, kind: "thiet_bi", severity: "info", title: `Đến hạn bảo dưỡng: ${e.code} ${e.name}`, detail: `${e.totalHours - e.lastMaintenanceHours} giờ kể từ lần bảo dưỡng gần nhất (chu kỳ ${e.maintenanceInterval} giờ)`, projectId: e.currentProjectId, link: `/equipment/${e.id}` });
+      out.push({ id: `eq-md-${e.id}`, kind: "thiet_bi", severity: "info", title: `Đến hạn bảo dưỡng: ${e.code} ${e.name}`, detail: `${maintenanceLeft(e)} đến kỳ bảo dưỡng (chu kỳ ${e.maintenanceInterval.toLocaleString("vi-VN")} ${meterUnit(e)}${e.maintenanceMonths ? ` hoặc ${e.maintenanceMonths} tháng` : ""})`, projectId: e.currentProjectId, link: `/equipment/${e.id}` });
   });
   const usage = getEquipmentUsage(db);
   usage.forEach((u, id) => {

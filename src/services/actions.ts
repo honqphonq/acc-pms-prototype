@@ -29,7 +29,7 @@ import type {
 import { DEMO_TODAY, nowStamp } from "@/utils/date";
 import { genId, nextCode } from "@/utils/id";
 import type { ImportRow } from "./planExcel";
-import { requestValue } from "./selectors";
+import { requestValue, shiftMeter } from "./selectors";
 
 type Key = keyof Database;
 function setCol<K extends Key>(db: Database, key: K, value: Database[K]): Database {
@@ -383,7 +383,7 @@ export function requestDispatch(db: Database, input: Pick<EquipmentAssignment, "
   const e = db.equipment.find((x) => x.id === input.equipmentId)!;
   const code = nextCode("QĐ-ĐĐ-2026-", db.equipmentAssignments.map((a) => a.code));
   db = insert(db, "equipmentAssignments", { ...input, id: genId("as"), code, fromProjectId: e.currentProjectId, status: "cho_duyet", requesterId: byId, createdAt: DEMO_TODAY }, true);
-  return pushNotification(db, { type: "equipment", severity: "warning", title: "Đề nghị điều động thiết bị", message: `${e.code} ${e.name} → ${db.projects.find((p) => p.id === input.toProjectId)?.shortName}`, projectId: input.toProjectId, link: "/equipment/dispatch" });
+  return pushNotification(db, { type: "equipment", severity: "warning", title: "Đề nghị điều động thiết bị", message: `${e.code} ${e.name} → ${db.projects.find((p) => p.id === input.toProjectId)?.shortName}`, projectId: input.toProjectId, link: "/equipment/list" });
 }
 /** Bước 2 – Phòng xe máy kiểm tra, phân công người vận hành, ban hành quyết định điều động */
 export function approveDispatch(db: Database, id: ID, operatorId: ID | null): Database {
@@ -405,7 +405,7 @@ export function releaseEquipment(db: Database, equipmentId: ID): Database {
 export function addShift(db: Database, s: Omit<EquipmentShift, "id">): Database {
   db = insert(db, "equipmentShifts", { ...s, id: genId("sh") }, true);
   const e = db.equipment.find((x) => x.id === s.equipmentId)!;
-  return patch(db, "equipment", e.id, { totalHours: Math.round((e.totalHours + s.hours) * 10) / 10 });
+  return patch(db, "equipment", e.id, { totalHours: Math.round((e.totalHours + shiftMeter(e, s)) * 10) / 10 });
 }
 export const deleteShift = (db: Database, id: ID) => remove(db, "equipmentShifts", (s) => s.id === id);
 export function addMaintenance(db: Database, equipmentId: ID, m: { type: "bao_duong" | "sua_chua"; content: string; cost: number; date: string }, finish: boolean): Database {
@@ -413,6 +413,7 @@ export function addMaintenance(db: Database, equipmentId: ID, m: { type: "bao_du
   return patch(db, "equipment", equipmentId, {
     maintenances: [{ ...m, id: genId("mt"), hoursAt: e.totalHours }, ...e.maintenances],
     lastMaintenanceHours: m.type === "bao_duong" ? e.totalHours : e.lastMaintenanceHours,
+    lastMaintenanceDate: m.type === "bao_duong" ? m.date : e.lastMaintenanceDate,
     status: finish ? (e.currentProjectId ? "hoat_dong" : "nhan_roi") : "bao_tri",
   });
 }
@@ -520,6 +521,22 @@ export function processStocktake(db: Database, id: ID, byId: ID): Database {
   return patch(next, "stocktakes", id, { status: "da_xu_ly" });
 }
 
+/** Điều động trực tiếp từ Danh mục XMTB (có hiệu lực ngay, không qua duyệt): về dự án hoặc thu hồi về kho TCT (toProjectId = null) */
+export function dispatchEquipment(db: Database, equipmentId: ID, input: { toProjectId: ID | null; startDate: string; endDate: string; decisionNo: string; files: Attachment[]; reason: string }, byId: ID): Database {
+  const e = db.equipment.find((x) => x.id === equipmentId);
+  if (!e) return db;
+  db = setCol(db, "equipmentAssignments", db.equipmentAssignments.map((x) => (x.equipmentId === equipmentId && x.status === "dang_dieu_dong" ? { ...x, status: "hoan_thanh", endDate: input.startDate } : x)));
+  const prefix = input.toProjectId ? "QĐ-ĐĐ-2026-" : "QĐ-TH-2026-";
+  const rec: EquipmentAssignment = {
+    id: genId("as"), code: input.decisionNo.trim() || nextCode(prefix, db.equipmentAssignments.map((x) => x.code)), equipmentId, fromProjectId: e.currentProjectId, toProjectId: input.toProjectId ?? "",
+    operatorId: null, startDate: input.startDate, endDate: input.toProjectId ? input.endDate : input.startDate, status: input.toProjectId ? "dang_dieu_dong" : "hoan_thanh",
+    kind: !input.toProjectId ? "thu_hoi" : e.currentProjectId ? "dieu_chuyen" : "phan_bo", requesterId: byId, reason: input.reason || (input.toProjectId ? "Phục vụ thi công" : "Thu hồi về kho Tổng công ty"), createdAt: DEMO_TODAY,
+    decisionNo: input.decisionNo.trim() || undefined, files: input.files,
+  };
+  db = insert(db, "equipmentAssignments", rec, true);
+  return patch(db, "equipment", equipmentId, input.toProjectId ? { currentProjectId: input.toProjectId, status: e.status === "bao_tri" ? "bao_tri" : "hoat_dong" } : { currentProjectId: null, operatorId: null, status: e.status === "bao_tri" ? "bao_tri" : "nhan_roi" });
+}
+
 /** Thu hồi XMTB về Tổng công ty: kết thúc quyết định điều động hiện hành, máy về trạng thái nhàn rỗi */
 export function recallEquipment(db: Database, assignmentId: ID, byId: ID): Database {
   const a = db.equipmentAssignments.find((x) => x.id === assignmentId);
@@ -545,7 +562,7 @@ export function logShift(db: Database, id: ID, data: { hours: number; km: number
   const s = db.equipmentShifts.find((x) => x.id === id);
   if (!s) return db;
   const e = db.equipment.find((x) => x.id === s.equipmentId)!;
-  const delta = data.hours - (s.logged ? s.hours : 0);
+  const delta = shiftMeter(e, data) - (s.logged ? shiftMeter(e, s) : 0);
   db = patch(db, "equipmentShifts", id, { ...data, logged: true });
   return patch(db, "equipment", e.id, { totalHours: Math.round((e.totalHours + delta) * 10) / 10 });
 }

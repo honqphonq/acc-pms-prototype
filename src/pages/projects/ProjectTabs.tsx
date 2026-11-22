@@ -29,7 +29,7 @@ export function ContractsTab({ projectId }: { projectId: string }) {
           <TableBody>
             {list.map((c) => (
               <TableRow key={c.id} className="cursor-pointer" onClick={go}>
-                <TableCell className={cn(c.kind === "phu_luc" && "pl-8")}><div className="font-semibold">{c.kind === "phu_luc" && <span className="mr-1 text-slate-400">└</span>}{c.code}</div><div className="text-[12px] text-slate-500">Ký {fmtDate(c.signDate)}</div></TableCell>
+                <TableCell><div className="font-semibold">{c.code}</div><div className="text-[12px] text-slate-500">Ký {fmtDate(c.signDate)}</div></TableCell>
                 <TableCell><span className={cn("rounded px-2 py-0.5 text-[12px] font-medium", c.kind === "hop_dong" ? "bg-primary-soft text-primary" : "bg-slate-100 text-slate-700")}>{c.kind === "hop_dong" ? "Hợp đồng" : "Phụ lục"}</span></TableCell>
                 <TableCell className="max-w-[360px]"><div className="truncate">{c.title}</div></TableCell>
                 <TableCell className={cn("tabular whitespace-nowrap text-right font-semibold", c.kind === "phu_luc" && c.value > 0 && "text-success-fg")}>{c.kind === "phu_luc" && c.value > 0 ? "+" : ""}{fmtVnd(c.value)}</TableCell>
@@ -55,14 +55,12 @@ export function MethodsTab({ projectId }: { projectId: string }) {
       <CardHeader><CardTitle>Phương án tổ chức thi công ({list.length})</CardTitle><Button size="sm" variant="outline" onClick={go}>Quản lý phương án <ChevronRight /></Button></CardHeader>
       {list.length === 0 ? <EmptyState title="Chưa có phương án tổ chức thi công" action={<Button onClick={go}><Plus /> Tạo phương án</Button>} /> : (
         <Table>
-          <TableHeader><TableRow><TableHead>Mã</TableHead><TableHead>Phương án / biện pháp</TableHead><TableHead>Phiên bản</TableHead><TableHead className="text-center">Góp ý</TableHead><TableHead className="text-center">File</TableHead><TableHead>Cập nhật</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
+          <TableHeader><TableRow><TableHead>Mã</TableHead><TableHead>Phương án / biện pháp</TableHead><TableHead className="text-center">File</TableHead><TableHead>Cập nhật</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
           <TableBody>
             {list.map((m) => (
               <TableRow key={m.id} className="cursor-pointer" onClick={go}>
                 <TableCell className="whitespace-nowrap font-semibold">{m.code}</TableCell>
                 <TableCell className="max-w-[440px]"><div className="font-medium">{m.title}</div><div className="truncate text-[12px] text-slate-500">{m.summary}</div></TableCell>
-                <TableCell><Badge tone="outline">v{m.version}</Badge></TableCell>
-                <TableCell className="text-center">{m.comments.length}</TableCell>
                 <TableCell className="text-center">{m.files.length}</TableCell>
                 <TableCell className="whitespace-nowrap">{fmtDate(m.updatedAt)}</TableCell>
                 <TableCell><StatusBadge map={METHOD_STATUS} value={m.status} /></TableCell>

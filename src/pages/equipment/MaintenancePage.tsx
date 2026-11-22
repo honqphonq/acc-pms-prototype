@@ -15,13 +15,13 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { RegistryPage } from "@/components/registry/RegistryPage";
 import { MaintenanceDialog } from "./ShiftMaintDialogs";
 import { saveRow } from "@/services/actions";
-import { equipmentDocWarnings, maintenanceDue } from "@/services/selectors";
+import { equipmentDocWarnings, isVehicle, maintenanceDue, maintenanceLeft, meterUnit, sinceMaintenance } from "@/services/selectors";
 import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { fmtDate, fmtMoneyShort, fmtNumber } from "@/utils/format";
 import { MAINT_STATUS, MAINT_TYPE, equipmentOptions, toOptions } from "@/utils/labels";
 import type { MaintenancePlan } from "@/types";
 
-const CFG_KEY = "acc-pms:v7:maint-reminder";
+const CFG_KEY = "acc-pms:v8:maint-reminder";
 const loadCfg = () => { try { return JSON.parse(localStorage.getItem(CFG_KEY) ?? "") as { days: number; hours: number }; } catch { return { days: 7, hours: 30 }; } };
 
 export default function MaintenancePage() {
@@ -31,7 +31,7 @@ export default function MaintenancePage() {
   const [cfgOpen, setCfgOpen] = useState(false);
   const [rec, setRec] = useState<{ open: boolean; id?: string }>({ open: false });
   const eq = (id: string) => db.equipment.find((e) => e.id === id);
-  const due = db.equipment.filter((e) => e.status === "hoat_dong" && (maintenanceDue(e) || e.maintenanceInterval - (e.totalHours - e.lastMaintenanceHours) <= cfg.hours));
+  const due = db.equipment.filter((e) => e.status === "hoat_dong" && (maintenanceDue(e) || e.maintenanceInterval - sinceMaintenance(e) <= (isVehicle(e) ? cfg.hours * 20 : cfg.hours)));
   const soon = db.maintenancePlans.filter((p) => p.status !== "hoan_thanh" && diffDays(DEMO_TODAY, p.plannedDate) <= cfg.days);
   return (
     <>
@@ -44,7 +44,7 @@ export default function MaintenancePage() {
         kpis={(rows) => [
           { label: "Kế hoạch chờ phê duyệt", value: rows.filter((r) => r.status === "cho_duyet").length, tone: "warning" },
           { label: `Đến lịch trong ${cfg.days} ngày`, value: soon.length, tone: "danger", sub: "Theo cấu hình nhắc lịch" },
-          { label: "Máy đến hạn theo giờ máy", value: due.length, tone: "info", sub: `Còn ≤ ${cfg.hours} giờ tới chu kỳ` },
+          { label: "XMTB đến hạn bảo dưỡng", value: due.length, tone: "info", sub: `Máy còn ≤ ${cfg.hours} giờ · xe còn ≤ ${cfg.hours * 20} km · hoặc đến mốc tháng` },
           { label: "Chi phí kế hoạch", value: fmtMoneyShort(rows.reduce((s, r) => s + r.cost, 0)), tone: "navy" },
         ]}
         newRecord={() => ({ type: "dinh_ky", status: "cho_duyet", plannedDate: DEMO_TODAY, createdById: user!.id, approvedById: null, cost: 0, materials: "" })}
@@ -75,7 +75,7 @@ export default function MaintenancePage() {
           <DialogHeader><DialogTitle>Cấu hình thời gian nhắc lịch bảo dưỡng</DialogTitle></DialogHeader>
           <DialogBody className="grid gap-3 sm:grid-cols-2">
             <FormField label="Nhắc trước ngày bảo dưỡng (ngày)"><Input type="number" value={cfg.days} onChange={(e) => setCfg({ ...cfg, days: Number(e.target.value) })} /></FormField>
-            <FormField label="Nhắc khi còn (giờ máy) tới chu kỳ"><Input type="number" value={cfg.hours} onChange={(e) => setCfg({ ...cfg, hours: Number(e.target.value) })} /></FormField>
+            <FormField label="Nhắc khi còn (giờ máy) tới chu kỳ – xe tính gấp 20 lần theo km"><Input type="number" value={cfg.hours} onChange={(e) => setCfg({ ...cfg, hours: Number(e.target.value) })} /></FormField>
           </DialogBody>
           <DialogFooter><Button onClick={() => { try { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); } catch { /* */ } setCfgOpen(false); toast.success("Đã lưu cấu hình nhắc lịch"); }}>Lưu</Button></DialogFooter>
         </DialogContent>
@@ -109,7 +109,7 @@ function WarningsBlock({ dueIds, onRecord }: { dueIds: string[]; onRecord: (id: 
           <div key={e.id} onClick={() => navigate(`/equipment/${e.id}`)} className="flex cursor-pointer flex-wrap items-center gap-3 border-b border-slate-100 px-4 py-2.5 text-[13.5px] last:border-0 hover:bg-slate-50">
             <span className="w-28 font-semibold">{e.code}</span>
             <span className="min-w-[200px] flex-1">{e.name}<span className="ml-2 text-[12px] text-slate-500">{pn(e.currentProjectId)}</span></span>
-            {tab === "bd" && <><span className="text-[12.5px] text-slate-600">{fmtNumber(e.totalHours - e.lastMaintenanceHours, 0)} / {e.maintenanceInterval} giờ</span><Progress value={Math.min(1, (e.totalHours - e.lastMaintenanceHours) / e.maintenanceInterval)} tone={e.totalHours - e.lastMaintenanceHours >= e.maintenanceInterval ? "danger" : "warning"} className="h-1.5 w-28" />{can("equipment.edit") && <Button size="xs" variant="soft" onClick={(ev) => { ev.stopPropagation(); onRecord(e.id); }}>Ghi nhận bảo dưỡng</Button>}</>}
+            {tab === "bd" && <><span className="text-[12.5px] text-slate-600">{fmtNumber(sinceMaintenance(e), 0)} / {fmtNumber(e.maintenanceInterval, 0)} {meterUnit(e)} · {maintenanceLeft(e)}</span><Progress value={Math.min(1, sinceMaintenance(e) / e.maintenanceInterval)} tone={sinceMaintenance(e) >= e.maintenanceInterval ? "danger" : "warning"} className="h-1.5 w-28" />{can("equipment.edit") && <Button size="xs" variant="soft" onClick={(ev) => { ev.stopPropagation(); onRecord(e.id); }}>Ghi nhận bảo dưỡng</Button>}</>}
             {tab === "hs" && equipmentDocWarnings(e).filter((w) => !w.label.includes("chủ sở hữu")).map((w) => <Badge key={w.label} tone={w.danger ? "danger" : "warning"}>{w.label}</Badge>)}
             {tab === "cm" && <><span className="text-[12.5px] text-slate-600">Cho thuê: {e.rentalSupplier}</span><Badge tone="danger">Thiếu CM chủ sở hữu</Badge></>}
           </div>

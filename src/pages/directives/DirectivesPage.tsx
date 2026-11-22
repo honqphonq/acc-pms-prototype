@@ -400,11 +400,10 @@ export function DirectiveWorkspace({ projectId, openId, onOpenId }: { projectId?
 
       {view === "gantt" ? <TaskGantt rows={rows} onOpen={(d) => setSel(d.id)} /> : !rows.length ? <EmptyState title="Không có công việc nào" className="py-10" /> : (
         <Table>
-          <TableHeader><TableRow><TableHead>Công việc</TableHead>{!projectId && <TableHead>Dự án</TableHead>}<TableHead>Người giao</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Hạn</TableHead><TableHead>Trạng thái</TableHead><TableHead className="w-10" /></TableRow></TableHeader>
+          <TableHeader><TableRow><TableHead>Công việc</TableHead>{!projectId && <TableHead>Dự án</TableHead>}<TableHead>Người giao</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Thời hạn</TableHead><TableHead>Trạng thái</TableHead><TableHead className="w-10" /></TableRow></TableHeader>
           <TableBody>
             {rows.map((d) => {
               const st = dirState(d);
-              const late = st === "qua_han" ? diffDays(d.dueDate, DEMO_TODAY) : 0;
               return (
                 <TableRow key={d.id} className="cursor-pointer" onClick={() => setSel(d.id)}>
                   <TableCell className="min-w-[280px] max-w-[460px]">
@@ -417,7 +416,7 @@ export function DirectiveWorkspace({ projectId, openId, onOpenId }: { projectId?
                   {!projectId && <TableCell className="whitespace-nowrap">{d.projectId ? <Link onClick={(e) => e.stopPropagation()} to={`/projects/${d.projectId}`} className="text-[13px] text-primary hover:underline">{pName(d.projectId)}</Link> : <span className="text-[13px] text-slate-500">Việc chung</span>}</TableCell>}
                   <TableCell className="whitespace-nowrap"><UserCell userId={d.assignedBy} /></TableCell>
                   <TableCell className="whitespace-nowrap"><UserCell userId={d.assigneeId} /></TableCell>
-                  <TableCell className="whitespace-nowrap"><div className={cn(st === "qua_han" && "font-semibold text-rose-600")}>{fmtDate(d.dueDate)}</div>{late > 0 && <div className="text-[11.5px] text-rose-600">trễ {late} ngày</div>}{d.completedAt && <div className={cn("text-[11.5px]", st === "hoan_thanh_muon" ? "text-amber-600" : "text-slate-500")}>xong {fmtDate(d.completedAt)}{st === "hoan_thanh_muon" && ` · muộn ${lateDone(d)} ngày`}</div>}</TableCell>
+                  <TableCell className="whitespace-nowrap">{fmtDate(d.dueDate)}</TableCell>
                   <TableCell><Badge tone={DIR_STATE[st].tone}>{DIR_STATE[st].label}</Badge></TableCell>
                   <TableCell><Eye className="h-4 w-4 text-slate-400" /></TableCell>
                 </TableRow>
@@ -435,7 +434,7 @@ export default function DirectivesPage() {
   const openId = params.get("id");
   return (
     <div>
-      <PageHeader title="Công việc điều hành" description="Lãnh đạo giao việc cho cán bộ, theo dõi tiến độ và trao đổi trực tiếp trên từng công việc. Công việc có thể thuộc một dự án hoặc là việc chung." />
+      <PageHeader title="Công việc điều hành" />
       <DirectiveWorkspace openId={openId} onOpenId={(id) => setParams(id ? { id } : {}, { replace: true })} />
     </div>
   );

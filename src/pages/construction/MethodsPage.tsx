@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, GitBranch, MessageSquare, Paperclip, Send } from "lucide-react";
+import { CheckCircle2, GitBranch, History, MessageSquare, Paperclip, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { FormField } from "@/components/common/FormField";
 import { AttachmentList, FileUploader } from "@/components/common/Attachments";
-import { Badge } from "@/components/ui/badge";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { Avatar } from "@/components/common/UserAvatar";
 import { RegistryPage } from "@/components/registry/RegistryPage";
@@ -32,19 +31,12 @@ function MethodDetail({ m }: { m: ConstructionMethod }) {
       <div className="flex flex-wrap gap-2">
         {m.status === "du_thao" && <Button size="sm" onClick={() => save({ status: "cho_gop_y" }, "Đã gửi phương án để lấy góp ý")}><Send /> Gửi lấy góp ý</Button>}
         {m.status === "cho_gop_y" && can("plan.edit") && <Button size="sm" variant="success" onClick={() => save({ status: "da_duyet" }, "Đã phê duyệt phương án")}><CheckCircle2 /> Phê duyệt phương án</Button>}
-        <Button size="sm" variant="outline" onClick={() => setAdj({ summary: m.summary, files: m.files, note: "" })}><GitBranch /> Điều chỉnh phương án</Button>
+        <Button size="sm" variant="outline" onClick={() => setAdj({ summary: m.summary, files: m.files, note: "" })}><GitBranch /> Cập nhật phương án</Button>
       </div>
       <section>
-        <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Tài liệu đính kèm ({m.files.length})</h4>
+        <h4 className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-slate-600">Bản hiện hành</h4>
+        <div className="mb-2 text-[12px] text-slate-500">Cập nhật {fmtDate(m.updatedAt)} · {name(m.versions[m.versions.length - 1]?.byId ?? m.createdById)}</div>
         <AttachmentList files={m.files} />
-      </section>
-      <section>
-        <h4 className="mb-2 flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-600"><GitBranch className="h-3.5 w-3.5" /> Lịch sử phiên bản</h4>
-        <ol className="space-y-2 border-l-2 border-slate-200 pl-4">
-          {[...m.versions].reverse().map((v) => (
-            <li key={v.version} className="relative text-[13px]"><span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-primary" /><b>v{v.version}</b> · {fmtDate(v.at)} · {name(v.byId)}<div className="text-slate-500">{v.note}</div></li>
-          ))}
-        </ol>
       </section>
       <section>
         <h4 className="mb-2 flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-600"><MessageSquare className="h-3.5 w-3.5" /> Góp ý ({m.comments.length})</h4>
@@ -59,9 +51,24 @@ function MethodDetail({ m }: { m: ConstructionMethod }) {
           <Button size="sm" disabled={!text.trim()} onClick={() => { save({ comments: [...m.comments, { id: genId("cm"), byId: user!.id, at: DEMO_TODAY, content: text }] }, "Đã gửi góp ý"); setText(""); }}>Gửi</Button>
         </div>
       </section>
+      <section>
+        <h4 className="mb-2 flex items-center gap-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-600"><History className="h-3.5 w-3.5" /> Các bản cũ ({Math.max(0, m.versions.length - 1)})</h4>
+        {m.versions.length > 1 ? (
+          <ol className="space-y-3 border-l-2 border-slate-200 pl-4">
+            {m.versions.slice(0, -1).reverse().map((v) => (
+              <li key={v.version} className="relative text-[13px]">
+                <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-slate-400" />
+                <div className="text-slate-700">{fmtDate(v.at)} · <b>{name(v.byId)}</b> · {v.note}</div>
+                {v.summary && <div className="mt-0.5 text-[12px] text-slate-500">{v.summary}</div>}
+                {!!v.files?.length && <div className="mt-1.5"><AttachmentList files={v.files} /></div>}
+              </li>
+            ))}
+          </ol>
+        ) : <p className="text-xs text-slate-400">Chưa có bản cũ.</p>}
+      </section>
       <Dialog open={!!adj} onOpenChange={(o) => !o && setAdj(null)}>
         <DialogContent className="max-w-2xl">
-          <DialogHeader><DialogTitle>Điều chỉnh phương án – tạo phiên bản v{m.version + 1}</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle>Cập nhật phương án</DialogTitle></DialogHeader>
           {adj && (
             <DialogBody className="space-y-3">
               <FormField label="Nội dung chính"><Textarea rows={4} value={adj.summary} onChange={(e) => setAdj({ ...adj, summary: e.target.value })} /></FormField>
@@ -71,7 +78,7 @@ function MethodDetail({ m }: { m: ConstructionMethod }) {
           )}
           <DialogFooter>
             <Button variant="outline" onClick={() => setAdj(null)}>Hủy</Button>
-            <Button onClick={() => { if (!adj) return; const v = m.version + 1; save({ summary: adj.summary, files: adj.files, version: v, status: m.status === "da_duyet" ? "cho_gop_y" : m.status, versions: [...m.versions, { version: v, at: DEMO_TODAY, byId: user!.id, note: adj.note || "Điều chỉnh phương án" }] }, `Đã lưu phiên bản v${v}`); setAdj(null); }}>Lưu phiên bản mới</Button>
+            <Button onClick={() => { if (!adj) return; const v = m.version + 1; const prev = m.versions.map((x, i) => (i === m.versions.length - 1 ? { ...x, summary: m.summary, files: m.files } : x)); save({ summary: adj.summary, files: adj.files, version: v, status: m.status === "da_duyet" ? "cho_gop_y" : m.status, versions: [...prev, { version: v, at: DEMO_TODAY, byId: user!.id, note: adj.note || "Cập nhật phương án" }] }, "Đã cập nhật phương án – bản trước được lưu trong lịch sử"); setAdj(null); }}>Lưu</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -85,7 +92,7 @@ export default function MethodsPage() {
   return (
     <RegistryPage<ConstructionMethod>
       title="Phương án tổ chức thi công" entityLabel="phương án" addLabel="Tạo phương án" codePrefix="PA-" collection="constructionMethods"
-      description="Lập, góp ý, điều chỉnh và quản lý lịch sử phiên bản phương án tổ chức thi công, biện pháp thi công của từng công trình."
+      description="Lập, góp ý, cập nhật phương án tổ chức thi công, biện pháp thi công của từng công trình."
       searchText={(m) => `${m.code} ${m.title} ${m.summary}`}
       filters={[{ label: "Tất cả dự án", options: projectOptions, test: (m, v) => m.projectId === v, initial: new URLSearchParams(window.location.search).get("project") ?? "p01" }, { label: "Tất cả trạng thái", options: toOptions(METHOD_STATUS), test: (m, v) => m.status === v }]}
       kpis={(rows) => [
@@ -99,8 +106,6 @@ export default function MethodsPage() {
         { key: "t", header: "Phương án tổ chức thi công", sortValue: (m) => m.title, cell: (m) => <div className="max-w-md"><div className="font-medium text-slate-800">{m.title}</div><div className="truncate text-[11.5px] text-slate-400">{m.summary}</div></div> },
         { key: "p", header: "Dự án", sortValue: (m) => db.projects.find((p) => p.id === m.projectId)?.shortName ?? "", cell: (m) => <span className="whitespace-nowrap">{db.projects.find((p) => p.id === m.projectId)?.shortName}</span> },
         { key: "f", header: "File", align: "center", filter: false, cell: (m) => (m.files.length ? <span className="inline-flex items-center gap-0.5 text-slate-600"><Paperclip className="h-3.5 w-3.5" />{m.files.length}</span> : <span className="text-slate-300">—</span>) },
-        { key: "v", header: "Phiên bản", sortValue: (m) => m.version, cell: (m) => <Badge tone="outline">v{m.version}</Badge> },
-        { key: "c", header: "Góp ý", align: "center", cell: (m) => m.comments.length },
         { key: "u", header: "Cập nhật", sortValue: (m) => m.updatedAt, cell: (m) => <span className="whitespace-nowrap text-xs">{fmtDate(m.updatedAt)}</span> },
         { key: "s", header: "Trạng thái", sortValue: (m) => m.status, cell: (m) => <StatusBadge map={METHOD_STATUS} value={m.status} /> },
       ]}

@@ -42,7 +42,7 @@ export default function EquipmentListPage() {
   const [own, setOwn] = useState("");
   const [kind, setKind] = useQueryParam("kind");
   const [form, setForm] = useState<{ open: boolean; eq?: Equipment }>({ open: false });
-  const [dispatch, setDispatch] = useState<string | null>(null);
+  const [dispatch, setDispatch] = useState<{ ids: string[]; clear?: () => void } | null>(null);
   const all = db.equipment;
   const rows = all.filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own) && (!kind || e.kind === kind));
   const count = (s: string) => all.filter((e) => e.status === s).length;
@@ -61,7 +61,7 @@ export default function EquipmentListPage() {
       key: "act", header: "Thao tác", cell: (e) => (
         <div className="flex gap-0.5" onClick={(ev) => ev.stopPropagation()}>
           <Tip content="Xem chi tiết"><Button size="icon-sm" variant="ghost" onClick={() => navigate(`/equipment/${e.id}`)}><Eye /></Button></Tip>
-          {(can("equipment.dispatch.request") || can("equipment.dispatch.approve")) && e.status !== "ngung" && <Tip content="Điều động"><Button size="icon-sm" variant="ghost" className="text-info-fg" onClick={() => setDispatch(e.id)}><Truck /></Button></Tip>}
+          {can("equipment.edit") && e.status !== "ngung" && <Tip content="Điều động"><Button size="icon-sm" variant="ghost" className="text-info-fg" onClick={() => setDispatch({ ids: [e.id] })}><Truck /></Button></Tip>}
           {can("equipment.edit") && <Tip content="Sửa"><Button size="icon-sm" variant="ghost" onClick={() => setForm({ open: true, eq: e })}><Pencil /></Button></Tip>}
           {can("equipment.edit") && <Tip content="Xóa"><Button size="icon-sm" variant="ghost" className="text-slate-400 hover:text-rose-600" onClick={async () => { if (await confirm({ title: `Xóa thiết bị ${e.code}?`, description: "Lịch sử điều động và ca máy của thiết bị cũng bị xóa.", destructive: true, confirmText: "Xóa" })) { run(deleteEquipment, e.id); toast.success("Đã xóa thiết bị"); } }}><Trash2 /></Button></Tip>}
         </div>
@@ -77,7 +77,7 @@ export default function EquipmentListPage() {
           <DropdownMenuTrigger asChild><Button size="icon" variant="ghost" aria-label="Thao tác khác"><MoreHorizontal /></Button></DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => toast.info("Chọn file Excel danh mục XMTB theo mẫu (mô phỏng)")}><Upload /> Import</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => exportCsv("Danh-muc-XMTB", ["Mã máy", "XMTB", "Nhóm XMTB", "Nguồn gốc", "Dự án", "Trạng thái", "Tổng giờ máy"], rows.map((e) => [e.code, e.name, e.group, e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài", db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "", EQUIPMENT_STATUS[e.status].label, e.totalHours]))}><Download /> Export</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => exportCsv("Danh-muc-XMTB", ["Mã máy", "XMTB", "Nhóm XMTB", "Nguồn gốc", "Dự án", "Trạng thái", "Chỉ số đồng hồ", "Đơn vị"], rows.map((e) => [e.code, e.name, e.group, e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài", db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "", EQUIPMENT_STATUS[e.status].label, e.totalHours, e.kind === "may_thiet_bi" ? "giờ" : "km"]))}><Download /> Export</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </>} />
@@ -101,6 +101,7 @@ export default function EquipmentListPage() {
         </div>
         <DataTable columns={cols} rows={rows} rowKey={(e) => e.id} loading={loading} onRowClick={(e) => navigate(`/equipment/${e.id}`)} resetKey={group + status + projectId + unit + own + kind}
           searchText={(e) => `${e.code} ${e.name} ${e.plate} ${e.brand}`} searchPlaceholder="Tìm kiếm mã, tên XMTB..."
+          selectionActions={can("equipment.edit") ? (ids, clear) => <Button size="sm" onClick={() => setDispatch({ ids, clear })}><Truck /> Điều động {ids.length} XMTB</Button> : undefined}
           toolbar={<>
             <FilterSelect label="Trạng thái" value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(EQUIPMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={[{ value: "none", label: "Chưa phân bổ" }, ...activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))]} />
@@ -111,7 +112,7 @@ export default function EquipmentListPage() {
         />
       </Card>
       <EquipmentFormDialog open={form.open} onOpenChange={(o) => setForm({ open: o, eq: o ? form.eq : undefined })} equipment={form.eq} />
-      <DispatchDialog open={!!dispatch} onOpenChange={(o) => !o && setDispatch(null)} equipmentId={dispatch ?? undefined} />
+      <DispatchDialog open={!!dispatch} onOpenChange={(o) => !o && setDispatch(null)} equipmentIds={dispatch?.ids ?? []} onDone={dispatch?.clear} />
     </div>
   );
 }

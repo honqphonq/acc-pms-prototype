@@ -52,6 +52,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -107,6 +116,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -162,6 +180,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -217,6 +244,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -272,6 +308,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -327,6 +372,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -382,6 +436,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -437,6 +500,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -492,6 +564,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -547,6 +628,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -602,6 +692,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
     }
   },
   {
@@ -657,6 +756,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -712,6 +820,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -767,6 +884,15 @@
       "type": "image/svg+xml",
       "size": 3000,
       "url": "assets/samples/giay-ksk.svg"
+    },
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
     }
   },
   {
@@ -796,7 +922,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-016",
@@ -825,7 +960,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-017",
@@ -854,7 +998,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-018",
@@ -883,7 +1036,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-019",
@@ -912,7 +1074,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-020",
@@ -941,7 +1112,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-021",
@@ -964,7 +1144,16 @@
     "idBack": null,
     "certFiles": [],
     "safetyCardFile": null,
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": false,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-022",
@@ -993,7 +1182,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-023",
@@ -1016,7 +1214,16 @@
     "idBack": null,
     "certFiles": [],
     "safetyCardFile": null,
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": false,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-024",
@@ -1045,7 +1252,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-025",
@@ -1074,7 +1290,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-026",
@@ -1103,7 +1328,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-027",
@@ -1126,7 +1360,16 @@
     "idBack": null,
     "certFiles": [],
     "safetyCardFile": null,
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": false,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-028",
@@ -1155,7 +1398,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-029",
@@ -1184,7 +1436,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-030",
@@ -1213,7 +1474,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-031",
@@ -1242,7 +1512,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-032",
@@ -1271,7 +1550,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-033",
@@ -1300,7 +1588,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-034",
@@ -1329,7 +1626,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-035",
@@ -1358,7 +1664,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-036",
@@ -1387,7 +1702,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-037",
@@ -1416,7 +1740,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-038",
@@ -1445,7 +1778,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-039",
@@ -1474,7 +1816,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-040",
@@ -1503,7 +1854,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-041",
@@ -1532,7 +1892,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-042",
@@ -1561,7 +1930,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-043",
@@ -1590,7 +1968,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": false,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-044",
@@ -1619,7 +2006,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": false,
+      "chung_chi": false,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-045",
@@ -1648,7 +2044,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-046",
@@ -1677,7 +2082,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-047",
@@ -1706,7 +2120,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-048",
@@ -1735,7 +2158,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-049",
@@ -1764,7 +2196,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-050",
@@ -1793,7 +2234,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-051",
@@ -1822,7 +2272,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-052",
@@ -1851,7 +2310,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-053",
@@ -1880,7 +2348,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-054",
@@ -1909,7 +2386,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": false
+    }
   },
   {
     "id": "ns-055",
@@ -1932,7 +2418,16 @@
     "idBack": null,
     "certFiles": [],
     "safetyCardFile": null,
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": false,
+      "hdld": false,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-056",
@@ -1961,7 +2456,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-057",
@@ -1990,7 +2494,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": false,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-058",
@@ -2019,7 +2532,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": false,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-059",
@@ -2048,7 +2570,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": true,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-060",
@@ -2077,7 +2608,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-061",
@@ -2106,7 +2646,16 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": true,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   },
   {
     "id": "ns-062",
@@ -2135,6 +2684,15 @@
       "size": 3000,
       "url": "assets/samples/the-atld.svg"
     },
-    "healthFile": null
+    "healthFile": null,
+    "docs": {
+      "cccd": true,
+      "syll": true,
+      "ksk": true,
+      "the_at": true,
+      "hdld": false,
+      "chung_chi": false,
+      "bao_hiem": true
+    }
   }
 ]

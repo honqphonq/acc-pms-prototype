@@ -17,6 +17,8 @@ import type { Operator, OperatorLicense } from "@/types";
 const lstate = (l: OperatorLicense) => { if (!l.expiry) return "ok"; const d = diffDays(DEMO_TODAY, l.expiry); return d < 0 ? "het_han" : d <= 60 ? "sap_het" : "ok"; };
 const lname = (l: OperatorLicense) => (l.kind === "gplx" ? `GPLX ${l.name}${l.military ? " (QS)" : ""}` : l.name.replace(/^Vận hành /, ""));
 
+const YN = (v: boolean) => <span className={v ? "font-medium text-success-fg" : "text-rose-600"}>{v ? "Có" : "Không"}</span>;
+
 /** Bảng con: giấy phép lái xe & chứng chỉ vận hành (nhiều dòng) */
 function LicenseEditor({ value, onChange }: { value: OperatorLicense[]; onChange: (v: OperatorLicense[]) => void }) {
   const set = (i: number, c: Partial<OperatorLicense>) => onChange(value.map((x, k) => (k === i ? { ...x, ...c } : x)));
@@ -76,26 +78,21 @@ export default function OperatorsPage() {
   const [valid, setValid] = useState(false);
   const allNames = [...new Set(db.operators.flatMap((o) => (o.licenses ?? []).map(lname)))].sort((a, b) => a.localeCompare(b, "vi"));
   const rows = db.operators.filter((o) => !lic.length || lic.every((n) => (o.licenses ?? []).some((l) => lname(l) === n && (!valid || lstate(l) !== "het_han"))));
-  const allLic = db.operators.flatMap((o) => o.licenses ?? []);
   return (
     <RegistryPage<Operator>
       title="Nhân viên CMKT" entityLabel="nhân viên CMKT" addLabel="Thêm nhân viên CMKT" codePrefix="CN" collection="operators" rows={rows}
-      description="Hồ sơ lái xe, lái máy, nhân viên chuyên môn kỹ thuật: giấy phép lái xe, chứng chỉ vận hành, bậc thợ, ATVSLĐ và quá trình làm việc."
       searchText={(o) => `${o.code} ${o.name} ${(o.licenses ?? []).map(lname).join(" ")}`}
       headerExtra={<LicenseFilter all={allNames} value={lic} valid={valid} onChange={(v, ok) => { setLic(v); setValid(ok); }} />}
-      filters={[{ label: "Kinh nghiệm", options: [{ value: "3", label: "≥ 3 năm" }, { value: "5", label: "≥ 5 năm" }, { value: "10", label: "≥ 10 năm" }], test: (o, v) => o.yearsExp >= Number(v) }]}
-      kpis={() => [
-        { label: "Nhân viên CMKT", value: db.operators.length, tone: "navy", sub: `${allLic.length} giấy phép & chứng chỉ` },
-        { label: "Giấy tờ sắp hết hạn", value: allLic.filter((l) => lstate(l) === "sap_het").length, tone: "warning", sub: "Trong 60 ngày tới" },
-        { label: "Giấy tờ đã hết hạn", value: allLic.filter((l) => lstate(l) === "het_han").length, tone: "danger" },
-      ]}
       newRecord={() => ({ licenses: [], yearsExp: 1, safetyCard: false, insurance24h: false, salaryCoef: 2.67, workerGrade: "3/7", healthCheck: DEMO_TODAY, note: "" })}
       columns={[
-        { key: "n", header: "Họ và tên", sortValue: (o) => o.name, cell: (o) => <div><div className="font-semibold">{o.name}</div><div className="text-[12px] text-slate-500">{o.code} · {o.rank}</div></div> },
-        { key: "g", header: "Bậc thợ / KN", sortValue: (o) => o.yearsExp, filter: false, cell: (o) => <span className="whitespace-nowrap">Bậc {o.workerGrade} · {o.yearsExp} năm</span> },
+        { key: "n", header: "Họ và tên", sticky: true, sortValue: (o) => o.name, cell: (o) => <span className="whitespace-nowrap font-semibold">{o.name}</span> },
+        { key: "code", header: "Mã", sortValue: (o) => o.code, cell: (o) => <span className="whitespace-nowrap text-slate-600">{o.code}</span> },
+        { key: "rank", header: "Cấp bậc hiện hưởng", sortValue: (o) => o.rank, cell: (o) => <span className="whitespace-nowrap">{o.rank || "—"}</span> },
+        { key: "g", header: "Bậc thợ", sortValue: (o) => o.workerGrade, cell: (o) => <span className="whitespace-nowrap">{o.workerGrade}</span> },
+        { key: "y", header: "Số năm KN", align: "right", sortValue: (o) => o.yearsExp, filterValue: (o) => String(o.yearsExp), cell: (o) => o.yearsExp },
         {
           key: "lic", header: "Giấy phép & chứng chỉ", filter: false, cell: (o) => (
-            <div className="flex max-w-[420px] flex-wrap gap-1">
+            <div className="flex min-w-[260px] max-w-[420px] flex-wrap gap-1">
               {(o.licenses ?? []).map((l) => { const st = lstate(l); return (
                 <Tip key={l.id} content={<div>{l.kind === "gplx" ? "Giấy phép lái xe" : "Chứng chỉ vận hành"} {l.name}<div>Số: {l.no || "—"}</div><div>{l.expiry ? `Hết hạn: ${fmtDate(l.expiry)}` : "Không thời hạn"}</div></div>}>
                   <span className={cn("rounded px-1.5 py-0.5 text-[12px] font-medium", st === "het_han" ? "bg-rose-100 text-rose-700" : st === "sap_het" ? "bg-amber-100 text-amber-800" : l.kind === "gplx" ? "bg-sky-100 text-sky-800" : "bg-slate-100 text-slate-700")}>{lname(l)}</span>
@@ -105,9 +102,15 @@ export default function OperatorsPage() {
             </div>
           ),
         },
-        { key: "at", header: "Thẻ ATLĐ", align: "center", filterValue: (o) => (o.safetyCard ? "Có" : "Chưa có"), cell: (o) => <input type="checkbox" readOnly checked={o.safetyCard} className="pointer-events-none h-4 w-4 accent-[hsl(var(--primary))]" aria-label="Thẻ ATLĐ" /> },
-        { key: "bh", header: "Thẻ BH TNLĐ", align: "center", filterValue: (o) => (o.insurance24h ? "Có" : "Chưa có"), cell: (o) => <input type="checkbox" readOnly checked={o.insurance24h} className="pointer-events-none h-4 w-4 accent-[hsl(var(--primary))]" aria-label="Thẻ BH TNLĐ" /> },
+        { key: "id", header: "CCCD / CMQĐ", cell: (o) => <span className="whitespace-nowrap">{o.idNo || "—"}</span> },
+        { key: "hd", header: "Hợp đồng lao động", cell: (o) => <span className="whitespace-nowrap">{o.contractType || "—"}</span> },
+        { key: "hs", header: "Hệ số lương", align: "right", sortValue: (o) => o.salaryCoef, cell: (o) => fmtNumber(o.salaryCoef, 2) },
+        { key: "ksk", header: "Ngày khám SK", sortValue: (o) => o.healthCheck ?? "", cell: (o) => <span className={cn("whitespace-nowrap", o.healthCheck && diffDays(o.healthCheck, DEMO_TODAY) > 365 && "font-medium text-amber-600")}>{o.healthCheck ? fmtDate(o.healthCheck) : "—"}</span> },
+        { key: "at", header: "Thẻ ATLĐ", align: "center", filterValue: (o) => (o.safetyCard ? "Có" : "Không"), cell: (o) => YN(o.safetyCard) },
+        { key: "bh", header: "Thẻ BH TNLĐ", align: "center", filterValue: (o) => (o.insurance24h ? "Có" : "Không"), cell: (o) => YN(o.insurance24h) },
+        { key: "hk", header: "Hộ khẩu", cell: (o) => <span className="whitespace-nowrap">{o.hometown || "—"}</span> },
         { key: "p", header: "Điện thoại", cell: (o) => <span className="whitespace-nowrap">{o.phone}</span> },
+        { key: "note", header: "Ghi chú", filter: false, cell: (o) => <span className="block max-w-[220px] truncate text-slate-600" title={o.note}>{o.note || "—"}</span> },
       ]}
       fields={[
         { key: "name", label: "Họ và tên", required: true },

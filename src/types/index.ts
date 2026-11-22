@@ -309,10 +309,13 @@ export interface Equipment {
   status: EquipmentStatus;
   currentProjectId: ID | null;
   operatorId: ID | null;
+  /** Chỉ số đồng hồ: giờ máy (máy thiết bị) hoặc km (xe) */
   totalHours: number;
-  fuelNorm: number; // lít / giờ
-  maintenanceInterval: number; // giờ
-  lastMaintenanceHours: number;
+  fuelNorm: number; // lít / giờ (máy) · lít / 100 km (xe)
+  maintenanceInterval: number; // chu kỳ bảo dưỡng theo giờ (máy) hoặc km (xe)
+  lastMaintenanceHours: number; // chỉ số đồng hồ tại lần bảo dưỡng gần nhất
+  maintenanceMonths?: number; // hoặc theo thời gian (tháng) – đến mốc nào trước thì bảo dưỡng trước
+  lastMaintenanceDate?: string;
   rentalSupplier?: string;
   rentalRate?: number; // đ / ca
   maintenances: MaintenanceRecord[];
@@ -333,6 +336,8 @@ export interface EquipmentAssignment {
   requesterId: ID;
   reason: string;
   createdAt: string;
+  decisionNo?: string; // số quyết định điều động
+  files?: Attachment[]; // file quyết định
 }
 
 export interface EquipmentShift {
@@ -441,6 +446,8 @@ export interface VersionEntry {
   at: string;
   byId: ID;
   note: string;
+  summary?: string; // nội dung của bản này (lưu khi có bản mới thay thế)
+  files?: Attachment[]; // file của bản này
 }
 export interface CommentEntry {
   id: ID;
@@ -489,7 +496,10 @@ export interface SiteStaff {
   certFiles?: Attachment[];
   safetyCardFile?: Attachment | null;
   healthFile?: Attachment | null;
+  /** Giấy tờ đã nộp (tick Có / Không) */
+  docs?: Partial<Record<StaffDocKey, boolean>>;
 }
+export type StaffDocKey = "cccd" | "syll" | "ksk" | "the_at" | "hdld" | "chung_chi" | "bao_hiem";
 
 export interface DocFolder {
   id: ID;

@@ -30,7 +30,6 @@ export const NAV: NavItem[] = [
     children: [
       { label: "Danh mục xe máy thiết bị", to: "/equipment/list" },
       { label: "Nhân viên CMKT", to: "/equipment/operators" },
-      { label: "Phân bổ điều động", to: "/equipment/dispatch" },
       { label: "Phân ca và nhật trình", to: "/equipment/shifts" },
       { label: "Bảo dưỡng", to: "/equipment/maintenance" },
       { label: "Sửa chữa", to: "/equipment/repairs" },

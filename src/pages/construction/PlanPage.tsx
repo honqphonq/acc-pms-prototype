@@ -18,7 +18,7 @@ import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services
 import { importPlanTasks } from "@/services/actions";
 import { downloadTemplate, exportPlan, parsePlanFile, type ImportRow } from "@/services/planExcel";
 import { fmtDateShort } from "@/utils/format";
-import { DEMO_TODAY, diffDays } from "@/utils/date";
+import { diffDays } from "@/utils/date";
 import { cn } from "@/utils/cn";
 import { activeProjects } from "@/utils/labels";
 
@@ -122,7 +122,7 @@ export default function PlanPage() {
             key: t.id, stt: t.code, code: `W${String(++w).padStart(5, "0")}`, name: t.name, depth, kind: r.children.length ? "group" : "task",
             assignee: userName(t.assigneeId), team: t.team, start: t.plannedStart, end: t.plannedEnd,
             actualStart: r.children.length ? minStart(desc) : t.actualStart, actualEnd: r.children.length ? maxEnd(desc) : t.actualEnd,
-            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, actualQty: r.children.length ? 0 : t.actualQty, predecessors: t.predecessors, late: r.health === "qua_han" || r.health === "cham",
+            actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, actualQty: r.children.length ? 0 : t.actualQty, predecessors: t.predecessors, late: r.health === "cham",
             taskId: t.id, itemId, parentId: t.parentId, childKeys: r.children.map((c) => c.task.id),
           });
           walk(r.children, depth + 1);
@@ -179,12 +179,12 @@ export default function PlanPage() {
   };
 
   // ---------- Gantt ----------
-  /** Màu thanh Gantt: hoàn thành đúng hạn / hoàn thành muộn / chậm / đang làm / chưa bắt đầu */
+  /** Màu thanh Gantt: hoàn thành / hoàn thành muộn / chậm tiến độ / đang thực hiện / chưa bắt đầu */
   const ganttStatus = (l: Line): GanttStatus => {
     if (l.actual >= 1) return l.actualEnd && l.actualEnd > l.end ? "hoan_thanh_muon" : "dung_tien_do";
-    // công việc: chậm khi quá hạn / chậm so với kế hoạch; hạng mục & tổng: chỉ chậm khi chính nó đã quá hạn
-    if (l.kind === "task" ? l.late : l.end < DEMO_TODAY) return "cham_tien_do";
-    if (l.actualStart || l.actual > 0) return "dang_thuc_hien";
+    // % thực tế < % kế hoạch đến hôm nay → chậm tiến độ (áp dụng cho cả công việc, hạng mục, tổng)
+    if (l.actual + 1e-9 < l.planned) return "cham_tien_do";
+    if (l.actual > 0) return "dang_thuc_hien";
     return "chua_bat_dau";
   };
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({

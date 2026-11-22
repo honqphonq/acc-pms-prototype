@@ -11,7 +11,7 @@ const dmy = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(2, 4)}`
 export type GanttStatus = "dung_tien_do" | "dang_thuc_hien" | "cham_tien_do" | "hoan_thanh_muon" | "chua_bat_dau";
 
 export const GANTT_STATUS: Record<GanttStatus, { label: string; color: string; soft: string }> = {
-  dung_tien_do: { label: "Hoàn thành đúng hạn", color: "#16A34A", soft: "#BBF7D0" },
+  dung_tien_do: { label: "Hoàn thành", color: "#16A34A", soft: "#BBF7D0" },
   dang_thuc_hien: { label: "Đang thực hiện", color: "#2F80ED", soft: "#BFDBFE" },
   cham_tien_do: { label: "Chậm tiến độ", color: "#DC2626", soft: "#FECACA" },
   hoan_thanh_muon: { label: "Hoàn thành muộn", color: "#F59E0B", soft: "#FDE68A" },
@@ -105,11 +105,11 @@ export function GanttChart({ rows, onRowClick, showBaseline = false, zoom = "mon
     }),
   );
 
-  const leftCols = "grid-cols-[34px_minmax(0,1fr)_34px_60px_60px_46px_64px_58px_58px]";
+  const leftCols = "grid-cols-[34px_minmax(0,1fr)_40px_66px_66px_52px_70px_76px_76px]";
   return (
     <div className="gantt-root flex overflow-hidden rounded-b-xl text-[12px]">
       {/* Bảng công việc */}
-      <div className="gantt-left w-[700px] shrink-0 border-r border-slate-300 bg-white max-lg:w-[360px]">
+      <div className="gantt-left w-[760px] shrink-0 border-r border-slate-300 bg-white max-lg:w-[360px]">
         <div className={cn("grid border-b border-slate-300 bg-slate-100 text-center text-[11.5px] font-semibold text-slate-700", leftCols)} style={{ height: HEAD }}>
           {["ID", "Nội dung công việc", "ĐVT", "KL hợp đồng", "KL thực tế", "% HT", "Thời gian", "Bắt đầu", "Kết thúc"].map((h, i) => <div key={h} className={cn("flex items-center justify-center border-r border-slate-200 px-1 leading-tight", i >= 2 && "max-lg:hidden")}>{h}</div>)}
         </div>
@@ -123,12 +123,12 @@ export function GanttChart({ rows, onRowClick, showBaseline = false, zoom = "mon
               <div className="flex items-center justify-center border-r border-slate-200 text-slate-500">{r.code}</div>
               <div className="flex min-w-0 items-center border-r border-slate-200 pr-1" style={{ paddingLeft: 6 + r.depth * 12 }}><span className="truncate">{r.label}</span></div>
               <div className="flex items-center justify-center border-r border-slate-200 max-lg:hidden">{r.unit}</div>
-              <div className="tabular flex items-center justify-end border-r border-slate-200 pr-1.5 max-lg:hidden">{r.qty ? fmtNumber(r.qty, 0) : ""}</div>
-              <div className={cn("tabular flex items-center justify-end border-r border-slate-200 pr-1.5 max-lg:hidden", r.kind === "task" && (r.qty && (r.actualQty ?? 0) > r.qty ? "font-semibold text-amber-600" : (r.progress ?? 0) >= 1 ? "font-semibold text-green-700" : late ? "font-semibold text-[#C00000]" : ""))}>{r.kind === "task" && r.qty ? `${r.qty && (r.actualQty ?? 0) > r.qty ? "+" : ""}${fmtNumber(r.actualQty ?? 0, 0)}` : ""}</div>
-              <div className={cn("tabular flex items-center justify-end border-r border-slate-200 pr-1.5 max-lg:hidden", (r.progress ?? 0) >= 1 ? "font-semibold text-green-700" : late ? "font-semibold text-[#C00000]" : "")}>{pctTxt(r.progress ?? 0)}</div>
-              <div className={cn("tabular flex items-center justify-end whitespace-nowrap border-r border-slate-200 pr-1.5 max-lg:hidden", sum && "font-semibold")}>{diffDays(r.start, r.end) + 1} ngày</div>
-              <div className={cn("tabular flex items-center justify-center border-r border-slate-200 max-lg:hidden", late && r.kind === "task" && "text-[#C00000]")}>{dmy(r.start)}</div>
-              <div className="tabular flex items-center justify-center max-lg:hidden">{dmy(r.end)}</div>
+              <div className="tabular flex items-center justify-end border-r border-slate-200 pr-2 max-lg:hidden">{r.qty ? fmtNumber(r.qty, 0) : ""}</div>
+              <div className={cn("tabular flex items-center justify-end border-r border-slate-200 pr-2 max-lg:hidden", r.kind === "task" && (r.qty && (r.actualQty ?? 0) > r.qty ? "font-semibold text-amber-600" : (r.progress ?? 0) >= 1 ? "font-semibold text-green-700" : late ? "font-semibold text-[#C00000]" : ""))}>{r.kind === "task" && r.qty ? `${r.qty && (r.actualQty ?? 0) > r.qty ? "+" : ""}${fmtNumber(r.actualQty ?? 0, 0)}` : ""}</div>
+              <div className={cn("tabular flex items-center justify-end border-r border-slate-200 pr-2 max-lg:hidden", (r.progress ?? 0) >= 1 ? "font-semibold text-green-700" : late ? "font-semibold text-[#C00000]" : "")}>{pctTxt(r.progress ?? 0)}</div>
+              <div className={cn("tabular flex items-center justify-end whitespace-nowrap border-r border-slate-200 pr-2 max-lg:hidden", sum && "font-semibold")}>{diffDays(r.start, r.end) + 1} ngày</div>
+              <div className={cn("tabular flex items-center justify-center border-r border-slate-300 px-2 max-lg:hidden", late && r.kind === "task" && "text-[#C00000]")}>{dmy(r.start)}</div>
+              <div className="tabular flex items-center justify-center px-2 max-lg:hidden">{dmy(r.end)}</div>
             </div>
           );
         })}

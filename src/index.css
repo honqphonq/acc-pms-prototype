@@ -98,7 +98,7 @@
   @page { size: A3 landscape; margin: 8mm; }
   html, body { background: #fff !important; }
   .gantt-root, .gantt-right { overflow: visible !important; }
-  .gantt-left { width: 660px !important; }
+  .gantt-left { width: 720px !important; }
   [data-sonner-toaster] { display: none !important; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

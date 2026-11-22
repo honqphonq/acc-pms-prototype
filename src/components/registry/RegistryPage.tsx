@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { Download, Eye, MoreHorizontal, Pencil, Plus, Trash2, Upload } from "lucide-react";
+import { Download, Eye, Filter, MoreHorizontal, Pencil, Plus, Trash2, Upload } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
@@ -63,6 +64,8 @@ interface Props<T extends Row> {
   above?: ReactNode;
   pageSize?: number;
   rowClassName?: (row: T) => string | undefined;
+  /** số bộ lọc hiển thị trực tiếp trên thanh công cụ; các bộ lọc còn lại gom vào nút "Bộ lọc" */
+  inlineFilters?: number;
 }
 
 /** Màn hình danh mục dùng chung: danh sách, tìm kiếm, lọc, thêm / sửa / xem / xóa, import / export */
@@ -149,7 +152,27 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
       {p.above}
       <Card>
         <DataTable columns={cols} rows={rows} rowKey={(r) => r.id} loading={loading} searchText={p.searchText} pageSize={p.pageSize ?? 12} onRowClick={(r) => setView(r.id)} rowClassName={p.rowClassName} resetKey={fv.join("|")}
-          toolbar={p.filters?.map((f, i) => <FilterSelect key={f.label} value={fv[i]} onChange={(v) => setFv((x) => x.map((y, k) => (k === i ? v : y)))} allLabel={f.label} options={opts(f.options)} />)} />
+          toolbar={<>
+            {p.filters?.slice(0, p.inlineFilters ?? p.filters.length).map((f, i) => <FilterSelect key={f.label} value={fv[i]} onChange={(v) => setFv((x) => x.map((y, k) => (k === i ? v : y)))} allLabel={f.label} options={opts(f.options)} />)}
+            {p.inlineFilters !== undefined && (p.filters?.length ?? 0) > p.inlineFilters && (() => {
+              const n = fv.slice(p.inlineFilters).filter(Boolean).length;
+              return (
+                <Popover>
+                  <PopoverTrigger asChild><Button variant="outline" className={cn("h-10", n > 0 && "border-primary/40 bg-primary-soft text-primary")}><Filter /> Bộ lọc{n > 0 && ` (${n})`}</Button></PopoverTrigger>
+                  <PopoverContent align="start" className="w-[340px] p-3">
+                    <div className="max-h-[60vh] space-y-2.5 overflow-y-auto pr-1">
+                      {p.filters!.slice(p.inlineFilters).map((f, j) => { const i = j + p.inlineFilters!; return (
+                        <label key={f.label} className="flex items-center justify-between gap-3 text-[13px] text-slate-600"><span className="truncate">{f.label}</span>
+                          <select value={fv[i]} onChange={(e) => { const v = e.target.value; setFv((x) => x.map((y, k) => (k === i ? v : y))); }} className="h-8 w-40 shrink-0 rounded-md border border-slate-300 bg-white px-2 text-[13px] text-slate-800"><option value="">Tất cả</option>{opts(f.options).map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}</select>
+                        </label>
+                      ); })}
+                    </div>
+                    <div className="mt-3 flex justify-end border-t pt-2"><Button size="xs" variant="ghost" disabled={!n} onClick={() => setFv((x) => x.map((y, k) => (k >= p.inlineFilters! ? "" : y)))}>Xóa bộ lọc</Button></div>
+                  </PopoverContent>
+                </Popover>
+              );
+            })()}
+          </>} />
       </Card>
 
       <Sheet open={!!viewing} onOpenChange={(o) => !o && setView(null)}>
