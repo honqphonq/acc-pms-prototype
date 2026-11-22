@@ -130,6 +130,7 @@ export interface ProjectStats {
   planned: number; // tiến độ kế hoạch tại ngày dữ liệu
   actual: number; // tiến độ thực tế
   delta: number; // điểm % (actual - planned)
+  spi: number | null; // KL thực tế / KL kế hoạch đến ngày dữ liệu (quy ra tiền); null khi kế hoạch chưa yêu cầu khối lượng nào
   health: ScheduleHealth;
   tasksTotal: number;
   tasksDone: number;
@@ -149,22 +150,23 @@ export interface ProjectStats {
   healthReason: string; // diễn giải trạng thái tiến độ
 }
 
-/** Số ngày trễ hạn tối đa của công việc quá hạn để coi là "Chậm tiến độ" (giả định) */
-export const LATE_DAYS_DELAYED = 14;
+/** Ngưỡng tỷ lệ KL thực tế / KL kế hoạch đến ngày dữ liệu (quy ra tiền) */
+export const SPI_ON_TRACK = 0.95;
+export const SPI_DELAYED = 0.85;
 
 /**
- * Trạng thái tiến độ dự án – xác định theo thời hạn của các công việc:
- * - Chậm tiến độ: có công việc quá hạn kết thúc kế hoạch > 14 ngày mà chưa hoàn thành
- * - Có nguy cơ chậm: có công việc quá hạn (≤ 14 ngày) hoặc công việc đang làm chậm hơn tiến độ thời gian kế hoạch
- * - Đúng tiến độ: các công việc đều đang trong thời hạn
+ * Trạng thái tiến độ dự án = Giá trị KL thực tế ÷ Giá trị KL kế hoạch phải đạt đến ngày dữ liệu
+ * (cộng dồn mọi đầu việc, mỗi đầu việc quy ra tiền = khối lượng × đơn giá):
+ * - Đúng tiến độ: ≥ 95% · Có nguy cơ chậm: 85% – dưới 95% · Chậm tiến độ: < 85%
  */
-export function healthOf(o: { status: Project["status"]; actual: number; started: boolean; maxDaysLate: number; tasksOverdue: number; tasksBehind: number }): { health: ScheduleHealth; reason: string } {
+export function healthOf(o: { status: Project["status"]; actual: number; started: boolean; spi: number | null }): { health: ScheduleHealth; reason: string } {
   if (o.status === "hoan_thanh" || o.actual >= 1) return { health: "hoan_thanh", reason: "Đã hoàn thành toàn bộ công việc" };
   if (o.status === "chuan_bi" && !o.started) return { health: "chua_bat_dau", reason: "Chưa đến thời gian thi công" };
-  if (o.maxDaysLate > LATE_DAYS_DELAYED) return { health: "cham_tien_do", reason: `${o.tasksOverdue} công việc quá hạn, trễ nhất ${o.maxDaysLate} ngày` };
-  if (o.tasksOverdue > 0) return { health: "nguy_co_cham", reason: `${o.tasksOverdue} công việc quá hạn ${o.maxDaysLate} ngày` };
-  if (o.tasksBehind > 0) return { health: "nguy_co_cham", reason: `${o.tasksBehind} công việc đang chậm so với thời gian kế hoạch` };
-  return { health: "dung_tien_do", reason: "Các công việc đều trong thời hạn kế hoạch" };
+  if (o.spi === null) return { health: "dung_tien_do", reason: "Chưa đến thời điểm phải thực hiện khối lượng theo kế hoạch" };
+  const r = `Thực tế đạt ${(o.spi * 100).toFixed(0)}% khối lượng kế hoạch đến hôm nay (quy ra tiền)`;
+  if (o.spi < SPI_DELAYED) return { health: "cham_tien_do", reason: `${r} · dưới ${SPI_DELAYED * 100}%` };
+  if (o.spi < SPI_ON_TRACK) return { health: "nguy_co_cham", reason: `${r} · dưới ${SPI_ON_TRACK * 100}%` };
+  return { health: "dung_tien_do", reason: r };
 }
 
 export function acceptanceValue(db: Database, ac: AcceptanceRecord) {
@@ -177,6 +179,8 @@ export function acceptanceValue(db: Database, ac: AcceptanceRecord) {
 export const getProjectStatsMap = memo((db: Database) => {
   const map = new Map<ID, ProjectStats>();
   const acValues = new Map(db.acceptanceRecords.map((a) => [a.id, acceptanceValue(db, a)]));
+  const costByProject = new Map<ID, number>();
+  db.costEntries.forEach((c) => costByProject.set(c.projectId, (costByProject.get(c.projectId) ?? 0) + c.nvl + c.nc + c.mtc + c.sxc));
   db.projects.forEach((p) => {
     const ts = db.constructionPlans.filter((t) => t.projectId === p.id && !t.isGroup);
     const planValue = ts.reduce((s, t) => s + taskValue(t), 0);
@@ -191,7 +195,8 @@ export const getProjectStatsMap = memo((db: Database) => {
     const overdue = ts.filter((t) => taskActualPct(t) < 1 && t.plannedEnd < DEMO_TODAY);
     const maxDaysLate = overdue.reduce((m, t) => Math.max(m, diffDays(t.plannedEnd, DEMO_TODAY)), 0);
     const tasksBehind = ts.filter((t) => t.plannedEnd >= DEMO_TODAY && taskPlannedPct(t) - taskActualPct(t) > 0.15).length;
-    const h = healthOf({ status: p.status, actual, started: ts.some((t) => t.actualQty > 0), maxDaysLate, tasksOverdue: overdue.length, tasksBehind });
+    const spi = plannedV > 0 ? execValue / plannedV : null;
+    const h = healthOf({ status: p.status, actual, started: ts.some((t) => t.actualQty > 0), spi });
     map.set(p.id, {
       project: p,
       planValue,
@@ -199,6 +204,7 @@ export const getProjectStatsMap = memo((db: Database) => {
       planned,
       actual,
       delta,
+      spi,
       health: h.health,
       healthReason: h.reason,
       maxDaysLate,
@@ -213,7 +219,7 @@ export const getProjectStatsMap = memo((db: Database) => {
       pendingAcceptanceValue: acs.filter((a) => ["cho_tvgs", "cho_cdt"].includes(a.status)).reduce((s, a) => s + (acValues.get(a.id) ?? 0), 0),
       paymentRequested: pays.filter((x) => x.status !== "lap_ho_so").reduce((s, x) => s + x.amount, 0),
       paidValue: pays.reduce((s, x) => s + x.paidAmount, 0),
-      cost: execValue * p.costRatio,
+      cost: costByProject.get(p.id) ?? 0,
       daysLeft: Math.max(0, diffDays(DEMO_TODAY, p.endDate)),
       elapsedPct: Math.min(1, Math.max(0, diffDays(p.startDate, DEMO_TODAY) / total)),
     });
@@ -553,36 +559,59 @@ export function equipmentDocWarnings(e: Equipment): { label: string; danger: boo
   return out;
 }
 
-// ---------- doanh thu – chi phí (ước tính, chờ phân hệ kế toán) ----------
-/** Doanh thu = giá trị khối lượng thực hiện (khối lượng cập nhật hằng ngày × đơn giá HĐ); chi phí = doanh thu × hệ số chi phí của dự án */
-export function revenueCost(db: Database, projectIds: Set<ID>) {
-  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
-  const ratio = new Map(db.projects.map((p) => [p.id, p.costRatio]));
-  const byProject = new Map<ID, { revenue: number; cost: number }>();
-  const byMonth = new Map<string, { revenue: number; cost: number }>();
-  db.constructionLogs.forEach((l) => {
-    if (l.status === "nhap" || !projectIds.has(l.projectId)) return;
-    const rev = l.qty * (price.get(l.taskId) ?? 0);
-    const cost = rev * (ratio.get(l.projectId) ?? 0.9);
-    const p = byProject.get(l.projectId) ?? { revenue: 0, cost: 0 };
-    p.revenue += rev; p.cost += cost; byProject.set(l.projectId, p);
-    const m = l.date.slice(0, 7);
-    const x = byMonth.get(m) ?? { revenue: 0, cost: 0 };
-    x.revenue += rev; x.cost += cost; byMonth.set(m, x);
+// ---------- doanh thu – chi phí ----------
+/** Bốn khoản mục chi phí theo Bảng tổng hợp chi phí SXKD (phân hệ Kế toán) */
+export const COST_KEYS = ["nvl", "nc", "mtc", "sxc"] as const;
+export type CostKey = (typeof COST_KEYS)[number];
+export const COST_LABEL: Record<CostKey, { short: string; label: string; color: string }> = {
+  nvl: { short: "NVLTT", label: "Nguyên vật liệu trực tiếp", color: "#F97316" },
+  nc: { short: "NCTT", label: "Nhân công trực tiếp", color: "#FDBA74" },
+  mtc: { short: "CPMTC", label: "Chi phí máy thi công", color: "#C2410C" },
+  sxc: { short: "CPSXC", label: "Chi phí sản xuất chung", color: "#94A3B8" },
+};
+export type CostBreakdown = Record<CostKey, number>;
+const zeroCost = (): CostBreakdown => ({ nvl: 0, nc: 0, mtc: 0, sxc: 0 });
+export const costTotal = (c: CostBreakdown) => c.nvl + c.nc + c.mtc + c.sxc;
+
+/** Tỷ lệ chi phí dự toán / giá trị dự toán khối lượng của từng dự án (dùng cho chi phí kế hoạch) */
+const planCostRatio = memo((db: Database) => {
+  const m = new Map<ID, number>();
+  db.projects.forEach((p) => {
+    const v = db.constructionPlans.filter((t) => t.projectId === p.id && !t.isGroup).reduce((s, t) => s + taskValue(t), 0);
+    m.set(p.id, v ? p.budget / v : p.costRatio);
   });
-  const last12 = Array.from({ length: 12 }, (_, i) => { const d = new Date(DEMO_TODAY.slice(0, 7) + "-01T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 11 + i); return d.toISOString().slice(0, 7); });
-  return {
-    byProject,
-    months: last12.map((m) => ({ month: m, label: `${Number(m.slice(5))}/${m.slice(0, 4)}`, revenue: byMonth.get(m)?.revenue ?? 0, cost: byMonth.get(m)?.cost ?? 0 })),
-  };
+  return m;
+});
+
+/**
+ * Doanh thu – chi phí theo dự án trong một năm:
+ * doanh thu = giá trị khối lượng thực hiện (nhật ký × đơn giá HĐ); chi phí = chi phí thực tế phát sinh từ Kế toán (4 khoản mục)
+ */
+export function revenueCost(db: Database, projectIds: Set<ID>, year: number) {
+  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
+  const y = String(year);
+  const byProject = new Map<ID, { revenue: number; cost: number } & CostBreakdown>();
+  const get = (id: ID) => { let x = byProject.get(id); if (!x) { x = { revenue: 0, cost: 0, ...zeroCost() }; byProject.set(id, x); } return x; };
+  db.constructionLogs.forEach((l) => {
+    if (l.status === "nhap" || !projectIds.has(l.projectId) || l.date.slice(0, 4) !== y) return;
+    get(l.projectId).revenue += l.qty * (price.get(l.taskId) ?? 0);
+  });
+  db.costEntries.forEach((c) => {
+    if (!projectIds.has(c.projectId) || c.month.slice(0, 4) !== y) return;
+    const x = get(c.projectId);
+    COST_KEYS.forEach((k) => { x[k] += c[k]; });
+    x.cost += costTotal(c);
+  });
+  return { byProject };
 }
 
-/** Doanh thu – chi phí lũy kế từ đầu năm theo tháng: kế hoạch (theo tiến độ kế hoạch) và thực tế (theo nhật ký) */
+/** Doanh thu – chi phí lũy kế từ đầu năm theo tháng: kế hoạch (theo tiến độ kế hoạch, chi phí theo dự toán) và thực tế (nhật ký / Kế toán) */
 export function revenueCostCumulative(db: Database, projectIds: Set<ID>, year: number) {
   const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
-  const ratio = new Map(db.projects.map((p) => [p.id, p.costRatio]));
+  const ratio = planCostRatio(db);
   const tasks = db.constructionPlans.filter((t) => !t.isGroup && projectIds.has(t.projectId));
   const logs = db.constructionLogs.filter((l) => l.status !== "nhap" && projectIds.has(l.projectId) && l.date.slice(0, 4) === String(year));
+  const costs = db.costEntries.filter((c) => projectIds.has(c.projectId) && c.month.slice(0, 4) === String(year));
   const yStart = `${year - 1}-12-31`;
   const today = DEMO_TODAY.slice(0, 7);
   return Array.from({ length: 12 }, (_, i) => {
@@ -593,9 +622,11 @@ export function revenueCostCumulative(db: Database, projectIds: Set<ID>, year: n
       const v = (taskPlannedPct(t, eom) - taskPlannedPct(t, yStart)) * taskValue(t);
       planRev += v; planCost += v * (ratio.get(t.projectId) ?? 0.9);
     });
-    let r = 0, c = 0;
-    logs.forEach((l) => { if (l.date <= eom) { const v = l.qty * (price.get(l.taskId) ?? 0); r += v; c += v * (ratio.get(l.projectId) ?? 0.9); } });
+    let r = 0;
+    logs.forEach((l) => { if (l.date <= eom) r += l.qty * (price.get(l.taskId) ?? 0); });
+    const cb = zeroCost();
+    costs.forEach((c) => { if (c.month <= m) COST_KEYS.forEach((k) => { cb[k] += c[k]; }); });
     const past = m <= today;
-    return { month: m, label: `T${i + 1}`, planRev, planCost, rev: past ? r : null, cost: past ? c : null };
+    return { month: m, label: `T${i + 1}`, planRev, planCost, rev: past ? r : null, cost: past ? costTotal(cb) : null, breakdown: past ? cb : null };
   });
 }

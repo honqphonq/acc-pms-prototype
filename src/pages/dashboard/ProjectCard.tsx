@@ -23,13 +23,13 @@ export function ProjectCard({ stats: s, className }: { stats: ProjectStats; clas
           <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-300 group-hover:text-primary" />
         </div>
         <div className="mt-1 text-[11.5px] text-slate-500">{unit} · {s.project.location}</div>
-        <div className="mt-3 grid grid-cols-[1fr_1.35fr_0.8fr] gap-2 whitespace-nowrap text-[11px] text-slate-500">
+        <div className="mt-3 grid grid-cols-[0.9fr_1.2fr_1.2fr] gap-2 whitespace-nowrap text-[11px] text-slate-500">
           <div>Giá trị HĐ<div className="tabular text-[13px] font-semibold text-slate-800">{fmtNumber(s.project.contractValue / 1e9, 0)} tỷ</div></div>
           <div>Giá trị nghiệm thu<div className="tabular text-[13px] font-semibold text-slate-800">{fmtNumber(s.acceptedValue / 1e9, 0)} tỷ</div></div>
-          <div>Tiến độ<div className="tabular text-[13px] font-semibold text-slate-800">{fmtPct(s.actual, 0)}</div></div>
+          <div>Hoàn thành<div className="tabular text-[13px] font-semibold text-slate-800">{fmtPct(s.actual, 0)}{s.spi !== null && <span className={cn("ml-1 text-[11px]", s.health === "cham_tien_do" ? "text-rose-600" : s.health === "nguy_co_cham" ? "text-amber-600" : "text-emerald-600")}>· {fmtPct(s.spi, 0)} KH</span>}</div></div>
         </div>
         <div className="mt-3 flex items-center gap-3">
-          <Progress value={s.actual} tone={tone} className="h-1.5 flex-1" />
+          <Progress value={s.actual} marker={s.planned} tone={tone} className="h-1.5 flex-1" />
           <Tip content={s.healthReason}>
             <span><StatusBadge map={PROJECT_HEALTH} value={s.health} dot={false} /></span>
           </Tip>

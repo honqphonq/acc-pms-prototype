@@ -26,13 +26,18 @@ import { fmtDate, fmtDateTime } from "@/utils/format";
 import { cn } from "@/utils/cn";
 import type { Attachment, Directive, ID } from "@/types";
 
-export type DirState = "dang_thuc_hien" | "qua_han" | "hoan_thanh";
-export const dirState = (d: Directive): DirState => (d.status === "hoan_thanh" ? "hoan_thanh" : d.dueDate < DEMO_TODAY ? "qua_han" : "dang_thuc_hien");
-export const DIR_STATE: Record<DirState, { label: string; tone: "info" | "danger" | "success"; color: string }> = {
+export type DirState = "dang_thuc_hien" | "qua_han" | "hoan_thanh" | "hoan_thanh_muon";
+/** Quá hạn = đã qua hạn mà chưa xong; Hoàn thành muộn = đã xong nhưng xong sau hạn */
+export const dirState = (d: Directive): DirState =>
+  d.status === "hoan_thanh" ? ((d.completedAt ?? "").slice(0, 10) > d.dueDate ? "hoan_thanh_muon" : "hoan_thanh") : d.dueDate < DEMO_TODAY ? "qua_han" : "dang_thuc_hien";
+export const DIR_STATE: Record<DirState, { label: string; tone: "info" | "danger" | "success" | "warning"; color: string }> = {
   dang_thuc_hien: { label: "Đang thực hiện", tone: "info", color: "#2563EB" },
   qua_han: { label: "Quá hạn", tone: "danger", color: "#E11D48" },
-  hoan_thanh: { label: "Đã hoàn thành", tone: "success", color: "#16A34A" },
+  hoan_thanh: { label: "Hoàn thành", tone: "success", color: "#16A34A" },
+  hoan_thanh_muon: { label: "Hoàn thành muộn", tone: "warning", color: "#F59E0B" },
 };
+/** Số ngày hoàn thành muộn so với hạn */
+const lateDone = (d: Directive) => (d.completedAt ? Math.max(0, diffDays(d.dueDate, d.completedAt.slice(0, 10))) : 0);
 type Scope = "giao_cho_toi" | "toi_giao" | "theo_doi" | "tat_ca";
 const SCOPES: { key: Scope; label: string }[] = [
   { key: "giao_cho_toi", label: "Giao cho tôi" },
@@ -219,7 +224,7 @@ function TaskSheet({ id, onClose, onComplete }: { id: ID | null; onClose: () => 
                 <div className={meta}><span className="text-slate-500">Người giao</span><UserCell userId={d.assignedBy} /></div>
                 <div className={meta}><span className="text-slate-500">Người thực hiện</span><UserCell userId={d.assigneeId} /></div>
                 <div className={meta}><span className="text-slate-500">Người theo dõi</span>{d.followerIds?.length ? <AvatarGroup userIds={d.followerIds} /> : <span className="text-slate-400">—</span>}</div>
-                <div className={meta}><span className="text-slate-500">Hạn hoàn thành</span><span className={cn("font-medium", st === "qua_han" && "text-rose-600")}>{fmtDate(d.dueDate)}{st === "qua_han" && ` · trễ ${diffDays(d.dueDate, DEMO_TODAY)} ngày`}{d.completedAt && <span className="font-normal text-slate-500"> · xong {fmtDate(d.completedAt)}</span>}</span></div>
+                <div className={meta}><span className="text-slate-500">Hạn hoàn thành</span><span className={cn("font-medium", st === "qua_han" && "text-rose-600")}>{fmtDate(d.dueDate)}{st === "qua_han" && ` · trễ ${diffDays(d.dueDate, DEMO_TODAY)} ngày`}{d.completedAt && <span className={cn("font-normal", st === "hoan_thanh_muon" ? "text-amber-600" : "text-slate-500")}> · xong {fmtDate(d.completedAt)}{st === "hoan_thanh_muon" && ` (muộn ${lateDone(d)} ngày)`}</span>}</span></div>
               </div>
               <div><div className="mb-1 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Mô tả công việc</div><p className="whitespace-pre-line text-[13.5px] text-slate-700">{d.content || <span className="text-slate-400">Không có mô tả</span>}</p></div>
               <div><div className="mb-1.5 text-[12px] font-semibold uppercase tracking-wide text-slate-500">Tài liệu đính kèm</div><AttachmentList files={d.attachments ?? []} empty="Không có tài liệu" /></div>
@@ -395,7 +400,7 @@ export function DirectiveWorkspace({ projectId, openId, onOpenId }: { projectId?
 
       {view === "gantt" ? <TaskGantt rows={rows} onOpen={(d) => setSel(d.id)} /> : !rows.length ? <EmptyState title="Không có công việc nào" className="py-10" /> : (
         <Table>
-          <TableHeader><TableRow><TableHead>Công việc</TableHead>{!projectId && <TableHead>Dự án</TableHead>}<TableHead>Người giao</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Theo dõi</TableHead><TableHead>Hạn</TableHead><TableHead>Trạng thái</TableHead><TableHead className="w-10" /></TableRow></TableHeader>
+          <TableHeader><TableRow><TableHead>Công việc</TableHead>{!projectId && <TableHead>Dự án</TableHead>}<TableHead>Người giao</TableHead><TableHead>Người thực hiện</TableHead><TableHead>Hạn</TableHead><TableHead>Trạng thái</TableHead><TableHead className="w-10" /></TableRow></TableHeader>
           <TableBody>
             {rows.map((d) => {
               const st = dirState(d);
@@ -412,8 +417,7 @@ export function DirectiveWorkspace({ projectId, openId, onOpenId }: { projectId?
                   {!projectId && <TableCell className="whitespace-nowrap">{d.projectId ? <Link onClick={(e) => e.stopPropagation()} to={`/projects/${d.projectId}`} className="text-[13px] text-primary hover:underline">{pName(d.projectId)}</Link> : <span className="text-[13px] text-slate-500">Việc chung</span>}</TableCell>}
                   <TableCell className="whitespace-nowrap"><UserCell userId={d.assignedBy} /></TableCell>
                   <TableCell className="whitespace-nowrap"><UserCell userId={d.assigneeId} /></TableCell>
-                  <TableCell>{d.followerIds?.length ? <AvatarGroup userIds={d.followerIds} max={3} /> : <span className="text-slate-400">—</span>}</TableCell>
-                  <TableCell className="whitespace-nowrap"><div className={cn(st === "qua_han" && "font-semibold text-rose-600")}>{fmtDate(d.dueDate)}</div>{late > 0 && <div className="text-[11.5px] text-rose-600">trễ {late} ngày</div>}{d.completedAt && <div className="text-[11.5px] text-slate-500">xong {fmtDate(d.completedAt)}</div>}</TableCell>
+                  <TableCell className="whitespace-nowrap"><div className={cn(st === "qua_han" && "font-semibold text-rose-600")}>{fmtDate(d.dueDate)}</div>{late > 0 && <div className="text-[11.5px] text-rose-600">trễ {late} ngày</div>}{d.completedAt && <div className={cn("text-[11.5px]", st === "hoan_thanh_muon" ? "text-amber-600" : "text-slate-500")}>xong {fmtDate(d.completedAt)}{st === "hoan_thanh_muon" && ` · muộn ${lateDone(d)} ngày`}</div>}</TableCell>
                   <TableCell><Badge tone={DIR_STATE[st].tone}>{DIR_STATE[st].label}</Badge></TableCell>
                   <TableCell><Eye className="h-4 w-4 text-slate-400" /></TableCell>
                 </TableRow>

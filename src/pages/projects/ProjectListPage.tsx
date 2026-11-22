@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { ProjectProgress } from "@/components/common/ProjectProgress";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { PageHeader } from "@/components/common/PageHeader";
 import { DataTable, FilterSelect, type Column } from "@/components/common/DataTable";
@@ -20,7 +20,7 @@ import { ProjectFormDialog } from "./ProjectFormDialog";
 import { getProjectStatsMap, type ProjectStats } from "@/services/selectors";
 import { deleteProject } from "@/services/actions";
 import { CATEGORY_LABELS, PROJECT_HEALTH, PROJECT_STATUS } from "@/utils/constants";
-import { fmtDate, fmtNumber, fmtPct } from "@/utils/format";
+import { fmtDate, fmtNumber } from "@/utils/format";
 import type { Project } from "@/types";
 import { activeProjects } from "@/utils/labels";
 
@@ -64,15 +64,10 @@ export default function ProjectListPage() {
     { key: "time", header: "Thời gian", sortValue: (s) => s.project.startDate, cell: (s) => <span className="whitespace-nowrap text-xs text-slate-600">{fmtDate(s.project.startDate)} – {fmtDate(s.project.endDate)}</span> },
     { key: "value", header: "Giá trị HĐ (tỷ)", align: "right", sortValue: (s) => s.project.contractValue, cell: (s) => fmtNumber(s.project.contractValue / 1e9) },
     {
-      key: "progress", header: "Tiến độ", sortValue: (s) => s.actual,
-      cell: (s) => (
-        <div className="w-36">
-          <div className="mb-1 text-[11.5px]"><span className="font-semibold">{fmtPct(s.actual)}</span></div>
-          <Progress value={s.actual} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} className="h-1.5" />
-        </div>
-      ),
+      key: "progress", header: "Tiến độ", sortValue: (s) => s.spi ?? 2,
+      cell: (s) => <ProjectProgress s={s} className="w-44" />,
     },
-    { key: "health", header: "Trạng thái", sortValue: (s) => s.delta, cell: (s) => (PROJECT_HEALTH[s.health] ? <StatusBadge map={PROJECT_HEALTH} value={s.health} /> : <span className="text-slate-400">—</span>) },
+    { key: "health", header: "Trạng thái", sortValue: (s) => s.spi ?? 2, cell: (s) => (PROJECT_HEALTH[s.health] ? <StatusBadge map={PROJECT_HEALTH} value={s.health} /> : <span className="text-slate-400">—</span>) },
     { key: "status", header: "Giai đoạn", sortValue: (s) => s.project.status, cell: (s) => <StatusBadge map={PROJECT_STATUS} value={s.project.status} dot={false} /> },
     {
       key: "act", header: "", className: "w-10",

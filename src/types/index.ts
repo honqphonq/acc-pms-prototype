@@ -663,6 +663,17 @@ export interface Directive {
   files?: Attachment[]; // tài liệu kèm báo cáo hoàn thành
 }
 
+/** Chi phí thực tế phát sinh theo tháng – nguồn: phân hệ Kế toán (Bảng tổng hợp chi phí SXKD) */
+export interface CostEntry {
+  id: ID;
+  projectId: ID;
+  month: string; // YYYY-MM
+  nvl: number; // NVLTT – nguyên vật liệu trực tiếp
+  nc: number; // NCTT – nhân công trực tiếp
+  mtc: number; // CPMTC – chi phí máy thi công
+  sxc: number; // CPSXC – chi phí sản xuất chung
+}
+
 export interface Database {
   projects: Project[];
   users: User[];
@@ -697,6 +708,7 @@ export interface Database {
   contracts: Contract[];
   loginHistory: LoginEntry[];
   directives: Directive[];
+  costEntries: CostEntry[];
 }
 
 export type CollectionKey = keyof Database;

@@ -18,7 +18,7 @@ import { ProjectCard } from "./ProjectCard";
 import { ProjectMap } from "./ProjectMap";
 import { ProjectListDialog, projectRow, type ListSpec } from "./ProjectListDialog";
 import { ByProjectBar, RevenueCostTrend } from "./FinanceCharts";
-import { equipmentWork, getProjectStatsMap, utilizationOf, LATE_DAYS_DELAYED, type ProjectStats } from "@/services/selectors";
+import { equipmentWork, getProjectStatsMap, utilizationOf, SPI_DELAYED, SPI_ON_TRACK, type ProjectStats } from "@/services/selectors";
 import { CATEGORY_COLORS, CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, HEALTH, PROJECT_HEALTH } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import type { ProjectCategory } from "@/types";
@@ -162,7 +162,7 @@ export default function DashboardPage() {
               </button>
             ); })}
           </div>
-          <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Xác định theo thời hạn công việc: có việc quá hạn &gt; {LATE_DAYS_DELAYED} ngày = chậm; quá hạn ≤ {LATE_DAYS_DELAYED} ngày hoặc đang làm chậm so với kế hoạch = nguy cơ chậm.</p>
+          <p className="mt-3 border-t pt-2 text-[11px] leading-snug text-slate-400">Tỷ lệ = giá trị KL thực tế ÷ giá trị KL kế hoạch đến hôm nay: ≥ {SPI_ON_TRACK * 100}% đúng tiến độ; {SPI_DELAYED * 100}% – dưới {SPI_ON_TRACK * 100}% nguy cơ chậm; dưới {SPI_DELAYED * 100}% chậm tiến độ.</p>
         </ChartCard>
 
         <ProjectMap stats={stats} className="xl:col-span-8" />
@@ -171,8 +171,8 @@ export default function DashboardPage() {
       {/* Doanh thu – chi phí */}
       <div className="mt-4"><RevenueCostTrend projectIds={ids} year={+year} /></div>
       <div className="mt-4 grid gap-4 xl:grid-cols-2">
-        <ByProjectBar projectIds={ids} kind="cost" />
-        <ByProjectBar projectIds={ids} kind="revenue" />
+        <ByProjectBar projectIds={ids} kind="cost" year={+year} />
+        <ByProjectBar projectIds={ids} kind="revenue" year={+year} />
       </div>
 
       {/* 3. Thẻ công trình theo loại – cuộn ngang, tối đa 2 dòng */}
