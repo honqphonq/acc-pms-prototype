@@ -14935,5 +14935,965 @@
     "photos": [
       "concrete"
     ]
+  },
+  {
+    "id": "lg-r30491",
+    "projectId": "p04",
+    "taskId": "t-p04-009",
+    "date": "2026-11-13",
+    "qty": 6942.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30492",
+    "projectId": "p04",
+    "taskId": "t-p04-009",
+    "date": "2026-11-13",
+    "qty": 6942.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30493",
+    "projectId": "p04",
+    "taskId": "t-p04-009",
+    "date": "2026-11-13",
+    "qty": 6942.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30494",
+    "projectId": "p06",
+    "taskId": "t-p06-009",
+    "date": "2026-11-13",
+    "qty": 5874.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u38",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30495",
+    "projectId": "p06",
+    "taskId": "t-p06-009",
+    "date": "2026-11-13",
+    "qty": 5874.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u38",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30496",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30497",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30498",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30499",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30500",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30501",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 1417.2,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30502",
+    "projectId": "p08",
+    "taskId": "t-p08-011",
+    "date": "2026-11-13",
+    "qty": 9.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u43",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30503",
+    "projectId": "p08",
+    "taskId": "t-p08-012",
+    "date": "2026-11-13",
+    "qty": 0.06,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30504",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30505",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30506",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30507",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30508",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30509",
+    "projectId": "p12",
+    "taskId": "t-p12-008",
+    "date": "2026-11-13",
+    "qty": 5909.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u42",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30510",
+    "projectId": "p15",
+    "taskId": "t-p15-009",
+    "date": "2026-11-13",
+    "qty": 4563.6,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u32",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30511",
+    "projectId": "p15",
+    "taskId": "t-p15-009",
+    "date": "2026-11-13",
+    "qty": 4563.6,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u32",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30512",
+    "projectId": "p16",
+    "taskId": "t-p16-007",
+    "date": "2026-11-13",
+    "qty": 619.8,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30513",
+    "projectId": "p16",
+    "taskId": "t-p16-007",
+    "date": "2026-11-13",
+    "qty": 619.8,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30514",
+    "projectId": "p16",
+    "taskId": "t-p16-007",
+    "date": "2026-11-13",
+    "qty": 619.8,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30515",
+    "projectId": "p16",
+    "taskId": "t-p16-007",
+    "date": "2026-11-13",
+    "qty": 619.8,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u30",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30516",
+    "projectId": "p17",
+    "taskId": "t-p17-009",
+    "date": "2026-11-13",
+    "qty": 10542.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u31",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30517",
+    "projectId": "p17",
+    "taskId": "t-p17-009",
+    "date": "2026-11-13",
+    "qty": 10542.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u31",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30518",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30519",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30520",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30521",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30522",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30523",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30524",
+    "projectId": "p21",
+    "taskId": "t-p21-006",
+    "date": "2026-11-13",
+    "qty": 5064.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u36",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30525",
+    "projectId": "p21",
+    "taskId": "t-p21-010",
+    "date": "2026-11-13",
+    "qty": 155.4,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u34",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30526",
+    "projectId": "p25",
+    "taskId": "t-p25-007",
+    "date": "2026-11-13",
+    "qty": 741.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u35",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30527",
+    "projectId": "p25",
+    "taskId": "t-p25-007",
+    "date": "2026-11-13",
+    "qty": 741.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u35",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30528",
+    "projectId": "p25",
+    "taskId": "t-p25-007",
+    "date": "2026-11-13",
+    "qty": 741.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u35",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30529",
+    "projectId": "p25",
+    "taskId": "t-p25-007",
+    "date": "2026-11-13",
+    "qty": 741.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u35",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
+  },
+  {
+    "id": "lg-r30530",
+    "projectId": "p25",
+    "taskId": "t-p25-007",
+    "date": "2026-11-13",
+    "qty": 741.0,
+    "shift": "Ca ngày 07:00 – 17:00",
+    "weather": "Nắng",
+    "content": "Tăng ca bù tiến độ, khối lượng đã được tổ kỹ thuật kiểm tra.",
+    "reporterId": "u35",
+    "confirmedById": null,
+    "status": "da_gui",
+    "labor": [
+      {
+        "role": "Thợ chính",
+        "grade": "3,5/7",
+        "people": 5,
+        "workdays": 5
+      }
+    ],
+    "photos": [
+      "concrete"
+    ]
   }
 ]

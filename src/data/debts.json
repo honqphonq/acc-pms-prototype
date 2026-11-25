@@ -1,0 +1,4342 @@
+[
+  {
+    "id": "cn-001",
+    "code": "CN-001",
+    "projectId": "p01",
+    "supplierId": "s01",
+    "contractNo": "65/2026/HĐMB-P01",
+    "category": "Chi phí NVL",
+    "contractValue": 15783000000.0,
+    "dueDate": "2027-01-08",
+    "entries": [
+      {
+        "id": "de-1-c0",
+        "date": "2026-04-02",
+        "kind": "cung_cap",
+        "amount": 1162029000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-1-c1",
+        "date": "2026-06-27",
+        "kind": "cung_cap",
+        "amount": 2296299000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-1-c2",
+        "date": "2026-08-08",
+        "kind": "cung_cap",
+        "amount": 2356501000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-1-h0",
+        "date": "2026-08-08",
+        "kind": "hoa_don",
+        "amount": 2462636000.0,
+        "note": "Hóa đơn GTGT số 00369"
+      },
+      {
+        "id": "de-1-h1",
+        "date": "2026-09-20",
+        "kind": "hoa_don",
+        "amount": 3131128000.0,
+        "note": "Hóa đơn GTGT số 03753"
+      },
+      {
+        "id": "de-1-t0",
+        "date": "2026-09-20",
+        "kind": "thanh_toan",
+        "amount": 1661119000.0,
+        "note": "UNC 297/2026"
+      },
+      {
+        "id": "de-1-t1",
+        "date": "2026-10-16",
+        "kind": "thanh_toan",
+        "amount": 3576183000.0,
+        "note": "UNC 836/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-002",
+    "code": "CN-002",
+    "projectId": "p01",
+    "supplierId": "s04",
+    "contractNo": "47/2026/HĐMB-P01",
+    "category": "Chi phí NVL",
+    "contractValue": 16928000000.0,
+    "dueDate": "2026-11-27",
+    "entries": [
+      {
+        "id": "de-2-c0",
+        "date": "2026-04-20",
+        "kind": "cung_cap",
+        "amount": 4326381000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-2-c1",
+        "date": "2026-06-22",
+        "kind": "cung_cap",
+        "amount": 2884922000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-2-c2",
+        "date": "2026-07-22",
+        "kind": "cung_cap",
+        "amount": 3815738000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-2-h0",
+        "date": "2026-07-22",
+        "kind": "hoa_don",
+        "amount": 4007340000.0,
+        "note": "Hóa đơn GTGT số 02523"
+      },
+      {
+        "id": "de-2-h1",
+        "date": "2026-08-02",
+        "kind": "hoa_don",
+        "amount": 5517344000.0,
+        "note": "Hóa đơn GTGT số 08508"
+      },
+      {
+        "id": "de-2-t0",
+        "date": "2026-08-02",
+        "kind": "thanh_toan",
+        "amount": 2533640000.0,
+        "note": "UNC 574/2026"
+      },
+      {
+        "id": "de-2-t1",
+        "date": "2026-09-03",
+        "kind": "thanh_toan",
+        "amount": 5632801000.0,
+        "note": "UNC 337/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-003",
+    "code": "CN-003",
+    "projectId": "p02",
+    "supplierId": "s12",
+    "contractNo": "90/2026/HĐTP-P02",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 39832000000.0,
+    "dueDate": "2026-12-25",
+    "entries": [
+      {
+        "id": "de-3-c0",
+        "date": "2026-04-03",
+        "kind": "cung_cap",
+        "amount": 6417487000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-3-c1",
+        "date": "2026-05-12",
+        "kind": "cung_cap",
+        "amount": 6198047000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-3-c2",
+        "date": "2026-07-13",
+        "kind": "cung_cap",
+        "amount": 9265494000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-3-h0",
+        "date": "2026-07-13",
+        "kind": "hoa_don",
+        "amount": 9539919000.0,
+        "note": "Hóa đơn GTGT số 00760"
+      },
+      {
+        "id": "de-3-h1",
+        "date": "2026-09-10",
+        "kind": "hoa_don",
+        "amount": 8822542000.0,
+        "note": "Hóa đơn GTGT số 07725"
+      },
+      {
+        "id": "de-3-t0",
+        "date": "2026-09-10",
+        "kind": "thanh_toan",
+        "amount": 5389692000.0,
+        "note": "UNC 913/2026"
+      },
+      {
+        "id": "de-3-t1",
+        "date": "2026-10-26",
+        "kind": "thanh_toan",
+        "amount": 5422710000.0,
+        "note": "UNC 520/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-004",
+    "code": "CN-004",
+    "projectId": "p02",
+    "supplierId": "s05",
+    "contractNo": "45/2026/HĐMB-P02",
+    "category": "Chi phí NVL",
+    "contractValue": 12505000000.0,
+    "dueDate": "2026-12-14",
+    "entries": [
+      {
+        "id": "de-4-c0",
+        "date": "2026-04-18",
+        "kind": "cung_cap",
+        "amount": 3381808000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-4-c1",
+        "date": "2026-05-09",
+        "kind": "cung_cap",
+        "amount": 2039412000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-4-c2",
+        "date": "2026-06-10",
+        "kind": "cung_cap",
+        "amount": 3050266000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-4-h0",
+        "date": "2026-06-10",
+        "kind": "hoa_don",
+        "amount": 3566388000.0,
+        "note": "Hóa đơn GTGT số 08527"
+      },
+      {
+        "id": "de-4-h1",
+        "date": "2026-07-15",
+        "kind": "hoa_don",
+        "amount": 3597959000.0,
+        "note": "Hóa đơn GTGT số 00312"
+      },
+      {
+        "id": "de-4-t0",
+        "date": "2026-07-15",
+        "kind": "thanh_toan",
+        "amount": 4768110000.0,
+        "note": "UNC 704/2026"
+      },
+      {
+        "id": "de-4-t1",
+        "date": "2026-09-11",
+        "kind": "thanh_toan",
+        "amount": 1645581000.0,
+        "note": "UNC 878/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-005",
+    "code": "CN-005",
+    "projectId": "p02",
+    "supplierId": "s07",
+    "contractNo": "47/2026/HĐMB-P02",
+    "category": "Chi phí NVL",
+    "contractValue": 7170000000.0,
+    "dueDate": "2026-11-01",
+    "entries": [
+      {
+        "id": "de-5-c0",
+        "date": "2026-05-07",
+        "kind": "cung_cap",
+        "amount": 1200156000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-5-c1",
+        "date": "2026-06-10",
+        "kind": "cung_cap",
+        "amount": 1041075000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-5-c2",
+        "date": "2026-08-16",
+        "kind": "cung_cap",
+        "amount": 617364000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-5-h0",
+        "date": "2026-08-16",
+        "kind": "hoa_don",
+        "amount": 1595681000.0,
+        "note": "Hóa đơn GTGT số 03662"
+      },
+      {
+        "id": "de-5-h1",
+        "date": "2026-09-02",
+        "kind": "hoa_don",
+        "amount": 1161570000.0,
+        "note": "Hóa đơn GTGT số 06520"
+      },
+      {
+        "id": "de-5-t0",
+        "date": "2026-09-02",
+        "kind": "thanh_toan",
+        "amount": 1150154000.0,
+        "note": "UNC 655/2026"
+      },
+      {
+        "id": "de-5-t1",
+        "date": "2026-10-12",
+        "kind": "thanh_toan",
+        "amount": 1065455000.0,
+        "note": "UNC 547/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-006",
+    "code": "CN-006",
+    "projectId": "p03",
+    "supplierId": "s12",
+    "contractNo": "36/2026/HĐTP-P03",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 6761000000.0,
+    "dueDate": "2027-01-11",
+    "entries": [
+      {
+        "id": "de-6-c0",
+        "date": "2026-04-06",
+        "kind": "cung_cap",
+        "amount": 2687417000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-6-c1",
+        "date": "2026-06-17",
+        "kind": "cung_cap",
+        "amount": 1453865000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-6-c2",
+        "date": "2026-08-02",
+        "kind": "cung_cap",
+        "amount": 1606526000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-6-h0",
+        "date": "2026-08-02",
+        "kind": "hoa_don",
+        "amount": 1776833000.0,
+        "note": "Hóa đơn GTGT số 04871"
+      },
+      {
+        "id": "de-6-h1",
+        "date": "2026-09-15",
+        "kind": "hoa_don",
+        "amount": 2956070000.0,
+        "note": "Hóa đơn GTGT số 07142"
+      },
+      {
+        "id": "de-6-t0",
+        "date": "2026-09-15",
+        "kind": "thanh_toan",
+        "amount": 1295709000.0,
+        "note": "UNC 972/2026"
+      },
+      {
+        "id": "de-6-t1",
+        "date": "2026-10-26",
+        "kind": "thanh_toan",
+        "amount": 1759163000.0,
+        "note": "UNC 704/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-007",
+    "code": "CN-007",
+    "projectId": "p03",
+    "supplierId": "s15",
+    "contractNo": "10/2026/HĐTP-P03",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 37964000000.0,
+    "dueDate": "2026-12-25",
+    "entries": [
+      {
+        "id": "de-7-c0",
+        "date": "2026-04-13",
+        "kind": "cung_cap",
+        "amount": 4836275000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-7-c1",
+        "date": "2026-06-10",
+        "kind": "cung_cap",
+        "amount": 3653603000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-7-c2",
+        "date": "2026-07-10",
+        "kind": "cung_cap",
+        "amount": 7902078000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-7-h0",
+        "date": "2026-07-10",
+        "kind": "hoa_don",
+        "amount": 6413953000.0,
+        "note": "Hóa đơn GTGT số 02032"
+      },
+      {
+        "id": "de-7-h1",
+        "date": "2026-08-23",
+        "kind": "hoa_don",
+        "amount": 5520218000.0,
+        "note": "Hóa đơn GTGT số 06888"
+      },
+      {
+        "id": "de-7-t0",
+        "date": "2026-08-23",
+        "kind": "thanh_toan",
+        "amount": 3059139000.0,
+        "note": "UNC 490/2026"
+      },
+      {
+        "id": "de-7-t1",
+        "date": "2026-09-06",
+        "kind": "thanh_toan",
+        "amount": 3919989000.0,
+        "note": "UNC 906/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-008",
+    "code": "CN-008",
+    "projectId": "p03",
+    "supplierId": "s05",
+    "contractNo": "30/2026/HĐMB-P03",
+    "category": "Chi phí NVL",
+    "contractValue": 15089000000.0,
+    "dueDate": "2026-10-23",
+    "entries": [
+      {
+        "id": "de-8-c0",
+        "date": "2026-04-05",
+        "kind": "cung_cap",
+        "amount": 1917715000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-8-c1",
+        "date": "2026-06-02",
+        "kind": "cung_cap",
+        "amount": 1865374000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-8-c2",
+        "date": "2026-07-10",
+        "kind": "cung_cap",
+        "amount": 2287321000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-8-h0",
+        "date": "2026-07-10",
+        "kind": "hoa_don",
+        "amount": 3264927000.0,
+        "note": "Hóa đơn GTGT số 08917"
+      },
+      {
+        "id": "de-8-h1",
+        "date": "2026-08-26",
+        "kind": "hoa_don",
+        "amount": 2010359000.0,
+        "note": "Hóa đơn GTGT số 09142"
+      },
+      {
+        "id": "de-8-t0",
+        "date": "2026-08-26",
+        "kind": "thanh_toan",
+        "amount": 2856996000.0,
+        "note": "UNC 108/2026"
+      },
+      {
+        "id": "de-8-t1",
+        "date": "2026-09-05",
+        "kind": "thanh_toan",
+        "amount": 1863871000.0,
+        "note": "UNC 166/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-009",
+    "code": "CN-009",
+    "projectId": "p04",
+    "supplierId": "s03",
+    "contractNo": "57/2026/HĐMB-P04",
+    "category": "Chi phí NVL",
+    "contractValue": 8604000000.0,
+    "dueDate": "2026-12-17",
+    "entries": [
+      {
+        "id": "de-9-c0",
+        "date": "2026-04-10",
+        "kind": "cung_cap",
+        "amount": 2525996000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-9-c1",
+        "date": "2026-06-14",
+        "kind": "cung_cap",
+        "amount": 1933253000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-9-c2",
+        "date": "2026-07-10",
+        "kind": "cung_cap",
+        "amount": 2723599000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-9-h0",
+        "date": "2026-07-10",
+        "kind": "hoa_don",
+        "amount": 2232587000.0,
+        "note": "Hóa đơn GTGT số 08353"
+      },
+      {
+        "id": "de-9-h1",
+        "date": "2026-08-06",
+        "kind": "hoa_don",
+        "amount": 3704781000.0,
+        "note": "Hóa đơn GTGT số 05465"
+      },
+      {
+        "id": "de-9-t0",
+        "date": "2026-08-06",
+        "kind": "thanh_toan",
+        "amount": 2475928000.0,
+        "note": "UNC 474/2026"
+      },
+      {
+        "id": "de-9-t1",
+        "date": "2026-09-19",
+        "kind": "thanh_toan",
+        "amount": 2518326000.0,
+        "note": "UNC 320/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-010",
+    "code": "CN-010",
+    "projectId": "p04",
+    "supplierId": "s04",
+    "contractNo": "10/2026/HĐMB-P04",
+    "category": "Chi phí NVL",
+    "contractValue": 13950000000.0,
+    "dueDate": "2027-01-12",
+    "entries": [
+      {
+        "id": "de-10-c0",
+        "date": "2026-05-25",
+        "kind": "cung_cap",
+        "amount": 2906073000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-10-c1",
+        "date": "2026-06-10",
+        "kind": "cung_cap",
+        "amount": 3331695000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-10-c2",
+        "date": "2026-07-07",
+        "kind": "cung_cap",
+        "amount": 3752641000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-10-h0",
+        "date": "2026-07-07",
+        "kind": "hoa_don",
+        "amount": 3182978000.0,
+        "note": "Hóa đơn GTGT số 05895"
+      },
+      {
+        "id": "de-10-h1",
+        "date": "2026-08-21",
+        "kind": "hoa_don",
+        "amount": 4678040000.0,
+        "note": "Hóa đơn GTGT số 02241"
+      },
+      {
+        "id": "de-10-t0",
+        "date": "2026-08-21",
+        "kind": "thanh_toan",
+        "amount": 1212284000.0,
+        "note": "UNC 571/2026"
+      },
+      {
+        "id": "de-10-t1",
+        "date": "2026-09-10",
+        "kind": "thanh_toan",
+        "amount": 3236970000.0,
+        "note": "UNC 348/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-011",
+    "code": "CN-011",
+    "projectId": "p04",
+    "supplierId": "s07",
+    "contractNo": "28/2026/HĐMB-P04",
+    "category": "Chi phí NVL",
+    "contractValue": 5692000000.0,
+    "dueDate": "2026-11-16",
+    "entries": [
+      {
+        "id": "de-11-c0",
+        "date": "2026-04-06",
+        "kind": "cung_cap",
+        "amount": 447685000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-11-c1",
+        "date": "2026-05-08",
+        "kind": "cung_cap",
+        "amount": 964185000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-11-c2",
+        "date": "2026-06-19",
+        "kind": "cung_cap",
+        "amount": 826690000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-11-h0",
+        "date": "2026-06-19",
+        "kind": "hoa_don",
+        "amount": 756866000.0,
+        "note": "Hóa đơn GTGT số 03181"
+      },
+      {
+        "id": "de-11-h1",
+        "date": "2026-08-02",
+        "kind": "hoa_don",
+        "amount": 1070599000.0,
+        "note": "Hóa đơn GTGT số 00716"
+      },
+      {
+        "id": "de-11-t0",
+        "date": "2026-08-02",
+        "kind": "thanh_toan",
+        "amount": 770596000.0,
+        "note": "UNC 698/2026"
+      },
+      {
+        "id": "de-11-t1",
+        "date": "2026-10-26",
+        "kind": "thanh_toan",
+        "amount": 798344000.0,
+        "note": "UNC 301/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-012",
+    "code": "CN-012",
+    "projectId": "p04",
+    "supplierId": "s11",
+    "contractNo": "62/2026/HĐTP-P04",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 3630000000.0,
+    "dueDate": "2026-11-20",
+    "entries": [
+      {
+        "id": "de-12-c0",
+        "date": "2026-04-11",
+        "kind": "cung_cap",
+        "amount": 647868000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-12-c1",
+        "date": "2026-05-26",
+        "kind": "cung_cap",
+        "amount": 406379000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-12-c2",
+        "date": "2026-06-25",
+        "kind": "cung_cap",
+        "amount": 344516000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-12-h0",
+        "date": "2026-06-25",
+        "kind": "hoa_don",
+        "amount": 540610000.0,
+        "note": "Hóa đơn GTGT số 05880"
+      },
+      {
+        "id": "de-12-h1",
+        "date": "2026-07-08",
+        "kind": "hoa_don",
+        "amount": 731234000.0,
+        "note": "Hóa đơn GTGT số 07836"
+      },
+      {
+        "id": "de-12-t0",
+        "date": "2026-07-08",
+        "kind": "thanh_toan",
+        "amount": 395680000.0,
+        "note": "UNC 946/2026"
+      },
+      {
+        "id": "de-12-t1",
+        "date": "2026-09-07",
+        "kind": "thanh_toan",
+        "amount": 427235000.0,
+        "note": "UNC 954/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-013",
+    "code": "CN-013",
+    "projectId": "p05",
+    "supplierId": "s15",
+    "contractNo": "88/2026/HĐTP-P05",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 38402000000.0,
+    "dueDate": "2026-12-10",
+    "entries": [
+      {
+        "id": "de-13-c0",
+        "date": "2026-04-08",
+        "kind": "cung_cap",
+        "amount": 7894293000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-13-c1",
+        "date": "2026-06-08",
+        "kind": "cung_cap",
+        "amount": 4814281000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-13-c2",
+        "date": "2026-07-24",
+        "kind": "cung_cap",
+        "amount": 5729079000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-13-h0",
+        "date": "2026-07-24",
+        "kind": "hoa_don",
+        "amount": 7950319000.0,
+        "note": "Hóa đơn GTGT số 02723"
+      },
+      {
+        "id": "de-13-h1",
+        "date": "2026-08-14",
+        "kind": "hoa_don",
+        "amount": 8155052000.0,
+        "note": "Hóa đơn GTGT số 05309"
+      },
+      {
+        "id": "de-13-t0",
+        "date": "2026-08-14",
+        "kind": "thanh_toan",
+        "amount": 6374010000.0,
+        "note": "UNC 317/2026"
+      },
+      {
+        "id": "de-13-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 9411975000.0,
+        "note": "UNC 557/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-014",
+    "code": "CN-014",
+    "projectId": "p05",
+    "supplierId": "s13",
+    "contractNo": "52/2026/HĐTP-P05",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 23956000000.0,
+    "dueDate": "2026-10-17",
+    "entries": [
+      {
+        "id": "de-14-c0",
+        "date": "2026-04-11",
+        "kind": "cung_cap",
+        "amount": 5426027000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-14-c1",
+        "date": "2026-05-16",
+        "kind": "cung_cap",
+        "amount": 6134361000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-14-c2",
+        "date": "2026-06-08",
+        "kind": "cung_cap",
+        "amount": 7435859000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-14-h0",
+        "date": "2026-06-08",
+        "kind": "hoa_don",
+        "amount": 9710497000.0,
+        "note": "Hóa đơn GTGT số 05068"
+      },
+      {
+        "id": "de-14-h1",
+        "date": "2026-08-08",
+        "kind": "hoa_don",
+        "amount": 4402866000.0,
+        "note": "Hóa đơn GTGT số 02670"
+      },
+      {
+        "id": "de-14-t0",
+        "date": "2026-08-08",
+        "kind": "thanh_toan",
+        "amount": 4954560000.0,
+        "note": "UNC 402/2026"
+      },
+      {
+        "id": "de-14-t1",
+        "date": "2026-10-18",
+        "kind": "thanh_toan",
+        "amount": 4155889000.0,
+        "note": "UNC 268/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-015",
+    "code": "CN-015",
+    "projectId": "p06",
+    "supplierId": "s06",
+    "contractNo": "34/2026/HĐMB-P06",
+    "category": "Chi phí NVL",
+    "contractValue": 10430000000.0,
+    "dueDate": "2026-11-17",
+    "entries": [
+      {
+        "id": "de-15-c0",
+        "date": "2026-04-13",
+        "kind": "cung_cap",
+        "amount": 1286481000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-15-c1",
+        "date": "2026-06-27",
+        "kind": "cung_cap",
+        "amount": 786405000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-15-c2",
+        "date": "2026-07-04",
+        "kind": "cung_cap",
+        "amount": 1119374000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-15-h0",
+        "date": "2026-07-04",
+        "kind": "hoa_don",
+        "amount": 1198454000.0,
+        "note": "Hóa đơn GTGT số 08328"
+      },
+      {
+        "id": "de-15-h1",
+        "date": "2026-08-26",
+        "kind": "hoa_don",
+        "amount": 1175805000.0,
+        "note": "Hóa đơn GTGT số 00115"
+      },
+      {
+        "id": "de-15-t0",
+        "date": "2026-08-26",
+        "kind": "thanh_toan",
+        "amount": 1286718000.0,
+        "note": "UNC 580/2026"
+      },
+      {
+        "id": "de-15-t1",
+        "date": "2026-10-21",
+        "kind": "thanh_toan",
+        "amount": 1086129000.0,
+        "note": "UNC 314/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-016",
+    "code": "CN-016",
+    "projectId": "p06",
+    "supplierId": "s12",
+    "contractNo": "68/2026/HĐTP-P06",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 19707000000.0,
+    "dueDate": "2026-12-15",
+    "entries": [
+      {
+        "id": "de-16-c0",
+        "date": "2026-04-10",
+        "kind": "cung_cap",
+        "amount": 5502468000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-16-c1",
+        "date": "2026-05-19",
+        "kind": "cung_cap",
+        "amount": 6940131000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-16-c2",
+        "date": "2026-06-04",
+        "kind": "cung_cap",
+        "amount": 5736145000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-16-h0",
+        "date": "2026-06-04",
+        "kind": "hoa_don",
+        "amount": 10089905000.0,
+        "note": "Hóa đơn GTGT số 00949"
+      },
+      {
+        "id": "de-16-h1",
+        "date": "2026-09-24",
+        "kind": "hoa_don",
+        "amount": 7724830000.0,
+        "note": "Hóa đơn GTGT số 01267"
+      },
+      {
+        "id": "de-16-t0",
+        "date": "2026-09-24",
+        "kind": "thanh_toan",
+        "amount": 5192588000.0,
+        "note": "UNC 896/2026"
+      },
+      {
+        "id": "de-16-t1",
+        "date": "2026-10-13",
+        "kind": "thanh_toan",
+        "amount": 9741345000.0,
+        "note": "UNC 403/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-017",
+    "code": "CN-017",
+    "projectId": "p06",
+    "supplierId": "s03",
+    "contractNo": "82/2026/HĐMB-P06",
+    "category": "Chi phí NVL",
+    "contractValue": 3354000000.0,
+    "dueDate": "2026-12-31",
+    "entries": [
+      {
+        "id": "de-17-c0",
+        "date": "2026-06-20",
+        "kind": "cung_cap",
+        "amount": 861207000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-17-c1",
+        "date": "2026-07-12",
+        "kind": "cung_cap",
+        "amount": 487872000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-17-c2",
+        "date": "2026-08-24",
+        "kind": "cung_cap",
+        "amount": 788149000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-17-h0",
+        "date": "2026-08-24",
+        "kind": "hoa_don",
+        "amount": 833427000.0,
+        "note": "Hóa đơn GTGT số 00338"
+      },
+      {
+        "id": "de-17-h1",
+        "date": "2026-09-07",
+        "kind": "hoa_don",
+        "amount": 1290223000.0,
+        "note": "Hóa đơn GTGT số 06412"
+      },
+      {
+        "id": "de-17-t0",
+        "date": "2026-09-07",
+        "kind": "thanh_toan",
+        "amount": 1012446000.0,
+        "note": "UNC 716/2026"
+      },
+      {
+        "id": "de-17-t1",
+        "date": "2026-10-24",
+        "kind": "thanh_toan",
+        "amount": 657477000.0,
+        "note": "UNC 946/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-018",
+    "code": "CN-018",
+    "projectId": "p06",
+    "supplierId": "s15",
+    "contractNo": "98/2026/HĐTP-P06",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 23618000000.0,
+    "dueDate": "2026-12-19",
+    "entries": [
+      {
+        "id": "de-18-c0",
+        "date": "2026-05-08",
+        "kind": "cung_cap",
+        "amount": 8159636000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-18-c1",
+        "date": "2026-07-20",
+        "kind": "cung_cap",
+        "amount": 5040535000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-18-c2",
+        "date": "2026-08-18",
+        "kind": "cung_cap",
+        "amount": 5961688000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-18-h0",
+        "date": "2026-08-18",
+        "kind": "hoa_don",
+        "amount": 9159098000.0,
+        "note": "Hóa đơn GTGT số 07404"
+      },
+      {
+        "id": "de-18-h1",
+        "date": "2026-09-25",
+        "kind": "hoa_don",
+        "amount": 9186575000.0,
+        "note": "Hóa đơn GTGT số 05036"
+      },
+      {
+        "id": "de-18-t0",
+        "date": "2026-09-25",
+        "kind": "thanh_toan",
+        "amount": 7866817000.0,
+        "note": "UNC 862/2026"
+      },
+      {
+        "id": "de-18-t1",
+        "date": "2026-10-17",
+        "kind": "thanh_toan",
+        "amount": 10331763000.0,
+        "note": "UNC 443/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-019",
+    "code": "CN-019",
+    "projectId": "p07",
+    "supplierId": "s15",
+    "contractNo": "95/2026/HĐTP-P07",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 34855000000.0,
+    "dueDate": "2026-12-20",
+    "entries": [
+      {
+        "id": "de-19-c0",
+        "date": "2026-05-06",
+        "kind": "cung_cap",
+        "amount": 7276023000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-19-c1",
+        "date": "2026-06-14",
+        "kind": "cung_cap",
+        "amount": 10153605000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-19-c2",
+        "date": "2026-07-07",
+        "kind": "cung_cap",
+        "amount": 6939755000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-19-h0",
+        "date": "2026-07-07",
+        "kind": "hoa_don",
+        "amount": 11070281000.0,
+        "note": "Hóa đơn GTGT số 07196"
+      },
+      {
+        "id": "de-19-h1",
+        "date": "2026-08-08",
+        "kind": "hoa_don",
+        "amount": 7270510000.0,
+        "note": "Hóa đơn GTGT số 08651"
+      },
+      {
+        "id": "de-19-t0",
+        "date": "2026-08-08",
+        "kind": "thanh_toan",
+        "amount": 7933284000.0,
+        "note": "UNC 299/2026"
+      },
+      {
+        "id": "de-19-t1",
+        "date": "2026-10-17",
+        "kind": "thanh_toan",
+        "amount": 3857266000.0,
+        "note": "UNC 269/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-020",
+    "code": "CN-020",
+    "projectId": "p07",
+    "supplierId": "s08",
+    "contractNo": "19/2026/HĐMB-P07",
+    "category": "Chi phí NVL",
+    "contractValue": 2418000000.0,
+    "dueDate": "2026-11-21",
+    "entries": [
+      {
+        "id": "de-20-c0",
+        "date": "2026-06-21",
+        "kind": "cung_cap",
+        "amount": 577752000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-20-c1",
+        "date": "2026-07-16",
+        "kind": "cung_cap",
+        "amount": 458883000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-20-c2",
+        "date": "2026-08-25",
+        "kind": "cung_cap",
+        "amount": 887700000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-20-h0",
+        "date": "2026-08-25",
+        "kind": "hoa_don",
+        "amount": 1021994000.0,
+        "note": "Hóa đơn GTGT số 01792"
+      },
+      {
+        "id": "de-20-h1",
+        "date": "2026-09-23",
+        "kind": "hoa_don",
+        "amount": 769730000.0,
+        "note": "Hóa đơn GTGT số 01523"
+      },
+      {
+        "id": "de-20-t0",
+        "date": "2026-09-23",
+        "kind": "thanh_toan",
+        "amount": 1076157000.0,
+        "note": "UNC 384/2026"
+      },
+      {
+        "id": "de-20-t1",
+        "date": "2026-10-24",
+        "kind": "thanh_toan",
+        "amount": 581607000.0,
+        "note": "UNC 789/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-021",
+    "code": "CN-021",
+    "projectId": "p08",
+    "supplierId": "s12",
+    "contractNo": "19/2026/HĐTP-P08",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 37793000000.0,
+    "dueDate": "2026-11-19",
+    "entries": [
+      {
+        "id": "de-21-c0",
+        "date": "2026-05-07",
+        "kind": "cung_cap",
+        "amount": 11823354000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-21-c1",
+        "date": "2026-07-07",
+        "kind": "cung_cap",
+        "amount": 5156689000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-21-c2",
+        "date": "2026-08-10",
+        "kind": "cung_cap",
+        "amount": 12677503000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-21-h0",
+        "date": "2026-08-10",
+        "kind": "hoa_don",
+        "amount": 13905131000.0,
+        "note": "Hóa đơn GTGT số 09033"
+      },
+      {
+        "id": "de-21-h1",
+        "date": "2026-09-27",
+        "kind": "hoa_don",
+        "amount": 15316068000.0,
+        "note": "Hóa đơn GTGT số 04850"
+      },
+      {
+        "id": "de-21-t0",
+        "date": "2026-09-27",
+        "kind": "thanh_toan",
+        "amount": 10901647000.0,
+        "note": "UNC 213/2026"
+      },
+      {
+        "id": "de-21-t1",
+        "date": "2026-10-16",
+        "kind": "thanh_toan",
+        "amount": 10241478000.0,
+        "note": "UNC 546/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-022",
+    "code": "CN-022",
+    "projectId": "p08",
+    "supplierId": "s01",
+    "contractNo": "21/2026/HĐMB-P08",
+    "category": "Chi phí NVL",
+    "contractValue": 1879000000.0,
+    "dueDate": "2027-01-09",
+    "entries": [
+      {
+        "id": "de-22-c0",
+        "date": "2026-05-17",
+        "kind": "cung_cap",
+        "amount": 461876000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-22-c1",
+        "date": "2026-06-27",
+        "kind": "cung_cap",
+        "amount": 394747000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-22-c2",
+        "date": "2026-07-19",
+        "kind": "cung_cap",
+        "amount": 563876000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-22-h0",
+        "date": "2026-07-19",
+        "kind": "hoa_don",
+        "amount": 608621000.0,
+        "note": "Hóa đơn GTGT số 04764"
+      },
+      {
+        "id": "de-22-h1",
+        "date": "2026-09-09",
+        "kind": "hoa_don",
+        "amount": 594763000.0,
+        "note": "Hóa đơn GTGT số 07513"
+      },
+      {
+        "id": "de-22-t0",
+        "date": "2026-09-09",
+        "kind": "thanh_toan",
+        "amount": 391905000.0,
+        "note": "UNC 913/2026"
+      },
+      {
+        "id": "de-22-t1",
+        "date": "2026-10-16",
+        "kind": "thanh_toan",
+        "amount": 793125000.0,
+        "note": "UNC 346/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-023",
+    "code": "CN-023",
+    "projectId": "p09",
+    "supplierId": "s10",
+    "contractNo": "66/2026/HĐMB-P09",
+    "category": "Chi phí NVL",
+    "contractValue": 2768000000.0,
+    "dueDate": "2026-12-12",
+    "entries": [
+      {
+        "id": "de-23-c0",
+        "date": "2026-04-26",
+        "kind": "cung_cap",
+        "amount": 342054000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-23-c1",
+        "date": "2026-06-06",
+        "kind": "cung_cap",
+        "amount": 188204000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-23-c2",
+        "date": "2026-07-17",
+        "kind": "cung_cap",
+        "amount": 406140000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-23-h0",
+        "date": "2026-07-17",
+        "kind": "hoa_don",
+        "amount": 479440000.0,
+        "note": "Hóa đơn GTGT số 02680"
+      },
+      {
+        "id": "de-23-h1",
+        "date": "2026-08-27",
+        "kind": "hoa_don",
+        "amount": 379145000.0,
+        "note": "Hóa đơn GTGT số 07340"
+      },
+      {
+        "id": "de-23-t0",
+        "date": "2026-08-27",
+        "kind": "thanh_toan",
+        "amount": 474783000.0,
+        "note": "UNC 107/2026"
+      },
+      {
+        "id": "de-23-t1",
+        "date": "2026-09-06",
+        "kind": "thanh_toan",
+        "amount": 302955000.0,
+        "note": "UNC 399/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-024",
+    "code": "CN-024",
+    "projectId": "p09",
+    "supplierId": "s11",
+    "contractNo": "82/2026/HĐTP-P09",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 26906000000.0,
+    "dueDate": "2027-01-05",
+    "entries": [
+      {
+        "id": "de-24-c0",
+        "date": "2026-04-17",
+        "kind": "cung_cap",
+        "amount": 7847472000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-24-c1",
+        "date": "2026-06-22",
+        "kind": "cung_cap",
+        "amount": 4077353000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-24-c2",
+        "date": "2026-07-03",
+        "kind": "cung_cap",
+        "amount": 7760227000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-24-h0",
+        "date": "2026-07-03",
+        "kind": "hoa_don",
+        "amount": 12449777000.0,
+        "note": "Hóa đơn GTGT số 09883"
+      },
+      {
+        "id": "de-24-h1",
+        "date": "2026-08-16",
+        "kind": "hoa_don",
+        "amount": 5723464000.0,
+        "note": "Hóa đơn GTGT số 09089"
+      },
+      {
+        "id": "de-24-t0",
+        "date": "2026-08-16",
+        "kind": "thanh_toan",
+        "amount": 7337506000.0,
+        "note": "UNC 618/2026"
+      },
+      {
+        "id": "de-24-t1",
+        "date": "2026-09-04",
+        "kind": "thanh_toan",
+        "amount": 6304694000.0,
+        "note": "UNC 881/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-025",
+    "code": "CN-025",
+    "projectId": "p12",
+    "supplierId": "s06",
+    "contractNo": "94/2026/HĐMB-P12",
+    "category": "Chi phí NVL",
+    "contractValue": 7930000000.0,
+    "dueDate": "2026-11-24",
+    "entries": [
+      {
+        "id": "de-25-c0",
+        "date": "2026-05-27",
+        "kind": "cung_cap",
+        "amount": 1255166000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-25-c1",
+        "date": "2026-06-20",
+        "kind": "cung_cap",
+        "amount": 2383143000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-25-c2",
+        "date": "2026-07-08",
+        "kind": "cung_cap",
+        "amount": 2934680000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-25-h0",
+        "date": "2026-07-08",
+        "kind": "hoa_don",
+        "amount": 3888828000.0,
+        "note": "Hóa đơn GTGT số 08289"
+      },
+      {
+        "id": "de-25-h1",
+        "date": "2026-08-25",
+        "kind": "hoa_don",
+        "amount": 1879612000.0,
+        "note": "Hóa đơn GTGT số 05056"
+      },
+      {
+        "id": "de-25-t0",
+        "date": "2026-08-25",
+        "kind": "thanh_toan",
+        "amount": 3419598000.0,
+        "note": "UNC 104/2026"
+      },
+      {
+        "id": "de-25-t1",
+        "date": "2026-09-10",
+        "kind": "thanh_toan",
+        "amount": 1593520000.0,
+        "note": "UNC 308/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-026",
+    "code": "CN-026",
+    "projectId": "p12",
+    "supplierId": "s04",
+    "contractNo": "92/2026/HĐMB-P12",
+    "category": "Chi phí NVL",
+    "contractValue": 15711000000.0,
+    "dueDate": "2027-01-06",
+    "entries": [
+      {
+        "id": "de-26-c0",
+        "date": "2026-04-27",
+        "kind": "cung_cap",
+        "amount": 3709068000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-26-c1",
+        "date": "2026-05-25",
+        "kind": "cung_cap",
+        "amount": 2569097000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-26-c2",
+        "date": "2026-08-21",
+        "kind": "cung_cap",
+        "amount": 1733799000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-26-h0",
+        "date": "2026-08-21",
+        "kind": "hoa_don",
+        "amount": 3919486000.0,
+        "note": "Hóa đơn GTGT số 09885"
+      },
+      {
+        "id": "de-26-h1",
+        "date": "2026-09-24",
+        "kind": "hoa_don",
+        "amount": 3058700000.0,
+        "note": "Hóa đơn GTGT số 08894"
+      },
+      {
+        "id": "de-26-t0",
+        "date": "2026-09-24",
+        "kind": "thanh_toan",
+        "amount": 2056130000.0,
+        "note": "UNC 738/2026"
+      },
+      {
+        "id": "de-26-t1",
+        "date": "2026-10-15",
+        "kind": "thanh_toan",
+        "amount": 2910860000.0,
+        "note": "UNC 585/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-027",
+    "code": "CN-027",
+    "projectId": "p12",
+    "supplierId": "s09",
+    "contractNo": "99/2026/HĐMB-P12",
+    "category": "Chi phí NVL",
+    "contractValue": 9629000000.0,
+    "dueDate": "2026-10-28",
+    "entries": [
+      {
+        "id": "de-27-c0",
+        "date": "2026-04-23",
+        "kind": "cung_cap",
+        "amount": 3641753000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-27-c1",
+        "date": "2026-05-07",
+        "kind": "cung_cap",
+        "amount": 2327807000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-27-c2",
+        "date": "2026-06-05",
+        "kind": "cung_cap",
+        "amount": 1976818000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-27-h0",
+        "date": "2026-06-05",
+        "kind": "hoa_don",
+        "amount": 5299220000.0,
+        "note": "Hóa đơn GTGT số 00705"
+      },
+      {
+        "id": "de-27-h1",
+        "date": "2026-07-13",
+        "kind": "hoa_don",
+        "amount": 1977128000.0,
+        "note": "Hóa đơn GTGT số 00463"
+      },
+      {
+        "id": "de-27-t0",
+        "date": "2026-07-13",
+        "kind": "thanh_toan",
+        "amount": 1585118000.0,
+        "note": "UNC 316/2026"
+      },
+      {
+        "id": "de-27-t1",
+        "date": "2026-08-25",
+        "kind": "thanh_toan",
+        "amount": 2608795000.0,
+        "note": "UNC 797/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-028",
+    "code": "CN-028",
+    "projectId": "p12",
+    "supplierId": "s15",
+    "contractNo": "48/2026/HĐTP-P12",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 32794000000.0,
+    "dueDate": "2027-01-24",
+    "entries": [
+      {
+        "id": "de-28-c0",
+        "date": "2026-05-26",
+        "kind": "cung_cap",
+        "amount": 4928792000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-28-c1",
+        "date": "2026-06-13",
+        "kind": "cung_cap",
+        "amount": 5116037000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-28-c2",
+        "date": "2026-07-17",
+        "kind": "cung_cap",
+        "amount": 3861785000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-28-h0",
+        "date": "2026-07-17",
+        "kind": "hoa_don",
+        "amount": 5905579000.0,
+        "note": "Hóa đơn GTGT số 07182"
+      },
+      {
+        "id": "de-28-h1",
+        "date": "2026-08-24",
+        "kind": "hoa_don",
+        "amount": 5381300000.0,
+        "note": "Hóa đơn GTGT số 04749"
+      },
+      {
+        "id": "de-28-t0",
+        "date": "2026-08-24",
+        "kind": "thanh_toan",
+        "amount": 2722763000.0,
+        "note": "UNC 391/2026"
+      },
+      {
+        "id": "de-28-t1",
+        "date": "2026-09-25",
+        "kind": "thanh_toan",
+        "amount": 4285239000.0,
+        "note": "UNC 365/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-029",
+    "code": "CN-029",
+    "projectId": "p13",
+    "supplierId": "s05",
+    "contractNo": "76/2026/HĐMB-P13",
+    "category": "Chi phí NVL",
+    "contractValue": 10942000000.0,
+    "dueDate": "2026-12-17",
+    "entries": [
+      {
+        "id": "de-29-c0",
+        "date": "2026-04-19",
+        "kind": "cung_cap",
+        "amount": 1774597000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-29-c1",
+        "date": "2026-06-17",
+        "kind": "cung_cap",
+        "amount": 2034209000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-29-c2",
+        "date": "2026-08-26",
+        "kind": "cung_cap",
+        "amount": 2055761000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-29-h0",
+        "date": "2026-08-26",
+        "kind": "hoa_don",
+        "amount": 2835478000.0,
+        "note": "Hóa đơn GTGT số 08089"
+      },
+      {
+        "id": "de-29-h1",
+        "date": "2026-09-21",
+        "kind": "hoa_don",
+        "amount": 1790562000.0,
+        "note": "Hóa đơn GTGT số 00600"
+      },
+      {
+        "id": "de-29-t0",
+        "date": "2026-09-21",
+        "kind": "thanh_toan",
+        "amount": 1684061000.0,
+        "note": "UNC 597/2026"
+      },
+      {
+        "id": "de-29-t1",
+        "date": "2026-10-25",
+        "kind": "thanh_toan",
+        "amount": 2151184000.0,
+        "note": "UNC 376/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-030",
+    "code": "CN-030",
+    "projectId": "p13",
+    "supplierId": "s02",
+    "contractNo": "45/2026/HĐMB-P13",
+    "category": "Chi phí NVL",
+    "contractValue": 4390000000.0,
+    "dueDate": "2026-12-16",
+    "entries": [
+      {
+        "id": "de-30-c0",
+        "date": "2026-04-11",
+        "kind": "cung_cap",
+        "amount": 946191000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-30-c1",
+        "date": "2026-05-09",
+        "kind": "cung_cap",
+        "amount": 1582571000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-30-c2",
+        "date": "2026-07-07",
+        "kind": "cung_cap",
+        "amount": 926277000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-30-h0",
+        "date": "2026-07-07",
+        "kind": "hoa_don",
+        "amount": 1879897000.0,
+        "note": "Hóa đơn GTGT số 05970"
+      },
+      {
+        "id": "de-30-h1",
+        "date": "2026-08-27",
+        "kind": "hoa_don",
+        "amount": 1130428000.0,
+        "note": "Hóa đơn GTGT số 06781"
+      },
+      {
+        "id": "de-30-t0",
+        "date": "2026-08-27",
+        "kind": "thanh_toan",
+        "amount": 935900000.0,
+        "note": "UNC 173/2026"
+      },
+      {
+        "id": "de-30-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 1762529000.0,
+        "note": "UNC 157/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-031",
+    "code": "CN-031",
+    "projectId": "p13",
+    "supplierId": "s01",
+    "contractNo": "60/2026/HĐMB-P13",
+    "category": "Chi phí NVL",
+    "contractValue": 1533000000.0,
+    "dueDate": "2026-10-17",
+    "entries": [
+      {
+        "id": "de-31-c0",
+        "date": "2026-04-10",
+        "kind": "cung_cap",
+        "amount": 158010000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-31-c1",
+        "date": "2026-05-15",
+        "kind": "cung_cap",
+        "amount": 324431000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-31-c2",
+        "date": "2026-06-24",
+        "kind": "cung_cap",
+        "amount": 339295000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-31-h0",
+        "date": "2026-06-24",
+        "kind": "hoa_don",
+        "amount": 389395000.0,
+        "note": "Hóa đơn GTGT số 05288"
+      },
+      {
+        "id": "de-31-h1",
+        "date": "2026-07-23",
+        "kind": "hoa_don",
+        "amount": 307238000.0,
+        "note": "Hóa đơn GTGT số 07486"
+      },
+      {
+        "id": "de-31-t0",
+        "date": "2026-07-23",
+        "kind": "thanh_toan",
+        "amount": 270647000.0,
+        "note": "UNC 967/2026"
+      },
+      {
+        "id": "de-31-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 325104000.0,
+        "note": "UNC 309/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-032",
+    "code": "CN-032",
+    "projectId": "p13",
+    "supplierId": "s03",
+    "contractNo": "58/2026/HĐMB-P13",
+    "category": "Chi phí NVL",
+    "contractValue": 4205000000.0,
+    "dueDate": "2027-01-08",
+    "entries": [
+      {
+        "id": "de-32-c0",
+        "date": "2026-04-27",
+        "kind": "cung_cap",
+        "amount": 918857000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-32-c1",
+        "date": "2026-05-08",
+        "kind": "cung_cap",
+        "amount": 1202345000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-32-c2",
+        "date": "2026-07-27",
+        "kind": "cung_cap",
+        "amount": 743549000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-32-h0",
+        "date": "2026-07-27",
+        "kind": "hoa_don",
+        "amount": 1508982000.0,
+        "note": "Hóa đơn GTGT số 01127"
+      },
+      {
+        "id": "de-32-h1",
+        "date": "2026-08-13",
+        "kind": "hoa_don",
+        "amount": 794964000.0,
+        "note": "Hóa đơn GTGT số 01834"
+      },
+      {
+        "id": "de-32-t0",
+        "date": "2026-08-13",
+        "kind": "thanh_toan",
+        "amount": 801939000.0,
+        "note": "UNC 296/2026"
+      },
+      {
+        "id": "de-32-t1",
+        "date": "2026-09-21",
+        "kind": "thanh_toan",
+        "amount": 773465000.0,
+        "note": "UNC 609/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-033",
+    "code": "CN-033",
+    "projectId": "p14",
+    "supplierId": "s03",
+    "contractNo": "87/2026/HĐMB-P14",
+    "category": "Chi phí NVL",
+    "contractValue": 9435000000.0,
+    "dueDate": "2026-11-26",
+    "entries": [
+      {
+        "id": "de-33-c0",
+        "date": "2026-05-17",
+        "kind": "cung_cap",
+        "amount": 2339805000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-33-c1",
+        "date": "2026-06-05",
+        "kind": "cung_cap",
+        "amount": 2735020000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-33-c2",
+        "date": "2026-07-19",
+        "kind": "cung_cap",
+        "amount": 1641607000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-33-h0",
+        "date": "2026-07-19",
+        "kind": "hoa_don",
+        "amount": 2704994000.0,
+        "note": "Hóa đơn GTGT số 00954"
+      },
+      {
+        "id": "de-33-h1",
+        "date": "2026-08-23",
+        "kind": "hoa_don",
+        "amount": 2856083000.0,
+        "note": "Hóa đơn GTGT số 07497"
+      },
+      {
+        "id": "de-33-t0",
+        "date": "2026-08-23",
+        "kind": "thanh_toan",
+        "amount": 1883048000.0,
+        "note": "UNC 861/2026"
+      },
+      {
+        "id": "de-33-t1",
+        "date": "2026-09-13",
+        "kind": "thanh_toan",
+        "amount": 1742927000.0,
+        "note": "UNC 118/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-034",
+    "code": "CN-034",
+    "projectId": "p14",
+    "supplierId": "s11",
+    "contractNo": "87/2026/HĐTP-P14",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 17167000000.0,
+    "dueDate": "2027-01-16",
+    "entries": [
+      {
+        "id": "de-34-c0",
+        "date": "2026-04-26",
+        "kind": "cung_cap",
+        "amount": 3169275000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-34-c1",
+        "date": "2026-05-09",
+        "kind": "cung_cap",
+        "amount": 2934221000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-34-c2",
+        "date": "2026-06-22",
+        "kind": "cung_cap",
+        "amount": 2891440000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-34-h0",
+        "date": "2026-06-22",
+        "kind": "hoa_don",
+        "amount": 4019078000.0,
+        "note": "Hóa đơn GTGT số 08531"
+      },
+      {
+        "id": "de-34-h1",
+        "date": "2026-09-21",
+        "kind": "hoa_don",
+        "amount": 4266833000.0,
+        "note": "Hóa đơn GTGT số 01606"
+      },
+      {
+        "id": "de-34-t0",
+        "date": "2026-09-21",
+        "kind": "thanh_toan",
+        "amount": 2479147000.0,
+        "note": "UNC 176/2026"
+      },
+      {
+        "id": "de-34-t1",
+        "date": "2026-10-22",
+        "kind": "thanh_toan",
+        "amount": 4168757000.0,
+        "note": "UNC 589/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-035",
+    "code": "CN-035",
+    "projectId": "p14",
+    "supplierId": "s08",
+    "contractNo": "10/2026/HĐMB-P14",
+    "category": "Chi phí NVL",
+    "contractValue": 9232000000.0,
+    "dueDate": "2026-11-25",
+    "entries": [
+      {
+        "id": "de-35-c0",
+        "date": "2026-04-04",
+        "kind": "cung_cap",
+        "amount": 638301000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-35-c1",
+        "date": "2026-05-13",
+        "kind": "cung_cap",
+        "amount": 903495000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-35-c2",
+        "date": "2026-07-17",
+        "kind": "cung_cap",
+        "amount": 1249715000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-35-h0",
+        "date": "2026-07-17",
+        "kind": "hoa_don",
+        "amount": 982983000.0,
+        "note": "Hóa đơn GTGT số 03799"
+      },
+      {
+        "id": "de-35-h1",
+        "date": "2026-08-16",
+        "kind": "hoa_don",
+        "amount": 1625813000.0,
+        "note": "Hóa đơn GTGT số 03096"
+      },
+      {
+        "id": "de-35-t0",
+        "date": "2026-08-16",
+        "kind": "thanh_toan",
+        "amount": 1438848000.0,
+        "note": "UNC 835/2026"
+      },
+      {
+        "id": "de-35-t1",
+        "date": "2026-09-07",
+        "kind": "thanh_toan",
+        "amount": 1102595000.0,
+        "note": "UNC 947/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-036",
+    "code": "CN-036",
+    "projectId": "p15",
+    "supplierId": "s07",
+    "contractNo": "30/2026/HĐMB-P15",
+    "category": "Chi phí NVL",
+    "contractValue": 6730000000.0,
+    "dueDate": "2026-12-17",
+    "entries": [
+      {
+        "id": "de-36-c0",
+        "date": "2026-04-25",
+        "kind": "cung_cap",
+        "amount": 2351812000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-36-c1",
+        "date": "2026-05-27",
+        "kind": "cung_cap",
+        "amount": 1374278000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-36-c2",
+        "date": "2026-06-27",
+        "kind": "cung_cap",
+        "amount": 1663884000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-36-h0",
+        "date": "2026-06-27",
+        "kind": "hoa_don",
+        "amount": 2929039000.0,
+        "note": "Hóa đơn GTGT số 04963"
+      },
+      {
+        "id": "de-36-h1",
+        "date": "2026-07-11",
+        "kind": "hoa_don",
+        "amount": 2237557000.0,
+        "note": "Hóa đơn GTGT số 07172"
+      },
+      {
+        "id": "de-36-t0",
+        "date": "2026-07-11",
+        "kind": "thanh_toan",
+        "amount": 2075433000.0,
+        "note": "UNC 495/2026"
+      },
+      {
+        "id": "de-36-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 2918346000.0,
+        "note": "UNC 817/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-037",
+    "code": "CN-037",
+    "projectId": "p15",
+    "supplierId": "s13",
+    "contractNo": "94/2026/HĐTP-P15",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 4898000000.0,
+    "dueDate": "2026-12-19",
+    "entries": [
+      {
+        "id": "de-37-c0",
+        "date": "2026-05-23",
+        "kind": "cung_cap",
+        "amount": 1546061000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-37-c1",
+        "date": "2026-06-21",
+        "kind": "cung_cap",
+        "amount": 901452000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-37-c2",
+        "date": "2026-07-12",
+        "kind": "cung_cap",
+        "amount": 942927000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-37-h0",
+        "date": "2026-07-12",
+        "kind": "hoa_don",
+        "amount": 1309982000.0,
+        "note": "Hóa đơn GTGT số 03322"
+      },
+      {
+        "id": "de-37-h1",
+        "date": "2026-09-21",
+        "kind": "hoa_don",
+        "amount": 1686538000.0,
+        "note": "Hóa đơn GTGT số 07663"
+      },
+      {
+        "id": "de-37-t0",
+        "date": "2026-09-21",
+        "kind": "thanh_toan",
+        "amount": 1520625000.0,
+        "note": "UNC 689/2026"
+      },
+      {
+        "id": "de-37-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 1105834000.0,
+        "note": "UNC 354/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-038",
+    "code": "CN-038",
+    "projectId": "p15",
+    "supplierId": "s14",
+    "contractNo": "53/2026/HĐTP-P15",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 17121000000.0,
+    "dueDate": "2026-10-24",
+    "entries": [
+      {
+        "id": "de-38-c0",
+        "date": "2026-04-06",
+        "kind": "cung_cap",
+        "amount": 2331664000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-38-c1",
+        "date": "2026-06-13",
+        "kind": "cung_cap",
+        "amount": 2084087000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-38-c2",
+        "date": "2026-07-22",
+        "kind": "cung_cap",
+        "amount": 2007418000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-38-h0",
+        "date": "2026-07-22",
+        "kind": "hoa_don",
+        "amount": 2676234000.0,
+        "note": "Hóa đơn GTGT số 08421"
+      },
+      {
+        "id": "de-38-h1",
+        "date": "2026-09-24",
+        "kind": "hoa_don",
+        "amount": 3111240000.0,
+        "note": "Hóa đơn GTGT số 07565"
+      },
+      {
+        "id": "de-38-t0",
+        "date": "2026-09-24",
+        "kind": "thanh_toan",
+        "amount": 2293211000.0,
+        "note": "UNC 332/2026"
+      },
+      {
+        "id": "de-38-t1",
+        "date": "2026-10-08",
+        "kind": "thanh_toan",
+        "amount": 2922061000.0,
+        "note": "UNC 258/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-039",
+    "code": "CN-039",
+    "projectId": "p16",
+    "supplierId": "s14",
+    "contractNo": "36/2026/HĐTP-P16",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 31905000000.0,
+    "dueDate": "2027-01-22",
+    "entries": [
+      {
+        "id": "de-39-c0",
+        "date": "2026-04-09",
+        "kind": "cung_cap",
+        "amount": 10914117000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-39-c1",
+        "date": "2026-06-26",
+        "kind": "cung_cap",
+        "amount": 7768830000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-39-c2",
+        "date": "2026-07-10",
+        "kind": "cung_cap",
+        "amount": 4068606000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-39-h0",
+        "date": "2026-07-10",
+        "kind": "hoa_don",
+        "amount": 9194489000.0,
+        "note": "Hóa đơn GTGT số 06403"
+      },
+      {
+        "id": "de-39-h1",
+        "date": "2026-08-08",
+        "kind": "hoa_don",
+        "amount": 8400511000.0,
+        "note": "Hóa đơn GTGT số 09868"
+      },
+      {
+        "id": "de-39-t0",
+        "date": "2026-08-08",
+        "kind": "thanh_toan",
+        "amount": 9843527000.0,
+        "note": "UNC 662/2026"
+      },
+      {
+        "id": "de-39-t1",
+        "date": "2026-09-20",
+        "kind": "thanh_toan",
+        "amount": 4249593000.0,
+        "note": "UNC 297/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-040",
+    "code": "CN-040",
+    "projectId": "p16",
+    "supplierId": "s13",
+    "contractNo": "65/2026/HĐTP-P16",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 7231000000.0,
+    "dueDate": "2027-01-08",
+    "entries": [
+      {
+        "id": "de-40-c0",
+        "date": "2026-04-12",
+        "kind": "cung_cap",
+        "amount": 1629149000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-40-c1",
+        "date": "2026-05-06",
+        "kind": "cung_cap",
+        "amount": 885386000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-40-c2",
+        "date": "2026-07-19",
+        "kind": "cung_cap",
+        "amount": 2232897000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-40-h0",
+        "date": "2026-07-19",
+        "kind": "hoa_don",
+        "amount": 1559157000.0,
+        "note": "Hóa đơn GTGT số 01032"
+      },
+      {
+        "id": "de-40-h1",
+        "date": "2026-08-07",
+        "kind": "hoa_don",
+        "amount": 2644979000.0,
+        "note": "Hóa đơn GTGT số 09290"
+      },
+      {
+        "id": "de-40-t0",
+        "date": "2026-08-07",
+        "kind": "thanh_toan",
+        "amount": 1300294000.0,
+        "note": "UNC 794/2026"
+      },
+      {
+        "id": "de-40-t1",
+        "date": "2026-09-08",
+        "kind": "thanh_toan",
+        "amount": 2872392000.0,
+        "note": "UNC 625/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-041",
+    "code": "CN-041",
+    "projectId": "p16",
+    "supplierId": "s04",
+    "contractNo": "48/2026/HĐMB-P16",
+    "category": "Chi phí NVL",
+    "contractValue": 15806000000.0,
+    "dueDate": "2026-12-26",
+    "entries": [
+      {
+        "id": "de-41-c0",
+        "date": "2026-04-05",
+        "kind": "cung_cap",
+        "amount": 3133259000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-41-c1",
+        "date": "2026-05-20",
+        "kind": "cung_cap",
+        "amount": 3975417000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-41-c2",
+        "date": "2026-07-22",
+        "kind": "cung_cap",
+        "amount": 2142301000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-41-h0",
+        "date": "2026-07-22",
+        "kind": "hoa_don",
+        "amount": 4129990000.0,
+        "note": "Hóa đơn GTGT số 06368"
+      },
+      {
+        "id": "de-41-h1",
+        "date": "2026-08-10",
+        "kind": "hoa_don",
+        "amount": 3309017000.0,
+        "note": "Hóa đơn GTGT số 03233"
+      },
+      {
+        "id": "de-41-t0",
+        "date": "2026-08-10",
+        "kind": "thanh_toan",
+        "amount": 2776264000.0,
+        "note": "UNC 169/2026"
+      },
+      {
+        "id": "de-41-t1",
+        "date": "2026-10-06",
+        "kind": "thanh_toan",
+        "amount": 3448437000.0,
+        "note": "UNC 884/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-042",
+    "code": "CN-042",
+    "projectId": "p16",
+    "supplierId": "s08",
+    "contractNo": "76/2026/HĐMB-P16",
+    "category": "Chi phí NVL",
+    "contractValue": 8538000000.0,
+    "dueDate": "2026-12-07",
+    "entries": [
+      {
+        "id": "de-42-c0",
+        "date": "2026-04-18",
+        "kind": "cung_cap",
+        "amount": 1418843000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-42-c1",
+        "date": "2026-06-11",
+        "kind": "cung_cap",
+        "amount": 2603006000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-42-c2",
+        "date": "2026-08-12",
+        "kind": "cung_cap",
+        "amount": 1321196000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-42-h0",
+        "date": "2026-08-12",
+        "kind": "hoa_don",
+        "amount": 1455708000.0,
+        "note": "Hóa đơn GTGT số 08171"
+      },
+      {
+        "id": "de-42-h1",
+        "date": "2026-09-16",
+        "kind": "hoa_don",
+        "amount": 2665554000.0,
+        "note": "Hóa đơn GTGT số 03922"
+      },
+      {
+        "id": "de-42-t0",
+        "date": "2026-09-16",
+        "kind": "thanh_toan",
+        "amount": 1544391000.0,
+        "note": "UNC 954/2026"
+      },
+      {
+        "id": "de-42-t1",
+        "date": "2026-10-08",
+        "kind": "thanh_toan",
+        "amount": 2421625000.0,
+        "note": "UNC 760/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-043",
+    "code": "CN-043",
+    "projectId": "p17",
+    "supplierId": "s15",
+    "contractNo": "77/2026/HĐTP-P17",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 11308000000.0,
+    "dueDate": "2027-01-10",
+    "entries": [
+      {
+        "id": "de-43-c0",
+        "date": "2026-04-08",
+        "kind": "cung_cap",
+        "amount": 3133032000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-43-c1",
+        "date": "2026-07-20",
+        "kind": "cung_cap",
+        "amount": 2032549000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-43-c2",
+        "date": "2026-08-18",
+        "kind": "cung_cap",
+        "amount": 2276939000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-43-h0",
+        "date": "2026-08-18",
+        "kind": "hoa_don",
+        "amount": 3850864000.0,
+        "note": "Hóa đơn GTGT số 00753"
+      },
+      {
+        "id": "de-43-h1",
+        "date": "2026-09-11",
+        "kind": "hoa_don",
+        "amount": 3303918000.0,
+        "note": "Hóa đơn GTGT số 00971"
+      },
+      {
+        "id": "de-43-t0",
+        "date": "2026-09-11",
+        "kind": "thanh_toan",
+        "amount": 2568690000.0,
+        "note": "UNC 840/2026"
+      },
+      {
+        "id": "de-43-t1",
+        "date": "2026-10-21",
+        "kind": "thanh_toan",
+        "amount": 2102970000.0,
+        "note": "UNC 406/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-044",
+    "code": "CN-044",
+    "projectId": "p17",
+    "supplierId": "s10",
+    "contractNo": "46/2026/HĐMB-P17",
+    "category": "Chi phí NVL",
+    "contractValue": 14693000000.0,
+    "dueDate": "2026-11-28",
+    "entries": [
+      {
+        "id": "de-44-c0",
+        "date": "2026-04-27",
+        "kind": "cung_cap",
+        "amount": 2453395000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-44-c1",
+        "date": "2026-05-12",
+        "kind": "cung_cap",
+        "amount": 1740359000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-44-c2",
+        "date": "2026-06-06",
+        "kind": "cung_cap",
+        "amount": 4278590000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-44-h0",
+        "date": "2026-06-06",
+        "kind": "hoa_don",
+        "amount": 3167967000.0,
+        "note": "Hóa đơn GTGT số 02108"
+      },
+      {
+        "id": "de-44-h1",
+        "date": "2026-07-14",
+        "kind": "hoa_don",
+        "amount": 4171269000.0,
+        "note": "Hóa đơn GTGT số 08372"
+      },
+      {
+        "id": "de-44-t0",
+        "date": "2026-07-14",
+        "kind": "thanh_toan",
+        "amount": 4319567000.0,
+        "note": "UNC 956/2026"
+      },
+      {
+        "id": "de-44-t1",
+        "date": "2026-10-07",
+        "kind": "thanh_toan",
+        "amount": 2091894000.0,
+        "note": "UNC 938/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-045",
+    "code": "CN-045",
+    "projectId": "p18",
+    "supplierId": "s04",
+    "contractNo": "64/2026/HĐMB-P18",
+    "category": "Chi phí NVL",
+    "contractValue": 14152000000.0,
+    "dueDate": "2026-12-05",
+    "entries": [
+      {
+        "id": "de-45-c0",
+        "date": "2026-04-26",
+        "kind": "cung_cap",
+        "amount": 2807341000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-45-c1",
+        "date": "2026-06-16",
+        "kind": "cung_cap",
+        "amount": 3629248000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-45-c2",
+        "date": "2026-07-05",
+        "kind": "cung_cap",
+        "amount": 3344108000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-45-h0",
+        "date": "2026-07-05",
+        "kind": "hoa_don",
+        "amount": 2559719000.0,
+        "note": "Hóa đơn GTGT số 05766"
+      },
+      {
+        "id": "de-45-h1",
+        "date": "2026-08-16",
+        "kind": "hoa_don",
+        "amount": 5580659000.0,
+        "note": "Hóa đơn GTGT số 00375"
+      },
+      {
+        "id": "de-45-t0",
+        "date": "2026-08-16",
+        "kind": "thanh_toan",
+        "amount": 3926011000.0,
+        "note": "UNC 451/2026"
+      },
+      {
+        "id": "de-45-t1",
+        "date": "2026-09-04",
+        "kind": "thanh_toan",
+        "amount": 3534213000.0,
+        "note": "UNC 395/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-046",
+    "code": "CN-046",
+    "projectId": "p18",
+    "supplierId": "s01",
+    "contractNo": "35/2026/HĐMB-P18",
+    "category": "Chi phí NVL",
+    "contractValue": 5024000000.0,
+    "dueDate": "2026-11-20",
+    "entries": [
+      {
+        "id": "de-46-c0",
+        "date": "2026-05-18",
+        "kind": "cung_cap",
+        "amount": 1133474000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-46-c1",
+        "date": "2026-06-10",
+        "kind": "cung_cap",
+        "amount": 1076999000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-46-c2",
+        "date": "2026-07-19",
+        "kind": "cung_cap",
+        "amount": 933262000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-46-h0",
+        "date": "2026-07-19",
+        "kind": "hoa_don",
+        "amount": 1634512000.0,
+        "note": "Hóa đơn GTGT số 07506"
+      },
+      {
+        "id": "de-46-h1",
+        "date": "2026-08-26",
+        "kind": "hoa_don",
+        "amount": 1297501000.0,
+        "note": "Hóa đơn GTGT số 02454"
+      },
+      {
+        "id": "de-46-t0",
+        "date": "2026-08-26",
+        "kind": "thanh_toan",
+        "amount": 730666000.0,
+        "note": "UNC 401/2026"
+      },
+      {
+        "id": "de-46-t1",
+        "date": "2026-09-16",
+        "kind": "thanh_toan",
+        "amount": 1178784000.0,
+        "note": "UNC 866/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-047",
+    "code": "CN-047",
+    "projectId": "p19",
+    "supplierId": "s14",
+    "contractNo": "75/2026/HĐTP-P19",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 7479000000.0,
+    "dueDate": "2026-12-12",
+    "entries": [
+      {
+        "id": "de-47-c0",
+        "date": "2026-05-17",
+        "kind": "cung_cap",
+        "amount": 2244840000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-47-c1",
+        "date": "2026-06-18",
+        "kind": "cung_cap",
+        "amount": 2345451000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-47-c2",
+        "date": "2026-07-14",
+        "kind": "cung_cap",
+        "amount": 2312316000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-47-h0",
+        "date": "2026-07-14",
+        "kind": "hoa_don",
+        "amount": 2609928000.0,
+        "note": "Hóa đơn GTGT số 09516"
+      },
+      {
+        "id": "de-47-h1",
+        "date": "2026-08-15",
+        "kind": "hoa_don",
+        "amount": 2456352000.0,
+        "note": "Hóa đơn GTGT số 04053"
+      },
+      {
+        "id": "de-47-t0",
+        "date": "2026-08-15",
+        "kind": "thanh_toan",
+        "amount": 2341324000.0,
+        "note": "UNC 239/2026"
+      },
+      {
+        "id": "de-47-t1",
+        "date": "2026-10-17",
+        "kind": "thanh_toan",
+        "amount": 2167761000.0,
+        "note": "UNC 363/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-048",
+    "code": "CN-048",
+    "projectId": "p19",
+    "supplierId": "s10",
+    "contractNo": "89/2026/HĐMB-P19",
+    "category": "Chi phí NVL",
+    "contractValue": 2184000000.0,
+    "dueDate": "2026-12-05",
+    "entries": [
+      {
+        "id": "de-48-c0",
+        "date": "2026-04-21",
+        "kind": "cung_cap",
+        "amount": 485524000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-48-c1",
+        "date": "2026-06-24",
+        "kind": "cung_cap",
+        "amount": 485548000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-48-c2",
+        "date": "2026-07-27",
+        "kind": "cung_cap",
+        "amount": 639682000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-48-h0",
+        "date": "2026-07-27",
+        "kind": "hoa_don",
+        "amount": 878822000.0,
+        "note": "Hóa đơn GTGT số 00117"
+      },
+      {
+        "id": "de-48-h1",
+        "date": "2026-08-02",
+        "kind": "hoa_don",
+        "amount": 457687000.0,
+        "note": "Hóa đơn GTGT số 06429"
+      },
+      {
+        "id": "de-48-t0",
+        "date": "2026-08-02",
+        "kind": "thanh_toan",
+        "amount": 482748000.0,
+        "note": "UNC 182/2026"
+      },
+      {
+        "id": "de-48-t1",
+        "date": "2026-09-15",
+        "kind": "thanh_toan",
+        "amount": 383499000.0,
+        "note": "UNC 199/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-049",
+    "code": "CN-049",
+    "projectId": "p19",
+    "supplierId": "s01",
+    "contractNo": "64/2026/HĐMB-P19",
+    "category": "Chi phí NVL",
+    "contractValue": 9552000000.0,
+    "dueDate": "2027-01-03",
+    "entries": [
+      {
+        "id": "de-49-c0",
+        "date": "2026-04-16",
+        "kind": "cung_cap",
+        "amount": 2626527000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-49-c1",
+        "date": "2026-05-20",
+        "kind": "cung_cap",
+        "amount": 1563281000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-49-c2",
+        "date": "2026-06-03",
+        "kind": "cung_cap",
+        "amount": 3181465000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-49-h0",
+        "date": "2026-06-03",
+        "kind": "hoa_don",
+        "amount": 3878197000.0,
+        "note": "Hóa đơn GTGT số 05329"
+      },
+      {
+        "id": "de-49-h1",
+        "date": "2026-07-07",
+        "kind": "hoa_don",
+        "amount": 2896097000.0,
+        "note": "Hóa đơn GTGT số 06504"
+      },
+      {
+        "id": "de-49-t0",
+        "date": "2026-07-07",
+        "kind": "thanh_toan",
+        "amount": 2795990000.0,
+        "note": "UNC 321/2026"
+      },
+      {
+        "id": "de-49-t1",
+        "date": "2026-08-23",
+        "kind": "thanh_toan",
+        "amount": 2276032000.0,
+        "note": "UNC 285/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-050",
+    "code": "CN-050",
+    "projectId": "p19",
+    "supplierId": "s03",
+    "contractNo": "16/2026/HĐMB-P19",
+    "category": "Chi phí NVL",
+    "contractValue": 10727000000.0,
+    "dueDate": "2026-12-04",
+    "entries": [
+      {
+        "id": "de-50-c0",
+        "date": "2026-04-07",
+        "kind": "cung_cap",
+        "amount": 2540865000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-50-c1",
+        "date": "2026-05-17",
+        "kind": "cung_cap",
+        "amount": 3614998000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-50-c2",
+        "date": "2026-06-24",
+        "kind": "cung_cap",
+        "amount": 1549904000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-50-h0",
+        "date": "2026-06-24",
+        "kind": "hoa_don",
+        "amount": 3868572000.0,
+        "note": "Hóa đơn GTGT số 06303"
+      },
+      {
+        "id": "de-50-h1",
+        "date": "2026-07-27",
+        "kind": "hoa_don",
+        "amount": 1591982000.0,
+        "note": "Hóa đơn GTGT số 02626"
+      },
+      {
+        "id": "de-50-t0",
+        "date": "2026-07-27",
+        "kind": "thanh_toan",
+        "amount": 1869775000.0,
+        "note": "UNC 253/2026"
+      },
+      {
+        "id": "de-50-t1",
+        "date": "2026-09-13",
+        "kind": "thanh_toan",
+        "amount": 1820135000.0,
+        "note": "UNC 608/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-051",
+    "code": "CN-051",
+    "projectId": "p20",
+    "supplierId": "s08",
+    "contractNo": "29/2026/HĐMB-P20",
+    "category": "Chi phí NVL",
+    "contractValue": 14875000000.0,
+    "dueDate": "2027-01-02",
+    "entries": [
+      {
+        "id": "de-51-c0",
+        "date": "2026-04-08",
+        "kind": "cung_cap",
+        "amount": 1834100000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-51-c1",
+        "date": "2026-05-03",
+        "kind": "cung_cap",
+        "amount": 1916506000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-51-c2",
+        "date": "2026-06-16",
+        "kind": "cung_cap",
+        "amount": 2015788000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-51-h0",
+        "date": "2026-06-16",
+        "kind": "hoa_don",
+        "amount": 2482443000.0,
+        "note": "Hóa đơn GTGT số 02943"
+      },
+      {
+        "id": "de-51-h1",
+        "date": "2026-07-08",
+        "kind": "hoa_don",
+        "amount": 2310531000.0,
+        "note": "Hóa đơn GTGT số 00196"
+      },
+      {
+        "id": "de-51-t0",
+        "date": "2026-07-08",
+        "kind": "thanh_toan",
+        "amount": 1549414000.0,
+        "note": "UNC 387/2026"
+      },
+      {
+        "id": "de-51-t1",
+        "date": "2026-09-27",
+        "kind": "thanh_toan",
+        "amount": 1743514000.0,
+        "note": "UNC 114/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-052",
+    "code": "CN-052",
+    "projectId": "p20",
+    "supplierId": "s12",
+    "contractNo": "28/2026/HĐTP-P20",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 17685000000.0,
+    "dueDate": "2026-12-14",
+    "entries": [
+      {
+        "id": "de-52-c0",
+        "date": "2026-05-09",
+        "kind": "cung_cap",
+        "amount": 2541345000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-52-c1",
+        "date": "2026-06-13",
+        "kind": "cung_cap",
+        "amount": 2649292000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-52-c2",
+        "date": "2026-07-25",
+        "kind": "cung_cap",
+        "amount": 2516739000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-52-h0",
+        "date": "2026-07-25",
+        "kind": "hoa_don",
+        "amount": 4675104000.0,
+        "note": "Hóa đơn GTGT số 06027"
+      },
+      {
+        "id": "de-52-h1",
+        "date": "2026-08-03",
+        "kind": "hoa_don",
+        "amount": 2410552000.0,
+        "note": "Hóa đơn GTGT số 08952"
+      },
+      {
+        "id": "de-52-t0",
+        "date": "2026-08-03",
+        "kind": "thanh_toan",
+        "amount": 2215906000.0,
+        "note": "UNC 461/2026"
+      },
+      {
+        "id": "de-52-t1",
+        "date": "2026-10-08",
+        "kind": "thanh_toan",
+        "amount": 2066734000.0,
+        "note": "UNC 402/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-053",
+    "code": "CN-053",
+    "projectId": "p20",
+    "supplierId": "s06",
+    "contractNo": "34/2026/HĐMB-P20",
+    "category": "Chi phí NVL",
+    "contractValue": 16474000000.0,
+    "dueDate": "2026-12-04",
+    "entries": [
+      {
+        "id": "de-53-c0",
+        "date": "2026-06-18",
+        "kind": "cung_cap",
+        "amount": 2806513000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-53-c1",
+        "date": "2026-07-24",
+        "kind": "cung_cap",
+        "amount": 4084925000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-53-c2",
+        "date": "2026-08-25",
+        "kind": "cung_cap",
+        "amount": 3541051000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-53-h0",
+        "date": "2026-08-25",
+        "kind": "hoa_don",
+        "amount": 4581625000.0,
+        "note": "Hóa đơn GTGT số 03931"
+      },
+      {
+        "id": "de-53-h1",
+        "date": "2026-09-10",
+        "kind": "hoa_don",
+        "amount": 4717077000.0,
+        "note": "Hóa đơn GTGT số 07081"
+      },
+      {
+        "id": "de-53-t0",
+        "date": "2026-09-10",
+        "kind": "thanh_toan",
+        "amount": 3226378000.0,
+        "note": "UNC 953/2026"
+      },
+      {
+        "id": "de-53-t1",
+        "date": "2026-10-07",
+        "kind": "thanh_toan",
+        "amount": 5702635000.0,
+        "note": "UNC 212/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-054",
+    "code": "CN-054",
+    "projectId": "p21",
+    "supplierId": "s09",
+    "contractNo": "52/2026/HĐMB-P21",
+    "category": "Chi phí NVL",
+    "contractValue": 5058000000.0,
+    "dueDate": "2027-01-14",
+    "entries": [
+      {
+        "id": "de-54-c0",
+        "date": "2026-04-07",
+        "kind": "cung_cap",
+        "amount": 491337000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-54-c1",
+        "date": "2026-05-18",
+        "kind": "cung_cap",
+        "amount": 1162523000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-54-c2",
+        "date": "2026-06-02",
+        "kind": "cung_cap",
+        "amount": 1113362000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-54-h0",
+        "date": "2026-06-02",
+        "kind": "hoa_don",
+        "amount": 1736071000.0,
+        "note": "Hóa đơn GTGT số 02164"
+      },
+      {
+        "id": "de-54-h1",
+        "date": "2026-07-21",
+        "kind": "hoa_don",
+        "amount": 997487000.0,
+        "note": "Hóa đơn GTGT số 07665"
+      },
+      {
+        "id": "de-54-t0",
+        "date": "2026-07-21",
+        "kind": "thanh_toan",
+        "amount": 1614738000.0,
+        "note": "UNC 827/2026"
+      },
+      {
+        "id": "de-54-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 1010418000.0,
+        "note": "UNC 975/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-055",
+    "code": "CN-055",
+    "projectId": "p21",
+    "supplierId": "s08",
+    "contractNo": "32/2026/HĐMB-P21",
+    "category": "Chi phí NVL",
+    "contractValue": 11154000000.0,
+    "dueDate": "2026-11-09",
+    "entries": [
+      {
+        "id": "de-55-c0",
+        "date": "2026-05-16",
+        "kind": "cung_cap",
+        "amount": 3995315000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-55-c1",
+        "date": "2026-06-11",
+        "kind": "cung_cap",
+        "amount": 2682807000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-55-c2",
+        "date": "2026-07-25",
+        "kind": "cung_cap",
+        "amount": 2753637000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-55-h0",
+        "date": "2026-07-25",
+        "kind": "hoa_don",
+        "amount": 4775801000.0,
+        "note": "Hóa đơn GTGT số 02346"
+      },
+      {
+        "id": "de-55-h1",
+        "date": "2026-09-15",
+        "kind": "hoa_don",
+        "amount": 3969782000.0,
+        "note": "Hóa đơn GTGT số 00109"
+      },
+      {
+        "id": "de-55-t0",
+        "date": "2026-09-15",
+        "kind": "thanh_toan",
+        "amount": 4891573000.0,
+        "note": "UNC 542/2026"
+      },
+      {
+        "id": "de-55-t1",
+        "date": "2026-10-02",
+        "kind": "thanh_toan",
+        "amount": 3548731000.0,
+        "note": "UNC 428/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-056",
+    "code": "CN-056",
+    "projectId": "p22",
+    "supplierId": "s06",
+    "contractNo": "14/2026/HĐMB-P22",
+    "category": "Chi phí NVL",
+    "contractValue": 10254000000.0,
+    "dueDate": "2026-12-26",
+    "entries": [
+      {
+        "id": "de-56-c0",
+        "date": "2026-04-13",
+        "kind": "cung_cap",
+        "amount": 2924522000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-56-c1",
+        "date": "2026-06-12",
+        "kind": "cung_cap",
+        "amount": 2047323000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-56-c2",
+        "date": "2026-07-27",
+        "kind": "cung_cap",
+        "amount": 3495197000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-56-h0",
+        "date": "2026-07-27",
+        "kind": "hoa_don",
+        "amount": 5330951000.0,
+        "note": "Hóa đơn GTGT số 02876"
+      },
+      {
+        "id": "de-56-h1",
+        "date": "2026-08-23",
+        "kind": "hoa_don",
+        "amount": 2449951000.0,
+        "note": "Hóa đơn GTGT số 08236"
+      },
+      {
+        "id": "de-56-t0",
+        "date": "2026-08-23",
+        "kind": "thanh_toan",
+        "amount": 5292242000.0,
+        "note": "UNC 733/2026"
+      },
+      {
+        "id": "de-56-t1",
+        "date": "2026-09-22",
+        "kind": "thanh_toan",
+        "amount": 2207744000.0,
+        "note": "UNC 740/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-057",
+    "code": "CN-057",
+    "projectId": "p22",
+    "supplierId": "s10",
+    "contractNo": "69/2026/HĐMB-P22",
+    "category": "Chi phí NVL",
+    "contractValue": 15924000000.0,
+    "dueDate": "2027-01-16",
+    "entries": [
+      {
+        "id": "de-57-c0",
+        "date": "2026-04-07",
+        "kind": "cung_cap",
+        "amount": 2507682000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-57-c1",
+        "date": "2026-05-07",
+        "kind": "cung_cap",
+        "amount": 1722293000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-57-c2",
+        "date": "2026-06-22",
+        "kind": "cung_cap",
+        "amount": 2378259000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-57-h0",
+        "date": "2026-06-22",
+        "kind": "hoa_don",
+        "amount": 2570322000.0,
+        "note": "Hóa đơn GTGT số 03042"
+      },
+      {
+        "id": "de-57-h1",
+        "date": "2026-07-08",
+        "kind": "hoa_don",
+        "amount": 2223965000.0,
+        "note": "Hóa đơn GTGT số 08142"
+      },
+      {
+        "id": "de-57-t0",
+        "date": "2026-07-08",
+        "kind": "thanh_toan",
+        "amount": 1294404000.0,
+        "note": "UNC 522/2026"
+      },
+      {
+        "id": "de-57-t1",
+        "date": "2026-10-18",
+        "kind": "thanh_toan",
+        "amount": 3268453000.0,
+        "note": "UNC 474/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-058",
+    "code": "CN-058",
+    "projectId": "p22",
+    "supplierId": "s04",
+    "contractNo": "49/2026/HĐMB-P22",
+    "category": "Chi phí NVL",
+    "contractValue": 12741000000.0,
+    "dueDate": "2026-11-21",
+    "entries": [
+      {
+        "id": "de-58-c0",
+        "date": "2026-04-15",
+        "kind": "cung_cap",
+        "amount": 2418012000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-58-c1",
+        "date": "2026-05-08",
+        "kind": "cung_cap",
+        "amount": 2060192000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-58-c2",
+        "date": "2026-07-17",
+        "kind": "cung_cap",
+        "amount": 2312906000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-58-h0",
+        "date": "2026-07-17",
+        "kind": "hoa_don",
+        "amount": 3213719000.0,
+        "note": "Hóa đơn GTGT số 07570"
+      },
+      {
+        "id": "de-58-h1",
+        "date": "2026-09-23",
+        "kind": "hoa_don",
+        "amount": 1838084000.0,
+        "note": "Hóa đơn GTGT số 02876"
+      },
+      {
+        "id": "de-58-t0",
+        "date": "2026-09-23",
+        "kind": "thanh_toan",
+        "amount": 2075700000.0,
+        "note": "UNC 587/2026"
+      },
+      {
+        "id": "de-58-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 1492919000.0,
+        "note": "UNC 887/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-059",
+    "code": "CN-059",
+    "projectId": "p23",
+    "supplierId": "s02",
+    "contractNo": "19/2026/HĐMB-P23",
+    "category": "Chi phí NVL",
+    "contractValue": 13563000000.0,
+    "dueDate": "2026-11-01",
+    "entries": [
+      {
+        "id": "de-59-c0",
+        "date": "2026-04-23",
+        "kind": "cung_cap",
+        "amount": 3556349000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-59-c1",
+        "date": "2026-06-08",
+        "kind": "cung_cap",
+        "amount": 3195051000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-59-c2",
+        "date": "2026-07-10",
+        "kind": "cung_cap",
+        "amount": 3283781000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-59-h0",
+        "date": "2026-07-10",
+        "kind": "hoa_don",
+        "amount": 3946192000.0,
+        "note": "Hóa đơn GTGT số 01238"
+      },
+      {
+        "id": "de-59-h1",
+        "date": "2026-09-25",
+        "kind": "hoa_don",
+        "amount": 4257082000.0,
+        "note": "Hóa đơn GTGT số 03321"
+      },
+      {
+        "id": "de-59-t0",
+        "date": "2026-09-25",
+        "kind": "thanh_toan",
+        "amount": 4228700000.0,
+        "note": "UNC 657/2026"
+      },
+      {
+        "id": "de-59-t1",
+        "date": "2026-10-04",
+        "kind": "thanh_toan",
+        "amount": 3144114000.0,
+        "note": "UNC 560/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-060",
+    "code": "CN-060",
+    "projectId": "p23",
+    "supplierId": "s09",
+    "contractNo": "68/2026/HĐMB-P23",
+    "category": "Chi phí NVL",
+    "contractValue": 6428000000.0,
+    "dueDate": "2026-12-20",
+    "entries": [
+      {
+        "id": "de-60-c0",
+        "date": "2026-04-27",
+        "kind": "cung_cap",
+        "amount": 1956573000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-60-c1",
+        "date": "2026-06-04",
+        "kind": "cung_cap",
+        "amount": 1363854000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-60-c2",
+        "date": "2026-08-06",
+        "kind": "cung_cap",
+        "amount": 997145000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-60-h0",
+        "date": "2026-08-06",
+        "kind": "hoa_don",
+        "amount": 2938889000.0,
+        "note": "Hóa đơn GTGT số 08050"
+      },
+      {
+        "id": "de-60-h1",
+        "date": "2026-09-16",
+        "kind": "hoa_don",
+        "amount": 1263359000.0,
+        "note": "Hóa đơn GTGT số 06917"
+      },
+      {
+        "id": "de-60-t0",
+        "date": "2026-09-16",
+        "kind": "thanh_toan",
+        "amount": 1759235000.0,
+        "note": "UNC 740/2026"
+      },
+      {
+        "id": "de-60-t1",
+        "date": "2026-10-04",
+        "kind": "thanh_toan",
+        "amount": 1779125000.0,
+        "note": "UNC 107/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-061",
+    "code": "CN-061",
+    "projectId": "p23",
+    "supplierId": "s05",
+    "contractNo": "87/2026/HĐMB-P23",
+    "category": "Chi phí NVL",
+    "contractValue": 6622000000.0,
+    "dueDate": "2026-11-21",
+    "entries": [
+      {
+        "id": "de-61-c0",
+        "date": "2026-04-10",
+        "kind": "cung_cap",
+        "amount": 472014000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-61-c1",
+        "date": "2026-05-13",
+        "kind": "cung_cap",
+        "amount": 874074000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-61-c2",
+        "date": "2026-07-22",
+        "kind": "cung_cap",
+        "amount": 781810000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-61-h0",
+        "date": "2026-07-22",
+        "kind": "hoa_don",
+        "amount": 845370000.0,
+        "note": "Hóa đơn GTGT số 00455"
+      },
+      {
+        "id": "de-61-h1",
+        "date": "2026-08-24",
+        "kind": "hoa_don",
+        "amount": 1039564000.0,
+        "note": "Hóa đơn GTGT số 09799"
+      },
+      {
+        "id": "de-61-t0",
+        "date": "2026-08-24",
+        "kind": "thanh_toan",
+        "amount": 831030000.0,
+        "note": "UNC 765/2026"
+      },
+      {
+        "id": "de-61-t1",
+        "date": "2026-09-09",
+        "kind": "thanh_toan",
+        "amount": 659535000.0,
+        "note": "UNC 519/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-062",
+    "code": "CN-062",
+    "projectId": "p24",
+    "supplierId": "s01",
+    "contractNo": "64/2026/HĐMB-P24",
+    "category": "Chi phí NVL",
+    "contractValue": 16516000000.0,
+    "dueDate": "2026-12-10",
+    "entries": [
+      {
+        "id": "de-62-c0",
+        "date": "2026-04-15",
+        "kind": "cung_cap",
+        "amount": 3478641000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-62-c1",
+        "date": "2026-05-12",
+        "kind": "cung_cap",
+        "amount": 6376896000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-62-c2",
+        "date": "2026-06-21",
+        "kind": "cung_cap",
+        "amount": 2818002000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-62-h0",
+        "date": "2026-06-21",
+        "kind": "hoa_don",
+        "amount": 4201859000.0,
+        "note": "Hóa đơn GTGT số 07588"
+      },
+      {
+        "id": "de-62-h1",
+        "date": "2026-09-23",
+        "kind": "hoa_don",
+        "amount": 5057483000.0,
+        "note": "Hóa đơn GTGT số 05682"
+      },
+      {
+        "id": "de-62-t0",
+        "date": "2026-09-23",
+        "kind": "thanh_toan",
+        "amount": 2281102000.0,
+        "note": "UNC 594/2026"
+      },
+      {
+        "id": "de-62-t1",
+        "date": "2026-10-10",
+        "kind": "thanh_toan",
+        "amount": 4441707000.0,
+        "note": "UNC 683/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-063",
+    "code": "CN-063",
+    "projectId": "p24",
+    "supplierId": "s08",
+    "contractNo": "72/2026/HĐMB-P24",
+    "category": "Chi phí NVL",
+    "contractValue": 8968000000.0,
+    "dueDate": "2027-01-15",
+    "entries": [
+      {
+        "id": "de-63-c0",
+        "date": "2026-04-21",
+        "kind": "cung_cap",
+        "amount": 1316771000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-63-c1",
+        "date": "2026-06-15",
+        "kind": "cung_cap",
+        "amount": 546876000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-63-c2",
+        "date": "2026-07-12",
+        "kind": "cung_cap",
+        "amount": 983597000.0,
+        "note": "Xác nhận khối lượng cung cấp 3"
+      },
+      {
+        "id": "de-63-h0",
+        "date": "2026-07-12",
+        "kind": "hoa_don",
+        "amount": 1111498000.0,
+        "note": "Hóa đơn GTGT số 02036"
+      },
+      {
+        "id": "de-63-h1",
+        "date": "2026-08-15",
+        "kind": "hoa_don",
+        "amount": 1526987000.0,
+        "note": "Hóa đơn GTGT số 01417"
+      },
+      {
+        "id": "de-63-t0",
+        "date": "2026-08-15",
+        "kind": "thanh_toan",
+        "amount": 1498747000.0,
+        "note": "UNC 993/2026"
+      },
+      {
+        "id": "de-63-t1",
+        "date": "2026-09-13",
+        "kind": "thanh_toan",
+        "amount": 1013869000.0,
+        "note": "UNC 109/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-064",
+    "code": "CN-064",
+    "projectId": "p24",
+    "supplierId": "s05",
+    "contractNo": "33/2026/HĐMB-P24",
+    "category": "Chi phí NVL",
+    "contractValue": 4591000000.0,
+    "dueDate": "2026-10-30",
+    "entries": [
+      {
+        "id": "de-64-c0",
+        "date": "2026-06-02",
+        "kind": "cung_cap",
+        "amount": 802017000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-64-c1",
+        "date": "2026-07-17",
+        "kind": "cung_cap",
+        "amount": 562802000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-64-c2",
+        "date": "2026-08-26",
+        "kind": "cung_cap",
+        "amount": 573248000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-64-h0",
+        "date": "2026-08-26",
+        "kind": "hoa_don",
+        "amount": 804041000.0,
+        "note": "Hóa đơn GTGT số 08323"
+      },
+      {
+        "id": "de-64-h1",
+        "date": "2026-09-05",
+        "kind": "hoa_don",
+        "amount": 975451000.0,
+        "note": "Hóa đơn GTGT số 01211"
+      },
+      {
+        "id": "de-64-t0",
+        "date": "2026-09-05",
+        "kind": "thanh_toan",
+        "amount": 421106000.0,
+        "note": "UNC 826/2026"
+      },
+      {
+        "id": "de-64-t1",
+        "date": "2026-10-13",
+        "kind": "thanh_toan",
+        "amount": 1230596000.0,
+        "note": "UNC 884/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-065",
+    "code": "CN-065",
+    "projectId": "p25",
+    "supplierId": "s11",
+    "contractNo": "76/2026/HĐTP-P25",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 27347000000.0,
+    "dueDate": "2026-12-01",
+    "entries": [
+      {
+        "id": "de-65-c0",
+        "date": "2026-04-22",
+        "kind": "cung_cap",
+        "amount": 8281655000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-65-c1",
+        "date": "2026-05-12",
+        "kind": "cung_cap",
+        "amount": 8934570000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-65-c2",
+        "date": "2026-06-27",
+        "kind": "cung_cap",
+        "amount": 6221858000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-65-h0",
+        "date": "2026-06-27",
+        "kind": "hoa_don",
+        "amount": 11603152000.0,
+        "note": "Hóa đơn GTGT số 08764"
+      },
+      {
+        "id": "de-65-h1",
+        "date": "2026-07-21",
+        "kind": "hoa_don",
+        "amount": 8704913000.0,
+        "note": "Hóa đơn GTGT số 06789"
+      },
+      {
+        "id": "de-65-t0",
+        "date": "2026-07-21",
+        "kind": "thanh_toan",
+        "amount": 6803409000.0,
+        "note": "UNC 122/2026"
+      },
+      {
+        "id": "de-65-t1",
+        "date": "2026-08-26",
+        "kind": "thanh_toan",
+        "amount": 8531795000.0,
+        "note": "UNC 504/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-066",
+    "code": "CN-066",
+    "projectId": "p25",
+    "supplierId": "s06",
+    "contractNo": "37/2026/HĐMB-P25",
+    "category": "Chi phí NVL",
+    "contractValue": 5297000000.0,
+    "dueDate": "2026-12-31",
+    "entries": [
+      {
+        "id": "de-66-c0",
+        "date": "2026-04-19",
+        "kind": "cung_cap",
+        "amount": 1584486000.0,
+        "note": "Xác nhận khối lượng cung cấp 1"
+      },
+      {
+        "id": "de-66-c1",
+        "date": "2026-06-06",
+        "kind": "cung_cap",
+        "amount": 1642730000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 2"
+      },
+      {
+        "id": "de-66-c2",
+        "date": "2026-07-11",
+        "kind": "cung_cap",
+        "amount": 1569179000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-66-h0",
+        "date": "2026-07-11",
+        "kind": "hoa_don",
+        "amount": 3141957000.0,
+        "note": "Hóa đơn GTGT số 03953"
+      },
+      {
+        "id": "de-66-h1",
+        "date": "2026-08-06",
+        "kind": "hoa_don",
+        "amount": 1255932000.0,
+        "note": "Hóa đơn GTGT số 01378"
+      },
+      {
+        "id": "de-66-t0",
+        "date": "2026-08-06",
+        "kind": "thanh_toan",
+        "amount": 1538570000.0,
+        "note": "UNC 935/2026"
+      },
+      {
+        "id": "de-66-t1",
+        "date": "2026-09-13",
+        "kind": "thanh_toan",
+        "amount": 1549782000.0,
+        "note": "UNC 761/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-067",
+    "code": "CN-067",
+    "projectId": "p25",
+    "supplierId": "s03",
+    "contractNo": "84/2026/HĐMB-P25",
+    "category": "Chi phí NVL",
+    "contractValue": 1608000000.0,
+    "dueDate": "2026-11-20",
+    "entries": [
+      {
+        "id": "de-67-c0",
+        "date": "2026-04-08",
+        "kind": "cung_cap",
+        "amount": 148081000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-67-c1",
+        "date": "2026-05-20",
+        "kind": "cung_cap",
+        "amount": 245647000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-67-c2",
+        "date": "2026-06-17",
+        "kind": "cung_cap",
+        "amount": 147783000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-67-h0",
+        "date": "2026-06-17",
+        "kind": "hoa_don",
+        "amount": 229125000.0,
+        "note": "Hóa đơn GTGT số 09964"
+      },
+      {
+        "id": "de-67-h1",
+        "date": "2026-08-25",
+        "kind": "hoa_don",
+        "amount": 191941000.0,
+        "note": "Hóa đơn GTGT số 02926"
+      },
+      {
+        "id": "de-67-t0",
+        "date": "2026-08-25",
+        "kind": "thanh_toan",
+        "amount": 156187000.0,
+        "note": "UNC 356/2026"
+      },
+      {
+        "id": "de-67-t1",
+        "date": "2026-09-14",
+        "kind": "thanh_toan",
+        "amount": 178668000.0,
+        "note": "UNC 940/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-068",
+    "code": "CN-068",
+    "projectId": "p25",
+    "supplierId": "s12",
+    "contractNo": "25/2026/HĐTP-P25",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 23843000000.0,
+    "dueDate": "2027-01-21",
+    "entries": [
+      {
+        "id": "de-68-c0",
+        "date": "2026-04-15",
+        "kind": "cung_cap",
+        "amount": 7425922000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-68-c1",
+        "date": "2026-05-18",
+        "kind": "cung_cap",
+        "amount": 8678653000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-68-c2",
+        "date": "2026-06-08",
+        "kind": "cung_cap",
+        "amount": 6271287000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-68-h0",
+        "date": "2026-06-08",
+        "kind": "hoa_don",
+        "amount": 12459024000.0,
+        "note": "Hóa đơn GTGT số 07939"
+      },
+      {
+        "id": "de-68-h1",
+        "date": "2026-07-03",
+        "kind": "hoa_don",
+        "amount": 5679944000.0,
+        "note": "Hóa đơn GTGT số 07405"
+      },
+      {
+        "id": "de-68-t0",
+        "date": "2026-07-03",
+        "kind": "thanh_toan",
+        "amount": 4116062000.0,
+        "note": "UNC 114/2026"
+      },
+      {
+        "id": "de-68-t1",
+        "date": "2026-08-09",
+        "kind": "thanh_toan",
+        "amount": 6786348000.0,
+        "note": "UNC 748/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-069",
+    "code": "CN-069",
+    "projectId": "p26",
+    "supplierId": "s13",
+    "contractNo": "89/2026/HĐTP-P26",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 37983000000.0,
+    "dueDate": "2027-01-03",
+    "entries": [
+      {
+        "id": "de-69-c0",
+        "date": "2026-05-06",
+        "kind": "cung_cap",
+        "amount": 5636670000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 1"
+      },
+      {
+        "id": "de-69-c1",
+        "date": "2026-07-08",
+        "kind": "cung_cap",
+        "amount": 9418529000.0,
+        "note": "Biên bản giao nhận vật tư 2"
+      },
+      {
+        "id": "de-69-c2",
+        "date": "2026-08-05",
+        "kind": "cung_cap",
+        "amount": 8613982000.0,
+        "note": "Biên bản giao nhận vật tư 3"
+      },
+      {
+        "id": "de-69-h0",
+        "date": "2026-08-05",
+        "kind": "hoa_don",
+        "amount": 12284920000.0,
+        "note": "Hóa đơn GTGT số 07811"
+      },
+      {
+        "id": "de-69-h1",
+        "date": "2026-09-21",
+        "kind": "hoa_don",
+        "amount": 8091589000.0,
+        "note": "Hóa đơn GTGT số 00214"
+      },
+      {
+        "id": "de-69-t0",
+        "date": "2026-09-21",
+        "kind": "thanh_toan",
+        "amount": 6633058000.0,
+        "note": "UNC 460/2026"
+      },
+      {
+        "id": "de-69-t1",
+        "date": "2026-10-11",
+        "kind": "thanh_toan",
+        "amount": 9073396000.0,
+        "note": "UNC 614/2026"
+      }
+    ],
+    "note": ""
+  },
+  {
+    "id": "cn-070",
+    "code": "CN-070",
+    "projectId": "p26",
+    "supplierId": "s11",
+    "contractNo": "87/2026/HĐTP-P26",
+    "category": "Chi phí thầu phụ",
+    "contractValue": 16411000000.0,
+    "dueDate": "2026-12-31",
+    "entries": [
+      {
+        "id": "de-70-c0",
+        "date": "2026-04-21",
+        "kind": "cung_cap",
+        "amount": 3527746000.0,
+        "note": "Biên bản giao nhận vật tư 1"
+      },
+      {
+        "id": "de-70-c1",
+        "date": "2026-05-25",
+        "kind": "cung_cap",
+        "amount": 3282235000.0,
+        "note": "Xác nhận khối lượng cung cấp 2"
+      },
+      {
+        "id": "de-70-c2",
+        "date": "2026-07-03",
+        "kind": "cung_cap",
+        "amount": 1889814000.0,
+        "note": "Nghiệm thu khối lượng thầu phụ đợt 3"
+      },
+      {
+        "id": "de-70-h0",
+        "date": "2026-07-03",
+        "kind": "hoa_don",
+        "amount": 5596505000.0,
+        "note": "Hóa đơn GTGT số 07935"
+      },
+      {
+        "id": "de-70-h1",
+        "date": "2026-09-19",
+        "kind": "hoa_don",
+        "amount": 2167347000.0,
+        "note": "Hóa đơn GTGT số 05504"
+      },
+      {
+        "id": "de-70-t0",
+        "date": "2026-09-19",
+        "kind": "thanh_toan",
+        "amount": 1988522000.0,
+        "note": "UNC 849/2026"
+      },
+      {
+        "id": "de-70-t1",
+        "date": "2026-10-11",
+        "kind": "thanh_toan",
+        "amount": 2538023000.0,
+        "note": "UNC 786/2026"
+      }
+    ],
+    "note": ""
+  }
+]

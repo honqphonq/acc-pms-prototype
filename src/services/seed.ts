@@ -27,12 +27,13 @@ import maintenancePlans from "@/data/maintenance-plans.json";
 import repairs from "@/data/repairs.json";
 import disposals from "@/data/disposals.json";
 import incidents from "@/data/incidents.json";
-import routes from "@/data/routes.json";
 import stocktakes from "@/data/stocktakes.json";
 import loginHistory from "@/data/login-history.json";
 import contracts from "@/data/contracts.json";
 import directives from "@/data/directives.json";
-import costEntries from "@/data/cost-entries.json";
+import costDocs from "@/data/cost-docs.json";
+import estimates from "@/data/estimates.json";
+import debts from "@/data/debts.json";
 import type { Database } from "@/types";
 
 export function getSeedData(): Database {
@@ -66,11 +67,13 @@ export function getSeedData(): Database {
     repairs,
     disposals,
     incidents,
-    routes,
     stocktakes,
     loginHistory,
     contracts,
     directives,
-    costEntries,
+    costDocs,
+    estimates,
+    debts,
+    valuePeriods: [],
   }) as unknown as Database;
 }

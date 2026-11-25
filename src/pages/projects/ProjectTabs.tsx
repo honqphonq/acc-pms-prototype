@@ -9,7 +9,7 @@ import { StatusBadge } from "@/components/common/StatusBadge";
 import { EmptyState } from "@/components/common/EmptyState";
 import { DEMO_TODAY, diffDays } from "@/utils/date";
 import { fmtDate, fmtNumber, fmtVnd } from "@/utils/format";
-import { METHOD_STATUS, STAFF_TYPE } from "@/utils/labels";
+import { STAFF_TYPE } from "@/utils/labels";
 import { cn } from "@/utils/cn";
 import type { SiteStaff } from "@/types";
 
@@ -55,7 +55,7 @@ export function MethodsTab({ projectId }: { projectId: string }) {
       <CardHeader><CardTitle>Phương án tổ chức thi công ({list.length})</CardTitle><Button size="sm" variant="outline" onClick={go}>Quản lý phương án <ChevronRight /></Button></CardHeader>
       {list.length === 0 ? <EmptyState title="Chưa có phương án tổ chức thi công" action={<Button onClick={go}><Plus /> Tạo phương án</Button>} /> : (
         <Table>
-          <TableHeader><TableRow><TableHead>Mã</TableHead><TableHead>Phương án / biện pháp</TableHead><TableHead className="text-center">File</TableHead><TableHead>Cập nhật</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
+          <TableHeader><TableRow><TableHead>Mã</TableHead><TableHead>Phương án / biện pháp</TableHead><TableHead className="text-center">File</TableHead><TableHead>Cập nhật</TableHead></TableRow></TableHeader>
           <TableBody>
             {list.map((m) => (
               <TableRow key={m.id} className="cursor-pointer" onClick={go}>
@@ -63,7 +63,6 @@ export function MethodsTab({ projectId }: { projectId: string }) {
                 <TableCell className="max-w-[440px]"><div className="font-medium">{m.title}</div><div className="truncate text-[12px] text-slate-500">{m.summary}</div></TableCell>
                 <TableCell className="text-center">{m.files.length}</TableCell>
                 <TableCell className="whitespace-nowrap">{fmtDate(m.updatedAt)}</TableCell>
-                <TableCell><StatusBadge map={METHOD_STATUS} value={m.status} /></TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -74,7 +73,7 @@ export function MethodsTab({ projectId }: { projectId: string }) {
 }
 
 const hasSafety = (s: SiteStaff) => !!s.safetyCardFile || (s.safetyCard && s.safetyCardFile === undefined);
-const missing = (s: SiteStaff) => [!(s.idFront && s.idBack) && "CCCD", !s.certFiles?.length && s.type !== "lao_dong_pho_thong" && "Chứng chỉ", !hasSafety(s) && "Thẻ ATLĐ", !s.healthFile && "Giấy KSK"].filter(Boolean) as string[];
+const missing = (s: SiteStaff) => [!(s.idFront && s.idBack) && "CCCD", !s.certFiles?.length && "Chứng chỉ", !hasSafety(s) && "Thẻ ATLĐ", !s.healthFile && "Giấy KSK"].filter(Boolean) as string[];
 
 /** Tab Nhân sự thi công: theo tổ đội */
 export function StaffTab({ projectId }: { projectId: string }) {

@@ -56,7 +56,8 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-29"
+    "lastMaintenanceDate": "2026-10-29",
+    "updatedAt": "2026-11-14T08:20:00"
   },
   {
     "id": "eq-002",
@@ -113,7 +114,9 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-06"
+    "lastMaintenanceDate": "2026-10-06",
+    "purchasePrice": 23840000000,
+    "updatedAt": "2026-11-10T23:20:00"
   },
   {
     "id": "eq-003",
@@ -172,7 +175,8 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-29"
+    "lastMaintenanceDate": "2026-10-29",
+    "updatedAt": "2026-11-08T17:20:00"
   },
   {
     "id": "eq-004",
@@ -231,7 +235,8 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-03"
+    "lastMaintenanceDate": "2026-10-03",
+    "updatedAt": "2026-10-21T23:20:00"
   },
   {
     "id": "eq-005",
@@ -288,7 +293,9 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-02"
+    "lastMaintenanceDate": "2026-10-02",
+    "purchasePrice": 16940000000,
+    "updatedAt": "2026-11-04T17:20:00"
   },
   {
     "id": "eq-006",
@@ -345,13 +352,15 @@
     ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-25"
+    "lastMaintenanceDate": "2026-06-25",
+    "purchasePrice": 19340000000,
+    "updatedAt": "2026-10-18T21:20:00"
   },
   {
     "id": "eq-007",
     "code": "M244.0183",
     "name": "Máy xúc đào 1,25m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "thue_ngoai",
     "plate": "XD 8747",
     "brand": "Hitachi ZX210",
@@ -393,16 +402,25 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-007",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-08-14"
+    "lastMaintenanceDate": "2026-08-14",
+    "updatedAt": "2026-11-13T17:20:00"
   },
   {
     "id": "eq-008",
     "code": "M244.0190",
     "name": "Máy xúc đào 0,8m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "so_huu",
     "plate": "KT 7091",
     "brand": "Doosan DX225",
@@ -442,19 +460,29 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-008",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-04"
+    "lastMaintenanceDate": "2026-10-04",
+    "purchasePrice": 4260000000,
+    "updatedAt": "2026-11-10T14:20:00"
   },
   {
     "id": "eq-009",
     "code": "M24.0044",
     "name": "Máy xúc lật 2,3m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc lật",
     "ownership": "so_huu",
     "plate": "KT 7605",
-    "brand": "Doosan DX225",
+    "brand": "Liugong CLG856",
     "year": 2017,
     "manageUnitId": "d-acc24",
     "status": "ngung",
@@ -491,19 +519,29 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-009",
+        "name": "May xuc lat.webp",
+        "type": "image/webp",
+        "size": 47712,
+        "url": "assets/samples/may-xuc-lat.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-07-23"
+    "lastMaintenanceDate": "2026-07-23",
+    "purchasePrice": 2310000000,
+    "updatedAt": "2026-11-11T18:20:00"
   },
   {
     "id": "eq-010",
     "code": "M244.0116",
     "name": "Máy xúc lật 2,3m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc lật",
     "ownership": "so_huu",
     "plate": "QA 2987",
-    "brand": "Kobelco SK200",
+    "brand": "SDLG LG956",
     "year": 2019,
     "manageUnitId": "d-acc244",
     "status": "hoat_dong",
@@ -540,16 +578,26 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-010",
+        "name": "May xuc lat.webp",
+        "type": "image/webp",
+        "size": 47712,
+        "url": "assets/samples/may-xuc-lat.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-11-02"
+    "lastMaintenanceDate": "2026-11-02",
+    "purchasePrice": 2540000000,
+    "updatedAt": "2026-11-09T07:20:00"
   },
   {
     "id": "eq-011",
     "code": "M244.0221",
     "name": "Máy xúc đào 1,25m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "so_huu",
     "plate": "KT 9192",
     "brand": "Komatsu PC200-8",
@@ -589,16 +637,26 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-011",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-30"
+    "lastMaintenanceDate": "2026-09-30",
+    "purchasePrice": 3250000000,
+    "updatedAt": "2026-11-08T04:20:00"
   },
   {
     "id": "eq-012",
     "code": "M25.0167",
     "name": "Máy xúc đào 0,8m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "so_huu",
     "plate": "KT 4631",
     "brand": "Doosan DX225",
@@ -638,19 +696,29 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-012",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-12"
+    "lastMaintenanceDate": "2026-10-12",
+    "purchasePrice": 4140000000,
+    "updatedAt": "2026-11-04T11:20:00"
   },
   {
     "id": "eq-013",
     "code": "M24.0212",
     "name": "Máy xúc lật 2,3m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc lật",
     "ownership": "thue_ngoai",
     "plate": "XD 1803",
-    "brand": "Komatsu PC200-8",
+    "brand": "Liugong CLG856",
     "year": 2020,
     "manageUnitId": "d-acc24",
     "status": "hoat_dong",
@@ -689,16 +757,25 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-013",
+        "name": "May xuc lat.webp",
+        "type": "image/webp",
+        "size": 47712,
+        "url": "assets/samples/may-xuc-lat.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-10"
+    "lastMaintenanceDate": "2026-10-10",
+    "updatedAt": "2026-11-06T20:20:00"
   },
   {
     "id": "eq-014",
     "code": "M245.0057",
     "name": "Máy xúc đào 0,8m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "so_huu",
     "plate": "KT 1992",
     "brand": "Komatsu PC200-8",
@@ -738,16 +815,26 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-014",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-07-20"
+    "lastMaintenanceDate": "2026-07-20",
+    "purchasePrice": 4270000000,
+    "updatedAt": "2026-10-20T05:20:00"
   },
   {
     "id": "eq-015",
     "code": "M244.0087",
     "name": "Máy xúc đào 0,8m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "so_huu",
     "plate": "KT 7828",
     "brand": "Doosan DX225",
@@ -787,16 +874,26 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-015",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-11-05"
+    "lastMaintenanceDate": "2026-11-05",
+    "purchasePrice": 4000000000,
+    "updatedAt": "2026-10-19T23:20:00"
   },
   {
     "id": "eq-016",
     "code": "M25.0213",
     "name": "Máy xúc đào 1,25m³",
-    "group": "Máy xúc",
+    "group": "Máy xúc đào",
     "ownership": "thue_ngoai",
     "plate": "XD 5641",
     "brand": "Doosan DX225",
@@ -838,10 +935,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-016",
+        "name": "May xuc dao.webp",
+        "type": "image/webp",
+        "size": 32922,
+        "url": "assets/samples/may-xuc-dao.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-25"
+    "lastMaintenanceDate": "2026-10-25",
+    "updatedAt": "2026-11-02T20:20:00"
   },
   {
     "id": "eq-017",
@@ -889,10 +995,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-017",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-08-03"
+    "lastMaintenanceDate": "2026-08-03",
+    "updatedAt": "2026-11-13T11:20:00"
   },
   {
     "id": "eq-018",
@@ -938,10 +1053,20 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-018",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-08"
+    "lastMaintenanceDate": "2026-10-08",
+    "purchasePrice": 5930000000,
+    "updatedAt": "2026-11-10T09:20:00"
   },
   {
     "id": "eq-019",
@@ -987,10 +1112,20 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-019",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-20"
+    "lastMaintenanceDate": "2026-06-20",
+    "purchasePrice": 4690000000,
+    "updatedAt": "2026-11-07T06:20:00"
   },
   {
     "id": "eq-020",
@@ -1036,10 +1171,20 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-020",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-12"
+    "lastMaintenanceDate": "2026-10-12",
+    "purchasePrice": 5530000000,
+    "updatedAt": "2026-10-20T12:20:00"
   },
   {
     "id": "eq-021",
@@ -1087,10 +1232,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-021",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-14"
+    "lastMaintenanceDate": "2026-10-14",
+    "updatedAt": "2026-10-12T13:20:00"
   },
   {
     "id": "eq-022",
@@ -1136,10 +1290,20 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-022",
+        "name": "May ui.webp",
+        "type": "image/webp",
+        "size": 82972,
+        "url": "assets/samples/may-ui.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-14"
+    "lastMaintenanceDate": "2026-10-14",
+    "purchasePrice": 5310000000,
+    "updatedAt": "2026-10-18T08:20:00"
   },
   {
     "id": "eq-023",
@@ -1188,7 +1352,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-23"
+    "lastMaintenanceDate": "2026-10-23",
+    "purchasePrice": 2970000000,
+    "updatedAt": "2026-11-05T20:20:00"
   },
   {
     "id": "eq-024",
@@ -1237,7 +1403,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-22"
+    "lastMaintenanceDate": "2026-06-22",
+    "purchasePrice": 2780000000,
+    "updatedAt": "2026-10-28T04:20:00"
   },
   {
     "id": "eq-025",
@@ -1286,7 +1454,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-06"
+    "lastMaintenanceDate": "2026-09-06",
+    "purchasePrice": 3360000000,
+    "updatedAt": "2026-11-02T23:20:00"
   },
   {
     "id": "eq-026",
@@ -1335,7 +1505,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-07"
+    "lastMaintenanceDate": "2026-10-07",
+    "purchasePrice": 3520000000,
+    "updatedAt": "2026-10-27T06:20:00"
   },
   {
     "id": "eq-027",
@@ -1384,7 +1556,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-28"
+    "lastMaintenanceDate": "2026-10-28",
+    "purchasePrice": 2810000000,
+    "updatedAt": "2026-10-17T06:20:00"
   },
   {
     "id": "eq-028",
@@ -1433,7 +1607,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-01"
+    "lastMaintenanceDate": "2026-10-01",
+    "purchasePrice": 3100000000,
+    "updatedAt": "2026-10-22T17:20:00"
   },
   {
     "id": "eq-029",
@@ -1480,10 +1656,20 @@
     "inspectionDue": "2026-11-08",
     "insuranceDue": "2026-12-01",
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-029",
+        "name": "Xe tuoi nuoc.webp",
+        "type": "image/webp",
+        "size": 41060,
+        "url": "assets/samples/xe-tuoi-nuoc.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-05"
+    "lastMaintenanceDate": "2026-10-05",
+    "purchasePrice": 1240000000,
+    "updatedAt": "2026-11-12T17:20:00"
   },
   {
     "id": "eq-030",
@@ -1529,10 +1715,20 @@
     "inspectionDue": "2026-12-15",
     "insuranceDue": "2027-04-17",
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-030",
+        "name": "Xe tuoi nuoc.webp",
+        "type": "image/webp",
+        "size": 41060,
+        "url": "assets/samples/xe-tuoi-nuoc.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-02"
+    "lastMaintenanceDate": "2026-10-02",
+    "purchasePrice": 1620000000,
+    "updatedAt": "2026-11-10T00:20:00"
   },
   {
     "id": "eq-031",
@@ -1578,10 +1774,20 @@
     "inspectionDue": "2027-03-21",
     "insuranceDue": "2027-05-13",
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-031",
+        "name": "Xe tuoi nuoc.webp",
+        "type": "image/webp",
+        "size": 41060,
+        "url": "assets/samples/xe-tuoi-nuoc.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-25"
+    "lastMaintenanceDate": "2026-09-25",
+    "purchasePrice": 1590000000,
+    "updatedAt": "2026-11-07T02:20:00"
   },
   {
     "id": "eq-032",
@@ -1627,10 +1833,20 @@
     "inspectionDue": "2026-11-30",
     "insuranceDue": "2027-08-16",
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-032",
+        "name": "Xe tuoi nuoc.webp",
+        "type": "image/webp",
+        "size": 41060,
+        "url": "assets/samples/xe-tuoi-nuoc.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-11-06"
+    "lastMaintenanceDate": "2026-11-06",
+    "purchasePrice": 1800000000,
+    "updatedAt": "2026-11-01T00:20:00"
   },
   {
     "id": "eq-033",
@@ -1677,10 +1893,20 @@
     "inspectionDue": "2027-06-28",
     "insuranceDue": "2027-08-16",
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-033",
+        "name": "Xe tuoi nuoc.webp",
+        "type": "image/webp",
+        "size": 41060,
+        "url": "assets/samples/xe-tuoi-nuoc.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-07-17"
+    "lastMaintenanceDate": "2026-07-17",
+    "purchasePrice": 1690000000,
+    "updatedAt": "2026-10-13T19:20:00"
   },
   {
     "id": "eq-034",
@@ -1728,10 +1954,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-034",
+        "name": "May cat khe.webp",
+        "type": "image/webp",
+        "size": 30480,
+        "url": "assets/samples/may-cat-khe.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-19"
+    "lastMaintenanceDate": "2026-10-19",
+    "updatedAt": "2026-11-11T03:20:00"
   },
   {
     "id": "eq-035",
@@ -1777,10 +2012,20 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-035",
+        "name": "May cat khe.webp",
+        "type": "image/webp",
+        "size": 30480,
+        "url": "assets/samples/may-cat-khe.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-11"
+    "lastMaintenanceDate": "2026-10-11",
+    "purchasePrice": 210000000,
+    "updatedAt": "2026-11-08T23:20:00"
   },
   {
     "id": "eq-036",
@@ -1828,10 +2073,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-036",
+        "name": "May cat khe.webp",
+        "type": "image/webp",
+        "size": 30480,
+        "url": "assets/samples/may-cat-khe.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-12"
+    "lastMaintenanceDate": "2026-10-12",
+    "updatedAt": "2026-11-06T17:20:00"
   },
   {
     "id": "eq-037",
@@ -1879,10 +2133,19 @@
     "inspectionDue": null,
     "insuranceDue": null,
     "ownerProof": true,
-    "images": [],
+    "images": [
+      {
+        "id": "img-eq-037",
+        "name": "May cat khe.webp",
+        "type": "image/webp",
+        "size": 30480,
+        "url": "assets/samples/may-cat-khe.webp"
+      }
+    ],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-26"
+    "lastMaintenanceDate": "2026-09-26",
+    "updatedAt": "2026-10-23T10:20:00"
   },
   {
     "id": "eq-038",
@@ -1933,7 +2196,8 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-11-06"
+    "lastMaintenanceDate": "2026-11-06",
+    "updatedAt": "2026-10-28T18:20:00"
   },
   {
     "id": "eq-039",
@@ -1982,7 +2246,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-29"
+    "lastMaintenanceDate": "2026-10-29",
+    "purchasePrice": 1750000000,
+    "updatedAt": "2026-10-31T02:20:00"
   },
   {
     "id": "eq-040",
@@ -2031,7 +2297,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-24"
+    "lastMaintenanceDate": "2026-06-24",
+    "purchasePrice": 2000000000,
+    "updatedAt": "2026-10-20T17:20:00"
   },
   {
     "id": "eq-041",
@@ -2081,7 +2349,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-30"
+    "lastMaintenanceDate": "2026-09-30",
+    "purchasePrice": 1420000000,
+    "updatedAt": "2026-10-16T01:20:00"
   },
   {
     "id": "eq-042",
@@ -2132,7 +2402,8 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-07-08"
+    "lastMaintenanceDate": "2026-07-08",
+    "updatedAt": "2026-11-05T13:20:00"
   },
   {
     "id": "eq-043",
@@ -2183,7 +2454,8 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-08-25"
+    "lastMaintenanceDate": "2026-08-25",
+    "updatedAt": "2026-10-16T19:20:00"
   },
   {
     "id": "eq-044",
@@ -2232,7 +2504,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-22"
+    "lastMaintenanceDate": "2026-06-22",
+    "purchasePrice": 4120000000,
+    "updatedAt": "2026-11-02T15:20:00"
   },
   {
     "id": "eq-045",
@@ -2281,7 +2555,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-06-17"
+    "lastMaintenanceDate": "2026-06-17",
+    "purchasePrice": 3540000000,
+    "updatedAt": "2026-10-14T20:20:00"
   },
   {
     "id": "eq-046",
@@ -2332,7 +2608,8 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-02"
+    "lastMaintenanceDate": "2026-10-02",
+    "updatedAt": "2026-10-12T16:20:00"
   },
   {
     "id": "eq-047",
@@ -2381,7 +2658,9 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-09-30"
+    "lastMaintenanceDate": "2026-09-30",
+    "purchasePrice": 8470000000,
+    "updatedAt": "2026-10-26T16:20:00"
   },
   {
     "id": "eq-048",
@@ -2430,6 +2709,366 @@
     "images": [],
     "docFiles": [],
     "maintenanceMonths": 6,
-    "lastMaintenanceDate": "2026-10-05"
+    "lastMaintenanceDate": "2026-10-05",
+    "purchasePrice": 8240000000,
+    "updatedAt": "2026-10-24T04:20:00"
+  },
+  {
+    "id": "eq-049",
+    "code": "M244.0301",
+    "name": "Máy rải bê tông nhựa 12m",
+    "group": "Máy rải BTN",
+    "ownership": "so_huu",
+    "plate": "XD 6305",
+    "brand": "Vögele Super 1900-3",
+    "year": 2022,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p20",
+    "operatorId": "op19",
+    "totalHours": 3466,
+    "fuelNorm": 24,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 3289,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M244-0301",
+    "chassisNo": "VÖG258176",
+    "engineNo": "E7624039",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 149/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-27",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 16610000000,
+    "updatedAt": "2026-10-30T11:20:00"
+  },
+  {
+    "id": "eq-050",
+    "code": "M25.0302",
+    "name": "Máy rải bê tông nhựa 9m",
+    "group": "Máy rải BTN",
+    "ownership": "thue_ngoai",
+    "plate": "XD 2542",
+    "brand": "Dynapac SD2500",
+    "year": 2020,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p05",
+    "operatorId": null,
+    "totalHours": 2878,
+    "fuelNorm": 20,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2727,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M25-0302",
+    "chassisNo": "DYN483452",
+    "engineNo": "E1973060",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "HĐ thuê 37/2026/HĐTB",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": false,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-03",
+    "rentalRate": 6800000,
+    "rentalSupplier": "Công ty CP Cơ giới Thăng Long",
+    "updatedAt": "2026-10-25T16:20:00"
+  },
+  {
+    "id": "eq-051",
+    "code": "M24.0303",
+    "name": "Máy san 140CV",
+    "group": "Máy san",
+    "ownership": "so_huu",
+    "plate": "XD 7851",
+    "brand": "Komatsu GD555",
+    "year": 2019,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p04",
+    "operatorId": "op20",
+    "totalHours": 1171,
+    "fuelNorm": 16,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 987,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M24-0303",
+    "chassisNo": "KOM173248",
+    "engineNo": "E5037655",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 664/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-02",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 5760000000,
+    "updatedAt": "2026-10-29T05:20:00"
+  },
+  {
+    "id": "eq-052",
+    "code": "M245.0304",
+    "name": "Máy san 180CV",
+    "group": "Máy san",
+    "ownership": "so_huu",
+    "plate": "XD 3028",
+    "brand": "Caterpillar 140K",
+    "year": 2021,
+    "manageUnitId": "d-acc245",
+    "status": "nhan_roi",
+    "currentProjectId": null,
+    "operatorId": null,
+    "totalHours": 3163,
+    "fuelNorm": 18,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 3067,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M245-0304",
+    "chassisNo": "CAT334083",
+    "engineNo": "E2037872",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 699/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-02",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 6000000000,
+    "updatedAt": "2026-10-25T22:20:00"
+  },
+  {
+    "id": "eq-053",
+    "code": "M244.0305",
+    "name": "Máy khoan cọc nhồi D1500",
+    "group": "Máy khoan cọc nhồi",
+    "ownership": "so_huu",
+    "plate": "XD 1763",
+    "brand": "Bauer BG28",
+    "year": 2018,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p23",
+    "operatorId": "op21",
+    "totalHours": 1986,
+    "fuelNorm": 28,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1916,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M244-0305",
+    "chassisNo": "BAU683705",
+    "engineNo": "E3234302",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 529/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-18",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 21130000000,
+    "updatedAt": "2026-11-01T09:20:00"
+  },
+  {
+    "id": "eq-054",
+    "code": "M25.0306",
+    "name": "Cần trục bánh lốp 50T",
+    "group": "Cần trục bánh lốp",
+    "ownership": "so_huu",
+    "plate": "XD 6054",
+    "brand": "XCMG QY50KA",
+    "year": 2021,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p05",
+    "operatorId": "op22",
+    "totalHours": 1222,
+    "fuelNorm": 14,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 1134,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M25-0306",
+    "chassisNo": "XCM687472",
+    "engineNo": "E4032085",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 695/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-21",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 9110000000,
+    "updatedAt": "2026-10-13T11:20:00"
+  },
+  {
+    "id": "eq-055",
+    "code": "M24.0307",
+    "name": "Cần trục bánh lốp 25T",
+    "group": "Cần trục bánh lốp",
+    "ownership": "thue_ngoai",
+    "plate": "XD 7101",
+    "brand": "Kato NK-250E",
+    "year": 2017,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p12",
+    "operatorId": null,
+    "totalHours": 3111,
+    "fuelNorm": 12,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2944,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M24-0307",
+    "chassisNo": "KAT202163",
+    "engineNo": "E2053424",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "HĐ thuê 17/2026/HĐTB",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": false,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-09-07",
+    "rentalRate": 5400000,
+    "rentalSupplier": "Công ty TNHH Cẩu Hà Nội",
+    "updatedAt": "2026-11-03T21:20:00"
+  },
+  {
+    "id": "eq-056",
+    "code": "M244.0308",
+    "name": "Trạm trộn bê tông nhựa 120T/h",
+    "group": "Trạm trộn BTN",
+    "ownership": "so_huu",
+    "plate": "XD 9711",
+    "brand": "Nikko NBD-1500",
+    "year": 2019,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p20",
+    "operatorId": "op23",
+    "totalHours": 2707,
+    "fuelNorm": 40,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2591,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M244-0308",
+    "chassisNo": "NIK548363",
+    "engineNo": "E6270514",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 699/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-12",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 14480000000,
+    "updatedAt": "2026-10-30T04:20:00"
+  },
+  {
+    "id": "eq-057",
+    "code": "M24.0309",
+    "name": "Máy phát điện 250kVA",
+    "group": "Máy phát điện",
+    "ownership": "so_huu",
+    "plate": "XD 5070",
+    "brand": "Cummins C250D5",
+    "year": 2022,
+    "manageUnitId": "d-acc244",
+    "status": "hoat_dong",
+    "currentProjectId": "p01",
+    "operatorId": "op24",
+    "totalHours": 3663,
+    "fuelNorm": 45,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 3476,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M24-0309",
+    "chassisNo": "CUM932967",
+    "engineNo": "E4015985",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 898/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-07-03",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 960000000,
+    "updatedAt": "2026-10-21T05:20:00"
+  },
+  {
+    "id": "eq-058",
+    "code": "M245.0310",
+    "name": "Máy phát điện 125kVA",
+    "group": "Máy phát điện",
+    "ownership": "so_huu",
+    "plate": "XD 5919",
+    "brand": "Denyo DCA-125",
+    "year": 2020,
+    "manageUnitId": "d-acc245",
+    "status": "bao_tri",
+    "currentProjectId": "p03",
+    "operatorId": null,
+    "totalHours": 2206,
+    "fuelNorm": 25,
+    "maintenanceInterval": 250,
+    "lastMaintenanceHours": 2011,
+    "maintenances": [],
+    "kind": "may_thiet_bi",
+    "assetCode": "TS-M245-0310",
+    "chassisNo": "DEN650708",
+    "engineNo": "E9306674",
+    "qualityGrade": "Cấp 2",
+    "decisionNo": "QĐ 846/QĐ-TCT",
+    "inspectionDue": null,
+    "insuranceDue": null,
+    "ownerProof": true,
+    "images": [],
+    "docFiles": [],
+    "maintenanceMonths": 6,
+    "lastMaintenanceDate": "2026-08-10",
+    "rentalRate": null,
+    "rentalSupplier": null,
+    "purchasePrice": 1040000000,
+    "updatedAt": "2026-10-25T10:20:00"
   }
 ]

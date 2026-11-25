@@ -20,7 +20,7 @@ import { deleteEquipment } from "@/services/actions";
 import { equipmentWork, utilizationOf } from "@/services/selectors";
 import { fileUrl } from "@/components/common/Attachments";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { EQUIPMENT_KIND, activeProjects } from "@/utils/labels";
+import { EQUIPMENT_KIND, activeProjects, isUnit } from "@/utils/labels";
 import { EQUIPMENT_STATUS, SERIES } from "@/utils/constants";
 import { fmtNumber, fmtPct } from "@/utils/format";
 import { exportCsv } from "@/utils/export";
@@ -41,21 +41,27 @@ export default function EquipmentListPage() {
   const [unit, setUnit] = useState("");
   const [own, setOwn] = useState("");
   const [kind, setKind] = useQueryParam("kind");
+  const [sort, setSort] = useState<"updated" | "name">("updated");
   const [form, setForm] = useState<{ open: boolean; eq?: Equipment }>({ open: false });
   const [dispatch, setDispatch] = useState<{ ids: string[]; clear?: () => void } | null>(null);
   const all = db.equipment;
-  const rows = all.filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own) && (!kind || e.kind === kind));
+  const rows = all
+    .filter((e) => (!group || e.group === group) && (!status || e.status === status) && (!projectId || (projectId === "none" ? !e.currentProjectId : e.currentProjectId === projectId)) && (!unit || e.manageUnitId === unit) && (!own || e.ownership === own) && (!kind || e.kind === kind))
+    .sort((a, b) => (sort === "name" ? a.name.localeCompare(b.name, "vi") || a.code.localeCompare(b.code) : (b.updatedAt ?? "").localeCompare(a.updatedAt ?? "")));
+  const opName = (e: Equipment) => db.operators.find((o) => o.id === e.operatorId);
   const count = (s: string) => all.filter((e) => e.status === s).length;
   const groups = EQUIPMENT_GROUPS.filter((g) => all.some((e) => e.group === g));
 
   const cols: Column<Equipment>[] = [
-    { key: "img", header: "", cell: (e) => (e.images?.[0] ? <img src={fileUrl(e.images[0])!} alt="" className="h-11 w-14 rounded-md object-cover" /> : <span className="flex h-11 w-14 items-center justify-center rounded-md bg-slate-100 text-slate-400"><Truck className="h-5 w-5" /></span>), className: "w-16 pr-0" },
+    { key: "img", header: "", cell: (e) => (e.images?.[0] ? <img src={fileUrl(e.images[0])!} alt="" className="h-11 w-16 min-w-[64px] rounded-md bg-white object-cover" /> : <span className="flex h-11 w-16 min-w-[64px] items-center justify-center rounded-md bg-slate-100 text-slate-400"><Truck className="h-5 w-5" /></span>), className: "w-20 min-w-[76px] pr-0" },
     { key: "code", header: "Mã máy", sortValue: (e) => e.code, cell: (e) => <span className="font-semibold">{e.code}</span> },
     { key: "name", header: "XMTB", sortValue: (e) => e.name, filter: "text", filterValue: (e) => `${e.name} ${e.brand} ${e.plate}`, cell: (e) => <div className="min-w-[180px]"><div className="font-semibold">{e.name}</div><div className="text-[12px] text-slate-500">{EQUIPMENT_KIND[e.kind]?.label} · {e.brand} · {e.plate} · {e.year}</div></div> },
     { key: "group", header: "Nhóm XMTB", sortValue: (e) => e.group, cell: (e) => <Badge tone="outline" className="whitespace-nowrap"><span className="h-1.5 w-1.5 rounded-full" style={{ background: GROUP_COLOR[e.group] }} />{e.group}</Badge> },
     { key: "own", header: "Nguồn gốc", sortValue: (e) => e.ownership, filterValue: (e) => (e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"), cell: (e) => <Badge tone={e.ownership === "so_huu" ? "info" : "purple"}>{e.ownership === "so_huu" ? "Sở hữu" : "Thuê ngoài"}</Badge> },
     { key: "proj", header: "Dự án", sortValue: (e) => db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "zzz", filterValue: (e) => db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "Chưa phân bổ", cell: (e) => { const p = db.projects.find((x) => x.id === e.currentProjectId); return p ? <Tip content={p.name}><span className="block max-w-[150px] truncate">{p.shortName}</span></Tip> : <span className="text-slate-400">Chưa phân bổ</span>; } },
     { key: "hours", header: "Giờ máy tại dự án", align: "right", sortValue: (e) => equipmentWork(db, e.id, e.currentProjectId).hours, cell: (e) => { if (!e.currentProjectId) return <span className="text-slate-300">—</span>; const w = equipmentWork(db, e.id, e.currentProjectId); return <Tip content={`Từ khi về công trình: ${fmtNumber(w.hours, 0)} giờ · hiệu suất ${fmtPct(utilizationOf(w), 0)} · nhiên liệu ${fmtNumber(w.fuel, 0)} lít`}><span>{fmtNumber(w.hours, 0)}</span></Tip>; } },
+    { key: "user", header: "Người sử dụng", sortValue: (e) => opName(e)?.name ?? "zzz", filterValue: (e) => opName(e)?.name ?? "", cell: (e) => { const o = opName(e); return o ? <div className="whitespace-nowrap"><div className="text-[13px] text-slate-800">{o.name}</div><div className="text-[11.5px] text-slate-400">{o.phone}</div></div> : <span className="text-slate-300">—</span>; } },
+    { key: "price", header: "Giá mua / Đơn giá thuê", align: "right", sortValue: (e) => e.purchasePrice ?? e.rentalRate ?? 0, cell: (e) => (e.ownership === "so_huu" ? (e.purchasePrice ? <span className="whitespace-nowrap">{fmtNumber(e.purchasePrice / 1e9, 2)} tỷ</span> : <span className="text-slate-300">—</span>) : e.rentalRate ? <span className="whitespace-nowrap text-purple-700">{fmtNumber(e.rentalRate / 1e6, 1)} tr/ca</span> : <span className="text-slate-300">—</span>) },
     { key: "st", header: "Trạng thái", sortValue: (e) => e.status, cell: (e) => <StatusBadge map={EQUIPMENT_STATUS} value={e.status} /> },
     {
       key: "act", header: "Thao tác", cell: (e) => (
@@ -99,15 +105,16 @@ export default function EquipmentListPage() {
             ))}
           </div>
         </div>
-        <DataTable columns={cols} rows={rows} rowKey={(e) => e.id} loading={loading} onRowClick={(e) => navigate(`/equipment/${e.id}`)} resetKey={group + status + projectId + unit + own + kind}
+        <DataTable columns={cols} rows={rows} rowKey={(e) => e.id} loading={loading} onRowClick={(e) => navigate(`/equipment/${e.id}`)} resetKey={group + status + projectId + unit + own + kind + sort}
           searchText={(e) => `${e.code} ${e.name} ${e.plate} ${e.brand}`} searchPlaceholder="Tìm kiếm mã, tên XMTB..."
           selectionActions={can("equipment.edit") ? (ids, clear) => <Button size="sm" onClick={() => setDispatch({ ids, clear })}><Truck /> Điều động {ids.length} XMTB</Button> : undefined}
           toolbar={<>
             <FilterSelect label="Trạng thái" value={status} onChange={setStatus} allLabel="Tất cả trạng thái" options={Object.entries(EQUIPMENT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
             <FilterSelect label="Dự án" value={projectId} onChange={setProjectId} allLabel="Tất cả dự án" options={[{ value: "none", label: "Chưa phân bổ" }, ...activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }))]} />
-            <FilterSelect label="Đơn vị quản lý" value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.code }))} />
+            <FilterSelect label="Đơn vị quản lý" value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter(isUnit).map((d) => ({ value: d.id, label: d.code }))} />
             <FilterSelect value={own} onChange={setOwn} allLabel="Tất cả nguồn gốc" options={[{ value: "so_huu", label: "Sở hữu" }, { value: "thue_ngoai", label: "Thuê ngoài" }]} />
             <FilterSelect value={kind} onChange={setKind} allLabel="Tất cả loại" options={Object.entries(EQUIPMENT_KIND).map(([value, l]) => ({ value, label: l.label }))} />
+            <FilterSelect label="Sắp xếp" value={sort === "name" ? "name" : ""} onChange={(v) => setSort(v === "name" ? "name" : "updated")} allLabel="Mới cập nhật" options={[{ value: "name", label: "Tên A → Z" }]} />
           </>}
         />
       </Card>

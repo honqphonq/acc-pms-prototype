@@ -22,7 +22,7 @@ import { deleteProject } from "@/services/actions";
 import { CATEGORY_LABELS, PROJECT_HEALTH, PROJECT_STATUS } from "@/utils/constants";
 import { fmtDate, fmtNumber } from "@/utils/format";
 import type { Project } from "@/types";
-import { activeProjects } from "@/utils/labels";
+import { activeProjects, isUnit } from "@/utils/labels";
 
 export default function ProjectListPage() {
   const { db, run } = useDb();
@@ -63,10 +63,10 @@ export default function ProjectListPage() {
     { key: "time", header: "Thời gian", sortValue: (s) => s.project.startDate, cell: (s) => <span className="whitespace-nowrap text-xs text-slate-600">{fmtDate(s.project.startDate)} – {fmtDate(s.project.endDate)}</span> },
     { key: "value", header: "Giá trị HĐ (tỷ)", align: "right", sortValue: (s) => s.project.contractValue, cell: (s) => fmtNumber(s.project.contractValue / 1e9) },
     {
-      key: "progress", header: "Tiến độ", sortValue: (s) => s.spi ?? 2,
+      key: "progress", header: "Tiến độ", sortValue: (s) => s.actual - s.planned,
       cell: (s) => <ProjectProgress s={s} className="w-44" />,
     },
-    { key: "health", header: "Trạng thái", sortValue: (s) => s.spi ?? 2, cell: (s) => (PROJECT_HEALTH[s.health] ? <StatusBadge map={PROJECT_HEALTH} value={s.health} /> : <span className="text-slate-400">—</span>) },
+    { key: "health", header: "Trạng thái", sortValue: (s) => s.health, cell: (s) => (PROJECT_HEALTH[s.health] ? <StatusBadge map={PROJECT_HEALTH} value={s.health} /> : <span className="text-slate-400">—</span>) },
     { key: "status", header: "Giai đoạn", sortValue: (s) => s.project.status, cell: (s) => <StatusBadge map={PROJECT_STATUS} value={s.project.status} dot={false} /> },
     {
       key: "act", header: "", className: "w-10",
@@ -89,7 +89,7 @@ export default function ProjectListPage() {
   const filters = (
     <>
       <FilterSelect value={category} onChange={setCategory} allLabel="Tất cả loại dự án" options={Object.entries(CATEGORY_LABELS).map(([v, l]) => ({ value: v, label: l }))} />
-      <FilterSelect value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.code }))} />
+      <FilterSelect value={unit} onChange={setUnit} allLabel="Tất cả đơn vị" options={db.departments.filter(isUnit).map((d) => ({ value: d.id, label: d.code }))} />
       <FilterSelect value={status} onChange={setStatus} allLabel="Tất cả giai đoạn" options={Object.entries(PROJECT_STATUS).map(([v, l]) => ({ value: v, label: l.label }))} />
       <FilterSelect value={health} onChange={setHealth} allLabel="Tất cả trạng thái" options={Object.entries(PROJECT_HEALTH).map(([v, l]) => ({ value: v, label: l.label }))} />
     </>

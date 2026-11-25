@@ -33,7 +33,7 @@ export function fitsMachine(o: Operator | undefined, e: Equipment) {
   if (!o) return true;
   const L = (o.licenses ?? []).filter((l) => !l.expiry || l.expiry >= DEMO_TODAY);
   if (["Ô tô tự đổ", "Máy tưới nước"].includes(e.group)) return L.some((l) => l.kind === "gplx" && /^(C|D|E|FC)/.test(l.name));
-  const key = ({ "Máy rải bê tông": "rải", "Máy xúc": "xúc", "Máy ủi": "ủi", "Máy lu rung": "lu", "Máy cắt khe": "", "Cần trục tháp": "cần trục", "Trạm trộn BTXM": "trạm trộn" } as Record<string, string>)[e.group];
+  const key = ({ "Máy rải bê tông": "rải", "Máy xúc đào": "xúc", "Máy xúc lật": "xúc", "Máy ủi": "ủi", "Máy lu rung": "lu", "Máy cắt khe": "", "Cần trục tháp": "cần trục", "Trạm trộn BTXM": "trạm trộn" } as Record<string, string>)[e.group];
   return !key || L.some((l) => l.kind === "chung_chi" && l.name.toLowerCase().includes(key));
 }
 

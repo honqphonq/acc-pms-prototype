@@ -20,11 +20,11 @@ export interface LabelTone {
 
 export const ROLE_LABELS: Record<RoleKey, string> = {
   lanh_dao: "Lãnh đạo Tổng công ty",
-  phong_ktkt: "Phòng Kế hoạch - Kỹ thuật",
+  phong_ktkt: "Phòng Kinh tế - Kỹ thuật",
   chi_huy_truong: "Chỉ huy trưởng công trường",
   to_truong: "Tổ trưởng / Mũi trưởng",
   bp_vat_tu: "Bộ phận Vật tư",
-  phong_thiet_bi: "Phòng Thiết bị / BP Xe máy",
+  phong_thiet_bi: "Phòng Thiết bị - Công nghệ",
   ke_toan: "Tài chính - Kế toán",
   admin: "Quản trị hệ thống",
 };
@@ -53,16 +53,15 @@ export const PROJECT_STATUS: Record<ProjectStatus, LabelTone> = {
   hoan_thanh: { label: "Hoàn thành", tone: "success" },
 };
 
-export type ScheduleHealth = "dung_tien_do" | "nguy_co_cham" | "cham_tien_do" | "chua_bat_dau" | "hoan_thanh";
+export type ScheduleHealth = "dung_tien_do" | "cham_tien_do" | "chua_bat_dau" | "hoan_thanh";
 export const HEALTH: Record<ScheduleHealth, LabelTone> = {
   dung_tien_do: { label: "Đúng tiến độ", tone: "success" },
-  nguy_co_cham: { label: "Có nguy cơ chậm", tone: "warning" },
   cham_tien_do: { label: "Chậm tiến độ", tone: "danger" },
-  chua_bat_dau: { label: "Chưa khởi công", tone: "neutral" },
+  chua_bat_dau: { label: "Chưa bắt đầu", tone: "neutral" },
   hoan_thanh: { label: "Hoàn thành", tone: "success" },
 };
-/** Trạng thái dự án (chỉ 3 giá trị) – dự án chưa thi công / hoàn thành không có trạng thái */
-export const PROJECT_HEALTH: Record<string, LabelTone> = { dung_tien_do: HEALTH.dung_tien_do, nguy_co_cham: HEALTH.nguy_co_cham, cham_tien_do: HEALTH.cham_tien_do };
+/** Trạng thái dự án (3 giá trị): Chưa bắt đầu / Đúng tiến độ / Chậm tiến độ */
+export const PROJECT_HEALTH: Record<string, LabelTone> = { chua_bat_dau: HEALTH.chua_bat_dau, dung_tien_do: HEALTH.dung_tien_do, cham_tien_do: HEALTH.cham_tien_do };
 
 export const SETTLEMENT_STATUS: Record<SettlementStatus, LabelTone> = {
   chua_quyet_toan: { label: "Chưa quyết toán", tone: "neutral" },

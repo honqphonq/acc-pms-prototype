@@ -15,7 +15,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onCloseMobile }: { co
   const counts = {
     alerts: getAlerts(db).filter((a) => a.severity === "danger").length,
     approvals: db.materialRequests.filter((r) => r.status === "cho_duyet").length,
-    directives: db.directives.filter((d) => d.status !== "hoan_thanh" && d.assigneeId === user?.id).length,
+    directives: db.directives.filter((d) => (d.status === "dang_thuc_hien" && d.assigneeId === user?.id) || (d.status === "cho_review" && d.assignedBy === user?.id)).length,
   };
   const isActive = (to: string) => (to === "/" ? pathname === "/" : pathname.startsWith(to));
   const groupActive = (item: (typeof NAV)[number]) => isActive(item.to) || item.children?.some((c) => pathname.startsWith(c.to));

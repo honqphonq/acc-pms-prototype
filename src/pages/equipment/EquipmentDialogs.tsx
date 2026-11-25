@@ -13,9 +13,9 @@ import { DEMO_TODAY, addDays } from "@/utils/date";
 import { FileUploader } from "@/components/common/Attachments";
 import type { Attachment, Equipment } from "@/types";
 import { fuelUnit, meterUnit } from "@/services/selectors";
-import { activeProjects } from "@/utils/labels";
+import { activeProjects, isUnit } from "@/utils/labels";
 
-export const EQUIPMENT_GROUPS = ["Máy rải bê tông", "Máy xúc", "Máy ủi", "Máy lu rung", "Máy tưới nước", "Máy cắt khe", "Ô tô tự đổ", "Cần trục tháp", "Trạm trộn BTXM"];
+export const EQUIPMENT_GROUPS = ["Máy rải bê tông", "Máy rải BTN", "Máy xúc đào", "Máy xúc lật", "Máy ủi", "Máy san", "Máy lu rung", "Máy tưới nước", "Máy cắt khe", "Ô tô tự đổ", "Cần trục tháp", "Cần trục bánh lốp", "Máy khoan cọc nhồi", "Trạm trộn BTXM", "Trạm trộn BTN", "Máy phát điện"];
 
 type EqForm = Omit<Equipment, "id" | "maintenances">;
 export function EquipmentFormDialog({ open, onOpenChange, equipment }: { open: boolean; onOpenChange: (o: boolean) => void; equipment?: Equipment }) {
@@ -45,7 +45,9 @@ export function EquipmentFormDialog({ open, onOpenChange, equipment }: { open: b
           <FormField label={f.kind === "may_thiet_bi" ? "Số hiệu công tác" : "Biển đăng ký"}><Input value={f.plate} onChange={(e) => set("plate", e.target.value)} /></FormField>
           <FormField label="Hãng / model"><Input value={f.brand} onChange={(e) => set("brand", e.target.value)} /></FormField>
           <FormField label="Năm sản xuất"><Input type="number" value={f.year} onChange={(e) => set("year", Number(e.target.value))} /></FormField>
-          <FormField label="Đơn vị quản lý"><Select value={f.manageUnitId} onChange={(e) => set("manageUnitId", e.target.value)} options={db.departments.filter((d) => d.type === "cong_ty_con" || d.id === "d-tbcn").map((d) => ({ value: d.id, label: d.code }))} /></FormField>
+          <FormField label="Người sử dụng" hint="Nhân viên CMKT phụ trách chính"><Select value={f.operatorId ?? ""} onChange={(e) => set("operatorId", e.target.value || null)} placeholder="— Chưa giao —" options={db.operators.map((o) => ({ value: o.id, label: `${o.name} · ${o.phone}` }))} /></FormField>
+          {f.ownership === "so_huu" && <FormField label="Giá mua (VNĐ)"><Input type="number" value={f.purchasePrice ?? ""} onChange={(e) => set("purchasePrice", e.target.value ? Number(e.target.value) : undefined)} /></FormField>}
+          <FormField label="Đơn vị quản lý"><Select value={f.manageUnitId} onChange={(e) => set("manageUnitId", e.target.value)} options={db.departments.filter((d) => isUnit(d) || d.id === "d-tbcn").map((d) => ({ value: d.id, label: d.code }))} /></FormField>
           <FormField label="Loại" hint={f.kind === "may_thiet_bi" ? "Tính theo giờ máy" : "Tính theo km"}><Select value={f.kind} onChange={(e) => { const k = e.target.value as EqForm["kind"]; setF((x) => ({ ...x, kind: k, ...(k === "may_thiet_bi") !== (x.kind === "may_thiet_bi") ? (k === "may_thiet_bi" ? { maintenanceInterval: 250, fuelNorm: 15 } : { maintenanceInterval: 8000, fuelNorm: 35 }) : {} })); }} options={[{ value: "o_to", label: "Xe ô tô" }, { value: "xe_bien_do", label: "Xe biển đỏ" }, { value: "may_thiet_bi", label: "Máy thiết bị" }]} /></FormField>
           <FormField label={`Định mức nhiên liệu (${fuelUnit(f)})`}><Input type="number" value={f.fuelNorm} onChange={(e) => set("fuelNorm", Number(e.target.value))} /></FormField>
           <FormField label={`Chỉ số đồng hồ (${meterUnit(f)})`}><Input type="number" value={f.totalHours} onChange={(e) => set("totalHours", Number(e.target.value))} /></FormField>
@@ -87,14 +89,15 @@ export function DispatchDialog({ open, onOpenChange, equipmentIds, onDone }: { o
   const [decision, setDecision] = useState("");
   const [files, setFiles] = useState<Attachment[]>([]);
   const [reason, setReason] = useState("");
-  useEffect(() => { if (open) { setPid(""); setStart(DEMO_TODAY); setEnd(addDays(DEMO_TODAY, 90)); setDecision(""); setFiles([]); setReason(""); } }, [open]);
+  const [ops, setOps] = useState<Record<string, string>>({});
   const eqs = db.equipment.filter((e) => equipmentIds.includes(e.id));
+  useEffect(() => { if (open) { setPid(""); setStart(DEMO_TODAY); setEnd(addDays(DEMO_TODAY, 90)); setDecision(""); setFiles([]); setReason(""); setOps(Object.fromEntries(eqs.map((e) => [e.id, e.operatorId ?? ""]))); } }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
   const recall = pid === "__kho";
   const save = () => {
     if (!pid) return toast.error("Chọn nơi điều động đến");
     const list = eqs.filter((e) => e.status !== "ngung" && (recall ? !!e.currentProjectId : e.currentProjectId !== pid));
     if (!list.length) return toast.error(recall ? "Các máy đã chọn đang ở kho" : "Các máy đã chọn đang ở dự án này");
-    list.forEach((e) => run(dispatchEquipment, e.id, { toProjectId: recall ? null : pid, startDate: start, endDate: end, decisionNo: list.length > 1 ? "" : decision, files, reason }, user!.id));
+    list.forEach((e) => run(dispatchEquipment, e.id, { toProjectId: recall ? null : pid, startDate: start, endDate: end, decisionNo: list.length > 1 ? "" : decision, files, reason, operatorId: recall ? null : ops[e.id] || null }, user!.id));
     toast.success(recall ? `Đã thu hồi ${list.length} XMTB về kho TCT` : `Đã điều động ${list.length} XMTB đến ${db.projects.find((p) => p.id === pid)?.shortName}`);
     onOpenChange(false);
     onDone?.();
@@ -104,8 +107,14 @@ export function DispatchDialog({ open, onOpenChange, equipmentIds, onDone }: { o
       <DialogContent className="max-w-xl">
         <DialogHeader><DialogTitle>Điều động XMTB</DialogTitle><DialogDescription>Có hiệu lực ngay sau khi lưu</DialogDescription></DialogHeader>
         <DialogBody className="grid gap-3 sm:grid-cols-2">
-          <div className="max-h-36 space-y-1 overflow-y-auto rounded-md bg-slate-50 px-3 py-2 text-[12.5px] sm:col-span-2">
-            {eqs.map((e) => <div key={e.id} className="flex justify-between gap-3"><span><b>{e.code}</b> – {e.name}</span><span className="whitespace-nowrap text-slate-500">{db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "Kho TCT"}</span></div>)}
+          <div className="max-h-56 space-y-1.5 overflow-y-auto rounded-md bg-slate-50 px-3 py-2 text-[12.5px] sm:col-span-2">
+            {!recall && <div className="flex justify-between text-[11.5px] font-semibold uppercase text-slate-500"><span>XMTB · đang ở</span><span>Người sử dụng</span></div>}
+            {eqs.map((e) => (
+              <div key={e.id} className="flex items-center justify-between gap-3">
+                <span className="min-w-0 truncate"><b>{e.code}</b> – {e.name} <span className="text-slate-500">· {db.projects.find((p) => p.id === e.currentProjectId)?.shortName ?? "Kho TCT"}</span></span>
+                {!recall && <select value={ops[e.id] ?? ""} onChange={(ev) => setOps({ ...ops, [e.id]: ev.target.value })} className="h-8 w-48 shrink-0 rounded-md border border-slate-300 bg-white px-2 text-[12.5px]"><option value="">— Chưa giao —</option>{db.operators.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}</select>}
+              </div>
+            ))}
           </div>
           <FormField label="Điều động đến" required className="sm:col-span-2"><Select value={pid} onChange={(e) => setPid(e.target.value)} placeholder="— Chọn dự án hoặc thu hồi về kho —" options={[{ value: "__kho", label: "↩ Thu hồi về kho Tổng công ty" }, ...activeProjects(db).map((p) => ({ value: p.id, label: p.name }))]} /></FormField>
           <FormField label="Từ ngày"><Input type="date" value={start} onChange={(e) => setStart(e.target.value)} /></FormField>
@@ -113,7 +122,7 @@ export function DispatchDialog({ open, onOpenChange, equipmentIds, onDone }: { o
           <FormField label="Số quyết định" hint={eqs.length > 1 ? "Nhiều máy: hệ thống tự đánh số" : "Để trống: hệ thống tự đánh số"}><Input value={decision} disabled={eqs.length > 1} onChange={(e) => setDecision(e.target.value)} placeholder="QĐ-ĐĐ-2026-…" /></FormField>
           <FormField label="Lý do / nhiệm vụ"><Input value={reason} onChange={(e) => setReason(e.target.value)} /></FormField>
           <FormField label="File quyết định" className="sm:col-span-2"><FileUploader value={files} onChange={setFiles} label="Tải file quyết định" hint="PDF / ảnh – không bắt buộc" /></FormField>
-          {!recall && <div className="rounded-md bg-sky-50 px-3 py-2 text-xs text-sky-800 sm:col-span-2">Người vận hành được phân theo từng ca ở màn <b>Phân ca và nhật trình</b>.</div>}
+          {!recall && <div className="rounded-md bg-sky-50 px-3 py-2 text-xs text-sky-800 sm:col-span-2">Người sử dụng là nhân viên CMKT phụ trách chính; lịch vận hành từng ca vẫn ghi ở màn <b>Phân ca và nhật trình</b>.</div>}
         </DialogBody>
         <DialogFooter><Button variant="outline" onClick={() => onOpenChange(false)}>Hủy</Button><Button onClick={save}>{recall ? "Thu hồi" : "Điều động"}</Button></DialogFooter>
       </DialogContent>

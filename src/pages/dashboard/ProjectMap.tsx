@@ -15,11 +15,11 @@ import VN_GEO from "@/data/vn-geo.json";
 import { cn } from "@/utils/cn";
 import type { ProjectStats } from "@/services/selectors";
 
-const COLOR: Record<string, string> = { cham_tien_do: "#DC2626", nguy_co_cham: "#F59E0B", dung_tien_do: "#16A34A", hoan_thanh: "#2563EB", chua_bat_dau: "#64748B" };
-const RANK: Record<string, number> = { cham_tien_do: 0, nguy_co_cham: 1, dung_tien_do: 2, chua_bat_dau: 3, hoan_thanh: 4 };
+const COLOR: Record<string, string> = { cham_tien_do: "#DC2626", dung_tien_do: "#16A34A", hoan_thanh: "#2563EB", chua_bat_dau: "#64748B" };
+const RANK: Record<string, number> = { cham_tien_do: 0, dung_tien_do: 2, chua_bat_dau: 3, hoan_thanh: 4 };
 const VN_BOUNDS = L.latLngBounds([8.3, 102.1], [23.4, 114.6]);
 const GROUP_ZOOM = 7; // dưới mức zoom này gộp dự án theo tỉnh; từ mức này hiện tên dự án
-const LEGEND = ["dung_tien_do", "nguy_co_cham", "cham_tien_do"] as const;
+const LEGEND = ["dung_tien_do", "cham_tien_do"] as const;
 // Quần đảo Hoàng Sa (TP Đà Nẵng) và Trường Sa (tỉnh Khánh Hòa)
 const ISLANDS: { name: string; label: [number, number]; dots: [number, number][] }[] = [
   { name: "QĐ. Hoàng Sa", label: [16.5, 112.0], dots: [[16.83, 112.33], [16.53, 111.6], [16.45, 111.72], [16.67, 112.73], [15.78, 111.2], [16.97, 112.27], [16.25, 112.0]] },
@@ -109,7 +109,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
   const inProv = province ? items.filter((s) => s.project.province === province) : [];
   const regions = (["bac", "trung", "nam"] as const).map((r) => {
     const list = items.filter((s) => provinceOf(s.project.province)?.region === r);
-    return { r, n: list.length, value: list.reduce((x, s) => x + s.project.contractValue, 0), late: list.filter((s) => s.health === "cham_tien_do" || s.health === "nguy_co_cham").length, provinces: new Set(list.map((s) => s.project.province)).size };
+    return { r, n: list.length, value: list.reduce((x, s) => x + s.project.contractValue, 0), late: list.filter((s) => s.health === "cham_tien_do").length, provinces: new Set(list.map((s) => s.project.province)).size };
   });
   const reset = () => { setSel(null); setProvince(null); mapRef.current?.flyToBounds(VN_BOUNDS, { padding: [6, 6], duration: 0.6 }); };
   const focus = (s: ProjectStats) => { setSel(s.project.id); setProvince(s.project.province ?? null); mapRef.current?.flyTo([s.project.lat!, s.project.lng!], Math.max(zoom, 9), { duration: 0.6 }); };
@@ -139,7 +139,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
                 <div><dt className="text-[11.5px] text-slate-500">Đơn vị thi công</dt><dd className="font-medium text-slate-900">{db.departments.find((d) => d.id === cur.project.unitId)?.name}</dd></div>
                 <div><dt className="text-[11.5px] text-slate-500">Giá trị hợp đồng</dt><dd className="text-[18px] font-bold text-primary">{fmtNumber(cur.project.contractValue / 1e9, 1)} <span className="text-[12px] font-medium text-slate-500">tỷ đồng</span></dd></div>
                 <div><dt className="text-[11.5px] text-slate-500">Thời gian thực hiện</dt><dd className="font-medium text-slate-900">{fmtDate(cur.project.startDate)} – {fmtDate(cur.project.endDate)}</dd></div>
-                <div><dt className="mb-1 flex justify-between text-[11.5px] text-slate-500"><span>Tiến độ thực hiện</span><b className="text-slate-800">{fmtPct(cur.actual)}</b></dt><dd><Progress value={cur.actual} tone={cur.health === "cham_tien_do" ? "danger" : cur.health === "nguy_co_cham" ? "warning" : "success"} className="h-2" /></dd></div>
+                <div><dt className="mb-1 flex justify-between text-[11.5px] text-slate-500"><span>Tiến độ thực hiện</span><b className="text-slate-800">{fmtPct(cur.actual)}</b></dt><dd><Progress value={cur.actual} tone={cur.health === "cham_tien_do" ? "danger" : "success"} className="h-2" /></dd></div>
               </dl>
               <Button className="w-full" onClick={() => navigate(`/projects/${cur.project.id}`)}>Mở dự án <ArrowRight /></Button>
             </div>
@@ -163,7 +163,7 @@ export function ProjectMap({ stats, className }: { stats: ProjectStats[]; classN
                 <div key={g.r} className="rounded-lg border p-3">
                   <div className="flex items-center justify-between"><span className="text-[13px] font-bold">{REGION_LABEL[g.r]}</span><span className="text-[12px] text-slate-500">{g.provinces} tỉnh, thành</span></div>
                   <div className="mt-1 flex items-baseline justify-between"><span className="text-[13px]"><b className="text-[18px]">{g.n}</b> dự án</span><span className="text-[13px] font-semibold text-primary">{fmtNumber(g.value / 1e9, 0)} tỷ</span></div>
-                  {g.late > 0 && <div className="mt-0.5 text-[12px] text-rose-600">{g.late} dự án chậm / có nguy cơ chậm</div>}
+                  {g.late > 0 && <div className="mt-0.5 text-[12px] text-rose-600">{g.late} dự án chậm tiến độ</div>}
                 </div>
               ))}
               <div className="flex flex-wrap gap-1">

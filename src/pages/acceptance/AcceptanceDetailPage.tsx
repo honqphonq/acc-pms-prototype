@@ -45,7 +45,7 @@ export default function AcceptanceDetailPage() {
   const makePayment = () => {
     const nextDb = run(createPayment, { projectId: a.projectId, acceptanceIds: [a.id], title: `Thanh toán ${a.phase.toLowerCase()} – ${a.title.replace("Nghiệm thu ", "")}`, amount: Math.round(value), retention: Math.round(value * 0.05), dueDate: addDays(DEMO_TODAY, 45) }, user!.id);
     toast.success("Đã lập hồ sơ thanh toán", { description: nextDb.paymentRecords[0].code });
-    navigate(`/payments?id=${nextDb.paymentRecords[0].id}`);
+    navigate(`/finance/payments?id=${nextDb.paymentRecords[0].id}`);
   };
 
   return (
@@ -61,7 +61,7 @@ export default function AcceptanceDetailPage() {
           {next && !canAdvance && <span className="rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-700">Bước tiếp theo: {next.action} (cần vai trò phù hợp)</span>}
           {(a.status === "cho_tvgs" || a.status === "cho_cdt") && can("acceptance.approve") && <Button variant="outline" onClick={() => { setNote(""); setReturnOpen(true); }}><Undo2 /> Trả lại</Button>}
           {a.status === "da_nghiem_thu" && !payment && (can("payment.edit") || can("acceptance.edit")) && <Button variant="navy" onClick={makePayment}><Receipt /> Lập hồ sơ thanh toán</Button>}
-          {payment && <Button variant="outline" onClick={() => navigate(`/payments?id=${payment.id}`)}><Receipt /> {payment.code}</Button>}
+          {payment && <Button variant="outline" onClick={() => navigate(`/finance/payments?id=${payment.id}`)}><Receipt /> {payment.code}</Button>}
           {editable && <Button variant="ghost" className="text-rose-600" onClick={async () => { if (await confirm({ title: "Xóa hồ sơ nghiệm thu?", destructive: true, confirmText: "Xóa" })) { run(deleteAcceptance, a.id); toast.success("Đã xóa"); navigate("/acceptance"); } }}><Trash2 /></Button>}
         </div>
       </div>

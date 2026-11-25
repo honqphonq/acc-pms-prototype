@@ -36,7 +36,7 @@ export default function StaffPage() {
       searchText={(s) => `${s.code} ${s.name} ${s.position} ${s.team} ${s.phone}`}
       filters={[
         { label: "Tất cả dự án", options: projectOptions, test: (s, v) => s.projectId === v, initial: new URLSearchParams(window.location.search).get("project") ?? "p01" },
-        { label: "Loại nhân sự", options: toOptions(STAFF_TYPE), test: (s, v) => s.type === v },
+        { label: "Loại chức danh", options: toOptions(STAFF_TYPE), test: (s, v) => s.type === v },
         { label: "Tổ đội", options: teams, test: (s, v) => s.team === v },
         { label: "Trạng thái", options: toOptions(STAFF_STATUS), test: (s, v) => s.status === v },
         ...STAFF_DOCS.map((d) => ({ label: d.label, options: docOptions, test: (s: SiteStaff, v: string) => (v === "co" ? docState(s, d.key) === "co" : docState(s, d.key) !== "co") })),
@@ -48,8 +48,8 @@ export default function StaffPage() {
         { key: "n", header: "Họ và tên", sticky: true, sortValue: (s) => s.name, cell: (s) => <span className="whitespace-nowrap font-medium text-slate-800">{s.name}</span> },
         { key: "code", header: "Mã", sortValue: (s) => s.code, cell: (s) => <span className="whitespace-nowrap text-slate-600">{s.code}</span> },
         { key: "ph", header: "Điện thoại", cell: (s) => <span className="whitespace-nowrap">{s.phone}</span> },
-        { key: "t", header: "Loại", sortValue: (s) => s.type, filterValue: (s) => STAFF_TYPE[s.type]?.label ?? s.type, cell: (s) => <StatusBadge map={STAFF_TYPE} value={s.type} dot={false} /> },
-        { key: "p", header: "Chức danh / nghề", cell: (s) => <span className="whitespace-nowrap">{s.position}</span> },
+        { key: "t", header: "Loại chức danh", sortValue: (s) => s.type, filterValue: (s) => STAFF_TYPE[s.type]?.label ?? s.type, cell: (s) => <StatusBadge map={STAFF_TYPE} value={s.type} dot={false} /> },
+        { key: "p", header: "Chức danh", cell: (s) => <span className="whitespace-nowrap">{s.position}</span> },
         { key: "team", header: "Tổ đội", sortValue: (s) => s.team, cell: (s) => <span className="whitespace-nowrap">{s.team}</span> },
         { key: "j", header: "Ngày vào", sortValue: (s) => s.joinDate, cell: (s) => <span className="whitespace-nowrap">{fmtDate(s.joinDate)}</span> },
         { key: "s", header: "Trạng thái", filterValue: (s) => STAFF_STATUS[s.status]?.label ?? s.status, cell: (s) => <StatusBadge map={STAFF_STATUS} value={s.status} /> },
@@ -70,8 +70,8 @@ export default function StaffPage() {
       fields={[
         { key: "name", label: "Họ và tên", required: true },
         { key: "projectId", label: "Dự án", type: "select", options: projectOptions, required: true },
-        { key: "type", label: "Loại nhân sự", type: "select", options: toOptions(STAFF_TYPE) },
-        { key: "position", label: "Chức danh / nghề nghiệp" },
+        { key: "type", label: "Loại chức danh", type: "select", options: toOptions(STAFF_TYPE) },
+        { key: "position", label: "Chức danh" },
         { key: "team", label: "Tổ đội" },
         { key: "phone", label: "Số điện thoại" },
         { key: "idNo", label: "Số CCCD" },

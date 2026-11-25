@@ -109,7 +109,7 @@ export default function ProjectDetailPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Button variant="navy" onClick={() => navigate(`/construction/plan/${project.id}`)}><CalendarRange /> Tiến độ thi công</Button>
-            <Button variant="outline" onClick={() => navigate(`/construction/value-report?project=${project.id}`)}><FileBarChart /> Giá trị thực hiện</Button>
+            <Button variant="outline" onClick={() => navigate(`/finance/value?project=${project.id}`)}><FileBarChart /> Giá trị thực hiện</Button>
             <Button variant="outline" onClick={() => toast.info("Chức năng “Xuất hồ sơ dự án” đang phát triển")}><Download /> Xuất hồ sơ dự án</Button>
             {can("project.edit") && <Button variant="outline" size="icon" onClick={() => setEditOpen(true)} title="Chỉnh sửa"><Pencil /></Button>}
           </div>
@@ -137,7 +137,7 @@ export default function ProjectDetailPage() {
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Số công việc" value={s.tasksTotal} unit="công việc" icon={<ClipboardList />} tone="info" progress={s.tasksTotal ? s.tasksDone / s.tasksTotal : 0} sub={<>{s.tasksDone} hoàn thành ({fmtPct(s.tasksTotal ? s.tasksDone / s.tasksTotal : 0)}) · {s.tasksOverdue > 0 ? <Badge tone="danger">{s.tasksOverdue} quá hạn</Badge> : "0 quá hạn"}</>} />
-        <KpiCard label="Tiến độ thực hiện" value={fmtPct(s.actual)} unit="hoàn thành" icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : "success"} progress={s.actual} marker={s.planned} sub={<>{s.spi !== null ? <b className={s.health === "cham_tien_do" ? "text-rose-600" : s.health === "nguy_co_cham" ? "text-amber-600" : "text-emerald-600"}>{fmtPct(s.spi, 0)} so với kế hoạch</b> : "Chưa đến kỳ kế hoạch"} · kế hoạch đến hôm nay {fmtPct(s.planned)} (vạch đen)</>} />
+        <KpiCard label="Tiến độ thực hiện" value={fmtPct(s.actual)} unit="hoàn thành" icon={<TrendingUp />} tone={s.health === "cham_tien_do" ? "danger" : "success"} progress={s.actual} marker={s.planned} sub={<>Kế hoạch đến hôm nay {fmtPct(s.planned)} (vạch đen){!s.measured && " · chưa qua 1/3 thời gian, chưa đo tiến độ"}</>} />
         <KpiCard onClick={() => setTab("contracts")} label="Giá trị hợp đồng" value={fmtNumber(project.contractValue / 1e9, 0)} unit="tỷ đồng" icon={<Wallet />} tone="primary" progress={s.execValue / (project.contractValue || 1)} sub={`Giá trị khối lượng thực hiện ${fmtNumber(s.execValue / 1e9)} tỷ (${fmtPct(s.execValue / (project.contractValue || 1))})`} />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtNumber(s.acceptedValue / 1e9)} unit="tỷ đồng" icon={<CheckCircle2 />} tone="warning" progress={s.acceptedValue / (project.contractValue || 1)} sub={`${fmtPct(s.acceptedValue / (project.contractValue || 1))} giá trị HĐ · chờ duyệt ${fmtNumber(s.pendingAcceptanceValue / 1e9)} tỷ`} />
         <KpiCard label="Chi phí thực hiện" value={fmtNumber(s.cost / 1e9)} unit="tỷ đồng" icon={<BarChart3 />} tone="navy" progress={s.cost / (project.budget || 1)} sub={`${fmtPct(s.cost / (project.budget || 1))} ngân sách dự kiến ${fmtNumber(project.budget / 1e9, 0)} tỷ`} />

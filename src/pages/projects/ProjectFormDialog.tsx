@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { isUnit } from "@/utils/labels";
 import { toast } from "sonner";
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -97,7 +98,7 @@ export function ProjectFormDialog({ open, onOpenChange, project, onSaved }: { op
           <div>
             <div className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đơn vị thực hiện</div>
             <div className="grid gap-3 md:grid-cols-3">
-              <FormField label="Đơn vị thành viên"><Select value={f.unitId} onChange={(e) => set("unitId", e.target.value)} options={db.departments.filter((d) => d.type === "cong_ty_con").map((d) => ({ value: d.id, label: d.name }))} /></FormField>
+              <FormField label="Đơn vị thành viên"><Select value={f.unitId} onChange={(e) => set("unitId", e.target.value)} options={db.departments.filter(isUnit).map((d) => ({ value: d.id, label: d.name }))} /></FormField>
               <FormField label="Chỉ huy trưởng công trường"><Select value={f.commanderId} onChange={(e) => set("commanderId", e.target.value)} options={commanders.map((u) => ({ value: u.id, label: u.name }))} /></FormField>
               <FormField label="Nhà thầu thi công"><Input value={f.contractor} onChange={(e) => set("contractor", e.target.value)} /></FormField>
               <FormField label="Mô tả" className="md:col-span-3"><Textarea value={f.description} onChange={(e) => set("description", e.target.value)} /></FormField>

@@ -23,7 +23,7 @@ const ALL: Permission[] = ["project.edit", "project.approve", "plan.edit", "prog
 
 export const ROLE_PERMISSIONS: Record<RoleKey, Permission[]> = {
   lanh_dao: ALL, // tài khoản demo chính – toàn quyền
-  phong_ktkt: ["project.edit", "plan.edit", "progress.update", "log.confirm", "acceptance.edit", "acceptance.approve", "equipment.dispatch.request"],
+  phong_ktkt: ["project.edit", "progress.update", "log.confirm", "acceptance.edit", "acceptance.approve", "equipment.dispatch.request"],
   chi_huy_truong: ["plan.edit", "progress.update", "log.confirm", "material.request", "material.approve", "equipment.dispatch.request", "acceptance.edit", "stock.move"],
   to_truong: ["progress.update", "material.request"],
   bp_vat_tu: ["material.request", "material.purchase", "stock.move"],
@@ -37,7 +37,7 @@ export const hasPermission = (role: RoleKey | undefined, p: Permission) => !!rol
 export const PERMISSION_LABELS: Record<Permission, string> = {
   "project.edit": "Tạo / sửa dự án",
   "project.approve": "Phê duyệt nhận thi công",
-  "plan.edit": "Lập, phân giao kế hoạch",
+  "plan.edit": "Lập, điều chỉnh kế hoạch tiến độ (Chỉ huy trưởng)",
   "progress.update": "Cập nhật khối lượng, nhật ký",
   "log.confirm": "Xác nhận nhật ký",
   "material.request": "Lập đề xuất vật tư",

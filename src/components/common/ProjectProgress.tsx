@@ -6,7 +6,7 @@ import { fmtPct } from "@/utils/format";
 import { cn } from "@/utils/cn";
 
 export const healthTone = (h: ProjectStats["health"]) =>
-  h === "cham_tien_do" ? "danger" : h === "nguy_co_cham" ? "warning" : h === "chua_bat_dau" ? "navy" : "success";
+  h === "cham_tien_do" ? "danger" : h === "chua_bat_dau" ? "navy" : "success";
 
 /**
  * Tiến độ dự án: % hoàn thành (so với tổng khối lượng) + thanh có vạch đen = mức kế hoạch đến hôm nay.
@@ -24,12 +24,11 @@ export function ProjectProgress({ s, className }: { s: ProjectStats; className?:
       <PopoverContent className="w-72 p-3 text-[12.5px]" onClick={(e) => e.stopPropagation()}>
         <div className="mb-2 font-semibold text-slate-800">{s.project.shortName}</div>
         <div className="space-y-1 text-slate-600">
-          <div className="flex justify-between"><span>Hoàn thành (tổng khối lượng)</span><b className="text-slate-800">{fmtPct(s.actual)}</b></div>
+          <div className="flex justify-between"><span>Hoàn thành (trung bình các đầu việc)</span><b className="text-slate-800">{fmtPct(s.actual)}</b></div>
           <div className="flex justify-between"><span>Kế hoạch đến hôm nay (vạch đen)</span><b className="text-slate-800">{fmtPct(s.planned)}</b></div>
-          {s.spi !== null && <div className="flex justify-between"><span>So với kế hoạch</span><b className="text-slate-800">{fmtPct(s.spi, 0)}</b></div>}
           <div className="flex justify-between"><span>Trạng thái</span><b className="text-slate-800">{PROJECT_HEALTH[s.health]?.label ?? "—"}</b></div>
         </div>
-        <p className="mt-2 border-t pt-2 text-[11.5px] text-slate-500">≥ 95% kế hoạch: đúng tiến độ · 85% – dưới 95%: có nguy cơ chậm · dưới 85%: chậm tiến độ.</p>
+        <p className="mt-2 border-t pt-2 text-[11.5px] text-slate-500">{s.measured ? "Hoàn thành ≥ kế hoạch: đúng tiến độ · thấp hơn kế hoạch: chậm tiến độ." : "Dự án chưa qua 1/3 thời gian thi công nên luôn tính là đúng tiến độ."}</p>
       </PopoverContent>
     </Popover>
   );

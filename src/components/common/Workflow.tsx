@@ -1,9 +1,7 @@
 import { Check } from "lucide-react";
 import type { WorkflowEvent } from "@/types";
-import { useDb } from "@/hooks/useDb";
-import { fmtDateTime } from "@/utils/format";
 import { cn } from "@/utils/cn";
-import { Avatar } from "./UserAvatar";
+import { ActivityLog, type ActivityItem } from "./ActivityLog";
 
 /** Thanh các bước quy trình (stepper) */
 export function Stepper({ steps, current, failed }: { steps: string[]; current: number; failed?: boolean }) {
@@ -37,29 +35,12 @@ export function Stepper({ steps, current, failed }: { steps: string[]; current: 
   );
 }
 
-/** Lịch sử xử lý */
+/** Lịch sử xử lý – cùng kiểu "Lịch sử hoạt động" của Công việc điều hành (nhóm theo ngày, Người A làm gì · giờ) */
 export function Timeline({ events }: { events: WorkflowEvent[] }) {
-  const { db } = useDb();
-  return (
-    <ol className="relative space-y-4 border-l border-slate-200 pl-5">
-      {[...events].reverse().map((e, i) => {
-        const u = db.users.find((x) => x.id === e.byId);
-        return (
-          <li key={i} className="relative">
-            <span className={cn("absolute -left-[27px] top-0.5 h-3 w-3 rounded-full border-2 border-white", i === 0 ? "bg-primary" : "bg-slate-300")} />
-            <div className="flex flex-wrap items-center gap-x-2 text-[13px]">
-              <span className="font-medium text-slate-800">{e.action}</span>
-              <span className="text-[11px] text-slate-400">{fmtDateTime(e.at)}</span>
-            </div>
-            {u && (
-              <div className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
-                <Avatar name={u.name} size="xs" /> {u.name} · {u.title}
-              </div>
-            )}
-            {e.note && <div className="mt-1.5 rounded-md bg-slate-50 px-2.5 py-1.5 text-xs text-slate-600">{e.note}</div>}
-          </li>
-        );
-      })}
-    </ol>
-  );
+  const items: ActivityItem[] = events.map((e, i) => ({
+    id: String(i), at: e.at, userId: e.byId,
+    text: <>{/^\p{Lu}\p{Ll}/u.test(e.action) ? e.action.charAt(0).toLowerCase() + e.action.slice(1) : e.action}</>,
+    extra: e.note ? <div className="rounded-md bg-slate-50 px-2.5 py-1.5 text-[12.5px] text-slate-600">{e.note}</div> : undefined,
+  }));
+  return <ActivityLog items={items} />;
 }

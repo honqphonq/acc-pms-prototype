@@ -16,70 +16,71 @@ interface Scenario { no: number; title: string; role: RoleKey; userId: string; g
 
 const SCENARIOS: Scenario[] = [
   {
-    no: 1, title: "Ban lãnh đạo giám sát dự án", role: "lanh_dao", userId: "u01", goal: "Nắm tình hình các dự án, phát hiện dự án/hạng mục chậm tiến độ và các cảnh báo.",
+    no: 1, title: "Ban lãnh đạo giám sát dự án", role: "lanh_dao", userId: "u01", goal: "Nắm tình hình các dự án, dự án đúng / chậm tiến độ, lãi – lỗ theo hợp đồng, chi phí, nghiệm thu và máy móc thiết bị.",
     steps: [
-      { text: "Mở Trang chủ – xem chỉ số tổng hợp, tỷ lệ đúng / nguy cơ / chậm tiến độ, tình trạng máy móc thiết bị", to: "/" },
-      { text: "Mở dự án Sân bay Gia Bình (Chậm tiến độ – BTXM M150 lòng đường CHC zone R4B quá hạn 17 ngày)", to: "/projects/p01" },
-      { text: "Xem Tiến độ thi công dạng Gantt theo mẫu tiến độ tổng thể: thanh tổng hợp, liên kết công việc, đường “Hôm nay”", to: "/construction/plan/p01" },
-      { text: "Bấm công việc [39] để xem chi tiết, liên kết công việc liền trước / kế tiếp và lịch sử nhật ký", to: "/construction/plan/p01/task/t-p01-039" },
+      { text: "Trang chủ: trạng thái dự án (Chưa bắt đầu / Đúng tiến độ / Chậm tiến độ), biểu đồ Hợp đồng – Chi phí – Nghiệm thu theo dự án (xếp theo lãi), số lượng XMTB theo loại", to: "/" },
+      { text: "Danh sách dự án: bấm thanh tiến độ để xem % hoàn thành, % kế hoạch đến hôm nay và lý do trạng thái", to: "/projects" },
+      { text: "Tiến độ Gantt SB Gia Bình: thanh kế hoạch (đen) và thanh thực tế (màu) trên từng dòng, liên kết công việc, cột Hoàn thành thực tế", to: "/construction/plan/p01" },
+      { text: "Công việc điều hành: mở CV-003 đang “Chờ review” → Đạt hoặc Yêu cầu làm lại", to: "/directives?id=cv03" },
     ],
   },
   {
     no: 2, title: "Cập nhật tiến độ thi công", role: "to_truong", userId: "u08", goal: "Tổ trưởng cập nhật khối lượng thực hiện, ảnh hiện trường; tiến độ tự động tính lại trên Gantt và Trang chủ.",
     steps: [
-      { text: "Mở Tiến độ thi công SB Gia Bình → hạng mục B. Kết cấu đường cất hạ cánh → Lòng đường CHC zone R2", to: "/construction/plan/p01" },
       { text: "Mở công việc [10] Thi công BTXM M350/45 dày 40cm (đang 88%)", to: "/construction/plan/p01/task/t-p01-010" },
-      { text: "Nhập 600 m³ thực hiện trong ngày, nội dung, nhân công, ảnh hiện trường → Lưu: lũy kế 88% → 91,7%; lịch sử cập nhật theo ngày sửa / xóa được" },
-      { text: "Đổi vai trò Chỉ huy trưởng → đánh giá chất lượng / nghiệm thu nội bộ công việc ngay trên màn hình chi tiết" },
-      { text: "Quay lại Gantt: thanh công việc, nhóm và tổng tiến độ được tính lại", to: "/construction/plan/p01" },
+      { text: "Nhập khối lượng thực hiện trong ngày, nội dung, nhân công, ảnh → Lưu: Lịch sử hoạt động ghi lại lần cập nhật" },
+      { text: "Quay lại Gantt: % công việc, nhóm (trung bình cộng các việc con) và tổng tiến độ được tính lại", to: "/construction/plan/p01" },
     ],
   },
   {
     no: 3, title: "Quản lý vật tư vật liệu", role: "bp_vat_tu", userId: "u10", goal: "Mỗi dự án là một kho: tồn kho, định mức, cảnh báo sắp hết → đề xuất → nhập / xuất kho (phiếu nhiều dòng) → kiểm kê.",
     steps: [
       { text: "Quản lý vật tư vật liệu → chọn kho Sân bay Gia Bình: BTN C19, matit dưới tồn tối thiểu; nilon sắp hết", to: "/materials/stock/p01" },
-      { text: "Bấm “Đề xuất mua” ở dòng BTN C19: gợi ý vật tư kèm định mức, tồn kho, đơn giá → Gửi" },
       { text: "CHT phê duyệt đề xuất “BTN C19 rải thảm lề CHC zone R2”", to: "/materials/stock/p01?tab=de_xuat" },
-      { text: "Tab Phiếu nhập: mở phiếu chờ xác nhận, đối chiếu chứng từ (lệch 12 tấn) → Xác nhận nhập kho", to: "/materials/stock/p01?tab=nhap" },
-      { text: "Thao tác ▾ → Xuất kho / Điều chuyển kho (phiếu nhiều dòng); bấm một vật tư để xem thẻ kho" },
-      { text: "Thao tác ▾ → Kiểm kê: ghi nhận chênh lệch, điều chỉnh tồn kho" },
+      { text: "Tab Phiếu nhập: mở phiếu chờ xác nhận, đối chiếu chứng từ → Xác nhận nhập kho", to: "/materials/stock/p01?tab=nhap" },
     ],
   },
   {
-    no: 4, title: "Quản lý xe máy thiết bị", role: "phong_thiet_bi", userId: "u12", goal: "Danh mục XMTB có hình ảnh, điều động về dự án, phân ca – nhật trình, bảo dưỡng và cảnh báo hồ sơ.",
+    no: 4, title: "Quản lý xe máy thiết bị", role: "phong_thiet_bi", userId: "u12", goal: "Danh mục XMTB có hình ảnh, người sử dụng, giá mua / đơn giá thuê; điều động; phân ca – nhật trình; bảo dưỡng.",
     steps: [
-      { text: "Danh mục XMTB: lọc ô tô / xe biển đỏ / máy thiết bị, nguồn gốc sở hữu / thuê ngoài; mở máy rải bê tông xem hình ảnh", to: "/equipment/list" },
-      { text: "Điều động XMTB ngay trên Danh mục XMTB (một hoặc nhiều máy, có hiệu lực ngay); thu hồi về kho TCT", to: "/equipment/list" },
-      { text: "Phân ca và nhật trình: xếp nhân viên CMKT cho từng ca, nhập nhật trình cuối ca (giờ máy, km, nhiên liệu)", to: "/equipment/shifts" },
-      { text: "Bảo dưỡng: khối Cảnh báo XMTB – đến hạn bảo dưỡng, hết hạn kiểm định / bảo hiểm, thiếu CM chủ sở hữu", to: "/equipment/maintenance" },
-      { text: "Nhân viên CMKT: lọc theo giấy phép & chứng chỉ còn hạn", to: "/equipment/operators" },
+      { text: "Danh mục XMTB: sắp xếp Mới cập nhật / Tên A → Z; cột Người sử dụng, Giá mua / Đơn giá thuê", to: "/equipment/list" },
+      { text: "Tick nhiều máy → Điều động: chọn dự án và người sử dụng cho từng máy, có hiệu lực ngay", to: "/equipment/list" },
+      { text: "Phân ca và nhật trình theo tháng / tuần", to: "/equipment/shifts" },
+      { text: "Bảo dưỡng: cảnh báo đến hạn theo giờ máy / km hoặc theo tháng", to: "/equipment/maintenance" },
     ],
   },
   {
-    no: 5, title: "Phương án, hồ sơ & nhân sự thi công", role: "phong_ktkt", userId: "u03", goal: "Góp ý, điều chỉnh phương án tổ chức thi công; quản lý hồ sơ thi công nhiều cấp và nhân sự công trường.",
+    no: 5, title: "Phương án, hồ sơ & nhân sự thi công", role: "phong_ktkt", userId: "u03", goal: "Tải phương án, góp ý, lưu lịch sử các lần thay đổi file (không phê duyệt trên phần mềm); hồ sơ và nhân sự công trường.",
     steps: [
-      { text: "Phương án tổ chức thi công SB Gia Bình: mở “Biện pháp thi công BTXM M350…” → góp ý → phê duyệt", to: "/construction/methods" },
-      { text: "Điều chỉnh phương án → hệ thống tạo phiên bản mới, lưu lịch sử phiên bản" },
-      { text: "Hồ sơ thi công: thư mục nhiều cấp (bản vẽ, thí nghiệm, nghiệm thu, ATVSLĐ); tải lên, cập nhật phiên bản", to: "/construction/documents" },
-      { text: "Nhân sự thi công: lọc theo tổ đội, cảnh báo thiếu thẻ an toàn / quá hạn khám sức khỏe", to: "/construction/staff" },
+      { text: "Phương án TCTC: mở phương án → Tải bản mới (bản cũ tự lưu) · góp ý · thêm người theo dõi · lịch sử hoạt động", to: "/construction/methods" },
+      { text: "Hồ sơ thi công: thư mục nhiều cấp, tải lên tài liệu", to: "/construction/documents" },
+      { text: "Nhân sự thi công: lọc theo loại chức danh, giấy tờ Có / Không", to: "/construction/staff" },
+    ],
+  },
+  {
+    no: 6, title: "Tài chính kế toán", role: "ke_toan", userId: "u14", goal: "Nhập tay / import số liệu từ phần mềm kế toán; tự tính, đối chiếu và báo cáo.",
+    steps: [
+      { text: "Dự toán thi công: bảng công tác theo hạng mục (mã định mức, KL, đơn giá VL/NC/MTC), import Excel có kiểm tra lỗi, ghép với công việc tiến độ", to: "/finance/estimate" },
+      { text: "Chi phí tập hợp: chứng từ theo tháng, 4 khoản mục NVLTT / NCTT / CPMTC / CPSXC, cộng tháng & lũy kế, so với dự toán", to: "/finance/costs" },
+      { text: "Hồ sơ thanh toán với CĐT: tạm ứng / thanh toán, ghi nhận đã thu, còn phải thu theo hợp đồng", to: "/finance/payments" },
+      { text: "Giá trị khối lượng thi công: KL thực tế × đơn giá HĐ theo kỳ, chốt kỳ, đối chiếu thực hiện – nghiệm thu – thanh toán", to: "/finance/value" },
+      { text: "Công nợ thầu phụ, NCC: (3) đã cung cấp, (4) đã xuất hóa đơn, (5) đã thanh toán → (6), (7); nhắc đến hạn / quá hạn", to: "/finance/debts" },
     ],
   },
 ];
 
 const ASSUMPTIONS = [
   "Ngày dữ liệu demo cố định 14/11/2026 để kịch bản trình diễn luôn nhất quán.",
-  "Dự án Sân bay Gia Bình dùng tiến độ thi công chi tiết thật (100 dòng, 28/04/2026 – 25/04/2027); khối lượng thực hiện, đơn giá là giả lập. Các dự án khác là dữ liệu minh họa rút gọn.",
-  "Phân hệ Tài chính kế toán (dự toán, chi phí, thanh toán CĐT, giá trị khối lượng, công nợ) sẽ triển khai ở phiên bản tiếp theo.",
+  "Dự án Sân bay Gia Bình dùng tiến độ thi công chi tiết thật (28/04/2026 – 25/04/2027); khối lượng thực hiện là giả lập. Các dự án khác là dữ liệu minh họa rút gọn.",
+  "Tiến độ không quy ra tiền: % công việc = KL lũy kế ÷ KL hợp đồng; % nhóm, hạng mục, dự án = trung bình cộng các việc con. % kế hoạch đến hôm nay nội suy theo ngày của từng công việc.",
+  "Trạng thái dự án: Chưa bắt đầu (chưa khởi công); chưa qua 1/3 thời gian thi công = Đúng tiến độ; sau đó % hoàn thành ≥ % kế hoạch = Đúng tiến độ, thấp hơn = Chậm tiến độ (cách đo đang chờ ACC xác nhận).",
+  "Kế hoạch tiến độ chỉ Chỉ huy trưởng được điều chỉnh; thanh thực tế chỉ hiện khi công trường đã nhập ngày bắt đầu / khối lượng.",
+  "Phân hệ kế toán không thay phần mềm kế toán: số liệu được nhập tay hoặc import Excel theo file mẫu.",
+  "Lãi / lỗ trên Trang chủ = giá trị nghiệm thu − chi phí thực hiện, lũy kế từ khởi công đến nay.",
   "File đính kèm (ảnh, PDF) được lưu ngay trên trình duyệt để xem trước; prototype không có máy chủ lưu file.",
-  "Tiến độ = bình quân gia quyền theo giá trị (khối lượng × đơn giá); tiến độ kế hoạch nội suy tuyến tính theo thời gian của từng công việc.",
-  "Trạng thái tiến độ dự án theo thời hạn công việc: có việc quá hạn > 14 ngày = chậm tiến độ; quá hạn ≤ 14 ngày hoặc đang làm chậm hơn kế hoạch thời gian (> 15%) = có nguy cơ chậm; còn lại = đúng tiến độ.",
   "Cảnh báo vật tư: tồn < tồn tối thiểu = thiếu hụt; tiêu hao ≥ 90% định mức = sắp vượt; > 100% = vượt định mức.",
-  "Giờ máy tính lũy kế từ khi máy được điều động về công trình; hiệu suất = giờ máy thực tế ÷ (số ngày làm việc tại công trình × 8 giờ/ca). Cảnh báo nhiên liệu xét trên ca máy 3 tuần gần nhất (vượt 8% định mức).",
-  "Chi phí thực hiện ước tính = giá trị thực hiện × hệ số chi phí của dự án (chưa có phân hệ kế toán chi phí).",
-  "Quy trình nghiệm thu: Đang lập → TVGS xác nhận → CĐT ký; thanh toán giữ lại 5% bảo hành – đề xuất mô phỏng, cần xác nhận với ACC.",
-  "Hình ảnh hiện trường, tài liệu đính kèm là minh họa; prototype không lưu file thật.",
-  "Ma trận phân quyền theo vai trò là đề xuất dựa trên mô hình tổ chức trang 4 của tài liệu.",
 ];
+
 
 export default function GuidePage() {
   const { login, user } = useAuth();

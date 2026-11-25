@@ -14,7 +14,7 @@ import { cn } from "@/utils/cn";
 export function ProjectCard({ stats: s, className }: { stats: ProjectStats; className?: string }) {
   const { db } = useDb();
   const unit = db.departments.find((d) => d.id === s.project.unitId)?.code;
-  const tone = s.health === "cham_tien_do" ? "danger" : s.health === "nguy_co_cham" ? "warning" : s.health === "chua_bat_dau" ? "navy" : "success";
+  const tone = s.health === "cham_tien_do" ? "danger" : s.health === "chua_bat_dau" ? "navy" : "success";
   return (
     <Link to={`/projects/${s.project.id}`} className={cn("block", className)}>
       <Card className="group h-full p-4 transition hover:-translate-y-0.5 hover:shadow-md">

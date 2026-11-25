@@ -54,7 +54,7 @@ export default function AdminPage() {
   const tree = (parentId: string | null, depth = 0): JSX.Element[] =>
     db.departments.filter((d) => d.parentId === parentId).flatMap((d: Department) => [
       <div key={d.id} className="flex items-center gap-2 py-1.5" style={{ paddingLeft: depth * 24 }}>
-        <span className={`h-2 w-2 rounded-full ${d.type === "ban_lanh_dao" ? "bg-primary" : d.type === "cong_ty_con" ? "bg-blue-500" : d.type === "co_quan" ? "bg-slate-700" : "bg-slate-400"}`} />
+        <span className={`h-2 w-2 rounded-full ${d.type === "ban_lanh_dao" ? "bg-primary" : d.type === "cong_ty_con" ? "bg-blue-500" : d.type === "don_vi_truc_thuoc" ? "bg-emerald-500" : d.type === "cong_ty_lien_ket" ? "bg-amber-500" : d.type === "co_quan" ? "bg-slate-700" : "bg-slate-400"}`} />
         <span className="text-[13px] font-medium text-slate-800">{d.name}</span>
         <Badge tone="neutral">{d.code}</Badge>
         {d.head && <span className="text-xs text-slate-500">· {d.head}</span>}

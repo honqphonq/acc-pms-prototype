@@ -4,7 +4,7 @@
     "code": "NV001",
     "name": "Nguyễn Đức Toàn",
     "role": "lanh_dao",
-    "title": "Phó Tổng Giám đốc",
+    "title": "Tổng giám đốc",
     "departmentId": "d-btgd",
     "isDemoAccount": true,
     "phone": "0912345100",
@@ -15,7 +15,7 @@
     "code": "NV002",
     "name": "Nguyễn Văn Hùng",
     "role": "lanh_dao",
-    "title": "Tổng Giám đốc",
+    "title": "Phó Tổng Giám đốc",
     "departmentId": "d-btgd",
     "phone": "0919458137",
     "email": "hung.nv002@acc.vn"
@@ -23,24 +23,24 @@
   {
     "id": "u03",
     "code": "NV003",
-    "name": "Lê Thanh Thiện",
+    "name": "Bùi Minh Quang",
     "role": "phong_ktkt",
-    "title": "Trưởng phòng Kế hoạch - Kỹ thuật",
-    "departmentId": "d-khkt",
+    "title": "Trưởng phòng Kinh tế - Kỹ thuật",
+    "departmentId": "d-ktkt",
     "isDemoAccount": true,
     "phone": "0926571174",
-    "email": "thien.nv003@acc.vn"
+    "email": "quang.nv003@acc.vn"
   },
   {
     "id": "u04",
     "code": "NV004",
-    "name": "Trần Quốc Hải",
+    "name": "Nguyễn Văn Biên",
     "role": "chi_huy_truong",
-    "title": "Chỉ huy trưởng công trường",
+    "title": "Chỉ huy trưởng",
     "departmentId": "d-acc244",
     "isDemoAccount": true,
     "phone": "0933684211",
-    "email": "hai.nv004@acc.vn"
+    "email": "bien.nv004@acc.vn"
   },
   {
     "id": "u05",
@@ -121,13 +121,13 @@
   {
     "id": "u12",
     "code": "NV012",
-    "name": "Phạm Văn Vinh",
+    "name": "Vũ Tiến Thiều",
     "role": "phong_thiet_bi",
     "title": "Trưởng phòng Thiết bị - Công nghệ",
     "departmentId": "d-tbcn",
     "isDemoAccount": true,
     "phone": "0989588507",
-    "email": "vinh.nv012@acc.vn"
+    "email": "thieu.nv012@acc.vn"
   },
   {
     "id": "u13",
@@ -142,41 +142,41 @@
   {
     "id": "u14",
     "code": "NV014",
-    "name": "Hoàng Thị Bích",
+    "name": "La Thị Thu Hà",
     "role": "ke_toan",
     "title": "Kế toán trưởng",
     "departmentId": "d-tckt",
     "isDemoAccount": true,
     "phone": "0903814581",
-    "email": "bich.nv014@acc.vn"
+    "email": "ha.nv014@acc.vn"
   },
   {
     "id": "u15",
     "code": "NV015",
-    "name": "Nguyễn Thu Hà",
+    "name": "Nguyễn Thu Hằng",
     "role": "ke_toan",
     "title": "Kế toán công trường",
     "departmentId": "d-acc244",
     "phone": "0910927618",
-    "email": "ha.nv015@acc.vn"
+    "email": "hang.nv015@acc.vn"
   },
   {
     "id": "u16",
     "code": "NV016",
-    "name": "Đặng Minh Quân",
+    "name": "Quản trị hệ thống",
     "role": "admin",
     "title": "Quản trị hệ thống",
     "departmentId": "d-vp",
     "isDemoAccount": true,
     "phone": "0917040655",
-    "email": "quan.nv016@acc.vn"
+    "email": "admin@acc.vn"
   },
   {
     "id": "u17",
     "code": "NV017",
     "name": "Đỗ Minh Châu",
     "role": "phong_ktkt",
-    "title": "Trưởng phòng Kinh tế - Kỹ thuật",
+    "title": "Phó phòng Kinh tế - Kỹ thuật",
     "departmentId": "d-ktkt",
     "phone": "0924153692",
     "email": "chau.nv017@acc.vn"

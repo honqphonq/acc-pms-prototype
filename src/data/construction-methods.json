@@ -79,6 +79,49 @@
         "at": "2026-06-12",
         "content": "Thống nhất phương án v3."
       }
+    ],
+    "activity": [
+      {
+        "id": "pa-001-v1",
+        "at": "2026-04-20T09:00:00",
+        "userId": "u05",
+        "text": "lập phương án **Phương án tổng thể tổ chức thi công khu bay**"
+      },
+      {
+        "id": "pa-001-v2",
+        "at": "2026-05-08T09:00:00",
+        "userId": "u05",
+        "text": "tải bản mới – Điều chỉnh theo góp ý TVGS: bổ sung trạm trộn số 2"
+      },
+      {
+        "id": "pa-001-v3",
+        "at": "2026-06-10T09:00:00",
+        "userId": "u04",
+        "text": "tải bản mới **Mat bang to chuc thi cong giai doan 1.webp** – Cập nhật tiến độ bàn giao mặt bằng zone R4B"
+      },
+      {
+        "id": "pa-001-cm-1",
+        "at": "2026-05-02T14:00:00",
+        "userId": "u03",
+        "text": "góp ý: Đề nghị bổ sung phương án cấp BTXM khi trạm trộn số 1 bảo dưỡng."
+      },
+      {
+        "id": "pa-001-cm-2",
+        "at": "2026-05-08T14:00:00",
+        "userId": "u04",
+        "text": "góp ý: Đã bổ sung trạm trộn dự phòng 90 m³/h."
+      },
+      {
+        "id": "pa-001-cm-3",
+        "at": "2026-06-12T14:00:00",
+        "userId": "u01",
+        "text": "góp ý: Thống nhất phương án v3."
+      }
+    ],
+    "followerIds": [
+      "u01",
+      "u03",
+      "u04"
     ]
   },
   {
@@ -128,6 +171,35 @@
         "at": "2026-06-15",
         "content": "Đã cập nhật."
       }
+    ],
+    "activity": [
+      {
+        "id": "pa-002-v1",
+        "at": "2026-06-01T09:00:00",
+        "userId": "u06",
+        "text": "lập phương án **Biện pháp thi công móng cấp phối đá dăm loại 1**"
+      },
+      {
+        "id": "pa-002-v2",
+        "at": "2026-06-15T09:00:00",
+        "userId": "u06",
+        "text": "tải bản mới **BPTC mong CPDD v2.pdf** – Bổ sung quy trình thí nghiệm độ chặt hiện trường"
+      },
+      {
+        "id": "pa-002-cm-4",
+        "at": "2026-06-10T14:00:00",
+        "userId": "u05",
+        "text": "góp ý: Cần quy định chiều dày rải tối đa mỗi lớp 18cm."
+      },
+      {
+        "id": "pa-002-cm-5",
+        "at": "2026-06-15T14:00:00",
+        "userId": "u06",
+        "text": "góp ý: Đã cập nhật."
+      }
+    ],
+    "followerIds": [
+      "u05"
     ]
   },
   {
@@ -184,6 +256,36 @@
         "at": "2026-11-12",
         "content": "Phòng KHKT đang rà soát định mức nhân công cắt khe."
       }
+    ],
+    "activity": [
+      {
+        "id": "pa-003-v1",
+        "at": "2026-08-05T09:00:00",
+        "userId": "u08",
+        "text": "lập phương án **Biện pháp thi công BTXM M350 mặt đường bằng máy rải ván khuôn trượt**"
+      },
+      {
+        "id": "pa-003-v2",
+        "at": "2026-11-10T09:00:00",
+        "userId": "u08",
+        "text": "tải bản mới **BPTC BTXM M350 v2.pdf** – Điều chỉnh thời điểm cắt khe theo nhiệt độ mùa đông"
+      },
+      {
+        "id": "pa-003-cm-6",
+        "at": "2026-11-11T14:00:00",
+        "userId": "u05",
+        "text": "góp ý: Đề nghị bổ sung biện pháp che chắn khi mưa trong lúc đổ bê tông."
+      },
+      {
+        "id": "pa-003-cm-7",
+        "at": "2026-11-12T14:00:00",
+        "userId": "u03",
+        "text": "góp ý: Phòng KHKT đang rà soát định mức nhân công cắt khe."
+      }
+    ],
+    "followerIds": [
+      "u03",
+      "u05"
     ]
   },
   {
@@ -214,7 +316,18 @@
         "note": "Lập dự thảo"
       }
     ],
-    "comments": []
+    "comments": [],
+    "activity": [
+      {
+        "id": "pa-004-v1",
+        "at": "2026-11-13T09:00:00",
+        "userId": "u30",
+        "text": "lập phương án **Biện pháp thảm bê tông nhựa lề vật liệu**"
+      }
+    ],
+    "followerIds": [
+      "u01"
+    ]
   },
   {
     "id": "pa-005",
@@ -251,6 +364,23 @@
         "at": "2026-05-05",
         "content": "Triển khai cho toàn bộ tổ đội."
       }
+    ],
+    "activity": [
+      {
+        "id": "pa-005-v1",
+        "at": "2026-05-05T09:00:00",
+        "userId": "u05",
+        "text": "lập phương án **Kế hoạch an toàn, vệ sinh lao động và bảo vệ môi trường**"
+      },
+      {
+        "id": "pa-005-cm-8",
+        "at": "2026-05-05T14:00:00",
+        "userId": "u04",
+        "text": "góp ý: Triển khai cho toàn bộ tổ đội."
+      }
+    ],
+    "followerIds": [
+      "u04"
     ]
   },
   {
@@ -287,6 +417,23 @@
         "note": "Cập nhật theo góp ý Cảng vụ"
       }
     ],
-    "comments": []
+    "comments": [],
+    "activity": [
+      {
+        "id": "pa-006-v1",
+        "at": "2025-09-10T09:00:00",
+        "userId": "u20",
+        "text": "lập phương án **Phương án thi công sân đỗ trong điều kiện khai thác bay**"
+      },
+      {
+        "id": "pa-006-v2",
+        "at": "2025-10-02T09:00:00",
+        "userId": "u20",
+        "text": "tải bản mới **PA thi cong san do.pdf** – Cập nhật theo góp ý Cảng vụ"
+      }
+    ],
+    "followerIds": [
+      "u01"
+    ]
   }
 ]

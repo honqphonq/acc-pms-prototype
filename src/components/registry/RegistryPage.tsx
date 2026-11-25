@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { Download, Eye, Filter, MoreHorizontal, Pencil, Plus, Trash2, Upload } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -59,6 +59,8 @@ interface Props<T extends Row> {
   addLabel?: string;
   entityLabel?: string;
   detail?: (row: T, close: () => void) => ReactNode;
+  /** Màn hình chi tiết riêng (popup lớn) thay cho khung chi tiết mặc định */
+  detailView?: (row: T, ctx: { close: () => void; edit: () => void; remove: () => void }) => ReactNode;
   rowActions?: (row: T) => ReactNode;
   headerExtra?: ReactNode;
   above?: ReactNode;
@@ -66,6 +68,8 @@ interface Props<T extends Row> {
   rowClassName?: (row: T) => string | undefined;
   /** số bộ lọc hiển thị trực tiếp trên thanh công cụ; các bộ lọc còn lại gom vào nút "Bộ lọc" */
   inlineFilters?: number;
+  /** báo giá trị các bộ lọc ra ngoài (vd. để vẽ phần tổng hợp theo dự án đang lọc) */
+  onFiltersChange?: (values: string[]) => void;
 }
 
 /** Màn hình danh mục dùng chung: danh sách, tìm kiếm, lọc, thêm / sửa / xem / xóa, import / export */
@@ -74,9 +78,11 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
   const confirm = useConfirm();
   const loading = useSimulatedLoading();
   const [edit, setEdit] = useState<Partial<T> | null>(null);
-  const [view, setView] = useState<string | null>(null);
+  const [view, setView] = useState<string | null>(() => new URLSearchParams(window.location.search).get("id"));
   const [fv, setFv] = useState<string[]>(() => (p.filters ?? []).map((f) => f.initial ?? ""));
   const all = (p.rows ?? (db[p.collection] as unknown as T[])) as T[];
+  const onFc = p.onFiltersChange;
+  useEffect(() => { onFc?.(fv); }, [fv]); // eslint-disable-line react-hooks/exhaustive-deps
   const rows = useMemo(() => all.filter((r) => (p.filters ?? []).every((f, i) => !fv[i] || f.test(r, fv[i]))), [all, fv, p.filters]);
   const viewing = all.find((r) => r.id === view);
   const opts = (o: FieldDef<T>["options"]) => (typeof o === "function" ? o(db) : o ?? []);
@@ -175,7 +181,15 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
           </>} />
       </Card>
 
-      <Sheet open={!!viewing} onOpenChange={(o) => !o && setView(null)}>
+      {p.detailView && (
+        <Dialog open={!!viewing} onOpenChange={(o) => !o && setView(null)}>
+          <DialogContent className="max-h-[92vh] max-w-6xl overflow-hidden p-0">
+            <DialogTitle className="sr-only">Chi tiết {label}</DialogTitle>
+            {viewing && p.detailView(viewing, { close: () => setView(null), edit: () => { setEdit({ ...viewing }); setView(null); }, remove: () => del(viewing) })}
+          </DialogContent>
+        </Dialog>
+      )}
+      <Sheet open={!!viewing && !p.detailView} onOpenChange={(o) => !o && setView(null)}>
         <SheetContent className="sm:max-w-2xl">
           {viewing && <>
             <SheetHeader><SheetTitle>{viewing.code ? `${viewing.code} · ` : ""}Chi tiết {label}</SheetTitle></SheetHeader>

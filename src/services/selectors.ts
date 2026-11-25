@@ -5,6 +5,9 @@
 import type {
   AcceptanceRecord,
   Database,
+  Debt,
+  Estimate,
+  EstimateLine,
   Equipment,
   ID,
   InventoryItem,
@@ -84,11 +87,11 @@ export function buildTaskTree(db: Database, projectId: ID): { itemId: ID; rows: 
       .map((t) => {
         const children = build(t.id, itemId, depth + 1);
         if (t.isGroup || children.length) {
+          // % nhóm = trung bình cộng % các việc con (không quy ra tiền)
           const value = children.reduce((s, c) => s + c.value, 0);
           const doneValue = children.reduce((s, c) => s + c.doneValue, 0);
-          const plannedV = children.reduce((s, c) => s + c.planned * c.value, 0);
-          const planned = value ? plannedV / value : taskPlannedPct(t);
-          const actual = value ? doneValue / value : 0;
+          const planned = children.length ? avg(children.map((c) => c.planned)) : taskPlannedPct(t);
+          const actual = children.length ? avg(children.map((c) => c.actual)) : 0;
           return { task: t, depth, value, doneValue, planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart, actualEnd: t.actualEnd }), children };
         }
         const planned = taskPlannedPct(t);
@@ -96,6 +99,14 @@ export function buildTaskTree(db: Database, projectId: ID): { itemId: ID; rows: 
         return { task: t, depth, value: taskValue(t), doneValue: taskDoneValue(t), planned, actual, health: taskHealth({ actual, planned, plannedEnd: t.plannedEnd, plannedStart: t.plannedStart, actualEnd: t.actualEnd }), children };
       });
   return items.map((it) => ({ itemId: it.id, rows: build(null, it.id, 1) }));
+}
+
+const avg = (a: number[]) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
+
+/** % hoàn thành & % kế hoạch đến hôm nay của dự án: trung bình cộng các hạng mục, mỗi hạng mục = trung bình cộng các đầu việc cấp 1 */
+export function projectProgress(db: Database, projectId: ID): { actual: number; planned: number } {
+  const items = buildTaskTree(db, projectId).filter((i) => i.rows.length);
+  return { actual: avg(items.map((i) => avg(i.rows.map((r) => r.actual)))), planned: avg(items.map((i) => avg(i.rows.map((r) => r.planned)))) };
 }
 
 export const leafTasks = (db: Database, projectId?: ID) =>
@@ -136,7 +147,7 @@ export interface ProjectStats {
   planned: number; // tiến độ kế hoạch tại ngày dữ liệu
   actual: number; // tiến độ thực tế
   delta: number; // điểm % (actual - planned)
-  spi: number | null; // KL thực tế / KL kế hoạch đến ngày dữ liệu (quy ra tiền); null khi kế hoạch chưa yêu cầu khối lượng nào
+  measured: boolean; // dự án đã qua 1/3 thời gian thi công → bắt đầu đo tiến độ
   health: ScheduleHealth;
   tasksTotal: number;
   tasksDone: number;
@@ -156,23 +167,18 @@ export interface ProjectStats {
   healthReason: string; // diễn giải trạng thái tiến độ
 }
 
-/** Ngưỡng tỷ lệ KL thực tế / KL kế hoạch đến ngày dữ liệu (quy ra tiền) */
-export const SPI_ON_TRACK = 0.95;
-export const SPI_DELAYED = 0.85;
-
 /**
- * Trạng thái tiến độ dự án = Giá trị KL thực tế ÷ Giá trị KL kế hoạch phải đạt đến ngày dữ liệu
- * (cộng dồn mọi đầu việc, mỗi đầu việc quy ra tiền = khối lượng × đơn giá):
- * - Đúng tiến độ: ≥ 95% · Có nguy cơ chậm: 85% – dưới 95% · Chậm tiến độ: < 85%
+ * Trạng thái tiến độ dự án (3 trạng thái):
+ * - Chưa bắt đầu: dự án chưa khởi công
+ * - Chưa qua 1/3 thời gian thi công tổng thể → luôn Đúng tiến độ
+ * - Sau đó: % hoàn thành (trung bình cộng các đầu việc) ≥ % kế hoạch đến hôm nay → Đúng tiến độ, ngược lại Chậm tiến độ
  */
-export function healthOf(o: { status: Project["status"]; actual: number; started: boolean; spi: number | null }): { health: ScheduleHealth; reason: string } {
+export function healthOf(o: { status: Project["status"]; startDate: string; actual: number; planned: number; measured: boolean }): { health: ScheduleHealth; reason: string } {
   if (o.status === "hoan_thanh" || o.actual >= 1) return { health: "hoan_thanh", reason: "Đã hoàn thành toàn bộ công việc" };
-  if (o.status === "chuan_bi" && !o.started) return { health: "chua_bat_dau", reason: "Chưa đến thời gian thi công" };
-  if (o.spi === null) return { health: "dung_tien_do", reason: "Chưa đến thời điểm phải thực hiện khối lượng theo kế hoạch" };
-  const r = `Thực tế đạt ${(o.spi * 100).toFixed(0)}% khối lượng kế hoạch đến hôm nay (quy ra tiền)`;
-  if (o.spi < SPI_DELAYED) return { health: "cham_tien_do", reason: `${r} · dưới ${SPI_DELAYED * 100}%` };
-  if (o.spi < SPI_ON_TRACK) return { health: "nguy_co_cham", reason: `${r} · dưới ${SPI_ON_TRACK * 100}%` };
-  return { health: "dung_tien_do", reason: r };
+  if (o.status === "chuan_bi" || DEMO_TODAY < o.startDate) return { health: "chua_bat_dau", reason: "Dự án chưa khởi công" };
+  if (!o.measured) return { health: "dung_tien_do", reason: "Dự án chưa đi qua 1/3 thời gian thi công nên chưa đo tiến độ" };
+  const r = `Hoàn thành ${(o.actual * 100).toFixed(1)}% · kế hoạch đến hôm nay ${(o.planned * 100).toFixed(1)}%`;
+  return o.actual + 1e-9 >= o.planned ? { health: "dung_tien_do", reason: r } : { health: "cham_tien_do", reason: r };
 }
 
 export function acceptanceValue(db: Database, ac: AcceptanceRecord) {
@@ -186,14 +192,14 @@ export const getProjectStatsMap = memo((db: Database) => {
   const map = new Map<ID, ProjectStats>();
   const acValues = new Map(db.acceptanceRecords.map((a) => [a.id, acceptanceValue(db, a)]));
   const costByProject = new Map<ID, number>();
-  db.costEntries.forEach((c) => costByProject.set(c.projectId, (costByProject.get(c.projectId) ?? 0) + c.nvl + c.nc + c.mtc + c.sxc));
+  db.costDocs.forEach((c) => costByProject.set(c.projectId, (costByProject.get(c.projectId) ?? 0) + c.nvl + c.nc + c.mtc + c.sxc));
   db.projects.forEach((p) => {
     const ts = db.constructionPlans.filter((t) => t.projectId === p.id && !t.isGroup);
     const planValue = ts.reduce((s, t) => s + taskValue(t), 0);
     const execValue = ts.reduce((s, t) => s + taskDoneValue(t), 0);
-    const plannedV = ts.reduce((s, t) => s + taskPlannedPct(t) * taskValue(t), 0);
-    const planned = planValue ? plannedV / planValue : 0;
-    const actual = planValue ? execValue / planValue : 0;
+    const pr = projectProgress(db, p.id);
+    const planned = pr.planned;
+    const actual = pr.actual;
     const delta = actual - planned;
     const acs = db.acceptanceRecords.filter((a) => a.projectId === p.id);
     const pays = db.paymentRecords.filter((x) => x.projectId === p.id && x.direction === "thu_cdt");
@@ -201,8 +207,8 @@ export const getProjectStatsMap = memo((db: Database) => {
     const overdue = ts.filter((t) => taskActualPct(t) < 1 && t.plannedEnd < DEMO_TODAY);
     const maxDaysLate = overdue.reduce((m, t) => Math.max(m, diffDays(t.plannedEnd, DEMO_TODAY)), 0);
     const tasksBehind = ts.filter((t) => t.plannedEnd >= DEMO_TODAY && taskPlannedPct(t) - taskActualPct(t) > 0.15).length;
-    const spi = plannedV > 0 ? execValue / plannedV : null;
-    const h = healthOf({ status: p.status, actual, started: ts.some((t) => t.actualQty > 0), spi });
+    const measured = diffDays(p.startDate, DEMO_TODAY) >= total / 3;
+    const h = healthOf({ status: p.status, startDate: p.startDate, actual, planned, measured });
     map.set(p.id, {
       project: p,
       planValue,
@@ -210,7 +216,7 @@ export const getProjectStatsMap = memo((db: Database) => {
       planned,
       actual,
       delta,
-      spi,
+      measured,
       health: h.health,
       healthReason: h.reason,
       maxDaysLate,
@@ -232,6 +238,11 @@ export const getProjectStatsMap = memo((db: Database) => {
   });
   return map;
 });
+/** Giá trị hợp đồng sau phụ lục (hợp đồng gốc + các phụ lục điều chỉnh); chưa khai báo hợp đồng thì lấy giá trị trong hồ sơ dự án */
+export function contractTotal(db: Database, projectId: ID) {
+  const cs = db.contracts.filter((c) => c.projectId === projectId);
+  return cs.length ? cs.reduce((x, c) => x + c.value, 0) : db.projects.find((p) => p.id === projectId)?.contractValue ?? 0;
+}
 export const projectStats = (db: Database, id: ID) => getProjectStatsMap(db).get(id)!;
 
 export const getPortfolio = memo((db: Database) => {
@@ -241,9 +252,8 @@ export const getPortfolio = memo((db: Database) => {
   const sum = (arr: ProjectStats[], f: (s: ProjectStats) => number) => arr.reduce((x, s) => x + f(s), 0);
   const healthCount = (h: ScheduleHealth) => running.filter((s) => s.health === h).length;
   const contract = sum(stats, (s) => s.project.contractValue);
-  const planValue = sum(stats, (s) => s.planValue);
   const execValue = sum(stats, (s) => s.execValue);
-  const plannedV = sum(stats, (s) => s.planned * s.planValue);
+  const avgOf = (f: (s: ProjectStats) => number) => (running.length ? sum(running, f) / running.length : 0);
   return {
     stats,
     totalProjects: stats.length,
@@ -255,10 +265,9 @@ export const getPortfolio = memo((db: Database) => {
     accepted: sum(stats, (s) => s.acceptedValue),
     paid: sum(stats, (s) => s.paidValue),
     cost: sum(stats, (s) => s.cost),
-    overallActual: planValue ? execValue / planValue : 0,
-    overallPlanned: planValue ? plannedV / planValue : 0,
+    overallActual: avgOf((s) => s.actual),
+    overallPlanned: avgOf((s) => s.planned),
     onTrack: healthCount("dung_tien_do"),
-    atRisk: healthCount("nguy_co_cham"),
     delayed: healthCount("cham_tien_do"),
     tasksOverdue: sum(running, (s) => s.tasksOverdue),
   };
@@ -492,7 +501,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
   const pName = (id: ID | null) => db.projects.find((p) => p.id === id)?.shortName ?? "";
   getProjectStatsMap(db).forEach((s) => {
     if (s.project.status !== "dang_thi_cong") return;
-    if (s.health === "cham_tien_do" || s.health === "nguy_co_cham")
+    if (s.health === "cham_tien_do")
       out.push({
         id: `prj-${s.project.id}`,
         kind: "tien_do",
@@ -556,7 +565,7 @@ export const getAlerts = memo((db: Database): Alert[] => {
   });
   db.paymentRecords.forEach((p) => {
     if (p.direction === "thu_cdt" && p.status !== "da_thanh_toan" && p.dueDate < DEMO_TODAY)
-      out.push({ id: `pay-${p.id}`, kind: "thanh_toan", severity: "warning", title: `Hồ sơ thanh toán quá hạn thu: ${p.code}`, detail: `${pName(p.projectId)} · hạn ${p.dueDate.split("-").reverse().join("/")}`, projectId: p.projectId, link: `/payments?id=${p.id}` });
+      out.push({ id: `pay-${p.id}`, kind: "thanh_toan", severity: "warning", title: `Hồ sơ thanh toán quá hạn thu: ${p.code}`, detail: `${pName(p.projectId)} · hạn ${p.dueDate.split("-").reverse().join("/")}`, projectId: p.projectId, link: `/finance/payments?id=${p.id}` });
   });
   db.acceptanceRecords.forEach((a) => {
     if (a.status === "cho_cdt" && diffDays(a.createdAt, DEMO_TODAY) > 21)
@@ -597,63 +606,55 @@ export const COST_LABEL: Record<CostKey, { short: string; label: string; color: 
   sxc: { short: "CPSXC", label: "Chi phí sản xuất chung", color: "#94A3B8" },
 };
 export type CostBreakdown = Record<CostKey, number>;
-const zeroCost = (): CostBreakdown => ({ nvl: 0, nc: 0, mtc: 0, sxc: 0 });
 export const costTotal = (c: CostBreakdown) => c.nvl + c.nc + c.mtc + c.sxc;
 
-/** Tỷ lệ chi phí dự toán / giá trị dự toán khối lượng của từng dự án (dùng cho chi phí kế hoạch) */
-const planCostRatio = memo((db: Database) => {
-  const m = new Map<ID, number>();
-  db.projects.forEach((p) => {
-    const v = db.constructionPlans.filter((t) => t.projectId === p.id && !t.isGroup).reduce((s, t) => s + taskValue(t), 0);
-    m.set(p.id, v ? p.budget / v : p.costRatio);
-  });
-  return m;
-});
-
-/**
- * Doanh thu – chi phí theo dự án trong một năm:
- * doanh thu = giá trị khối lượng thực hiện (nhật ký × đơn giá HĐ); chi phí = chi phí thực tế phát sinh từ Kế toán (4 khoản mục)
- */
-export function revenueCost(db: Database, projectIds: Set<ID>, year: number) {
-  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
-  const y = String(year);
-  const byProject = new Map<ID, { revenue: number; cost: number } & CostBreakdown>();
-  const get = (id: ID) => { let x = byProject.get(id); if (!x) { x = { revenue: 0, cost: 0, ...zeroCost() }; byProject.set(id, x); } return x; };
-  db.constructionLogs.forEach((l) => {
-    if (l.status === "nhap" || !projectIds.has(l.projectId) || l.date.slice(0, 4) !== y) return;
-    get(l.projectId).revenue += l.qty * (price.get(l.taskId) ?? 0);
-  });
-  db.costEntries.forEach((c) => {
-    if (!projectIds.has(c.projectId) || c.month.slice(0, 4) !== y) return;
-    const x = get(c.projectId);
-    COST_KEYS.forEach((k) => { x[k] += c[k]; });
-    x.cost += costTotal(c);
-  });
-  return { byProject };
+// ---------- Kế toán: dự toán ----------
+export const lineDirect = (l: EstimateLine) => l.qty * (l.vl + l.nc + l.mtc);
+/** Tổng hợp dự toán: T = VL + NC + MTC; C = chi phí chung; TL = thu nhập chịu thuế tính trước; GXD = T + C + TL; VAT */
+export function estimateSummary(e: Estimate) {
+  const vl = e.lines.reduce((s, l) => s + l.qty * l.vl, 0);
+  const nc = e.lines.reduce((s, l) => s + l.qty * l.nc, 0);
+  const mtc = e.lines.reduce((s, l) => s + l.qty * l.mtc, 0);
+  const t = vl + nc + mtc;
+  const c = (t * e.rateC) / 100;
+  const tl = ((t + c) * e.rateTL) / 100;
+  const gxd = t + c + tl;
+  const vat = (gxd * e.vat) / 100;
+  return { vl, nc, mtc, t, c, tl, gxd, vat, total: gxd + vat, matched: e.lines.filter((l) => l.taskId).length };
+}
+/** Dự toán quy về 4 khoản mục chi phí để so với chi phí thực tế: NVLTT = VL, NCTT = NC, CPMTC = MTC, CPSXC = chi phí chung */
+export function estimateByCostKey(e: Estimate): CostBreakdown {
+  const s = estimateSummary(e);
+  return { nvl: s.vl, nc: s.nc, mtc: s.mtc, sxc: s.c };
 }
 
-/** Doanh thu – chi phí lũy kế từ đầu năm theo tháng: kế hoạch (theo tiến độ kế hoạch, chi phí theo dự toán) và thực tế (nhật ký / Kế toán) */
-export function revenueCostCumulative(db: Database, projectIds: Set<ID>, year: number) {
-  const price = new Map(db.constructionPlans.map((t) => [t.id, t.unitPrice]));
-  const ratio = planCostRatio(db);
-  const tasks = db.constructionPlans.filter((t) => !t.isGroup && projectIds.has(t.projectId));
-  const logs = db.constructionLogs.filter((l) => l.status !== "nhap" && projectIds.has(l.projectId) && l.date.slice(0, 4) === String(year));
-  const costs = db.costEntries.filter((c) => projectIds.has(c.projectId) && c.month.slice(0, 4) === String(year));
-  const yStart = `${year - 1}-12-31`;
-  const today = DEMO_TODAY.slice(0, 7);
-  return Array.from({ length: 12 }, (_, i) => {
-    const m = `${year}-${String(i + 1).padStart(2, "0")}`;
-    const eom = endOfMonth(m);
-    let planRev = 0, planCost = 0;
-    tasks.forEach((t) => {
-      const v = (taskPlannedPct(t, eom) - taskPlannedPct(t, yStart)) * taskValue(t);
-      planRev += v; planCost += v * (ratio.get(t.projectId) ?? 0.9);
-    });
-    let r = 0;
-    logs.forEach((l) => { if (l.date <= eom) r += l.qty * (price.get(l.taskId) ?? 0); });
-    const cb = zeroCost();
-    costs.forEach((c) => { if (c.month <= m) COST_KEYS.forEach((k) => { cb[k] += c[k]; }); });
-    const past = m <= today;
-    return { month: m, label: `T${i + 1}`, planRev, planCost, rev: past ? r : null, cost: past ? costTotal(cb) : null, breakdown: past ? cb : null };
+// ---------- Kế toán: công nợ NCC / thầu phụ ----------
+/** (3) đã cung cấp · (4) đã xuất hóa đơn · (5) đã thanh toán · (6) = 3 − 5 · (7) = 4 − 5 */
+export function debtTotals(d: Debt) {
+  const sum = (k: string) => d.entries.filter((e) => e.kind === k).reduce((s, e) => s + e.amount, 0);
+  const supplied = sum("cung_cap"), invoiced = sum("hoa_don"), paid = sum("thanh_toan");
+  return { supplied, invoiced, paid, owedSupplied: supplied - paid, owedInvoiced: invoiced - paid };
+}
+export type DebtDue = "qua_han" | "den_han" | "trong_han" | "da_tat_toan";
+export function debtDue(d: Debt): DebtDue {
+  const t = debtTotals(d);
+  if (t.owedInvoiced <= 0) return "da_tat_toan";
+  if (d.dueDate < DEMO_TODAY) return "qua_han";
+  return diffDays(DEMO_TODAY, d.dueDate) <= 7 ? "den_han" : "trong_han";
+}
+
+// ---------- Kế toán: giá trị khối lượng thi công ----------
+/** Giá trị khối lượng = KL thực tế (nhật ký đã gửi / xác nhận) × đơn giá hợp đồng của công việc, theo kỳ (tháng) và lũy kế */
+export function valueRows(db: Database, projectId: ID, month: string) {
+  const eom = endOfMonth(month);
+  const logs = db.constructionLogs.filter((l) => l.projectId === projectId && l.status !== "nhap");
+  const accepted = new Map<ID, number>();
+  db.acceptanceRecords.filter((a) => a.projectId === projectId && a.status === "da_nghiem_thu" && (a.acceptedAt ?? a.createdAt) <= eom).forEach((a) => a.lines.forEach((l) => accepted.set(l.taskId, (accepted.get(l.taskId) ?? 0) + l.acceptedQty)));
+  return db.constructionPlans.filter((t) => t.projectId === projectId && !t.isGroup).map((t) => {
+    const mine = logs.filter((l) => l.taskId === t.id);
+    const qtyPeriod = mine.filter((l) => l.date.slice(0, 7) === month).reduce((s, l) => s + l.qty, 0);
+    const qtyCum = mine.filter((l) => l.date <= eom).reduce((s, l) => s + l.qty, 0);
+    const acc = accepted.get(t.id) ?? 0;
+    return { task: t, qtyPeriod, qtyCum, valuePeriod: qtyPeriod * t.unitPrice, valueCum: qtyCum * t.unitPrice, contractValue: taskValue(t), acceptedValue: acc * t.unitPrice, over: qtyCum > t.contractQty + 1e-6 };
   });
 }

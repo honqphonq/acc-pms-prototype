@@ -11,7 +11,6 @@ import { Dialog, DialogBody, DialogContent, DialogDescription, DialogFooter, Dia
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { EmptyState } from "@/components/common/EmptyState";
 import { TableSkeleton } from "@/components/common/LoadingState";
-import { Tip } from "@/components/ui/tooltip";
 import { TaskFormDialog, ItemFormDialog } from "./TaskFormDialog";
 import { GanttChart, GanttLegend, type GanttRow, type GanttStatus, type GanttZoom } from "./GanttChart";
 import { buildTaskTree, itemStats, projectStats, type TaskRow } from "@/services/selectors";
@@ -42,6 +41,7 @@ interface Line {
   end: string;
   actualStart: string | null;
   actualEnd: string | null;
+  lastUpdate?: string | null; // ngày cập nhật kết quả gần nhất
   actual: number;
   planned: number;
   unit: string;
@@ -105,15 +105,19 @@ export default function PlanPage() {
     const pStart = all.map((t) => t.plannedStart).sort()[0] ?? project.startDate;
     const pEnd = all.map((t) => t.plannedEnd).sort().pop() ?? project.endDate;
     const items = db.constructionItems.filter((i) => i.projectId === project.id).sort((a, b) => a.order - b.order);
+    const lastLog = new Map<string, string>();
+    db.constructionLogs.forEach((l) => { if (l.projectId === project.id && l.qty > 0 && (lastLog.get(l.taskId) ?? "") < l.date) lastLog.set(l.taskId, l.date); });
+    const lastOf = (ts: typeof all) => ts.map((t) => lastLog.get(t.id) ?? t.actualEnd ?? "").filter(Boolean).sort().pop() ?? null;
+    const avgR = (rs: TaskRow[], f: (r: TaskRow) => number) => (rs.length ? rs.reduce((x, r) => x + f(r), 0) / rs.length : 0);
     const base = { team: "", unit: "", qty: 0, parentId: null, childKeys: [] as string[] };
-    out.push({ ...base, key: "root", stt: "1", code: "W00001", name: "Thi công", depth: 0, kind: "root", assignee: "", start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), actual: st.actual, planned: st.planned, late: st.tasksOverdue > 0, childKeys: ["total"] });
-    out.push({ ...base, key: "total", stt: "1.1", code: "", name: "TỔNG TIẾN ĐỘ THI CÔNG", depth: 1, kind: "total", assignee: userName(project.commanderId), start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), actual: st.actual, planned: st.planned, late: st.tasksOverdue > 0, childKeys: items.map((i) => i.id) });
+    out.push({ ...base, key: "root", stt: "1", code: "W00001", name: "Thi công", depth: 0, kind: "root", assignee: "", start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), lastUpdate: lastOf(leaf), actual: st.actual, planned: st.planned, late: st.health === "cham_tien_do", childKeys: ["total"] });
+    out.push({ ...base, key: "total", stt: "1.1", code: "", name: "TỔNG TIẾN ĐỘ THI CÔNG", depth: 1, kind: "total", assignee: userName(project.commanderId), start: pStart, end: pEnd, actualStart: minStart(leaf), actualEnd: maxEnd(leaf), lastUpdate: lastOf(leaf), actual: st.actual, planned: st.planned, late: st.health === "cham_tien_do", childKeys: items.map((i) => i.id) });
     let w = 1;
     tree.forEach(({ itemId, rows }) => {
       const it = items.find((i) => i.id === itemId)!;
       const ist = itemStats(db, itemId);
       const its = leaf.filter((t) => t.itemId === itemId);
-      out.push({ ...base, key: itemId, stt: it.code, code: "", name: it.name, depth: 2, kind: "item", assignee: userName(it.managerId), start: ist.start || pStart, end: ist.end || pEnd, actualStart: minStart(its), actualEnd: maxEnd(its), actual: ist.actual, planned: ist.planned, late: ist.overdue > 0, itemId, childKeys: rows.map((r) => r.task.id) });
+      out.push({ ...base, key: itemId, stt: it.code, code: "", name: it.name, depth: 2, kind: "item", assignee: userName(it.managerId), start: ist.start || pStart, end: ist.end || pEnd, actualStart: minStart(its), actualEnd: maxEnd(its), lastUpdate: lastOf(its), actual: avgR(rows, (r) => r.actual), planned: avgR(rows, (r) => r.planned), late: avgR(rows, (r) => r.actual) + 1e-9 < avgR(rows, (r) => r.planned), itemId, childKeys: rows.map((r) => r.task.id) });
       const walk = (rs: TaskRow[], depth: number) =>
         rs.forEach((r) => {
           const t = r.task;
@@ -121,7 +125,7 @@ export default function PlanPage() {
           out.push({
             key: t.id, stt: t.code, code: `W${String(++w).padStart(5, "0")}`, name: t.name, depth, kind: r.children.length ? "group" : "task",
             assignee: userName(t.assigneeId), team: t.team, start: t.plannedStart, end: t.plannedEnd,
-            actualStart: r.children.length ? minStart(desc) : t.actualStart, actualEnd: r.children.length ? maxEnd(desc) : t.actualEnd,
+            actualStart: r.children.length ? minStart(desc) : t.actualStart, actualEnd: r.children.length ? maxEnd(desc) : t.actualEnd, lastUpdate: lastOf(r.children.length ? desc : [t]),
             actual: r.actual, planned: r.planned, unit: r.children.length ? "" : t.unit, qty: r.children.length ? 0 : t.contractQty, actualQty: r.children.length ? 0 : t.actualQty, predecessors: t.predecessors, late: r.health === "cham",
             taskId: t.id, itemId, parentId: t.parentId, childKeys: r.children.map((c) => c.task.id),
           });
@@ -154,7 +158,7 @@ export default function PlanPage() {
   const openDetail = (id: string) => navigate(`/construction/plan/${project.id}/task/${id}`);
   const newTask = (itemId?: string, parentId: string | null = null) => { setEditTaskId(undefined); setFormDefaults({ itemId, parentId }); setFormOpen(true); };
   const plus = (l: Line) => {
-    if (!can("plan.edit")) return toast.info("Cần vai trò Chỉ huy trưởng / Phòng KH-KT để thêm công việc");
+    if (!can("plan.edit")) return toast.info("Chỉ Chỉ huy trưởng được điều chỉnh kế hoạch để thêm công việc");
     if (l.kind === "root" || l.kind === "total") return setItemOpen(true);
     if (l.kind === "item") return newTask(l.itemId);
     if (l.kind === "group") return newTask(l.itemId, l.taskId);
@@ -189,7 +193,7 @@ export default function PlanPage() {
   };
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({
     id: l.taskId ?? l.key, label: l.kind === "item" ? `${l.stt}. ${l.name.toUpperCase()}` : l.name, code: l.kind === "total" ? "1" : l.kind === "item" ? "" : l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
-    start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd,
+    start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd, lastUpdate: l.lastUpdate,
     status: ganttStatus(l), progress: l.actual, unit: l.unit, qty: l.qty, actualQty: l.actualQty, predecessors: l.predecessors,
     assignee: l.assignee || undefined,
   }));
@@ -239,7 +243,7 @@ export default function PlanPage() {
           <button className={cn("rounded px-2.5 py-1 text-[12.5px] font-medium", showGantt ? "bg-slate-800 text-white" : "text-slate-600 hover:bg-slate-100")} onClick={() => setShowGantt(true)}>Gantt</button>
         </div>
         {showGantt && <select value={zoom === "print" ? "month" : zoom} onChange={(e) => setZoom(e.target.value as GanttZoom)} className="h-8 rounded-md border border-slate-200 bg-white px-2 text-[12.5px]" aria-label="Thang thời gian"><option value="week">Theo tuần</option><option value="month">Theo tháng</option><option value="quarter">Theo quý</option></select>}
-        <Button size="sm" variant="outline" className={cn(baseline && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setBaseline(!baseline)}>{showGantt ? (baseline ? "Ẩn thực tế" : "Hiện thực tế") : baseline ? "Ẩn baseline" : "Hiện baseline"}</Button>
+        {!showGantt && <Button size="sm" variant="outline" className={cn(baseline && "border-sky-200 bg-sky-50 text-sky-700 hover:bg-sky-100")} onClick={() => setBaseline(!baseline)}>{baseline ? "Ẩn % kế hoạch" : "Hiện % kế hoạch"}</Button>}
         <DropdownMenu>
           <DropdownMenuTrigger asChild><Button size="sm" variant="outline">Thao tác</Button></DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-60">
@@ -249,7 +253,6 @@ export default function PlanPage() {
             <DropdownMenuSeparator />
             {can("plan.edit") && <DropdownMenuItem onClick={() => setItemOpen(true)}><FolderPlus /> Thêm hạng mục</DropdownMenuItem>}
             <DropdownMenuItem onClick={() => navigate(`/construction/logs?project=${project.id}`)}>Nhật ký thi công</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => navigate(`/construction/value-report?project=${project.id}`)}>Báo cáo giá trị thực hiện</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <div className="flex">
@@ -280,8 +283,8 @@ export default function PlanPage() {
               <div className="text-[15px] font-bold uppercase text-slate-900">Tiến độ thi công tổng thể</div>
               <div className="text-[12px] text-slate-600">Dự án: {project.name.toUpperCase()}</div>
             </div>
-            <div className="border-b px-4 py-2 print:hidden"><GanttLegend showBaseline={baseline} /></div>
-            <GanttChart rows={ganttRows} showBaseline={baseline} zoom={zoom} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
+            <div className="border-b px-4 py-2 print:hidden"><GanttLegend /></div>
+            <GanttChart rows={ganttRows} zoom={zoom} onRowClick={(id) => db.constructionPlans.some((t) => t.id === id) && openDetail(id)} />
           </>
         ) : (
           <div className="overflow-x-auto">
@@ -298,7 +301,7 @@ export default function PlanPage() {
                   <th className="px-1.5 text-left font-medium">Bắt đầu<br />kế hoạch</th>
                   <th className="px-1.5 text-left font-medium">Kết thúc<br />kế hoạch</th>
                   <th className="px-1.5 text-left font-medium">Bắt đầu<br />thực tế</th>
-                  <th className="px-1.5 text-left font-medium">Kết thúc<br />thực tế</th>
+                  <th className="px-1.5 text-left font-medium">Hoàn thành<br />thực tế</th>
                   <th className="px-1.5 text-left font-medium">% hoàn thành</th>
                   {baseline && <th className="px-1.5 text-left font-medium">Tiến độ<br />kế hoạch</th>}
                   <th className="px-2 text-left font-medium">ĐVT</th>
@@ -324,7 +327,6 @@ export default function PlanPage() {
                           {canToggle ? (
                             <button onClick={() => setCollapsed((c) => ({ ...c, [l.key]: !c[l.key] }))} className="text-[10px] text-slate-700">{isCol ? "▶" : "▼"}</button>
                           ) : l.kind === "root" || l.kind === "total" ? <span className="text-[10px] text-slate-700">▼</span> : <span className="inline-block w-3" />}
-                          {l.late && l.actual < 1 && l.kind !== "root" && l.kind !== "total" && <Tip content="Chậm / quá hạn kế hoạch"><span className="font-bold text-rose-600">!</span></Tip>}
                           {clickable ? (
                             <button onClick={() => openDetail(l.taskId!)} className={cn("min-w-0 truncate text-left hover:text-primary hover:underline", bold ? "font-semibold text-slate-900" : "text-slate-700")}>{l.name}</button>
                           ) : (
@@ -338,12 +340,12 @@ export default function PlanPage() {
                       <td className="tabular whitespace-nowrap px-1.5 py-2">{fmtDateShort(l.start)}</td>
                       <td className="tabular whitespace-nowrap px-1.5 py-2">{fmtDateShort(l.end)}</td>
                       <td className="tabular whitespace-nowrap px-1.5 py-2">{l.actualStart ? fmtDateShort(l.actualStart) : ""}</td>
-                      <td className="tabular whitespace-nowrap px-1.5 py-2">{l.actualEnd ? fmtDateShort(l.actualEnd) : ""}</td>
-                      <td className={cn("tabular whitespace-nowrap px-1.5 py-2", l.actual >= 1 ? "text-success-fg" : l.late && l.kind !== "root" && l.kind !== "total" ? "text-rose-600" : "text-slate-700")}>{pct(l.actual)}</td>
+                      <td className="tabular whitespace-nowrap px-1.5 py-2">{l.actual >= 1 && (l.actualEnd ?? l.lastUpdate) ? fmtDateShort((l.actualEnd ?? l.lastUpdate)!) : ""}</td>
+                      <td className="tabular whitespace-nowrap px-1.5 py-2 text-slate-700">{pct(l.actual)}</td>
                       {baseline && <td className="tabular whitespace-nowrap px-1.5 py-2 text-slate-500">{pct(l.planned)}</td>}
                       <td className="whitespace-nowrap px-2.5 py-2 text-slate-600">{l.unit}</td>
                       <td className="tabular whitespace-nowrap px-2.5 py-2 text-right text-slate-700">{l.qty ? l.qty.toLocaleString("vi-VN") : ""}</td>
-                      <td className={cn("tabular whitespace-nowrap px-2.5 py-2 text-right", l.qty && (l.actualQty ?? 0) > l.qty ? "font-semibold text-amber-600" : l.actual >= 1 ? "text-success-fg" : "text-slate-700")}>{l.kind === "task" && l.qty ? `${(l.actualQty ?? 0) > l.qty ? "+" : ""}${(l.actualQty ?? 0).toLocaleString("vi-VN")}` : ""}</td>
+                      <td className="tabular whitespace-nowrap px-2.5 py-2 text-right text-slate-700">{l.kind === "task" && l.qty ? `${(l.actualQty ?? 0) > l.qty ? "+" : ""}${(l.actualQty ?? 0).toLocaleString("vi-VN")}` : ""}</td>
                     </tr>
                   );
                 })}
@@ -353,7 +355,7 @@ export default function PlanPage() {
           </div>
         )}
       </Card>
-      <p className="mt-2 text-[11.5px] text-slate-400 print:hidden">Bấm vào tên công việc để mở màn hình chi tiết và cập nhật kết quả · <span className="font-bold text-rose-600">!</span> công việc chậm / quá hạn · “+” thêm công việc tại vị trí dòng</p>
+      <p className="mt-2 text-[11.5px] text-slate-400 print:hidden">Bấm vào tên công việc để mở màn hình chi tiết và cập nhật kết quả · % hoàn thành của nhóm / hạng mục = trung bình cộng các công việc con · “+” thêm công việc tại vị trí dòng</p>
 
       <TaskFormDialog open={formOpen} onOpenChange={setFormOpen} projectId={project.id} task={db.constructionPlans.find((t) => t.id === editTaskId)} defaults={formDefaults} />
       <ItemFormDialog open={itemOpen} onOpenChange={setItemOpen} projectId={project.id} />

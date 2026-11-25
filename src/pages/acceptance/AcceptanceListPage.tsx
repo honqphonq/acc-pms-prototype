@@ -53,7 +53,7 @@ export default function AcceptanceListPage() {
         <KpiCard label="Tổng số hồ sơ" value={base.length} tone="navy" sub={`${base.filter((a) => a.status === "nhap").length} đang lập`} />
         <KpiCard label="Giá trị đã nghiệm thu" value={fmtMoneyShort(sumBy((a) => a.status === "da_nghiem_thu"))} tone="success" onClick={() => setStatus("da_nghiem_thu")} sub={`${base.filter((a) => a.status === "da_nghiem_thu").length} hồ sơ`} />
         <KpiCard label="Đang chờ TVGS / CĐT" value={fmtMoneyShort(sumBy((a) => a.status === "cho_tvgs" || a.status === "cho_cdt"))} tone="warning" sub={`${base.filter((a) => a.status === "cho_tvgs" || a.status === "cho_cdt").length} hồ sơ`} />
-        <KpiCard label="Đã NT chưa lập HSTT" value={base.filter((a) => a.status === "da_nghiem_thu" && !paidFor(a)).length} unit="hồ sơ" tone="info" onClick={() => navigate("/payments")} sub="Chuyển sang hồ sơ thanh toán" />
+        <KpiCard label="Đã NT chưa lập HSTT" value={base.filter((a) => a.status === "da_nghiem_thu" && !paidFor(a)).length} unit="hồ sơ" tone="info" onClick={() => navigate("/finance/payments")} sub="Chuyển sang hồ sơ thanh toán" />
       </div>
       <Card>
         <DataTable columns={cols} rows={rows} rowKey={(a) => a.id} loading={loading} onRowClick={(a) => navigate(`/acceptance/${a.id}`)} resetKey={projectId + status}

@@ -12,7 +12,6 @@ const Contracts = lazy(() => import("@/pages/projects/ContractsPage"));
 const Plan = lazy(() => import("@/pages/construction/PlanPage"));
 const TaskDetail = lazy(() => import("@/pages/construction/TaskDetailPage"));
 const Logs = lazy(() => import("@/pages/construction/LogsPage"));
-const ValueReport = lazy(() => import("@/pages/construction/ValueReportPage"));
 const RequestDetail = lazy(() => import("@/pages/materials/RequestDetailPage"));
 const RequestForm = lazy(() => import("@/pages/materials/RequestFormPage"));
 const Catalog = lazy(() => import("@/pages/materials/CatalogPage"));
@@ -24,7 +23,6 @@ const Maintenance = lazy(() => import("@/pages/equipment/MaintenancePage"));
 const AcceptanceList = lazy(() => import("@/pages/acceptance/AcceptanceListPage"));
 const AcceptanceDetail = lazy(() => import("@/pages/acceptance/AcceptanceDetailPage"));
 const Reconcile = lazy(() => import("@/pages/acceptance/ReconcilePage"));
-const Payments = lazy(() => import("@/pages/payments/PaymentsPage"));
 const Settlement = lazy(() => import("@/pages/payments/SettlementPage"));
 const Reports = lazy(() => import("@/pages/reports/ReportsPage"));
 const Alerts = lazy(() => import("@/pages/reports/AlertsPage"));
@@ -38,8 +36,11 @@ const Operators = lazy(() => import("@/pages/equipment/OperatorsPage"));
 const Repairs = lazy(() => import("@/pages/equipment/RepairsPage"));
 const Disposal = lazy(() => import("@/pages/equipment/DisposalPage"));
 const Incidents = lazy(() => import("@/pages/equipment/IncidentsPage"));
-const RoutesPage = lazy(() => import("@/pages/equipment/RoutesPage"));
-const ComingSoon = lazy(() => import("@/pages/finance/ComingSoonPage"));
+const Estimate = lazy(() => import("@/pages/finance/EstimatePage"));
+const Costs = lazy(() => import("@/pages/finance/CostsPage"));
+const CdtPayments = lazy(() => import("@/pages/finance/CdtPaymentsPage"));
+const ValuePg = lazy(() => import("@/pages/finance/ValuePage"));
+const Debts = lazy(() => import("@/pages/finance/DebtsPage"));
 const StockHub = lazy(() => import("@/pages/materials/StockHubPage"));
 const ProjectStock = lazy(() => import("@/pages/materials/StockHubPage").then((m) => ({ default: m.ProjectStockPage })));
 const Directives = lazy(() => import("@/pages/directives/DirectivesPage"));
@@ -72,7 +73,7 @@ export function AppRoutes() {
         <Route path="construction/methods" element={<S><Methods /></S>} />
         <Route path="construction/staff" element={<S><Staff /></S>} />
         <Route path="construction/documents" element={<S><Documents /></S>} />
-        <Route path="construction/value-report" element={<S><ValueReport /></S>} />
+        <Route path="construction/value-report" element={<Navigate to="/finance/value" replace />} />
         <Route path="materials" element={<Navigate to="/materials/stock" replace />} />
         <Route path="materials/stock" element={<S><StockHub /></S>} />
         <Route path="materials/stock/:projectId" element={<S><ProjectStock /></S>} />
@@ -85,7 +86,7 @@ export function AppRoutes() {
         <Route path="materials/receipts" element={<ToStock tab="nhap" />} />
         <Route path="materials/issues" element={<ToStock tab="xuat" />} />
         <Route path="materials/catalog" element={<S><Catalog /></S>} />
-        <Route path="materials/suppliers" element={<S><Suppliers /></S>} />
+        <Route path="materials/suppliers" element={<Navigate to="/finance/suppliers" replace />} />
         <Route path="equipment" element={<Navigate to="/equipment/list" replace />} />
         <Route path="equipment/list" element={<S><EquipmentList /></S>} />
         <Route path="equipment/dispatch" element={<Navigate to="/equipment/list" replace />} />
@@ -95,15 +96,20 @@ export function AppRoutes() {
         <Route path="equipment/repairs" element={<S><Repairs /></S>} />
         <Route path="equipment/disposal" element={<S><Disposal /></S>} />
         <Route path="equipment/incidents" element={<S><Incidents /></S>} />
-        <Route path="equipment/routes" element={<S><RoutesPage /></S>} />
+        <Route path="equipment/routes" element={<Navigate to="/equipment/list" replace />} />
         <Route path="equipment/:id" element={<S><EquipmentDetail /></S>} />
         <Route path="finance" element={<Navigate to="/materials/stock" replace />} />
-        <Route path="finance/:section" element={<S><ComingSoon /></S>} />
+        <Route path="finance/estimate" element={<S><Estimate /></S>} />
+        <Route path="finance/costs" element={<S><Costs /></S>} />
+        <Route path="finance/payments" element={<S><CdtPayments /></S>} />
+        <Route path="finance/value" element={<S><ValuePg /></S>} />
+        <Route path="finance/suppliers" element={<S><Suppliers /></S>} />
+        <Route path="finance/debts" element={<S><Debts /></S>} />
         <Route path="account" element={<S><Account /></S>} />
         <Route path="acceptance" element={<S><AcceptanceList /></S>} />
         <Route path="acceptance/reconcile" element={<S><Reconcile /></S>} />
         <Route path="acceptance/:id" element={<S><AcceptanceDetail /></S>} />
-        <Route path="payments" element={<S><Payments /></S>} />
+        <Route path="payments" element={<Navigate to="/finance/payments" replace />} />
         <Route path="payments/settlement" element={<S><Settlement /></S>} />
         <Route path="reports" element={<S><Reports /></S>} />
         <Route path="alerts" element={<S><Alerts /></S>} />

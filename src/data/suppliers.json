@@ -11,7 +11,8 @@
       "Bê tông"
     ],
     "rating": 4.6,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s02",
@@ -25,7 +26,8 @@
       "Thép"
     ],
     "rating": 4.4,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s03",
@@ -41,7 +43,8 @@
       "Cát, đá"
     ],
     "rating": 4.1,
-    "debt": 258000000
+    "debt": 258000000,
+    "type": "ncc"
   },
   {
     "id": "s04",
@@ -55,7 +58,8 @@
       "Cát, đá"
     ],
     "rating": 4.3,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s05",
@@ -70,7 +74,8 @@
       "Phụ kiện"
     ],
     "rating": 3.9,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s06",
@@ -86,7 +91,8 @@
       "Vật liệu chèn khe"
     ],
     "rating": 4.2,
-    "debt": 93600000
+    "debt": 93600000,
+    "type": "ncc"
   },
   {
     "id": "s07",
@@ -101,7 +107,8 @@
       "Ống, phụ kiện"
     ],
     "rating": 4,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s08",
@@ -115,7 +122,8 @@
       "Cọc"
     ],
     "rating": 4.5,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s09",
@@ -129,7 +137,8 @@
       "Bê tông nhựa"
     ],
     "rating": 4.4,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
   },
   {
     "id": "s10",
@@ -143,6 +152,82 @@
       "Nhiên liệu"
     ],
     "rating": 4.7,
-    "debt": 0
+    "debt": 0,
+    "type": "ncc"
+  },
+  {
+    "id": "s11",
+    "code": "TP001",
+    "name": "Công ty CP Xây dựng Hạ tầng Hòa Bình",
+    "taxCode": "0140041367",
+    "address": "Bắc Ninh",
+    "contact": "Đỗ Thị Lan",
+    "phone": "0987705397",
+    "materialGroups": [
+      "Thi công móng CPĐD, nền đường"
+    ],
+    "rating": 4.8,
+    "debt": 0,
+    "type": "thau_phu"
+  },
+  {
+    "id": "s12",
+    "code": "TP002",
+    "name": "Công ty TNHH Cơ điện Hàng không Việt",
+    "taxCode": "0801944889",
+    "address": "TP Hồ Chí Minh",
+    "contact": "Lê Minh Tuấn",
+    "phone": "0999823990",
+    "materialGroups": [
+      "Hệ thống đèn tín hiệu, điện sân bay"
+    ],
+    "rating": 3.8,
+    "debt": 0,
+    "type": "thau_phu"
+  },
+  {
+    "id": "s13",
+    "code": "TP003",
+    "name": "Công ty CP Kỹ thuật Nền móng Sài Gòn",
+    "taxCode": "0381740315",
+    "address": "Hải Phòng",
+    "contact": "Phạm Quốc Việt",
+    "phone": "0981165925",
+    "materialGroups": [
+      "Cọc khoan nhồi, xử lý nền"
+    ],
+    "rating": 4.6,
+    "debt": 0,
+    "type": "thau_phu"
+  },
+  {
+    "id": "s14",
+    "code": "TP004",
+    "name": "Công ty TNHH Sơn kẻ đường Phúc Hưng",
+    "taxCode": "0988655792",
+    "address": "Bắc Ninh",
+    "contact": "Trần Thị Hoa",
+    "phone": "0955535688",
+    "materialGroups": [
+      "Sơn kẻ vạch tín hiệu"
+    ],
+    "rating": 4.1,
+    "debt": 0,
+    "type": "thau_phu"
+  },
+  {
+    "id": "s15",
+    "code": "TP005",
+    "name": "Công ty CP Thí nghiệm & Kiểm định LAS-XD 1256",
+    "taxCode": "0836431352",
+    "address": "Hải Phòng",
+    "contact": "Lê Minh Tuấn",
+    "phone": "0951746620",
+    "materialGroups": [
+      "Thí nghiệm vật liệu, kiểm định"
+    ],
+    "rating": 4.3,
+    "debt": 0,
+    "type": "thau_phu"
   }
 ]

@@ -4,11 +4,11 @@ export type ID = string;
 
 export type RoleKey =
   | "lanh_dao" // Ban Tổng Giám đốc / Lãnh đạo TCT
-  | "phong_ktkt" // Phòng Kinh tế - Kỹ thuật / Kế hoạch - Kỹ thuật
+  | "phong_ktkt" // Phòng Kinh tế - Kỹ thuật
   | "chi_huy_truong" // Chỉ huy trưởng công trường (CHT)
   | "to_truong" // Tổ trưởng / mũi trưởng
   | "bp_vat_tu" // Bộ phận vật tư
-  | "phong_thiet_bi" // Phòng Thiết bị - Công nghệ / BP Xe máy
+  | "phong_thiet_bi" // Phòng Thiết bị - Công nghệ
   | "ke_toan" // Phòng Tài chính - Kế toán / BP Kế toán
   | "admin"; // Quản trị hệ thống
 
@@ -16,7 +16,7 @@ export interface Department {
   id: ID;
   code: string;
   name: string;
-  type: "ban_lanh_dao" | "co_quan" | "cong_ty_con" | "cong_truong" | "bo_phan";
+  type: "ban_lanh_dao" | "co_quan" | "don_vi_truc_thuoc" | "cong_ty_con" | "cong_ty_lien_ket" | "cong_truong" | "bo_phan";
   parentId: ID | null;
   head?: string;
 }
@@ -189,6 +189,7 @@ export interface Supplier {
   materialGroups: string[];
   rating: number;
   debt: number; // công nợ hiện tại
+  type?: "ncc" | "thau_phu";
 }
 
 export type MaterialRequestStatus =
@@ -318,6 +319,8 @@ export interface Equipment {
   lastMaintenanceDate?: string;
   rentalSupplier?: string;
   rentalRate?: number; // đ / ca
+  purchasePrice?: number; // giá mua (máy sở hữu)
+  updatedAt?: string; // thời gian cập nhật gần nhất
   maintenances: MaintenanceRecord[];
 }
 
@@ -398,6 +401,7 @@ export interface PaymentRecord {
   id: ID;
   code: string;
   direction: "thu_cdt" | "tra_ncc";
+  kind?: "tam_ung" | "thanh_toan";
   projectId: ID;
   acceptanceIds: ID[];
   supplierId: ID | null;
@@ -471,6 +475,8 @@ export interface ConstructionMethod {
   files: Attachment[];
   versions: VersionEntry[];
   comments: CommentEntry[];
+  followerIds?: ID[];
+  activity?: ActivityEntry[];
 }
 
 /** Nhân sự thi công (chỉ huy, cán bộ kỹ thuật, công nhân, lao động phổ thông) */
@@ -479,7 +485,7 @@ export interface SiteStaff {
   code: string;
   projectId: ID;
   name: string;
-  type: "chi_huy" | "can_bo_ky_thuat" | "cong_nhan" | "lao_dong_pho_thong";
+  type: "chi_huy" | "can_bo_ky_thuat" | "can_bo_nghiep_vu" | "to_truong" | "cong_nhan";
   position: string;
   team: string;
   phone: string;
@@ -611,20 +617,6 @@ export interface Incident {
   progress: string;
 }
 
-export interface TransportRoute {
-  id: ID;
-  code: string;
-  name: string;
-  from: string;
-  to: string;
-  projectId: ID | null;
-  lengthKm: number;
-  avgMinutes: number;
-  stops: string;
-  conditions: string;
-  points: [number, number][];
-}
-
 export interface Stocktake {
   id: ID;
   code: string;
@@ -653,6 +645,13 @@ export interface DirectiveComment {
   at: string; // ISO datetime
   text: string;
 }
+/** Một dòng lịch sử hoạt động – text dùng **in đậm** cho tên công việc / người */
+export interface ActivityEntry {
+  id: ID;
+  at: string; // ISO datetime
+  userId: ID;
+  text: string;
+}
 /** Công việc điều hành – lãnh đạo giao việc, có thể thuộc 1 dự án hoặc là việc chung */
 export interface Directive {
   id: ID;
@@ -665,23 +664,87 @@ export interface Directive {
   followerIds: ID[];
   createdAt: string;
   dueDate: string;
-  status: "dang_thuc_hien" | "hoan_thanh";
+  status: "dang_thuc_hien" | "cho_review" | "hoan_thanh";
+  /** Cần lãnh đạo (người giao) review sau khi nhân viên báo hoàn thành */
+  needsReview?: boolean;
   attachments: Attachment[]; // tài liệu đính kèm khi giao
   comments: DirectiveComment[];
-  completedAt?: string;
+  completedAt?: string; // ngày nhân viên báo hoàn thành (xét đúng hạn / muộn theo ngày này)
+  reviewedAt?: string;
+  updatedAt?: string;
+  activity?: ActivityEntry[];
   result?: string;
   files?: Attachment[]; // tài liệu kèm báo cáo hoàn thành
 }
 
-/** Chi phí thực tế phát sinh theo tháng – nguồn: phân hệ Kế toán (Bảng tổng hợp chi phí SXKD) */
-export interface CostEntry {
+/** Một dòng công tác trong dự toán (theo mẫu bảng dự toán / đơn giá tổng hợp) */
+export interface EstimateLine {
+  id: ID;
+  group: string; // hạng mục
+  code: string; // mã hiệu định mức, vd AB.25113
+  name: string;
+  unit: string;
+  qty: number;
+  vl: number; // đơn giá vật liệu
+  nc: number; // đơn giá nhân công
+  mtc: number; // đơn giá máy thi công
+  taskId?: ID | null; // ghép với công việc trong kế hoạch tiến độ
+}
+/** Dự toán thi công của dự án */
+export interface Estimate {
+  id: ID;
+  code: string;
+  projectId: ID;
+  name: string;
+  createdAt: string;
+  createdById: ID;
+  source: string;
+  rateC: number; // % chi phí chung trên chi phí trực tiếp
+  rateTL: number; // % thu nhập chịu thuế tính trước
+  vat: number; // % VAT
+  lines: EstimateLine[];
+}
+/** Chứng từ chi phí – nguồn: phần mềm kế toán (nhập tay / import), theo mẫu Bảng tổng hợp chi phí SXKD */
+export interface CostDoc {
+  id: ID;
+  projectId: ID;
+  docNo: string;
+  date: string;
+  description: string;
+  nvl: number; // NVLTT
+  nc: number; // NCTT
+  mtc: number; // CPMTC
+  sxc: number; // CPSXC
+  vat: number; // thuế GTGT đầu vào
+}
+export interface DebtEntry {
+  id: ID;
+  date: string;
+  kind: "cung_cap" | "hoa_don" | "thanh_toan"; // (3) giá trị đã cung cấp · (4) đã xuất hóa đơn · (5) ACC đã thanh toán / tạm ứng
+  amount: number;
+  note: string;
+}
+/** Công nợ với nhà cung cấp / thầu phụ theo hợp đồng */
+export interface Debt {
+  id: ID;
+  code: string;
+  projectId: ID;
+  supplierId: ID;
+  contractNo: string;
+  category: string;
+  contractValue: number;
+  dueDate: string;
+  entries: DebtEntry[];
+  note: string;
+}
+/** Kỳ giá trị khối lượng đã chốt (khóa số liệu) */
+export interface ValuePeriod {
   id: ID;
   projectId: ID;
   month: string; // YYYY-MM
-  nvl: number; // NVLTT – nguyên vật liệu trực tiếp
-  nc: number; // NCTT – nhân công trực tiếp
-  mtc: number; // CPMTC – chi phí máy thi công
-  sxc: number; // CPSXC – chi phí sản xuất chung
+  lockedAt: string;
+  lockedById: ID;
+  value: number; // giá trị thực hiện trong kỳ tại thời điểm chốt
 }
 
 export interface Database {
@@ -713,12 +776,14 @@ export interface Database {
   repairs: RepairRequest[];
   disposals: DisposalPlan[];
   incidents: Incident[];
-  routes: TransportRoute[];
   stocktakes: Stocktake[];
   contracts: Contract[];
   loginHistory: LoginEntry[];
   directives: Directive[];
-  costEntries: CostEntry[];
+  costDocs: CostDoc[];
+  estimates: Estimate[];
+  debts: Debt[];
+  valuePeriods: ValuePeriod[];
 }
 
 export type CollectionKey = keyof Database;

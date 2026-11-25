@@ -1,7 +1,9 @@
-import type { Database } from "@/types";
+import type { Database, Department } from "@/types";
 import type { LabelTone } from "./constants";
 
 /** Dự án đang thực hiện (giai đoạn Đang thi công) – chỉ những dự án này hiển thị trên các màn hình nghiệp vụ */
+/** Đơn vị thi công: đơn vị trực thuộc, công ty con, công ty liên kết */
+export const isUnit = (d: Department) => d.type === "don_vi_truc_thuoc" || d.type === "cong_ty_con" || d.type === "cong_ty_lien_ket";
 export const activeProjects = (db: Database) => db.projects.filter((p) => p.status === "dang_thi_cong");
 export const projectOptions = (db: Database) => activeProjects(db).map((p) => ({ value: p.id, label: p.shortName }));
 export const equipmentOptions = (db: Database) => db.equipment.map((e) => ({ value: e.id, label: `${e.code} – ${e.name}` }));
@@ -16,8 +18,9 @@ export const METHOD_STATUS: Record<string, LabelTone> = {
 export const STAFF_TYPE: Record<string, LabelTone> = {
   chi_huy: { label: "Chỉ huy", tone: "primary" },
   can_bo_ky_thuat: { label: "Cán bộ kỹ thuật", tone: "info" },
-  cong_nhan: { label: "Công nhân", tone: "success" },
-  lao_dong_pho_thong: { label: "Lao động phổ thông", tone: "neutral" },
+  can_bo_nghiep_vu: { label: "Cán bộ nghiệp vụ", tone: "purple" },
+  to_truong: { label: "Tổ trưởng", tone: "warning" },
+  cong_nhan: { label: "Công nhân / Vận hành máy", tone: "success" },
 };
 export const STAFF_STATUS: Record<string, LabelTone> = { dang_lam: { label: "Đang làm việc", tone: "success" }, da_nghi: { label: "Đã nghỉ", tone: "neutral" } };
 export const EQUIPMENT_KIND: Record<string, LabelTone> = {

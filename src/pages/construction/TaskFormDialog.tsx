@@ -9,7 +9,6 @@ import { FormField } from "@/components/common/FormField";
 import { useDb } from "@/hooks/useDb";
 import { createItem, createTask, updateTask, type TaskInput } from "@/services/actions";
 import { DEMO_TODAY, addDays, diffDays } from "@/utils/date";
-import { fmtVnd } from "@/utils/format";
 import type { PlanTask } from "@/types";
 
 const UNITS = ["m³", "m²", "m", "tấn", "kg", "cái", "bộ", "gói", "lần", "m² sàn"];
@@ -80,8 +79,6 @@ export function TaskFormDialog({ open, onOpenChange, projectId, task, defaults }
               <>
                 <FormField label="Đơn vị tính"><Select value={f.unit} onChange={(e) => set("unit", e.target.value)} options={UNITS.map((u) => ({ value: u, label: u }))} /></FormField>
                 <FormField label="Khối lượng kế hoạch (hợp đồng)" required error={err.contractQty}><Input type="number" value={f.contractQty || ""} onChange={(e) => set("contractQty", Number(e.target.value))} /></FormField>
-                <FormField label="Đơn giá (VNĐ)"><Input type="number" value={f.unitPrice || ""} onChange={(e) => set("unitPrice", Number(e.target.value))} /></FormField>
-                <FormField label="Giá trị kế hoạch"><Input disabled value={`${fmtVnd(f.contractQty * f.unitPrice)} đ`} /></FormField>
               </>
             )}
             <FormField label="Công việc liền trước (liên kết)" hint="FS: bắt đầu sau khi việc trước kết thúc · SS: bắt đầu sau khi việc trước bắt đầu">

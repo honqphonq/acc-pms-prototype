@@ -15,7 +15,6 @@ export const TEMPLATE_COLUMNS = [
   "Tổ thực hiện",
   "Đơn vị tính",
   "Khối lượng kế hoạch (*)",
-  "Đơn giá (VNĐ)",
   "Bắt đầu KH (*) dd/mm/yyyy",
   "Kết thúc KH (*) dd/mm/yyyy",
 ] as const;
@@ -47,7 +46,7 @@ function save(XLSX: typeof import("xlsx"), rows: (string | number)[][], sheetNam
   XLSX.utils.book_append_sheet(wb, ws, sheetName);
   XLSX.writeFile(wb, filename);
 }
-const WIDTHS = [12, 30, 40, 22, 20, 10, 16, 16, 18, 18];
+const WIDTHS = [12, 30, 40, 22, 20, 10, 16, 18, 18];
 
 /** Tải template trống (kèm 2 dòng ví dụ) */
 export async function downloadTemplate(db: Database, projectId: ID) {
@@ -55,8 +54,8 @@ export async function downloadTemplate(db: Database, projectId: ID) {
   const p = db.projects.find((x) => x.id === projectId);
   const item = db.constructionItems.find((i) => i.projectId === projectId);
   const sample: (string | number)[][] = [
-    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường lăn", "Thi công móng CPĐD loại 1", "Phạm Văn Long", "Tổ móng CPĐD số 1", "m³", 2400, 165000, toDMY(addDays(DEMO_TODAY, 3)), toDMY(addDays(DEMO_TODAY, 17))],
-    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường cất hạ cánh", "Thi công BTXM M350/45 dày 40cm", "Hoàng Quang Huy", "Tổ BTXM mặt đường số 1", "m³", 1200, 680000, toDMY(addDays(DEMO_TODAY, 1)), toDMY(addDays(DEMO_TODAY, 10))],
+    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường lăn", "Thi công móng CPĐD loại 1", "Phạm Văn Long", "Tổ móng CPĐD số 1", "m³", 2400, toDMY(addDays(DEMO_TODAY, 3)), toDMY(addDays(DEMO_TODAY, 17))],
+    [item?.code ?? "1.1.1", item?.name ?? "Kết cấu đường cất hạ cánh", "Thi công BTXM M350/45 dày 40cm", "Hoàng Quang Huy", "Tổ BTXM mặt đường số 1", "m³", 1200, toDMY(addDays(DEMO_TODAY, 1)), toDMY(addDays(DEMO_TODAY, 10))],
   ];
   save(XLSX, [[...TEMPLATE_COLUMNS], ...sample], "Kế hoạch thi công", `Template_ke_hoach_thi_cong_${p?.code ?? ""}.xlsx`, WIDTHS);
 }
@@ -65,7 +64,7 @@ export async function downloadTemplate(db: Database, projectId: ID) {
 export async function exportPlan(db: Database, projectId: ID) {
   const XLSX = await xlsx();
   const p = db.projects.find((x) => x.id === projectId)!;
-  const rows: (string | number)[][] = [[...TEMPLATE_COLUMNS, "Mã công việc", "KL thực hiện", "Tiến độ (%)", "Bắt đầu TT", "Kết thúc TT"]];
+  const rows: (string | number)[][] = [[...TEMPLATE_COLUMNS, "Mã công việc", "KL thực hiện", "Tiến độ (%)", "Bắt đầu TT", "Hoàn thành thực tế"]];
   buildTaskTree(db, projectId).forEach(({ itemId, rows: tree }) => {
     const it = db.constructionItems.find((i) => i.id === itemId)!;
     const walk = (list: typeof tree) =>
@@ -73,7 +72,7 @@ export async function exportPlan(db: Database, projectId: ID) {
         if (r.children.length) return walk(r.children);
         const t = r.task;
         rows.push([
-          it.code, it.name, t.name, db.users.find((u) => u.id === t.assigneeId)?.name ?? "", t.team, t.unit, t.contractQty, t.unitPrice, toDMY(t.plannedStart), toDMY(t.plannedEnd),
+          it.code, it.name, t.name, db.users.find((u) => u.id === t.assigneeId)?.name ?? "", t.team, t.unit, t.contractQty, toDMY(t.plannedStart), toDMY(t.plannedEnd),
           t.code, t.actualQty, Math.round(taskActualPct(t) * 1000) / 10, toDMY(t.actualStart), toDMY(t.actualEnd),
         ]);
       });
@@ -113,8 +112,8 @@ export async function parsePlanFile(file: File): Promise<{ rows: ImportRow[]; er
     const name = String(c[2] ?? "").trim();
     if (!name) return;
     const qty = Number(c[6]);
-    const start = parseDate(c[8], XLSX);
-    const end = parseDate(c[9], XLSX);
+    const start = parseDate(c[7], XLSX);
+    const end = parseDate(c[8], XLSX);
     const errs: string[] = [];
     if (!(qty > 0)) errs.push("khối lượng kế hoạch phải > 0");
     if (!start || !end) errs.push("ngày bắt đầu/kết thúc không hợp lệ (dd/mm/yyyy)");
@@ -123,7 +122,7 @@ export async function parsePlanFile(file: File): Promise<{ rows: ImportRow[]; er
     rows.push({
       line, itemCode: String(c[0] ?? "").trim(), itemName: String(c[1] ?? "").trim(), name,
       assigneeName: String(c[3] ?? "").trim(), team: String(c[4] ?? "").trim(), unit: String(c[5] ?? "").trim() || "m³",
-      qty, unitPrice: Number(c[7]) || 0, start, end,
+      qty, unitPrice: 0, start, end,
     });
   });
   return { rows, errors };

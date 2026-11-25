@@ -370,8 +370,9 @@ export function issueStock(db: Database, t: TxInput): Database {
 export const updateInventory = (db: Database, id: ID, c: { normQty?: number; minStock?: number }) => patch(db, "inventory", id, c);
 
 // ======================= XE MÁY THIẾT BỊ =======================
-export const createEquipment = (db: Database, e: Omit<Equipment, "id" | "maintenances">) => insert(db, "equipment", { ...e, id: genId("eq"), maintenances: [] }, true);
-export const updateEquipment = (db: Database, id: ID, c: Partial<Equipment>) => patch(db, "equipment", id, c);
+const eqStamp = () => `${DEMO_TODAY}T${new Date().toTimeString().slice(0, 8)}`;
+export const createEquipment = (db: Database, e: Omit<Equipment, "id" | "maintenances">) => insert(db, "equipment", { ...e, id: genId("eq"), maintenances: [], updatedAt: eqStamp() }, true);
+export const updateEquipment = (db: Database, id: ID, c: Partial<Equipment>) => patch(db, "equipment", id, { ...c, updatedAt: eqStamp() });
 export function deleteEquipment(db: Database, id: ID): Database {
   db = remove(db, "equipment", (e) => e.id === id);
   db = remove(db, "equipmentAssignments", (a) => a.equipmentId === id);
@@ -522,19 +523,20 @@ export function processStocktake(db: Database, id: ID, byId: ID): Database {
 }
 
 /** Điều động trực tiếp từ Danh mục XMTB (có hiệu lực ngay, không qua duyệt): về dự án hoặc thu hồi về kho TCT (toProjectId = null) */
-export function dispatchEquipment(db: Database, equipmentId: ID, input: { toProjectId: ID | null; startDate: string; endDate: string; decisionNo: string; files: Attachment[]; reason: string }, byId: ID): Database {
+export function dispatchEquipment(db: Database, equipmentId: ID, input: { toProjectId: ID | null; startDate: string; endDate: string; decisionNo: string; files: Attachment[]; reason: string; operatorId?: ID | null }, byId: ID): Database {
   const e = db.equipment.find((x) => x.id === equipmentId);
   if (!e) return db;
   db = setCol(db, "equipmentAssignments", db.equipmentAssignments.map((x) => (x.equipmentId === equipmentId && x.status === "dang_dieu_dong" ? { ...x, status: "hoan_thanh", endDate: input.startDate } : x)));
   const prefix = input.toProjectId ? "QĐ-ĐĐ-2026-" : "QĐ-TH-2026-";
   const rec: EquipmentAssignment = {
     id: genId("as"), code: input.decisionNo.trim() || nextCode(prefix, db.equipmentAssignments.map((x) => x.code)), equipmentId, fromProjectId: e.currentProjectId, toProjectId: input.toProjectId ?? "",
-    operatorId: null, startDate: input.startDate, endDate: input.toProjectId ? input.endDate : input.startDate, status: input.toProjectId ? "dang_dieu_dong" : "hoan_thanh",
+    operatorId: input.operatorId ?? null, startDate: input.startDate, endDate: input.toProjectId ? input.endDate : input.startDate, status: input.toProjectId ? "dang_dieu_dong" : "hoan_thanh",
     kind: !input.toProjectId ? "thu_hoi" : e.currentProjectId ? "dieu_chuyen" : "phan_bo", requesterId: byId, reason: input.reason || (input.toProjectId ? "Phục vụ thi công" : "Thu hồi về kho Tổng công ty"), createdAt: DEMO_TODAY,
     decisionNo: input.decisionNo.trim() || undefined, files: input.files,
   };
   db = insert(db, "equipmentAssignments", rec, true);
-  return patch(db, "equipment", equipmentId, input.toProjectId ? { currentProjectId: input.toProjectId, status: e.status === "bao_tri" ? "bao_tri" : "hoat_dong" } : { currentProjectId: null, operatorId: null, status: e.status === "bao_tri" ? "bao_tri" : "nhan_roi" });
+  const updatedAt = `${DEMO_TODAY}T${new Date().toTimeString().slice(0, 8)}`;
+  return patch(db, "equipment", equipmentId, input.toProjectId ? { currentProjectId: input.toProjectId, operatorId: input.operatorId ?? null, status: e.status === "bao_tri" ? "bao_tri" : "hoat_dong", updatedAt } : { currentProjectId: null, operatorId: null, status: e.status === "bao_tri" ? "bao_tri" : "nhan_roi", updatedAt });
 }
 
 /** Thu hồi XMTB về Tổng công ty: kết thúc quyết định điều động hiện hành, máy về trạng thái nhàn rỗi */
@@ -607,22 +609,62 @@ export function deleteVoucher(db: Database, voucherCode: string): Database {
 }
 
 // ---------- Công việc điều hành ----------
-export type DirectiveInput = Pick<Directive, "title" | "content" | "projectId" | "assigneeId" | "dueDate" | "followerIds" | "attachments">;
+export type DirectiveInput = Pick<Directive, "title" | "content" | "projectId" | "assigneeId" | "dueDate" | "followerIds" | "attachments" | "needsReview">;
 const dueVi = (d: string) => d.split("-").reverse().join("/");
+const nowAt = () => `${DEMO_TODAY}T${new Date().toTimeString().slice(0, 8)}`;
+const uName = (db: Database, id: ID) => db.users.find((u) => u.id === id)?.name ?? "";
+/** Ghi một dòng lịch sử hoạt động cho công việc điều hành */
+function logDirective(db: Database, id: ID, userId: ID, text: string, changes: Partial<Directive> = {}): Database {
+  const d = db.directives.find((x) => x.id === id);
+  if (!d) return db;
+  const at = nowAt();
+  return patch(db, "directives", id, { ...changes, updatedAt: at, activity: [...(d.activity ?? []), { id: genId("ac"), at, userId, text }] });
+}
 export function createDirective(db: Database, input: DirectiveInput, byId: ID): Database {
   const code = nextCode("CV-", db.directives.map((d) => d.code));
   const id = genId("cv");
-  const who = db.users.find((u) => u.id === input.assigneeId)?.name ?? "";
-  const next = insert(db, "directives", { ...input, id, code, assignedBy: byId, createdAt: DEMO_TODAY, status: "dang_thuc_hien", comments: [], files: [] }, true);
+  const who = uName(db, input.assigneeId);
+  const at = nowAt();
+  const next = insert(db, "directives", { ...input, id, code, assignedBy: byId, createdAt: DEMO_TODAY, updatedAt: at, status: "dang_thuc_hien", comments: [], files: [], activity: [{ id: genId("ac"), at, userId: byId, text: `giao công việc **${input.title}** cho **${who}**${input.needsReview ? " (cần review)" : ""}` }] }, true);
   return pushNotification(next, { type: "task", severity: "info", title: `Công việc mới: ${input.title}`, message: `${code} · giao cho ${who} · hạn ${dueVi(input.dueDate)}`, projectId: input.projectId, link: `/directives?id=${id}` });
 }
 export function addDirectiveComment(db: Database, id: ID, userId: ID, text: string): Database {
   const d = db.directives.find((x) => x.id === id);
   if (!d) return db;
-  return patch(db, "directives", id, { comments: [...(d.comments ?? []), { id: genId("cm"), userId, at: `${DEMO_TODAY}T${new Date().toTimeString().slice(0, 8)}`, text }] });
+  return patch(db, "directives", id, { updatedAt: nowAt(), comments: [...(d.comments ?? []), { id: genId("cm"), userId, at: nowAt(), text }] });
 }
-export function completeDirective(db: Database, id: ID, result: string, files: Attachment[]): Database {
+/** Cập nhật kết quả công việc (cập nhật được nhiều lần) */
+export function updateDirectiveResult(db: Database, id: ID, userId: ID, result: string, files: Attachment[]): Database {
+  return logDirective(db, id, userId, "cập nhật kết quả công việc", { result, files });
+}
+export function addDirectiveFollowers(db: Database, id: ID, userId: ID, followerIds: ID[]): Database {
   const d = db.directives.find((x) => x.id === id);
-  const next = patch(db, "directives", id, { status: "hoan_thanh", completedAt: DEMO_TODAY, result, files });
-  return d ? pushNotification(next, { type: "task", severity: "success", title: `Đã hoàn thành: ${d.title}`, message: `${d.code} · ${db.users.find((u) => u.id === d.assigneeId)?.name ?? ""} đã báo cáo hoàn thành`, projectId: d.projectId, link: `/directives?id=${id}` }) : next;
+  if (!d) return db;
+  const added = followerIds.filter((x) => !d.followerIds.includes(x));
+  const removed = d.followerIds.filter((x) => !followerIds.includes(x));
+  const parts = [added.length && `thêm người theo dõi **${added.map((x) => uName(db, x)).join(", ")}**`, removed.length && `bỏ người theo dõi **${removed.map((x) => uName(db, x)).join(", ")}**`].filter(Boolean);
+  return parts.length ? logDirective(db, id, userId, parts.join("; "), { followerIds }) : db;
+}
+/** Nhân viên báo hoàn thành: việc cần review → Chờ review, ngược lại → Hoàn thành ngay */
+export function completeDirective(db: Database, id: ID, userId: ID, result: string, files: Attachment[]): Database {
+  const d = db.directives.find((x) => x.id === id);
+  if (!d) return db;
+  const review = !!d.needsReview;
+  let next = logDirective(db, id, userId, review ? "báo hoàn thành công việc, chờ review" : "đánh dấu hoàn thành công việc", { status: review ? "cho_review" : "hoan_thanh", completedAt: DEMO_TODAY, result, files });
+  next = pushNotification(next, review
+    ? { type: "task", severity: "warning", title: `Chờ review: ${d.title}`, message: `${d.code} · ${uName(db, d.assigneeId)} đã báo hoàn thành – cần ${uName(db, d.assignedBy)} review`, projectId: d.projectId, link: `/directives?id=${id}` }
+    : { type: "task", severity: "success", title: `Đã hoàn thành: ${d.title}`, message: `${d.code} · ${uName(db, d.assigneeId)} đã báo cáo hoàn thành`, projectId: d.projectId, link: `/directives?id=${id}` });
+  return next;
+}
+/** Người giao review: Đạt → Hoàn thành (xét đúng hạn theo ngày báo hoàn thành); Không đạt → làm lại */
+export function reviewDirective(db: Database, id: ID, userId: ID, ok: boolean, reason = ""): Database {
+  const d = db.directives.find((x) => x.id === id);
+  if (!d) return db;
+  if (ok) {
+    const next = logDirective(db, id, userId, "review **Đạt** – công việc hoàn thành", { status: "hoan_thanh", reviewedAt: DEMO_TODAY });
+    return pushNotification(next, { type: "task", severity: "success", title: `Review đạt: ${d.title}`, message: `${d.code} · ${uName(db, userId)} đã duyệt kết quả`, projectId: d.projectId, link: `/directives?id=${id}` });
+  }
+  let next = logDirective(db, id, userId, `yêu cầu làm lại: ${reason}`, { status: "dang_thuc_hien", completedAt: undefined, reviewedAt: undefined });
+  next = addDirectiveComment(next, id, userId, `Yêu cầu làm lại: ${reason}`);
+  return pushNotification(next, { type: "task", severity: "warning", title: `Yêu cầu làm lại: ${d.title}`, message: `${d.code} · ${reason}`, projectId: d.projectId, link: `/directives?id=${id}` });
 }

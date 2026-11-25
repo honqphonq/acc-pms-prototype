@@ -38,7 +38,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-002",
@@ -74,7 +75,8 @@
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-003",
@@ -115,7 +117,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-004",
@@ -156,7 +159,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-005",
@@ -197,7 +201,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-006",
@@ -223,7 +228,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-007",
@@ -249,7 +255,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-008",
@@ -290,7 +297,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-009",
@@ -331,7 +339,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-010",
@@ -372,7 +381,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-011",
@@ -413,7 +423,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-012",
@@ -439,7 +450,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-013",
@@ -480,7 +492,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-014",
@@ -511,7 +524,8 @@
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-015",
@@ -552,7 +566,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-016",
@@ -593,7 +608,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-017",
@@ -624,7 +640,8 @@
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-018",
@@ -665,7 +682,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-019",
@@ -706,7 +724,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-020",
@@ -732,7 +751,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-021",
@@ -773,7 +793,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-022",
@@ -814,7 +835,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-023",
@@ -855,7 +877,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-024",
@@ -896,7 +919,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-025",
@@ -937,7 +961,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-026",
@@ -973,7 +998,8 @@
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-027",
@@ -1014,7 +1040,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-028",
@@ -1055,7 +1082,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-029",
@@ -1096,7 +1124,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-030",
@@ -1137,7 +1166,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-031",
@@ -1178,7 +1208,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-032",
@@ -1209,7 +1240,8 @@
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-033",
@@ -1235,7 +1267,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-034",
@@ -1276,7 +1309,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-035",
@@ -1317,7 +1351,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-036",
@@ -1343,7 +1378,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-037",
@@ -1384,7 +1420,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-038",
@@ -1425,7 +1462,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-039",
@@ -1466,7 +1504,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-040",
@@ -1507,7 +1546,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-041",
@@ -1548,7 +1588,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-042",
@@ -1589,7 +1630,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-043",
@@ -1630,7 +1672,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-044",
@@ -1671,7 +1714,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-045",
@@ -1712,7 +1756,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-046",
@@ -1753,7 +1798,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-047",
@@ -1794,7 +1840,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-048",
@@ -1835,7 +1882,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-049",
@@ -1876,7 +1924,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-050",
@@ -1917,7 +1966,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-051",
@@ -1958,7 +2008,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-052",
@@ -1999,7 +2050,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-053",
@@ -2025,7 +2077,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-054",
@@ -2051,7 +2104,8 @@
         "byId": "u15",
         "action": "Lập hồ sơ thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-055",
@@ -2092,7 +2146,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-056",
@@ -2123,7 +2178,8 @@
         "byId": "u14",
         "action": "Trình Chủ đầu tư"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-057",
@@ -2159,7 +2215,8 @@
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-058",
@@ -2200,7 +2257,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-059",
@@ -2241,7 +2299,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-060",
@@ -2282,7 +2341,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-061",
@@ -2323,7 +2383,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-062",
@@ -2364,7 +2425,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-063",
@@ -2405,7 +2467,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-064",
@@ -2446,7 +2509,8 @@
         "byId": "u14",
         "action": "Đã nhận thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-065",
@@ -2482,7 +2546,8 @@
         "byId": "u14",
         "action": "Chủ đầu tư phê duyệt giá trị thanh toán"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-066",
@@ -2511,7 +2576,8 @@
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-067",
@@ -2545,7 +2611,8 @@
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-068",
@@ -2579,7 +2646,8 @@
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-069",
@@ -2613,7 +2681,8 @@
         "byId": "u14",
         "action": "Đã chuyển khoản"
       }
-    ]
+    ],
+    "kind": "thanh_toan"
   },
   {
     "id": "pay-070",
@@ -2641,6 +2710,247 @@
         "at": "2026-11-02T08:39:00",
         "byId": "u14",
         "action": "Kế toán trưởng phê duyệt"
+      }
+    ],
+    "kind": "thanh_toan"
+  },
+  {
+    "id": "pay-tu-p01",
+    "code": "TU-P01-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p01",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 37035000000.0,
+    "retention": 0,
+    "paidAmount": 37035000000.0,
+    "createdAt": "2026-04-28",
+    "dueDate": "2026-04-28",
+    "paidAt": "2026-04-28",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-04-28T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2026-04-28T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p02",
+    "code": "TU-P02-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p02",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 115709000000.0,
+    "retention": 0,
+    "paidAmount": 115709000000.0,
+    "createdAt": "2025-09-15",
+    "dueDate": "2025-09-15",
+    "paidAt": "2025-09-15",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-09-15T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-09-15T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p03",
+    "code": "TU-P03-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p03",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 187506000000.0,
+    "retention": 0,
+    "paidAmount": 187506000000.0,
+    "createdAt": "2025-07-01",
+    "dueDate": "2025-07-01",
+    "paidAt": "2025-07-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-07-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-07-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p04",
+    "code": "TU-P04-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p04",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 81006000000.0,
+    "retention": 0,
+    "paidAmount": 81006000000.0,
+    "createdAt": "2025-11-01",
+    "dueDate": "2025-11-01",
+    "paidAt": "2025-11-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-11-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-11-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p05",
+    "code": "TU-P05-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p05",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 95992000000.0,
+    "retention": 0,
+    "paidAmount": 95992000000.0,
+    "createdAt": "2026-03-01",
+    "dueDate": "2026-03-01",
+    "paidAt": "2026-03-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2026-03-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2026-03-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p06",
+    "code": "TU-P06-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p06",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 62999000000.0,
+    "retention": 0,
+    "paidAmount": 62999000000.0,
+    "createdAt": "2025-08-01",
+    "dueDate": "2025-08-01",
+    "paidAt": "2025-08-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-08-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-08-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p07",
+    "code": "TU-P07-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p07",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 43388000000.0,
+    "retention": 0,
+    "paidAmount": 43388000000.0,
+    "createdAt": "2025-12-01",
+    "dueDate": "2025-12-01",
+    "paidAt": "2025-12-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-12-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-12-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
+      }
+    ]
+  },
+  {
+    "id": "pay-tu-p08",
+    "code": "TU-P08-01",
+    "direction": "thu_cdt",
+    "kind": "tam_ung",
+    "projectId": "p08",
+    "acceptanceIds": [],
+    "supplierId": null,
+    "title": "Tạm ứng hợp đồng đợt 1 (15% giá trị HĐ)",
+    "amount": 28501000000.0,
+    "retention": 0,
+    "paidAmount": 28501000000.0,
+    "createdAt": "2025-03-01",
+    "dueDate": "2025-03-01",
+    "paidAt": "2025-03-01",
+    "status": "da_thanh_toan",
+    "createdById": "u15",
+    "history": [
+      {
+        "at": "2025-03-01T09:00:00",
+        "byId": "u15",
+        "action": "Lập hồ sơ tạm ứng"
+      },
+      {
+        "at": "2025-03-01T15:00:00",
+        "byId": "u14",
+        "action": "Ghi nhận CĐT đã chuyển tiền tạm ứng"
       }
     ]
   }
