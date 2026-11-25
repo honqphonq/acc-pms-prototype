@@ -15,7 +15,6 @@ const Logs = lazy(() => import("@/pages/construction/LogsPage"));
 const RequestDetail = lazy(() => import("@/pages/materials/RequestDetailPage"));
 const RequestForm = lazy(() => import("@/pages/materials/RequestFormPage"));
 const Catalog = lazy(() => import("@/pages/materials/CatalogPage"));
-const Suppliers = lazy(() => import("@/pages/materials/SuppliersPage"));
 const EquipmentList = lazy(() => import("@/pages/equipment/EquipmentListPage"));
 const EquipmentDetail = lazy(() => import("@/pages/equipment/EquipmentDetailPage"));
 const Shifts = lazy(() => import("@/pages/equipment/ShiftsPage"));
@@ -86,7 +85,7 @@ export function AppRoutes() {
         <Route path="materials/receipts" element={<ToStock tab="nhap" />} />
         <Route path="materials/issues" element={<ToStock tab="xuat" />} />
         <Route path="materials/catalog" element={<S><Catalog /></S>} />
-        <Route path="materials/suppliers" element={<Navigate to="/finance/suppliers" replace />} />
+        <Route path="materials/suppliers" element={<Navigate to="/finance/debts?tab=danh-muc" replace />} />
         <Route path="equipment" element={<Navigate to="/equipment/list" replace />} />
         <Route path="equipment/list" element={<S><EquipmentList /></S>} />
         <Route path="equipment/dispatch" element={<Navigate to="/equipment/list" replace />} />
@@ -103,7 +102,7 @@ export function AppRoutes() {
         <Route path="finance/costs" element={<S><Costs /></S>} />
         <Route path="finance/payments" element={<S><CdtPayments /></S>} />
         <Route path="finance/value" element={<S><ValuePg /></S>} />
-        <Route path="finance/suppliers" element={<S><Suppliers /></S>} />
+        <Route path="finance/suppliers" element={<Navigate to="/finance/debts?tab=danh-muc" replace />} />
         <Route path="finance/debts" element={<S><Debts /></S>} />
         <Route path="account" element={<S><Account /></S>} />
         <Route path="acceptance" element={<S><AcceptanceList /></S>} />

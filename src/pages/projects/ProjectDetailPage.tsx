@@ -29,7 +29,7 @@ import {
   equipmentByGroup, equipmentWork, utilizationOf, getStockRows, itemStats, leafTasks, monthlyProgress, projectStats, requestValue,
   STOCK_STATUS, taskActualPct, taskPlannedPct, TASK_HEALTH_LABEL, taskHealth,
 } from "@/services/selectors";
-import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, PROJECT_HEALTH, ISSUE_SEVERITY, ISSUE_STATUS, MR_STATUS, PROJECT_STATUS, SERIES } from "@/utils/constants";
+import { CATEGORY_LABELS, CHART_COLORS, EQUIPMENT_STATUS, PROJECT_HEALTH, MR_STATUS, PROJECT_STATUS, SERIES } from "@/utils/constants";
 import { fmtDate, fmtNumber, fmtPct, fmtMoneyShort } from "@/utils/format";
 import { DEMO_TODAY, monthLabel } from "@/utils/date";
 
@@ -71,7 +71,6 @@ export default function ProjectDetailPage() {
   const stock = getStockRows(db).filter((r) => r.inv.projectId === project.id);
   const requests = db.materialRequests.filter((r) => r.projectId === project.id);
   const logs = db.constructionLogs.filter((l) => l.projectId === project.id).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 12);
-  const issues = db.issues.filter((i) => i.projectId === project.id);
   const sNow = series.filter((r) => r.month >= project.startDate.slice(0, 7));
   // Tổ thực hiện: gom theo tổ đội của các công việc; nhân công lấy từ nhật ký gần nhất của tổ
   const teams = [...new Set(tasks.map((t) => t.team).filter((tm) => tm && !/ban chỉ huy/i.test(tm)))].map((name) => {
@@ -156,7 +155,6 @@ export default function ProjectDetailPage() {
             <TabsTrigger value="equipment">Thiết bị ({eqList.length})</TabsTrigger>
             <TabsTrigger value="logs">Nhật ký & hình ảnh</TabsTrigger>
             <TabsTrigger value="directives">Công việc điều hành ({db.directives.filter((d) => d.projectId === project.id && d.status !== "hoan_thanh").length})</TabsTrigger>
-            <TabsTrigger value="issues">Vấn đề phát sinh ({issues.filter((i) => i.status !== "da_xu_ly").length})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-4">
@@ -362,27 +360,6 @@ export default function ProjectDetailPage() {
 
           <TabsContent value="directives"><DirectiveWorkspace projectId={project.id} /></TabsContent>
 
-          <TabsContent value="issues">
-            <Card>
-              {issues.length === 0 ? <EmptyState title="Không có vấn đề phát sinh" /> : (
-                <Table>
-                  <TableHeader><TableRow><TableHead>Vấn đề</TableHead><TableHead>Mức độ</TableHead><TableHead>Phụ trách</TableHead><TableHead>Hạn xử lý</TableHead><TableHead>Trạng thái</TableHead></TableRow></TableHeader>
-                  <TableBody>
-                    {issues.map((i) => (
-                      <TableRow key={i.id}>
-                        <TableCell><div className="font-medium">{i.title}</div><div className="text-[11px] text-slate-400">{i.code} · {fmtDate(i.createdAt)}</div></TableCell>
-                        <TableCell><StatusBadge map={ISSUE_SEVERITY} value={i.severity} /></TableCell>
-                        <TableCell><UserCell userId={i.assigneeId} /></TableCell>
-                        <TableCell className="text-xs">{fmtDate(i.dueDate)}</TableCell>
-                        <TableCell><StatusBadge map={ISSUE_STATUS} value={i.status} /></TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              )}
-            </Card>
-            <div className="mt-3 text-right"><Link to={`/alerts?project=${project.id}`} className="text-xs font-medium text-primary hover:underline">Quản lý vấn đề phát sinh →</Link></div>
-          </TabsContent>
         </Tabs>
       )}
       <ProjectFormDialog open={editOpen} onOpenChange={setEditOpen} project={project} />

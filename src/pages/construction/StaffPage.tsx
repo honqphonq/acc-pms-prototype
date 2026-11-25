@@ -1,7 +1,8 @@
+import { HealthDate, healthState } from "@/components/common/HealthDate";
 import { useDb } from "@/hooks/useDb";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { RegistryPage } from "@/components/registry/RegistryPage";
-import { DEMO_TODAY, diffDays } from "@/utils/date";
+import { DEMO_TODAY } from "@/utils/date";
 import { fmtDate } from "@/utils/format";
 import { STAFF_STATUS, STAFF_TYPE, projectOptions, toOptions } from "@/utils/labels";
 import { AttachmentList } from "@/components/common/Attachments";
@@ -9,7 +10,7 @@ import { StaffFiles } from "./StaffFiles";
 import type { SiteStaff, StaffDocKey } from "@/types";
 import { cn } from "@/utils/cn";
 
-const healthLate = (s: SiteStaff) => !!s.healthCheck && diffDays(s.healthCheck, DEMO_TODAY) > 365;
+const healthLate = (s: SiteStaff) => healthState(s.healthCheck) === "late";
 
 /** 7 loại giấy tờ nhân sự – tick Có / Không */
 export const STAFF_DOCS: { key: StaffDocKey; label: string; short: string }[] = [
@@ -54,6 +55,7 @@ export default function StaffPage() {
         { key: "j", header: "Ngày vào", sortValue: (s) => s.joinDate, cell: (s) => <span className="whitespace-nowrap">{fmtDate(s.joinDate)}</span> },
         { key: "s", header: "Trạng thái", filterValue: (s) => STAFF_STATUS[s.status]?.label ?? s.status, cell: (s) => <StatusBadge map={STAFF_STATUS} value={s.status} /> },
         ...STAFF_DOCS.map((d) => ({ key: "doc-" + d.key, header: d.short, align: "center" as const, filterValue: (s: SiteStaff) => DOC_LABEL[docState(s, d.key)], cell: (s: SiteStaff) => <DocCell v={docState(s, d.key)} /> })),
+        { key: "ksk-date", header: "Ngày khám SK", sortValue: (s) => s.healthCheck ?? "", filterValue: (s) => ({ late: "Quá hạn", soon: "Sắp đến hạn", ok: "Còn hạn", none: "Chưa có" })[healthState(s.healthCheck)], cell: (s) => <HealthDate date={s.healthCheck} /> },
         { key: "sum", header: "Hồ sơ đã nộp", filter: false, cell: (s) => <span className="block max-w-[260px] truncate text-[12.5px] text-slate-600" title={STAFF_DOCS.filter((d) => s.docs?.[d.key]).map((d) => d.short).join(", ")}>{STAFF_DOCS.filter((d) => s.docs?.[d.key]).map((d) => d.short).join(", ") || "—"}</span> },
       ]}
       detail={(s) => (

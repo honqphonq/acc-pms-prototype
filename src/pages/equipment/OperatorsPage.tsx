@@ -1,3 +1,4 @@
+import { HealthDate, healthState } from "@/components/common/HealthDate";
 import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import { useDb } from "@/hooks/useDb";
@@ -105,7 +106,7 @@ export default function OperatorsPage() {
         { key: "id", header: "CCCD / CMQĐ", cell: (o) => <span className="whitespace-nowrap">{o.idNo || "—"}</span> },
         { key: "hd", header: "Hợp đồng lao động", cell: (o) => <span className="whitespace-nowrap">{o.contractType || "—"}</span> },
         { key: "hs", header: "Hệ số lương", align: "right", sortValue: (o) => o.salaryCoef, cell: (o) => fmtNumber(o.salaryCoef, 2) },
-        { key: "ksk", header: "Ngày khám SK", sortValue: (o) => o.healthCheck ?? "", cell: (o) => <span className={cn("whitespace-nowrap", o.healthCheck && diffDays(o.healthCheck, DEMO_TODAY) > 365 && "font-medium text-amber-600")}>{o.healthCheck ? fmtDate(o.healthCheck) : "—"}</span> },
+        { key: "ksk", header: "Ngày khám SK", sortValue: (o) => o.healthCheck ?? "", filterValue: (o) => ({ late: "Quá hạn", soon: "Sắp đến hạn", ok: "Còn hạn", none: "Chưa có" })[healthState(o.healthCheck)], cell: (o) => <HealthDate date={o.healthCheck} /> },
         { key: "at", header: "Thẻ ATLĐ", align: "center", filterValue: (o) => (o.safetyCard ? "Có" : "Không"), cell: (o) => YN(o.safetyCard) },
         { key: "bh", header: "Thẻ BH TNLĐ", align: "center", filterValue: (o) => (o.insurance24h ? "Có" : "Không"), cell: (o) => YN(o.insurance24h) },
         { key: "hk", header: "Hộ khẩu", cell: (o) => <span className="whitespace-nowrap">{o.hometown || "—"}</span> },

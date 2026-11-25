@@ -53,6 +53,12 @@ export function getSeedData(): Database {
     equipment,
     equipmentAssignments,
     equipmentShifts,
+    shiftTypes: [
+      { id: "ca1", name: "Ca 1", short: "1", start: "06:00", end: "14:00", hours: 8, active: true },
+      { id: "ca2", name: "Ca 2", short: "2", start: "14:00", end: "22:00", hours: 8, active: true },
+      { id: "ca3", name: "Ca 3", short: "3", start: "22:00", end: "06:00", hours: 8, active: true },
+      { id: "cahc", name: "Ca hành chính", short: "HC", start: "07:30", end: "17:00", hours: 8, active: true },
+    ],
     equipmentUsage,
     acceptanceRecords,
     paymentRecords,

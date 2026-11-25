@@ -9,10 +9,27 @@
     "type": "hu_hong",
     "severity": "trung_binh",
     "description": "Vỡ ống thủy lực khi đang rải BTXM zone R4B, dừng máy 6 giờ",
-    "plan": "Thay ống thủy lực dự phòng, điều máy rải số 2 hỗ trợ",
-    "planStatus": "da_duyet",
     "status": "dang_xu_ly",
-    "progress": "11/11: đã thay ống, chờ chạy thử"
+    "createdById": "u12",
+    "createdAt": "2026-11-09",
+    "assigneeId": "u13",
+    "deadline": "2026-11-16",
+    "location": "Sân bay Gia Bình",
+    "files": [],
+    "activity": [
+      {
+        "id": "sk-001-a1",
+        "at": "2026-11-09T10:00:00",
+        "userId": "u12",
+        "text": "ghi nhận sự cố **SC-2026-011**, giao cho **Trần Quang Huy** xử lý, hạn 16/11/2026"
+      },
+      {
+        "id": "sk-001-a2",
+        "at": "2026-11-09T13:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận sự cố **SC-2026-011**"
+      }
+    ]
   },
   {
     "id": "sk-002",
@@ -24,10 +41,45 @@
     "type": "va_cham",
     "severity": "nhe",
     "description": "Xe tưới nước va quệt rào chắn khu bay khi lùi",
-    "plan": "Sửa rào chắn, nhắc nhở lái xe, bổ sung người cảnh giới",
-    "planStatus": "da_duyet",
     "status": "da_xu_ly",
-    "progress": "Đã khắc phục 22/10"
+    "createdById": "u12",
+    "createdAt": "2026-10-21",
+    "assigneeId": "u13",
+    "deadline": "2026-10-28",
+    "location": "Sân đỗ máy bay Đà Nẵng",
+    "completedAt": "2026-10-25",
+    "plan": "Sửa rào chắn, nhắc nhở lái xe, bổ sung người cảnh giới",
+    "cause": "Hao mòn, vận hành quá tải",
+    "cost": 18500000,
+    "files": [
+      {
+        "id": "sk-002-f1",
+        "name": "BB-xu-ly-su-co.pdf",
+        "type": "application/pdf",
+        "size": 380000,
+        "url": null
+      }
+    ],
+    "activity": [
+      {
+        "id": "sk-002-a1",
+        "at": "2026-10-21T10:00:00",
+        "userId": "u12",
+        "text": "ghi nhận sự cố **SC-2026-012**, giao cho **Trần Quang Huy** xử lý, hạn 28/10/2026"
+      },
+      {
+        "id": "sk-002-a2",
+        "at": "2026-10-21T13:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận sự cố **SC-2026-012**"
+      },
+      {
+        "id": "sk-002-a3",
+        "at": "2026-10-25T16:00:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành xử lý sự cố **SC-2026-012** · đính kèm 1 file"
+      }
+    ]
   },
   {
     "id": "sk-003",
@@ -39,9 +91,20 @@
     "type": "tai_nan",
     "severity": "nghiem_trong",
     "description": "Ô tô tự đổ lật khi đổ vật liệu tại mép taluy, lái xe bị thương nhẹ",
-    "plan": "",
-    "planStatus": "chua_lap",
     "status": "moi",
-    "progress": ""
+    "createdById": "u12",
+    "createdAt": "2026-11-13",
+    "assigneeId": "u13",
+    "deadline": "2026-11-20",
+    "location": "Cảng HKQT Cát Bi",
+    "files": [],
+    "activity": [
+      {
+        "id": "sk-003-a1",
+        "at": "2026-11-13T10:00:00",
+        "userId": "u12",
+        "text": "ghi nhận sự cố **SC-2026-013**, giao cho **Trần Quang Huy** xử lý, hạn 20/11/2026"
+      }
+    ]
   }
 ]

@@ -162,11 +162,11 @@
     "title": "Chuẩn bị báo cáo giao ban quý IV/2026",
     "content": "Tổng hợp tình hình sản xuất kinh doanh, tiến độ các dự án trọng điểm và kế hoạch quý I/2027 để trình bày tại cuộc họp giao ban.",
     "projectId": null,
-    "assigneeId": "u01",
-    "assignedBy": "u02",
+    "assigneeId": "u03",
+    "assignedBy": "u01",
     "followerIds": [
-      "u03",
-      "u14"
+      "u14",
+      "u02"
     ],
     "createdAt": "2026-11-08",
     "dueDate": "2026-11-25",
@@ -183,9 +183,9 @@
     "comments": [
       {
         "id": "cm05",
-        "userId": "u02",
+        "userId": "u01",
         "at": "2026-11-08T14:00:00",
-        "text": "Anh Toàn chủ trì, phòng KH-KT và Kế toán phối hợp số liệu."
+        "text": "Anh Quang chủ trì, phòng Tài chính - Kế toán phối hợp số liệu."
       }
     ],
     "needsReview": false,
@@ -193,14 +193,14 @@
       {
         "id": "cv04-a1",
         "at": "2026-11-08T08:05:00",
-        "userId": "u02",
-        "text": "giao công việc **Chuẩn bị báo cáo giao ban quý IV/2026** cho **Nguyễn Đức Toàn**"
+        "userId": "u01",
+        "text": "giao công việc **Chuẩn bị báo cáo giao ban quý IV/2026** cho **Bùi Minh Quang**"
       },
       {
         "id": "cv04-a2",
         "at": "2026-11-08T08:06:00",
-        "userId": "u02",
-        "text": "thêm người theo dõi **Bùi Minh Quang, La Thị Thu Hà**"
+        "userId": "u01",
+        "text": "thêm người theo dõi **La Thị Thu Hà, Nguyễn Văn Hùng**"
       }
     ],
     "updatedAt": "2026-11-08T14:00:00"
@@ -315,8 +315,8 @@
     "title": "Phê duyệt phương án tổ chức thi công mùa mưa",
     "content": "Xem xét, phê duyệt phương án thi công mùa mưa của công trường Sân đỗ Phú Bài.",
     "projectId": "p17",
-    "assigneeId": "u01",
-    "assignedBy": "u02",
+    "assigneeId": "u02",
+    "assignedBy": "u01",
     "followerIds": [
       "u65"
     ],
@@ -338,13 +338,13 @@
       {
         "id": "cv07-a1",
         "at": "2026-11-02T08:05:00",
-        "userId": "u02",
-        "text": "giao công việc **Phê duyệt phương án tổ chức thi công mùa mưa** cho **Nguyễn Đức Toàn**"
+        "userId": "u01",
+        "text": "giao công việc **Phê duyệt phương án tổ chức thi công mùa mưa** cho **Nguyễn Văn Hùng**"
       },
       {
         "id": "cv07-a2",
         "at": "2026-11-02T08:06:00",
-        "userId": "u02",
+        "userId": "u01",
         "text": "thêm người theo dõi **Hoàng Minh Đức**"
       }
     ],

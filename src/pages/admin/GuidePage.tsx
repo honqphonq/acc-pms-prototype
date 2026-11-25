@@ -20,7 +20,7 @@ const SCENARIOS: Scenario[] = [
     steps: [
       { text: "Trang chủ: trạng thái dự án (Chưa bắt đầu / Đúng tiến độ / Chậm tiến độ), biểu đồ Hợp đồng – Chi phí – Nghiệm thu theo dự án (xếp theo lãi), số lượng XMTB theo loại", to: "/" },
       { text: "Danh sách dự án: bấm thanh tiến độ để xem % hoàn thành, % kế hoạch đến hôm nay và lý do trạng thái", to: "/projects" },
-      { text: "Tiến độ Gantt SB Gia Bình: thanh kế hoạch (đen) và thanh thực tế (màu) trên từng dòng, liên kết công việc, cột Hoàn thành thực tế", to: "/construction/plan/p01" },
+      { text: "Tiến độ Gantt SB Gia Bình kiểu Tracking Gantt: kế hoạch xám mờ, thực tế đè lên (đậm = đã làm, xanh = đúng / đỏ = chậm); di chuột xem kế hoạch đến hôm nay, chậm bao nhiêu, năng suất cần để kịp hạn", to: "/construction/plan/p01" },
       { text: "Công việc điều hành: mở CV-003 đang “Chờ review” → Đạt hoặc Yêu cầu làm lại", to: "/directives?id=cv03" },
     ],
   },
@@ -45,7 +45,8 @@ const SCENARIOS: Scenario[] = [
     steps: [
       { text: "Danh mục XMTB: sắp xếp Mới cập nhật / Tên A → Z; cột Người sử dụng, Giá mua / Đơn giá thuê", to: "/equipment/list" },
       { text: "Tick nhiều máy → Điều động: chọn dự án và người sử dụng cho từng máy, có hiệu lực ngay", to: "/equipment/list" },
-      { text: "Phân ca và nhật trình theo tháng / tuần", to: "/equipment/shifts" },
+      { text: "Phân ca: Cấu hình ca (ca mẫu dùng chung), Phân ca hàng loạt, Nhập nhật trình theo ngày (tổ trưởng nhập hộ, Lưu tất cả)", to: "/equipment/shifts" },
+      { text: "Sửa chữa / Bảo dưỡng / Sự cố: tạo và giao việc → người được giao Tiếp nhận → Cập nhật kết quả, chi phí, biên bản; chi tiết có lịch sử hoạt động", to: "/equipment/repairs" },
       { text: "Bảo dưỡng: cảnh báo đến hạn theo giờ máy / km hoặc theo tháng", to: "/equipment/maintenance" },
     ],
   },
@@ -60,11 +61,11 @@ const SCENARIOS: Scenario[] = [
   {
     no: 6, title: "Tài chính kế toán", role: "ke_toan", userId: "u14", goal: "Nhập tay / import số liệu từ phần mềm kế toán; tự tính, đối chiếu và báo cáo.",
     steps: [
-      { text: "Dự toán thi công: bảng công tác theo hạng mục (mã định mức, KL, đơn giá VL/NC/MTC), import Excel có kiểm tra lỗi, ghép với công việc tiến độ", to: "/finance/estimate" },
-      { text: "Chi phí tập hợp: chứng từ theo tháng, 4 khoản mục NVLTT / NCTT / CPMTC / CPSXC, cộng tháng & lũy kế, so với dự toán", to: "/finance/costs" },
+      { text: "Dự toán thi công: STT 1 / 1.1 / 1.1.1 (hạng mục → phần → công tác), KL × đơn giá = thành tiền, Tổng dự toán; import Excel có kiểm tra lỗi", to: "/finance/estimate" },
+      { text: "Chi phí tập hợp: chứng từ theo tháng, 4 khoản mục NVLTT / NCTT / CPMTC / CPSXC, cộng tháng & lũy kế, tổng chi phí so với tổng dự toán; xuất Excel đúng mẫu SXKD", to: "/finance/costs" },
       { text: "Hồ sơ thanh toán với CĐT: tạm ứng / thanh toán, ghi nhận đã thu, còn phải thu theo hợp đồng", to: "/finance/payments" },
       { text: "Giá trị khối lượng thi công: KL thực tế × đơn giá HĐ theo kỳ, chốt kỳ, đối chiếu thực hiện – nghiệm thu – thanh toán", to: "/finance/value" },
-      { text: "Công nợ thầu phụ, NCC: (3) đã cung cấp, (4) đã xuất hóa đơn, (5) đã thanh toán → (6), (7); nhắc đến hạn / quá hạn", to: "/finance/debts" },
+      { text: "Công nợ thầu phụ, NCC: Giá trị HĐ · Giá trị thực hiện · Đã thanh toán · Công nợ còn lại; tab Danh mục NCC và thầu phụ", to: "/finance/debts" },
     ],
   },
 ];
@@ -74,7 +75,7 @@ const ASSUMPTIONS = [
   "Dự án Sân bay Gia Bình dùng tiến độ thi công chi tiết thật (28/04/2026 – 25/04/2027); khối lượng thực hiện là giả lập. Các dự án khác là dữ liệu minh họa rút gọn.",
   "Tiến độ không quy ra tiền: % công việc = KL lũy kế ÷ KL hợp đồng; % nhóm, hạng mục, dự án = trung bình cộng các việc con. % kế hoạch đến hôm nay nội suy theo ngày của từng công việc.",
   "Trạng thái dự án: Chưa bắt đầu (chưa khởi công); chưa qua 1/3 thời gian thi công = Đúng tiến độ; sau đó % hoàn thành ≥ % kế hoạch = Đúng tiến độ, thấp hơn = Chậm tiến độ (cách đo đang chờ ACC xác nhận).",
-  "Kế hoạch tiến độ chỉ Chỉ huy trưởng được điều chỉnh; thanh thực tế chỉ hiện khi công trường đã nhập ngày bắt đầu / khối lượng.",
+  "Kế hoạch tiến độ chỉ Chỉ huy trưởng được điều chỉnh. Trạng thái công việc so với mốc kế hoạch (KL hợp đồng ÷ số ngày × số ngày đã qua tính từ ngày bắt đầu kế hoạch), không phụ thuộc ngày bắt đầu thực tế; thiếu dù ít cũng là chậm.",
   "Phân hệ kế toán không thay phần mềm kế toán: số liệu được nhập tay hoặc import Excel theo file mẫu.",
   "Lãi / lỗ trên Trang chủ = giá trị nghiệm thu − chi phí thực hiện, lũy kế từ khởi công đến nay.",
   "File đính kèm (ảnh, PDF) được lưu ngay trên trình duyệt để xem trước; prototype không có máy chủ lưu file.",

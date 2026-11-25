@@ -61,9 +61,9 @@ export default function ReportsPage() {
             <KpiCard label="Đã thu" value={fmtNumber(pf.paid / 1e9, 0)} unit="tỷ" tone="navy" />
           </div>
           <Card>
-            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH đến nay %", "Hoàn thành %", "Trạng thái", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn", "Vấn đề mở"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue, db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length]))}><Download /> Xuất Excel</Button></div>
+            <div className="flex items-center justify-between border-b px-4 py-3"><div className="text-[13px] font-semibold uppercase tracking-wide text-slate-700">Báo cáo tổng hợp tình hình các dự án</div><Button size="sm" variant="outline" onClick={() => exp("Bao-cao-tong-hop", ["Dự án", "Giá trị HĐ", "KH đến nay %", "Hoàn thành %", "Trạng thái", "Giá trị KL thực hiện", "Đã NT", "Đã thu", "Việc quá hạn"], pf.stats.map((s) => [s.project.name, s.project.contractValue, (s.planned * 100).toFixed(1), (s.actual * 100).toFixed(1), HEALTH[s.health].label, Math.round(s.execValue), Math.round(s.acceptedValue), Math.round(s.paidValue), s.tasksOverdue]))}><Download /> Xuất Excel</Button></div>
             <Table>
-              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ</TableHead><TableHead>Trạng thái</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead><TableHead className="text-right">Vấn đề mở</TableHead></TableRow></TableHeader>
+              <TableHeader><TableRow><TableHead>Dự án</TableHead><TableHead className="text-right">Giá trị HĐ</TableHead><TableHead>Tiến độ</TableHead><TableHead>Trạng thái</TableHead><TableHead className="text-right">Giá trị KL thực hiện</TableHead><TableHead className="text-right">Đã NT</TableHead><TableHead className="text-right">Đã thu</TableHead><TableHead className="text-right">Việc quá hạn</TableHead></TableRow></TableHeader>
               <TableBody>
                 {pf.stats.map((s) => (
                   <TableRow key={s.project.id} className="cursor-pointer" onClick={() => navigate(`/projects/${s.project.id}`)}>
@@ -75,11 +75,10 @@ export default function ReportsPage() {
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.acceptedValue)}</TableCell>
                     <TableCell className="tabular text-right">{fmtMoneyShort(s.paidValue)}</TableCell>
                     <TableCell className="tabular text-right">{s.tasksOverdue || "—"}</TableCell>
-                    <TableCell className="tabular text-right">{db.issues.filter((i) => i.projectId === s.project.id && i.status !== "da_xu_ly").length || "—"}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
-              <TableFooter><TableRow><TableCell>Tổng cộng</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.contract)}</TableCell><TableCell>{fmtPct(pf.overallActual)} / {fmtPct(pf.overallPlanned)}</TableCell><TableCell /><TableCell /><TableCell className="tabular text-right">{fmtMoneyShort(pf.execValue)}</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.accepted)}</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.paid)}</TableCell><TableCell className="tabular text-right">{pf.tasksOverdue}</TableCell><TableCell className="tabular text-right">{db.issues.filter((i) => i.status !== "da_xu_ly").length}</TableCell></TableRow></TableFooter>
+              <TableFooter><TableRow><TableCell>Tổng cộng</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.contract)}</TableCell><TableCell>{fmtPct(pf.overallActual)} / {fmtPct(pf.overallPlanned)}</TableCell><TableCell /><TableCell /><TableCell className="tabular text-right">{fmtMoneyShort(pf.execValue)}</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.accepted)}</TableCell><TableCell className="tabular text-right">{fmtMoneyShort(pf.paid)}</TableCell><TableCell className="tabular text-right">{pf.tasksOverdue}</TableCell></TableRow></TableFooter>
             </Table>
           </Card>
         </TabsContent>

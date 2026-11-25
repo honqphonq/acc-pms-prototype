@@ -7,10 +7,21 @@
     "plannedDate": "2026-12-08",
     "content": "Bảo dưỡng cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
-    "status": "cho_duyet",
-    "createdById": "u13",
-    "approvedById": null,
-    "cost": 32000000
+    "status": "moi",
+    "createdById": "u12",
+    "cost": 32000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-08",
+    "activity": [
+      {
+        "id": "kh-001-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-031**, giao cho **Trần Quang Huy**, hạn 08/12/2026"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-002",
@@ -20,10 +31,21 @@
     "plannedDate": "2026-11-15",
     "content": "Kiểm tra trước ca: dầu, nước, lốp, phanh",
     "materials": "Dầu động cơ 15W40: 24 lít; lọc nhớt: 1",
-    "status": "cho_duyet",
-    "createdById": "u13",
-    "approvedById": null,
-    "cost": 13000000
+    "status": "moi",
+    "createdById": "u12",
+    "cost": 13000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-03",
+    "deadline": "2026-11-15",
+    "activity": [
+      {
+        "id": "kh-002-a1",
+        "at": "2026-11-03T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-032**, giao cho **Trần Quang Huy**, hạn 15/11/2026"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-003",
@@ -33,10 +55,21 @@
     "plannedDate": "2026-12-01",
     "content": "Bảo dưỡng cấp 2: kiểm tra hệ thống thủy lực, gầm",
     "materials": "Mỡ bôi trơn: 5 kg",
-    "status": "cho_duyet",
-    "createdById": "u13",
-    "approvedById": null,
-    "cost": 25000000
+    "status": "moi",
+    "createdById": "u12",
+    "cost": 25000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-01",
+    "activity": [
+      {
+        "id": "kh-003-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-033**, giao cho **Trần Quang Huy**, hạn 01/12/2026"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-004",
@@ -46,10 +79,21 @@
     "plannedDate": "2026-10-27",
     "content": "Bảo dưỡng đặc biệt mùa mưa – vệ sinh, chống gỉ",
     "materials": "Dầu động cơ 15W40: 24 lít; lọc nhớt: 1",
-    "status": "cho_duyet",
-    "createdById": "u13",
-    "approvedById": null,
-    "cost": 31000000
+    "status": "moi",
+    "createdById": "u12",
+    "cost": 31000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-15",
+    "deadline": "2026-10-27",
+    "activity": [
+      {
+        "id": "kh-004-a1",
+        "at": "2026-10-15T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-034**, giao cho **Trần Quang Huy**, hạn 27/10/2026"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-005",
@@ -59,10 +103,21 @@
     "plannedDate": "2026-12-06",
     "content": "Bảo dưỡng rà trơn sau đại tu động cơ",
     "materials": "Mỡ bôi trơn: 5 kg",
-    "status": "cho_duyet",
-    "createdById": "u13",
-    "approvedById": null,
-    "cost": 23000000
+    "status": "moi",
+    "createdById": "u12",
+    "cost": 23000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-06",
+    "activity": [
+      {
+        "id": "kh-005-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-035**, giao cho **Trần Quang Huy**, hạn 06/12/2026"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-006",
@@ -72,10 +127,27 @@
     "plannedDate": "2026-10-26",
     "content": "Bảo dưỡng cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 35000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 35000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-14",
+    "deadline": "2026-10-26",
+    "activity": [
+      {
+        "id": "kh-006-a1",
+        "at": "2026-10-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-036**, giao cho **Trần Quang Huy**, hạn 26/10/2026"
+      },
+      {
+        "id": "kh-006-a2",
+        "at": "2026-10-15T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-036**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-007",
@@ -85,10 +157,27 @@
     "plannedDate": "2026-12-20",
     "content": "Kiểm tra trước ca: dầu, nước, lốp, phanh",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 14000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 14000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-20",
+    "activity": [
+      {
+        "id": "kh-007-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-037**, giao cho **Trần Quang Huy**, hạn 20/12/2026"
+      },
+      {
+        "id": "kh-007-a2",
+        "at": "2026-11-15T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-037**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-008",
@@ -98,10 +187,27 @@
     "plannedDate": "2026-12-15",
     "content": "Bảo dưỡng cấp 2: kiểm tra hệ thống thủy lực, gầm",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 32000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 32000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-15",
+    "activity": [
+      {
+        "id": "kh-008-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-038**, giao cho **Trần Quang Huy**, hạn 15/12/2026"
+      },
+      {
+        "id": "kh-008-a2",
+        "at": "2026-11-15T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-038**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-009",
@@ -111,10 +217,27 @@
     "plannedDate": "2026-11-06",
     "content": "Bảo dưỡng đặc biệt mùa mưa – vệ sinh, chống gỉ",
     "materials": "Dầu động cơ 15W40: 24 lít; lọc nhớt: 1",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 31000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 31000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-25",
+    "deadline": "2026-11-06",
+    "activity": [
+      {
+        "id": "kh-009-a1",
+        "at": "2026-10-25T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-039**, giao cho **Trần Quang Huy**, hạn 06/11/2026"
+      },
+      {
+        "id": "kh-009-a2",
+        "at": "2026-10-26T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-039**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-010",
@@ -124,10 +247,27 @@
     "plannedDate": "2026-11-29",
     "content": "Bảo dưỡng rà trơn sau đại tu động cơ",
     "materials": "Dầu động cơ 15W40: 24 lít; lọc nhớt: 1",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 21000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 21000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-11-29",
+    "activity": [
+      {
+        "id": "kh-010-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-040**, giao cho **Trần Quang Huy**, hạn 29/11/2026"
+      },
+      {
+        "id": "kh-010-a2",
+        "at": "2026-11-15T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-040**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-011",
@@ -137,10 +277,27 @@
     "plannedDate": "2026-11-13",
     "content": "Bảo dưỡng cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
     "materials": "Dầu động cơ 15W40: 24 lít; lọc nhớt: 1",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 20000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 20000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-01",
+    "deadline": "2026-11-13",
+    "activity": [
+      {
+        "id": "kh-011-a1",
+        "at": "2026-11-01T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-041**, giao cho **Trần Quang Huy**, hạn 13/11/2026"
+      },
+      {
+        "id": "kh-011-a2",
+        "at": "2026-11-02T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-041**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-012",
@@ -150,10 +307,27 @@
     "plannedDate": "2026-11-11",
     "content": "Kiểm tra trước ca: dầu, nước, lốp, phanh",
     "materials": "Mỡ bôi trơn: 5 kg",
-    "status": "da_duyet",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 11000000
+    "status": "dang_thuc_hien",
+    "createdById": "u12",
+    "cost": 11000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-30",
+    "deadline": "2026-11-11",
+    "activity": [
+      {
+        "id": "kh-012-a1",
+        "at": "2026-10-30T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-042**, giao cho **Trần Quang Huy**, hạn 11/11/2026"
+      },
+      {
+        "id": "kh-012-a2",
+        "at": "2026-10-31T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-042**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-013",
@@ -164,9 +338,35 @@
     "content": "Bảo dưỡng cấp 2: kiểm tra hệ thống thủy lực, gầm",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 14000000
+    "createdById": "u12",
+    "cost": 14000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-23",
+    "deadline": "2026-11-04",
+    "completedAt": "2026-11-04",
+    "result": "Đã thay: Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-013-a1",
+        "at": "2026-10-23T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-043**, giao cho **Trần Quang Huy**, hạn 04/11/2026"
+      },
+      {
+        "id": "kh-013-a2",
+        "at": "2026-10-24T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-043**"
+      },
+      {
+        "id": "kh-013-a3",
+        "at": "2026-11-04T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-043**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-014",
@@ -177,9 +377,35 @@
     "content": "Bảo dưỡng đặc biệt mùa mưa – vệ sinh, chống gỉ",
     "materials": "Mỡ bôi trơn: 5 kg",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 9000000
+    "createdById": "u12",
+    "cost": 9000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-04",
+    "deadline": "2026-11-16",
+    "completedAt": "2026-11-14",
+    "result": "Đã thay: Mỡ bôi trơn: 5 kg",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-014-a1",
+        "at": "2026-11-04T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-044**, giao cho **Trần Quang Huy**, hạn 16/11/2026"
+      },
+      {
+        "id": "kh-014-a2",
+        "at": "2026-11-05T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-044**"
+      },
+      {
+        "id": "kh-014-a3",
+        "at": "2026-11-14T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-044**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-015",
@@ -190,9 +416,35 @@
     "content": "Bảo dưỡng rà trơn sau đại tu động cơ",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 10000000
+    "createdById": "u12",
+    "cost": 10000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-16",
+    "deadline": "2026-10-28",
+    "completedAt": "2026-10-28",
+    "result": "Đã thay: Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-015-a1",
+        "at": "2026-10-16T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-045**, giao cho **Trần Quang Huy**, hạn 28/10/2026"
+      },
+      {
+        "id": "kh-015-a2",
+        "at": "2026-10-17T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-045**"
+      },
+      {
+        "id": "kh-015-a3",
+        "at": "2026-10-28T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-045**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-016",
@@ -203,9 +455,35 @@
     "content": "Bảo dưỡng cấp 1: thay dầu động cơ, lọc nhớt, lọc nhiên liệu",
     "materials": "Mỡ bôi trơn: 5 kg",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 14000000
+    "createdById": "u12",
+    "cost": 14000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-24",
+    "deadline": "2026-11-05",
+    "completedAt": "2026-11-05",
+    "result": "Đã thay: Mỡ bôi trơn: 5 kg",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-016-a1",
+        "at": "2026-10-24T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-046**, giao cho **Trần Quang Huy**, hạn 05/11/2026"
+      },
+      {
+        "id": "kh-016-a2",
+        "at": "2026-10-25T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-046**"
+      },
+      {
+        "id": "kh-016-a3",
+        "at": "2026-11-05T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-046**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-017",
@@ -216,9 +494,35 @@
     "content": "Kiểm tra trước ca: dầu, nước, lốp, phanh",
     "materials": "Mỡ bôi trơn: 5 kg",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 24000000
+    "createdById": "u12",
+    "cost": 24000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-10-25",
+    "deadline": "2026-11-06",
+    "completedAt": "2026-11-06",
+    "result": "Đã thay: Mỡ bôi trơn: 5 kg",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-017-a1",
+        "at": "2026-10-25T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-047**, giao cho **Trần Quang Huy**, hạn 06/11/2026"
+      },
+      {
+        "id": "kh-017-a2",
+        "at": "2026-10-26T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-047**"
+      },
+      {
+        "id": "kh-017-a3",
+        "at": "2026-11-06T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-047**"
+      }
+    ],
+    "files": []
   },
   {
     "id": "kh-018",
@@ -229,8 +533,34 @@
     "content": "Bảo dưỡng cấp 2: kiểm tra hệ thống thủy lực, gầm",
     "materials": "Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
     "status": "hoan_thanh",
-    "createdById": "u13",
-    "approvedById": "u12",
-    "cost": 17000000
+    "createdById": "u12",
+    "cost": 17000000,
+    "assigneeId": "u13",
+    "createdAt": "2026-11-14",
+    "deadline": "2026-12-07",
+    "completedAt": "2026-11-14",
+    "result": "Đã thay: Dầu thủy lực 46: 60 lít; lọc thủy lực: 2",
+    "hoursAt": 0,
+    "activity": [
+      {
+        "id": "kh-018-a1",
+        "at": "2026-11-14T08:10:00",
+        "userId": "u12",
+        "text": "tạo kế hoạch bảo dưỡng **KHBD-2026-048**, giao cho **Trần Quang Huy**, hạn 07/12/2026"
+      },
+      {
+        "id": "kh-018-a2",
+        "at": "2026-11-15T09:00:00",
+        "userId": "u13",
+        "text": "tiếp nhận kế hoạch bảo dưỡng **KHBD-2026-048**"
+      },
+      {
+        "id": "kh-018-a3",
+        "at": "2026-11-14T16:30:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành kế hoạch bảo dưỡng **KHBD-2026-048**"
+      }
+    ],
+    "files": []
   }
 ]

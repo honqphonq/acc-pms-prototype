@@ -190,6 +190,9 @@ export interface Supplier {
   rating: number;
   debt: number; // công nợ hiện tại
   type?: "ncc" | "thau_phu";
+  email?: string;
+  bankAccount?: string;
+  active?: boolean;
 }
 
 export type MaterialRequestStatus =
@@ -343,12 +346,23 @@ export interface EquipmentAssignment {
   files?: Attachment[]; // file quyết định
 }
 
+/** Ca làm việc mẫu – dùng chung cho mọi dự án */
+export interface ShiftType {
+  id: ID;
+  name: string; // "Ca 1"
+  short: string; // nhãn ngắn trên lịch: "1", "HC"
+  start: string; // "06:00"
+  end: string; // "14:00"
+  hours: number; // số giờ tính công
+  active: boolean;
+}
+
 export interface EquipmentShift {
   id: ID;
   equipmentId: ID;
   projectId: ID;
   date: string;
-  shift: "Ca 1" | "Ca 2" | "Ca 3";
+  shift: string; // tên ca (theo danh mục ca làm việc)
   operatorId: ID;
   hours: number;
   fuelLiters: number;
@@ -568,10 +582,17 @@ export interface MaintenancePlan {
   plannedDate: string;
   content: string;
   materials: string;
-  status: "cho_duyet" | "da_duyet" | "hoan_thanh";
+  status: "moi" | "dang_thuc_hien" | "hoan_thanh";
   createdById: ID;
-  approvedById: ID | null;
-  cost: number;
+  createdAt: string;
+  assigneeId: ID;
+  deadline: string;
+  cost: number; // chi phí thực tế (cập nhật khi hoàn thành)
+  hoursAt?: number; // giờ máy / km lúc bảo dưỡng
+  result?: string; // vật tư thay thế, kết quả
+  completedAt?: string;
+  files?: Attachment[];
+  activity?: ActivityEntry[];
 }
 
 export interface RepairRequest {
@@ -586,7 +607,11 @@ export interface RepairRequest {
   status: "moi" | "dang_sua" | "hoan_thanh";
   cost: number;
   result: string;
-  documents: string;
+  documents?: string;
+  createdById?: ID;
+  completedAt?: string;
+  files?: Attachment[];
+  activity?: ActivityEntry[];
 }
 
 export interface DisposalPlan {
@@ -611,10 +636,18 @@ export interface Incident {
   type: "tai_nan" | "hu_hong" | "va_cham";
   severity: "nhe" | "trung_binh" | "nghiem_trong";
   description: string;
-  plan: string; // phương án xử lý
-  planStatus: "chua_lap" | "cho_duyet" | "da_duyet";
+  location?: string;
   status: "moi" | "dang_xu_ly" | "da_xu_ly";
-  progress: string;
+  assigneeId: ID;
+  deadline: string;
+  createdById?: ID;
+  createdAt: string;
+  cause?: string; // nguyên nhân
+  plan?: string; // cách xử lý
+  cost?: number; // thiệt hại / chi phí
+  completedAt?: string;
+  files?: Attachment[];
+  activity?: ActivityEntry[];
 }
 
 export interface Stocktake {
@@ -680,15 +713,13 @@ export interface Directive {
 /** Một dòng công tác trong dự toán (theo mẫu bảng dự toán / đơn giá tổng hợp) */
 export interface EstimateLine {
   id: ID;
-  group: string; // hạng mục
+  stt: string; // "1" hạng mục, "1.1" phần, "1.1.1" công tác
+  level: 1 | 2 | 3;
   code: string; // mã hiệu định mức, vd AB.25113
   name: string;
   unit: string;
   qty: number;
-  vl: number; // đơn giá vật liệu
-  nc: number; // đơn giá nhân công
-  mtc: number; // đơn giá máy thi công
-  taskId?: ID | null; // ghép với công việc trong kế hoạch tiến độ
+  price: number; // đơn giá tổng hợp (đã gồm chi phí chung, TNCT tính trước, VAT)
 }
 /** Dự toán thi công của dự án */
 export interface Estimate {
@@ -699,9 +730,6 @@ export interface Estimate {
   createdAt: string;
   createdById: ID;
   source: string;
-  rateC: number; // % chi phí chung trên chi phí trực tiếp
-  rateTL: number; // % thu nhập chịu thuế tính trước
-  vat: number; // % VAT
   lines: EstimateLine[];
 }
 /** Chứng từ chi phí – nguồn: phần mềm kế toán (nhập tay / import), theo mẫu Bảng tổng hợp chi phí SXKD */
@@ -717,13 +745,6 @@ export interface CostDoc {
   sxc: number; // CPSXC
   vat: number; // thuế GTGT đầu vào
 }
-export interface DebtEntry {
-  id: ID;
-  date: string;
-  kind: "cung_cap" | "hoa_don" | "thanh_toan"; // (3) giá trị đã cung cấp · (4) đã xuất hóa đơn · (5) ACC đã thanh toán / tạm ứng
-  amount: number;
-  note: string;
-}
 /** Công nợ với nhà cung cấp / thầu phụ theo hợp đồng */
 export interface Debt {
   id: ID;
@@ -731,11 +752,11 @@ export interface Debt {
   projectId: ID;
   supplierId: ID;
   contractNo: string;
-  category: string;
-  contractValue: number;
-  dueDate: string;
-  entries: DebtEntry[];
+  contractValue: number; // giá trị HĐ
+  doneValue: number; // giá trị thực hiện: thầu phụ đã làm / hàng NCC đã cung cấp
+  paidValue: number; // đã thanh toán
   note: string;
+  updatedAt?: string;
 }
 /** Kỳ giá trị khối lượng đã chốt (khóa số liệu) */
 export interface ValuePeriod {
@@ -762,6 +783,7 @@ export interface Database {
   equipment: Equipment[];
   equipmentAssignments: EquipmentAssignment[];
   equipmentShifts: EquipmentShift[];
+  shiftTypes: ShiftType[];
   equipmentUsage: EquipmentUsageMonthly[];
   acceptanceRecords: AcceptanceRecord[];
   paymentRecords: PaymentRecord[];

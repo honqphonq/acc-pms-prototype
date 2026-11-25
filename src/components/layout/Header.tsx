@@ -151,7 +151,7 @@ export function Header({ onOpenMobile }: { onOpenMobile: () => void }) {
                 <Avatar name={user.name} size="md" />
                 <div className="hidden whitespace-nowrap text-left leading-tight md:block">
                   <div className="text-[13px] font-semibold text-slate-800">{user.name}</div>
-                  <div className="text-[11px] text-slate-500">{ROLE_LABELS[user.role]}</div>
+                  <div className="text-[11px] text-slate-500">{user.title || ROLE_LABELS[user.role]}</div>
                 </div>
               </button>
             </DropdownMenuTrigger>

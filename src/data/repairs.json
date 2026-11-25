@@ -9,9 +9,24 @@
     "deadline": "2026-11-20",
     "createdAt": "2026-11-06",
     "status": "dang_sua",
-    "cost": 86000000,
+    "cost": 0,
     "result": "",
-    "documents": "Biên bản kiểm tra trước sửa chữa"
+    "createdById": "u12",
+    "files": [],
+    "activity": [
+      {
+        "id": "sc-001-a1",
+        "at": "2026-11-06T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-021**, giao cho **Trần Quang Huy**, hạn 20/11/2026"
+      },
+      {
+        "id": "sc-001-a2",
+        "at": "2026-11-07T08:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận đề nghị sửa chữa **ĐNSC-2026-021**"
+      }
+    ]
   },
   {
     "id": "sc-002",
@@ -23,9 +38,24 @@
     "deadline": "2026-11-18",
     "createdAt": "2026-11-05",
     "status": "dang_sua",
-    "cost": 42000000,
+    "cost": 0,
     "result": "",
-    "documents": "Biên bản kiểm tra; báo giá"
+    "createdById": "u12",
+    "files": [],
+    "activity": [
+      {
+        "id": "sc-002-a1",
+        "at": "2026-11-05T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-022**, giao cho **Trần Quang Huy**, hạn 18/11/2026"
+      },
+      {
+        "id": "sc-002-a2",
+        "at": "2026-11-06T08:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận đề nghị sửa chữa **ĐNSC-2026-022**"
+      }
+    ]
   },
   {
     "id": "sc-003",
@@ -37,9 +67,18 @@
     "deadline": "2026-11-25",
     "createdAt": "2026-11-12",
     "status": "moi",
-    "cost": 18000000,
+    "cost": 0,
     "result": "",
-    "documents": ""
+    "createdById": "u12",
+    "files": [],
+    "activity": [
+      {
+        "id": "sc-003-a1",
+        "at": "2026-11-12T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-023**, giao cho **Trần Quang Huy**, hạn 25/11/2026"
+      }
+    ]
   },
   {
     "id": "sc-004",
@@ -51,9 +90,18 @@
     "deadline": "2026-12-20",
     "createdAt": "2026-10-28",
     "status": "moi",
-    "cost": 420000000,
+    "cost": 0,
     "result": "",
-    "documents": "Biên bản kiểm tra; tờ trình"
+    "createdById": "u12",
+    "files": [],
+    "activity": [
+      {
+        "id": "sc-004-a1",
+        "at": "2026-10-28T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-024**, giao cho **Vũ Tiến Thiều**, hạn 20/12/2026"
+      }
+    ]
   },
   {
     "id": "sc-005",
@@ -67,7 +115,37 @@
     "status": "hoan_thanh",
     "cost": 65000000,
     "result": "Đã thay bộ bánh răng, chạy thử đạt",
-    "documents": "BB nghiệm thu sửa chữa; hóa đơn; thanh lý HĐ"
+    "createdById": "u12",
+    "completedAt": "2026-10-29",
+    "files": [
+      {
+        "id": "sc-005-f1",
+        "name": "BB-nghiem-thu-sua-chua.pdf",
+        "type": "application/pdf",
+        "size": 420000,
+        "url": null
+      }
+    ],
+    "activity": [
+      {
+        "id": "sc-005-a1",
+        "at": "2026-10-10T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-025**, giao cho **Trần Quang Huy**, hạn 30/10/2026"
+      },
+      {
+        "id": "sc-005-a2",
+        "at": "2026-10-11T08:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận đề nghị sửa chữa **ĐNSC-2026-025**"
+      },
+      {
+        "id": "sc-005-a3",
+        "at": "2026-10-29T15:00:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành đề nghị sửa chữa **ĐNSC-2026-025** · đính kèm 1 file"
+      }
+    ]
   },
   {
     "id": "sc-006",
@@ -81,6 +159,36 @@
     "status": "hoan_thanh",
     "cost": 9500000,
     "result": "Hoàn thành, đưa vào sử dụng",
-    "documents": "BB nghiệm thu sửa chữa"
+    "createdById": "u12",
+    "completedAt": "2026-10-14",
+    "files": [
+      {
+        "id": "sc-006-f1",
+        "name": "BB-nghiem-thu-sua-chua.pdf",
+        "type": "application/pdf",
+        "size": 420000,
+        "url": null
+      }
+    ],
+    "activity": [
+      {
+        "id": "sc-006-a1",
+        "at": "2026-10-08T08:20:00",
+        "userId": "u12",
+        "text": "tạo đề nghị sửa chữa **ĐNSC-2026-026**, giao cho **Trần Quang Huy**, hạn 15/10/2026"
+      },
+      {
+        "id": "sc-006-a2",
+        "at": "2026-10-09T08:30:00",
+        "userId": "u13",
+        "text": "tiếp nhận đề nghị sửa chữa **ĐNSC-2026-026**"
+      },
+      {
+        "id": "sc-006-a3",
+        "at": "2026-10-14T15:00:00",
+        "userId": "u13",
+        "text": "cập nhật kết quả, hoàn thành đề nghị sửa chữa **ĐNSC-2026-026** · đính kèm 1 file"
+      }
+    ]
   }
 ]

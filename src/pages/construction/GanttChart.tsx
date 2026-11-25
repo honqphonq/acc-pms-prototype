@@ -10,12 +10,15 @@ const dmy = (d: string) => `${d.slice(8, 10)}/${d.slice(5, 7)}/${d.slice(2, 4)}`
 /** Trạng thái thanh Gantt */
 export type GanttStatus = "dung_tien_do" | "dang_thuc_hien" | "cham_tien_do" | "hoan_thanh_muon" | "chua_bat_dau";
 
+/** 5 trạng thái (cột, bộ lọc, tooltip) – thanh Gantt chỉ 2 màu: xanh = đúng tiến độ / hoàn thành, đỏ = chậm / hoàn thành muộn */
+const GREEN = { color: "#16A34A", soft: "#BBF7D0" };
+const RED = { color: "#DC2626", soft: "#FECACA" };
 export const GANTT_STATUS: Record<GanttStatus, { label: string; color: string; soft: string }> = {
-  dung_tien_do: { label: "Hoàn thành", color: "#16A34A", soft: "#BBF7D0" },
-  dang_thuc_hien: { label: "Đang thực hiện", color: "#2F80ED", soft: "#BFDBFE" },
-  cham_tien_do: { label: "Chậm tiến độ", color: "#DC2626", soft: "#FECACA" },
-  hoan_thanh_muon: { label: "Hoàn thành muộn", color: "#F59E0B", soft: "#FDE68A" },
-  chua_bat_dau: { label: "Chưa bắt đầu", color: "#7FA7E0", soft: "#DBE7F7" },
+  chua_bat_dau: { label: "Chưa bắt đầu", color: "#94A3B8", soft: "#E2E8F0" },
+  dang_thuc_hien: { label: "Đúng tiến độ", ...GREEN },
+  cham_tien_do: { label: "Chậm tiến độ", ...RED },
+  dung_tien_do: { label: "Hoàn thành", ...GREEN },
+  hoan_thanh_muon: { label: "Hoàn thành muộn", ...RED },
 };
 
 export interface GanttRow {
@@ -33,6 +36,7 @@ export interface GanttRow {
   actualEnd?: string | null;
   lastUpdate?: string | null; // ngày cập nhật kết quả gần nhất
   progress?: number; // 0..1
+  planned?: number; // % kế hoạch đến hôm nay 0..1
   status: GanttStatus;
   assignee?: string;
   predecessors?: { id: string; type: "FS" | "SS" }[];
@@ -46,8 +50,9 @@ const MONTHS = ["Th1", "Th2", "Th3", "Th4", "Th5", "Th6", "Th7", "Th8", "Th9", "
 
 /** Biểu đồ Gantt kiểu MS Project: bảng công việc bên trái, thanh tiến độ + liên kết công việc bên phải */
 /**
- * Mỗi dòng 2 thanh: trên = kế hoạch (đen, tiến độ cam kết với CĐT – chỉ Chỉ huy trưởng điều chỉnh),
- * dưới = thực tế (màu theo trạng thái) từ ngày bắt đầu thực tế đến ngày cập nhật gần nhất; công trường chưa nhập thì không hiện.
+ * Kiểu Tracking Gantt: mỗi dòng 1 làn – thanh kế hoạch xám mờ làm nền (chỉ Chỉ huy trưởng điều chỉnh),
+ * thanh thực tế đè lên từ ngày bắt đầu thực tế đến ngày hoàn thành (hoặc hạn kế hoạch): phần đậm = % đã làm, phần nhạt = còn lại.
+ * Xanh = đúng tiến độ / hoàn thành; đỏ = chậm tiến độ / hoàn thành muộn. Công trường chưa nhập thì không có thanh thực tế.
  */
 export function GanttChart({ rows, onRowClick, zoom = "month" }: { rows: GanttRow[]; onRowClick?: (id: string) => void; zoom?: GanttZoom }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -169,17 +174,34 @@ export function GanttChart({ rows, onRowClick, zoom = "month" }: { rows: GanttRo
               const left = x(r.start);
               const w = Math.max(DAY, xe(r.end) - left);
               const st = GANTT_STATUS[r.status];
-              const aEnd = r.actualEnd ?? (r.lastUpdate && r.actualStart && r.lastUpdate > r.actualStart ? r.lastUpdate : null) ?? (r.actualStart && r.actualStart <= DEMO_TODAY ? DEMO_TODAY : null);
-              const aLeft = r.actualStart ? x(r.actualStart) : 0;
-              const aW = r.actualStart && aEnd ? Math.max(DAY, xe(aEnd) - aLeft) : 0;
+              const done = (r.progress ?? 0) >= 1;
               const dd = doneDate(r);
+              // thanh thực tế: từ ngày bắt đầu thực tế → ngày hoàn thành; đang làm thì kéo tới hạn kế hoạch (quá hạn thì tới hôm nay)
+              const aEnd = !r.actualStart ? null : done ? dd ?? r.actualEnd ?? r.end : r.end >= DEMO_TODAY ? r.end : DEMO_TODAY;
+              const aLeft = r.actualStart ? x(r.actualStart) : 0;
+              const aW = r.actualStart && aEnd ? Math.max(DAY * 2, xe(aEnd) - aLeft) : 0;
+              const pct = Math.min(1, r.progress ?? 0);
+              const isTask = r.kind === "task" && !!r.qty;
+              const remain = Math.max(0, diffDays(DEMO_TODAY, r.end));
+              const planQty = isTask && r.planned !== undefined ? r.planned * r.qty! : null;
+              const gap = planQty !== null ? (r.actualQty ?? 0) - planQty : null;
+              const need = isTask && !done && remain > 0 ? ((r.qty ?? 0) - (r.actualQty ?? 0)) / remain : null;
+              const planRate = isTask ? r.qty! / (diffDays(r.start, r.end) + 1) : null;
               const tip = (
-                <div>
+                <div className="space-y-0.5">
                   <div className="font-semibold">{r.code ? `[${r.code}] ` : ""}{r.label}</div>
                   <div>Kế hoạch: {fmtDate(r.start)} – {fmtDate(r.end)} ({diffDays(r.start, r.end) + 1} ngày)</div>
-                  <div>Thực tế: {r.actualStart ? `${fmtDate(r.actualStart)} – ${dd ? `hoàn thành ${fmtDate(dd)}` : r.lastUpdate ? `cập nhật gần nhất ${fmtDate(r.lastUpdate)}` : "đang thực hiện"}` : "chưa nhập"}</div>
-                  {r.progress !== undefined && <div>Hoàn thành: {Math.floor(r.progress * 1000) / 10}%</div>}
-                  <div>Trạng thái: {st.label}</div>
+                  <div>Ngày thực tế: {r.actualStart ? `bắt đầu ${fmtDate(r.actualStart)}${dd ? ` · hoàn thành ${fmtDate(dd)}` : r.lastUpdate ? ` · cập nhật gần nhất ${fmtDate(r.lastUpdate)}` : ""}` : "chưa bắt đầu"}</div>
+                  {r.planned !== undefined && !done && (
+                    <div>Kế hoạch đến hôm nay: <b>{isTask ? `${fmtNumber(planQty!, 1)} ${r.unit ?? ""} (${pctTxt(r.planned)})` : pctTxt(r.planned)}</b></div>
+                  )}
+                  {r.progress !== undefined && <div>Thực tế: <b>{isTask ? `${fmtNumber(r.actualQty ?? 0, 1)} ${r.unit ?? ""} (${pctTxt(r.progress)})` : pctTxt(r.progress)}</b>{!done && r.planned !== undefined && (
+                    gap !== null ? <span className={gap < -1e-6 ? "text-rose-300" : "text-emerald-300"}> → {gap < -1e-6 ? `chậm ${fmtNumber(-gap, 1)} ${r.unit ?? ""}` : gap > 1e-6 ? `vượt ${fmtNumber(gap, 1)} ${r.unit ?? ""}` : "đúng kế hoạch"}</span>
+                      : <span className={(r.progress ?? 0) + 1e-9 < r.planned ? "text-rose-300" : "text-emerald-300"}> → {(r.progress ?? 0) + 1e-9 < r.planned ? `chậm ${fmtNumber((r.planned - (r.progress ?? 0)) * 100, 1)}%` : "đúng tiến độ"}</span>
+                  )}</div>}
+                  {need !== null && planRate !== null && <div>Năng suất cần để kịp hạn: <b>{fmtNumber(need, 1)} {r.unit}/ngày</b> ({remain} ngày còn lại · kế hoạch {fmtNumber(planRate, 1)} {r.unit}/ngày)</div>}
+                  {isTask && !done && remain === 0 && r.end < DEMO_TODAY && <div className="text-rose-300">Đã quá hạn kết thúc {fmtDate(r.end)}</div>}
+                  <div>Trạng thái: <b>{st.label}</b></div>
                   {r.assignee && <div>Phụ trách: {r.assignee}</div>}
                 </div>
               );
@@ -187,20 +209,19 @@ export function GanttChart({ rows, onRowClick, zoom = "month" }: { rows: GanttRo
               return (
                 <div key={r.id} className={cn("relative border-b border-slate-100", (r.kind === "project" || r.kind === "item") && "bg-[#DCE6F2]/40")} style={{ height: ROW }} onClick={() => onRowClick?.(r.id)}>
                   <Tip content={tip}>
-                    <div className="absolute cursor-pointer" style={{ top: 4, left, width: w, height: 20 }}>
-                      {/* kế hoạch */}
-                      <div className={cn("absolute inset-x-0 top-[2px] rounded-[1px]", summary ? "h-[6px] bg-slate-900" : "h-[6px] bg-slate-800")} />
-                      {summary && <><span className="absolute left-0 top-0 h-[10px] w-[3px] bg-slate-900" /><span className="absolute right-0 top-0 h-[10px] w-[3px] bg-slate-900" /></>}
+                    <div className="absolute cursor-pointer" style={{ top: 0, left: Math.min(left, aW ? aLeft : left), width: Math.max(left + w, aW ? aLeft + aW : 0) - Math.min(left, aW ? aLeft : left), height: ROW }}>
+                      {/* kế hoạch: xám mờ làm nền */}
+                      <div className="absolute rounded-[2px] bg-slate-400/35 ring-1 ring-inset ring-slate-400/50" style={{ top: 6, height: 16, left: left - Math.min(left, aW ? aLeft : left), width: w }} />
+                      {summary && <><span className="absolute bg-slate-500/70" style={{ top: 6, height: 19, width: 2, left: left - Math.min(left, aW ? aLeft : left) }} /><span className="absolute bg-slate-500/70" style={{ top: 6, height: 19, width: 2, left: left - Math.min(left, aW ? aLeft : left) + w - 2 }} /></>}
+                      {/* thực tế: đậm = đã làm, nhạt = còn lại */}
+                      {aW > 0 && (
+                        <div className="absolute overflow-hidden rounded-[2px]" style={{ top: 10, height: 8, left: aLeft - Math.min(left, aLeft), width: aW, background: st.soft, boxShadow: `inset 0 0 0 1px ${st.color}` }}>
+                          <div className="h-full" style={{ width: `${(done ? 1 : pct) * 100}%`, background: st.color }} />
+                        </div>
+                      )}
                     </div>
                   </Tip>
-                  {aW > 0 && (
-                    <Tip content={tip}>
-                      <div className="absolute cursor-pointer overflow-hidden rounded-[2px] border" style={{ top: 14, height: 9, left: aLeft, width: aW, background: st.soft, borderColor: st.color }}>
-                        <div className="h-full" style={{ width: `${Math.min(1, r.progress ?? 0) * 100}%`, background: st.color }} />
-                      </div>
-                    </Tip>
-                  )}
-                  {r.kind === "task" && <span className="pointer-events-none absolute whitespace-nowrap text-[11px] font-medium text-slate-700" style={{ top: 6, left: Math.max(left + w, aW ? aLeft + aW : 0) + 4 }}>{diffDays(r.start, r.end) + 1} ngày</span>}
+                  <span className={cn("pointer-events-none absolute whitespace-nowrap text-[11px] font-medium", aW ? "" : "text-slate-500")} style={{ top: 7, left: Math.max(left + w, aW ? aLeft + aW : 0) + 4, color: aW ? st.color : undefined }}>{aW ? pctTxt(pct) : r.kind === "task" ? `${diffDays(r.start, r.end) + 1} ngày` : ""}</span>
                 </div>
               );
             })}
@@ -217,16 +238,14 @@ export function GanttChart({ rows, onRowClick, zoom = "month" }: { rows: GanttRo
 }
 
 export function GanttLegend() {
+  const Bar = ({ c }: { c: { color: string; soft: string } }) => <span className="relative h-4 w-9 rounded-[2px] bg-slate-400/35 ring-1 ring-inset ring-slate-400/50"><span className="absolute inset-x-0.5 top-1 flex h-2 overflow-hidden rounded-[2px]" style={{ background: c.soft, boxShadow: `inset 0 0 0 1px ${c.color}` }}><span className="h-full w-3/5" style={{ background: c.color }} /></span></span>;
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12px] text-slate-600">
-      <span className="flex items-center gap-1.5"><span className="h-1.5 w-7 rounded-[1px] bg-slate-800" />Kế hoạch</span>
-      <span className="text-slate-400">Thực tế:</span>
-      {(Object.keys(GANTT_STATUS) as GanttStatus[]).map((k) => (
-        <span key={k} className="flex items-center gap-1.5"><span className="h-2.5 w-7 overflow-hidden rounded-[2px] border" style={{ background: GANTT_STATUS[k].soft, borderColor: GANTT_STATUS[k].color }}><span className="block h-full w-1/2" style={{ background: GANTT_STATUS[k].color }} /></span>{GANTT_STATUS[k].label}</span>
-      ))}
-      <span className="flex items-center gap-1.5"><svg width="26" height="12"><path d="M1,2 H8 V10 H24" fill="none" stroke="#1F4E9A" /><path d="M20,7 L25,10 L20,13" fill="#1F4E9A" /></svg>Liên kết công việc</span>
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[12px] text-slate-600">
+      <span className="flex items-center gap-1.5"><span className="h-4 w-9 rounded-[2px] bg-slate-400/35 ring-1 ring-inset ring-slate-400/50" />Kế hoạch</span>
+      <span className="flex items-center gap-1.5"><Bar c={GREEN} />Đúng tiến độ</span>
+      <span className="flex items-center gap-1.5"><Bar c={RED} />Chậm tiến độ</span>
+      <span className="flex items-center gap-1.5"><svg width="26" height="12"><path d="M1,2 H8 V10 H24" fill="none" stroke="#1F4E9A" /><path d="M20,7 L25,10 L20,13" fill="#1F4E9A" /></svg>Liên kết</span>
       <span className="flex items-center gap-1.5"><span className="h-3.5 border-l-2 border-dashed border-sky-600" />Hôm nay</span>
-      <span className="text-slate-400">· Thanh thực tế chỉ hiện khi công trường đã nhập ngày bắt đầu / khối lượng</span>
     </div>
   );
 }

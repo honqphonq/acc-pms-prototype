@@ -12,7 +12,10 @@
     ],
     "rating": 4.6,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe1@ncc1.vn",
+    "bankAccount": "534439589175 – Vietcombank",
+    "active": true
   },
   {
     "id": "s02",
@@ -27,7 +30,10 @@
     ],
     "rating": 4.4,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe2@ncc2.vn",
+    "bankAccount": "154335349840 – BIDV",
+    "active": true
   },
   {
     "id": "s03",
@@ -44,7 +50,10 @@
     ],
     "rating": 4.1,
     "debt": 258000000,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe3@ncc3.vn",
+    "bankAccount": "205380810795 – VietinBank",
+    "active": true
   },
   {
     "id": "s04",
@@ -59,7 +68,10 @@
     ],
     "rating": 4.3,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe4@ncc4.vn",
+    "bankAccount": "741520749048 – Techcombank",
+    "active": true
   },
   {
     "id": "s05",
@@ -75,7 +87,10 @@
     ],
     "rating": 3.9,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe5@ncc5.vn",
+    "bankAccount": "334107653877 – MB Bank",
+    "active": true
   },
   {
     "id": "s06",
@@ -92,7 +107,10 @@
     ],
     "rating": 4.2,
     "debt": 93600000,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe6@ncc6.vn",
+    "bankAccount": "194650323160 – Vietcombank",
+    "active": true
   },
   {
     "id": "s07",
@@ -108,7 +126,10 @@
     ],
     "rating": 4,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe7@ncc7.vn",
+    "bankAccount": "561423994714 – BIDV",
+    "active": true
   },
   {
     "id": "s08",
@@ -123,7 +144,10 @@
     ],
     "rating": 4.5,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe8@ncc8.vn",
+    "bankAccount": "362293031823 – VietinBank",
+    "active": true
   },
   {
     "id": "s09",
@@ -138,7 +162,10 @@
     ],
     "rating": 4.4,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe9@ncc9.vn",
+    "bankAccount": "705979998169 – Techcombank",
+    "active": true
   },
   {
     "id": "s10",
@@ -153,7 +180,10 @@
     ],
     "rating": 4.7,
     "debt": 0,
-    "type": "ncc"
+    "type": "ncc",
+    "email": "lienhe10@ncc10.vn",
+    "bankAccount": "166247805478 – MB Bank",
+    "active": true
   },
   {
     "id": "s11",
@@ -168,7 +198,10 @@
     ],
     "rating": 4.8,
     "debt": 0,
-    "type": "thau_phu"
+    "type": "thau_phu",
+    "email": "lienhe11@thauphu11.vn",
+    "bankAccount": "722026593455 – Vietcombank",
+    "active": true
   },
   {
     "id": "s12",
@@ -183,7 +216,10 @@
     ],
     "rating": 3.8,
     "debt": 0,
-    "type": "thau_phu"
+    "type": "thau_phu",
+    "email": "lienhe12@thauphu12.vn",
+    "bankAccount": "792448538713 – BIDV",
+    "active": true
   },
   {
     "id": "s13",
@@ -198,7 +234,10 @@
     ],
     "rating": 4.6,
     "debt": 0,
-    "type": "thau_phu"
+    "type": "thau_phu",
+    "email": "lienhe13@thauphu13.vn",
+    "bankAccount": "742644932277 – VietinBank",
+    "active": true
   },
   {
     "id": "s14",
@@ -213,7 +252,10 @@
     ],
     "rating": 4.1,
     "debt": 0,
-    "type": "thau_phu"
+    "type": "thau_phu",
+    "email": "lienhe14@thauphu14.vn",
+    "bankAccount": "168494888361 – Techcombank",
+    "active": true
   },
   {
     "id": "s15",
@@ -228,6 +270,9 @@
     ],
     "rating": 4.3,
     "debt": 0,
-    "type": "thau_phu"
+    "type": "thau_phu",
+    "email": "lienhe15@thauphu15.vn",
+    "bankAccount": "742428765391 – MB Bank",
+    "active": false
   }
 ]

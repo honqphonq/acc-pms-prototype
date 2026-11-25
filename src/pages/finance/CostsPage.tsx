@@ -13,7 +13,7 @@ import { FilterSelect } from "@/components/common/DataTable";
 import { FormField } from "@/components/common/FormField";
 import { useConfirm } from "@/components/common/ConfirmProvider";
 import { deleteRow, saveRow } from "@/services/actions";
-import { COST_KEYS, COST_LABEL, contractTotal, estimateByCostKey } from "@/services/selectors";
+import { COST_KEYS, COST_LABEL, contractTotal, estimateTotal } from "@/services/selectors";
 import { activeProjects } from "@/utils/labels";
 import { fmtDate, fmtNumber, fmtVnd } from "@/utils/format";
 import { DEMO_TODAY, endOfMonth } from "@/utils/date";
@@ -48,16 +48,25 @@ export default function CostsPage() {
   const tot = (list: CostDoc[]) => ({ nvl: list.reduce((s, d) => s + d.nvl, 0), nc: list.reduce((s, d) => s + d.nc, 0), mtc: list.reduce((s, d) => s + d.mtc, 0), sxc: list.reduce((s, d) => s + d.sxc, 0), vat: list.reduce((s, d) => s + d.vat, 0) });
   const tMonth = tot(rows), tCum = tot(cum);
   const est = db.estimates.find((e) => e.projectId === pid);
-  const plan = est ? estimateByCostKey(est) : null;
+  const plan = est ? estimateTotal(est) : null;
   const gthd = contractTotal(db, pid);
+  const vatOut = Math.round((gthd * 8) / 108);
+  const unitName = db.departments.find((d) => d.id === project?.unitId)?.name ?? project?.contractor ?? "";
+  const cht = db.users.find((u) => u.id === project?.commanderId)?.name ?? "";
+  const pkg = project?.packageName ? `${project.packageName.replace(/^Gói thầu:\s*/i, "Gói thầu: ")} thuộc dự án: ${project.name}` : `Dự án: ${project?.name}`;
+  const period = month ? `Tháng ${Number(month.slice(5))} năm ${month.slice(0, 4)}` : "Tất cả các tháng";
   const mLabel = (m: string) => `Tháng ${Number(m.slice(5))}/${m.slice(0, 4)}`;
 
   const exportXlsx = () => {
-    const r: (string | number)[][] = [["BẢNG TỔNG HỢP CHI PHÍ SẢN XUẤT KINH DOANH"], [`Công trình: ${project?.name}`], [month ? mLabel(month) : "Tất cả các tháng"], [`GTHĐ: ${Math.round(gthd)}`], [], ["TT", "Số", "Ngày", "Diễn giải", "NVLTT", "NCTT", "CPMTC", "CPSXC", "Cộng", "Thuế GTGT đầu vào", "Tổng cộng"]];
+    const r: (string | number)[][] = [
+      ["", "TỔNG CÔNG TY ACC", "", "", "", "", "", "", "", "GTHĐ:", Math.round(gthd)],
+      ["", unitName.toUpperCase(), "", "", "BẢNG TỔNG HỢP CHI PHÍ SẢN XUẤT KINH DOANH", "", "", "", "", "VAT đầu ra:", vatOut],
+      [], ["", "", "", pkg], [], ["", "", "", `Chủ nhiệm công trình: ${cht}`], ["", "", "", period], ["", "", "", "", "", "", "", "", "", "Đơn vị tính: đồng"],
+      ["TT", "Số", "Ngày", "Diễn giải", "NVLTT", "NCTT", "CPMTC", "CPSXC", "Cộng", "Thuế GTGT đầu vào", "Tổng cộng"]];
     rows.forEach((d, i) => r.push([i + 1, d.docNo, fmtDate(d.date), d.description, d.nvl, d.nc, d.mtc, d.sxc, cong(d), d.vat, cong(d) + d.vat]));
     r.push(["", "", "", "*Cộng tháng này", tMonth.nvl, tMonth.nc, tMonth.mtc, tMonth.sxc, cong(tMonth), tMonth.vat, cong(tMonth) + tMonth.vat]);
     r.push(["", "", "", "*Lũy kế đến cuối tháng", tCum.nvl, tCum.nc, tCum.mtc, tCum.sxc, cong(tCum), tCum.vat, cong(tCum) + tCum.vat]);
-    r.push([], ["", "NGƯỜI LẬP", "", "CHT CÔNG TRÌNH", "", "PHÒNG TÀI CHÍNH - KẾ TOÁN", "", "", "PHÓ TỔNG GIÁM ĐỐC"]);
+    r.push(["", "", "", "", "", "", "", "", "", `Ngày     tháng     năm ${DEMO_TODAY.slice(0, 4)}`], ["", "NGƯỜI LẬP", "", "CHT CÔNG TRÌNH", "", "PHÒNG TÀI CHÍNH - KẾ TOÁN", "", "", "PHÓ TỔNG GIÁM ĐỐC"]);
     writeXlsx(`Chi-phi-SXKD_${project?.shortName ?? pid}_${month || "tat-ca"}.xlsx`, "Chi phí SXKD", r, [5, 12, 11, 46, 15, 15, 15, 15, 16, 15, 16]);
   };
   const onFile = async (f?: File) => {
@@ -118,27 +127,33 @@ export default function CostsPage() {
       </Card>
 
       <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-        {COST_KEYS.map((k) => {
-          const pct = plan && plan[k] ? tCum[k] / plan[k] : null;
-          return (
-            <Card key={k} className="px-4 py-3">
-              <div className="flex items-center gap-1.5 text-[12px] text-slate-500"><span className="h-2 w-2 rounded-sm" style={{ background: COST_LABEL[k].color }} />{COST_LABEL[k].label}</div>
-              <div className="mt-1 text-[19px] font-bold text-slate-900">{ty(tCum[k])}</div>
-              <div className={cn("text-[11.5px]", pct !== null && pct > 1 ? "font-semibold text-rose-600" : "text-slate-400")}>{pct === null ? "Chưa có dự toán" : `${fmtNumber(pct * 100, 0)}% dự toán (${ty(plan![k])})`}{pct !== null && pct > 1 && " – vượt dự toán"}</div>
-            </Card>
-          );
-        })}
-        <Card className="border-primary/30 bg-primary-soft/40 px-4 py-3">
-          <div className="text-[12px] text-slate-500">Tổng chi phí lũy kế{month ? ` đến ${mLabel(month).toLowerCase()}` : ""}</div>
-          <div className="mt-1 text-[19px] font-bold text-slate-900">{ty(cong(tCum))}</div>
-          <div className="text-[11.5px] text-slate-400">{fmtNumber(gthd ? (cong(tCum) / gthd) * 100 : 0, 1)}% giá trị hợp đồng</div>
-        </Card>
+        {COST_KEYS.map((k) => (
+          <Card key={k} className="px-4 py-3">
+            <div className="flex items-center gap-1.5 text-[12px] text-slate-500"><span className="h-2 w-2 rounded-sm" style={{ background: COST_LABEL[k].color }} />{COST_LABEL[k].label}</div>
+            <div className="mt-1 text-[19px] font-bold text-slate-900">{ty(tCum[k])}</div>
+            <div className="text-[11.5px] text-slate-400">Chiếm {fmtNumber(cong(tCum) ? (tCum[k] / cong(tCum)) * 100 : 0, 1)}% tổng chi phí</div>
+          </Card>
+        ))}
+        {(() => { const pct = plan ? cong(tCum) / plan : null; return (
+          <Card className={cn("px-4 py-3", pct !== null && pct > 1 ? "border-rose-300 bg-rose-50/60" : "border-primary/30 bg-primary-soft/40")}>
+            <div className="text-[12px] text-slate-500">Tổng chi phí lũy kế{month ? ` đến ${mLabel(month).toLowerCase()}` : ""}</div>
+            <div className={cn("mt-1 text-[19px] font-bold", pct !== null && pct > 1 ? "text-rose-700" : "text-slate-900")}>{ty(cong(tCum))}</div>
+            <div className={cn("text-[11.5px]", pct !== null && pct > 1 ? "font-semibold text-rose-600" : "text-slate-500")}>{pct === null ? "Chưa có dự toán" : `${fmtNumber(pct * 100, 1)}% tổng dự toán (${ty(plan!)})${pct > 1 ? " – vượt dự toán" : ""}`}</div>
+          </Card>
+        ); })()}
       </div>
 
       <Card className="overflow-hidden">
-        <div className="border-b px-4 py-2.5 text-center">
-          <div className="text-[14px] font-bold uppercase text-slate-800">Bảng tổng hợp chi phí sản xuất kinh doanh</div>
-          <div className="text-[12.5px] text-slate-500">{project?.name} · {month ? mLabel(month) : "Tất cả các tháng"} · đơn vị tính: đồng</div>
+        <div className="border-b px-5 py-4 text-[12.5px] text-slate-700">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-start gap-4">
+            <div className="text-center leading-snug"><div>TỔNG CÔNG TY ACC</div><div className="font-bold uppercase">{unitName}</div></div>
+            <div className="pt-2 text-center text-[16px] font-bold uppercase text-slate-900">Bảng tổng hợp chi phí sản xuất kinh doanh</div>
+            <div className="justify-self-end text-[12.5px]"><div><b>GTHĐ:</b> <span className="tabular">{fmtVnd(gthd)}</span></div><div><b>VAT đầu ra:</b> <span className="tabular">{fmtVnd(vatOut)}</span></div></div>
+          </div>
+          <div className="mx-auto mt-3 max-w-4xl text-center text-[13px] font-semibold text-slate-800">{pkg}</div>
+          <div className="mt-1.5 text-center font-semibold">Chủ nhiệm công trình: {cht || "—"}</div>
+          <div className="text-center font-semibold">{period}</div>
+          <div className="text-right italic text-slate-500">Đơn vị tính: đồng</div>
         </div>
         <div className="scrollbar-visible max-h-[65vh] overflow-auto">
           <table className="w-full min-w-[1200px] text-[12.5px]">

@@ -15,7 +15,7 @@ import { fmtNumber } from "@/utils/format";
 export function ShiftDialog({ open, onOpenChange, equipmentId }: { open: boolean; onOpenChange: (o: boolean) => void; equipmentId?: string }) {
   const { db, run } = useDb();
   const [eqId, setEqId] = useState("");
-  const [f, setF] = useState({ date: DEMO_TODAY, shift: "Ca 1" as "Ca 1" | "Ca 2" | "Ca 3", hours: "8", km: "", fuel: "", output: "", operatorId: "", note: "" });
+  const [f, setF] = useState({ date: DEMO_TODAY, shift: "Ca 1", hours: "8", km: "", fuel: "", output: "", operatorId: "", note: "" });
   useEffect(() => {
     if (open) {
       const e = db.equipment.find((x) => x.id === equipmentId);
@@ -42,7 +42,7 @@ export function ShiftDialog({ open, onOpenChange, equipmentId }: { open: boolean
         <DialogBody className="grid gap-3 sm:grid-cols-2">
           <FormField label="Thiết bị" required className="sm:col-span-2"><Select value={eqId} onChange={(ev) => { setEqId(ev.target.value); const x = db.equipment.find((q) => q.id === ev.target.value); setF((s) => ({ ...s, operatorId: x?.operatorId ?? "", fuel: x && x.kind === "may_thiet_bi" ? String(Math.round(x.fuelNorm * Number(s.hours || 0))) : "" })); }} placeholder="— Chọn thiết bị đang hoạt động —" options={db.equipment.filter((x) => x.status === "hoat_dong" && x.currentProjectId).map((x) => ({ value: x.id, label: `${x.code} – ${x.name} · ${db.projects.find((p) => p.id === x.currentProjectId)?.shortName}` }))} /></FormField>
           <FormField label="Ngày"><Input type="date" value={f.date} max={DEMO_TODAY} onChange={(ev) => setF({ ...f, date: ev.target.value })} /></FormField>
-          <FormField label="Ca làm việc"><Select value={f.shift} onChange={(ev) => setF({ ...f, shift: ev.target.value as typeof f.shift })} options={["Ca 1", "Ca 2", "Ca 3"].map((s) => ({ value: s, label: s }))} /></FormField>
+          <FormField label="Ca làm việc"><Select value={f.shift} onChange={(ev) => setF({ ...f, shift: ev.target.value })} options={(db.shiftTypes ?? []).filter((t) => t.active).map((t) => ({ value: t.name, label: `${t.name} (${t.start} – ${t.end})` }))} /></FormField>
           <FormField label="Người vận hành" className="sm:col-span-2"><Select value={f.operatorId} onChange={(ev) => setF({ ...f, operatorId: ev.target.value })} placeholder="—" options={db.users.filter((u) => u.isOperator).map((u) => ({ value: u.id, label: u.name }))} /></FormField>
           <FormField label="Giờ máy (giờ)"><Input type="number" step="0.5" value={f.hours} onChange={(ev) => setF({ ...f, hours: ev.target.value })} /></FormField>
           {veh && <FormField label="Số km đã chạy" required><Input type="number" value={f.km} onChange={(ev) => setF({ ...f, km: ev.target.value })} /></FormField>}

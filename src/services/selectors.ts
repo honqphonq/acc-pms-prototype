@@ -609,39 +609,15 @@ export type CostBreakdown = Record<CostKey, number>;
 export const costTotal = (c: CostBreakdown) => c.nvl + c.nc + c.mtc + c.sxc;
 
 // ---------- Kế toán: dự toán ----------
-export const lineDirect = (l: EstimateLine) => l.qty * (l.vl + l.nc + l.mtc);
-/** Tổng hợp dự toán: T = VL + NC + MTC; C = chi phí chung; TL = thu nhập chịu thuế tính trước; GXD = T + C + TL; VAT */
-export function estimateSummary(e: Estimate) {
-  const vl = e.lines.reduce((s, l) => s + l.qty * l.vl, 0);
-  const nc = e.lines.reduce((s, l) => s + l.qty * l.nc, 0);
-  const mtc = e.lines.reduce((s, l) => s + l.qty * l.mtc, 0);
-  const t = vl + nc + mtc;
-  const c = (t * e.rateC) / 100;
-  const tl = ((t + c) * e.rateTL) / 100;
-  const gxd = t + c + tl;
-  const vat = (gxd * e.vat) / 100;
-  return { vl, nc, mtc, t, c, tl, gxd, vat, total: gxd + vat, matched: e.lines.filter((l) => l.taskId).length };
-}
-/** Dự toán quy về 4 khoản mục chi phí để so với chi phí thực tế: NVLTT = VL, NCTT = NC, CPMTC = MTC, CPSXC = chi phí chung */
-export function estimateByCostKey(e: Estimate): CostBreakdown {
-  const s = estimateSummary(e);
-  return { nvl: s.vl, nc: s.nc, mtc: s.mtc, sxc: s.c };
-}
+export const estLineAmount = (l: EstimateLine) => (l.level === 3 ? l.qty * l.price : 0);
+/** Tổng dự toán = Σ khối lượng × đơn giá các dòng công tác (đơn giá tổng hợp đã gồm mọi chi phí) */
+export const estimateTotal = (e: Estimate) => e.lines.reduce((s, l) => s + estLineAmount(l), 0);
+/** Tổng của dòng hạng mục / phần = cộng các dòng con theo STT */
+export const estimateNodeTotal = (e: Estimate, stt: string) => e.lines.reduce((s, l) => s + (l.stt.startsWith(stt + ".") ? estLineAmount(l) : 0), 0);
 
 // ---------- Kế toán: công nợ NCC / thầu phụ ----------
-/** (3) đã cung cấp · (4) đã xuất hóa đơn · (5) đã thanh toán · (6) = 3 − 5 · (7) = 4 − 5 */
-export function debtTotals(d: Debt) {
-  const sum = (k: string) => d.entries.filter((e) => e.kind === k).reduce((s, e) => s + e.amount, 0);
-  const supplied = sum("cung_cap"), invoiced = sum("hoa_don"), paid = sum("thanh_toan");
-  return { supplied, invoiced, paid, owedSupplied: supplied - paid, owedInvoiced: invoiced - paid };
-}
-export type DebtDue = "qua_han" | "den_han" | "trong_han" | "da_tat_toan";
-export function debtDue(d: Debt): DebtDue {
-  const t = debtTotals(d);
-  if (t.owedInvoiced <= 0) return "da_tat_toan";
-  if (d.dueDate < DEMO_TODAY) return "qua_han";
-  return diffDays(DEMO_TODAY, d.dueDate) <= 7 ? "den_han" : "trong_han";
-}
+/** Công nợ còn lại = giá trị thực hiện − đã thanh toán */
+export const debtLeft = (d: Debt) => d.doneValue - d.paidValue;
 
 // ---------- Kế toán: giá trị khối lượng thi công ----------
 /** Giá trị khối lượng = KL thực tế (nhật ký đã gửi / xác nhận) × đơn giá hợp đồng của công việc, theo kỳ (tháng) và lũy kế */

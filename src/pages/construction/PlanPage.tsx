@@ -121,7 +121,8 @@ export default function PlanPage() {
       const walk = (rs: TaskRow[], depth: number) =>
         rs.forEach((r) => {
           const t = r.task;
-          const desc = r.children.length ? all.filter((x) => x.parentId === t.id) : [t];
+          const descOf = (id: string): typeof all => all.filter((x) => x.parentId === id).flatMap((x) => [x, ...descOf(x.id)]);
+          const desc = r.children.length ? descOf(t.id).filter((x) => !all.some((c) => c.parentId === x.id)) : [t];
           out.push({
             key: t.id, stt: t.code, code: `W${String(++w).padStart(5, "0")}`, name: t.name, depth, kind: r.children.length ? "group" : "task",
             assignee: userName(t.assigneeId), team: t.team, start: t.plannedStart, end: t.plannedEnd,
@@ -194,7 +195,7 @@ export default function PlanPage() {
   const ganttRows: GanttRow[] = shown.filter((l) => l.kind !== "root").map((l) => ({
     id: l.taskId ?? l.key, label: l.kind === "item" ? `${l.stt}. ${l.name.toUpperCase()}` : l.name, code: l.kind === "total" ? "1" : l.kind === "item" ? "" : l.stt, depth: Math.max(0, l.depth - 1), kind: l.kind === "total" ? "project" : l.kind === "item" ? "item" : l.kind === "group" ? "group" : "task",
     start: l.start, end: l.end, actualStart: l.actualStart, actualEnd: l.actualEnd, lastUpdate: l.lastUpdate,
-    status: ganttStatus(l), progress: l.actual, unit: l.unit, qty: l.qty, actualQty: l.actualQty, predecessors: l.predecessors,
+    status: ganttStatus(l), progress: l.actual, planned: l.planned, unit: l.unit, qty: l.qty, actualQty: l.actualQty, predecessors: l.predecessors,
     assignee: l.assignee || undefined,
   }));
   const printGantt = () => {

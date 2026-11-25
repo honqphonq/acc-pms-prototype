@@ -62,6 +62,10 @@ interface Props<T extends Row> {
   /** Màn hình chi tiết riêng (popup lớn) thay cho khung chi tiết mặc định */
   detailView?: (row: T, ctx: { close: () => void; edit: () => void; remove: () => void }) => ReactNode;
   rowActions?: (row: T) => ReactNode;
+  /** cho phép sửa / xóa từng dòng (mặc định theo canEdit) */
+  canEditRow?: (row: T) => boolean;
+  /** biến đổi bản ghi trước khi lưu (vd. ghi lịch sử hoạt động) */
+  beforeSave?: (row: T, isNew: boolean, db: Database) => T;
   headerExtra?: ReactNode;
   above?: ReactNode;
   pageSize?: number;
@@ -95,7 +99,7 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
     const isNew = !edit.id;
     const row = { ...edit, id: edit.id ?? genId(p.collection.slice(0, 3)) } as T;
     if (isNew && p.codePrefix && !row.code) row.code = nextCode(p.codePrefix, all.map((r) => r.code ?? ""));
-    run(saveRow, p.collection, row as never);
+    run(saveRow, p.collection, (p.beforeSave ? p.beforeSave(row, isNew, db) : row) as never);
     toast.success(isNew ? `Đã thêm ${label}` : "Đã lưu thay đổi");
     setEdit(null);
   };
@@ -123,8 +127,8 @@ export function RegistryPage<T extends Row>(p: Props<T>) {
         <div className="flex justify-end gap-0.5" onClick={(e) => e.stopPropagation()}>
           {p.rowActions?.(r)}
           <Button size="icon-sm" variant="ghost" aria-label="Xem" onClick={() => setView(r.id)}><Eye /></Button>
-          {p.canEdit !== false && <Button size="icon-sm" variant="ghost" aria-label="Sửa" onClick={() => setEdit({ ...r })}><Pencil /></Button>}
-          {p.canEdit !== false && <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={() => del(r)}><Trash2 /></Button>}
+          {p.canEdit !== false && (p.canEditRow?.(r) ?? true) && <Button size="icon-sm" variant="ghost" aria-label="Sửa" onClick={() => setEdit({ ...r })}><Pencil /></Button>}
+          {p.canEdit !== false && (p.canEditRow?.(r) ?? true) && <Button size="icon-sm" variant="ghost" aria-label="Xóa" className="text-slate-400 hover:text-rose-600" onClick={() => del(r)}><Trash2 /></Button>}
         </div>
       ),
     },

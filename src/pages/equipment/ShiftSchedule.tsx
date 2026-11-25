@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { AlertTriangle, CalendarRange, ChevronLeft, ChevronRight, ClipboardEdit, Plus } from "lucide-react";
+import { AlertTriangle, CalendarRange, ChevronLeft, ChevronRight, ClipboardEdit, ClipboardList, Plus, Settings2 } from "lucide-react";
 import { toast } from "sonner";
 import { useDb } from "@/hooks/useDb";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,11 +16,15 @@ import { isVehicle, shiftMeter } from "@/services/selectors";
 import { DEMO_TODAY, addDays, diffDays } from "@/utils/date";
 import { fmtNumber } from "@/utils/format";
 import { cn } from "@/utils/cn";
-import type { Equipment, EquipmentShift, Operator } from "@/types";
+import type { Database, Equipment, EquipmentShift, Operator } from "@/types";
+import { BulkLogDialog, ShiftConfigDialog } from "./ShiftTools";
 import { activeProjects } from "@/utils/labels";
 
-const SHIFTS: EquipmentShift["shift"][] = ["Ca 1", "Ca 2", "Ca 3"];
-const SHIFT_TIME: Record<string, string> = { "Ca 1": "06:00 – 14:00", "Ca 2": "14:00 – 22:00", "Ca 3": "22:00 – 06:00" };
+/** Danh mục ca dùng chung (Cấu hình ca) */
+export const shiftList = (db: Database, all = false) => (db.shiftTypes ?? []).filter((t) => all || t.active);
+export const shiftTime = (db: Database, name: string) => { const t = (db.shiftTypes ?? []).find((x) => x.name === name); return t ? `${t.start} – ${t.end}` : ""; };
+const shiftShort = (db: Database, name: string) => (db.shiftTypes ?? []).find((x) => x.name === name)?.short ?? name.replace(/^Ca\s*/, "");
+const shiftOrder = (db: Database, name: string) => { const i = (db.shiftTypes ?? []).findIndex((x) => x.name === name); return i < 0 ? 99 : i; };
 const DOW = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 const dow = (d: string) => new Date(d + "T00:00:00Z").getUTCDay();
 const mondayOf = (d: string) => addDays(d, -((dow(d) + 6) % 7));
@@ -54,7 +58,9 @@ export function ShiftSchedule() {
   const [week, setWeek] = useState(mondayOf(DEMO_TODAY));
   const [axis, setAxis] = useState<"eq" | "op">("eq");
   const [group, setGroup] = useState("");
-  const [only, setOnly] = useState<"" | EquipmentShift["shift"]>("");
+  const [only, setOnly] = useState("");
+  const [cfg, setCfg] = useState(false);
+  const [bulkLog, setBulkLog] = useState(false);
   const [cellDlg, setCellDlg] = useState<{ rowId: string; date: string } | null>(null);
   const [bulk, setBulk] = useState(false);
   const [logId, setLogId] = useState<string | null>(null);
@@ -75,7 +81,7 @@ export function ShiftSchedule() {
   const pending = db.equipmentShifts.filter((s) => s.projectId === pid && s.logged === false && s.date < DEMO_TODAY).length;
   const groups = [...new Set(db.equipment.filter((e) => e.currentProjectId === pid).map((e) => e.group))];
   const rows = axis === "eq" ? machines.map((e) => ({ id: e.id, title: e.code, sub: e.name })) : opsRows.map((o) => ({ id: o.id, title: o.name, sub: o.code }));
-  const inCell = (rowId: string, d: string) => shifts.filter((s) => s.date === d && (axis === "eq" ? s.equipmentId === rowId : s.operatorId === rowId)).sort((a, b) => a.shift.localeCompare(b.shift));
+  const inCell = (rowId: string, d: string) => shifts.filter((s) => s.date === d && (axis === "eq" ? s.equipmentId === rowId : s.operatorId === rowId)).sort((a, b) => shiftOrder(db, a.shift) - shiftOrder(db, b.shift));
   const compact = view === "month";
   const colW = compact ? 76 : 150;
   const logS = db.equipmentShifts.find((s) => s.id === logId);
@@ -100,9 +106,11 @@ export function ShiftSchedule() {
           {(["eq", "op"] as const).map((a) => <button key={a} onClick={() => setAxis(a)} className={cn("rounded px-3 py-1 text-[13px] font-medium", axis === a ? "bg-slate-800 text-white" : "text-slate-600 hover:bg-slate-50")}>{a === "eq" ? "Theo XMTB" : "Theo nhân viên"}</button>)}
         </div>
         <Select className="w-40" value={group} onChange={(e) => setGroup(e.target.value)} placeholder="Tất cả nhóm XMTB" options={groups.map((g) => ({ value: g, label: g }))} />
-        <Select className="w-32" value={only} onChange={(e) => setOnly(e.target.value as typeof only)} placeholder="Tất cả ca" options={SHIFTS.map((s) => ({ value: s, label: `${s} (${SHIFT_TIME[s]})` }))} />
+        <Select className="w-36" value={only} onChange={(e) => setOnly(e.target.value)} placeholder="Tất cả ca" options={shiftList(db, true).map((s) => ({ value: s.name, label: `${s.name} (${s.start} – ${s.end})` }))} />
         <div className="ml-auto flex items-center gap-2">
           {pending > 0 && <span className="rounded-md bg-amber-50 px-2.5 py-1.5 text-[12.5px] font-medium text-amber-800">{pending} ca chưa nhập nhật trình</span>}
+          {editable && <Button variant="outline" onClick={() => setCfg(true)}><Settings2 /> Cấu hình ca</Button>}
+          {editable && <Button variant="outline" onClick={() => setBulkLog(true)}><ClipboardList /> Nhập nhật trình</Button>}
           {editable && <Button onClick={() => setBulk(true)}><CalendarRange /> Phân ca hàng loạt</Button>}
         </div>
       </div>
@@ -137,9 +145,9 @@ export function ShiftSchedule() {
                       <td key={d} onClick={() => editable && setCellDlg({ rowId: r.id, date: d })} className={cn("cursor-pointer border-b border-r p-1 align-top hover:bg-sky-50/60", d === DEMO_TODAY && "bg-primary-soft/40", wk && d !== DEMO_TODAY && "bg-rose-50/30")}>
                         <div className="flex min-h-[44px] flex-col gap-0.5">
                           {list.map((s) => (
-                            <span key={s.id} title={`${s.shift} (${SHIFT_TIME[s.shift]}) · ${opName(s.operatorId)} · ${eqOf(s.equipmentId)?.code}${s.logged !== false ? ` · nhật trình ${fmtNumber(s.hours)} giờ` : s.date < DEMO_TODAY ? " · chưa nhập nhật trình" : ""}${busy(s) ? " · TRÙNG CA" : ""}`}
+                            <span key={s.id} title={`${s.shift} (${shiftTime(db, s.shift)}) · ${opName(s.operatorId)} · ${eqOf(s.equipmentId)?.code}${s.logged !== false ? ` · nhật trình ${fmtNumber(s.hours)} giờ` : s.date < DEMO_TODAY ? " · chưa nhập nhật trình" : ""}${busy(s) ? " · TRÙNG CA" : ""}`}
                               className={cn("truncate rounded border px-1 py-px text-[11px] font-medium leading-4", CHIP[state(s)], warn(s) && "ring-1 ring-rose-500")}>
-                              {compact ? `${s.shift.slice(3)}·${axis === "eq" ? lastName(opName(s.operatorId)) : eqOf(s.equipmentId)?.code.split(".").pop()}` : `${s.shift} · ${axis === "eq" ? opName(s.operatorId) : eqOf(s.equipmentId)?.code}`}
+                              {compact ? `${shiftShort(db, s.shift)}·${axis === "eq" ? lastName(opName(s.operatorId)) : eqOf(s.equipmentId)?.code.split(".").pop()}` : `${s.shift} · ${axis === "eq" ? opName(s.operatorId) : eqOf(s.equipmentId)?.code}`}
                             </span>
                           ))}
                           {!list.length && editable && <span className="m-auto text-slate-300 opacity-0 hover:opacity-100"><Plus className="h-3.5 w-3.5" /></span>}
@@ -164,6 +172,8 @@ export function ShiftSchedule() {
 
       <CellDialog cell={cellDlg} axis={axis} pid={pid} onClose={() => setCellDlg(null)} onLog={(id) => { setCellDlg(null); setLogId(id); }} />
       <BulkDialog open={bulk} onOpenChange={setBulk} pid={pid} machines={machines} defFrom={DEMO_TODAY > from ? DEMO_TODAY : from} defTo={to} />
+      <ShiftConfigDialog open={cfg} onOpenChange={setCfg} />
+      <BulkLogDialog open={bulkLog} onOpenChange={setBulkLog} pid={pid} />
       <LogDialog shift={logS ?? null} onClose={() => setLogId(null)} onSave={(data) => { run(logShift, logId!, data); toast.success("Đã cập nhật nhật trình ca"); setLogId(null); }} opName={opName} />
     </Card>
   );
@@ -176,8 +186,10 @@ function CellDialog({ cell, axis, pid, onClose, onLog }: { cell: { rowId: string
   const machines = db.equipment.filter((e) => e.currentProjectId === pid && e.status !== "ngung");
   const e = axis === "eq" ? db.equipment.find((x) => x.id === cell.rowId) : undefined;
   const op = axis === "op" ? db.operators.find((x) => x.id === cell.rowId) : undefined;
-  const existing = (sh: EquipmentShift["shift"]) => db.equipmentShifts.find((s) => s.date === cell.date && s.shift === sh && (axis === "eq" ? s.equipmentId === cell.rowId : s.operatorId === cell.rowId));
-  const set = (sh: EquipmentShift["shift"], val: string) => {
+  const SHIFTS = shiftList(db).map((t) => t.name);
+  db.equipmentShifts.filter((s) => s.date === cell.date && (axis === "eq" ? s.equipmentId === cell.rowId : s.operatorId === cell.rowId)).forEach((s) => { if (!SHIFTS.includes(s.shift)) SHIFTS.push(s.shift); });
+  const existing = (sh: string) => db.equipmentShifts.find((s) => s.date === cell.date && s.shift === sh && (axis === "eq" ? s.equipmentId === cell.rowId : s.operatorId === cell.rowId));
+  const set = (sh: string, val: string) => {
     if (axis === "eq") {
       run(assignShift, cell.rowId, pid, cell.date, sh, val || null);
       if (val && db.equipmentShifts.some((x) => x.operatorId === val && x.date === cell.date && x.shift === sh && x.equipmentId !== cell.rowId)) toast.warning(`${db.operators.find((o) => o.id === val)?.name} đã có ${sh} ở máy khác`);
@@ -197,7 +209,7 @@ function CellDialog({ cell, axis, pid, onClose, onLog }: { cell: { rowId: string
             const done = s && s.logged !== false;
             return (
               <div key={sh} className="flex items-center gap-3 rounded-lg border px-3 py-2">
-                <div className="w-28 shrink-0"><div className="text-[13px] font-semibold">{sh}</div><div className="text-[11px] text-slate-500">{SHIFT_TIME[sh]}</div></div>
+                <div className="w-28 shrink-0"><div className="text-[13px] font-semibold">{sh}</div><div className="text-[11px] text-slate-500">{shiftTime(db, sh)}</div></div>
                 <select disabled={done} value={axis === "eq" ? s?.operatorId ?? "" : s?.equipmentId ?? ""} onChange={(ev) => set(sh, ev.target.value)} className="h-9 min-w-0 flex-1 rounded-md border border-slate-300 bg-white px-2 text-[13px] disabled:bg-slate-50">
                   <option value="">— Không phân ca —</option>
                   {axis === "eq"
@@ -221,7 +233,7 @@ function BulkDialog({ open, onOpenChange, pid, machines, defFrom, defTo }: { ope
   const { db, run } = useDb();
   const [eqs, setEqs] = useState<string[]>([]);
   const [opId, setOpId] = useState("");
-  const [sh, setSh] = useState<EquipmentShift["shift"][]>(["Ca 1"]);
+  const [sh, setSh] = useState<string[]>(["Ca 1"]);
   const [range, setRange] = useState({ from: defFrom, to: defTo });
   const [wd, setWd] = useState<number[]>([1, 2, 3, 4, 5, 6]);
   const [key, setKey] = useState(false);
@@ -255,7 +267,7 @@ function BulkDialog({ open, onOpenChange, pid, machines, defFrom, defTo }: { ope
             </div>
           </FormField>
           <FormField label="Người vận hành" required><Select value={opId} onChange={(e) => setOpId(e.target.value)} placeholder="— Chọn nhân viên CMKT —" options={db.operators.map((o) => ({ value: o.id, label: o.name }))} /></FormField>
-          <FormField label="Ca" required><div className="flex gap-3">{SHIFTS.map((s) => <label key={s} className="flex items-center gap-1.5 text-[13px]"><input type="checkbox" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={sh.includes(s)} onChange={() => setSh(tog(sh, s))} />{s} <span className="text-[11px] text-slate-500">{SHIFT_TIME[s]}</span></label>)}</div></FormField>
+          <FormField label="Ca" required><div className="flex flex-wrap gap-x-4 gap-y-1.5">{shiftList(db).map(({ name: s }) => <label key={s} className="flex items-center gap-1.5 text-[13px]"><input type="checkbox" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={sh.includes(s)} onChange={() => setSh(tog(sh, s))} />{s} <span className="text-[11px] text-slate-500">{shiftTime(db, s)}</span></label>)}</div></FormField>
           <div className="grid gap-3 sm:grid-cols-2">
             <FormField label="Từ ngày"><Input type="date" value={range.from} onChange={(e) => setRange({ ...range, from: e.target.value })} /></FormField>
             <FormField label="Đến ngày"><Input type="date" value={range.to} onChange={(e) => setRange({ ...range, to: e.target.value })} /></FormField>
